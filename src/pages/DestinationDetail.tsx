@@ -30,10 +30,14 @@ function findDestination(
   return { dest: list[0] || stub, region: fallbackRegion, list };
 }
 
-function providersByWell(allWells: Record<string, Well>, providers: Record<string, Provider[]>): { well: Well; items: Provider[] }[] {
+function providersByWell(allWells: Record<string, Well>, providers: Record<string, Provider[]>, regionCode?: string): { well: Well; items: Provider[] }[] {
   const groups: { well: Well; items: Provider[] }[] = [];
   (["stay", "activities", "eat", "move"] as const).forEach((wid) => {
-    const pool = (providers[wid] || []).slice(0, 4);
+    const all = providers[wid] || [];
+    // Prefer providers curated for THIS region (the matching is the product);
+    // fall back to the general pool only if we don't carry region-specific ones.
+    const regional = regionCode ? all.filter((p) => p.region === regionCode) : [];
+    const pool = (regional.length ? regional : all).slice(0, 4);
     if (pool.length) groups.push({ well: allWells[wid], items: pool });
   });
   return groups;
@@ -66,7 +70,7 @@ export default function DestinationDetail() {
   // Local emergency line joins off the same ISO key (David's emergency-numbers data).
   const localEmergency = iso ? (getEmergencyNumbers(iso).emergency || UNIVERSAL_EMERGENCY) : UNIVERSAL_EMERGENCY;
 
-  const groups = providersByWell(allWells, providers);
+  const groups = providersByWell(allWells, providers, R.code);
 
   const relGuides = (() => {
     const pref = guides.filter((gg) => gg.region === R.code || ["safari", "romance", "culinary"].includes(gg.si));

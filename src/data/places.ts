@@ -53,7 +53,47 @@ const D = (id: string, name: string, country: string, line: string, quality: "li
   ({ id, name, country, line, status: "live", depth: quality === "live" ? "verified" : "stub", img, ...(sub_region ? { sub_region } : {}) });
 
 export const DESTINATIONS: Record<string, Destination[]> = {
-  "01F": [D("paris", "Paris", "France", "The first and last word in romance", "live", "paris"), D("amalfi-x", "Lake District", "Germany", "Storybook lakes and trails", "stub", "mountainValley"), D("amsterdam", "Amsterdam", "Netherlands", "Canals, galleries, easy charm", "live", "venice"), D("alps", "The Alps", "Switzerland", "Peaks, spas and slow trains", "live", "mountainValley")],
+  "01F": [D("paris", "Paris", "France", "The first and last word in romance", "live", "paris"), D("amalfi-x", "Lake District", "Germany", "Storybook lakes and trails", "stub", "mountainValley"), D("amsterdam", "Amsterdam", "Netherlands", "Canals, galleries, easy charm", "live", "venice"), D("alps", "The Alps", "Switzerland", "Peaks, spas and slow trains", "live", "mountainValley"),
+    // Winter/Ski launch shelf — hand-authored, real destinations (swap for full
+    // dossiers when the alpine library is ingested). depth:"verified" so they
+    // render as live, populated pages (not the preview/no-providers path).
+    {
+      id: "zermatt-switzerland", name: "Zermatt", country: "Switzerland",
+      line: "Car-free skiing under the Matterhorn", status: "live", depth: "verified", img: "mountainValley",
+      sub_region: "Valais Alps",
+      si: ["ski", "wellness"], feel: ["alpine", "dramatic", "refined"],
+      tier_range: ["premier", "luxury", "ultra"], price_band: "luxury", draw_rank: "anchor",
+      data: {
+        safety: { advisory_level: "L1", posture: "book-freely", booking_hold: false, notes: "Normal precautions; alpine risk is weather + avalanche, managed by resort patrol — ski in-bounds and heed closures.", source: "US State Dept L1 / Swiss authorities", verified: "2026-06" },
+        timing: { season: "Dec–Apr", best_months: [1, 2, 3], notes: "Glacier skiing extends the season; Feb–Mar for the most reliable snow." },
+        jewels: [{ name: "Gornergrat cog railway at sunrise", tier: "premier", when: "clear mornings", blurb: "The Matterhorn head-on, before the crowds." }],
+      },
+    },
+    {
+      id: "st-anton-austria", name: "St. Anton am Arlberg", country: "Austria",
+      line: "The birthplace of alpine skiing — steep, deep, legendary", status: "live", depth: "verified", img: "mountainValley",
+      sub_region: "Arlberg / Tyrol",
+      si: ["ski", "adventure"], feel: ["alpine", "rugged", "festive"],
+      tier_range: ["comfort", "premier", "luxury"], price_band: "premier", draw_rank: "core",
+      data: {
+        safety: { advisory_level: "L1", posture: "book-freely", booking_hold: false, notes: "Normal precautions; renowned off-piste carries real avalanche risk — hire a certified guide off the marked runs.", source: "US State Dept L1 / Austrian authorities", verified: "2026-06" },
+        timing: { season: "Dec–Apr", best_months: [1, 2, 3], notes: "Legendary après-ski; Jan–Mar for the deepest snow on the Arlberg." },
+        jewels: [{ name: "Off-piste day with an Arlberg guide", tier: "premier", when: "after fresh snow", blurb: "The terrain that made the sport, read by someone who knows it." }],
+      },
+    },
+    {
+      id: "chamonix-france", name: "Chamonix", country: "France",
+      line: "Mont Blanc above, glaciers below — the mountaineer's capital", status: "live", depth: "verified", img: "mountainValley",
+      sub_region: "Haute-Savoie / French Alps",
+      si: ["ski", "adventure"], feel: ["alpine", "dramatic", "rugged"],
+      tier_range: ["comfort", "premier", "luxury"], price_band: "premier", draw_rank: "core",
+      data: {
+        safety: { advisory_level: "L2", posture: "book-freely", booking_hold: false, notes: "Exercise increased caution (France-wide, mainly urban); the valley itself is safe — high-alpine routes and the Vallée Blanche need a qualified guide.", source: "US State Dept L2 / French authorities", verified: "2026-06" },
+        timing: { season: "Dec–Apr", best_months: [1, 2, 3], notes: "Serious terrain; the Vallée Blanche is spring-dependent — check conditions." },
+        jewels: [{ name: "Aiguille du Midi cable car", tier: "comfort", when: "clear days", blurb: "3,842m and the roof of Europe in twenty minutes." }],
+      },
+    },
+  ],
   "02F": [D("santorini", "Santorini", "Greece", "Whitewashed cliffs over a caldera", "live", "santorini"), D("amalfi", "Amalfi Coast", "Italy", "Lemon groves and vertical villages", "live", "venice"), D("barcelona", "Barcelona", "Spain", "Gaudí, tapas and Mediterranean light", "live", "marrakech"), D("algarve", "The Algarve", "Portugal", "Golden cliffs and quiet coves", "stub", "tropicalBeach")],
   "03F": [D("reykjavik", "Reykjavík & Ring Road", "Iceland", "Waterfalls, lava and aurora", "live", "northernLights"), D("lofoten", "Lofoten Islands", "Norway", "Sea-cliff drama above the Arctic Circle", "stub", "mountainValley")],
   "04A": [D("dubai", "Dubai", "UAE", "Audacious, golden, around the clock", "live", "dubai"), D("petra", "Petra & Wadi Rum", "Jordan", "Rose-red city and red-sand desert", "live", "desertDunes"), D("alula", "AlUla", "Saudi Arabia", "Ancient tombs in a living desert", "stub", "desertDunes")],
@@ -121,6 +161,10 @@ export const PROVIDERS: Record<string, Provider[]> = {
     p("Mara Serena Safari Lodge", "stay", "vetted", "comfort", "api", "Hilltop lodge, panoramic plains", "Commission partner"),
     p("Basecamp Explorer", "stay", "vetted", "essential", "affiliate", "Eco-camp with community roots", "Affiliate partner"),
     p("Entim Mara Camp", "stay", "prospective", "comfort", "affiliate", "Riverside camp near crossing points", "Prospective partner"),
+    // Winter/Ski — Alps (01F)
+    p("Backstage Hotel Zermatt", "stay", "prime", "luxury", "affiliate", "Design boutique in car-free Zermatt, minutes from the Matterhorn lifts", "Commission partner", ["ski", "wellness"], "01F"),
+    p("Hotel Arlberg St. Anton", "stay", "prime", "premier", "affiliate", "Family-run five-star ski-in ski-out on the Arlberg", "Commission partner", ["ski"], "01F"),
+    p("Hôtel Mont-Blanc Chamonix", "stay", "vetted", "premier", "affiliate", "Historic grande-dame in central Chamonix with Mont Blanc views", "Commission partner", ["ski", "adventure"], "01F"),
   ],
   fly: [
     p("Kenya Airways", "fly", "prime", "comfort", "api", "Direct into Nairobi (NBO)", "Commission partner"),
@@ -136,6 +180,7 @@ export const PROVIDERS: Record<string, Provider[]> = {
     p("Talisman, Nairobi", "eat", "vetted", "comfort", "affiliate", "A Karen institution before you fly out", "Affiliate partner"),
     p("Carnivore Nairobi", "eat", "vetted", "essential", "affiliate", "The famous beast-of-a-feast", "Affiliate partner"),
     p("Private Chef — Mara", "eat", "prospective", "premier", "affiliate", "In-camp tasting menus", "Prospective partner"),
+    p("Chez Vrony, Zermatt", "eat", "prime", "premier", "affiliate", "Iconic mountainside restaurant above Zermatt — a Matterhorn table", "Commission partner", ["ski"], "01F"),
   ],
   move: [
     p("Mara Land Cruiser Safaris", "move", "prime", "comfort", "api", "Private 4×4 with expert guide", "Commission partner"),
@@ -143,6 +188,7 @@ export const PROVIDERS: Record<string, Provider[]> = {
     p("Scenic Air Transfers", "move", "vetted", "premier", "api", "Fly between camps", "Commission partner"),
     p("Nairobi Executive Cars", "move", "vetted", "comfort", "affiliate", "Airport & city transfers", "Affiliate partner"),
     p("Self-Drive Kenya", "move", "prospective", "essential", "affiliate", "For the independent traveler", "Prospective partner"),
+    p("Alpybus Alpine Transfers", "move", "vetted", "comfort", "affiliate", "Shared & private transfers from Geneva/Zurich to the Alps resorts", "Commission partner", ["ski"], "01F"),
   ],
   gear: [
     p("Safari Outfitters Co.", "gear", "prime", "comfort", "affiliate", "Boots, layers, dry-bags — delivered", "Affiliate partner"),
@@ -160,6 +206,9 @@ export const PROVIDERS: Record<string, Provider[]> = {
     p("Walking Safari — Olare Motorogi", "activities", "vetted", "comfort", "api", "On foot with armed rangers", "Commission partner"),
     p("Photography Safari Workshop", "activities", "vetted", "premier", "affiliate", "Pro tuition in the field", "Affiliate partner"),
     p("Night Game Drive", "activities", "prospective", "comfort", "affiliate", "Spot the nocturnal Mara", "Prospective partner"),
+    p("Zermatters Ski & Guide School", "activities", "prime", "premier", "affiliate", "Zermatt's official ski school & mountain-guide bureau — lessons, off-piste, touring", "Commission partner", ["ski"], "01F"),
+    p("Compagnie des Guides de Chamonix", "activities", "prime", "premier", "affiliate", "The world's oldest guide company (1821) — Vallée Blanche, off-piste, alpinism", "Commission partner", ["ski", "adventure"], "01F"),
+    p("Arlberg Ski School, St. Anton", "activities", "vetted", "comfort", "affiliate", "The historic Arlberg school — the technique that founded the sport", "Commission partner", ["ski"], "01F"),
   ],
   shop: [
     p("Maasai Market Curated", "shop", "vetted", "essential", "affiliate", "Authentic crafts, fair trade", "Affiliate partner"),

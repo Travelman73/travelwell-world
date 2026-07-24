@@ -159,7 +159,7 @@ export const LOCALES: Locale[] = [
 
 /** SI → Region affinity: which regions shine for each interest (ranking input). */
 export const REGION_SI: Record<string, string[]> = {
-  "01F": ["culture", "culinary", "romance", "arts", "heritage", "wine", "rail", "city"],
+  "01F": ["ski", "culture", "culinary", "romance", "arts", "heritage", "wine", "rail", "city"],
   "02F": ["romance", "culinary", "ocean", "wine", "sailing", "yacht", "culture", "heritage", "surf"],
   "03F": ["photo", "adventure", "eco", "wellness", "rail", "sacred", "ski"],
   "04A": ["ultra", "yacht", "city", "culture", "heritage", "wellness", "family", "golf"],
