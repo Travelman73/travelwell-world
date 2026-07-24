@@ -31,7 +31,7 @@ const BASE_SIS: SpecialInterest[] = [
   /* Premium & Signature */
   { id: "ultra", name: "Ultra-Luxury", sig: "the extraordinary", status: "live", accent: "#A8873F", lux: true, group: "premium" },
   { id: "tropical", name: "Tropical Islands", sig: "barefoot luxury", status: "live", accent: "#2E8C8C", lux: false, group: "premium" },
-  { id: "romance", name: "Romance & Honeymoons", sig: "the two of you", status: "live", accent: "#A8527A", lux: false, group: "premium" },
+  { id: "romance", name: "Romance, Marriages & Honeymoons", sig: "the two of you", status: "live", accent: "#A8527A", lux: false, group: "premium" },
   { id: "safari", name: "Safari Adventures", sig: "the wild calling", status: "live", accent: "#B07A3C", lux: false, group: "premium" },
   { id: "expedition", name: "Global Expedition Adventures", sig: "to the edges of the map", status: "live", accent: "#5C5C5C", lux: false, group: "premium" },
   { id: "adventure", name: "Global Adventures", sig: "the world, wide open", status: "preview", accent: "#3C7E55", lux: false, group: "premium" },
@@ -41,19 +41,19 @@ const BASE_SIS: SpecialInterest[] = [
   { id: "diveglobal", name: "Dive Globally", sig: "the world below", status: "preview", accent: "#1F6E8C", lux: false, group: "water" },
   { id: "ocean", name: "Ocean & Watersports", sig: "the open water", status: "preview", accent: "#2C6E68", lux: false, group: "water" },
   /* Nature & Wellbeing */
-  { id: "wellness", name: "Wellness, Spa & Retreats", sig: "coming home to yourself", status: "live", accent: "#4F8C7A", lux: false, group: "nature" },
+  { id: "wellness", name: "Wellness, Spa & Retreats", sig: "coming home to yourself", status: "preview", accent: "#4F8C7A", lux: false, group: "nature" },
   { id: "wildlife", name: "Wildlife & Nature", sig: "wild places, up close", status: "preview", accent: "#4A7A3C", lux: false, group: "nature" },
   { id: "glamping", name: "Global Glamping", sig: "wild, but well-appointed", status: "preview", accent: "#7A6B4F", lux: false, group: "nature" },
   /* Life-stage & Active */
   { id: "family", name: "Family Travel", sig: "everyone, together", status: "preview", accent: "#C98A2E", lux: false, group: "active" },
   { id: "group", name: "Group Travel", sig: "better, together", status: "preview", accent: "#C27A3C", lux: false, group: "active" },
   { id: "hiking", name: "Hiking & Trekking", sig: "the trail ahead", status: "preview", accent: "#3C7E55", lux: false, group: "active" },
-  { id: "ski", name: "Ski & Snow", sig: "the first track", status: "preview", accent: "#5B86A8", lux: false, group: "active" },
+  { id: "ski", name: "Winter/Ski", sig: "the first track", status: "live", accent: "#5B86A8", lux: false, group: "active" },
   { id: "olympic", name: "Olympic Travel", sig: "the world's stage", status: "preview", accent: "#C2562E", lux: false, group: "active" },
   { id: "senior", name: "Senior Travel", sig: "unhurried, well-earned", status: "preview", accent: "#7A5B3B", lux: false, group: "active" },
   /* Culture & Entertainment */
-  { id: "culinary", name: "Culinary Experiences", sig: "a table worth the flight", status: "live", accent: "#9C5B3B", lux: false, group: "culture" },
-  { id: "culture", name: "Culture & Heritage", sig: "the soul of a place", status: "live", accent: "#7A5BA8", lux: false, group: "culture" },
+  { id: "culinary", name: "Culinary Experiences", sig: "a table worth the flight", status: "preview", accent: "#9C5B3B", lux: false, group: "culture" },
+  { id: "culture", name: "Culture & Heritage", sig: "the soul of a place", status: "preview", accent: "#7A5BA8", lux: false, group: "culture" },
   { id: "deepdive", name: "Cultural Deep Dives", sig: "beneath the surface", status: "preview", accent: "#6B4F9E", lux: false, group: "culture" },
   { id: "pilgrimage", name: "Religious & Pilgrimage", sig: "the road as devotion", status: "preview", accent: "#8C6B4F", lux: false, group: "culture" },
   { id: "entertainment", name: "Live Entertainment", sig: "the lights come up", status: "preview", accent: "#C2562E", lux: false, group: "culture" },
