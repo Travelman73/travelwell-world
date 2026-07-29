@@ -3,17 +3,17 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "description": "Atlas voice agent worker (LiveKit Agents): Deepgram ears + Cartesia mouth + Claude brain, in a LiveKit room. Runs as a standalone service, not part of the Vite app.",
+  "description": "Atlas voice agent worker (LiveKit Agents 1.6): Deepgram ears + Cartesia mouth + Claude brain, in a LiveKit room. Runs as a standalone service, not part of the Vite app.",
   "scripts": {
     "dev": "tsx index.ts dev",
     "start": "tsx index.ts start"
   },
   "dependencies": {
-    "@livekit/agents": "^0.7",
-    "@livekit/agents-plugin-anthropic": "^0.7",
-    "@livekit/agents-plugin-cartesia": "^0.7",
-    "@livekit/agents-plugin-deepgram": "^0.7",
-    "@livekit/agents-plugin-silero": "^0.7"
+    "@livekit/agents": "^1.6.0",
+    "@livekit/agents-plugin-anthropic": "^1.6.0",
+    "@livekit/agents-plugin-cartesia": "^1.6.0",
+    "@livekit/agents-plugin-deepgram": "^1.6.0",
+    "@livekit/agents-plugin-silero": "^1.6.0"
   },
   "devDependencies": {
     "tsx": "^4",

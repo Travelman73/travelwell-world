@@ -1,25 +1,19 @@
 /**
- * TravelWell.World — Atlas voice AGENT WORKER (LiveKit Agents, Node).
+ * TravelWell.World — Atlas voice AGENT WORKER (LiveKit Agents v1.6, Node).
  *
- * This is the "long pole" from the voice spike: the server process that lives in
- * a LiveKit room and runs the real stack — Deepgram ears, Cartesia mouth, our
- * Atlas brain, semantic turn-taking + barge-in from LiveKit — and mirrors each
- * spoken turn as text over a data channel. The browser stays thin; this does the
- * heavy lifting.
+ * The server process that lives in a LiveKit room and runs the real stack —
+ * Deepgram ears, Cartesia mouth, our Claude brain — with LiveKit's turn-taking
+ * + barge-in, mirroring each spoken turn as text over a data channel.
  *
  * BRAIN STAYS OURS (canon): the LLM is Claude with OUR Atlas voice prompt +
- * safety language. LiveKit only moves audio + turn signals — Atlas's logic is
- * never inside a vendor's agent format. (v2: swap this LLM node to call our own
- * `atlas` edge function behind the same interface — the seam again.)
+ * safety language (via the Agent's instructions). LiveKit only moves audio +
+ * turn signals — Atlas's logic is never inside a vendor's agent format.
  *
- * ── HONEST STATUS ──────────────────────────────────────────────────────────
- * AUTHORED against the LiveKit Agents Node SDK docs. It has NOT been run — my
- * build sandbox can't reach LiveKit/Deepgram/Cartesia. Running this against a
- * live LiveKit project (`npm i && npm run dev`) is the completing step of the
- * spike and pins exact plugin/API versions. Everything up to that is done here.
- * ───────────────────────────────────────────────────────────────────────────
+ * Verified against @livekit/agents@1.6 type defs. Run it (npm run dev) against a
+ * live LiveKit project to complete the spike; talk to it via LiveKit's hosted
+ * Agents Playground (agents-playground.livekit.io) pointed at your project.
  */
-import { type JobContext, WorkerOptions, cli, defineAgent, voice } from "@livekit/agents";
+import { type JobContext, ServerOptions, cli, defineAgent, voice } from "@livekit/agents";
 import * as deepgram from "@livekit/agents-plugin-deepgram";
 import * as cartesia from "@livekit/agents-plugin-cartesia";
 import * as anthropic from "@livekit/agents-plugin-anthropic";
@@ -49,21 +43,25 @@ export default defineAgent({
     const session = new voice.AgentSession({
       vad: await silero.VAD.load(),
       // EARS — Deepgram, with keyterm prompting so accents/place-words resolve.
-      stt: new deepgram.STT({ model: "nova-3", keyterms: KEYTERMS }),
-      // BRAIN — Claude, our prompt. (Swap to our atlas edge fn behind this seam later.)
-      llm: new anthropic.LLM({ model: "claude-sonnet-5" }),
+      stt: new deepgram.STT({ model: "nova-3", keyterm: KEYTERMS }),
+      // BRAIN — Claude (plugin default model), our prompt via the Agent below.
+      llm: new anthropic.LLM(),
       // MOUTH — Cartesia Sonic (fastest first-audio). Audition ElevenLabs by ear;
       // it's a one-line swap here (cartesia -> elevenlabs plugin), never an app edit.
-      tts: new cartesia.TTS({ model: "sonic-2" }),
-      // Turn-taking (semantic endpointing) + barge-in are the belt's job, not ours.
+      tts: new cartesia.TTS(),
+      // Turn-taking (semantic endpointing) + barge-in are the session's job.
     });
 
     // THE MIRROR: forward each turn's text over the room data channel so the UI
-    // shows Atlas's whole answer while he speaks it (accessibility + dialect net).
-    session.on("conversation_item_added", (item: { role: string; textContent?: string }) => {
-      if (!item.textContent) return;
-      const payload = new TextEncoder().encode(JSON.stringify({ role: item.role, text: item.textContent }));
-      ctx.room.localParticipant?.publishData(payload, { topic: "transcript" });
+    // shows Atlas's whole answer while he speaks it. Best-effort (never blocks).
+    session.on(voice.AgentSessionEventTypes.ConversationItemAdded, (ev: unknown) => {
+      try {
+        const item = (ev as { item?: { role?: string; textContent?: string; content?: unknown } })?.item;
+        const text = item?.textContent ?? (typeof item?.content === "string" ? item.content : undefined);
+        if (!text) return;
+        const payload = new TextEncoder().encode(JSON.stringify({ role: item?.role, text }));
+        void ctx.room.localParticipant?.publishData(payload, { topic: "transcript" });
+      } catch { /* mirror is best-effort */ }
     });
 
     await session.start({
@@ -73,5 +71,5 @@ export default defineAgent({
   },
 });
 
-// `node index.js dev` connects to your LiveKit project and waits for rooms.
-cli.runApp(new WorkerOptions({ agent: fileURLToPath(import.meta.url) }));
+// `node index.js dev` (via tsx) connects to your LiveKit project and waits for rooms.
+cli.runApp(new ServerOptions({ agent: fileURLToPath(import.meta.url) }));
