@@ -22,11 +22,15 @@ function humanDuration(iso: string | null): string {
   return [h && `${h}h`, min && `${min}m`].filter(Boolean).join(" ");
 }
 
-function whenLabel(dt: string | null): string {
+function timeOf(dt: string | null): string {
   if (!dt) return "";
   const d = new Date(dt);
-  if (isNaN(d.getTime())) return "";
-  return d.toLocaleString(undefined, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+  return isNaN(d.getTime()) ? "" : d.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+}
+function dateOf(dt: string | null): string {
+  if (!dt) return "";
+  const d = new Date(dt);
+  return isNaN(d.getTime()) ? "" : d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
 }
 
 function money(amount: string | null, currency: string | null): string {
@@ -203,31 +207,37 @@ export default function FlightSearch() {
                 )}
               </div>
 
-              <div style={{ display: "grid", gap: 12 }}>
+              <div className="fl-list">
                 {offers.map((o) => (
-                  <div className="card" key={o.id} style={{ padding: 18, display: "flex", gap: 18, alignItems: "center", flexWrap: "wrap" }}>
-                    <div style={{ flex: "1 1 320px", minWidth: 0 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-                        <span style={{ display: "inline-flex", width: 30, height: 30, borderRadius: 8, background: "var(--muted)", alignItems: "center", justifyContent: "center", flexShrink: 0 }}><Icon name="plane" small /></span>
-                        <b className="t-body">{o.airline}</b>
+                  <div className="fl-card" key={o.id}>
+                    <div className="fl-card__head">
+                      <div className="fl-airline">
+                        <span className="fl-airline__badge">{o.airlineCode || <Icon name="plane" small />}</span>
+                        <span className="fl-airline__name">{o.airline}</span>
                       </div>
+                      <div className="fl-price">
+                        <span className="fl-price__amt">{money(o.price.amount, o.price.currency)}</span>
+                        <span className="fl-price__lbl">total{adults > 1 ? ` · ${adults} travelers` : ""}</span>
+                      </div>
+                    </div>
+                    <div className="fl-legs">
                       {o.slices.map((s, i) => (
-                        <div key={i} style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap", marginTop: i ? 6 : 0 }}>
-                          <span style={{ fontFamily: "var(--font-mono)", fontWeight: 700 }}>{s.origin} → {s.destination}</span>
-                          <span className="t-body-s" style={{ color: "var(--muted-foreground)" }}>
-                            {whenLabel(s.departsAt)}{s.arrivesAt ? ` – ${whenLabel(s.arrivesAt)}` : ""}
-                            {humanDuration(s.durationIso) ? ` · ${humanDuration(s.durationIso)}` : ""}
-                            {" · "}{s.stops === 0 ? "nonstop" : `${s.stops} stop${s.stops > 1 ? "s" : ""}`}
-                          </span>
+                        <div className="fl-leg" key={i}
+                          aria-label={`${i === 0 ? "Outbound" : "Return"}: ${s.origin} ${timeOf(s.departsAt)} to ${s.destination} ${timeOf(s.arrivesAt)}, ${humanDuration(s.durationIso)}, ${s.stops === 0 ? "nonstop" : `${s.stops} stop${s.stops > 1 ? "s" : ""}`}`}>
+                          <span className="fl-leg__dir"><Icon name={i === 0 ? "plane" : "arrow"} small /> {i === 0 ? "Depart" : "Return"}</span>
+                          <div className="fl-pt"><span className="fl-pt__code">{s.origin}</span><span className="fl-pt__time">{timeOf(s.departsAt)}</span></div>
+                          <div className="fl-path">
+                            <span className="fl-path__dur">{humanDuration(s.durationIso) || "—"}</span>
+                            <span className="fl-path__line" aria-hidden="true"><i /><Icon name="plane" small /><i /></span>
+                            <span className={"fl-path__stops" + (s.stops === 0 ? " is-nonstop" : "")}>{s.stops === 0 ? "nonstop" : `${s.stops} stop${s.stops > 1 ? "s" : ""}`}</span>
+                          </div>
+                          <div className="fl-pt fl-pt--end"><span className="fl-pt__code">{s.destination}</span><span className="fl-pt__time">{timeOf(s.arrivesAt)}</span></div>
+                          <span className="fl-leg__date"><Icon name="calendar" small /> {dateOf(s.departsAt)}</span>
                         </div>
                       ))}
                     </div>
-                    <div style={{ textAlign: "end", marginInlineStart: "auto" }}>
-                      <div style={{ fontSize: 22, fontWeight: 800, lineHeight: 1 }}>{money(o.price.amount, o.price.currency)}</div>
-                      <div className="t-body-s" style={{ color: "var(--muted-foreground)", marginTop: 2 }}>total{adults > 1 ? ` · ${adults} travelers` : ""}</div>
-                      <button className="btn btn-secondary" onClick={() => addOffer(o)} style={{ marginTop: 10, minHeight: 40 }}>
-                        <Icon name="heart" small /> Add to trip
-                      </button>
+                    <div className="fl-card__foot">
+                      <button className="btn btn-secondary fl-add" onClick={() => addOffer(o)}><Icon name="heart" small /> Add to trip</button>
                     </div>
                   </div>
                 ))}

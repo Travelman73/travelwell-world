@@ -1209,3 +1209,34 @@
   [data-page="sitemap"] .sm-note b { color:var(--foreground); }
   @media (max-width:780px){
   [data-page="sitemap"] .sm-grid {grid-template-columns:1fr;} }
+
+/* ── Fly-Well flight result cards (src/pages/FlightSearch.tsx) ──────────
+   Modern, icon-based: airline badge, dashed route line with the plane on it,
+   big airport codes + times, nonstop pill, calendar date chip. */
+.fl-list { display: flex; flex-direction: column; gap: 14px; }
+.fl-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 16px 20px; transition: box-shadow .15s, border-color .15s; }
+.fl-card:hover { border-color: var(--gold-deep); box-shadow: 0 6px 22px rgba(0,0,0,.06); }
+.fl-card__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+.fl-airline { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.fl-airline__badge { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 10px; background: var(--surface-alt); border: 1px solid var(--border); font-weight: 800; font-size: 13px; color: var(--gold-deep); flex-shrink: 0; }
+.fl-airline__name { font-weight: 700; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fl-price { text-align: end; flex-shrink: 0; }
+.fl-price__amt { display: block; font-size: 24px; font-weight: 800; line-height: 1; }
+.fl-price__lbl { font-size: 11.5px; color: var(--muted-foreground); }
+.fl-legs { display: flex; flex-direction: column; gap: 12px; padding: 16px 0 6px; }
+.fl-leg { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.fl-leg__dir { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted-foreground); width: 74px; flex-shrink: 0; }
+.fl-pt { text-align: center; min-width: 52px; }
+.fl-pt__code { display: block; font-family: var(--font-mono); font-weight: 800; font-size: 18px; }
+.fl-pt__time { font-size: 12px; color: var(--muted-foreground); }
+.fl-path { flex: 1 1 110px; display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 90px; color: var(--gold-deep); }
+.fl-path__dur { font-size: 11.5px; color: var(--muted-foreground); }
+.fl-path__line { display: flex; align-items: center; gap: 5px; width: 100%; }
+.fl-path__line i { flex: 1; height: 0; border-top: 2px dashed var(--border); }
+.fl-path__stops { font-size: 11px; font-weight: 600; color: var(--muted-foreground); }
+.fl-path__stops.is-nonstop { color: var(--primary); }
+.fl-leg__date { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: var(--muted-foreground); width: 84px; justify-content: flex-end; flex-shrink: 0; }
+.fl-card__foot { display: flex; justify-content: flex-end; padding-top: 12px; border-top: 1px solid var(--border); }
+.fl-add { min-height: 44px; border-color: var(--gold-deep); color: var(--gold-deep); }
+@media (max-width: 560px) { .fl-leg__dir, .fl-leg__date { width: auto; } .fl-leg { gap: 10px; } }
+@media (prefers-reduced-motion: reduce) { .fl-card { transition: none; } }
