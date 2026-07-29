@@ -5,24 +5,28 @@ rule is his: **build it right, and size it honestly — no faking for a calendar
 So this is the true state of every piece, verified against the live code on
 `main`, not a smoothed version.
 
-## ⚠️ Two things believed "already built" that are NOT in this repo
-David's note calls two items done. Neither is in `sanaafzal-create/travelwell-world`:
+## ✅ Two things believed "already built" — RESOLVED (David, Jul 2026)
+Both were correctly flagged as NOT in `sanaafzal-create/travelwell-world`. David
+confirmed where each actually lives — neither is a hole in the current repo:
 
-1. **The pet-safety every-30-days engine** (airline pet rules + destination-country
-   import rules, refreshed monthly). **Not present** — no pet data, no pet panel,
-   no refresh job, no pet button. Every "pet" string in the tree is "petty crime"
-   or "Petra." *If it lives in the research library or a separate prototype, point
-   me at it and I'll wire it in. If it was a concept/mockup, treat it as a net-new
-   build (see sizing).* This is the biggest gap between the note and reality.
-2. **The Luxury Paris day-1→7 commission-stacked itinerary.** **Not present.**
-   `/itinerary` today is a generic Day 1–3 view driven by whatever blocks the user
-   added — no full week, no commissions/pricing reveal, no Paris sample. Paris
-   exists only as one thin bundle destination row. *Same ask: if the "wonderful
-   Paris itinerary" was a real artifact, where does it live? If it was a design, the
-   sample + hidden commission reveal is a build (sized below).*
+1. **Pet-safety engine → aspirational brand concept, NOT a build.** It's from the
+   Hero-Video seed ("safer + informed — the emergency and safety buttons, for humans
+   AND pets") and lives in **Notion as vision/brand material**. It was **never built
+   as code.** Disposition: **treat as a brand promise / roadmap concept, not a demo
+   feature to wire up now.** Do not describe it as live anywhere (VC plan corrected).
+2. **Luxury Paris commission itinerary → REAL, but in the FIRST (pivoted-away) MVP.**
+   The Springsteen-anchored two-couples trip — private jet Teterboro→Paris, the button
+   opening the full itinerary with each item's commission % + $ and the ~$24K total.
+   Genuinely built and strong — but in the **old hand-built MVP** we moved off (that
+   hand-construction is *why* we pivoted to the Atlas/matching engine). **The hand-built
+   itinerary isn't worth porting; the *commission-view idea* — money made visible — is.**
+   That idea already has a home in the current plan: the **VC-only commission reveal on
+   the itinerary** (Scene 6 of `atlas-demo-script.md`), to be built with the itinerary
+   engine. Revive the concept there, not the old artifact.
 
-Flagging now, plainly, is exactly how we honor "the line I won't cross" — better to
-find this today than on demo day.
+Flagging these plainly was the right call — better resolved now than on demo day. Net:
+the current repo has no hidden gap; one item is aspirational vision, the other is an old
+build whose best idea we carry forward.
 
 ## True-state inventory
 
