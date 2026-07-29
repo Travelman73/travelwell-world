@@ -13,6 +13,7 @@
  * live LiveKit project to complete the spike; talk to it via LiveKit's hosted
  * Agents Playground (agents-playground.livekit.io) pointed at your project.
  */
+import "dotenv/config"; // load voice-agent/.env into process.env (must be first)
 import { type JobContext, ServerOptions, cli, defineAgent, voice } from "@livekit/agents";
 import * as deepgram from "@livekit/agents-plugin-deepgram";
 import * as cartesia from "@livekit/agents-plugin-cartesia";
