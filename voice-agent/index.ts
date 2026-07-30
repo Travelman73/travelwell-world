@@ -47,10 +47,23 @@ export default defineAgent({
       stt: new deepgram.STT({ model: "nova-3", keyterm: KEYTERMS }),
       // BRAIN — Claude (plugin default model), our prompt via the Agent below.
       llm: new anthropic.LLM(),
-      // MOUTH — Cartesia Sonic (fastest first-audio). Audition ElevenLabs by ear;
-      // it's a one-line swap here (cartesia -> elevenlabs plugin), never an app edit.
-      tts: new cartesia.TTS(),
+      // MOUTH — Cartesia Sonic. Pin the model + voice EXPLICITLY (the empty-options
+      // default rides sonic-3, which isn't enabled on every account — a silent
+      // no-audio failure at synthesis). sonic-2 is long-GA and reliable. The voice
+      // id is Cartesia's known-good default; audition a warmer concierge voice by ear
+      // later — it's a one-field change here, never an app edit. Swapping to
+      // ElevenLabs is likewise one line (cartesia -> elevenlabs plugin).
+      tts: new cartesia.TTS({
+        model: "sonic-2",
+        voice: "f786b574-daa5-4673-aa0c-cbe3e8534c02",
+      }),
       // Turn-taking (semantic endpointing) + barge-in are the session's job.
+    });
+
+    // Surface any pipeline failure (bad key, unavailable model, provider 4xx) in
+    // the worker terminal instead of it manifesting as silent no-audio.
+    session.on(voice.AgentSessionEventTypes.Error, (ev: unknown) => {
+      console.error("[atlas] session error:", (ev as { error?: unknown })?.error ?? ev);
     });
 
     // THE MIRROR: forward each turn's text over the room data channel so the UI
@@ -69,6 +82,13 @@ export default defineAgent({
       agent: new voice.Agent({ instructions: ATLAS_VOICE_PROMPT }),
       room: ctx.room,
     });
+
+    // Atlas speaks FIRST on join. Two jobs: (1) a warm concierge open is the right
+    // demo feel, and (2) it fires TTS immediately — independent of STT/endpointing —
+    // so a no-audio bug is isolated in one breath: if you hear this line, the mouth
+    // works and any later silence is the input/turn path; if you don't, the worker
+    // log now shows the exact Cartesia/Anthropic error.
+    session.say("Hi, I'm Atlas. Where in the world are you dreaming of?");
   },
 });
 
