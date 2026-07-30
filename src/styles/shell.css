@@ -178,15 +178,25 @@
 .tw-rec__why { font-size: 12.5px; color: var(--muted-foreground); margin-top: 3px; }
 .tw-rec__why b { color: var(--primary); font-weight: 600; }
 
-/* listening (voice in) — a slim, non-intrusive bar above the composer. The live
-   transcript itself streams into the input box (dictation), so this only signals
-   "I'm hearing you" and points to the stop control. No full-screen takeover, no
-   duplicated transcript — that doubled UI was the confusing part on mobile. */
-.tw-listen-bar { display: flex; align-items: center; gap: 10px; margin: 2px 2px 8px; padding: 8px 12px; background: var(--secondary); border: 1px solid var(--border); border-radius: var(--radius); font-size: 12.5px; line-height: 1.45; color: var(--foreground); }
-.tw-wave { display: flex; gap: 3px; align-items: center; height: 18px; flex: none; }
+/* listening (voice in) — an unmistakable animated widget above the composer: a
+   pulsing mic orb + live sound-wave bars + a "Listening…" label. Appears the
+   instant recording starts, vanishes the instant it stops. The transcript itself
+   streams into the input box (dictation), so this widget NEVER repeats it — that
+   doubled UI was the confusing part on mobile. Not a takeover, just clear
+   "I'm hearing you" feedback right where the mic control lives. */
+.tw-listening-live { display: flex; align-items: center; gap: 12px; margin: 2px 2px 8px; padding: 10px 14px; background: var(--secondary); border: 1px solid var(--primary); border-radius: var(--radius); }
+.tw-listen-orb { width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: #fff; display: grid; place-items: center; flex: none; position: relative; }
+.tw-listen-orb::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid var(--primary); opacity: .4; animation: tw-pulse 1.6s infinite ease-out; }
+@keyframes tw-pulse { 0% { transform: scale(.9); opacity: .5; } 100% { transform: scale(1.3); opacity: 0; } }
+.tw-listen-copy { font-size: 12.5px; line-height: 1.4; color: var(--foreground); }
+.tw-wave { display: flex; gap: 3px; align-items: center; height: 22px; flex: none; }
 .tw-wave i { width: 3px; background: var(--primary); border-radius: 2px; animation: tw-wave 1s infinite ease-in-out; }
-@keyframes tw-wave { 0%,100% { height: 5px; } 50% { height: 16px; } }
-@media (prefers-reduced-motion: reduce) { .tw-wave i { animation: none; height: 10px; } }
+@keyframes tw-wave { 0%,100% { height: 5px; } 50% { height: 20px; } }
+/* Respect reduced-motion (AA canon): hold the graphic still, keep the meaning. */
+@media (prefers-reduced-motion: reduce) {
+  .tw-listen-orb::after { animation: none; opacity: .3; }
+  .tw-wave i { animation: none; height: 12px; }
+}
 
 /* input bar */
 .tw-input { display: flex; align-items: center; gap: 8px; background: var(--surface-alt); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 5px 6px 5px 16px; }

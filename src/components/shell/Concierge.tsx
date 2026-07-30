@@ -348,9 +348,10 @@ export function Concierge() {
             <div className="t-body-s" style={{ color: "var(--muted-foreground)", fontSize: 12.5, margin: "2px 2px 6px" }}>{t("atlas.cue")}</div>
           )}
           {listening && (
-            <div className="tw-listen-bar" role="status" aria-live="polite">
-              <span className="tw-wave" aria-hidden="true">{Array.from({ length: 5 }).map((_, i) => <i key={i} style={{ animationDelay: `${i * 0.1}s` }} />)}</span>
-              <span>Listening… tap <b>stop</b> when you're done — your words land in the box, then you send.</span>
+            <div className="tw-listening-live" role="status" aria-live="polite">
+              <span className="tw-listen-orb" aria-hidden="true"><Icon name="mic" /></span>
+              <span className="tw-wave" aria-hidden="true">{Array.from({ length: 6 }).map((_, i) => <i key={i} style={{ animationDelay: `${i * 0.09}s` }} />)}</span>
+              <span className="tw-listen-copy"><b>Listening…</b> tap stop when you're done — your words are in the box, then you send.</span>
             </div>
           )}
           <div className="tw-input">
