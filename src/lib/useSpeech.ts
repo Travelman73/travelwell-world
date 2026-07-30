@@ -40,11 +40,12 @@ function getCtor(): RecognitionCtor | null {
 
 /**
  * @param onText    called on every interim result with the running transcript,
- *                  so the UI can show what's being heard live.
- * @param onFinish  called once when recording ends (Done button, spoken "stop",
- *                  or natural end) with the FINAL transcript. The caller uses
- *                  this to send the message — so what you said lands in the
- *                  conversation instead of being stranded in the input box.
+ *                  so the UI can stream what's being heard live into the input.
+ * @param onFinish  called once when recording ends (stop button, spoken "stop",
+ *                  or natural end) with the FINAL, cleaned transcript. This is
+ *                  dictation, not auto-send: the caller drops the text into the
+ *                  composer and leaves it there — the traveler reviews it and
+ *                  sends it themselves. The mic is a keyboard alternative.
  */
 export function useSpeechInput(
   onText: (text: string) => void,

@@ -51,11 +51,13 @@ export function Concierge() {
   const [visionPicks, setVisionPicks] = useState<string[]>([]);
   const resetVision = () => { setVisionStage("off"); setVisionDream(""); setVisionPicks([]); };
 
-  // Voice input — streams what they say into the box AND shows it live in the
-  // listening panel, then on finish (Done, spoken "stop", or natural end) sends
-  // it so it lands in the conversation instead of vanishing.
+  // Voice input — dictation into the composer, NOT auto-send. Tapping the mic
+  // streams your words live into the input box; tapping stop (or saying "stop")
+  // just ENDS the recording and leaves the text sitting in the box, so you read
+  // it, fix any misheard word, and send it yourself. You stay in control of when
+  // it goes to Atlas — the mic is a keyboard alternative, not a send button.
   const { supported: voiceSupported, listening, start: startVoice, stop: stopVoice } =
-    useSpeechInput(setInput, (finalText) => { if (finalText.trim()) { send(finalText); setInput(""); } });
+    useSpeechInput(setInput, (finalText) => { setInput(finalText.trim()); });
   const onMic = () => {
     if (listening) { stopVoice(); return; }
     if (!voiceSupported) { showToast("Voice input isn't supported in this browser yet — please type for now."); return; }
@@ -324,17 +326,6 @@ export function Concierge() {
                   )}
                 </div>
               )}
-              {listening && (
-                <div className="tw-listening">
-                  <div className="tw-mic-ring"><Icon name="mic" /></div>
-                  <div className="tw-wave">{Array.from({ length: 9 }).map((_, i) => <i key={i} style={{ animationDelay: `${i * 0.08}s` }} />)}</div>
-                  <div className="tw-listening__transcript" aria-live="polite">
-                    {input ? input : <span className="tw-listening__hint">Listening… start speaking and your words will appear here.</span>}
-                  </div>
-                  <button className="btn btn-primary" onClick={() => stopVoice()}><Icon name="check" small /> Done — send to Atlas</button>
-                  <p className="t-body-s" style={{ color: "var(--muted-foreground)", margin: 0 }}>Tap Done, or just say “stop,” when you're finished — I'll reply.</p>
-                </div>
-              )}
               {!heroActive && !busy && messages.length > 0 && messages[messages.length - 1].role === "assistant" && (
                 <button
                   className="btn btn-ghost" style={{ alignSelf: "flex-start" }}
@@ -356,13 +347,19 @@ export function Concierge() {
           {primed && !listening && (
             <div className="t-body-s" style={{ color: "var(--muted-foreground)", fontSize: 12.5, margin: "2px 2px 6px" }}>{t("atlas.cue")}</div>
           )}
+          {listening && (
+            <div className="tw-listen-bar" role="status" aria-live="polite">
+              <span className="tw-wave" aria-hidden="true">{Array.from({ length: 5 }).map((_, i) => <i key={i} style={{ animationDelay: `${i * 0.1}s` }} />)}</span>
+              <span>Listening… tap <b>stop</b> when you're done — your words land in the box, then you send.</span>
+            </div>
+          )}
           <div className="tw-input">
             <input
-              type="text" placeholder="Ask me anything — in English · Español · العربية · 中文 · Français" aria-label="Message Atlas — ask in English, Spanish, Arabic, Chinese, or French"
+              type="text" placeholder={listening ? "Listening… speak now" : "Ask me anything — in English · Español · العربية · 中文 · Français"} aria-label="Message Atlas — ask in English, Spanish, Arabic, Chinese, or French"
               value={input} onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => { if (e.key === "Enter") onSend(input); }}
             />
-            <button className="tw-input__mic" aria-label={listening ? "Stop recording" : "Talk instead of type"} aria-pressed={listening} onClick={onMic}><Icon name="mic" /></button>
+            <button className="tw-input__mic" aria-label={listening ? "Stop recording" : "Talk instead of type"} aria-pressed={listening} onClick={onMic}><Icon name={listening ? "stop" : "mic"} /></button>
             <button className="tw-input__send" aria-label="Send" onClick={() => onSend(input)}><Icon name="send" small /></button>
           </div>
           <div className="tw-stop-row"><Icon name="check" small /> You're in control — Atlas suggests, and never books for you.</div>
