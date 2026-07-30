@@ -4,7 +4,7 @@ import { Icon } from "@/lib/icons";
 import { useStore, type IoMode } from "@/store/useStore";
 import { useAtlas } from "@/lib/useAtlas";
 import { useSpeechInput } from "@/lib/useSpeech";
-import { speak, stopSpeaking } from "@/lib/voice";
+import { speak, stopSpeaking, subscribeSpeaking } from "@/lib/voice";
 import { useSpecialInterests } from "@/store/useCatalog";
 import { useT } from "@/lib/i18n";
 import { useCatalogName } from "@/lib/i18n-catalog";
@@ -85,6 +85,12 @@ export function Concierge() {
   }, [messages, io, isOpen]);
   // Stop the voice when the panel closes.
   useEffect(() => { if (!isOpen) stopSpeaking(); }, [isOpen]);
+
+  // Speaking signal: track when Atlas's voice is actually playing so the message
+  // he's reading can show a tiny animated "speaking" mark (the mirror of the
+  // listening widget). Subscribes to the voice adapter — never to a TTS vendor.
+  const [speaking, setSpeaking] = useState(false);
+  useEffect(() => subscribeSpeaking(setSpeaking), []);
 
   function onSend(text: string) {
     const trimmed = text.trim();
@@ -257,9 +263,25 @@ export function Concierge() {
                   Tell me your dream in a sentence — “a safari for our anniversary in July” — and I'll start shaping it. I never book for you; you always choose.
                 </div>
               )}
-              {messages.map((m, i) => (
-                <div key={i} className={`tw-msg tw-msg--${m.role === "user" ? "user" : "bot"}`}>{m.content}</div>
-              ))}
+              {messages.map((m, i) => {
+                const isSpokenNow = speaking && m.role !== "user" && i === messages.length - 1;
+                return (
+                  <div key={i} className={`tw-msg tw-msg--${m.role === "user" ? "user" : "bot"}`}>
+                    {m.content}
+                    {isSpokenNow && (
+                      <button
+                        type="button"
+                        className="tw-speaking"
+                        aria-label="Atlas is speaking — tap to stop"
+                        title="Speaking… tap to stop"
+                        onClick={() => stopSpeaking()}
+                      >
+                        <i /><i /><i />
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
               {busy && (
                 <div className="tw-msg tw-msg--bot">
                   <span className="tw-typing"><span /><span /><span /></span>

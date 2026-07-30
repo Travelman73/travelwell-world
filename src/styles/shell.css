@@ -163,6 +163,16 @@
 .tw-msg--user { background: var(--primary); color: #fff; border-bottom-right-radius: 5px; align-self: flex-end; }
 [dir="rtl"] .tw-msg--user { border-bottom-right-radius: 16px; border-bottom-left-radius: 5px; }
 
+/* speaking signal — a tiny animated equalizer on the message Atlas is reading
+   aloud (the mirror of the listening widget). It's a button: tap to silence.
+   The on-screen text is always the source of truth; this only marks the voice. */
+.tw-speaking { display: inline-flex; gap: 2px; align-items: flex-end; height: 12px; margin-inline-start: 8px; padding: 0; border: 0; background: none; cursor: pointer; vertical-align: middle; translate: 0 1px; }
+.tw-speaking i { width: 2.5px; height: 4px; border-radius: 2px; background: var(--primary); animation: tw-eq .9s infinite ease-in-out; }
+.tw-speaking i:nth-child(2) { animation-delay: .18s; }
+.tw-speaking i:nth-child(3) { animation-delay: .36s; }
+@keyframes tw-eq { 0%,100% { height: 4px; } 50% { height: 11px; } }
+@media (prefers-reduced-motion: reduce) { .tw-speaking i { animation: none; height: 8px; } }
+
 /* typing / streaming */
 .tw-typing { display: inline-flex; gap: 4px; align-items: center; }
 .tw-typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--muted-foreground); animation: tw-bounce 1.2s infinite ease-in-out; }
