@@ -94,7 +94,9 @@ export function Concierge() {
 
   function onSend(text: string) {
     const trimmed = text.trim();
-    if (!trimmed || busy) return;
+    // Don't send an empty message, while Atlas is replying, or mid-dictation
+    // (the transcript isn't final until you stop — stop, then send).
+    if (!trimmed || busy || listening) return;
     stopSpeaking();
     setInput("");
     // In the vision loop's "ask" stage, capture the dream and write it back
@@ -383,7 +385,7 @@ export function Concierge() {
               onKeyDown={(e) => { if (e.key === "Enter") onSend(input); }}
             />
             <button className="tw-input__mic" aria-label={listening ? "Stop recording" : "Talk instead of type"} aria-pressed={listening} onClick={onMic}><Icon name={listening ? "stop" : "mic"} /></button>
-            <button className="tw-input__send" aria-label="Send" onClick={() => onSend(input)}><Icon name="send" small /></button>
+            <button className="tw-input__send" aria-label="Send" disabled={listening || busy} onClick={() => onSend(input)}><Icon name="send" small /></button>
           </div>
           <div className="tw-stop-row"><Icon name="check" small /> You're in control — Atlas suggests, and never books for you.</div>
         </div>
