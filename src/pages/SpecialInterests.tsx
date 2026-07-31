@@ -69,6 +69,7 @@ export default function SpecialInterests() {
                   return (
                     <button
                       key={s.id}
+                      data-si={s.id}
                       className={cx("si-tile", isSoon && "si-tile--soon")}
                       aria-pressed={isSoon ? undefined : picked}
                       aria-disabled={isSoon || undefined}

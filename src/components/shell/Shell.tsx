@@ -9,6 +9,7 @@ import { Emergency } from "./Emergency";
 import { SafetyFab } from "./SafetyFab";
 import { Ambient } from "./Ambient";
 import { AtlasOrchestrator } from "./AtlasOrchestrator";
+import { TourGuide } from "./TourGuide";
 import { CookieConsent } from "./CookieConsent";
 import { useStore, applyInitialLocale } from "@/store/useStore";
 import { getCurrentUser, onAuthChange } from "@/lib/auth";
@@ -131,6 +132,7 @@ export function Shell() {
       <SafetyFab />
       <Ambient />
       <AtlasOrchestrator />
+      <TourGuide />
       <CookieConsent />
     </>
   );

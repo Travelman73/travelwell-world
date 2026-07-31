@@ -172,6 +172,22 @@
 .tw-msg a { color: var(--primary); text-decoration: underline; text-underline-offset: 2px; }
 .tw-msg code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9em; background: rgba(0,0,0,.06); padding: 1px 5px; border-radius: 5px; }
 
+/* guided-walk (choreography engine) — a spotlight ring + Atlas caption that
+   points at ONE real element at a time. The ring dims everything else via a giant
+   box-shadow but stays pointer-events:none, so the lit target underneath is fully
+   clickable (advance happens on the real click, never auto-play). */
+.tw-tour { position: fixed; inset: 0; z-index: 1200; pointer-events: none; }
+.tw-tour__ring { position: fixed; border-radius: 14px; border: 3px solid var(--primary); box-shadow: 0 0 0 9999px rgba(18,28,26,.48), 0 0 0 5px rgba(44,110,104,.45); pointer-events: none; transition: top .28s ease, left .28s ease, width .28s ease, height .28s ease; animation: tw-tour-pulse 1.5s ease-in-out infinite; }
+@keyframes tw-tour-pulse {
+  0%, 100% { box-shadow: 0 0 0 9999px rgba(18,28,26,.48), 0 0 0 4px rgba(44,110,104,.55); }
+  50%      { box-shadow: 0 0 0 9999px rgba(18,28,26,.48), 0 0 0 13px rgba(44,110,104,0); }
+}
+.tw-tour__cap { position: fixed; pointer-events: auto; display: flex; align-items: center; gap: 10px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 11px 13px; box-shadow: 0 12px 36px rgba(0,0,0,.24); }
+.tw-tour__avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--primary); color: #fff; display: grid; place-items: center; flex: none; }
+.tw-tour__line { font-size: 13.5px; line-height: 1.4; color: var(--foreground); }
+.tw-tour__skip { margin-inline-start: 2px; background: none; border: 0; color: var(--muted-foreground); font-size: 12px; text-decoration: underline; cursor: pointer; flex: none; }
+@media (prefers-reduced-motion: reduce) { .tw-tour__ring { animation: none; } }
+
 /* speaking signal — a tiny animated equalizer on the message Atlas is reading
    aloud (the mirror of the listening widget). It's a button: tap to silence.
    The on-screen text is always the source of truth; this only marks the voice. */

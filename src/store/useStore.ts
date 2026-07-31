@@ -84,6 +84,8 @@ interface State {
   atlasBusy: boolean;
   // Anchor: the warm way back to the flow after wandering off it (null = on-flow)
   anchor: Anchor | null;
+  // Guided-walk (choreography engine): which tour + which beat (null = inactive)
+  tour: { id: string; step: number } | null;
   // auth (null until Supabase is configured + signed in)
   user: { id: string; email: string | null } | null;
   // the signed-in traveler's persisted journey (null until hydrated/created)
@@ -109,6 +111,9 @@ interface State {
   setAtlasBusy: (b: boolean) => void;
   setAtlasPrimed: (p: boolean) => void;
   openAtlas: () => void;
+  startTour: (id: string) => void;
+  nextTourStep: () => void;
+  stopTour: () => void;
   collapseAtlas: () => void;
   hideAtlas: () => void;
   resetAtlas: () => void;
@@ -161,6 +166,7 @@ export const useStore = create<State>((set, get) => ({
   toast: null,
   whisper: null,
   anchor: null,
+  tour: null,
   atlasMessages: _atlasMessages,
   atlasPrimed: load<boolean>("atlasPrimed", false),
   atlasDock: _atlasMessages.length ? "collapsed" : "hidden",
@@ -300,6 +306,9 @@ export const useStore = create<State>((set, get) => ({
   setAtlasBusy: (b) => set({ atlasBusy: b }),
   setAtlasPrimed: (p) => { save("atlasPrimed", p); set({ atlasPrimed: p }); },
   openAtlas: () => set({ atlasDock: "open" }),
+  startTour: (id) => set({ tour: { id, step: 0 } }),
+  nextTourStep: () => { const t = get().tour; if (t) set({ tour: { ...t, step: t.step + 1 } }); },
+  stopTour: () => set({ tour: null }),
   collapseAtlas: () => set({ atlasDock: "collapsed" }),
   hideAtlas: () => set({ atlasDock: "hidden" }),
   resetAtlas: () => {
