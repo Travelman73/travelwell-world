@@ -32,6 +32,13 @@ export interface TourBeat {
   /** Atlas "holds" an option as the beat completes — mirrors the hero's Hold-it,
    *  so the itinerary reveal downstream shows a real piece the walk just placed. */
   hold?: TripBlock;
+  /** Switch the whole UI to this locale as the beat completes (the live language
+   *  flip — e.g. "ar" mirrors everything to RTL). The tap is intercepted so we
+   *  switch directly instead of opening the locale menu. */
+  setLocale?: string;
+  /** Caption language / direction — so an Arabic close renders as real RTL text. */
+  lang?: string;
+  rtl?: boolean;
 }
 
 export interface TourDef {
@@ -74,9 +81,28 @@ export const SAFARI_TOUR: TourDef = {
     },
     {
       route: "/itinerary",
-      selector: ".it-block",
+      selector: ".it-head",
       line: "And here's your trip taking shape — every piece I hold, kept in order and always saved.",
       place: "below",
+    },
+    {
+      // The showcase moment: the live language flip. Tapping the globe mirrors the
+      // ENTIRE interface to Arabic RTL in place — "the engine is real," not nine
+      // polished markets (the demo language call).
+      route: "/itinerary",
+      selector: ".tw-locale__btn",
+      line: "One last thing — I speak your language. Watch this.",
+      place: "below",
+      setLocale: "ar",
+    },
+    {
+      // The close, now in Arabic on the mirrored UI.
+      route: "/itinerary",
+      selector: ".it-head",
+      line: "أينما ذهبت، أنا معك — لنسافر بإتقان.",
+      place: "below",
+      lang: "ar",
+      rtl: true,
     },
   ],
 };

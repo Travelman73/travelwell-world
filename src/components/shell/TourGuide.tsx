@@ -99,11 +99,14 @@ export function TourGuide() {
     const onClick = (e: MouseEvent) => {
       const t = targetRef.current;
       if (!t || !(e.target instanceof Node) || !t.contains(e.target)) return;
+      // Language flip: switch directly and swallow the tap so the locale menu
+      // doesn't open — the whole UI mirrors (Arabic → RTL) in place.
+      if (beat.setLocale) { e.preventDefault(); e.stopPropagation(); useStore.getState().setLocale(beat.setLocale); }
       // Atlas holds the option as the beat completes (mirrors the hero's Hold-it),
       // so the itinerary reveal downstream shows a real piece the walk just placed.
       if (beat.hold) useStore.getState().addToTrip(beat.hold);
       const isLast = tour.step >= def.beats.length - 1;
-      if (isLast) { window.setTimeout(stopTour, 500); return; }
+      if (isLast) { window.setTimeout(stopTour, 600); return; }
       nextTourStep();
       if (beat.advanceNav) navigate(beat.advanceNav);
     };
@@ -123,7 +126,7 @@ export function TourGuide() {
           />
           <div className={"tw-tour__cap tw-tour__cap--" + (beat.place || "below")} style={capStyle(rect, beat.place || "below")}>
             <span className="tw-tour__avatar" aria-hidden="true"><Icon name="sparkles" small /></span>
-            <span className="tw-tour__line">{beat.line}</span>
+            <span className="tw-tour__line" lang={beat.lang} dir={beat.rtl ? "rtl" : undefined}>{beat.line}</span>
             <button className="tw-tour__skip" onClick={stopTour}>Skip</button>
           </div>
         </>
