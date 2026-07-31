@@ -162,6 +162,15 @@
 [dir="rtl"] .tw-msg--bot { border-bottom-left-radius: 16px; border-bottom-right-radius: 5px; }
 .tw-msg--user { background: var(--primary); color: #fff; border-bottom-right-radius: 5px; align-self: flex-end; }
 [dir="rtl"] .tw-msg--user { border-bottom-right-radius: 16px; border-bottom-left-radius: 5px; }
+/* Rendered markdown inside a reply bubble — kept tight so it reads as one message. */
+.tw-msg p { margin: 0; }
+.tw-msg p + p, .tw-msg p + ul, .tw-msg p + ol, .tw-msg ul + p, .tw-msg ol + p { margin-top: 8px; }
+.tw-msg ul, .tw-msg ol { margin: 6px 0; padding-inline-start: 20px; }
+.tw-msg li { margin: 2px 0; }
+.tw-msg li::marker { color: var(--primary); }
+.tw-msg strong { font-weight: 700; }
+.tw-msg a { color: var(--primary); text-decoration: underline; text-underline-offset: 2px; }
+.tw-msg code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9em; background: rgba(0,0,0,.06); padding: 1px 5px; border-radius: 5px; }
 
 /* speaking signal — a tiny animated equalizer on the message Atlas is reading
    aloud (the mirror of the listening widget). It's a button: tap to silence.

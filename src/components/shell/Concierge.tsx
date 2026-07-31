@@ -5,6 +5,7 @@ import { useStore, type IoMode } from "@/store/useStore";
 import { useAtlas } from "@/lib/useAtlas";
 import { useSpeechInput } from "@/lib/useSpeech";
 import { speak, stopSpeaking, subscribeSpeaking } from "@/lib/voice";
+import { renderMarkdown, stripMarkdown } from "@/lib/markdown";
 import { useSpecialInterests } from "@/store/useCatalog";
 import { useT } from "@/lib/i18n";
 import { useCatalogName } from "@/lib/i18n-catalog";
@@ -80,7 +81,7 @@ export function Concierge() {
     const m = messages[i];
     if (m.role === "assistant" && i !== lastSpokenRef.current) {
       lastSpokenRef.current = i;
-      speak(m.content, useStore.getState().locale);
+      speak(stripMarkdown(m.content), useStore.getState().locale);
     }
   }, [messages, io, isOpen]);
   // Stop the voice when the panel closes.
@@ -269,7 +270,7 @@ export function Concierge() {
                 const isSpokenNow = speaking && m.role !== "user" && i === messages.length - 1;
                 return (
                   <div key={i} className={`tw-msg tw-msg--${m.role === "user" ? "user" : "bot"}`}>
-                    {m.content}
+                    {m.role === "user" ? m.content : renderMarkdown(m.content)}
                     {isSpokenNow && (
                       <button
                         type="button"
