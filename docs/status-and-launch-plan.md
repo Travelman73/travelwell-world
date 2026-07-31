@@ -85,6 +85,43 @@ The VC research named five moats OpenAI/Booking can't easily copy. Mapped to wha
 
 **Refined 14-day priority for maximum *demonstrable* moat:** (1) Atlas-in-language + core-flow localization (make the top moat real); (2) flip content-ready preview regions 7→12 + fill the empty US; (3) make the safety spine visible (floating button on existing data); (4) surface the TLEU forward calendar; (5) tighten onboarding→vision-writeback (the identity moat vs Layla). Full i18n retrofit, supplier-breadth, SEO ranking, and ski stay honestly framed as post-window / funded-socket / fast-follow.
 
+**Demo language call — English flawless + Arabic RTL flip, only those two (David, Jul 2026, LOCKED).**
+The VCs are US-based, so **English is the one that gets read — it must be flawless.** The other
+languages are **not there to be read by the investor**; they exist to **prove the engine is multilingual
+from the bones.** So the WOW is *not* polished copy in nine markets — it's a **live language switch on one
+screen where the whole interface reflows in front of them.** The call:
+1. **English — flawless** (the reading language, the one that matters).
+2. **Arabic — the one showcase language for a live flip**, chosen because it's **RTL**: the whole UI
+   mirrors and flips, the dramatic "this is real internationalization" proof. (Arabic was already our
+   first template — plays straight into what's built.)
+3. **Polish only English + Arabic to native-speaker quality, and only on the demo-path screens** — not
+   all nine before Aug 1; a VC only ever sees the flip.
+4. **Honest framing (the line we won't cross):** *"English and Arabic are demo-polished; full nine-market
+   translation is native-speaker-reviewed at launch."* We show a real engine, we don't blow smoke.
+
+### Unattended guided-walk — the make-or-break open question (David, Jul 2026; to lock in a session)
+**We won't be in the room.** The VCs open the demo and click through alone, so it has to **guide a
+stranger through the whole safari walk with nobody driving**: onboarding → picks → options → itinerary
+reveal → the language flip → the close. The Atlas hero flow ("look down here" → the chip pulses → they
+tap) is the proven **atom** for ONE beat; the build is that same guided hand across **every** beat — "at
+every step the traveler always knows what to do next." Not a solo solve: David maps the experience (what
+each beat should *feel* like), engineering maps the mechanics, a joint session locks it. **Engineering
+seed (starting to turn it over — NOT built yet):**
+- **Generalize the hero atom into a data-driven choreography** — an ordered list of beats, each =
+  `{ Atlas line, target element to spotlight/pulse, the action we wait for, advance condition }`. The
+  current hero flow is exactly one hard-coded instance of this shape.
+- **Spotlight any element on any screen** — lift the pulse out of the concierge into a portal-based
+  coach-mark + an Atlas caption anchored to any target (an onboarding field, an option card, the
+  itinerary, the language toggle), so "the one lit thing" works everywhere, not just on Well chips.
+- **Advance only on the real action, never auto-play** — each beat waits for the traveler to actually do
+  it (preserves "they always choose"); if they stall, re-pulse a gentle nudge. Interactive, not a video.
+- **A cross-route tour controller** — lives above the router (the `AtlasOrchestrator` whisper loop is the
+  precedent; state in the store), survives navigation, and knows what to spotlight next on each screen.
+- **The anti-confusion invariant at every beat: exactly ONE lit affordance + one Atlas cue** — never two
+  competing calls to action (the same principle as the mic/send hierarchy fix).
+- **Graceful off-script recovery** — if they wander, offer a "resume the walk" pill rather than trapping
+  them. The **language flip is just one scripted beat** in this same engine.
+
 ### Universe-inventory readiness (Jul 2026 — demonstrable vs architected)
 David frames the offering as a family of "universes." Mapped to what's actually in the repo, so the VC deck shows built product and *labels* the roadmap as roadmap:
 - **General Travel (mothership) — REAL, demonstrable today.** The live MVP: 6 SIs (→ more on flip), 7 live regions (→ 12), 38 dossiers, Atlas (speak/type), the Wells, PWA, safety data. This is the proof.
