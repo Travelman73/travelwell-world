@@ -19,11 +19,19 @@ import { Icon } from "@/lib/icons";
 import { TOURS } from "@/lib/tour";
 
 function capStyle(rect: DOMRect, place: "above" | "below"): React.CSSProperties {
-  const width = Math.min(300, window.innerWidth - 24);
-  const left = Math.max(12, Math.min(rect.left + rect.width / 2 - width / 2, window.innerWidth - width - 12));
-  return place === "above"
-    ? { top: rect.top - 12, left, width, transform: "translateY(-100%)" }
-    : { top: rect.bottom + 12, left, width };
+  const vw = window.innerWidth, vh = window.innerHeight;
+  const width = Math.min(300, vw - 24);
+  const left = Math.max(12, Math.min(rect.left + rect.width / 2 - width / 2, vw - width - 12));
+  // Keep clear of the header and the bottom edge. Prefer the asked-for side, but
+  // flip if it would run off-screen (a tall target near an edge).
+  const TOP_SAFE = 76, BOT_SAFE = 120;
+  const wantAbove = place === "above";
+  const fitsAbove = rect.top > TOP_SAFE + 80;
+  const fitsBelow = rect.bottom < vh - BOT_SAFE;
+  const above = wantAbove ? (fitsAbove || !fitsBelow) : !fitsBelow;
+  return above
+    ? { top: Math.max(TOP_SAFE + 60, rect.top - 12), left, width, transform: "translateY(-100%)" }
+    : { top: Math.min(rect.bottom + 12, vh - BOT_SAFE), left, width };
 }
 
 export function TourGuide() {
@@ -91,6 +99,9 @@ export function TourGuide() {
     const onClick = (e: MouseEvent) => {
       const t = targetRef.current;
       if (!t || !(e.target instanceof Node) || !t.contains(e.target)) return;
+      // Atlas holds the option as the beat completes (mirrors the hero's Hold-it),
+      // so the itinerary reveal downstream shows a real piece the walk just placed.
+      if (beat.hold) useStore.getState().addToTrip(beat.hold);
       const isLast = tour.step >= def.beats.length - 1;
       if (isLast) { window.setTimeout(stopTour, 500); return; }
       nextTourStep();

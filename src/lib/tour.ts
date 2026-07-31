@@ -15,6 +15,8 @@
  * Anchors are decoupled from styling via data-* attributes / stable classes, so
  * the tour never breaks when a component is restyled.
  */
+import type { TripBlock } from "@/store/useStore";
+
 export interface TourBeat {
   /** Exact pathname where this beat lives (the engine only spotlights on-route). */
   route: string;
@@ -27,6 +29,9 @@ export interface TourBeat {
   /** Navigate here after the beat completes, when the target's own click doesn't
    *  already move the traveler forward (e.g. a select-in-place action). */
   advanceNav?: string;
+  /** Atlas "holds" an option as the beat completes — mirrors the hero's Hold-it,
+   *  so the itinerary reveal downstream shows a real piece the walk just placed. */
+  hold?: TripBlock;
 }
 
 export interface TourDef {
@@ -58,6 +63,20 @@ export const SAFARI_TOUR: TourDef = {
       selector: ".rd-dest",
       line: "Here's where I'd begin. Tap a camp to see how deep the intel goes.",
       place: "above",
+    },
+    {
+      route: "/destination/masai-mara",
+      selector: ".dd-pv",
+      line: "These are your options — vetted stays, straight pricing. I'll hold this one for you.",
+      place: "above",
+      advanceNav: "/itinerary",
+      hold: { well: "stay", icon: "bed", name: "Angama Mara", meta: "Stay-Well · held by Atlas", status: "idea" },
+    },
+    {
+      route: "/itinerary",
+      selector: ".it-block",
+      line: "And here's your trip taking shape — every piece I hold, kept in order and always saved.",
+      place: "below",
     },
   ],
 };
