@@ -215,10 +215,15 @@
 .tw-input__send { width: 44px; height: 44px; border-radius: 50%; background: var(--primary); color: #fff; border: 0; display: grid; place-items: center; cursor: pointer; flex: none; transition: opacity .15s ease; }
 /* Disabled while recording (stop first) or while Atlas is replying. */
 .tw-input__send:disabled { opacity: .4; cursor: not-allowed; }
-/* Mic: a clearly-findable tap target (>=44px), with an unmistakable recording state. */
-.tw-input__mic { width: 44px; height: 44px; border-radius: 50%; background: var(--secondary); color: var(--primary); border: 0; display: grid; place-items: center; cursor: pointer; flex: none; transition: background .15s ease, color .15s ease; }
-.tw-input__mic:hover { background: var(--primary); color: #fff; }
-.tw-input__mic[aria-pressed="true"] { background: #c0392b; color: #fff; animation: tw-mic-pulse 1.2s ease-in-out infinite; }
+/* Mic: the SECONDARY control (an alternate to typing) — quiet by design so it
+   never competes with the solid-green Send. A tinted fill + outline + green icon
+   reads as "outlined button," clearly subordinate to the filled primary.
+   Still a >=44px target with an unmistakable recording state. */
+.tw-input__mic { width: 44px; height: 44px; border-radius: 50%; background: var(--card); color: var(--primary); border: 1.5px solid var(--primary); display: grid; place-items: center; cursor: pointer; flex: none; transition: background .15s ease, color .15s ease; }
+/* Hover fill only on real pointer devices — on touch, iOS latches :hover after a
+   tap, which was leaving the mic stuck solid-green and fighting Send for focus. */
+@media (hover: hover) { .tw-input__mic:hover { background: var(--primary); color: #fff; } }
+.tw-input__mic[aria-pressed="true"] { background: #c0392b; color: #fff; border-color: #c0392b; animation: tw-mic-pulse 1.2s ease-in-out infinite; }
 @keyframes tw-mic-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(192,57,43,.5); } 50% { box-shadow: 0 0 0 7px rgba(192,57,43,0); } }
 
 /* read/hear/both toggle */
