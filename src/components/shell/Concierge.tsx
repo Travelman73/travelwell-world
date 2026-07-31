@@ -194,8 +194,8 @@ export function Concierge() {
               Start over
             </button>
           )}
-          <button className="tw-iconbtn" aria-label="Minimize Concierge" style={{ width: 36, height: 36, border: 0, background: "var(--surface-alt)" }} onClick={collapse}>
-            <Icon name="chev" small />
+          <button className="tw-iconbtn" aria-label="Close Concierge" title="Close" style={{ width: 36, height: 36, border: 0, background: "var(--surface-alt)" }} onClick={collapse}>
+            <Icon name="close" small />
           </button>
         </div>
 
