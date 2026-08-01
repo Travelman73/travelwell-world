@@ -85,6 +85,19 @@ The VC research named five moats OpenAI/Booking can't easily copy. Mapped to wha
 
 **Refined 14-day priority for maximum *demonstrable* moat:** (1) Atlas-in-language + core-flow localization (make the top moat real); (2) flip content-ready preview regions 7→12 + fill the empty US; (3) make the safety spine visible (floating button on existing data); (4) surface the TLEU forward calendar; (5) tighten onboarding→vision-writeback (the identity moat vs Layla). Full i18n retrofit, supplier-breadth, SEO ranking, and ski stay honestly framed as post-window / funded-socket / fast-follow.
 
+**Demo timing — target moved to ~Aug 15, best-not-fastest (David, Jul 2026).**
+Off Aug 1; new working target **~Aug 15, reassessed weekly** — and if doing it right needs another
+week or two, we take it. The reasoning is the canon, not just the date:
+- **Unattended × rushed = the bad combination.** The VCs click through alone — nobody in the room to
+  smooth a rough spot. If the voice isn't full-launch quality or the guided journey has a gap, there's
+  no one there to save it. So **getting it right beats getting it fast** (the Ferrari standard — best,
+  not fastest).
+- **The date is synced to reality, not forced onto it.** A real date can't be set until the LiveKit
+  voice spike runs and the demo mechanics (the guided walk) settle — the target tracks the build, not
+  the reverse.
+- **No fire drill.** Keep the real work moving — LiveKit spike, the Safari spine, the ingest, the
+  guided-walk engine — at a pace that produces something that actually works unattended.
+
 **Demo language call — English flawless + Arabic RTL flip, only those two (David, Jul 2026, LOCKED).**
 The VCs are US-based, so **English is the one that gets read — it must be flawless.** The other
 languages are **not there to be read by the investor**; they exist to **prove the engine is multilingual
@@ -95,7 +108,7 @@ screen where the whole interface reflows in front of them.** The call:
    mirrors and flips, the dramatic "this is real internationalization" proof. (Arabic was already our
    first template — plays straight into what's built.)
 3. **Polish only English + Arabic to native-speaker quality, and only on the demo-path screens** — not
-   all nine before Aug 1; a VC only ever sees the flip.
+   all nine for the demo; a VC only ever sees the flip.
 4. **Honest framing (the line we won't cross):** *"English and Arabic are demo-polished; full nine-market
    translation is native-speaker-reviewed at launch."* We show a real engine, we don't blow smoke.
 
