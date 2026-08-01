@@ -98,6 +98,26 @@ week or two, we take it. The reasoning is the canon, not just the date:
 - **No fire drill.** Keep the real work moving — LiveKit spike, the Safari spine, the ingest, the
   guided-walk engine — at a pace that produces something that actually works unattended.
 
+### Live MVP inventory snapshot (Jul 2026 — for the depth-and-bookability audit)
+What's actually **live and clickable in the app** (vs the research library's *built* counts,
+which CC audits separately). The deck states both honestly — "N built, M live, rest ingesting" —
+so a VC who clicks never catches a gap. Point-in-time; regenerate after any ingest.
+- **Totals:** 40 destinations, **29 verified** (deep) + 11 stub/preview. But most verified rows are
+  *breadth* — roughly one anchor per region — not SI-depth. Genuine SI-depth today is Safari (deep) and
+  Winter/Ski (moderate, just ingested).
+- **Safari (05A East Africa + 06A Southern Africa) — the star, deep.** ~5 live-deep destinations
+  (Maasai Mara, Serengeti, Ngorongoro verified; Volcanoes stub; + 2 Southern Africa), **39 providers**,
+  full safety spine. Sellable now (Duffel + direct).
+- **Winter/Ski (01F) — moderate, new.** **3 live-deep dedicated alpine** (Zermatt, St-Anton, Chamonix),
+  **8 providers**, real safety/timing/jewels. Library has ~33 *built* — so "33 built, 3 live, rest
+  ingesting." Bookable now (Duffel + direct, no IATAN).
+- **Romance/Marriages/Honeymoons — thin-live.** A few general Mediterranean (02F) anchors; little
+  romance-*specific* depth or providers yet. Preview beyond the anchors.
+- **Tropical · River · Liveaboard · Expedition — live shelves, ~0 deep destinations.** The SI is live
+  (door opens) but the destinations behind it are preview/absent. Honest gap.
+- **Attribution caveat:** legacy D() rows carry no `si` tags, so per-SI counts lean on region — don't
+  publish a raw per-SI table without de-noising (region-primary sweeps non-SI rows in, e.g. Paris into ski).
+
 **Demo language call — English flawless + Arabic RTL flip, only those two (David, Jul 2026, LOCKED).**
 The VCs are US-based, so **English is the one that gets read — it must be flawless.** The other
 languages are **not there to be read by the investor**; they exist to **prove the engine is multilingual
