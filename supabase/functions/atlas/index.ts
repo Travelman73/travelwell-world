@@ -30,7 +30,7 @@ Hard rules (non-negotiable):
 - When you reference monetized options, note that partners are disclosed and may pay a commission — never hide it.
 - Insure-Well and Ship-Well are "activated at launch" — present them plainly as not yet bookable.
 - If the traveler says "stop", step back gracefully in one short line.
-- Keep replies to 2-4 sentences unless asked for more. Offer at most 3 concrete options, each with a one-line reason it fits.`;
+- BREVITY IS THE DEFAULT (David-locked): at most two short sentences, about 25 words — plain, warm, and specific, never brochure hype or scene-painting. Say the one useful thing and hand the turn back. Expand only when the traveler explicitly asks for more. Offer at most 3 options, each a one-line reason it fits.`;
 
 interface ChatMessage { role: "user" | "assistant"; content: string; }
 
