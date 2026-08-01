@@ -235,6 +235,40 @@ The evolution from handoff → **close on our own surface**, built the SAFE way 
   - **The nuance to hold (this is the back door David named):** Stripe hosted checkout buys us **PCI SAQ A** (we never touch card data) — but that is **NOT** merchant-of-record protection. Stripe is a **processor, not a MoR shield.** The moment travel funds land in **our** Stripe balance as principal, **we become the seller/merchant of record** — bonding, chargebacks, refunds, fraud land on us — even though the card never hit our servers. Two separate protections; hosted checkout only buys the first.
   - **Canon-clean way to use Stripe (path a):** the **provider/DMC is the merchant of record** — either supplier-native rails (Duffel Payments for flights; aggregator billing for hotels) or **Stripe Connect with the provider/DMC as the connected account** taking the charge (direct charges), us as the **platform earning an application fee**. That keeps MoR with the provider *and* keeps us SAQ A, **with no 3.5%**. Stripe is also fine for **our own service/concierge/subscription fees**, where we genuinely *are* the seller. **Stripe-as-principal for travel inventory (funds to us) = becoming merchant of record = the deliberate, funded path-b decision** — never a default, never a drift.
 
+### Booking architecture — the three paths + the scale requirement (David, Jul 2026; session to lock)
+The frame *above* the toolbox. **Requirement: everyone books ON OUR SITE, at scale, automated** — not us
+processing one booking at a time by hand. The **human-advisor host model (Fora-style) is out** — it can't
+scale to what we're building (the deeper reason the Fora deal is off). We get started by **"dancing with the
+music that's out there"**: use the best rails available today, sign up with everyone we can, grab the best
+connections playing right now, and **refresh on the 30-day cadence** as newer/better ones come online. It's a
+transition dream→reality — the parts won't all mesh on day one; we adjust tension on the drive belts as we go
+(expected, not a problem).
+- **Path 1 — lead with what genuinely automates now (the spine).** Duffel (flights), Viator/GetYourGuide
+  (activities), Hotelbeds/bedbanks (hotels): instant-confirm, API, at scale, today. Most of every trip.
+- **Path 2 — request-to-book for inventory with no instant API yet.** The traveler still books **on our
+  site**; our system routes and confirms automatically or near-automatically. This is exactly the locked
+  itinerary state machine — idea → placed → handed-off → **confirmed** — with the confirmation-return field
+  **upgradeable email-parse → api**. The socket we've been pouring already anticipates async confirm.
+- **Path 3 — aggregators as the bridge.** Bedbanks / channel aggregators already carry many non-API brands
+  (even all-inclusives) via API — we reach those brands THROUGH the aggregator without a direct connection.
+
+**THE open question to lock (David wants it turning over):** for non-API inventory, is **instant, millisecond
+confirmation a HARD requirement** on our site — or is **"books on our site, confirmed within minutes/hours,
+automatically"** acceptable? That single answer decides how much high-margin inventory launches vs defers.
+*(Engineering lean, not final: minutes/hours-automated should be acceptable — the itinerary already models a
+pending→confirmed state, and a hard millisecond bar would exclude most high-margin non-API inventory — as long
+as the UX sets the expectation cleanly (a visible "confirming…" state, never a fake instant) and it never gates
+the instant-confirm spine.)*
+
+**Intel ask (standing).** Watch for any provider / brand / platform announcing they're going **API /
+agent-ready / AI-agent-integrated** (publications, LinkedIn, industry news, wherever). When the industry
+migrates to where we already are, we want to know FIRST and connect early — the human complement to the
+self-updating changelog watcher.
+
+**Why it matters — the real asset.** Not the booking plumbing — the **lifetime customer + their Atlas identity
+profile.** They come back; each time, more of the industry has gone agent-ready, so more of their trip books
+seamlessly. **Friction shrinks while the relationship deepens.** Build the plumbing swappable; bank the identity.
+
 ### MoR staging — Stage 1 now, Stage 2 on purpose (David-locked, Jul 2026)
 Merchant-of-record is **staged, not binary**. Both stages are deliberate; we never *drift* between them.
 - **Stage 1 (now → funded/scaled):** provider-as-MoR, always. Our money never lands as principal — only commissions, application fees, subscriptions are ours. We can't carry seller-of-record liability (PCI scope + bonding + chargebacks) unfunded, so we don't. **Keep guarding this line.**
