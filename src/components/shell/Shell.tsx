@@ -6,7 +6,7 @@ import { Footer } from "./Footer";
 import { Concierge } from "./Concierge";
 import { TripTray } from "./TripTray";
 import { Emergency } from "./Emergency";
-import { SafetyFab } from "./SafetyFab";
+import { SafetyStack } from "./SafetyStack";
 import { Ambient } from "./Ambient";
 import { AtlasOrchestrator } from "./AtlasOrchestrator";
 import { TourGuide } from "./TourGuide";
@@ -129,7 +129,7 @@ export function Shell() {
       <Concierge />
       <TripTray />
       <Emergency />
-      <SafetyFab />
+      <SafetyStack />
       <Ambient />
       <AtlasOrchestrator />
       <TourGuide />

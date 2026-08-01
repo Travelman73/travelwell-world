@@ -404,23 +404,40 @@
   border: 1px solid var(--border); border-radius: 12px; background: var(--surface-alt);
 }
 
-/* ── Safety button — floats on every screen (Safer-Informed: calm, not an
-   alarm; help one tap away). Bottom-inline-start so it never collides with the
-   Atlas pill on the end side. ≥44px, labelled, visible focus (WCAG AA). */
-.tw-safety-fab {
+/* ── Safety corner — a floating STACK on every screen (David, Jul 2026). Red
+   EMERGENCY pill at the bottom (most thumb-reachable), two green cross buttons
+   above it. Bottom-inline-start so it never collides with the Atlas pill on the
+   end side. Safer-Informed: calm, labelled, help one tap away. WCAG AA: real
+   labelled buttons, ≥44px, visible focus, colour never the only signal. */
+.tw-safety-stack {
   position: fixed; inset-block-end: 22px; inset-inline-start: 22px; z-index: 94;
-  display: inline-flex; align-items: center; gap: 8px;
-  min-height: 48px; padding: 0 16px; border-radius: 999px;
-  background: var(--card); color: var(--destructive); font-weight: 600; font-size: 14px;
-  border: 1px solid color-mix(in oklch, var(--destructive) 35%, var(--border));
-  box-shadow: var(--e3); cursor: pointer;
-  transition: transform .15s ease, background-color .15s ease;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
 }
-.tw-safety-fab:hover { background: color-mix(in oklch, var(--destructive) 8%, white); transform: translateY(-2px); }
-.tw-safety-fab:focus-visible { outline: 2px solid var(--destructive); outline-offset: 3px; }
-.tw-safety-fab .ic { width: 20px; height: 20px; }
+.tw-safety-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px; padding: 0 16px; border-radius: 999px; border: 0;
+  font-family: var(--font-sans); font-weight: 700; font-size: 14px; color: #fff;
+  box-shadow: var(--e3); cursor: pointer; white-space: nowrap;
+  transition: transform .15s ease, filter .15s ease;
+}
+@media (hover: hover) { .tw-safety-btn:hover { transform: translateY(-2px); filter: brightness(1.06); } }
+.tw-safety-btn:focus-visible { outline: 3px solid #fff; outline-offset: -1px; box-shadow: 0 0 0 5px rgba(17,17,17,.35), var(--e3); }
+.tw-safety-btn__cross { display: grid; place-items: center; }
+.tw-safety-btn__cross .ic { width: 17px; height: 17px; }
+.tw-safety-btn--green { background: #15803d; }              /* medical green, white cross — AA on white text */
+.tw-safety-btn--red { background: var(--destructive); min-height: 52px; padding: 0 22px; font-size: 16px; letter-spacing: .04em; }
+.tw-safety-btn--red .ic { width: 18px; height: 18px; }
+
+/* the "find nearby" sheet (maps launcher) that pops above the green buttons */
+.tw-safety-dismiss { position: fixed; inset: 0; }
+.tw-safety-sheet { position: relative; background: var(--card); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--e3); padding: 8px; min-width: 216px; display: flex; flex-direction: column; gap: 2px; }
+.tw-safety-sheet__title { font-size: 12px; font-weight: 700; color: var(--muted-foreground); text-transform: uppercase; letter-spacing: .04em; padding: 6px 10px 2px; }
+.tw-safety-sheet__link { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 10px; border-radius: 10px; color: var(--foreground); font-weight: 600; font-size: 15px; text-decoration: none; }
+.tw-safety-sheet__link:hover { background: var(--surface-alt); text-decoration: none; }
+.tw-safety-sheet__link .ic { color: #15803d; width: 18px; height: 18px; }
+.tw-safety-sheet__note { font-size: 12px; line-height: 1.4; color: var(--muted-foreground); padding: 4px 10px 6px; max-width: 240px; }
 @media (max-width: 700px) {
-  .tw-safety-fab { inset-block-end: 16px; inset-inline-start: 16px; min-height: 44px; padding: 0 14px; }
+  .tw-safety-stack { inset-block-end: 16px; inset-inline-start: 16px; gap: 7px; }
 }
 
 /* ── Vision loop — Atlas writes the dream back, the traveler confirms ────── */
