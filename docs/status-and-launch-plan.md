@@ -108,9 +108,11 @@ so a VC who clicks never catches a gap. Point-in-time; regenerate after any inge
 - **Safari (05A East Africa + 06A Southern Africa) — the star, deep.** ~5 live-deep destinations
   (Maasai Mara, Serengeti, Ngorongoro verified; Volcanoes stub; + 2 Southern Africa), **39 providers**,
   full safety spine. Sellable now (Duffel + direct).
-- **Winter/Ski (01F) — moderate, new.** **3 live-deep dedicated alpine** (Zermatt, St-Anton, Chamonix),
-  **8 providers**, real safety/timing/jewels. Library has ~33 *built* — so "33 built, 3 live, rest
-  ingesting." Bookable now (Duffel + direct, no IATAN).
+- **Winter/Ski (01F) — deepened.** **7 live-deep dedicated alpine** across CH/FR/AT/IT (Zermatt,
+  St-Anton, Chamonix + St. Moritz, Courchevel, Cortina d'Ampezzo [a 2026 Olympic host], Kitzbühel),
+  **19 ski providers**, real safety/timing/jewels on each. Library has ~33 *built* — so "33 built, 7
+  live, rest ingesting." Bookable now (Duffel + direct, no IATAN). Still hand-authored — full dossiers
+  swap in on the alpine ingest.
 - **Romance/Marriages/Honeymoons — thin-live.** A few general Mediterranean (02F) anchors; little
   romance-*specific* depth or providers yet. Preview beyond the anchors.
 - **Tropical · River · Liveaboard · Expedition — live shelves, ~0 deep destinations.** The SI is live
