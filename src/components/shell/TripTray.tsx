@@ -11,7 +11,7 @@ export function TripTray() {
   const covered = new Set(trip.map((b) => b.well)).size;
 
   return (
-    <div className="tw-tray" data-open={open} role="dialog" aria-modal="false" aria-label="Your Trip" aria-hidden={!open}>
+    <div className="tw-tray" data-open={open} role="dialog" aria-modal="false" aria-label="Your Trip" aria-hidden={!open} {...(open ? {} : ({ inert: "" } as any))}>
       <div className="tw-tray__head">
         <div>
           <div className="tw-concierge__title" style={{ fontSize: 18 }}>Your Trip</div>

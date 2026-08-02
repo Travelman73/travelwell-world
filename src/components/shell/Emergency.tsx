@@ -58,7 +58,7 @@ export function Emergency() {
   }, [local]);
 
   return (
-    <div className="tw-emergency" data-open={open} role="dialog" aria-modal="true" aria-label="Emergency help" aria-hidden={!open}>
+    <div className="tw-emergency" data-open={open} role="dialog" aria-modal="true" aria-label="Emergency help" aria-hidden={!open} {...(open ? {} : ({ inert: "" } as any))}>
       <div className="tw-emergency__scrim" onClick={closePanel} />
       <div className="tw-emergency__card">
         <div className="tw-emergency__head">

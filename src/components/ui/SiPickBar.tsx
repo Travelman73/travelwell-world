@@ -17,7 +17,7 @@ export function SiPickBar() {
   const n = journeySIs.length;
 
   return (
-    <div className="jn-selbar" data-show={show} aria-live="polite" aria-hidden={!show} role="region" aria-label="Your chosen interests">
+    <div className="jn-selbar" data-show={show} aria-live="polite" aria-hidden={!show} {...(show ? {} : ({ inert: "" } as any))} role="region" aria-label="Your chosen interests">
       <div className="jn-selbar__inner">
         <div className="jn-selbar__pills">
           {journeySIs.map((id) => {

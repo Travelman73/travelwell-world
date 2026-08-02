@@ -47,6 +47,16 @@ export const SAFE_COLOR: Record<RiskLevel, string> = {
   4: "var(--safety-4)",
 };
 
+/** Dark, hued variants for the safety-card HEADER, where the fill sits behind
+ *  WHITE text. The vivid SAFE_COLOR ramp is too light for white at L1–L3 (fails
+ *  WCAG AA); these keep the same green→red signal but dark enough for ≥4.5:1. */
+export const SAFE_HEADER_COLOR: Record<RiskLevel, string> = {
+  1: "#1f6b3a", // dark green — normal precautions
+  2: "#7a5a12", // dark gold — increased caution
+  3: "#9a4e14", // dark amber — reconsider
+  4: "#9e2420", // dark red — do not travel
+};
+
 /** Neutral, accurate baseline for any country we don't have verified data for. */
 export const DEFAULT_SAFETY: SafetyInfo = {
   country: "This destination",

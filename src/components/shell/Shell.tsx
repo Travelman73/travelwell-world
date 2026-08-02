@@ -123,7 +123,7 @@ export function Shell() {
         {/* Route pages are code-split (React.lazy in App.tsx). The Suspense
             boundary lives here so the header, footer and panels stay mounted
             while the next page's chunk loads. */}
-        <Suspense fallback={<div className="route-loading" aria-busy="true" aria-label="Loading" />}>
+        <Suspense fallback={<div className="route-loading" role="status" aria-busy="true" aria-label="Loading" />}>
           <Outlet />
         </Suspense>
       </main>

@@ -110,12 +110,12 @@ export default function Providers() {
             <p className="lead">No endless catalog — just the vetted partners that fit your Wells, your region and your budget. Pick a Well to see its best matches.</p>
           </div>
 
-          <div className="pr-wells" role="tablist" aria-label="Filter by Well">
+          <div className="pr-wells" role="group" aria-label="Filter by Well">
             {TRIP.wells.map((wid) => {
               const ww = allWells[wid];
               const n = (providers[wid] || []).length;
               return (
-                <button key={wid} className="pr-wellchip" role="tab" aria-pressed={wid === activeWell} onClick={() => selectWell(wid)}>
+                <button key={wid} className="pr-wellchip" aria-pressed={wid === activeWell} onClick={() => selectWell(wid)}>
                   <Icon name={ww.icon} small /> {ww.name.replace("-Well", "")} <span className="pr-wellchip__n">{n}</span>
                 </button>
               );

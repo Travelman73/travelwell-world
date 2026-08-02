@@ -8,7 +8,7 @@ import { useUnsplashImage } from "@/lib/unsplash";
 import { useStore } from "@/store/useStore";
 import { useRegions, useWells, useProviders, useDestinations, useGuides } from "@/store/useCatalog";
 import { cx } from "@/lib/utils";
-import { getSafety, isoForCountry, SAFE_COLOR } from "@/data/safety-data";
+import { getSafety, isoForCountry, SAFE_HEADER_COLOR } from "@/data/safety-data";
 import { getEmergencyNumbers, UNIVERSAL_EMERGENCY } from "@/data/emergency-numbers";
 
 const TIER: Record<string, string> = { prime: "★ Prime", vetted: "Vetted", prospective: "Prospective" };
@@ -66,7 +66,6 @@ export default function DestinationDetail() {
 
   const iso = isoForCountry(country);
   const s = getSafety(iso);
-  const safeColor = SAFE_COLOR[s.lvl];
   // Local emergency line joins off the same ISO key (David's emergency-numbers data).
   const localEmergency = iso ? (getEmergencyNumbers(iso).emergency || UNIVERSAL_EMERGENCY) : UNIVERSAL_EMERGENCY;
 
@@ -165,7 +164,7 @@ export default function DestinationDetail() {
 
         <aside className="dd-side">
           <div className="safety-card">
-            <div className="safety-card__top" style={{ background: safeColor }}>
+            <div className="safety-card__top" style={{ background: SAFE_HEADER_COLOR[s.lvl] }}>
               <div className="safety-card__lvl">{s.lvl}</div>
               <div>
                 <div className="safety-card__title">Safety Card · Level {s.lvl} of 4</div>

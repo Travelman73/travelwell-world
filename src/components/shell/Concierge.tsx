@@ -185,7 +185,7 @@ export function Concierge() {
         </button>
       )}
 
-      <div className="tw-concierge" data-open={isOpen} role="dialog" aria-modal="false" aria-label="Speak with Atlas — your Concierge" aria-hidden={!isOpen}>
+      <div className="tw-concierge" data-open={isOpen} role="dialog" aria-modal="false" aria-label="Speak with Atlas — your Concierge" aria-hidden={!isOpen} {...(isOpen ? {} : ({ inert: "" } as any))}>
         <div className="tw-concierge__head">
           <div className="tw-concierge__avatar"><Icon name="sparkles" /></div>
           <div style={{ flex: 1 }}>

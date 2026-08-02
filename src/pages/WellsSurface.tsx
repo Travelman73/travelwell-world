@@ -109,7 +109,7 @@ export default function WellsSurface() {
                 <button
                   key={w.id}
                   className={cx("wb-chip", soon && "wb-chip--soon", w.lux && "wb-chip--lux")}
-                  aria-selected={active === w.id}
+                  aria-pressed={active === w.id}
                   onClick={() => browseWell(w.id)}
                 >
                   <span className="wb-chip__ic"><Icon name={w.icon} small /></span>
@@ -193,7 +193,7 @@ export default function WellsSurface() {
       <div className="wp-continue">
         <div className="wp-continue__inner">
           <div className="wp-continue__summary">
-            <div className="wp-continue__cov" aria-label={`${covered} of 10 Wells covered`}>
+            <div className="wp-continue__cov" role="img" aria-label={`${covered} of 10 Wells covered`}>
               {standardWells.map((w) => <i key={w.id} className={trip.some((b) => b.well === w.id) ? "on" : ""} />)}
             </div>
             <span className="wp-continue__text"><b>{covered}/10 Wells</b> covered · {trip.length} in your trip</span>
