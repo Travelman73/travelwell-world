@@ -103,6 +103,17 @@
 .tw-step[data-state="done"] .tw-step__label { color: var(--foreground); }
 .tw-step[data-state="current"] .tw-step__dot { background: var(--secondary); border-color: var(--primary); color: var(--primary); }
 .tw-step[data-state="current"] .tw-step__label { color: var(--foreground); font-weight: 600; }
+/* Guided-flow pulse — the current numbered step breathes (same warm glow as the
+   hero flow) while Atlas is walking the traveler. One at a time; advances with
+   the journey. Reduced-motion holds it as a steady ring, meaning intact. */
+.tw-step[data-pulse="true"] .tw-step__dot { animation: tw-step-pulse 1.6s ease-in-out infinite; }
+@keyframes tw-step-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklch, var(--primary) 55%, transparent); }
+  50%      { box-shadow: 0 0 0 8px color-mix(in oklch, var(--primary) 0%, transparent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tw-step[data-pulse="true"] .tw-step__dot { animation: none; box-shadow: 0 0 0 3px color-mix(in oklch, var(--primary) 35%, transparent); }
+}
 
 /* ============================================================================
    CONCIERGE — "Talk to Me" panel (§3.2) — all states

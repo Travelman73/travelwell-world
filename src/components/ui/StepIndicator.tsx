@@ -44,6 +44,11 @@ function useStepDone(): boolean[] {
 export function StepIndicator({ current }: { current: number }) {
   const done = useStepDone();
   const t = useT();
+  // When Atlas is walking a traveler (the guided tour is active), the CURRENT
+  // numbered step breathes — the same warm glow as the hero flow — so the eye
+  // always knows where it is in the journey. One at a time (only the current
+  // step), and it advances on its own as the walk moves page to page.
+  const guiding = useStore((s) => s.tour) !== null;
   return (
     <div className="tw-steps" role="list" aria-label="Dream Journey progress">
       {STEPS.map((step, i) => {
@@ -57,6 +62,7 @@ export function StepIndicator({ current }: { current: number }) {
               to={step.to}
               className="tw-step"
               data-state={state}
+              data-pulse={isCurrent && guiding ? "true" : undefined}
               role="listitem"
               aria-current={isCurrent ? "step" : undefined}
               title={`${n} · ${t(step.key)}`}
