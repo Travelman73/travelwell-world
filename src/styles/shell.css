@@ -183,6 +183,14 @@
 .tw-msg a { color: var(--primary); text-decoration: underline; text-underline-offset: 2px; }
 .tw-msg code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9em; background: rgba(0,0,0,.06); padding: 1px 5px; border-radius: 5px; }
 
+/* Back control — big, obvious, one consistent spot at the top of every page but
+   Home (senior-first: "how do I go back?" never a question). Content-aligned. */
+.tw-backbar { max-width: var(--content-max); margin-inline: auto; padding: 12px var(--gutter) 0; }
+.tw-back { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px 0 13px; border-radius: var(--radius-pill); background: var(--card); border: 1.5px solid var(--border); color: var(--foreground); font-family: var(--font-sans); font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: var(--e1); transition: background-color .15s ease, transform .15s ease; }
+@media (hover: hover) { .tw-back:hover { background: var(--surface-alt); transform: translateX(-2px); } }
+.tw-back:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.tw-back .ic { width: 18px; height: 18px; }
+
 /* guided-walk (choreography engine) — a spotlight ring + Atlas caption that
    points at ONE real element at a time. The ring dims everything else via a giant
    box-shadow but stays pointer-events:none, so the lit target underneath is fully

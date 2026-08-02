@@ -10,6 +10,7 @@ import { SafetyStack } from "./SafetyStack";
 import { Ambient } from "./Ambient";
 import { AtlasOrchestrator } from "./AtlasOrchestrator";
 import { TourGuide } from "./TourGuide";
+import { BackBar } from "./BackBar";
 import { CookieConsent } from "./CookieConsent";
 import { useStore, applyInitialLocale } from "@/store/useStore";
 import { getCurrentUser, onAuthChange } from "@/lib/auth";
@@ -118,6 +119,7 @@ export function Shell() {
       <Header />
       <MegaMenu />
       <main id="main" className="tw-main" data-page={slug}>
+        <BackBar />
         {/* Route pages are code-split (React.lazy in App.tsx). The Suspense
             boundary lives here so the header, footer and panels stay mounted
             while the next page's chunk loads. */}
