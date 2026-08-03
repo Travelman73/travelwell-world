@@ -269,6 +269,19 @@ self-updating changelog watcher.
 profile.** They come back; each time, more of the industry has gone agent-ready, so more of their trip books
 seamlessly. **Friction shrinks while the relationship deepens.** Build the plumbing swappable; bank the identity.
 
+### Flight rail — Stage 1 live; frame the copy as a stage, not "never" (David, Jul 2026)
+Duffel flight search is **live** — Atlas returns real airline fares on our own surface, behind our own
+`searchFlights()` seam (Duffel swappable; Sabre drops in later, no rebuild). **Search-only by design for
+the raise** — the whole value, de-risked, zero payment surface. But it's **Stage 1, not forever.**
+- **On-screen copy is Stage-1 framed, never "forever."** Retire "TravelWell never touches your card" —
+  it's true today but contradicts the Stage-2 story. Use **"for now, you book directly with the
+  airline."** (The *architecture* is unchanged — Stage 1 is still provider-as-MoR / PCI SAQ A; only the
+  *messaging* stops implying "never.")
+- **The VC line (David's exact wording):** *"Duffel integrated: Atlas searches 300+ airlines and returns
+  real airline fares on our own surface today. Search-only by design for now; the raise funds the flip to
+  full live booking with payments through TravelWell — bonded, seller-of-travel, merchant-of-record."*
+  ("Integrated," not "signed" — the Live Services Agreement is the piece we hold on purpose.)
+
 ### MoR staging — Stage 1 now, Stage 2 on purpose (David-locked, Jul 2026)
 Merchant-of-record is **staged, not binary**. Both stages are deliberate; we never *drift* between them.
 - **Stage 1 (now → funded/scaled):** provider-as-MoR, always. Our money never lands as principal — only commissions, application fees, subscriptions are ours. We can't carry seller-of-record liability (PCI scope + bonding + chargebacks) unfunded, so we don't. **Keep guarding this line.**

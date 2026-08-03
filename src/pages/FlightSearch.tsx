@@ -244,7 +244,7 @@ export default function FlightSearch() {
               </div>
 
               <Ftc style={{ marginTop: 16 }}>
-                You book directly with the airline — they're the merchant of record and take payment; TravelWell never touches your card.
+                For now, you book directly with the airline — they take the payment and are the merchant of record.
                 "Add to trip" saves a flight idea to your itinerary; nothing is booked or held until you complete it with the airline.
               </Ftc>
             </>
