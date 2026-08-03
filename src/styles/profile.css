@@ -47,6 +47,14 @@
 .idp__sig { font-family: var(--font-display); font-style: italic; font-size: 15px; color: var(--muted-foreground); }
 .idp__sig .tw { color: var(--primary); font-style: normal; }
 
+/* ===== this-trip vision — the VARIABLE, split from the permanent identity ===== */
+.pf-vision { margin-top: 18px; border: 1px solid var(--border); border-inline-start: 3px solid var(--accent); border-radius: var(--radius-lg); background: var(--surface-alt); padding: 22px 26px; box-shadow: var(--e1); }
+.pf-vision__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.pf-vision__eyebrow { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-deep); }
+.pf-vision__quote { font-family: var(--font-display); font-style: italic; font-size: 20px; line-height: 1.45; color: var(--foreground); margin-top: 14px; }
+.pf-vision__foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+.pf-vision__note { font-size: 13.5px; color: var(--muted-foreground); line-height: 1.5; max-width: 60ch; }
+
 /* ===== editable sections grid ===== */
 .pf-sections { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 22px; }
 .pf-sec { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--e1); overflow: hidden; }
