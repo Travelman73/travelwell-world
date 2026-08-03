@@ -42,10 +42,18 @@
 .tw-iconbtn:hover { background: var(--surface-alt); }
 .tw-iconbtn--emergency { color: var(--destructive); border-color: color-mix(in oklch, var(--destructive) 30%, var(--border)); }
 .tw-iconbtn--emergency:hover { background: color-mix(in oklch, var(--destructive) 8%, white); }
-.tw-iconbtn .badge { position: absolute; top: -3px; inset-inline-end: -3px; min-width: 18px; height: 18px; padding: 0 4px; border-radius: 9px; background: var(--primary); color: #fff; font-size: 11px; font-weight: 700; line-height: 1; display: flex; align-items: center; justify-content: center; text-align: center; border: 2px solid var(--background); box-sizing: border-box; }
+.tw-iconbtn .badge, .tw-trip-btn .badge { position: absolute; top: -3px; inset-inline-end: -3px; min-width: 18px; height: 18px; padding: 0 4px; border-radius: 9px; background: var(--primary); color: #fff; font-size: 11px; font-weight: 700; line-height: 1; display: flex; align-items: center; justify-content: center; text-align: center; border: 2px solid var(--background); box-sizing: border-box; }
+
+/* Itinerary — a prominent, easy-to-spot labelled pill (senior-first, David).
+   Outlined so it stands beside the filled-green Ask-Atlas without competing. */
+.tw-trip-btn { flex: 0 0 auto; position: relative; font-family: var(--font-sans); font-weight: 600; font-size: 15px; height: 48px; padding: 0 18px; border-radius: var(--radius-pill); background: var(--card); color: var(--foreground); border: 1.5px solid var(--primary); cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background-color .15s ease; }
+.tw-trip-btn .ic { width: 20px; height: 20px; color: var(--primary); }
+@media (hover: hover) { .tw-trip-btn:hover { background: var(--secondary); } }
+.tw-trip-btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 
 /* Talk-to-Me primary entry in header */
-.tw-talk-btn { flex: 0 0 auto; font-family: var(--font-sans); font-weight: 600; font-size: 14px; height: 42px; padding: 0 16px 0 14px; border-radius: var(--radius-pill); background: var(--primary); color: #fff; border: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: background-color .15s ease; }
+.tw-talk-btn { flex: 0 0 auto; font-family: var(--font-sans); font-weight: 600; font-size: 15px; height: 48px; padding: 0 20px 0 16px; border-radius: var(--radius-pill); background: var(--primary); color: #fff; border: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background-color .15s ease; }
+.tw-talk-btn .ic { width: 20px; height: 20px; }
 .tw-talk-btn:hover { background: var(--primary-hover); }
 
 /* locale switcher */
@@ -373,8 +381,8 @@
 @media (max-width: 920px) {
   .tw-nav { display: none; }
   .tw-burger { display: grid; }
-  .tw-talk-btn span.lbl { display: none; }
-  .tw-talk-btn { width: 42px; padding: 0; justify-content: center; border-radius: 50%; }
+  .tw-talk-btn span.lbl, .tw-trip-btn span.lbl { display: none; }
+  .tw-talk-btn, .tw-trip-btn { width: 48px; padding: 0; justify-content: center; border-radius: 50%; }
   .tw-mega__inner { grid-template-columns: 1fr 1fr; gap: 24px; }
   .tw-footer__top { grid-template-columns: 1fr 1fr; gap: 28px; }
   .tw-concierge, .tw-tray { width: 100vw; }
@@ -387,8 +395,8 @@
   .tw-header__bar { padding: 0 14px; gap: 6px; }
   .tw-header__actions { gap: 4px; }
   .tw-logo { font-size: 20px; margin-inline-end: 4px; }
-  .tw-iconbtn { width: 40px; height: 40px; }
-  .tw-talk-btn { width: 40px; height: 40px; }
+  .tw-iconbtn { width: 44px; height: 44px; }               /* was 40px — hold the >=44px tap-target bar */
+  .tw-talk-btn, .tw-trip-btn { width: 48px; height: 48px; } /* Ask Atlas + Itinerary: the two big, easy-to-tap actions */
   .tw-locale__btn { padding-inline: 8px; }
 }
 
