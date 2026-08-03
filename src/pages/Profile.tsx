@@ -14,14 +14,14 @@ import { signOut } from "@/lib/auth";
 const DEMO = {
   id: "TW-2A9F-K3",
   name: "Amara",
-  cohortAge: "35-49",
+  cohortAge: "established",
   since: "Jun 2026",
   party: [
     { name: "Amara", initial: "A", cohort: "Established Adult · 35–44", tag: "You", lead: true },
     { name: "Jhumur", initial: "J", cohort: "Established Adult · 35–44", tag: "Partner", lead: false },
   ],
   interests: ["safari", "romance", "culinary"],
-  budget: { stay: ["high", "luxury"], fly: ["business"], eat: ["high"], move: ["mid"], activities: ["mid", "high"] } as Record<string, string[]>,
+  budget: { stay: ["premier", "luxury"], fly: ["business"], eat: ["premier"], move: ["comfort"], activities: ["comfort", "premier"] } as Record<string, string[]>,
   accessibility: "Step-free rooms preferred",
   dietary: "Pescatarian (Jhumur) · No shellfish",
   vision: "An unhurried anniversary safari — golden-hour game drives, candlelit dinners under the stars, and a few slow mornings with coffee and a view.",

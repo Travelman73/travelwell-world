@@ -26,7 +26,7 @@
 
 /* vertical step list */
 .ob-steps { margin-top: 36px; display: flex; flex-direction: column; gap: 2px; }
-.ob-step { display: flex; gap: 14px; align-items: flex-start; padding: 10px 0; opacity: .55; transition: opacity .2s ease; }
+.ob-step { display: flex; gap: 14px; align-items: flex-start; padding: 10px 0; opacity: .82; transition: opacity .2s ease; }
 .ob-step[data-state="current"], .ob-step[data-state="done"] { opacity: 1; }
 .ob-step__dot { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.3); display: grid; place-items: center; font-size: 13px; font-weight: 700; flex: none; color: rgba(255,255,255,.8); }
 .ob-step[data-state="current"] .ob-step__dot { background: var(--accent); border-color: var(--accent); color: var(--foreground); }
@@ -86,6 +86,7 @@
 .choice__check svg { display: none; }
 .choice__t { font-weight: 600; font-size: 15px; }
 .choice__s { font-size: 13px; color: var(--muted-foreground); margin-top: 2px; }
+.choice[aria-pressed="true"] .choice__s { color: var(--secondary-foreground); }
 .choice__ic { width: 40px; height: 40px; border-radius: 10px; background: var(--secondary); color: var(--primary); display: grid; place-items: center; flex: none; }
 
 /* party builder */

@@ -41,6 +41,17 @@ const LEGACY_AGE: Record<string, string> = {
   "35-49": "established", "50-64": "pre-retirement", "65+": "young-senior",
 };
 
+// Cohorts an account-holder can pick for themselves (18+); the child/teen cohorts
+// apply only to party members. Sign-Up's self-age step uses this subset.
+export const ADULT_COHORTS: Cohort[] = AGE_COHORTS.slice(4);
+
+const MINOR_KEYS = new Set(["infant", "child", "tween", "teen"]);
+/** True when an age resolves to a 0–17 cohort (drives "no notifications for children"). */
+export function isMinorCohort(age: string | null | undefined): boolean {
+  const c = cohortFor(age);
+  return c ? MINOR_KEYS.has(c.key) : false;
+}
+
 /** Resolve a stored age value to its cohort, tolerating cohort keys, ranges, and legacy buckets. */
 export function cohortFor(age: string | null | undefined): Cohort | null {
   if (!age || age === "na") return null;
@@ -85,6 +96,25 @@ const tierTable = (wellId: string) => (wellId === "fly" ? FLY_TIERS : TIERS);
 export function tierLabel(wellId: string, key: string): string {
   return tierTable(wellId)[key.toLowerCase()]?.label ?? key;
 }
+
+/* Canonical picker options + the "Mix my ranges" cap (David: up to three per Well).
+ * Budget = Essential · Comfort · Premier · Luxury · Ultra. Fly-Well is cabin class. */
+export interface PickOption { v: string; t: string; s: string }
+export const BUDGET_TIER_OPTIONS: PickOption[] = [
+  { v: "essential", t: "Essential", s: "Smart & lean" },
+  { v: "comfort", t: "Comfort", s: "Easy, comfortable value" },
+  { v: "premier", t: "Premier", s: "Premium, polished" },
+  { v: "luxury", t: "Luxury", s: "The very best" },
+  { v: "ultra", t: "Ultra", s: "Beyond luxury, no ceiling" },
+];
+export const FLY_CABIN_OPTIONS: PickOption[] = [
+  { v: "economy", t: "Economy", s: "Get me there" },
+  { v: "premium-economy", t: "Premium Economy", s: "Extra room to breathe" },
+  { v: "business", t: "Business", s: "Lie-flat comfort" },
+  { v: "first", t: "First Class", s: "The pointy end" },
+];
+export const MAX_BUDGET_PICKS = 3;
+export const budgetOptionsFor = (wellId: string): PickOption[] => (wellId === "fly" ? FLY_CABIN_OPTIONS : BUDGET_TIER_OPTIONS);
 /** Highest tier % selected in a Well (drives the bar); 0 when none chosen. */
 export function tierPeak(wellId: string, keys: string[]): number {
   const t = tierTable(wellId);

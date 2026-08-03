@@ -5,6 +5,10 @@ import { useStore } from "@/store/useStore";
 import { Eyebrow } from "@/components/ui/primitives";
 import { savePendingTravelId } from "@/lib/travelId";
 import { sendMagicLink, isSupabaseConfigured } from "@/lib/auth";
+import {
+  AGE_COHORTS, ADULT_COHORTS, cohortLabel, isMinorCohort,
+  budgetOptionsFor, tierLabel, MAX_BUDGET_PICKS,
+} from "@/lib/identity";
 
 const STEPS = [
   { key: "you", label: "You", sub: "Name & email" },
@@ -15,10 +19,6 @@ const STEPS = [
   { key: "budget", label: "Budget blend", sub: "Per-Well tiers" },
 ] as const;
 
-const AGES = [
-  { v: "18-24", t: "18–24" }, { v: "25-34", t: "25–34" }, { v: "35-49", t: "35–49" },
-  { v: "50-64", t: "50–64" }, { v: "65+", t: "65 and over" }, { v: "na", t: "Prefer not to say" },
-];
 const THEMES = [
   { v: "wild", t: "Wild & remote", s: "Big nature, few crowds" },
   { v: "sun", t: "Sun & sea", s: "Beaches, islands, slow days" },
@@ -43,24 +43,9 @@ const BUDGET_WELLS = [
   { id: "insure", name: "Insure-Well", icon: "shield", tag: "Peace of mind" },
   { id: "ship", name: "Ship-Well", icon: "box", tag: "Sending it ahead" },
 ];
-const BUDGET_RANGES = [
-  { v: "luxury", t: "Luxury", s: "The very best" },
-  { v: "highend", t: "High-End", s: "Premium, polished" },
-  { v: "midrange", t: "Mid-Range", s: "Comfortable value" },
-  { v: "family", t: "Family Friendly", s: "Easy for all ages" },
-  { v: "budget", t: "Budget Conscious", s: "Smart & lean" },
-];
-const FLY_RANGES = [
-  { v: "first", t: "First Class", s: "The pointy end" },
-  { v: "business", t: "Business Class", s: "Lie-flat comfort" },
-  { v: "coach", t: "Coach", s: "Get me there" },
-];
-const rangesFor = (id: string) => (id === "fly" ? FLY_RANGES : BUDGET_RANGES);
-const rangeLabel = (id: string, v: string) => rangesFor(id).find((r) => r.v === v)?.t || v;
 const initials = (n: string) => (n || "?").trim().split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase() || "?";
 const validEmail = (e: string) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e);
 const relLabel = (r: string) => (({ partner: "Partner", child: "Child", family: "Family", companion: "Companion" }) as Record<string, string>)[r] || "Companion";
-const ageLabel = (v: string) => (v === "0-12" ? "Child (0–12)" : v === "13-17" ? "Teen (13–17)" : v === "na" ? "Undisclosed" : AGES.find((x) => x.v === v)?.t || v);
 
 type Member = { name: string; age: string; rel: string };
 
@@ -120,7 +105,11 @@ export default function SignUp() {
     setStep((s) => s + 1);
   }
   const toggleTheme = (v: string) => setThemes((t) => (t.includes(v) ? t.filter((x) => x !== v) : t.length >= 3 ? t : [...t, v]));
-  const toggleBudget = (id: string, v: string) => setBudget((b) => { const cur = b[id] || []; return { ...b, [id]: cur.includes(v) ? cur.filter((x) => x !== v) : [...cur, v] }; });
+  const toggleBudget = (id: string, v: string) => {
+    const cur = budget[id] || [];
+    if (!cur.includes(v) && cur.length >= MAX_BUDGET_PICKS) { showToast(`Mix up to ${MAX_BUDGET_PICKS} ranges per Well`); return; }
+    setBudget((b) => { const c = b[id] || []; return { ...b, [id]: c.includes(v) ? c.filter((x) => x !== v) : [...c, v] }; });
+  };
 
   return (
     <div className="ob">
@@ -184,14 +173,18 @@ export default function SignUp() {
               <>
                 <Eyebrow className="ob__eyebrow">A gentle question</Eyebrow>
                 <h2 className="ob__title">Which age range fits you?</h2>
-                <Why ic="shield">We use a <b>range, never your birthday</b> — only to keep suggestions both safe and exciting (think: nightlife vs. nap-friendly pacing). It's yours to change anytime.</Why>
+                <Why ic="shield">We use a <b>range, never your birthday</b> — only to shape pace and mobility (think: nightlife vs. nap-friendly pacing), <b>never your budget</b>. It's yours to change anytime.</Why>
                 <div className="ob__fields">
                   <div className="choices choices--2" role="group" aria-label="Age range">
-                    {AGES.map((a) => (
-                      <button key={a.v} className="choice" aria-pressed={age === a.v} onClick={() => setAge(a.v)}>
-                        <span className="choice__check"><Icon name="check" small /></span><span className="choice__t">{a.t}</span>
+                    {ADULT_COHORTS.map((c) => (
+                      <button key={c.key} className="choice" aria-pressed={age === c.key} onClick={() => setAge(c.key)} style={{ flexDirection: "column", alignItems: "flex-start", gap: 3 }}>
+                        <span className="choice__t"><span className="choice__check"><Icon name="check" small /></span>{c.label} · {c.range}</span>
+                        <span className="choice__s">{c.note}</span>
                       </button>
                     ))}
+                    <button key="na" className="choice" aria-pressed={age === "na"} onClick={() => setAge("na")}>
+                      <span className="choice__check"><Icon name="check" small /></span><span className="choice__t">Prefer not to say</span>
+                    </button>
                   </div>
                 </div>
               </>
@@ -212,7 +205,7 @@ export default function SignUp() {
                     {party.map((m, i) => (
                       <div className="party-member" key={i}>
                         <div className="party-member__av">{initials(m.name)}</div>
-                        <div><div className="party-member__name">{m.name}</div><div className="party-member__meta">{relLabel(m.rel)} · {ageLabel(m.age)}</div></div>
+                        <div><div className="party-member__name">{m.name}</div><div className="party-member__meta">{relLabel(m.rel)} · {cohortLabel(m.age)}</div></div>
                         <button className="party-member__remove" aria-label={`Remove ${m.name}`} onClick={() => setParty((p) => p.filter((_, x) => x !== i))}><Icon name="close" small /></button>
                       </div>
                     ))}
@@ -222,7 +215,7 @@ export default function SignUp() {
                       <div className="fld"><label htmlFor="pf-name">Their name</label><input type="text" id="pf-name" value={draft.name} placeholder="e.g. Maya" onChange={(e) => setDraft({ ...draft, name: e.target.value })} /></div>
                       <div className="fld"><label htmlFor="pf-age">Age range</label>
                         <select id="pf-age" value={draft.age} onChange={(e) => setDraft({ ...draft, age: e.target.value })}>
-                          {[{ v: "0-12", t: "Child (0–12)" }, { v: "13-17", t: "Teen (13–17)" }].concat(AGES.filter((a) => a.v !== "na")).map((a) => <option key={a.v} value={a.v}>{a.t}</option>)}
+                          {AGE_COHORTS.map((c) => <option key={c.key} value={c.key}>{c.label} · {c.range}</option>)}
                         </select>
                       </div>
                       <div className="fld" style={{ gridColumn: "1/-1" }}><label htmlFor="pf-rel">Relationship</label>
@@ -236,7 +229,7 @@ export default function SignUp() {
                       </div>
                     </div>
                   ) : (
-                    <button className="party-add" onClick={() => setDraft({ name: "", age: "25-34", rel: "partner" })}><Icon name="check" small /> Add a traveler</button>
+                    <button className="party-add" onClick={() => setDraft({ name: "", age: "early-adult", rel: "partner" })}><Icon name="check" small /> Add a traveler</button>
                   )}
                   <p className="fld__hint">Traveling solo? That's perfect too — just continue.</p>
                 </div>
@@ -250,7 +243,7 @@ export default function SignUp() {
                 <Why ic="message">You're always in the loop. A partner can opt into their own channel; <b>children get none</b>. Quiet by default — only what matters for the trip.</Why>
                 <div className="ob__fields">
                   {[{ id: "you", name: name || "You", role: "You (always notified)", child: false }].concat(
-                    party.map((m, i) => ({ id: "m" + i, name: m.name, role: relLabel(m.rel), child: m.age === "0-12" || m.age === "13-17" }))
+                    party.map((m, i) => ({ id: "m" + i, name: m.name, role: relLabel(m.rel), child: isMinorCohort(m.age) }))
                   ).map((m) => {
                     const val = notif[m.id] || (m.id === "you" ? "email" : m.child ? "none" : "email");
                     return (
@@ -306,7 +299,7 @@ export default function SignUp() {
               <>
                 <Eyebrow className="ob__eyebrow">Budget ranges</Eyebrow>
                 <h2 className="ob__title">Set your comfort, Well by Well.</h2>
-                <Why ic="compass">Pick <b>as many ranges as you like</b> in each Well — most travelers mix (splurge on the stay, keep flights sensible). Fly-Well is by cabin class. This shapes which providers we surface.</Why>
+                <Why ic="compass">Nobody lives at one price point. <b>Mix up to three ranges</b> in each Well and we'll show options across them (a nicer room, sensible flights, one splurge dinner). Fly-Well is by cabin class. This shapes which providers we surface.</Why>
                 <button className="bdg-speak" type="button" onClick={() => openPanel("concierge")}>
                   <span className="bdg-speak__ic"><Icon name="sparkles" /></span>
                   <span className="bdg-speak__t">Rather just say it? <b>Speak with Atlas</b> — "luxury stays, business class, mid-range food" — and we'll fill these in.</span>
@@ -315,7 +308,7 @@ export default function SignUp() {
                 <div className="ob__fields bdg-list">
                   {BUDGET_WELLS.map((w) => {
                     const sel = budget[w.id] || [];
-                    const opts = rangesFor(w.id);
+                    const opts = budgetOptionsFor(w.id);
                     return (
                       <div className="bdg-row" data-well={w.id} key={w.id}>
                         <div className="bdg-row__head">
@@ -326,14 +319,14 @@ export default function SignUp() {
                         <div className="bdg-drop">
                           <button className="bdg-drop__trigger" type="button" aria-expanded={openDD === w.id} onClick={() => setOpenDD(openDD === w.id ? null : w.id)}>
                             {sel.length
-                              ? <span className="bdg-drop__chips">{sel.map((v) => <span className="bdg-chip" key={v}>{rangeLabel(w.id, v)}</span>)}</span>
-                              : <span className="bdg-drop__ph">{w.id === "fly" ? "Choose cabin class…" : "Choose ranges…"}</span>}
+                              ? <span className="bdg-drop__chips">{sel.map((v) => <span className="bdg-chip" key={v}>{tierLabel(w.id, v)}</span>)}</span>
+                              : <span className="bdg-drop__ph">{w.id === "fly" ? "Choose cabin class…" : "Mix up to 3 ranges…"}</span>}
                             <span className="bdg-drop__chev"><Icon name="chev" small /></span>
                           </button>
                           {openDD === w.id && (
                             <div className="bdg-drop__menu" role="listbox" aria-multiselectable="true" aria-label={`${w.name} ranges`} style={{ display: "block" }}>
                               {opts.map((r) => (
-                                <button key={r.v} className="bdg-opt" type="button" role="option" aria-selected={sel.includes(r.v)} onClick={() => toggleBudget(w.id, r.v)}>
+                                <button key={r.v} className="bdg-opt" type="button" role="option" aria-selected={sel.includes(r.v)} aria-disabled={!sel.includes(r.v) && sel.length >= MAX_BUDGET_PICKS} onClick={() => toggleBudget(w.id, r.v)}>
                                   <span className="bdg-opt__box"><Icon name="check" small /></span>
                                   <span className="bdg-opt__t">{r.t}</span><span className="bdg-opt__s">{r.s}</span>
                                 </button>
@@ -397,14 +390,14 @@ function BuildScreen({ name, age, party, themes, length, budget, dream, navigate
               <div style={{ flex: 1, minWidth: 0 }}><div className="id-card__name">{m.name}</div><div className="id-card__role">{m.role}</div></div>
             </div>
             <div className="id-card__body">
-              <div className="id-attr"><div className="id-attr__k">Age range</div><div className="id-attr__v">{ageLabel(m.age) || "—"}</div></div>
+              <div className="id-attr"><div className="id-attr__k">Age range</div><div className="id-attr__v">{cohortLabel(m.age)}</div></div>
               <div className="id-attr"><div className="id-attr__k">Trip length</div><div className="id-attr__v">{lengthName}</div></div>
               <div className="id-attr" style={{ gridColumn: "1/-1" }}><div className="id-attr__k">Themes</div>
                 <div className="id-card__chips">{(themeNames.length ? themeNames : ["Open to ideas"]).map((t) => <span className="pill pill-live" style={{ background: "var(--secondary)" }} key={t}>{t}</span>)}</div>
               </div>
               {m.lead && (
                 <div className="id-attr" style={{ gridColumn: "1/-1" }}><div className="id-attr__k">Budget blend</div>
-                  <div className="id-card__chips">{BUDGET_WELLS.map((w) => <span className="pill pill-preview" key={w.id}>{w.name.split("-")[0]}: {(budget[w.id] || []).map((v) => rangeLabel(w.id, v)).join(", ") || "elevated"}</span>)}</div>
+                  <div className="id-card__chips">{BUDGET_WELLS.map((w) => <span className="pill pill-preview" key={w.id}>{w.name.split("-")[0]}: {(budget[w.id] || []).map((v) => tierLabel(w.id, v)).join(", ") || "elevated"}</span>)}</div>
                 </div>
               )}
               {m.lead && dream && (
