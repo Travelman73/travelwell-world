@@ -2,27 +2,51 @@ import { Link } from "react-router-dom";
 import { Icon } from "@/lib/icons";
 import { Eyebrow } from "@/components/ui/primitives";
 
-// How it works — the four simple steps (they map to the live 4-step journey:
-// Special Interests -> Regions -> the Wells -> Book It).
+const STATS = [
+  { ic: "heart", v: "25", t: "Ways to travel", sub: "— from safaris to spas" },
+  { ic: "globe", v: "13", t: "World regions", sub: "to explore" },
+  { ic: "bag2", v: "10", t: "Trip needs,", sub: "each with its own “Well”" },
+  { ic: "check", v: "1", t: "Itinerary", sub: "that holds it all", hl: true },
+];
+
+// How it works — the four steps as a vertical timeline (they map to the live
+// 4-step journey: Special Interests → Regions → the Wells → Book It).
 const STEPS = [
-  { n: 1, ic: "sparkles", t: "Ways to travel", s: "Pick the interests that move you — safari, romance, ski and more." },
-  { n: 2, ic: "globe", t: "World regions", s: "Choose where in the world — each with real destinations and a Safety Card." },
-  { n: 3, ic: "compass", t: "Trip needs", s: "Fill the Wells — Stay, Eat, Move and the rest — with matched providers." },
-  { n: 4, ic: "bag2", t: "Itinerary", s: "Watch it come together in one saved, bookable trip." },
+  {
+    ic: "heart", title: "Tell us what moves you",
+    desc: "Start with a feeling, not a form. Pick the ways you love to travel — they light up as you choose.",
+    chips: ["Safaris", "Romance", "Food & wine", "Wellness"], more: "25 ways to travel",
+    to: "/special-interests", link: "Choose your interests",
+  },
+  {
+    ic: "globe", title: "Pick where in the world",
+    desc: "Thirteen regions, ranked by how well they fit what you chose — so the best matches rise to the top.",
+    chips: ["East Africa", "The Mediterranean", "Southeast Asia", "The Caribbean"], more: "13 regions",
+    to: "/regions", link: "Browse the regions",
+  },
+  {
+    ic: "bag2", title: "We fill in every need",
+    desc: "Every part of your trip has its own “Well” — flights, stays, dining, getting around — each pre-filled with our best matches for you.",
+    chips: ["Flights", "Places to stay", "Dining", "Getting around", "Activities"], more: "10 needs covered",
+    to: "/wells-surface", link: "Meet the Wells",
+  },
+  {
+    ic: "check", title: "Book it, all in one place",
+    desc: "Everything you pick lands in one itinerary, day by day. Book with trusted partners — and if we earn a commission, we say so right there. Atlas is beside you the whole way.",
+    chips: ["Trusted partners", "Honest pricing", "One itinerary", "Help from Atlas"],
+    to: "/itinerary", link: "See an itinerary",
+  },
 ];
 
-// Six promises, kept on every page — the traveler-facing voice of the unbreakable
-// laws (Honest · Open · Safe · Yours).
+// Six promises, kept on every page — the traveler-facing voice of the unbreakable laws.
 const PROMISES = [
-  { t: "Honest about what's real", s: "Live vs. coming-soon is always clear — never dressed up as more than it is." },
-  { t: "Open about how we earn", s: "When a partner pays us a commission, we say so, right there on the page." },
-  { t: "Your safety travels with you", s: "The Emergency Button and an accurate Safety Card ride every destination." },
-  { t: "The trip is always yours", s: "Atlas suggests; you always choose and book. No pressure, no “only 2 left.”" },
-  { t: "Everything in one place", s: "One itinerary holds the whole trip — flights, stays, dining and all of it." },
-  { t: "Built for everyone", s: "Big type, keyboard paths, read-or-hear — usable by every traveler." },
+  { ic: "check", t: "We're honest about what's ready", s: "If something is still coming soon, we say so — clearly, right on the page." },
+  { ic: "info", t: "We tell you how we earn", s: "If a booking earns us a commission, you'll see a note right beside it. It never costs you extra." },
+  { ic: "bag2", t: "Everything lands in one trip", s: "Whatever you add — a flight, a dinner, a safari — it's saved to one itinerary, automatically." },
+  { ic: "shield", t: "Your safety travels with you", s: "Every destination has a Safety Card — nearest hospital, your embassy, the local emergency number." },
+  { ic: "message", t: "Easy for everyone", s: "Type or talk. Read or listen. Works with a keyboard alone — and in your language." },
+  { ic: "sparkles", t: "You're always in charge", s: "Atlas suggests; you decide. Nothing is ever booked without you." },
 ];
-
-const CHIPS = ["Honest", "Open", "Safe", "Yours"];
 
 export default function About() {
   return (
@@ -33,45 +57,54 @@ export default function About() {
         <p>Most trips are planned across a dozen tabs — one site for flights, another for hotels, another for things to do. TravelWell brings it all together. Tell us how you love to travel, and we guide you — step by step — to a complete, booked journey.</p>
       </div>
 
-      <section className="ab" style={{ padding: 0, marginTop: 28 }}>
-        <div className="ab-stat-row">
-          <div className="ab-stat"><div className="ab-stat__v">25</div><div className="ab-stat__k">ways to travel</div></div>
-          <div className="ab-stat"><div className="ab-stat__v">13</div><div className="ab-stat__k">regions</div></div>
-          <div className="ab-stat"><div className="ab-stat__v">10</div><div className="ab-stat__k">trip needs covered</div></div>
-          <div className="ab-stat"><div className="ab-stat__v">1</div><div className="ab-stat__k">itinerary</div></div>
-        </div>
-      </section>
+      <div className="ab-stat-row">
+        {STATS.map((s) => (
+          <div className={"ab-stat" + (s.hl ? " ab-stat--hl" : "")} key={s.t}>
+            <span className="ab-stat__ic"><Icon name={s.ic} /></span>
+            <div className="ab-stat__v">{s.v}</div>
+            <div className="ab-stat__k"><b>{s.t}</b> {s.sub}</div>
+          </div>
+        ))}
+      </div>
 
-      <section className="rd-section" style={{ maxWidth: "none", padding: "56px 0 0" }}>
-        <div className="rd-section__head"><div><Eyebrow>How it works</Eyebrow><h2 className="t-h2">Four simple steps — from a feeling to a booked trip.</h2></div></div>
-        <div className="ab-steps">
-          {STEPS.map((s) => (
-            <div className="ab-step" key={s.n}>
-              <div className="ab-step__top">
-                <span className="ab-step__ic"><Icon name={s.ic} /></span>
-                <span className="ab-step__n">{s.n}</span>
+      <section className="ab-sec">
+        <div className="ab-sec__head"><h2 className="t-h2">How it works</h2><p>Four simple steps — from a feeling to a booked trip.</p></div>
+        <div className="ab-flow">
+          {STEPS.map((st, i) => (
+            <div className="ab-flow__step" key={st.title}>
+              <div className="ab-flow__node"><Icon name={st.ic} /></div>
+              <div className="ab-flow__card">
+                <div className="ab-flow__eyebrow">Step {i + 1} of 4</div>
+                <h3 className="ab-flow__title">{st.title}</h3>
+                <p className="ab-flow__desc">{st.desc}</p>
+                <div className="ab-flow__chips">
+                  {st.chips.map((c) => <span className="ab-chip" key={c}>{c}</span>)}
+                  {st.more && <span className="ab-chip ab-chip--more">… {st.more}</span>}
+                </div>
+                <Link className="ab-flow__link" to={st.to}>{st.link} <Icon name="arrow" small /></Link>
               </div>
-              <div className="ab-step__t">{s.t}</div>
-              <div className="ab-step__s">{s.s}</div>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="rd-section" style={{ maxWidth: "none", padding: "56px 0 0" }}>
-        <div className="rd-section__head">
-          <div>
-            <Eyebrow>Our promises to you</Eyebrow>
-            <h2 className="t-h2">Six promises, kept on every page.</h2>
-            <p>Honesty about what's real. Openness about how we earn. Your safety, wherever you go. Not fine print — the way every page works.</p>
+      <section className="ab-sec">
+        <div className="ab-sec__head"><h2 className="t-h2">Our promises to you</h2></div>
+        <div className="ab-trust">
+          <div className="ab-trust__bg" aria-hidden="true" />
+          <span className="ab-trust__ic"><Icon name="shield" /></span>
+          <div className="ab-trust__body">
+            <div className="ab-trust__eyebrow">Six promises, kept on every page</div>
+            <div className="ab-trust__title">Travel planning you can <span className="em">trust</span>.</div>
+            <p className="ab-trust__desc">Honesty about what's real. Openness about how we earn. Your safety, wherever you go. Not fine print — the way every page works.</p>
+            <div className="ab-trust__pillars">Honest · Open · Safe · Yours</div>
           </div>
         </div>
-        <div className="ab-promise-chips">{CHIPS.map((c) => <span className="ab-chip" key={c}>{c}</span>)}</div>
-        <div className="ab-laws" style={{ marginTop: 16 }}>
-          {PROMISES.map((l, i) => (
-            <div className="ab-law" key={l.t}>
-              <span className="ab-law__n">{i + 1}</span>
-              <div><div className="ab-law__t">{l.t}</div><div className="ab-law__s">{l.s}</div></div>
+        <div className="ab-promises">
+          {PROMISES.map((p) => (
+            <div className="ab-promise" key={p.t}>
+              <span className="ab-promise__ic"><Icon name={p.ic} small /></span>
+              <div><div className="ab-promise__t">{p.t}</div><div className="ab-promise__s">{p.s}</div></div>
             </div>
           ))}
         </div>
