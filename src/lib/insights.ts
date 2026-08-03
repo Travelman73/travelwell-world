@@ -12,7 +12,7 @@
  */
 import { getSupabase } from "./supabase";
 import { fetchTravelId } from "./travelId";
-import { cohortLabel } from "./identity";
+import { cohortLabel, activityLabel, accessLabel } from "./identity";
 import { fetchSignals } from "./signals";
 import { useStore } from "@/store/useStore";
 import { useCatalog } from "@/store/useCatalog";
@@ -118,7 +118,12 @@ export async function buildAtlasContext(): Promise<Record<string, unknown>> {
       ageRange: profileRec.age_range ? cohortLabel(profileRec.age_range) : undefined,
       dream: profileRec.trip_intent ?? undefined,
       dietary: profileRec.dietary ?? undefined,
-      accessibility: profileRec.accessibility ?? undefined,
+      // Safer-Informed overlay — BOTH sides. Atlas builds AROUND these, never
+      // hands the traveler limitations; a stated factor overrides the age default.
+      pace: activityLabel(profileRec.activity_level) ?? undefined,
+      access: profileRec.access_needs?.length ? profileRec.access_needs.map(accessLabel) : undefined,
+      ableTo: profileRec.capabilities ?? undefined,
+      planAround: profileRec.accessibility ?? undefined,
       // Budget-by-Well, so Atlas can shape suggestions to what they'll spend.
       budget: profileRec.budget_ranges && Object.keys(profileRec.budget_ranges).length ? profileRec.budget_ranges : undefined,
     };

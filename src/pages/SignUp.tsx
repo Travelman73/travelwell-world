@@ -8,11 +8,13 @@ import { sendMagicLink, isSupabaseConfigured } from "@/lib/auth";
 import {
   AGE_COHORTS, ADULT_COHORTS, cohortLabel, isMinorCohort,
   budgetOptionsFor, tierLabel, MAX_BUDGET_PICKS,
+  ACTIVITY_LEVELS, ACCESS_NEEDS, activityLabel, accessLabel,
 } from "@/lib/identity";
 
 const STEPS = [
   { key: "you", label: "You", sub: "Name & email" },
   { key: "age", label: "Age range", sub: "Safe & exciting" },
+  { key: "move", label: "How you move", sub: "Pace & access" },
   { key: "party", label: "Your party", sub: "Who's traveling" },
   { key: "notif", label: "Notifications", sub: "Who hears from us" },
   { key: "dream", label: "Your dream", sub: "Theme & length" },
@@ -56,6 +58,9 @@ export default function SignUp() {
   const [name, setName] = useState(""); const [email, setEmail] = useState("");
   const [nameErr, setNameErr] = useState(false); const [emailErr, setEmailErr] = useState(false);
   const [age, setAge] = useState("");
+  const [activity, setActivity] = useState("");
+  const [access, setAccess] = useState<string[]>([]);
+  const [ableNote, setAbleNote] = useState(""); const [knowNote, setKnowNote] = useState("");
   const [party, setParty] = useState<Member[]>([]);
   const [draft, setDraft] = useState<Member | null>(null);
   const [notif, setNotif] = useState<Record<string, string>>({});
@@ -82,12 +87,15 @@ export default function SignUp() {
       interests: [],
       budget_ranges: budget,
       party,
+      activity_level: activity || null,
+      access_needs: access,
+      capabilities: ableNote.trim() || null,
       dietary: null,
-      accessibility: null,
+      accessibility: knowNote.trim() || null,
       consent: true,
     });
     if (isSupabaseConfigured && validEmail(email)) sendMagicLink(email);
-  }, [isBuild, name, age, dream, budget, party, email]);
+  }, [isBuild, name, age, dream, budget, party, email, activity, access, ableNote, knowNote]);
 
   function validate(): boolean {
     const key = STEPS[step].key;
@@ -105,6 +113,12 @@ export default function SignUp() {
     setStep((s) => s + 1);
   }
   const toggleTheme = (v: string) => setThemes((t) => (t.includes(v) ? t.filter((x) => x !== v) : t.length >= 3 ? t : [...t, v]));
+  // Access is multi-select, but "Fully Mobile" is exclusive (clears the rest, and any need clears it).
+  const toggleAccess = (v: string) => setAccess((cur) => {
+    if (v === "fully-mobile") return cur.includes("fully-mobile") ? [] : ["fully-mobile"];
+    const base = cur.filter((x) => x !== "fully-mobile");
+    return base.includes(v) ? base.filter((x) => x !== v) : [...base, v];
+  });
   const toggleBudget = (id: string, v: string) => {
     const cur = budget[id] || [];
     if (!cur.includes(v) && cur.length >= MAX_BUDGET_PICKS) { showToast(`Mix up to ${MAX_BUDGET_PICKS} ranges per Well`); return; }
@@ -127,7 +141,7 @@ export default function SignUp() {
             <li><span className="ob__tis-dot" /> Who's <b>traveling</b> along</li>
           </ul>
         </div>
-        <nav className="ob-steps" aria-label="Sign-up progress">
+        <nav className="ob-steps" aria-label="Sign-up progress" tabIndex={0}>
           {STEPS.map((st, i) => {
             const state = i < step ? "done" : i === step ? "current" : "todo";
             return (
@@ -185,6 +199,44 @@ export default function SignUp() {
                     <button key="na" className="choice" aria-pressed={age === "na"} onClick={() => setAge("na")}>
                       <span className="choice__check"><Icon name="check" small /></span><span className="choice__t">Prefer not to say</span>
                     </button>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {!isBuild && STEPS[step].key === "move" && (
+              <>
+                <Eyebrow className="ob__eyebrow">Safer-Informed</Eyebrow>
+                <h2 className="ob__title">How do you like to move?</h2>
+                <Why ic="heart">Tell us <b>both sides</b> — what you're fully up for <b>and</b> anything to plan around. We use every answer to build the trip <b>around you — never to limit you.</b> Skip anything that doesn't apply.</Why>
+                <div className="ob__fields">
+                  <div className="fld">
+                    <label>Your usual pace</label>
+                    <div className="choices choices--2" role="group" aria-label="Activity level">
+                      {ACTIVITY_LEVELS.map((a) => (
+                        <button key={a.v} className="choice" aria-pressed={activity === a.v} onClick={() => setActivity(activity === a.v ? "" : a.v)} style={{ flexDirection: "column", alignItems: "flex-start", gap: 3 }}>
+                          <span className="choice__t"><span className="choice__check"><Icon name="check" small /></span>{a.t}</span>
+                          <span className="choice__s">{a.s}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="fld">
+                    <label>Access & mobility <span className="opt">— pick any that fit</span></label>
+                    <div className="chip-pick" role="group" aria-label="Access needs">
+                      {ACCESS_NEEDS.map((a) => (
+                        <button key={a.v} type="button" className="chip-toggle" aria-pressed={access.includes(a.v)} onClick={() => toggleAccess(a.v)}>{a.t}</button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="fld">
+                    <label htmlFor="f-able">What are you fully up for? <span className="opt">— the fun stuff</span></label>
+                    <textarea id="f-able" value={ableNote} onChange={(e) => setAbleNote(e.target.value)} placeholder="e.g. Long hikes, early starts, snorkeling — bring it on." />
+                  </div>
+                  <div className="fld">
+                    <label htmlFor="f-know">Anything we should plan around? <span className="opt">— mobility, medical, safety</span></label>
+                    <textarea id="f-know" value={knowNote} onChange={(e) => setKnowNote(e.target.value)} placeholder="e.g. A heart condition — easy on altitude and steep climbs. An afternoon rest is ideal." />
+                    <div className="fld__hint"><Icon name="lock" small /> Private to your Travel ID. Anything you share here overrides the age-based defaults — so the trip fits <b>you</b>, not a number.</div>
                   </div>
                 </div>
               </>
@@ -341,7 +393,7 @@ export default function SignUp() {
               </>
             )}
 
-            {isBuild && <BuildScreen name={name} age={age} party={party} themes={themes} length={length} budget={budget} dream={dream} navigate={navigate} emailed={isSupabaseConfigured} email={email} />}
+            {isBuild && <BuildScreen name={name} age={age} party={party} themes={themes} length={length} budget={budget} dream={dream} activity={activity} access={access} navigate={navigate} emailed={isSupabaseConfigured} email={email} />}
 
             {!isBuild && (
               <>
@@ -363,9 +415,10 @@ const Why = ({ ic, children }: { ic: string; children: ReactNode }) => (
   <div className="ob__why"><Icon name={ic} /><span>{children}</span></div>
 );
 
-function BuildScreen({ name, age, party, themes, length, budget, dream, navigate, emailed, email }: {
-  name: string; age: string; party: Member[]; themes: string[]; length: string; budget: Record<string, string[]>; dream: string; navigate: (to: string) => void; emailed: boolean; email: string;
+function BuildScreen({ name, age, party, themes, length, budget, dream, activity, access, navigate, emailed, email }: {
+  name: string; age: string; party: Member[]; themes: string[]; length: string; budget: Record<string, string[]>; dream: string; activity: string; access: string[]; navigate: (to: string) => void; emailed: boolean; email: string;
 }) {
+  const paceLine = [activityLabel(activity), ...access.map(accessLabel)].filter(Boolean).join(" · ");
   const members = [{ name: name || "You", role: "Lead traveler · books & pays", lead: true, age }]
     .concat(party.map((m) => ({ name: m.name, role: relLabel(m.rel), lead: false, age: m.age })));
   const themeNames = themes.map((v) => THEMES.find((t) => t.v === v)?.t).filter(Boolean) as string[];
@@ -391,7 +444,7 @@ function BuildScreen({ name, age, party, themes, length, budget, dream, navigate
             </div>
             <div className="id-card__body">
               <div className="id-attr"><div className="id-attr__k">Age range</div><div className="id-attr__v">{cohortLabel(m.age)}</div></div>
-              <div className="id-attr"><div className="id-attr__k">Trip length</div><div className="id-attr__v">{lengthName}</div></div>
+              <div className="id-attr"><div className="id-attr__k">{m.lead && paceLine ? "How you move" : "Trip length"}</div><div className="id-attr__v">{m.lead && paceLine ? paceLine : lengthName}</div></div>
               <div className="id-attr" style={{ gridColumn: "1/-1" }}><div className="id-attr__k">Themes</div>
                 <div className="id-card__chips">{(themeNames.length ? themeNames : ["Open to ideas"]).map((t) => <span className="pill pill-live" style={{ background: "var(--secondary)" }} key={t}>{t}</span>)}</div>
               </div>

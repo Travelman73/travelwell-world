@@ -115,6 +115,28 @@ export const FLY_CABIN_OPTIONS: PickOption[] = [
 ];
 export const MAX_BUDGET_PICKS = 3;
 export const budgetOptionsFor = (wellId: string): PickOption[] => (wellId === "fly" ? FLY_CABIN_OPTIONS : BUDGET_TIER_OPTIONS);
+
+/* ---- Safer-Informed capabilities overlay (Identity Builder Step 2) --------
+ * Pace + access, captured BOTH sides (able-to-do + to-plan-around) and used to
+ * build the trip AROUND the traveler, never to limit them. A stated factor
+ * overrides the age default; this is the socket the L3 safety gates read. */
+export const ACTIVITY_LEVELS: PickOption[] = [
+  { v: "very-active", t: "Very Active", s: "Long days, big miles" },
+  { v: "moderately-active", t: "Moderately Active", s: "Full days, some downtime" },
+  { v: "lightly-active", t: "Lightly Active", s: "Gentle pace, regular rest" },
+  { v: "leisurely", t: "Leisurely Strolls", s: "Easy outings, plenty of sitting" },
+];
+export const ACCESS_NEEDS: PickOption[] = [
+  { v: "fully-mobile", t: "Fully Mobile", s: "No access needs" },
+  { v: "some-stairs", t: "Some Stairs OK", s: "A flight is fine" },
+  { v: "no-stairs", t: "No Stairs", s: "Step-free routes" },
+  { v: "frequent-rest", t: "Frequent Rest", s: "Regular sit-downs" },
+  { v: "cane", t: "Cane", s: "Walking aid" },
+  { v: "wheelchair", t: "Wheelchair", s: "Wheelchair access" },
+];
+export const activityLabel = (v: string | null | undefined): string | null =>
+  v ? (ACTIVITY_LEVELS.find((a) => a.v === v)?.t ?? v) : null;
+export const accessLabel = (v: string): string => ACCESS_NEEDS.find((a) => a.v === v)?.t ?? v;
 /** Highest tier % selected in a Well (drives the bar); 0 when none chosen. */
 export function tierPeak(wellId: string, keys: string[]): number {
   const t = tierTable(wellId);
@@ -131,7 +153,11 @@ export interface DisplayIdentity {
   party: DisplayMember[];
   interests: string[];
   budget: Record<string, string[]>;
-  accessibility: string | null;
+  // Safer-Informed overlay — how they move, and both sides of the ask.
+  activity: string | null;      // activity-level key
+  access: string[];             // access-need keys
+  capabilities: string | null;  // the enabling side ("fully up for")
+  accessibility: string | null; // the "anything to plan around" side
   dietary: string | null;
   /** The per-trip VARIABLE — the current vision. Not part of the permanent identity. */
   vision: string | null;
@@ -184,6 +210,9 @@ export function deriveIdentity(
     party: roster,
     interests: rec.interests?.length ? rec.interests : demo.interests,
     budget: rec.budget_ranges && Object.keys(rec.budget_ranges).length ? rec.budget_ranges : demo.budget,
+    activity: rec.activity_level ?? demo.activity,
+    access: rec.access_needs?.length ? rec.access_needs : demo.access,
+    capabilities: rec.capabilities ?? demo.capabilities,
     accessibility: rec.accessibility ?? demo.accessibility,
     dietary: rec.dietary ?? demo.dietary,
     vision: rec.trip_intent ?? demo.vision,

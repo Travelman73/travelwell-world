@@ -15,8 +15,12 @@ export interface TravelIdRecord {
   interests: string[];        // 1–3 special-interest ids
   budget_ranges: Record<string, string[]>; // { wellId: ranges[] }
   party: PartyMember[];       // everyone on the trip (the SignUp party builder)
+  // Safer-Informed capabilities overlay (Identity Builder Step 2, migration 0009):
+  activity_level: string | null;   // pace: very-active | moderately-active | lightly-active | leisurely
+  access_needs: string[];          // wheelchair | cane | frequent-rest | no-stairs | some-stairs | fully-mobile
+  capabilities: string | null;     // the ENABLING side — "what you're fully up for"
   dietary: string | null;
-  accessibility: string | null;
+  accessibility: string | null;    // the "anything to plan around" side
   consent: boolean;
 }
 
@@ -36,14 +40,19 @@ export async function saveTravelId(
 ): Promise<{ ok: boolean; error?: string }> {
   const sb = getSupabase();
   if (!sb) return { ok: false, error: "unconfigured" };
-  const payload = { ...rec, updated_at: new Date().toISOString() };
+  const payload: Record<string, unknown> = { ...rec, updated_at: new Date().toISOString() };
   let { error } = await sb.from("travel_ids").upsert(payload, { onConflict: "user_id" });
-  // Resilience: if the `party` column hasn't been migrated yet (0008), persist
-  // everything else rather than lose the whole Travel ID. Self-heals once applied.
-  if (error && /party/i.test(error.message)) {
-    const { party: _party, ...rest } = payload;
-    void _party;
-    ({ error } = await sb.from("travel_ids").upsert(rest, { onConflict: "user_id" }));
+  // Resilience: newer optional columns land in later migrations (party → 0008,
+  // the capabilities overlay → 0009). If one isn't applied yet, drop the column the
+  // error names and retry — Postgres reports missing columns one at a time, so loop
+  // over the optional set. Persists everything else rather than losing the whole
+  // Travel ID; self-heals once the migration runs.
+  const OPTIONAL_COLS = ["party", "activity_level", "access_needs", "capabilities"];
+  for (let i = 0; error && i < OPTIONAL_COLS.length; i++) {
+    const hit = OPTIONAL_COLS.find((c) => c in payload && new RegExp(c, "i").test(error!.message));
+    if (!hit) break;
+    delete payload[hit];
+    ({ error } = await sb.from("travel_ids").upsert(payload, { onConflict: "user_id" }));
   }
   return error ? { ok: false, error: error.message } : { ok: true };
 }

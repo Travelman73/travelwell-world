@@ -55,6 +55,11 @@
 .pf-vision__foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
 .pf-vision__note { font-size: 13.5px; color: var(--muted-foreground); line-height: 1.5; max-width: 60ch; }
 
+/* Safer-Informed section — both-sides badge + the enabling promise */
+.pf-sec__badge { display: inline-block; margin-inline-start: 8px; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold-deep); background: color-mix(in oklch, var(--accent) 14%, transparent); border-radius: var(--radius-pill); padding: 3px 8px; vertical-align: middle; }
+.pf-sec__promise { display: flex; align-items: flex-start; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted-foreground); line-height: 1.5; }
+.pf-sec__promise svg { flex: none; color: var(--primary); margin-top: 2px; }
+
 /* ===== editable sections grid ===== */
 .pf-sections { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 22px; }
 .pf-sec { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--e1); overflow: hidden; }

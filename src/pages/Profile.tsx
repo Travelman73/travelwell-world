@@ -6,7 +6,7 @@ import { useSpecialInterests } from "@/store/useCatalog";
 import { Eyebrow } from "@/components/ui/primitives";
 import { cx } from "@/lib/utils";
 import { fetchTravelId, type TravelIdRecord } from "@/lib/travelId";
-import { deriveIdentity, tierLabel, tierPeak, type DisplayIdentity } from "@/lib/identity";
+import { deriveIdentity, tierLabel, tierPeak, activityLabel, accessLabel, type DisplayIdentity } from "@/lib/identity";
 import { signOut } from "@/lib/auth";
 
 // Demo identity — the warm showcase when nobody's signed in. Real records override
@@ -22,7 +22,10 @@ const DEMO = {
   ],
   interests: ["safari", "romance", "culinary"],
   budget: { stay: ["premier", "luxury"], fly: ["business"], eat: ["premier"], move: ["comfort"], activities: ["comfort", "premier"] } as Record<string, string[]>,
-  accessibility: "Step-free rooms preferred",
+  activity: "moderately-active",
+  access: ["no-stairs", "frequent-rest"],
+  capabilities: "Happy on gentle game-drive tracks and short nature walks; comfortable with early starts.",
+  accessibility: "Step-free rooms preferred; a rest in the afternoon.",
   dietary: "Pescatarian (Jhumur) · No shellfish",
   vision: "An unhurried anniversary safari — golden-hour game drives, candlelit dinners under the stars, and a few slow mornings with coffee and a view.",
 };
@@ -85,11 +88,12 @@ function IdentityCard({ id }: { id: DisplayIdentity }) {
               return <span className="idp-chip" style={{ background: "var(--surface-alt)", border: "1px solid var(--border)" }} key={w.id}><Icon name={w.icon} small /> {sel.map((k) => tierLabel(w.id, k)).join(" · ")}</span>;
             })}
           </div>
-          <h3 style={{ marginTop: 20 }}>How you move & care</h3>
+          <h3 style={{ marginTop: 20 }}>How you move</h3>
           <div className="idp-chips">
-            {id.accessibility && <span className="idp-chip" style={{ background: "var(--surface-alt)", border: "1px solid var(--border)" }}><Icon name="check" small /> {id.accessibility}</span>}
+            {activityLabel(id.activity) && <span className="idp-chip" style={{ background: "var(--surface-alt)", border: "1px solid var(--border)" }}><Icon name="compass" small /> {activityLabel(id.activity)}</span>}
+            {id.access.map((a) => <span className="idp-chip" style={{ background: "var(--surface-alt)", border: "1px solid var(--border)" }} key={a}><Icon name="check" small /> {accessLabel(a)}</span>)}
             {id.dietary && <span className="idp-chip" style={{ background: "var(--surface-alt)", border: "1px solid var(--border)" }}><Icon name="utensils" small /> {id.dietary}</span>}
-            {!id.accessibility && !id.dietary && <span className="idp-member__meta">Fully mobile · no notes</span>}
+            {!id.activity && !id.access.length && !id.dietary && <span className="idp-member__meta">Fully mobile · no notes</span>}
           </div>
         </div>
       </div>
@@ -201,9 +205,13 @@ export default function Profile() {
           </div>
         </Sec>
 
-        <Sec k="care" icon="shield" title="Dietary & accessibility">
+        <Sec k="care" icon="shield" title={<>Safer-Informed <span className="pf-sec__badge">Both sides</span></>}>
+          <div className="pf-row"><span className="pf-row__k">Pace</span><span className="pf-row__v">{activityLabel(id.activity) || "Not set"}</span></div>
+          <div className="pf-row"><span className="pf-row__k">Access</span><span className="pf-row__v">{id.access.map(accessLabel).join(" · ") || "Fully mobile"}</span></div>
+          <div className="pf-row"><span className="pf-row__k">Fully up for</span><span className="pf-row__v">{id.capabilities || "—"}</span></div>
+          <div className="pf-row"><span className="pf-row__k">Good to know</span><span className="pf-row__v">{id.accessibility || "Nothing noted"}</span></div>
           <div className="pf-row"><span className="pf-row__k">Dietary</span><span className="pf-row__v">{id.dietary || "None noted"}</span></div>
-          <div className="pf-row"><span className="pf-row__k">Accessibility</span><span className="pf-row__v">{id.accessibility || "Fully mobile"}</span></div>
+          <p className="pf-sec__promise"><Icon name="heart" small /> We use every answer to build the trip <b>around</b> you — never to limit you.</p>
         </Sec>
       </div>
 
