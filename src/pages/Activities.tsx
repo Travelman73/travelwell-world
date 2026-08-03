@@ -25,10 +25,10 @@ export default function Activities() {
 
   return (
     <>
-      <JourneyBar current={3} crumbs={[{ label: "Home", to: "/" }, { label: "Interests", to: "/special-interests" }, { label: "Regions", to: "/regions" }, { label: "Activities" }]} />
+      <JourneyBar current={2} crumbs={[{ label: "Home", to: "/" }, { label: "Interests", to: "/special-interests" }, { label: "Regions", to: "/regions" }, { label: "Activities" }]} />
 
       <div className="container jn-intro">
-        <Eyebrow>The Dream Journey · Step 3 of 5</Eyebrow>
+        <Eyebrow>The Dream Journey · Fine-tune (optional)</Eyebrow>
         <h1>What excites you most?</h1>
         <p className="lead">Pick the moments you're dreaming of. Each one quietly pre-fills the right Well with matched providers — so the next step is already half-done.</p>
         {noInterests && (

@@ -11,10 +11,12 @@ import { useStore } from "@/store/useStore";
 import { cx } from "@/lib/utils";
 import { useT } from "@/lib/i18n";
 
+// The four clean taps home → booked (David, Jul 2026): Special Interests →
+// Regions → the Wells → Book It. Activities stays a real page but an OPTIONAL
+// off-spine refinement, not a numbered step, so a first-timer sees four, not five.
 const STEPS = [
   { label: "Interest", key: "step.interest", to: "/special-interests" },
   { label: "Region", key: "step.region", to: "/regions" },
-  { label: "Activities", key: "step.activities", to: "/activities" },
   { label: "Wells", key: "step.wells", to: "/wells-surface" },
   { label: "Book It", key: "step.bookit", to: "/itinerary" },
 ];
@@ -31,11 +33,10 @@ const CRUMB_KEY: Record<string, string> = {
 
 /** Which steps have enough data to count as "done" (drives the checkmarks). */
 function useStepDone(): boolean[] {
-  const { journeySIs, region, journeyActs } = useStore();
+  const { journeySIs, region } = useStore();
   return [
     journeySIs.length > 0,
     Boolean(region),
-    journeyActs.length > 0,
     false, // Wells & Book It are the build/book phase — not auto-checked
     false,
   ];

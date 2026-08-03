@@ -41,7 +41,7 @@ export const MESSAGES: Record<string, Dict> = {
   },
   "hero.cta1": { en: "Design Your Dream Journey", es: "Diseña el viaje de tus sueños", ar: "صمِّم رحلة أحلامك", zh: "设计你的梦想旅程", fr: "Concevez le voyage de vos rêves" },
   "hero.cta2": { en: "Not sure? Speak with Atlas", es: "¿No estás seguro? Habla con Atlas", ar: "لست متأكّدًا؟ تحدّث مع Atlas", zh: "还不确定？与 Atlas 对话", fr: "Pas sûr ? Parlez avec Atlas" },
-  "hero.taps1": { en: "4–5 taps from here to a booked trip", es: "De aquí a un viaje reservado en 4–5 toques", ar: "من هنا إلى رحلة محجوزة في 4–5 نقرات", zh: "从这里到预订成行，只需 4–5 步", fr: "4–5 étapes d'ici à un voyage réservé" },
+  "hero.taps1": { en: "4 taps from here to a booked trip", es: "De aquí a un viaje reservado en 4 toques", ar: "من هنا إلى رحلة محجوزة في 4 نقرات", zh: "从这里到预订成行，只需 4 步", fr: "4 étapes d'ici à un voyage réservé" },
   "hero.taps2": { en: "No account needed to start", es: "No necesitas cuenta para empezar", ar: "لا حاجة إلى حساب للبدء", zh: "无需账户即可开始", fr: "Aucun compte requis pour commencer" },
 
   // ── Home · "What is TravelWell" ─────────────────────────────────────────
@@ -56,7 +56,7 @@ export const MESSAGES: Record<string, Dict> = {
     fr: "La plupart des sites vous vendent une réservation et vous laissent le reste. TravelWell part de ce qui vous inspire, puis assemble chaque élément — vols, hébergements, restauration, transport, activités et plus — en un voyage magnifiquement organisé que vous contrôlez vraiment.",
   },
   "what.cta":     { en: "Start designing — it's free", es: "Empieza a diseñar — es gratis", ar: "ابدأ التصميم — مجّانًا", zh: "开始设计——免费", fr: "Commencez à concevoir — c'est gratuit" },
-  "what.ctaNote": { en: "4–5 taps to a booked trip · no account needed to start", es: "4–5 toques hasta un viaje reservado · sin cuenta para empezar", ar: "4–5 نقرات إلى رحلة محجوزة · لا حاجة إلى حساب للبدء", zh: "4–5 步即可预订成行 · 无需账户即可开始", fr: "4–5 étapes vers un voyage réservé · aucun compte requis" },
+  "what.ctaNote": { en: "4 taps to a booked trip · no account needed to start", es: "4 toques hasta un viaje reservado · sin cuenta para empezar", ar: "4 نقرات إلى رحلة محجوزة · لا حاجة إلى حساب للبدء", zh: "4 步即可预订成行 · 无需账户即可开始", fr: "4 étapes vers un voyage réservé · aucun compte requis" },
 
   // ── Home · How-it-works steps ───────────────────────────────────────────
   "step1.title": { en: "Tell us what moves you", es: "Cuéntanos qué te mueve", ar: "أخبِرنا بما يحرّكك", zh: "告诉我们什么打动你", fr: "Dites-nous ce qui vous inspire" },
@@ -143,7 +143,7 @@ export const MESSAGES: Record<string, Dict> = {
   "foot.copy":      { en: "© 2026 TravelWell.World — every link disclosed, every fact real.", es: "© 2026 TravelWell.World — cada enlace declarado, cada dato real.", ar: "© 2026 TravelWell.World — كل رابط مُفصَح عنه، وكل معلومة حقيقية.", zh: "© 2026 TravelWell.World — 每个链接都已披露，每个事实都真实。", fr: "© 2026 TravelWell.World — chaque lien divulgué, chaque fait réel." },
 
   // ── Regions page ────────────────────────────────────────────────────────
-  "reg.eyebrow": { en: "The Dream Journey · Step 2 of 5", es: "El Viaje Soñado · Paso 2 de 5", ar: "رحلة الأحلام · الخطوة 2 من 5", zh: "梦想旅程 · 第 2 步 / 共 5 步", fr: "Le Voyage de Rêve · Étape 2 sur 5" },
+  "reg.eyebrow": { en: "The Dream Journey · Step 2 of 4", es: "El Viaje Soñado · Paso 2 de 4", ar: "رحلة الأحلام · الخطوة 2 من 4", zh: "梦想旅程 · 第 2 步 / 共 4 步", fr: "Le Voyage de Rêve · Étape 2 sur 4" },
   "reg.h1": { en: "Now — where in the world?", es: "Ahora — ¿dónde en el mundo?", ar: "الآن — إلى أين في العالم؟", zh: "现在——去世界的哪里？", fr: "Maintenant — où dans le monde ?" },
   "reg.lead": { en: "Thirteen regions, each a different promise. We've ordered them by how well they fit the way you love to travel.", es: "Trece regiones, cada una una promesa distinta. Las hemos ordenado según lo bien que encajan con tu forma de viajar.", ar: "ثلاث عشرة منطقة، كلٌّ وعدٌ مختلف. رتّبناها بحسب مدى ملاءمتها لطريقتك في السفر.", zh: "十三个地区，各有不同的允诺。我们按它们与你旅行方式的契合度排序。", fr: "Treize régions, chacune une promesse différente. Nous les avons classées selon leur adéquation à votre façon de voyager." },
   "reg.sortMatch": { en: "Best for your interests", es: "Mejor para tus intereses", ar: "الأنسب لاهتماماتك", zh: "最契合你的兴趣", fr: "Idéal pour vos intérêts" },
@@ -157,7 +157,7 @@ export const MESSAGES: Record<string, Dict> = {
   "reg.subChip": { en: "Sub-regions", es: "Subregiones", ar: "مناطق فرعية", zh: "子地区", fr: "Sous-régions" },
 
   // ── Special Interests page ──────────────────────────────────────────────
-  "sip.eyebrow": { en: "The Dream Journey · Step 1 of 5", es: "El Viaje Soñado · Paso 1 de 5", ar: "رحلة الأحلام · الخطوة 1 من 5", zh: "梦想旅程 · 第 1 步 / 共 5 步", fr: "Le Voyage de Rêve · Étape 1 sur 5" },
+  "sip.eyebrow": { en: "The Dream Journey · Step 1 of 4", es: "El Viaje Soñado · Paso 1 de 4", ar: "رحلة الأحلام · الخطوة 1 من 4", zh: "梦想旅程 · 第 1 步 / 共 4 步", fr: "Le Voyage de Rêve · Étape 1 sur 4" },
   "sip.h1": { en: "How do you love to travel?", es: "¿Cómo te gusta viajar?", ar: "كيف تحب أن تسافر؟", zh: "你喜欢怎样旅行？", fr: "Comment aimez-vous voyager ?" },
   "sip.now": { en: "Ready now", es: "Disponible ahora", ar: "متاح الآن", zh: "现已就绪", fr: "Prêt maintenant" },
   "sip.all": { en: "All", es: "Todos", ar: "الكل", zh: "全部", fr: "Tous" },

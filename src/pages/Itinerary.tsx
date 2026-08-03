@@ -70,7 +70,7 @@ export default function Itinerary() {
 
   return (
     <>
-      <JourneyBar current={5} crumbs={[{ label: "Home", to: "/" }, { label: "Wells", to: "/wells-surface" }, { label: "Book It" }]} />
+      <JourneyBar current={4} crumbs={[{ label: "Home", to: "/" }, { label: "Wells", to: "/wells-surface" }, { label: "Book It" }]} />
       <div className="it-head">
         <div className="it-head__inner">
           <div className="it-head__top">

@@ -95,7 +95,7 @@ export default function WellsSurface() {
 
   return (
     <>
-      <JourneyBar current={4} crumbs={[{ label: "Home", to: "/" }, { label: "Interests", to: "/special-interests" }, { label: "Regions", to: "/regions" }, { label: "Activities", to: "/activities" }, { label: "The Wells" }]} />
+      <JourneyBar current={3} crumbs={[{ label: "Home", to: "/" }, { label: "Interests", to: "/special-interests" }, { label: "Regions", to: "/regions" }, { label: "The Wells" }]} />
 
       {/* always-visible Wells bar */}
       <div className="wb">
@@ -123,7 +123,7 @@ export default function WellsSurface() {
       </div>
 
       <div className="container jn-intro" style={{ paddingBottom: 8 }}>
-        <Eyebrow>The Dream Journey · Step 4 of 5</Eyebrow>
+        <Eyebrow>The Dream Journey · Step 3 of 4</Eyebrow>
         <h1>Build your trip, Well by Well.</h1>
         <p className="lead">Each Well covers one need. We've scoped the options to your region and pre-filled them from your activities. Add what you love — you'll book in the next step.</p>
       </div>

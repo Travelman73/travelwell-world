@@ -166,13 +166,14 @@ export default function RegionDetail() {
       <div className="rd-continue">
         <div className="rd-continue__card">
           <div style={{ flex: 1, minWidth: 240 }}>
-            <Eyebrow>Step 2 of 5 complete</Eyebrow>
-            <h3 style={{ marginTop: 6 }}>{R.name} it is. What excites you here?</h3>
-            <p>Next, pick the activities you're dreaming of — we'll pre-fill your Wells with matched providers.</p>
+            <Eyebrow>Step 2 of 4 complete</Eyebrow>
+            <h3 style={{ marginTop: 6 }}>{R.name} it is. Ready to build your trip?</h3>
+            <p>Next, open the Wells — Stay, Eat, Move and more — and I'll fill them with matched providers. Want to fine-tune first? Pick your activities.</p>
           </div>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <Link className="btn btn-secondary" to="/regions">← Change region</Link>
-            <Link className="btn btn-primary" to="/activities" onClick={() => setRegion(R.code)} style={{ height: 52, padding: "0 26px" }}>Choose activities →</Link>
+            <Link className="btn btn-secondary" to="/activities" onClick={() => setRegion(R.code)}>Pick activities</Link>
+            <Link className="btn btn-primary" to="/wells-surface" onClick={() => setRegion(R.code)} style={{ height: 52, padding: "0 26px" }}>Build your trip →</Link>
           </div>
         </div>
       </div>
