@@ -117,6 +117,7 @@ interface State {
   collapseAtlas: () => void;
   hideAtlas: () => void;
   resetAtlas: () => void;
+  resetJourney: () => void;
   showToast: (msg: string) => void;
   clearToast: () => void;
   showWhisper: (w: Whisper) => void;
@@ -315,6 +316,17 @@ export const useStore = create<State>((set, get) => ({
     save("atlasMessages", []);
     save("atlasPrimed", false);
     set({ atlasMessages: [], atlasPrimed: false });
+  },
+  // Blank slate: clear the pre-loaded (Safari) journey so Atlas starts fresh and
+  // follows the traveler wherever they want — the "build your own" path that lives
+  // beside the scripted demo (David, Jul 2026).
+  resetJourney: () => {
+    save("journeySIs", []);
+    save("journeyActs", []);
+    save("region", null);
+    save("trip", []);
+    set({ journeySIs: [], journeyActs: [], region: null, trip: [] });
+    persistBlocks(get);
   },
   showToast: (msg) => {
     set({ toast: msg });

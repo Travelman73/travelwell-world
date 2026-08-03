@@ -252,7 +252,11 @@ export function Concierge() {
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 18 }}>
                 <button className="btn btn-primary" onClick={() => begin("guided")}>Walk me through it</button>
-                <button className="btn btn-secondary" onClick={() => begin("conversation")}>I'll just type</button>
+                {/* The "build your own" door: clears the pre-loaded Safari journey so
+                    Atlas follows the traveler anywhere — beside the scripted demo below. */}
+                <button className="btn btn-secondary" onClick={() => { useStore.getState().resetJourney(); begin("conversation"); showToast("Fresh start — tell me anywhere you'd like to go."); }}>
+                  Build your own trip — go anywhere
+                </button>
                 <button className="btn btn-secondary" style={{ borderColor: "var(--gold-deep)", color: "var(--gold-deep)" }} onClick={runHero}>
                   <Icon name="sparkles" small /> See how Atlas guides you
                 </button>
