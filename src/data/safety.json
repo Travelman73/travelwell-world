@@ -28,6 +28,20 @@
     "source": "US State Dept L1, May 2025",
     "verified": "2026-06"
   },
+  "AT": {
+    "country": "Austria",
+    "lvl": 1,
+    "label": "Exercise normal precautions",
+    "summary": "Exercise normal precautions. Austria is very safe; the real alpine risk is weather and avalanche, managed by resort patrol.",
+    "considerations": [
+      "Ski in-bounds and heed piste closures and avalanche warnings; hire a certified guide off the marked runs.",
+      "Standard urban petty theft and pickpocketing in tourist areas (Vienna, Salzburg, Innsbruck).",
+      "Excellent emergency services; the European emergency number is 112."
+    ],
+    "medical": "No special vaccinations; EU-standard care; carry travel plus winter-sports/medevac cover for off-piste and high-alpine activity.",
+    "source": "US State Dept L1, 2025",
+    "verified": "2026-07"
+  },
   "BS": {
     "country": "Bahamas",
     "lvl": 2,
@@ -109,6 +123,21 @@
     ],
     "source": "US State Dept L2, May 2025",
     "verified": "2026-06"
+  },
+  "EG": {
+    "country": "Egypt",
+    "lvl": 2,
+    "label": "Exercise increased caution",
+    "summary": "Exercise increased caution due to terrorism; the Nile corridor — Cairo, Luxor and Aswan — is Level 2, but the Sinai Peninsula and the Western Desert / Libya border are off-limits.",
+    "considerations": [
+      "Level 4 \"Do Not Travel\": the Sinai Peninsula (except Sharm el-Sheikh by air), the Western Desert, and the border areas with Libya and Sudan.",
+      "Terrorist groups can attack with little warning — tourist sites, transport hubs, and places of worship.",
+      "Cairo, Giza and the Luxor–Aswan Nile-cruise corridor sit in the mainstream Level 2 zone.",
+      "Petty crime and harassment occur; use licensed guides and reputable cruise operators."
+    ],
+    "medical": "Hepatitis A/typhoid vaccination advised; drink only bottled or treated water; carry rehydration salts for traveler's diarrhea; sun and heat precautions on the Nile; carry travel/medevac insurance.",
+    "source": "US State Dept L2 (terrorism), 2025",
+    "verified": "2026-07"
   },
   "ES": {
     "country": "Spain",

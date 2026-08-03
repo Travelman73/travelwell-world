@@ -74,8 +74,8 @@ export const DEFAULT_SAFETY: SafetyInfo = {
  * emergency-numbers data both key by ISO, so we map here.)
  */
 export const COUNTRY_ISO: Record<string, string> = {
-  Australia: "AU", Bahamas: "BS", Cambodia: "KH", Canada: "CA", "Chile / Argentina": "CL",
-  Colombia: "CO", France: "FR", "French Polynesia": "PF", Germany: "DE", Greece: "GR",
+  Australia: "AU", Austria: "AT", Bahamas: "BS", Cambodia: "KH", Canada: "CA", "Chile / Argentina": "CL",
+  Colombia: "CO", Egypt: "EG", France: "FR", "French Polynesia": "PF", Germany: "DE", Greece: "GR",
   Iceland: "IS", Indonesia: "ID", Italy: "IT", Japan: "JP", Jordan: "JO", Kenya: "KE",
   Namibia: "NA", Netherlands: "NL", "New Zealand": "NZ", Norway: "NO", Peru: "PE",
   Portugal: "PT", Rwanda: "RW", "Saudi Arabia": "SA", "South Africa": "ZA", "South Korea": "KR",
