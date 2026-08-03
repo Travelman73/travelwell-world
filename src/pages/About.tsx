@@ -33,14 +33,14 @@ const STEPS = [
   {
     ic: "check", title: "Book it, all in one place",
     desc: "Everything you pick lands in one itinerary, day by day. Book with trusted partners — and if we earn a commission, we say so right there. Atlas is beside you the whole way.",
-    chips: ["Trusted partners", "Honest pricing", "One itinerary", "Help from Atlas"],
+    chips: ["Trusted partners", "Clear pricing", "One itinerary", "Help from Atlas"],
     to: "/itinerary", link: "See an itinerary",
   },
 ];
 
 // Six promises, kept on every page — the traveler-facing voice of the unbreakable laws.
 const PROMISES = [
-  { ic: "check", t: "We're honest about what's ready", s: "If something is still coming soon, we say so — clearly, right on the page." },
+  { ic: "check", t: "We're clear about what's ready", s: "If something is still coming soon, we say so — plainly, right on the page." },
   { ic: "info", t: "We tell you how we earn", s: "If a booking earns us a commission, you'll see a note right beside it. It never costs you extra." },
   { ic: "bag2", t: "Everything lands in one trip", s: "Whatever you add — a flight, a dinner, a safari — it's saved to one itinerary, automatically." },
   { ic: "shield", t: "Your safety travels with you", s: "Every destination has a Safety Card — nearest hospital, your embassy, the local emergency number." },
@@ -96,8 +96,8 @@ export default function About() {
           <div className="ab-trust__body">
             <div className="ab-trust__eyebrow">Six promises, kept on every page</div>
             <div className="ab-trust__title">Travel planning you can <span className="em">trust</span>.</div>
-            <p className="ab-trust__desc">Honesty about what's real. Openness about how we earn. Your safety, wherever you go. Not fine print — the way every page works.</p>
-            <div className="ab-trust__pillars">Honest · Open · Safe · Yours</div>
+            <p className="ab-trust__desc">Clear about what's real. Open about how we earn. Your safety, wherever you go. Not fine print — the way every page works.</p>
+            <div className="ab-trust__pillars">Clear · Open · Safe · Yours</div>
           </div>
         </div>
         <div className="ab-promises">
