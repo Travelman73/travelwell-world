@@ -450,7 +450,7 @@ function BuildScreen({ name, age, party, themes, length, budget, dream, activity
               </div>
               {m.lead && (
                 <div className="id-attr" style={{ gridColumn: "1/-1" }}><div className="id-attr__k">Budget blend</div>
-                  <div className="id-card__chips">{BUDGET_WELLS.map((w) => <span className="pill pill-preview" key={w.id}>{w.name.split("-")[0]}: {(budget[w.id] || []).map((v) => tierLabel(w.id, v)).join(", ") || "elevated"}</span>)}</div>
+                  <div className="id-card__chips">{BUDGET_WELLS.map((w) => <span className="pill pill-preview" key={w.id}>{w.name}: {(budget[w.id] || []).map((v) => tierLabel(w.id, v)).join(", ") || "elevated"}</span>)}</div>
                 </div>
               )}
               {m.lead && dream && (

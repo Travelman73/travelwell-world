@@ -68,6 +68,27 @@ const BASE_SIS: SpecialInterest[] = [
 // Canonical SIs + David's additive drop (folded in at module load).
 export const SIS: SpecialInterest[] = [...BASE_SIS, ...(siExtra.special_interests as SpecialInterest[])];
 
+/**
+ * Brand slogan subjects — David's tagline system: "If It's [subject]… TravelWell."
+ * The subject is a tight noun (not the poetic `sig`), ending in the one-word brand
+ * mark. English-only, David-locked (like the Well names) — a coined brand line, so
+ * it doesn't localize. Falls back to the SI name where no shorter subject is set.
+ * romance → "Love" is locked (the Romance front-door line). See CLAUDE.md.
+ */
+export const SI_TAGLINE_SUBJECT: Record<string, string> = {
+  tropical: "Tropical", romance: "Love", safari: "Safari", liveaboard: "Liveaboards",
+  river: "River Cruising", expedition: "Expedition", ski: "Winter", ultra: "Ultra-Luxury",
+  adventure: "Adventure", diveglobal: "Diving", ocean: "Watersports", wellness: "Wellness",
+  wildlife: "Wildlife", culinary: "Culinary", culture: "Culture", family: "Family",
+  hiking: "Hiking", olympic: "the Olympics", entertainment: "Live Entertainment",
+};
+/** The tagline subject for an SI (map override, else its name). */
+export const taglineSubject = (si: { id: string; name: string }): string =>
+  SI_TAGLINE_SUBJECT[si.id] ?? si.name;
+/** Master brand slogans (non-SI). */
+export const MASTER_TAGLINE_SUBJECT = "Travel";
+export const SAFER_TAGLINE_SUBJECT = "Safer Informed Travel";
+
 export interface SiGroup { id: string; name: string; blurb: string; }
 export const SI_GROUPS: SiGroup[] = [
   { id: "premium", name: "Premium & Signature", blurb: "Our flagship ways to travel — live now." },

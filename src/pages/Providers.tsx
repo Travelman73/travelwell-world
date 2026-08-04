@@ -116,7 +116,7 @@ export default function Providers() {
               const n = (providers[wid] || []).length;
               return (
                 <button key={wid} className="pr-wellchip" aria-pressed={wid === activeWell} onClick={() => selectWell(wid)}>
-                  <Icon name={ww.icon} small /> {ww.name.replace("-Well", "")} <span className="pr-wellchip__n">{n}</span>
+                  <Icon name={ww.icon} small /> {ww.name} <span className="pr-wellchip__n">{n}</span>
                 </button>
               );
             })}
@@ -181,7 +181,7 @@ export default function Providers() {
           <div className="pr-more">
             {pool.length > shown && (
               <button className="btn btn-secondary" onClick={() => setShown((s) => s + PAGE)}>
-                Show {Math.min(PAGE, pool.length - shown)} more in {w.name.replace("-Well", "")}
+                Show {Math.min(PAGE, pool.length - shown)} more in {w.name}
               </button>
             )}
           </div>

@@ -969,6 +969,18 @@
   [data-page="go"] .go[data-state="done"] .go__partner { background: var(--primary); }
   [data-page="go"] .go[data-state="done"] .go__partner svg { color: #fff; }
 
+/* ===== Brand slogan — "If It's [X]… TravelWell" (David's tagline system) ===== */
+  .tagline { font-family: var(--font-display); font-size: 20px; font-style: italic; color: var(--muted-foreground); line-height: 1.3; }
+  .tagline__mark { font-style: normal; font-weight: 600; color: var(--foreground); white-space: nowrap; }
+  /* Brand "Well": pine on light grounds (matches the logo + the "Travel Well." pun),
+     gold on dark grounds (see .sd-hero__tagline). Both clear WCAG AA. */
+  .tagline__well { color: var(--primary); }
+  /* placement variants */
+  .jn-tagline { margin-top: 16px; font-size: clamp(20px, 2.6vw, 26px); }
+  .sd-hero__tagline { margin-top: 18px; font-size: clamp(20px, 2.4vw, 26px); color: rgba(255,255,255,.86); }
+  .sd-hero__tagline .tagline__mark { color: #fff; }
+  .sd-hero__tagline .tagline__well { color: var(--accent); }
+
 /* ===== about.html ===== */
   [data-page="about"] .ab-layers { display:flex; flex-direction:column; gap:12px; margin-top:8px; }
   [data-page="about"] .ab-layer { border:1px solid var(--border); border-radius:var(--radius); background:var(--card); box-shadow:var(--e1); padding:22px 24px; display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap; }

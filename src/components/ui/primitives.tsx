@@ -93,3 +93,16 @@ export function Ftc({ children, className, style }: { children?: ReactNode; clas
 export function Card({ children, className, isPreview }: { children: ReactNode; className?: string; isPreview?: boolean }) {
   return <div className={cx("card", isPreview && "is-preview", className)}>{children}</div>;
 }
+
+/**
+ * Brand slogan (David-locked system): "If It's {subject}… TravelWell."
+ * Ends in the one-word brand mark ("Well" accented, mirroring the logo). Distinct
+ * from the poetic "…Travel Well." pun sign-off. English-only — a coined brand line.
+ */
+export function Tagline({ subject, className }: { subject: string; className?: string }) {
+  return (
+    <p className={cx("tagline", className)}>
+      If It&rsquo;s {subject}&hellip; <span className="tagline__mark">Travel<span className="tagline__well">Well</span></span>
+    </p>
+  );
+}

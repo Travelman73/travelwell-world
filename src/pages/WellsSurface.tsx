@@ -113,7 +113,7 @@ export default function WellsSurface() {
                   onClick={() => browseWell(w.id)}
                 >
                   <span className="wb-chip__ic"><Icon name={w.icon} small /></span>
-                  {w.name.replace("-Well", "")}
+                  {w.name}
                   {soon ? <span className="wb-chip__soon">Soon</span> : n > 0 ? <span className="wb-chip__count">{n}</span> : null}
                 </button>
               );

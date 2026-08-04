@@ -7,9 +7,10 @@ Edge Functions), deployed on Vercel from `main`. It is **not** the research
 library (`Travelman73/tww-research-library`) — that repo has its own rules.
 
 ## Voice & naming
-- **"TravelWell" is one word.** Never "Travel Well" as the brand (that phrase is only the tagline "…Travel Well.").
-- Prefer **accurate / plainly / straight** over "honest / honestly / upfront."
-- Tagline: *"If it's Travel… TravelWell."*
+- **"TravelWell" is one word.** Never "Travel Well" as the brand.
+- Prefer **accurate / plainly / straight** over "honest / honestly / upfront." Keep **"honest/honestly" out of Atlas's vocabulary** (David 2026-07-29).
+- **The brand slogan system (David-locked, 2026-08 — "built across the board"):** the formula is **"If It's [X]… TravelWell."**, ending in the **one-word brand mark** ("Well" accented: pine on light grounds, gold on dark). `[X]` = **Travel** (master), **any Signature Interest** (its short subject — see `SI_TAGLINE_SUBJECT` in `taxonomy.ts`; `romance → "Love"`, `safari → "Safari"`, …), or **Safer Informed Travel**. Render it via the `Tagline` primitive (`src/components/ui/primitives.tsx`); it's on every SI page + the Special-Interests master. **Distinct from the poetic pun sign-off "…Travel Well."** (two words, imperative — still used as an occasional farewell, e.g. the footer). The slogan is a coined brand line → **English-only, never localized** (like the Well names).
+- **Well names always render in full and hyphenated — `Stay-Well`, `Eat-Well`, … everywhere (David 2026-08).** Never strip the `-Well` suffix or show the bare root ("Stay") in UI copy.
 
 ## Canonical vocabularies (match these character-for-character)
 - **Budget tiers (`price`):** `essential` · `comfort` · `premier` · `luxury` · `ultra`.
