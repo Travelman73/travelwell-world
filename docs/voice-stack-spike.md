@@ -140,3 +140,27 @@ Estimate, not fake precision. Firms up after a ~2–3 day agent-worker spike on 
 is the single risk that could stretch the testing half. The agent worker is the long pole and the
 biggest unknown — give me the LiveKit account and ~2–3 days on it and I convert this range into a
 committed date.
+
+## Spike PROVEN — Atlas hears & talks back live (David, 2026-08)
+The long pole is no longer estimated — it runs. The real-time pipeline assembles
+and speaks against live infrastructure, and the brain stayed **ours + swappable**
+(Claude in our edge function, never inside a vendor's agent format). This is the
+de-risk the pitch stands on. Alongside Duffel (real flights on our own surface),
+both critical-path proofs are running — for ~$0.
+
+### The mouth A/B — Cartesia ↔ ElevenLabs, decide by ear (David-locked)
+Both are behind the same `Mouth` interface (`src/lib/voice/cartesia.ts`,
+`src/lib/voice/elevenlabs.ts`), so choosing is a **one-line/env flip, no UI move**:
+set `VITE_TWW_MOUTH=cartesia|elevenlabs` (or pass `mouth` to `createVoiceSession`)
+and listen on our real lines. Rule of thumb: **Cartesia for latency** (felt in
+conversation — Atlas never reads as "I thought this was AI"), **ElevenLabs for
+warmth/fidelity**. Sana picks by ear; then we set the default. *(Both slots are
+stubs until the streaming proxy + audio playback are wired — `supported()=false`
+degrades to browser so no one is left mute; the API keys stay server-side.)*
+
+### The gate before the room (David-locked): real iPhone Safari
+Safari live-audio (mic permission, autoplay unlock, barge-in, reconnection) is the
+top risk — **test on a real iPhone, not a laptop.** Find the quirks now, not in the
+room. Once the by-ear pick + the Safari-journey UI wiring + a real-device dry run
+are done, we set the exact demo-rehearsal date. Deliverable for David: a short
+screen capture of Atlas running (the WOW-flow equivalent for voice).

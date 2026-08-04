@@ -13,14 +13,23 @@
 import type { VoiceBelt, VoiceConfig, Mouth, Ears } from "./types";
 import { browserMouth, browserEars } from "./browser";
 import { cartesiaMouth } from "./cartesia";
+import { elevenLabsMouth } from "./elevenlabs";
 import { deepgramEars } from "./deepgram";
 import { createLiveKitBelt } from "./livekit";
 
 export * from "./types";
 
+const PREMIUM_MOUTHS: Record<string, Mouth> = { cartesia: cartesiaMouth, elevenlabs: elevenLabsMouth };
+
+/** Default mouth from env (VITE_TWW_MOUTH=cartesia|elevenlabs|browser), so the
+ *  Cartesia↔ElevenLabs A/B is a one-line flip on our real lines — no code edit. */
+const ENV_MOUTH = (import.meta.env?.VITE_TWW_MOUTH as VoiceConfig["mouth"]) || undefined;
+
 function pickMouth(want: VoiceConfig["mouth"], degrade: boolean): Mouth {
-  if (want === "cartesia" && cartesiaMouth.supported()) return cartesiaMouth;
-  if (want === "cartesia" && !degrade) return cartesiaMouth; // caller opted out of fallback
+  const choice = want ?? ENV_MOUTH;
+  const premium = choice ? PREMIUM_MOUTHS[choice] : undefined;
+  if (premium && premium.supported()) return premium;
+  if (premium && !degrade) return premium; // caller opted out of fallback → hand back the (unwired) premium slot
   return browserMouth;
 }
 function pickEars(want: VoiceConfig["ears"], degrade: boolean): Ears {

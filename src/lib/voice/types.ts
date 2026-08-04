@@ -57,7 +57,7 @@ export interface VoiceBelt {
 
 export interface VoiceConfig {
   transport?: "browser" | "livekit";
-  mouth?: "browser" | "cartesia";
+  mouth?: "browser" | "cartesia" | "elevenlabs";
   ears?: "browser" | "deepgram";
   /** LiveKit room URL (wss://…) — from env, not hardcoded. */
   livekitUrl?: string;
