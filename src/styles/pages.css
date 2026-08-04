@@ -1130,6 +1130,13 @@
   [data-page="sign-in"] .si-talk__t { font-weight: 700; font-size: 17px; color: #fff; display: block; }
   [data-page="sign-in"] .si-talk__s { font-size: 13px; color: rgba(255,255,255,.85); margin-top: 4px; display: block; }
   [data-page="sign-in"] .si-talk__arrow { margin-inline-start: auto; color: rgba(255,255,255,.9); }
+  /* Lifetime-Loop check-in nudge (recognized state) */
+  [data-page="sign-in"] .si-checkin { display: flex; align-items: center; gap: 14px; width: 100%; text-align: start; font-family: var(--font-sans); cursor: pointer; margin: 4px 0 18px; padding: 16px 18px; border: 1px solid var(--border); border-inline-start: 3px solid var(--accent); border-radius: var(--radius); background: var(--surface-alt); transition: border-color .15s, box-shadow .2s, transform .15s; }
+  [data-page="sign-in"] .si-checkin:hover { box-shadow: var(--e1); transform: translateY(-1px); border-color: color-mix(in oklch, var(--accent) 50%, var(--border)); }
+  [data-page="sign-in"] .si-checkin__ic { width: 42px; height: 42px; border-radius: 50%; background: color-mix(in oklch, var(--accent) 16%, transparent); color: var(--gold-deep); display: grid; place-items: center; flex: none; }
+  [data-page="sign-in"] .si-checkin__t { font-weight: 700; font-size: 15.5px; display: block; }
+  [data-page="sign-in"] .si-checkin__s { font-size: 13px; color: var(--muted-foreground); margin-top: 3px; display: block; line-height: 1.45; }
+  [data-page="sign-in"] .si-checkin__arrow { margin-inline-start: auto; color: var(--primary); flex: none; }
   /* "anything changed" nudge */
   [data-page="sign-in"] .si-nudge { display: flex; gap: 10px; align-items: flex-start; background: var(--secondary); border-radius: var(--radius); padding: 13px 15px; margin-top: 22px; font-size: 13.5px; color: var(--secondary-foreground); line-height: 1.5; }
   [data-page="sign-in"] .si-nudge svg { flex: none; color: var(--primary); margin-top: 1px; }

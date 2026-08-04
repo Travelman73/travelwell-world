@@ -6,29 +6,8 @@ import { useSpecialInterests } from "@/store/useCatalog";
 import { Eyebrow } from "@/components/ui/primitives";
 import { cx } from "@/lib/utils";
 import { fetchTravelId, type TravelIdRecord } from "@/lib/travelId";
-import { deriveIdentity, tierLabel, tierPeak, activityLabel, accessLabel, type DisplayIdentity } from "@/lib/identity";
+import { deriveIdentity, tierLabel, tierPeak, activityLabel, accessLabel, DEMO_IDENTITY, type DisplayIdentity } from "@/lib/identity";
 import { signOut } from "@/lib/auth";
-
-// Demo identity — the warm showcase when nobody's signed in. Real records override
-// every field (see deriveIdentity). The permanent *constant*; the vision is separate.
-const DEMO = {
-  id: "TW-2A9F-K3",
-  name: "Amara",
-  cohortAge: "established",
-  since: "Jun 2026",
-  party: [
-    { name: "Amara", initial: "A", cohort: "Established Adult · 35–44", tag: "You", lead: true },
-    { name: "Jhumur", initial: "J", cohort: "Established Adult · 35–44", tag: "Partner", lead: false },
-  ],
-  interests: ["safari", "romance", "culinary"],
-  budget: { stay: ["premier", "luxury"], fly: ["business"], eat: ["premier"], move: ["comfort"], activities: ["comfort", "premier"] } as Record<string, string[]>,
-  activity: "moderately-active",
-  access: ["no-stairs", "frequent-rest"],
-  capabilities: "Happy on gentle game-drive tracks and short nature walks; comfortable with early starts.",
-  accessibility: "Step-free rooms preferred; a rest in the afternoon.",
-  dietary: "Pescatarian (Jhumur) · No shellfish",
-  vision: "An unhurried anniversary safari — golden-hour game drives, candlelit dinners under the stars, and a few slow mornings with coffee and a view.",
-};
 
 const BUDGET_WELLS = [
   { id: "stay", name: "Stay-Well", icon: "bed" }, { id: "fly", name: "Fly-Well", icon: "plane" },
@@ -116,7 +95,7 @@ export default function Profile() {
     else setRec(null);
   }, [user]);
 
-  const id = deriveIdentity(rec, DEMO);
+  const id = deriveIdentity(rec, DEMO_IDENTITY);
 
   const Sec = ({ k, icon, title, children }: { k: string; icon: string; title: ReactNode; children: ReactNode }) => {
     if (editing === k) {

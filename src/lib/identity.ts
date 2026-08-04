@@ -219,3 +219,61 @@ export function deriveIdentity(
     synced: true,
   };
 }
+
+/** The shared demo identity — the warm showcase when nobody's signed in. Real
+ *  records override every field (deriveIdentity). Used by Profile + Welcome-Back. */
+export const DEMO_IDENTITY: Omit<DisplayIdentity, "synced" | "cohort"> & { cohortAge?: string } = {
+  id: "TW-2A9F-K3",
+  name: "Amara",
+  cohortAge: "established",
+  since: "Jun 2026",
+  party: [
+    { name: "Amara", initial: "A", cohort: "Established Adult · 35–44", tag: "You", lead: true },
+    { name: "Jhumur", initial: "J", cohort: "Established Adult · 35–44", tag: "Partner", lead: false },
+  ],
+  interests: ["safari", "romance", "culinary"],
+  budget: { stay: ["premier", "luxury"], fly: ["business"], eat: ["premier"], move: ["comfort"], activities: ["comfort", "premier"] },
+  activity: "moderately-active",
+  access: ["no-stairs", "frequent-rest"],
+  capabilities: "Happy on gentle game-drive tracks and short nature walks; comfortable with early starts.",
+  accessibility: "Step-free rooms preferred; a rest in the afternoon.",
+  dietary: "Pescatarian (Jhumur) · No shellfish",
+  vision: "An unhurried anniversary safari — golden-hour game drives, candlelit dinners under the stars, and a few slow mornings with coffee and a view.",
+};
+
+/* ---- Lifetime Loop diff helpers (David: refresh, never rebuild) -----------
+ * On return, Atlas confirms the constant and nudges the deltas — a year older,
+ * energy shifted, budget moved. These compute the refreshed values to write back. */
+
+/** The next-older cohort key (a year on may cross a boundary); clamps at Senior+. */
+export function nextCohort(age: string | null | undefined): string | null {
+  const c = cohortFor(age);
+  if (!c) return age ?? null;
+  const i = AGE_COHORTS.findIndex((x) => x.key === c.key);
+  return AGE_COHORTS[Math.min(i + 1, AGE_COHORTS.length - 1)].key;
+}
+
+/** Shift activity level: dir +1 = more active (toward Very), -1 = easier (toward Leisurely). */
+export function shiftActivity(activity: string | null | undefined, dir: 1 | -1): string | null {
+  const i = ACTIVITY_LEVELS.findIndex((a) => a.v === activity);
+  if (i < 0) return activity ?? null;
+  // ACTIVITY_LEVELS runs most→least active, so "more active" moves toward index 0.
+  const j = Math.min(Math.max(i - dir, 0), ACTIVITY_LEVELS.length - 1);
+  return ACTIVITY_LEVELS[j].v;
+}
+
+/** Nudge every selected per-Well tier by one notch: dir +1 = pricier, -1 = leaner. */
+export function shiftBudget(budget: Record<string, string[]>, dir: 1 | -1): Record<string, string[]> {
+  const out: Record<string, string[]> = {};
+  for (const [well, keys] of Object.entries(budget)) {
+    const opts = budgetOptionsFor(well);
+    out[well] = keys.map((k) => {
+      const i = opts.findIndex((o) => o.v === k);
+      if (i < 0) return k;
+      return opts[Math.min(Math.max(i + dir, 0), opts.length - 1)].v;
+    });
+    // de-dupe if a shift collided two picks onto the same tier
+    out[well] = [...new Set(out[well])];
+  }
+  return out;
+}

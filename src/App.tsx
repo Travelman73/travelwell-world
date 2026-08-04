@@ -29,6 +29,7 @@ const SignUp = lazy(() => import("@/pages/SignUp"));
 const SignIn = lazy(() => import("@/pages/SignIn"));
 const VerifyEmail = lazy(() => import("@/pages/VerifyEmail"));
 const Activation = lazy(() => import("@/pages/Activation"));
+const WelcomeBack = lazy(() => import("@/pages/WelcomeBack"));
 const Profile = lazy(() => import("@/pages/Profile"));
 const Plan = lazy(() => import("@/pages/Plan"));
 const About = lazy(() => import("@/pages/About"));
@@ -117,6 +118,7 @@ export default function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/verify" element={<VerifyEmail />} />
         <Route path="/activation" element={<Activation />} />
+        <Route path="/welcome-back" element={<WelcomeBack />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/sitemap" element={<Sitemap />} />
         <Route path="/go" element={<Go />} />
