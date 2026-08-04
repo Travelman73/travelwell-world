@@ -16,6 +16,7 @@ import { cartesiaMouth } from "./cartesia";
 import { elevenLabsMouth } from "./elevenlabs";
 import { deepgramEars } from "./deepgram";
 import { createLiveKitBelt } from "./livekit";
+import { speak as webSpeak, stopSpeaking as webStop, markSpeaking } from "../voice";
 
 export * from "./types";
 
@@ -65,3 +66,36 @@ export function createVoiceSession(config: VoiceConfig = {}): VoiceBelt {
   }
   return createBrowserBelt(mouth, ears);
 }
+
+/* ── Atlas's voice, dispatched through the seam ────────────────────────────
+ * The Concierge calls these instead of a vendor. The mouth is chosen by
+ * VITE_TWW_MOUTH (browser | cartesia | elevenlabs) and ALWAYS degrades to the
+ * browser, so with the premium slots still stubbed this is byte-identical to
+ * today's behavior — the env flag just arms the swap. Both paths drive the
+ * shared "Atlas is speaking" signal (subscribeSpeaking), so the UI never changes. */
+let activeMouth: Mouth | null = null;
+
+export async function atlasSpeak(text: string, locale = "en"): Promise<void> {
+  const mouth = pickMouth(undefined, true); // env-configured, browser-degrading
+  if (mouth === browserMouth) { activeMouth = null; webSpeak(text, locale); return; } // native signal via utterance events
+  activeMouth = mouth;
+  try {
+    markSpeaking(true);
+    await mouth.speak(text, { locale, onEnd: () => markSpeaking(false) });
+  } catch {
+    activeMouth = null;           // premium mouth failed → never leave Atlas mute
+    webSpeak(text, locale);
+  } finally {
+    if (activeMouth === mouth) markSpeaking(false);
+  }
+}
+
+export function atlasStopSpeaking(): void {
+  if (activeMouth && activeMouth !== browserMouth) { try { activeMouth.stop(); } catch { /* noop */ } }
+  activeMouth = null;
+  webStop();
+  markSpeaking(false);
+}
+
+/** Which mouth Atlas will use right now — for a tiny dev/status readout. */
+export const activeMouthName = (): string => pickMouth(undefined, true).name;

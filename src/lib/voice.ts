@@ -37,6 +37,9 @@ export function subscribeSpeaking(cb: (s: boolean) => void) {
   return () => { speakingListeners.delete(cb); };
 }
 export const isSpeaking = () => speaking;
+/** Drive the shared speaking signal from a premium mouth (the seam dispatcher),
+ *  so the "Atlas is speaking" UI works whichever vendor is talking. */
+export const markSpeaking = (next: boolean) => setSpeaking(next);
 
 /** Speak text aloud in the traveler's language. Cancels any in-flight speech. */
 export function speak(text: string, locale = "en") {

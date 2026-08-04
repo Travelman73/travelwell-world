@@ -4,7 +4,8 @@ import { Icon } from "@/lib/icons";
 import { useStore, type IoMode } from "@/store/useStore";
 import { useAtlas } from "@/lib/useAtlas";
 import { useSpeechInput } from "@/lib/useSpeech";
-import { speak, stopSpeaking, subscribeSpeaking } from "@/lib/voice";
+import { subscribeSpeaking } from "@/lib/voice";
+import { atlasSpeak, atlasStopSpeaking } from "@/lib/voice/index";
 import { renderMarkdown, stripMarkdown } from "@/lib/markdown";
 import { useSpecialInterests } from "@/store/useCatalog";
 import { useT } from "@/lib/i18n";
@@ -62,7 +63,7 @@ export function Concierge() {
   const onMic = () => {
     if (listening) { stopVoice(); return; }
     if (!voiceSupported) { showToast("Voice input isn't supported in this browser yet — please type for now."); return; }
-    stopSpeaking(); // don't let Atlas talk over the traveler
+    atlasStopSpeaking(); // don't let Atlas talk over the traveler
     startVoice();
   };
 
@@ -71,8 +72,9 @@ export function Concierge() {
   }, [messages, busy, isOpen]);
 
   // The mirror: when the traveler chose to HEAR Atlas, speak each new reply
-  // aloud (in their language) while the same text stays on screen. Browser TTS
-  // today, swappable behind src/lib/voice.ts.
+  // aloud (in their language) while the same text stays on screen. Routed through
+  // the voice seam (atlasSpeak) — browser TTS by default, Cartesia/ElevenLabs via
+  // VITE_TWW_MOUTH once wired; the UI never learns which mouth is talking.
   const lastSpokenRef = useRef(-1);
   useEffect(() => {
     if (io === "read" || !isOpen) return;
@@ -81,11 +83,11 @@ export function Concierge() {
     const m = messages[i];
     if (m.role === "assistant" && i !== lastSpokenRef.current) {
       lastSpokenRef.current = i;
-      speak(stripMarkdown(m.content), useStore.getState().locale);
+      atlasSpeak(stripMarkdown(m.content), useStore.getState().locale);
     }
   }, [messages, io, isOpen]);
   // Stop the voice when the panel closes.
-  useEffect(() => { if (!isOpen) stopSpeaking(); }, [isOpen]);
+  useEffect(() => { if (!isOpen) atlasStopSpeaking(); }, [isOpen]);
 
   // Speaking signal: track when Atlas's voice is actually playing so the message
   // he's reading can show a tiny animated "speaking" mark (the mirror of the
@@ -98,7 +100,7 @@ export function Concierge() {
     // Don't send an empty message, while Atlas is replying, or mid-dictation
     // (the transcript isn't final until you stop — stop, then send).
     if (!trimmed || busy || listening) return;
-    stopSpeaking();
+    atlasStopSpeaking();
     setInput("");
     // In the vision loop's "ask" stage, capture the dream and write it back
     // verbatim (Atlas heard every word) instead of routing to the model.
@@ -281,7 +283,7 @@ export function Concierge() {
                         className="tw-speaking"
                         aria-label="Atlas is speaking — tap to stop"
                         title="Speaking… tap to stop"
-                        onClick={() => stopSpeaking()}
+                        onClick={() => atlasStopSpeaking()}
                       >
                         <i /><i /><i />
                       </button>
