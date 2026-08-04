@@ -5,6 +5,19 @@ the catalog generator. Author into `src/data/places.ts` → regenerate `0005` �
 run. Do **not** write rows straight to the DB (the generated `0005` has a
 self-cleaning `delete … where id not in (source)` that would wipe out-of-pipeline rows).
 
+## The border gate — run it BEFORE ingest (`npm run validate:ingest`)
+`scripts/validate-destinations.ts` is the MVP-side validator: it checks incoming
+dossiers against the **live** canon (region codes, SI/Well/tier spellings, the
+`<city>-<country>` id rule, sub_regions, the jewel/FAQ v1 shape, `reconciles_live_mvp`
+resolution) **and resolves every cross-reference** — a "see also" pointing at a
+place that doesn't exist is the exact bug that would ship then translate ×9. It
+exits non-zero on any error, so it gates a PR.
+- **Incoming library JSON:** `npm run validate:ingest -- path/to/dossiers` (a `.json`
+  array/region-map, or a directory of `.json`).
+- **Self-check (regression guard on our own bundle):** `npm run validate:ingest`.
+The 38 legacy live slugs (`bali`, `kyoto`, `machu`…) are grandfathered as the
+reconcile anchors; net-new ids must be `<city>-<country>`.
+
 ---
 
 ## Where it lands
