@@ -154,7 +154,7 @@ export const REGIONS: Region[] = [
 ];
 
 export const SUBREGIONS: Record<string, string[]> = {
-  "12A": ["Pacific Coast", "Mountain West", "The Southwest", "Texas & The Gulf", "The Midwest", "The South", "New England", "Mid-Atlantic", "Alaska", "Hawai‘i"],
+  "12A": ["Pacific Coast", "Pacific Northwest", "Mountain West", "The Southwest", "Texas & The Gulf", "The Midwest", "The South", "New England", "Mid-Atlantic", "Alaska", "Hawai‘i"],
   "13A": ["British Columbia", "The Rockies", "The Prairies", "Ontario", "Québec", "The Maritimes", "The North"],
 };
 

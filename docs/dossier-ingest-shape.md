@@ -80,6 +80,30 @@ layered page) and the **buffet block** (`facts` / `faq` / `quotes` — the
 AEO top-load). Everything else rides along. If a dossier lacks a section, omit
 the key — don't fabricate.
 
+### ✅ v1 ingest tier — carry this now (Sana's Call 2, David-locked 2026-08)
+`data` is jsonb, so "extend" costs no migration — it's a decision about *what we
+commit to carrying* this pass. **This pass carries the render spine + the money +
+the AI-citation:**
+- **`safety`** + **`timing`** — as today.
+- **`jewels[]`** — now with **`si`** (the Signature-Interest slug it serves) **and
+  `commission`** (that jewel's earning path/lane — the money) on each entry, plus
+  `name` / `tier` / `when` / `blurb`.
+- **`faq[]`** — `{ q, a, source }`; auto-emits `FAQPage` JSON-LD (the AI-citation).
+
+These now render in the app: the destination page shows a **Don't-miss jewels**
+block (with the commission lane) and a **Good to know** FAQ accordion, and the
+catalog read carries `data` from the DB (not just the bundle). Reference row:
+`zermatt-switzerland` in `src/data/places.ts`.
+
+**Deferred to a later pass (ingest when ready — the jsonb holds them freely, no
+migration):** `seo`, `trails`/supply, `ultra`, `facts`, `quotes`. Omit them now
+rather than half-fill.
+
+**`vibe[]` / `feel[]` — leave empty on ingest (deliberate).** It's a live field but
+not in the dossier recipe; we populate it later from the **Identity Card's read of
+the traveler's vision** (the living Travel ID), not from dossier prose. Seen, not
+dropped.
+
 **The buffet block drives AI citation (AEO), so it maps 1:1 to the source:**
 - `facts` = the fast facts, each with a **hard number** and a **`source`** — one claim per entry so the AI can lift it as a standalone chunk.
 - `faq` = the traveler questions, **answer-first**, one per Signature Interest **plus the top 2–3 safety questions** (safety is the open lane), each with a `source`. **`faq` auto-emits `FAQPage` JSON-LD** via `src/lib/jsonld.ts` — no separate schema step; put the buffet Q&A here and the structured data writes itself.

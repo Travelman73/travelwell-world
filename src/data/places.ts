@@ -34,15 +34,39 @@ export const REGION_DETAIL: Record<string, RegionDetail> = {
 
 export type DestStatus = "live" | "future";        // shown, or content/coming-soon
 export type DestDepth = "verified" | "stub" | "cached"; // how deep (quality flag)
+/** A don't-miss experience in a destination dossier. */
+export interface Jewel {
+  name: string; blurb?: string;
+  tier?: string;                                   // its budget tier (essential…ultra)
+  when?: string;                                   // best time/conditions
+  si?: string;                                     // the Signature Interest it serves (slug)
+  commission?: string;                             // the earning path/lane for this jewel (the money)
+}
+/** A traveler Q&A — answer-first; the array auto-emits FAQPage JSON-LD (AI-citation). */
+export interface Faq { q: string; a: string; source?: string }
+/**
+ * The dossier `data` jsonb. **v1 ingest tier (David-locked 2026-08): carry
+ * safety + timing + jewels(+si+commission) + faq** — the render spine, the money,
+ * and the AI-citation surface. `seo` / `supply` / `ultra` are a deferred later pass;
+ * the jsonb holds them freely when they land — no migration. Extra keys pass through.
+ */
+export interface DossierData {
+  safety?: Record<string, unknown>;
+  timing?: { season?: string; best_months?: number[]; notes?: string };
+  jewels?: Jewel[];
+  faq?: Faq[];
+  [key: string]: unknown;                          // seo / supply / ultra / geo … (later pass)
+}
+
 export interface Destination {
   id: string; name: string; country: string; line: string; status: DestStatus; depth: DestDepth; img: string; sub_region?: string;
   // Serving signals (fit axes) — arrive from the conformed dossier at ingest.
   si?: string[];                                   // Signature Interests served
-  feel?: string[];                                 // feel/archetype tags
+  feel?: string[];                                 // feel/archetype tags (vibe[] — empty on ingest, set later from the Identity Card vision)
   tier_range?: string[];                           // budget bands present (essential…ultra)
   price_band?: string;                             // coarse overall price label
   draw_rank?: "anchor" | "core" | "emerging";      // surface order
-  data?: Record<string, unknown>;                  // full dossier (safety, booking, jewels, seo, timing…)
+  data?: DossierData;                              // the dossier body (v1: safety, timing, jewels, faq)
 }
 // The 5th arg carries the legacy quality ("live" = shown & verified, "stub" =
 // shown but thin) and maps onto the two-axis model David locked: status (shown
@@ -66,7 +90,14 @@ export const DESTINATIONS: Record<string, Destination[]> = {
       data: {
         safety: { advisory_level: "L1", posture: "book-freely", booking_hold: false, notes: "Normal precautions; alpine risk is weather + avalanche, managed by resort patrol — ski in-bounds and heed closures.", source: "US State Dept L1 / Swiss authorities", verified: "2026-06" },
         timing: { season: "Dec–Apr", best_months: [1, 2, 3], notes: "Glacier skiing extends the season; Feb–Mar for the most reliable snow." },
-        jewels: [{ name: "Gornergrat cog railway at sunrise", tier: "premier", when: "clear mornings", blurb: "The Matterhorn head-on, before the crowds." }],
+        jewels: [
+          { name: "Gornergrat cog railway at sunrise", tier: "premier", when: "clear mornings", blurb: "The Matterhorn head-on, before the crowds.", si: "ski", commission: "Rail + experience partner — commission lane" },
+          { name: "Glacier spa evening after the slopes", tier: "luxury", when: "any evening", blurb: "Thermal pools with the peak in the window — the Wellness side of a ski week.", si: "wellness", commission: "Hotel-spa affiliate" },
+        ],
+        faq: [
+          { q: "Do I need a car in Zermatt?", a: "No — Zermatt is car-free. Park in Täsch and take the 12-minute shuttle train; everything in the village is walkable or by electric taxi.", source: "Zermatt Tourism" },
+          { q: "When is the snow most reliable?", a: "February and March are the most dependable, but the glacier keeps skiing open into spring — and even summer on the Theodul.", source: "Verified 2026-06" },
+        ],
       },
     },
     {
@@ -157,6 +188,7 @@ export const DESTINATIONS: Record<string, Destination[]> = {
 
 export const SUBREGION_TOP: Record<string, string[]> = {
   "Pacific Coast": ["San Francisco", "Big Sur", "Los Angeles", "San Diego"],
+  "Pacific Northwest": ["Seattle", "Portland", "Mt Hood", "Olympic National Park"],
   "Mountain West": ["Aspen", "Jackson Hole", "Park City", "Yellowstone"],
   "The Southwest": ["Sedona", "Grand Canyon", "Santa Fe", "Moab"],
   "Texas & The Gulf": ["Austin", "San Antonio", "New Orleans", "Houston"],

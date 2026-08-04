@@ -652,6 +652,27 @@
   [data-page="destination-detail"] .dd-quick__v { font-weight:600; text-align:end; }
   [data-page="destination-detail"] .dd-addcta { background: var(--secondary); border-radius: var(--radius); padding:18px; text-align:center; }
   [data-page="destination-detail"] .dd-addcta p { font-size:13.5px; color:var(--secondary-foreground); margin-bottom:12px; }
+  /* dossier body — jewels + FAQ (rich `data`) */
+  [data-page="destination-detail"] .dd-jewels { margin-top: 40px; }
+  [data-page="destination-detail"] .dd-jewels__title, [data-page="destination-detail"] .dd-faq__title { font-family: var(--font-display); font-weight: 600; font-size: 24px; margin-bottom: 16px; }
+  [data-page="destination-detail"] .dd-jewels__list { display: flex; flex-direction: column; gap: 12px; }
+  [data-page="destination-detail"] .dd-jewel { display: flex; gap: 14px; align-items: flex-start; border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); box-shadow: var(--e1); padding: 18px 20px; }
+  [data-page="destination-detail"] .dd-jewel__ic { width: 38px; height: 38px; border-radius: 50%; background: color-mix(in oklch, var(--accent) 15%, transparent); color: var(--gold-deep); display: grid; place-items: center; flex: none; }
+  [data-page="destination-detail"] .dd-jewel__head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  [data-page="destination-detail"] .dd-jewel__name { font-family: var(--font-display); font-weight: 600; font-size: 18px; }
+  [data-page="destination-detail"] .dd-jewel__tier { font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 4px 9px; border-radius: var(--radius-pill); background: var(--secondary); color: var(--secondary-foreground); }
+  [data-page="destination-detail"] .dd-jewel__blurb { color: var(--muted-foreground); font-size: var(--t-body-s); line-height: 1.5; margin-top: 5px; }
+  [data-page="destination-detail"] .dd-jewel__meta { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 10px; font-size: 12.5px; color: var(--muted-foreground); }
+  [data-page="destination-detail"] .dd-jewel__meta span { display: inline-flex; align-items: center; gap: 6px; }
+  [data-page="destination-detail"] .dd-faq { margin-top: 40px; }
+  [data-page="destination-detail"] .dd-faq__item { border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); margin-bottom: 10px; overflow: hidden; }
+  [data-page="destination-detail"] .dd-faq__q { cursor: pointer; padding: 16px 20px; font-weight: 600; font-size: 15.5px; list-style: none; display: flex; align-items: center; justify-content: space-between; }
+  [data-page="destination-detail"] .dd-faq__q::-webkit-details-marker { display: none; }
+  [data-page="destination-detail"] .dd-faq__q::after { content: "+"; font-size: 20px; color: var(--primary); font-weight: 400; margin-inline-start: 12px; }
+  [data-page="destination-detail"] .dd-faq__item[open] .dd-faq__q::after { content: "\2212"; }
+  [data-page="destination-detail"] .dd-faq__q:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
+  [data-page="destination-detail"] .dd-faq__a { padding: 0 20px 18px; color: var(--muted-foreground); font-size: var(--t-body-s); line-height: 1.55; }
+  [data-page="destination-detail"] .dd-faq__src { font-style: italic; opacity: .8; }
   /* related */
   [data-page="destination-detail"] .dd-related { max-width: var(--content-max); margin-inline:auto; padding: 56px var(--gutter) 0; }
   [data-page="destination-detail"] .dd-related h2 { font-size: var(--t-h2); margin-bottom: 4px; }

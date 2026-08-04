@@ -60,6 +60,9 @@ export default function DestinationDetail() {
   // SSG socket bakes it into the served <head>; client-injected here for now.)
   useJsonLd(destinationJsonLd(DEST, R.name, typeof window !== "undefined" ? window.location.href : ""));
   const stub = DEST.depth !== "verified";
+  const data = DEST.data;                       // the dossier body (jewels, faq, …)
+  const jewels = data?.jewels ?? [];
+  const faq = data?.faq ?? [];
 
   // Destination-matched Unsplash hero, with the bundled image as instant fallback.
   const hero = useUnsplashImage(`${DEST.name}, ${country}`, img(DEST.img, 1800), 1800);
@@ -160,6 +163,44 @@ export default function DestinationDetail() {
               </div>
             </div>
           ))}
+
+          {jewels.length > 0 && (
+            <div className="dd-jewels">
+              <h2 className="dd-jewels__title">Don't-miss jewels</h2>
+              <div className="dd-jewels__list">
+                {jewels.map((j, i) => (
+                  <div className="dd-jewel" key={i}>
+                    <span className="dd-jewel__ic"><Icon name="sparkle" small /></span>
+                    <div className="dd-jewel__b">
+                      <div className="dd-jewel__head">
+                        <span className="dd-jewel__name">{j.name}</span>
+                        {j.tier && <span className="dd-jewel__tier">{j.tier.charAt(0).toUpperCase() + j.tier.slice(1)}</span>}
+                      </div>
+                      {j.blurb && <p className="dd-jewel__blurb">{j.blurb}</p>}
+                      {(j.when || j.commission) && (
+                        <div className="dd-jewel__meta">
+                          {j.when && <span><Icon name="calendar" small /> {j.when}</span>}
+                          {j.commission && <span><Icon name="info" small /> {j.commission}</span>}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {faq.length > 0 && (
+            <div className="dd-faq">
+              <h2 className="dd-faq__title">Good to know</h2>
+              {faq.map((f, i) => (
+                <details className="dd-faq__item" key={i}>
+                  <summary className="dd-faq__q">{f.q}</summary>
+                  <div className="dd-faq__a">{f.a}{f.source && <span className="dd-faq__src"> · {f.source}</span>}</div>
+                </details>
+              ))}
+            </div>
+          )}
         </div>
 
         <aside className="dd-side">
