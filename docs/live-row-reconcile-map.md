@@ -28,7 +28,7 @@ legacy slug.
 | 13 | `ngorongoro` | Ngorongoro Crater, Tanzania | `ngorongoro-tanzania` | drop "Crater" (or keep — dossier decides) |
 | 14 | `volcanoes` | Volcanoes NP, Rwanda | `volcanoes-national-park-rwanda` | expand "NP" |
 | 15 | `cape-town-south-africa` | Cape Town, South Africa | `cape-town-south-africa` | ✓ already canonical (template anchor) |
-| 16 | `kruger` | Greater Kruger, South Africa | `greater-kruger-south-africa` | |
+| ⚠ 16 | `kruger` | Greater Kruger, South Africa | `greater-kruger-south-africa` | **4 spellings in circulation** — link by PLACE, set `reconciles_live_mvp: "kruger"` |
 | 17 | `sossusvlei` | Sossusvlei, Namibia | `sossusvlei-namibia` | |
 | 18 | `bali` | Bali, Indonesia | `bali-indonesia` | |
 | 19 | `bangkok` | Bangkok, Thailand | `bangkok-thailand` | |
@@ -65,9 +65,25 @@ legacy slug.
 ## Alpine anchors (39–45) — the Winter/Ski depth-ingest gate
 The 7 alpine resorts are **already live** and were the first hand-authored ski shelf, so they were never in the original 38. When CC's alpine library lands, its dossiers for **these seven places must set `reconciles_live_mvp` to the slug above** — otherwise their derived ids create duplicates (a dry-run confirmed **St. Anton** → `st-anton-am-arlberg-austria` and **Cortina** → `cortina-d-ampezzo-italy` both drift off our anchor slug). Every *other* alpine dossier (the ~25 net-new resorts) is net-new — no linkage, just its derived `<city>-<country>` id. All alpine rows are region **01F** (Western Europe), which is already live, so no region flip is needed.
 
+## ⚠ Kruger — the worked example of why this map exists (2026-08)
+Four spellings for **one place** have been in circulation across the two repos:
+
+| Where | String |
+|---|---|
+| MVP live slug (the anchor) | `kruger` |
+| This map's target id | `greater-kruger-south-africa` |
+| Library destination file | `kruger-south-africa` |
+| Library SI cross-ref (was a dangling ref, since fixed) | `kruger-national-park-south-africa` |
+
+**The rule: link by PLACE, never by guessing the slug.** The Kruger dossier must set
+`data.reconciles_live_mvp: "kruger"` — that's the only string that lands it on the
+existing row. Anything else creates a duplicate. (Our validator hard-errors on a
+`reconciles_live_mvp` that isn't a live MVP id, so this gets caught at the border —
+but it's cheaper to author it right.)
+
 ## The flags, grouped
 - **Broken/placeholder rows (fix first):** `amalfi-x` (name/country mismatch), `kyoto-x` (slug says Kyoto, place is Phuket). Confirm the real destination before linking — or replace.
-- **Spelling drift (why the linkage exists):** `masai-mara` → Maasai Mara. Link by the current slug so the conformed dossier lands on the right row, not a duplicate.
+- **Spelling drift (why the linkage exists):** `masai-mara` → Maasai Mara, and **`kruger` (4 spellings — see above)**. Link by the current slug so the conformed dossier lands on the right row, not a duplicate.
 - **Multi-country / region edge cases (dossier canonical key decides the id):** `patagonia` (Chile/Argentina), `alps` (Switzerland/region).
 - **name == country (collapse):** `turks`, `st-lucia`.
 - **Descriptors / articles / abbreviations to normalize:** algarve, reykjavik, petra, ngorongoro, volcanoes, banff, exuma, dubai (spell out UAE), gbr.
