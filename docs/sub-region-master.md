@@ -77,7 +77,8 @@ Confirmed locked so far:
 The Mexico anchor tier is built under the locked strings; Central America (by country) is the next block. Remaining 10S strings arrive from the master per block — nothing here is wired to a live destination yet (the three 10S demo destinations carry no sub_region).
 
 ### 12A — United States *(use taxonomy.ts strings as-is)*
-Pacific Coast · Pacific Northwest · Mountain West · The Southwest · Texas & the Gulf · The Midwest · The South · New England · Mid-Atlantic · Alaska · Hawai'i
+`Pacific Coast` · `Pacific Northwest` · `Mountain West` · `The Southwest` · `Texas & The Gulf` · `The Midwest` · `The South` · `New England` · `Mid-Atlantic` · `Alaska` · `Hawai‘i`
+⚠ **Copy these verbatim** — the validator does exact-string matching. Two gotchas: **`The`** is capitalised in `Texas & The Gulf`, and **`Hawai‘i`** uses the ʻokina (U+2018), not a straight apostrophe. Both previously drifted in this doc and would have failed ingest.
 *Pacific Northwest added 2026-08 (Sana's call, on David's prep): the 7 OR/WA ski resorts (Mt Hood, Mt Bachelor, Snoqualmie, Stevens Pass, Crystal, Mt Baker, + Timberline) had no clean home — Pacific Coast reads California-centric, Mountain West is the Rockies. Companion calls: NY/Adirondacks (Lake Placid) → Mid-Atlantic (it's NY); Tahoe + Mammoth → Pacific Coast (by state — Sierra, not the Rockies, keeps Mountain West pure).*
 
 ### 13A — Canada *(use taxonomy.ts strings as-is)*
