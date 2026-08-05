@@ -1,7 +1,7 @@
-# The 38 live-row reconcile map (for the library normalize)
+# The 45 live-row reconcile map (for the library normalize)
 
-These are the **only** dossiers that need `reconciles_live_mvp` — the 38 places
-already live in the MVP. Every other dossier is net-new (no linkage; it just
+These are the **only** dossiers that need `reconciles_live_mvp` — the 45 places
+already live in the MVP (38 original + 7 alpine anchors, rows 39–45). Every other dossier is net-new (no linkage; it just
 gets its derived `<city>-<country>` id).
 
 **Instruction for CC:** for the dossier that matches each **Place** below, set
@@ -52,7 +52,18 @@ legacy slug.
 | ⚠ 37 | `amalfi-x` | **"Lake District, Germany"** | — | **broken placeholder row** — country/name mismatch; confirm the real place (or drop) before linking |
 | ⚠ 38 | `kyoto-x` | **"Phuket & Phi Phi, Thailand"** | `phuket-thailand` | **mislabeled slug** (`kyoto-x` but it's Phuket) — link by *place*, not slug |
 
+| 39 | `zermatt-switzerland` | Zermatt, Switzerland | `zermatt-switzerland` | already `<city>-<country>` |
+| 40 | ⚠ `st-anton-austria` | St. Anton am Arlberg, Austria | `st-anton-austria` (**not** `st-anton-am-arlberg-austria`) | derived id drifts — keep the short slug, link by place |
+| 41 | `chamonix-france` | Chamonix, France | `chamonix-france` | clean |
+| 42 | `st-moritz-switzerland` | St. Moritz, Switzerland | `st-moritz-switzerland` | clean |
+| 43 | `courchevel-france` | Courchevel, France | `courchevel-france` | clean |
+| 44 | ⚠ `cortina-dampezzo-italy` | Cortina d'Ampezzo, Italy | `cortina-dampezzo-italy` (**not** `cortina-d-ampezzo-italy`) | apostrophe drifts the derived id — keep our slug |
+| 45 | `kitzbuhel-austria` | Kitzbühel, Austria | `kitzbuhel-austria` | ü→u; clean |
+
 *(Rows 1–28 are clean matches; 29–38 (⚠) need a judgment call. The two `-x` rows (`amalfi-x`, `kyoto-x`) are placeholder/mislabeled and are the two to double-check.)*
+
+## Alpine anchors (39–45) — the Winter/Ski depth-ingest gate
+The 7 alpine resorts are **already live** and were the first hand-authored ski shelf, so they were never in the original 38. When CC's alpine library lands, its dossiers for **these seven places must set `reconciles_live_mvp` to the slug above** — otherwise their derived ids create duplicates (a dry-run confirmed **St. Anton** → `st-anton-am-arlberg-austria` and **Cortina** → `cortina-d-ampezzo-italy` both drift off our anchor slug). Every *other* alpine dossier (the ~25 net-new resorts) is net-new — no linkage, just its derived `<city>-<country>` id. All alpine rows are region **01F** (Western Europe), which is already live, so no region flip is needed.
 
 ## The flags, grouped
 - **Broken/placeholder rows (fix first):** `amalfi-x` (name/country mismatch), `kyoto-x` (slug says Kyoto, place is Phuket). Confirm the real destination before linking — or replace.
