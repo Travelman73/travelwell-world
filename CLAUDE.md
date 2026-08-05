@@ -6,6 +6,15 @@ React + Vite + TypeScript + Tailwind SPA, backed by Supabase (Postgres + RLS +
 Edge Functions), deployed on Vercel from `main`. It is **not** the research
 library (`Travelman73/tww-research-library`) — that repo has its own rules.
 
+> **One source of truth per artifact (learned the hard way, 2026-08).** Application
+> code (`src/lib/*`, components, migrations) lives **here and only here**; the
+> library repos hold *data/dossiers*, never copies of MVP code. A stale pre-commit
+> copy of `auth/travelId/catalog/safety-data` was found sitting in another repo
+> seven weeks after the same work shipped here — harmless because it was never
+> merged, but restoring it would have regressed ~6 weeks of decisions. If MVP code
+> turns up in another repo, it is **stale by definition** — archive it, never
+> merge it back.
+
 ## Voice & naming
 - **"TravelWell" is one word.** Never "Travel Well" as the brand.
 - Prefer **accurate / plainly / straight** over "honest / honestly / upfront." Keep **"honest/honestly" out of Atlas's vocabulary** (David 2026-07-29).
