@@ -15,7 +15,7 @@ export interface TravelIdRecord {
   interests: string[];        // 1–3 special-interest ids
   budget_ranges: Record<string, string[]>; // { wellId: ranges[] }
   party: PartyMember[];       // everyone on the trip (the SignUp party builder)
-  // Safer-Informed capabilities overlay (Identity Builder Step 2, migration 0009):
+  // Safer-Informed capabilities overlay (Identity Builder Step 2, migration 0011):
   activity_level: string | null;   // pace: very-active | moderately-active | lightly-active | leisurely
   access_needs: string[];          // wheelchair | cane | frequent-rest | no-stairs | some-stairs | fully-mobile
   capabilities: string | null;     // the ENABLING side — "what you're fully up for"
@@ -43,7 +43,7 @@ export async function saveTravelId(
   const payload: Record<string, unknown> = { ...rec, updated_at: new Date().toISOString() };
   let { error } = await sb.from("travel_ids").upsert(payload, { onConflict: "user_id" });
   // Resilience: newer optional columns land in later migrations (party → 0008,
-  // the capabilities overlay → 0009). If one isn't applied yet, drop the column the
+  // the capabilities overlay → 0011). If one isn't applied yet, drop the column the
   // error names and retry — Postgres reports missing columns one at a time, so loop
   // over the optional set. Persists everything else rather than losing the whole
   // Travel ID; self-heals once the migration runs.

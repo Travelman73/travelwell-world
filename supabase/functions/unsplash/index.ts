@@ -49,12 +49,22 @@ Deno.serve(async (req: Request) => {
       if (hit) return ok({ url: hit.url, alt: hit.alt, credit: { name: hit.credit_name, link: hit.credit_link } });
     }
 
-    // 2. Miss → fetch once from Unsplash.
-    const url = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&orientation=${orientation}&per_page=1&content_filter=high`;
+    // 2. Miss → fetch once from Unsplash. Pull the top 10 by RELEVANCE, then keep
+    //    the strongest of them by likes. Relevance first keeps the photo actually
+    //    of the place; likes then picks the best shot among those — so we never
+    //    trade "the right place" for "a popular mountain". Automatic for every
+    //    destination, new ones included; nothing hand-picked.
+    const url = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&orientation=${orientation}&per_page=10&order_by=relevant&content_filter=high`;
     const res = await fetch(url, { headers: { Authorization: `Client-ID ${key}`, "Accept-Version": "v1" } });
     if (!res.ok) return Response.json({ degraded: true }, { headers: cors, status: 200 });
     const data = await res.json();
-    const photo = data?.results?.[0];
+    const results = Array.isArray(data?.results) ? data.results : [];
+    // Strictly-greater comparison, so ties (and missing `likes`) keep Unsplash's
+    // relevance order — i.e. the earlier, more relevant photo wins a tie.
+    const photo = results.reduce(
+      (best: any, cur: any) => ((cur?.likes ?? 0) > (best?.likes ?? 0) ? cur : best),
+      results[0],
+    );
     if (!photo) return ok(null);
 
     // Unsplash API Guideline: trigger the download endpoint on real use.

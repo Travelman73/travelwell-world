@@ -11,6 +11,10 @@
 --   capabilities   — free text, the ENABLING side ("what you're fully up for")
 --   (accessibility — existing free text, repurposed as the "anything to know" side)
 --
+-- NOTE: this shipped as 0009 and was renumbered to 0011 — 0009 was already taken
+-- by 0009_unsplash_cache.sql. Idempotent, so if you already ran it as 0009 the
+-- columns exist and re-running under the new number is a harmless no-op.
+--
 -- Apply:  paste into the Supabase SQL editor (or supabase db push).
 -- Idempotent. Schema-only — no data reseed needed.
 
