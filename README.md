@@ -73,9 +73,12 @@ Anthropic key never reaches the client.
 ### CLI setup (once per machine)
 
 ```bash
+brew install supabase/tap/supabase   # macOS. (`npm i -g supabase` is NOT supported)
 supabase login          # opens a browser to authorize
 supabase link --project-ref xgjidkgctqqdprxtxeui   # ref lives in supabase/config.toml
 ```
+No Homebrew? Skip installing and prefix any command with `npx`, e.g.
+`npx supabase@latest login --token sbp_...`.
 If the browser flow won't work in your terminal (SSH / remote / Codespaces),
 create a token at <https://supabase.com/dashboard/account/tokens> and use
 `supabase login --token sbp_...` instead.
