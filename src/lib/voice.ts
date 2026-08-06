@@ -20,17 +20,39 @@ const LANG_TAG: Record<string, string> = {
 export const speechOutputSupported = () =>
   typeof window !== "undefined" && "speechSynthesis" in window;
 
+// Speaking state — so the UI can show a tiny "Atlas is speaking" signal while
+// the voice plays. Kept behind this adapter (part of the seam): whatever TTS
+// vendor sits here tomorrow, the UI just subscribes to on/off and never learns
+// who's talking. Simple pub/sub — no dependency, notify only on change.
+let speaking = false;
+const speakingListeners = new Set<(s: boolean) => void>();
+function setSpeaking(next: boolean) {
+  if (next === speaking) return;
+  speaking = next;
+  speakingListeners.forEach((l) => l(next));
+}
+/** Subscribe to speaking on/off; returns an unsubscribe. */
+export function subscribeSpeaking(cb: (s: boolean) => void) {
+  speakingListeners.add(cb);
+  return () => { speakingListeners.delete(cb); };
+}
+export const isSpeaking = () => speaking;
+
 /** Speak text aloud in the traveler's language. Cancels any in-flight speech. */
 export function speak(text: string, locale = "en") {
   try {
     const synth = window.speechSynthesis;
     if (!synth || !text) return;
     synth.cancel();
+    setSpeaking(false); // the cancel above may not fire onend; reset explicitly
     const u = new SpeechSynthesisUtterance(text);
     u.lang = LANG_TAG[locale] || "en-US";
     u.rate = 1;
     u.pitch = 1;
     u.volume = 1;
+    u.onstart = () => setSpeaking(true);
+    u.onend = () => setSpeaking(false);
+    u.onerror = () => setSpeaking(false);
     synth.speak(u);
   } catch {
     /* no speech synthesis available — the on-screen text carries it */
@@ -39,4 +61,5 @@ export function speak(text: string, locale = "en") {
 
 export function stopSpeaking() {
   try { window.speechSynthesis?.cancel(); } catch { /* noop */ }
+  setSpeaking(false);
 }

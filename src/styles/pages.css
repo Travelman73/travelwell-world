@@ -15,6 +15,10 @@
   [data-page="home"] .hero h1 .accent { font-style: italic; color: var(--gold-deep); }
   [data-page="home"] .hero__lead { margin-top: 22px; max-width: 46ch; font-size: clamp(17px,1.5vw,20px); }
   [data-page="home"] .hero__cta { display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap; align-items: center; }
+  /* Guided-tour entry — a quiet outlined pill under the primary CTAs. >=44px tap
+     target (AA); the sparkle nods to Atlas leading the way. */
+  [data-page="home"] .hero__tour { display: inline-flex; align-items: center; gap: 7px; margin-top: 16px; height: 44px; padding: 0 18px; border-radius: var(--radius-pill); background: none; border: 1.5px solid var(--primary); color: var(--primary); font-family: var(--font-sans); font-weight: 600; font-size: 14px; cursor: pointer; transition: background-color .15s ease, color .15s ease; }
+  @media (hover: hover) { [data-page="home"] .hero__tour:hover { background: var(--primary); color: #fff; } }
   [data-page="home"] .hero__taps { margin-top: 18px; font-size: 13px; color: var(--muted-foreground); display: flex; align-items: center; gap: 8px; }
   [data-page="home"] .hero__taps .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted-foreground); }
   [data-page="home"] .hero__media { position: relative; align-self: stretch; min-height: 520px; }

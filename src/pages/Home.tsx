@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Icon } from "@/lib/icons";
 import { siImg, img } from "@/lib/images";
 import { useStore } from "@/store/useStore";
@@ -188,7 +188,8 @@ function TalkDemo() {
 
 /* ============================================================================ */
 export default function Home() {
-  const { openPanel } = useStore();
+  const { openPanel, startTour } = useStore();
+  const navigate = useNavigate();
   const t = useT();
   const ct = useCatalogName();
   const chip = useChip();
@@ -217,6 +218,14 @@ export default function Home() {
               <ButtonLink to="/special-interests" style={{ height: 52, padding: "0 28px", fontSize: 16 }}>{t("hero.cta1")}</ButtonLink>
               <Button variant="secondary" style={{ height: 52 }} onClick={() => openPanel("concierge")}>{t("hero.cta2")}</Button>
             </div>
+            {/* Guided-walk entry: Atlas takes you through the whole journey hands-free
+                (also reachable unattended via /?tour=safari). */}
+            <button
+              className="hero__tour"
+              onClick={() => { startTour("safari"); navigate("/special-interests"); }}
+            >
+              <Icon name="sparkles" small /> Take the guided tour
+            </button>
             <p className="hero__taps"><span>{t("hero.taps1")}</span><span className="dot" /><span>{t("hero.taps2")}</span></p>
           </div>
           <div className="hero__media">

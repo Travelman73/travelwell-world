@@ -1,4 +1,4 @@
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams, useNavigate, Navigate } from "react-router-dom";
 import { Icon } from "@/lib/icons";
 import { useStore } from "@/store/useStore";
 import { useWellById, useProviders } from "@/store/useCatalog";
@@ -9,7 +9,13 @@ export default function Go() {
   const [params] = useSearchParams();
   const navigate = useNavigate();
   const { addToTrip, openPanel } = useStore();
-  const to = params.get("to") || "our partner";
+  // GUARD: /go is a mid-booking handoff — it's only meaningful when a provider
+  // was passed in. Reached cold (a restored/bookmarked tab, a bare /go URL), it
+  // has no partner to hand off to, so it must not strand the visitor on an
+  // orphaned "Continuing to our partner" screen. Send them Home instead.
+  const toParam = params.get("to");
+  if (!toParam) return <Navigate to="/" replace />;
+  const to = toParam;
   const wellId = params.get("well") || "stay";
   const well = useWellById(wellId);
   // Real affiliate redirect when the provider has a booking URL (David's intel);

@@ -78,6 +78,7 @@ export default function Regions() {
             return (
               <Link
                 key={r.code}
+                data-region={r.code}
                 className={cx("rg-card", r.status !== "live" && "rg-card--preview")}
                 to={`/region/${r.code}`}
                 onClick={() => setRegion(r.code)}

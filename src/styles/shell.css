@@ -162,6 +162,41 @@
 [dir="rtl"] .tw-msg--bot { border-bottom-left-radius: 16px; border-bottom-right-radius: 5px; }
 .tw-msg--user { background: var(--primary); color: #fff; border-bottom-right-radius: 5px; align-self: flex-end; }
 [dir="rtl"] .tw-msg--user { border-bottom-right-radius: 16px; border-bottom-left-radius: 5px; }
+/* Rendered markdown inside a reply bubble — kept tight so it reads as one message. */
+.tw-msg p { margin: 0; }
+.tw-msg p + p, .tw-msg p + ul, .tw-msg p + ol, .tw-msg ul + p, .tw-msg ol + p { margin-top: 8px; }
+.tw-msg ul, .tw-msg ol { margin: 6px 0; padding-inline-start: 20px; }
+.tw-msg li { margin: 2px 0; }
+.tw-msg li::marker { color: var(--primary); }
+.tw-msg strong { font-weight: 700; }
+.tw-msg a { color: var(--primary); text-decoration: underline; text-underline-offset: 2px; }
+.tw-msg code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9em; background: rgba(0,0,0,.06); padding: 1px 5px; border-radius: 5px; }
+
+/* guided-walk (choreography engine) — a spotlight ring + Atlas caption that
+   points at ONE real element at a time. The ring dims everything else via a giant
+   box-shadow but stays pointer-events:none, so the lit target underneath is fully
+   clickable (advance happens on the real click, never auto-play). */
+.tw-tour { position: fixed; inset: 0; z-index: 1200; pointer-events: none; }
+.tw-tour__ring { position: fixed; border-radius: 14px; border: 3px solid var(--primary); box-shadow: 0 0 0 9999px rgba(18,28,26,.48), 0 0 0 5px rgba(44,110,104,.45); pointer-events: none; transition: top .28s ease, left .28s ease, width .28s ease, height .28s ease; animation: tw-tour-pulse 1.5s ease-in-out infinite; }
+@keyframes tw-tour-pulse {
+  0%, 100% { box-shadow: 0 0 0 9999px rgba(18,28,26,.48), 0 0 0 4px rgba(44,110,104,.55); }
+  50%      { box-shadow: 0 0 0 9999px rgba(18,28,26,.48), 0 0 0 13px rgba(44,110,104,0); }
+}
+.tw-tour__cap { position: fixed; pointer-events: auto; display: flex; align-items: center; gap: 10px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 11px 13px; box-shadow: 0 12px 36px rgba(0,0,0,.24); }
+.tw-tour__avatar { width: 30px; height: 30px; border-radius: 50%; background: var(--primary); color: #fff; display: grid; place-items: center; flex: none; }
+.tw-tour__line { font-size: 13.5px; line-height: 1.4; color: var(--foreground); }
+.tw-tour__skip { margin-inline-start: 2px; background: none; border: 0; color: var(--muted-foreground); font-size: 12px; text-decoration: underline; cursor: pointer; flex: none; }
+@media (prefers-reduced-motion: reduce) { .tw-tour__ring { animation: none; } }
+
+/* speaking signal — a tiny animated equalizer on the message Atlas is reading
+   aloud (the mirror of the listening widget). It's a button: tap to silence.
+   The on-screen text is always the source of truth; this only marks the voice. */
+.tw-speaking { display: inline-flex; gap: 2px; align-items: flex-end; height: 12px; margin-inline-start: 8px; padding: 0; border: 0; background: none; cursor: pointer; vertical-align: middle; translate: 0 1px; }
+.tw-speaking i { width: 2.5px; height: 4px; border-radius: 2px; background: var(--primary); animation: tw-eq .9s infinite ease-in-out; }
+.tw-speaking i:nth-child(2) { animation-delay: .18s; }
+.tw-speaking i:nth-child(3) { animation-delay: .36s; }
+@keyframes tw-eq { 0%,100% { height: 4px; } 50% { height: 11px; } }
+@media (prefers-reduced-motion: reduce) { .tw-speaking i { animation: none; height: 8px; } }
 
 /* typing / streaming */
 .tw-typing { display: inline-flex; gap: 4px; align-items: center; }
@@ -178,28 +213,42 @@
 .tw-rec__why { font-size: 12.5px; color: var(--muted-foreground); margin-top: 3px; }
 .tw-rec__why b { color: var(--primary); font-weight: 600; }
 
-/* listening (voice in) */
-.tw-listening { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 18px; }
-.tw-mic-ring { width: 72px; height: 72px; border-radius: 50%; background: var(--primary); color: #fff; display: grid; place-items: center; position: relative; }
-.tw-mic-ring::after { content:""; position: absolute; inset: -10px; border-radius: 50%; border: 2px solid var(--primary); opacity: .4; animation: tw-pulse 1.6s infinite ease-out; }
-@keyframes tw-pulse { 0% { transform: scale(.9); opacity: .5; } 100% { transform: scale(1.35); opacity: 0; } }
-.tw-wave { display: flex; gap: 3px; align-items: center; height: 24px; }
+/* listening (voice in) — an unmistakable animated widget above the composer: a
+   pulsing mic orb + live sound-wave bars + a "Listening…" label. Appears the
+   instant recording starts, vanishes the instant it stops. The transcript itself
+   streams into the input box (dictation), so this widget NEVER repeats it — that
+   doubled UI was the confusing part on mobile. Not a takeover, just clear
+   "I'm hearing you" feedback right where the mic control lives. */
+.tw-listening-live { display: flex; align-items: center; gap: 12px; margin: 2px 2px 8px; padding: 10px 14px; background: var(--secondary); border: 1px solid var(--primary); border-radius: var(--radius); }
+.tw-listen-orb { width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: #fff; display: grid; place-items: center; flex: none; position: relative; }
+.tw-listen-orb::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid var(--primary); opacity: .4; animation: tw-pulse 1.6s infinite ease-out; }
+@keyframes tw-pulse { 0% { transform: scale(.9); opacity: .5; } 100% { transform: scale(1.3); opacity: 0; } }
+.tw-listen-copy { font-size: 12.5px; line-height: 1.4; color: var(--foreground); }
+.tw-wave { display: flex; gap: 3px; align-items: center; height: 22px; flex: none; }
 .tw-wave i { width: 3px; background: var(--primary); border-radius: 2px; animation: tw-wave 1s infinite ease-in-out; }
-@keyframes tw-wave { 0%,100% { height: 6px; } 50% { height: 22px; } }
-/* Live transcript — what you're saying, shown big and wrapping (never crammed
-   into the single-line input), so you can see your words before they send. */
-.tw-listening__transcript { width: 100%; max-width: 100%; min-height: 48px; max-height: 180px; overflow-y: auto; background: var(--surface-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; font-size: 16px; line-height: 1.5; color: var(--foreground); text-align: center; white-space: pre-wrap; word-break: break-word; }
-.tw-listening__hint { color: var(--muted-foreground); font-size: 14px; }
+@keyframes tw-wave { 0%,100% { height: 5px; } 50% { height: 20px; } }
+/* Respect reduced-motion (AA canon): hold the graphic still, keep the meaning. */
+@media (prefers-reduced-motion: reduce) {
+  .tw-listen-orb::after { animation: none; opacity: .3; }
+  .tw-wave i { animation: none; height: 12px; }
+}
 
 /* input bar */
 .tw-input { display: flex; align-items: center; gap: 8px; background: var(--surface-alt); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 5px 6px 5px 16px; }
 .tw-input:focus-within { border-color: var(--primary); box-shadow: 0 0 0 3px var(--secondary); }
 .tw-input input { flex: 1; border: 0; background: none; font-family: var(--font-sans); font-size: 14.5px; color: var(--foreground); outline: none; }
-.tw-input__send { width: 44px; height: 44px; border-radius: 50%; background: var(--primary); color: #fff; border: 0; display: grid; place-items: center; cursor: pointer; flex: none; }
-/* Mic: a clearly-findable tap target (>=44px), with an unmistakable recording state. */
-.tw-input__mic { width: 44px; height: 44px; border-radius: 50%; background: var(--secondary); color: var(--primary); border: 0; display: grid; place-items: center; cursor: pointer; flex: none; transition: background .15s ease, color .15s ease; }
-.tw-input__mic:hover { background: var(--primary); color: #fff; }
-.tw-input__mic[aria-pressed="true"] { background: #c0392b; color: #fff; animation: tw-mic-pulse 1.2s ease-in-out infinite; }
+.tw-input__send { width: 44px; height: 44px; border-radius: 50%; background: var(--primary); color: #fff; border: 0; display: grid; place-items: center; cursor: pointer; flex: none; transition: opacity .15s ease; }
+/* Disabled while recording (stop first) or while Atlas is replying. */
+.tw-input__send:disabled { opacity: .4; cursor: not-allowed; }
+/* Mic: the SECONDARY control (an alternate to typing) — quiet by design so it
+   never competes with the solid-green Send. A tinted fill + outline + green icon
+   reads as "outlined button," clearly subordinate to the filled primary.
+   Still a >=44px target with an unmistakable recording state. */
+.tw-input__mic { width: 44px; height: 44px; border-radius: 50%; background: var(--card); color: var(--primary); border: 1.5px solid var(--primary); display: grid; place-items: center; cursor: pointer; flex: none; transition: background .15s ease, color .15s ease; }
+/* Hover fill only on real pointer devices — on touch, iOS latches :hover after a
+   tap, which was leaving the mic stuck solid-green and fighting Send for focus. */
+@media (hover: hover) { .tw-input__mic:hover { background: var(--primary); color: #fff; } }
+.tw-input__mic[aria-pressed="true"] { background: #c0392b; color: #fff; border-color: #c0392b; animation: tw-mic-pulse 1.2s ease-in-out infinite; }
 @keyframes tw-mic-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(192,57,43,.5); } 50% { box-shadow: 0 0 0 7px rgba(192,57,43,0); } }
 
 /* read/hear/both toggle */

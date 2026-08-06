@@ -73,8 +73,17 @@ export default function DestinationDetail() {
   const groups = providersByWell(allWells, providers, R.code);
 
   const relGuides = (() => {
-    const pref = guides.filter((gg) => gg.region === R.code || ["safari", "romance", "culinary"].includes(gg.si));
-    return (pref.length >= 2 ? pref : guides).slice(0, 2);
+    // Interest-matched (moat #6 — "it knows where you are"). Destinations that
+    // declare their Signature Interests (all the full-literal ones, incl. alpine)
+    // match by SI only — so a Zermatt page shows ski guides, never safari or a
+    // culinary guide that happens to share the alpine region code. Legacy rows with
+    // no SIs (the D() safari set) fall back to region match so they still surface
+    // their safari guides. Empty until a region's guides ingest beats off-topic ones.
+    const sis = DEST.si ?? [];
+    const matched = sis.length
+      ? guides.filter((gg) => sis.includes(gg.si))
+      : guides.filter((gg) => gg.region === R.code);
+    return matched.slice(0, 2);
   })();
 
   return (
