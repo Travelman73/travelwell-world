@@ -60,7 +60,14 @@ export function Concierge() {
   // it, fix any misheard word, and send it yourself. You stay in control of when
   // it goes to Atlas — the mic is a keyboard alternative, not a send button.
   const { supported: voiceSupported, listening, start: startVoice, stop: stopVoice } =
-    useSpeechInput(setInput, (finalText) => { setInput(finalText.trim()); });
+    useSpeechInput(
+      setInput,
+      (finalText) => { setInput(finalText.trim()); },
+      undefined,
+      // Say WHY the mic stopped. Silent failure reads as "the mic is broken" and
+      // is unfixable by the person in front of it.
+      (reason) => showToast(reason),
+    );
   // Live voice — the real-time conversation (LiveKit belt + agent worker). A
   // separate mode from the dictation mic above: here Atlas hears and answers out
   // loud with no send button, and the worker holds the brain.

@@ -17,17 +17,30 @@ import { useCallback, useRef, useState } from "react";
 interface SpeechAlt { transcript: string }
 interface SpeechResult { 0: SpeechAlt }
 interface SpeechEvent { results: ArrayLike<SpeechResult> }
+/** `error` is the SpeechRecognitionErrorEvent code: not-allowed, service-not-allowed,
+ *  network, no-speech, audio-capture, aborted … */
+interface SpeechErrorEvent { error?: string }
 interface Recognition {
   continuous: boolean;
   interimResults: boolean;
   lang: string;
   onresult: ((e: SpeechEvent) => void) | null;
-  onerror: (() => void) | null;
+  onerror: ((e: SpeechErrorEvent) => void) | null;
   onend: (() => void) | null;
   start(): void;
   stop(): void;
 }
 type RecognitionCtor = new () => Recognition;
+
+/** Plain-language causes — what a traveler (or Sana at 2am) can act on. */
+const SPEECH_ERRORS: Record<string, string> = {
+  "not-allowed": "Microphone blocked. Allow mic access for this site, and check macOS System Settings → Privacy & Security → Microphone.",
+  "service-not-allowed": "This browser won't allow speech recognition. Chrome handles it best — or just type.",
+  "audio-capture": "No microphone found. Check your input device, then try again.",
+  network: "Speech recognition needs a network connection and couldn't reach it.",
+  "no-speech": "I didn't catch anything — try again a little closer to the mic.",
+  aborted: "Voice input was interrupted.",
+};
 
 // Trailing spoken stop command (optionally "ok"/"atlas" prefixed, "listening"/"recording" suffixed).
 const STOP_CMD = /(?:^|\s)(?:ok(?:ay)?\s+)?(?:atlas\s+)?stop(?:\s+(?:listening|recording))?[.!?]*$/i;
@@ -51,6 +64,10 @@ export function useSpeechInput(
   onText: (text: string) => void,
   onFinish?: (text: string) => void,
   lang = "en-US",
+  /** Called with a human-readable reason when recognition fails. Without this the
+   *  mic just stops looking like it's listening and nobody knows why — which is
+   *  exactly the wrong failure mode in front of a room. */
+  onError?: (reason: string) => void,
 ) {
   const [listening, setListening] = useState(false);
   const recRef = useRef<Recognition | null>(null);
@@ -59,8 +76,10 @@ export function useSpeechInput(
   // closures (avoids sending against a stale `messages` array).
   const onTextRef = useRef(onText);
   const onFinishRef = useRef(onFinish);
+  const onErrorRef = useRef(onError);
   onTextRef.current = onText;
   onFinishRef.current = onFinish;
+  onErrorRef.current = onError;
   const supported = !!getCtor();
 
   const stop = useCallback(() => {
@@ -98,9 +117,13 @@ export function useSpeechInput(
       recRef.current = null;
       onFinishRef.current?.(finalRef.current);
     };
-    rec.onerror = () => {
+    rec.onerror = (e) => {
       setListening(false);
       recRef.current = null;
+      const code = e?.error ?? "unknown";
+      // eslint-disable-next-line no-console
+      console.warn("[voice] speech recognition error:", code);
+      onErrorRef.current?.(SPEECH_ERRORS[code] ?? `Voice input stopped (${code}).`);
     };
     recRef.current = rec;
     rec.start();
