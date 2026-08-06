@@ -33,7 +33,7 @@ insert into public.regions (code, name, line, countries, gateways, status, has_s
   ('01F', 'Western Europe',             'Old-world capitals, modern ease',          8,  'CDG · LHR · AMS', 'live',    false),
   ('02F', 'The Mediterranean',          'Sun, sea, and centuries',                  9,  'BCN · FCO · ATH', 'live',    false),
   ('03F', 'Northern Europe & Nordics',  'Fjords, design, long light',               7,  'CPH · OSL · HEL', 'live',    false),
-  ('04A', 'Middle East & Gulf',         'Where ancient meets audacious',            6,  'DXB · DOH · AUH', 'live',    false),
+  ('04A', 'Middle East, Gulf & North Africa', 'Where ancient meets audacious',        8,  'DXB · CAI · DOH', 'live',    false),
   ('05A', 'East Africa',                'The cradle of the safari',                 5,  'NBO · JRO · KGL', 'live',    false),
   ('06A', 'Southern Africa',            'Big skies, bigger game',                   5,  'CPT · JNB · WDH', 'live',    false),
   ('07A', 'South & Southeast Asia',     'Temples, islands, spice',                  9,  'BKK · SIN · DPS', 'live',    false),

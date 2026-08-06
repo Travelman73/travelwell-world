@@ -26,7 +26,7 @@
 
   --accent: oklch(0.74 0.085 85);              /* Champagne gold        #C2A35B */
   --accent-foreground: oklch(0.205 0.006 75);
-  --gold-deep: oklch(0.63 0.09 82);            /* Antique gold (text)   #A8873F */
+  --gold-deep: oklch(0.48 0.085 80);           /* Antique gold (text) — darkened for WCAG AA on light (was 0.63 / #A8873F, ~3.3:1) */
 
   --destructive: oklch(0.50 0.20 27);          /* Emergency red         #B3261E */
   --destructive-foreground: oklch(0.99 0.005 85);
@@ -81,9 +81,13 @@
   --t-display-l: 56px;   --lh-display-l: 1.05;
   --t-h2: 36px;          --lh-h2: 1.15;
   --t-h3: 24px;          --lh-h3: 1.25;
-  --t-lead: 20px;        --lh-lead: 1.5;
-  --t-body: 16px;        --lh-body: 1.6;
-  --t-body-s: 14px;      --lh-body-s: 1.55;
+  /* Senior-first base type (David, Jul 2026): our highest spenders are older
+     travelers — nobody should squint. Reading sizes bumped a notch; headings and
+     legal micro unchanged. rem-free px scale, so this is a deliberate, verified
+     bump rather than a root-zoom that ripples unpredictably. */
+  --t-lead: 22px;        --lh-lead: 1.5;
+  --t-body: 17px;        --lh-body: 1.6;
+  --t-body-s: 15px;      --lh-body-s: 1.55;
   --t-micro: 12px;       --lh-micro: 1.4;
   --t-eyebrow: 12px;
 }
@@ -94,7 +98,7 @@
     --t-display-l: 34px;
     --t-h2: 28px;
     --t-h3: 21px;
-    --t-lead: 17px;
+    --t-lead: 18px;
   }
 }
 

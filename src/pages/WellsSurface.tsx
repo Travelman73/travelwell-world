@@ -95,7 +95,7 @@ export default function WellsSurface() {
 
   return (
     <>
-      <JourneyBar current={4} crumbs={[{ label: "Home", to: "/" }, { label: "Interests", to: "/special-interests" }, { label: "Regions", to: "/regions" }, { label: "Activities", to: "/activities" }, { label: "The Wells" }]} />
+      <JourneyBar current={3} crumbs={[{ label: "Home", to: "/" }, { label: "Interests", to: "/special-interests" }, { label: "Regions", to: "/regions" }, { label: "The Wells" }]} />
 
       {/* always-visible Wells bar */}
       <div className="wb">
@@ -109,11 +109,11 @@ export default function WellsSurface() {
                 <button
                   key={w.id}
                   className={cx("wb-chip", soon && "wb-chip--soon", w.lux && "wb-chip--lux")}
-                  aria-selected={active === w.id}
+                  aria-pressed={active === w.id}
                   onClick={() => browseWell(w.id)}
                 >
                   <span className="wb-chip__ic"><Icon name={w.icon} small /></span>
-                  {w.name.replace("-Well", "")}
+                  {w.name}
                   {soon ? <span className="wb-chip__soon">Soon</span> : n > 0 ? <span className="wb-chip__count">{n}</span> : null}
                 </button>
               );
@@ -123,7 +123,7 @@ export default function WellsSurface() {
       </div>
 
       <div className="container jn-intro" style={{ paddingBottom: 8 }}>
-        <Eyebrow>The Dream Journey · Step 4 of 5</Eyebrow>
+        <Eyebrow>The Dream Journey · Step 3 of 4</Eyebrow>
         <h1>Build your trip, Well by Well.</h1>
         <p className="lead">Each Well covers one need. We've scoped the options to your region and pre-filled them from your activities. Add what you love — you'll book in the next step.</p>
       </div>
@@ -193,7 +193,7 @@ export default function WellsSurface() {
       <div className="wp-continue">
         <div className="wp-continue__inner">
           <div className="wp-continue__summary">
-            <div className="wp-continue__cov" aria-label={`${covered} of 10 Wells covered`}>
+            <div className="wp-continue__cov" role="img" aria-label={`${covered} of 10 Wells covered`}>
               {standardWells.map((w) => <i key={w.id} className={trip.some((b) => b.well === w.id) ? "on" : ""} />)}
             </div>
             <span className="wp-continue__text"><b>{covered}/10 Wells</b> covered · {trip.length} in your trip</span>

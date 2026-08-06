@@ -70,7 +70,7 @@ export default function Itinerary() {
 
   return (
     <>
-      <JourneyBar current={5} crumbs={[{ label: "Home", to: "/" }, { label: "Wells", to: "/wells-surface" }, { label: "Book It" }]} />
+      <JourneyBar current={4} crumbs={[{ label: "Home", to: "/" }, { label: "Wells", to: "/wells-surface" }, { label: "Book It" }]} />
       <div className="it-head">
         <div className="it-head__inner">
           <div className="it-head__top">
@@ -153,7 +153,7 @@ export default function Itinerary() {
                   return (
                     <div key={w.id} className={cx("it-gap-cell", cov ? "covered" : "gap")} title={w.name}>
                       <div className="it-gap-cell__iconwrap"><Icon name={w.icon} /></div>
-                      <span className="it-gap-cell__lbl">{w.name.replace("-Well", "")}</span>
+                      <span className="it-gap-cell__lbl">{w.name}</span>
                     </div>
                   );
                 })}

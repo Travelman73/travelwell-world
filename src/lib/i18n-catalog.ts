@@ -56,7 +56,7 @@ export const CATALOG: Record<string, L> = {
   "region.01F.name": { es: "Europa Occidental", ar: "أوروبا الغربية", zh: "西欧", fr: "Europe de l'Ouest" },
   "region.02F.name": { es: "El Mediterráneo", ar: "البحر المتوسط", zh: "地中海", fr: "La Méditerranée" },
   "region.03F.name": { es: "Europa del Norte y Nórdicos", ar: "شمال أوروبا والدول الاسكندنافية", zh: "北欧", fr: "Europe du Nord & Nordiques" },
-  "region.04A.name": { es: "Oriente Medio y el Golfo", ar: "الشرق الأوسط والخليج", zh: "中东与海湾", fr: "Moyen-Orient & Golfe" },
+  "region.04A.name": { es: "Oriente Medio, Golfo y Norte de África", ar: "الشرق الأوسط والخليج وشمال إفريقيا", zh: "中东、海湾与北非", fr: "Moyen-Orient, Golfe & Afrique du Nord" },
   "region.05A.name": { es: "África Oriental", ar: "شرق أفريقيا", zh: "东非", fr: "Afrique de l'Est" },
   "region.06A.name": { es: "África Austral", ar: "الجنوب الأفريقي", zh: "南部非洲", fr: "Afrique Australe" },
   "region.07A.name": { es: "Asia del Sur y Sudeste", ar: "جنوب وجنوب شرق آسيا", zh: "南亚与东南亚", fr: "Asie du Sud & du Sud-Est" },

@@ -34,15 +34,39 @@ export const REGION_DETAIL: Record<string, RegionDetail> = {
 
 export type DestStatus = "live" | "future";        // shown, or content/coming-soon
 export type DestDepth = "verified" | "stub" | "cached"; // how deep (quality flag)
+/** A don't-miss experience in a destination dossier. */
+export interface Jewel {
+  name: string; blurb?: string;
+  tier?: string;                                   // its budget tier (essential…ultra)
+  when?: string;                                   // best time/conditions
+  si?: string;                                     // the Signature Interest it serves (slug)
+  commission?: string;                             // the earning path/lane for this jewel (the money)
+}
+/** A traveler Q&A — answer-first; the array auto-emits FAQPage JSON-LD (AI-citation). */
+export interface Faq { q: string; a: string; source?: string }
+/**
+ * The dossier `data` jsonb. **v1 ingest tier (David-locked 2026-08): carry
+ * safety + timing + jewels(+si+commission) + faq** — the render spine, the money,
+ * and the AI-citation surface. `seo` / `supply` / `ultra` are a deferred later pass;
+ * the jsonb holds them freely when they land — no migration. Extra keys pass through.
+ */
+export interface DossierData {
+  safety?: Record<string, unknown>;
+  timing?: { season?: string; best_months?: number[]; notes?: string };
+  jewels?: Jewel[];
+  faq?: Faq[];
+  [key: string]: unknown;                          // seo / supply / ultra / geo … (later pass)
+}
+
 export interface Destination {
   id: string; name: string; country: string; line: string; status: DestStatus; depth: DestDepth; img: string; sub_region?: string;
   // Serving signals (fit axes) — arrive from the conformed dossier at ingest.
   si?: string[];                                   // Signature Interests served
-  feel?: string[];                                 // feel/archetype tags
+  feel?: string[];                                 // feel/archetype tags (vibe[] — empty on ingest, set later from the Identity Card vision)
   tier_range?: string[];                           // budget bands present (essential…ultra)
   price_band?: string;                             // coarse overall price label
   draw_rank?: "anchor" | "core" | "emerging";      // surface order
-  data?: Record<string, unknown>;                  // full dossier (safety, booking, jewels, seo, timing…)
+  data?: DossierData;                              // the dossier body (v1: safety, timing, jewels, faq)
 }
 // The 5th arg carries the legacy quality ("live" = shown & verified, "stub" =
 // shown but thin) and maps onto the two-axis model David locked: status (shown
@@ -66,7 +90,14 @@ export const DESTINATIONS: Record<string, Destination[]> = {
       data: {
         safety: { advisory_level: "L1", posture: "book-freely", booking_hold: false, notes: "Normal precautions; alpine risk is weather + avalanche, managed by resort patrol — ski in-bounds and heed closures.", source: "US State Dept L1 / Swiss authorities", verified: "2026-06" },
         timing: { season: "Dec–Apr", best_months: [1, 2, 3], notes: "Glacier skiing extends the season; Feb–Mar for the most reliable snow." },
-        jewels: [{ name: "Gornergrat cog railway at sunrise", tier: "premier", when: "clear mornings", blurb: "The Matterhorn head-on, before the crowds." }],
+        jewels: [
+          { name: "Gornergrat cog railway at sunrise", tier: "premier", when: "clear mornings", blurb: "The Matterhorn head-on, before the crowds.", si: "ski", commission: "Rail + experience partner — commission lane" },
+          { name: "Glacier spa evening after the slopes", tier: "luxury", when: "any evening", blurb: "Thermal pools with the peak in the window — the Wellness side of a ski week.", si: "wellness", commission: "Hotel-spa affiliate" },
+        ],
+        faq: [
+          { q: "Do I need a car in Zermatt?", a: "No — Zermatt is car-free. Park in Täsch and take the 12-minute shuttle train; everything in the village is walkable or by electric taxi.", source: "Zermatt Tourism" },
+          { q: "When is the snow most reliable?", a: "February and March are the most dependable, but the glacier keeps skiing open into spring — and even summer on the Theodul.", source: "Verified 2026-06" },
+        ],
       },
     },
     {
@@ -78,7 +109,14 @@ export const DESTINATIONS: Record<string, Destination[]> = {
       data: {
         safety: { advisory_level: "L1", posture: "book-freely", booking_hold: false, notes: "Normal precautions; renowned off-piste carries real avalanche risk — hire a certified guide off the marked runs.", source: "US State Dept L1 / Austrian authorities", verified: "2026-06" },
         timing: { season: "Dec–Apr", best_months: [1, 2, 3], notes: "Legendary après-ski; Jan–Mar for the deepest snow on the Arlberg." },
-        jewels: [{ name: "Off-piste day with an Arlberg guide", tier: "premier", when: "after fresh snow", blurb: "The terrain that made the sport, read by someone who knows it." }],
+        jewels: [
+          { name: "Off-piste day with an Arlberg guide", tier: "premier", when: "after fresh snow", blurb: "The terrain that made the sport, read by someone who knows it.", si: "ski", commission: "Certified guide bureau — commission lane" },
+          { name: "Last run into the Mooserwirt", tier: "comfort", when: "3pm onward", blurb: "Ski straight into the Arlberg's most infamous après bar — the party starts before the lifts close.", si: "ski", commission: "Partner venue" },
+        ],
+        faq: [
+          { q: "Is St. Anton good for beginners?", a: "It's famous for expert terrain, but the Nasserein and Gampen slopes are gentle, well-groomed blues — and the Arlberg ski schools are among the oldest in the world.", source: "Verified 2026-06" },
+          { q: "How do I get to St. Anton?", a: "Fly to Innsbruck (~1hr) or Zurich (~2hr) and take the train straight in — the station is in the village, no transfer needed.", source: "Arlberg tourism" },
+        ],
       },
     },
     {
@@ -90,7 +128,14 @@ export const DESTINATIONS: Record<string, Destination[]> = {
       data: {
         safety: { advisory_level: "L2", posture: "book-freely", booking_hold: false, notes: "Exercise increased caution (France-wide, mainly urban); the valley itself is safe — high-alpine routes and the Vallée Blanche need a qualified guide.", source: "US State Dept L2 / French authorities", verified: "2026-06" },
         timing: { season: "Dec–Apr", best_months: [1, 2, 3], notes: "Serious terrain; the Vallée Blanche is spring-dependent — check conditions." },
-        jewels: [{ name: "Aiguille du Midi cable car", tier: "comfort", when: "clear days", blurb: "3,842m and the roof of Europe in twenty minutes." }],
+        jewels: [
+          { name: "Aiguille du Midi cable car", tier: "comfort", when: "clear days", blurb: "3,842m and the roof of Europe in twenty minutes.", si: "adventure", commission: "Lift + experience partner" },
+          { name: "The Vallée Blanche with a guide", tier: "premier", when: "spring conditions", blurb: "20km off-piste from 3,842m to the valley — glacier, séracs, a mountain guide reading every step.", si: "adventure", commission: "Guide bureau — commission lane" },
+        ],
+        faq: [
+          { q: "Do I need to be an expert to ski Chamonix?", a: "The linked areas (Brévent, Flégère, Grands Montets) have plenty for intermediates; the legendary off-piste and the Vallée Blanche need a qualified guide.", source: "Verified 2026-06" },
+          { q: "Can you ski the Vallée Blanche without a guide?", a: "No — it crosses a live glacier with crevasses and séracs. Always go with a certified mountain guide, and it's spring-condition dependent.", source: "Compagnie des Guides" },
+        ],
       },
     },
     {
@@ -102,7 +147,14 @@ export const DESTINATIONS: Record<string, Destination[]> = {
       data: {
         safety: { advisory_level: "L1", posture: "book-freely", booking_hold: false, notes: "Normal precautions; alpine risk is weather + avalanche, managed by resort patrol — ski in-bounds and heed closures.", source: "US State Dept L1 / Swiss authorities", verified: "2026-06" },
         timing: { season: "Dec–Apr", best_months: [1, 2, 3], notes: "High, sunny Engadin snow; Jan–Feb for the classic season and the frozen-lake events." },
-        jewels: [{ name: "A night at Badrutt's, the lake frozen below", tier: "ultra", when: "peak season", blurb: "The birthplace of winter tourism, taken at full glamour." }],
+        jewels: [
+          { name: "A night at Badrutt's, the lake frozen below", tier: "ultra", when: "peak season", blurb: "The birthplace of winter tourism, taken at full glamour.", si: "wellness", commission: "Hotel partner — commission lane" },
+          { name: "White Turf racing on the frozen lake", tier: "luxury", when: "February Sundays", blurb: "Thoroughbreds thunder across the frozen St. Moritzersee — a century-old spectacle.", si: "spectator", commission: "Event + hospitality partner" },
+        ],
+        faq: [
+          { q: "When is the frozen-lake season?", a: "The lake freezes solid enough for events from late January through February — White Turf racing, snow polo, and the gourmet festival all run then.", source: "St. Moritz Tourism" },
+          { q: "Is St. Moritz only for luxury travellers?", a: "The glamour is real, but the Engadin's high, sunny slopes and the shared lift network serve every level — not every bed is a palace.", source: "Verified 2026-06" },
+        ],
       },
     },
     {
@@ -114,7 +166,14 @@ export const DESTINATIONS: Record<string, Destination[]> = {
       data: {
         safety: { advisory_level: "L2", posture: "book-freely", booking_hold: false, notes: "Exercise increased caution (France-wide, mainly urban); the resort is safe — off-piste across the Trois Vallées needs a qualified guide.", source: "US State Dept L2 / French authorities", verified: "2026-06" },
         timing: { season: "Dec–Apr", best_months: [1, 2, 3], notes: "Gateway to the 3 Vallées — 600km of linked pistes; Feb–Mar for depth and sun." },
-        jewels: [{ name: "First tracks across the Trois Vallées", tier: "premier", when: "after a snowfall", blurb: "The world's largest linked ski area, empty, at dawn." }],
+        jewels: [
+          { name: "First tracks across the Trois Vallées", tier: "premier", when: "after a snowfall", blurb: "The world's largest linked ski area, empty, at dawn.", si: "ski", commission: "Lift + guide partner" },
+          { name: "A Michelin dinner at 1850", tier: "luxury", when: "any evening", blurb: "Courchevel 1850 has more Michelin stars than any ski resort on earth — the Eat-Well side of a ski week.", si: "culinary", commission: "Restaurant partner" },
+        ],
+        faq: [
+          { q: "What do the Courchevel 'levels' (1850, 1650…) mean?", a: "They're villages at different altitudes on the same mountain — 1850 is the glossy top address; 1650 (Moriond) and 1550 are quieter and better value, all on the lift network.", source: "Verified 2026-06" },
+          { q: "Is it really the world's largest ski area?", a: "Courchevel is the gateway to Les 3 Vallées — around 600km of linked, lift-served pistes, the largest connected ski area in the world.", source: "Les 3 Vallées" },
+        ],
       },
     },
     {
@@ -126,7 +185,14 @@ export const DESTINATIONS: Record<string, Destination[]> = {
       data: {
         safety: { advisory_level: "L2", posture: "book-freely", booking_hold: false, notes: "Exercise increased caution (Italy-wide, mainly urban posture); Cortina itself is safe — Dolomiti Superski off-piste and via ferrata need a guide.", source: "US State Dept L2 / Italian authorities", verified: "2026-06" },
         timing: { season: "Dec–Apr", best_months: [1, 2, 3], notes: "Co-hosts the Milano-Cortina 2026 Winter Olympics — book well ahead for the Games window." },
-        jewels: [{ name: "Sunset on the Tofane from a Dolomiti rifugio", tier: "premier", when: "clear afternoons", blurb: "Pink light on the Dolomites, a plate of casunziei, the pistes gone quiet." }],
+        jewels: [
+          { name: "Sunset on the Tofane from a Dolomiti rifugio", tier: "premier", when: "clear afternoons", blurb: "Pink light on the Dolomites, a plate of casunziei, the pistes gone quiet.", si: "ski", commission: "Mountain-hut partner" },
+          { name: "The Sellaronda circuit in a day", tier: "premier", when: "clear midweek days", blurb: "Ski a full loop around the Sella massif on one lift pass — 40km of pistes, four valleys, lunch in a different dialect.", si: "ski", commission: "Dolomiti Superski lane" },
+        ],
+        faq: [
+          { q: "Is Cortina part of a bigger ski area?", a: "Yes — it's on the Dolomiti Superski pass: 12 areas and ~1,200km of pistes on one ticket, with the famous Sellaronda circuit nearby.", source: "Dolomiti Superski" },
+          { q: "When are the 2026 Winter Games in Cortina?", a: "Milano-Cortina host in February 2026; Cortina holds the women's alpine and the sliding events — book far ahead for that window.", source: "Verified 2026-06" },
+        ],
       },
     },
     {
@@ -138,7 +204,14 @@ export const DESTINATIONS: Record<string, Destination[]> = {
       data: {
         safety: { advisory_level: "L1", posture: "book-freely", booking_hold: false, notes: "Normal precautions; the Hahnenkamm's Streif is expert-only — the resort's blue and red runs suit everyone, off-piste wants a guide.", source: "US State Dept L1 / Austrian authorities", verified: "2026-06" },
         timing: { season: "Dec–Apr", best_months: [1, 2, 3], notes: "The Hahnenkamm race is late January — electric, but book far ahead; Feb–Mar is quieter and deep." },
-        jewels: [{ name: "Standing at the top of the Streif", tier: "comfort", when: "a clear morning", blurb: "Look down the most feared downhill in ski racing — then take the gentle way home." }],
+        jewels: [
+          { name: "Standing at the top of the Streif", tier: "comfort", when: "a clear morning", blurb: "Look down the most feared downhill in ski racing — then take the gentle way home.", si: "ski", commission: "Lift partner" },
+          { name: "Hahnenkamm race weekend", tier: "premier", when: "late January", blurb: "The world's most feared downhill, from the grandstand — then the town's biggest party.", si: "spectator", commission: "Event + hospitality partner" },
+        ],
+        faq: [
+          { q: "Can normal skiers ski the Streif?", a: "The race line is expert-only and often closed, but you can ski its famous sections in gentler condition, and the rest of the Kitzbühel Alps suits every level.", source: "Verified 2026-06" },
+          { q: "When is the Hahnenkamm race?", a: "Mid-to-late January — electric, but the town is packed; February and March are quieter with reliable snow.", source: "Kitzbühel Tourism" },
+        ],
       },
     },
   ],
@@ -157,6 +230,7 @@ export const DESTINATIONS: Record<string, Destination[]> = {
 
 export const SUBREGION_TOP: Record<string, string[]> = {
   "Pacific Coast": ["San Francisco", "Big Sur", "Los Angeles", "San Diego"],
+  "Pacific Northwest": ["Seattle", "Portland", "Mt Hood", "Olympic National Park"],
   "Mountain West": ["Aspen", "Jackson Hole", "Park City", "Yellowstone"],
   "The Southwest": ["Sedona", "Grand Canyon", "Santa Fe", "Moab"],
   "Texas & The Gulf": ["Austin", "San Antonio", "New Orleans", "Houston"],

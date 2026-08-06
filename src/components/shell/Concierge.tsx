@@ -4,7 +4,9 @@ import { Icon } from "@/lib/icons";
 import { useStore, type IoMode } from "@/store/useStore";
 import { useAtlas } from "@/lib/useAtlas";
 import { useSpeechInput } from "@/lib/useSpeech";
-import { speak, stopSpeaking, subscribeSpeaking } from "@/lib/voice";
+import { useLiveVoice } from "@/lib/useLiveVoice";
+import { subscribeSpeaking } from "@/lib/voice";
+import { atlasSpeak, atlasStopSpeaking } from "@/lib/voice/index";
 import { renderMarkdown, stripMarkdown } from "@/lib/markdown";
 import { useSpecialInterests } from "@/store/useCatalog";
 import { useT } from "@/lib/i18n";
@@ -58,12 +60,32 @@ export function Concierge() {
   // it, fix any misheard word, and send it yourself. You stay in control of when
   // it goes to Atlas — the mic is a keyboard alternative, not a send button.
   const { supported: voiceSupported, listening, start: startVoice, stop: stopVoice } =
-    useSpeechInput(setInput, (finalText) => { setInput(finalText.trim()); });
+    useSpeechInput(
+      setInput,
+      (finalText) => { setInput(finalText.trim()); },
+      undefined,
+      // Say WHY the mic stopped. Silent failure reads as "the mic is broken" and
+      // is unfixable by the person in front of it.
+      (reason) => showToast(reason),
+    );
+  // Live voice — the real-time conversation (LiveKit belt + agent worker). A
+  // separate mode from the dictation mic above: here Atlas hears and answers out
+  // loud with no send button, and the worker holds the brain.
+  const { live, connecting: liveConnecting, start: startLive, stop: stopLive } = useLiveVoice();
+
   const onMic = () => {
     if (listening) { stopVoice(); return; }
+    if (live) { showToast("You're in a live conversation — just talk, or end it to type."); return; }
     if (!voiceSupported) { showToast("Voice input isn't supported in this browser yet — please type for now."); return; }
-    stopSpeaking(); // don't let Atlas talk over the traveler
+    atlasStopSpeaking(); // don't let Atlas talk over the traveler
     startVoice();
+  };
+
+  const onLive = () => {
+    if (live) { stopLive(); return; }
+    if (listening) stopVoice();   // the two modes can't share the mic
+    atlasStopSpeaking();          // the agent does the talking in live mode
+    void startLive();
   };
 
   useEffect(() => {
@@ -71,21 +93,25 @@ export function Concierge() {
   }, [messages, busy, isOpen]);
 
   // The mirror: when the traveler chose to HEAR Atlas, speak each new reply
-  // aloud (in their language) while the same text stays on screen. Browser TTS
-  // today, swappable behind src/lib/voice.ts.
+  // aloud (in their language) while the same text stays on screen. Routed through
+  // the voice seam (atlasSpeak) — browser TTS by default, Cartesia/ElevenLabs via
+  // VITE_TWW_MOUTH once wired; the UI never learns which mouth is talking.
   const lastSpokenRef = useRef(-1);
   useEffect(() => {
     if (io === "read" || !isOpen) return;
+    // LIVE MODE: the agent is already speaking these words over WebRTC — speaking
+    // them again with browser TTS would double Atlas's voice. Mirror only.
+    if (live) { lastSpokenRef.current = messages.length - 1; return; }
     const i = messages.length - 1;
     if (i < 0) return;
     const m = messages[i];
     if (m.role === "assistant" && i !== lastSpokenRef.current) {
       lastSpokenRef.current = i;
-      speak(stripMarkdown(m.content), useStore.getState().locale);
+      atlasSpeak(stripMarkdown(m.content), useStore.getState().locale);
     }
-  }, [messages, io, isOpen]);
-  // Stop the voice when the panel closes.
-  useEffect(() => { if (!isOpen) stopSpeaking(); }, [isOpen]);
+  }, [messages, io, isOpen, live]);
+  // Stop the voice (and any live room) when the panel closes.
+  useEffect(() => { if (!isOpen) { atlasStopSpeaking(); stopLive(); } }, [isOpen, stopLive]);
 
   // Speaking signal: track when Atlas's voice is actually playing so the message
   // he's reading can show a tiny animated "speaking" mark (the mirror of the
@@ -98,7 +124,7 @@ export function Concierge() {
     // Don't send an empty message, while Atlas is replying, or mid-dictation
     // (the transcript isn't final until you stop — stop, then send).
     if (!trimmed || busy || listening) return;
-    stopSpeaking();
+    atlasStopSpeaking();
     setInput("");
     // In the vision loop's "ask" stage, capture the dream and write it back
     // verbatim (Atlas heard every word) instead of routing to the model.
@@ -185,7 +211,7 @@ export function Concierge() {
         </button>
       )}
 
-      <div className="tw-concierge" data-open={isOpen} role="dialog" aria-modal="false" aria-label="Speak with Atlas — your Concierge" aria-hidden={!isOpen}>
+      <div className="tw-concierge" data-open={isOpen} role="dialog" aria-modal="false" aria-label="Speak with Atlas — your Concierge" aria-hidden={!isOpen} {...(isOpen ? {} : ({ inert: "" } as any))}>
         <div className="tw-concierge__head">
           <div className="tw-concierge__avatar"><Icon name="sparkles" /></div>
           <div style={{ flex: 1 }}>
@@ -252,7 +278,11 @@ export function Concierge() {
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 18 }}>
                 <button className="btn btn-primary" onClick={() => begin("guided")}>Walk me through it</button>
-                <button className="btn btn-secondary" onClick={() => begin("conversation")}>I'll just type</button>
+                {/* The "build your own" door: clears the pre-loaded Safari journey so
+                    Atlas follows the traveler anywhere — beside the scripted demo below. */}
+                <button className="btn btn-secondary" onClick={() => { useStore.getState().resetJourney(); begin("conversation"); showToast("Fresh start — tell me anywhere you'd like to go."); }}>
+                  Build your own trip — go anywhere
+                </button>
                 <button className="btn btn-secondary" style={{ borderColor: "var(--gold-deep)", color: "var(--gold-deep)" }} onClick={runHero}>
                   <Icon name="sparkles" small /> See how Atlas guides you
                 </button>
@@ -277,7 +307,7 @@ export function Concierge() {
                         className="tw-speaking"
                         aria-label="Atlas is speaking — tap to stop"
                         title="Speaking… tap to stop"
-                        onClick={() => stopSpeaking()}
+                        onClick={() => atlasStopSpeaking()}
                       >
                         <i /><i /><i />
                       </button>
@@ -379,6 +409,17 @@ export function Concierge() {
               <span className="tw-listen-copy"><b>Listening…</b> tap stop when you're done — your words are in the box, then you send.</span>
             </div>
           )}
+          {(live || liveConnecting) && (
+            <div className="tw-listening-live" role="status" aria-live="polite">
+              <span className="tw-listen-orb" aria-hidden="true"><Icon name="sound" /></span>
+              <span className="tw-wave" aria-hidden="true">{Array.from({ length: 6 }).map((_, i) => <i key={i} style={{ animationDelay: `${i * 0.09}s` }} />)}</span>
+              <span className="tw-listen-copy">
+                {liveConnecting
+                  ? <><b>Connecting…</b> allow the microphone when your browser asks.</>
+                  : <><b>Live with Atlas.</b> Just talk — he'll answer out loud, and every word appears here too.</>}
+              </span>
+            </div>
+          )}
           <div className="tw-input">
             <input
               type="text" placeholder={listening ? "Listening… speak now" : "Ask me anything — in English · Español · العربية · 中文 · Français"} aria-label="Message Atlas — ask in English, Spanish, Arabic, Chinese, or French"
@@ -386,7 +427,16 @@ export function Concierge() {
               onKeyDown={(e) => { if (e.key === "Enter") onSend(input); }}
             />
             <button className="tw-input__mic" aria-label={listening ? "Stop recording" : "Talk instead of type"} aria-pressed={listening} onClick={onMic}><Icon name={listening ? "stop" : "mic"} /></button>
-            <button className="tw-input__send" aria-label="Send" disabled={listening || busy} onClick={() => onSend(input)}><Icon name="send" small /></button>
+            <button
+              className="tw-input__live"
+              aria-label={live ? "End the live conversation" : "Talk live with Atlas"}
+              aria-pressed={live}
+              disabled={liveConnecting}
+              onClick={onLive}
+            >
+              <Icon name={live ? "stop" : "sound"} />
+            </button>
+            <button className="tw-input__send" aria-label="Send" disabled={listening || live || busy} onClick={() => onSend(input)}><Icon name="send" small /></button>
           </div>
           <div className="tw-stop-row"><Icon name="check" small /> You're in control — Atlas suggests, and never books for you.</div>
         </div>

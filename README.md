@@ -70,11 +70,30 @@ encodes Atlas's persona and the trust rules. The browser calls it via
 `supabase.functions.invoke("atlas")` (see `src/lib/supabase.ts`), so the
 Anthropic key never reaches the client.
 
+### CLI setup (once per machine)
+
+```bash
+brew install supabase/tap/supabase   # macOS. (`npm i -g supabase` is NOT supported)
+supabase login          # opens a browser to authorize
+supabase link --project-ref xgjidkgctqqdprxtxeui   # ref lives in supabase/config.toml
+```
+No Homebrew? Skip installing and prefix any command with `npx`, e.g.
+`npx supabase@latest login --token sbp_...`.
+If the browser flow won't work in your terminal (SSH / remote / Codespaces),
+create a token at <https://supabase.com/dashboard/account/tokens> and use
+`supabase login --token sbp_...` instead.
+
+### Deploy
+
 ```bash
 supabase functions deploy atlas
 supabase secrets set ANTHROPIC_API_KEY=sk-ant-...
 supabase db push   # apply migrations
 ```
+
+Per-function secrets are listed in each function's header comment
+(`supabase/functions/*/index.ts`) — e.g. `livekit-token` needs
+`LIVEKIT_API_KEY` / `LIVEKIT_API_SECRET` / `LIVEKIT_URL`.
 
 ## Supabase data model
 

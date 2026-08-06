@@ -47,6 +47,19 @@
 .idp__sig { font-family: var(--font-display); font-style: italic; font-size: 15px; color: var(--muted-foreground); }
 .idp__sig .tw { color: var(--primary); font-style: normal; }
 
+/* ===== this-trip vision — the VARIABLE, split from the permanent identity ===== */
+.pf-vision { margin-top: 18px; border: 1px solid var(--border); border-inline-start: 3px solid var(--accent); border-radius: var(--radius-lg); background: var(--surface-alt); padding: 22px 26px; box-shadow: var(--e1); }
+.pf-vision__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.pf-vision__eyebrow { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-deep); }
+.pf-vision__quote { font-family: var(--font-display); font-style: italic; font-size: 20px; line-height: 1.45; color: var(--foreground); margin-top: 14px; }
+.pf-vision__foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+.pf-vision__note { font-size: 13.5px; color: var(--muted-foreground); line-height: 1.5; max-width: 60ch; }
+
+/* Safer-Informed section — both-sides badge + the enabling promise */
+.pf-sec__badge { display: inline-block; margin-inline-start: 8px; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold-deep); background: color-mix(in oklch, var(--accent) 14%, transparent); border-radius: var(--radius-pill); padding: 3px 8px; vertical-align: middle; }
+.pf-sec__promise { display: flex; align-items: flex-start; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted-foreground); line-height: 1.5; }
+.pf-sec__promise svg { flex: none; color: var(--primary); margin-top: 2px; }
+
 /* ===== editable sections grid ===== */
 .pf-sections { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 22px; }
 .pf-sec { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--e1); overflow: hidden; }
@@ -118,8 +131,43 @@
 
 .pf-saved-banner { display: flex; align-items: center; gap: 10px; background: color-mix(in oklch, var(--safety-1) 12%, white); color: oklch(.4 .1 150); border-radius: var(--radius); padding: 12px 16px; font-weight: 500; font-size: 14px; margin-bottom: 20px; }
 
+/* ===== Lifetime-Loop check-in (Welcome Back) ===== */
+.wb { max-width: 760px; margin-inline: auto; padding: 48px var(--gutter) 96px; }
+.wb__head .eyebrow { display: block; margin-bottom: 10px; }
+.wb__head h1 { font-size: clamp(30px, 4.4vw, 44px); line-height: 1.05; letter-spacing: -.015em; }
+.wb__lead { color: var(--muted-foreground); font-size: var(--t-lead); line-height: 1.55; margin-top: 14px; max-width: 60ch; }
+.wb__const { display: flex; gap: 12px; align-items: flex-start; margin-top: 22px; padding: 16px 18px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--secondary); color: var(--secondary-foreground); font-size: 14px; line-height: 1.5; }
+.wb__const-ic { width: 26px; height: 26px; border-radius: 50%; background: var(--primary); color: #fff; display: grid; place-items: center; flex: none; }
+
+.wb__steps { display: flex; flex-direction: column; gap: 16px; margin-top: 30px; }
+.wb-card { display: grid; grid-template-columns: 48px 1fr; gap: 18px; align-items: start; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--card); box-shadow: var(--e1); padding: 24px 26px; }
+.wb-card--vision { border-inline-start: 3px solid var(--accent); background: var(--surface-alt); }
+.wb-card__n { width: 48px; height: 48px; border-radius: 50%; background: var(--secondary); color: var(--primary); display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 22px; flex: none; }
+.wb-card--vision .wb-card__n { background: color-mix(in oklch, var(--accent) 16%, transparent); color: var(--gold-deep); }
+.wb-card__body h2 { font-family: var(--font-display); font-weight: 600; font-size: 22px; line-height: 1.15; }
+.wb-card__q { color: var(--muted-foreground); font-size: var(--t-body-s); line-height: 1.5; margin-top: 6px; }
+.wb-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.wb-choices--3 { grid-template-columns: repeat(3, 1fr); }
+.wb-card__delta { display: flex; align-items: center; gap: 7px; margin-top: 14px; font-size: 13.5px; color: var(--primary); font-weight: 500; }
+.wb-card__delta svg { flex: none; }
+.wb-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.wb-chips .chip-toggle { display: inline-flex; align-items: center; gap: 7px; }
+.wb-chips .chip-toggle .dot { width: 8px; height: 8px; border-radius: 50%; }
+.wb-chips .chip-toggle svg { width: 14px; height: 14px; opacity: .7; }
+.wb-card__addlbl { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-foreground); font-weight: 700; margin-top: 18px; }
+.wb-card--vision .fld { margin-top: 14px; }
+.wb-card__last { display: flex; gap: 8px; align-items: flex-start; margin-top: 14px; font-size: 13px; color: var(--muted-foreground); line-height: 1.5; }
+.wb-card__last svg { flex: none; color: var(--primary); margin-top: 2px; }
+.wb-card__lastq { font-family: var(--font-display); font-style: italic; }
+.wb__foot { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 30px; }
+.wb__sig { font-family: var(--font-display); font-style: italic; font-size: 16px; color: var(--muted-foreground); margin-top: 24px; }
+.wb__sig .tw { color: var(--primary); font-style: normal; }
+
 @media (max-width: 760px) {
   .idp__body { grid-template-columns: 1fr; gap: 22px; }
   .pf-sections { grid-template-columns: 1fr; }
   .pf-budget__row { grid-template-columns: 96px 1fr 110px; }
+  .wb-card { grid-template-columns: 40px 1fr; gap: 14px; padding: 20px; }
+  .wb-card__n { width: 40px; height: 40px; font-size: 18px; }
+  .wb-choices, .wb-choices--3 { grid-template-columns: 1fr; }
 }

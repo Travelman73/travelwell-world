@@ -5,6 +5,19 @@ the catalog generator. Author into `src/data/places.ts` → regenerate `0005` �
 run. Do **not** write rows straight to the DB (the generated `0005` has a
 self-cleaning `delete … where id not in (source)` that would wipe out-of-pipeline rows).
 
+## The border gate — run it BEFORE ingest (`npm run validate:ingest`)
+`scripts/validate-destinations.ts` is the MVP-side validator: it checks incoming
+dossiers against the **live** canon (region codes, SI/Well/tier spellings, the
+`<city>-<country>` id rule, sub_regions, the jewel/FAQ v1 shape, `reconciles_live_mvp`
+resolution) **and resolves every cross-reference** — a "see also" pointing at a
+place that doesn't exist is the exact bug that would ship then translate ×9. It
+exits non-zero on any error, so it gates a PR.
+- **Incoming library JSON:** `npm run validate:ingest -- path/to/dossiers` (a `.json`
+  array/region-map, or a directory of `.json`).
+- **Self-check (regression guard on our own bundle):** `npm run validate:ingest`.
+The 38 legacy live slugs (`bali`, `kyoto`, `machu`…) are grandfathered as the
+reconcile anchors; net-new ids must be `<city>-<country>`.
+
 ---
 
 ## Where it lands
@@ -79,6 +92,30 @@ Near-term consumers: `seo`, `safety`, `jewels` (rendering + safety spine +
 layered page) and the **buffet block** (`facts` / `faq` / `quotes` — the
 AEO top-load). Everything else rides along. If a dossier lacks a section, omit
 the key — don't fabricate.
+
+### ✅ v1 ingest tier — carry this now (Sana's Call 2, David-locked 2026-08)
+`data` is jsonb, so "extend" costs no migration — it's a decision about *what we
+commit to carrying* this pass. **This pass carries the render spine + the money +
+the AI-citation:**
+- **`safety`** + **`timing`** — as today.
+- **`jewels[]`** — now with **`si`** (the Signature-Interest slug it serves) **and
+  `commission`** (that jewel's earning path/lane — the money) on each entry, plus
+  `name` / `tier` / `when` / `blurb`.
+- **`faq[]`** — `{ q, a, source }`; auto-emits `FAQPage` JSON-LD (the AI-citation).
+
+These now render in the app: the destination page shows a **Don't-miss jewels**
+block (with the commission lane) and a **Good to know** FAQ accordion, and the
+catalog read carries `data` from the DB (not just the bundle). Reference row:
+`zermatt-switzerland` in `src/data/places.ts`.
+
+**Deferred to a later pass (ingest when ready — the jsonb holds them freely, no
+migration):** `seo`, `trails`/supply, `ultra`, `facts`, `quotes`. Omit them now
+rather than half-fill.
+
+**`vibe[]` / `feel[]` — leave empty on ingest (deliberate).** It's a live field but
+not in the dossier recipe; we populate it later from the **Identity Card's read of
+the traveler's vision** (the living Travel ID), not from dossier prose. Seen, not
+dropped.
 
 **The buffet block drives AI citation (AEO), so it maps 1:1 to the source:**
 - `facts` = the fast facts, each with a **hard number** and a **`source`** — one claim per entry so the AI can lift it as a standalone chunk.

@@ -6,48 +6,26 @@ import { useSpecialInterests } from "@/store/useCatalog";
 import { Eyebrow } from "@/components/ui/primitives";
 import { cx } from "@/lib/utils";
 import { fetchTravelId, type TravelIdRecord } from "@/lib/travelId";
+import { deriveIdentity, tierLabel, tierPeak, activityLabel, accessLabel, DEMO_IDENTITY, type DisplayIdentity } from "@/lib/identity";
 import { signOut } from "@/lib/auth";
 
-const PROFILE = {
-  id: "TW-2A9F-K3",
-  created: "Jun 2026",
-  party: [
-    { initial: "A", name: "Amara", role: "Trip lead · books & pays", cohort: "35–44", tag: "You" },
-    { initial: "J", name: "Jhumur", role: "Partner", cohort: "35–44", tag: "Adult" },
-  ],
-  interests: ["safari", "romance", "culinary"],
-  budgets: { stay: ["high", "luxury"], fly: ["business"], eat: ["high"], move: ["mid"], activities: ["mid", "high"] } as Record<string, string[]>,
-  trip: { type: "Romantic getaway", length: "10 days", window: "July 2026" },
-  dream: "An unhurried anniversary safari — golden-hour game drives, candlelit dinners under the stars, and a few slow mornings with coffee and a view.",
-  diet: ["Pescatarian (Jhumur)", "No shellfish"],
-  access: ["Step-free rooms preferred"],
-  contact: { email: "amara@email.com", channel: "Email + SMS" },
-  consent: { updates: true, safety: true, marketing: false } as Record<string, boolean>,
-};
-const BUDGET_TIERS: Record<string, { label: string; pct: number }> = {
-  luxury: { label: "Luxury", pct: 100 }, high: { label: "High-End", pct: 80 }, mid: { label: "Mid-Range", pct: 58 },
-  family: { label: "Family Friendly", pct: 40 }, budget: { label: "Budget Conscious", pct: 24 },
-};
-const FLY_TIERS: Record<string, { label: string; pct: number }> = {
-  first: { label: "First Class", pct: 100 }, business: { label: "Business Class", pct: 68 }, coach: { label: "Coach", pct: 34 },
-};
-const tiersFor = (wid: string) => (wid === "fly" ? FLY_TIERS : BUDGET_TIERS);
 const BUDGET_WELLS = [
   { id: "stay", name: "Stay-Well", icon: "bed" }, { id: "fly", name: "Fly-Well", icon: "plane" },
   { id: "eat", name: "Eat-Well", icon: "utensils" }, { id: "move", name: "Move-Well", icon: "car" },
   { id: "activities", name: "Activities-Well", icon: "compass" },
 ];
 
-function InterestChips() {
+function InterestChips({ interests }: { interests: string[] }) {
   const sis = useSpecialInterests();
   return (
     <div className="idp-chips">
-      {PROFILE.interests.map((id) => { const si = sis.find((s) => s.id === id); return si ? <span className="idp-chip" key={id}><span className="dot" style={{ background: si.accent }} />{si.name}</span> : null; })}
+      {interests.map((id) => { const si = sis.find((s) => s.id === id); return si ? <span className="idp-chip" key={id}><span className="dot" style={{ background: si.accent }} />{si.name}</span> : <span className="idp-chip" key={id}>{id}</span>; })}
     </div>
   );
 }
 
-function IdentityCard({ dream = PROFILE.dream, synced = false }: { dream?: string; synced?: boolean }) {
+/** The permanent Identity Card — the CONSTANT (who they are). No trip vision here. */
+function IdentityCard({ id }: { id: DisplayIdentity }) {
   return (
     <div className="idp">
       <div className="idp__top">
@@ -55,42 +33,52 @@ function IdentityCard({ dream = PROFILE.dream, synced = false }: { dream?: strin
           <div className="idp__seal"><Icon name="globe" /></div>
           <div>
             <div className="idp__kicker">TravelWell · Identity Card</div>
-            <div className="idp__title">{PROFILE.trip.type}</div>
+            <div className="idp__title">{id.name}</div>
           </div>
         </div>
         <div className="idp__no">
-          <span>ID · {PROFILE.id}</span><span>PARTY · {PROFILE.party.length}</span>
-          <span>WINDOW · {PROFILE.trip.window.toUpperCase()}</span><span>SINCE · {PROFILE.created.toUpperCase()}</span>
+          <span>ID · {id.id}</span>
+          <span>PARTY · {id.party.length}</span>
+          {id.cohort && <span>AGE · {id.cohort.range}</span>}
+          <span>SINCE · {id.since.toUpperCase()}</span>
         </div>
       </div>
       <div className="idp__body">
         <div className="idp__col">
           <h3>Traveling party</h3>
           <div className="idp-party">
-            {PROFILE.party.map((m) => (
-              <div className="idp-member" key={m.name}>
+            {id.party.map((m) => (
+              <div className="idp-member" key={m.name + m.tag}>
                 <div className="idp-member__av">{m.initial}</div>
-                <div><div className="idp-member__name">{m.name}</div><div className="idp-member__meta">{m.role} · {m.cohort}</div></div>
-                <span className={cx("idp-member__tag pill", m.tag === "You" ? "pill-live" : "pill-preview")}>{m.tag}</span>
+                <div><div className="idp-member__name">{m.name}</div><div className="idp-member__meta">{m.tag === "You" ? "You" : m.tag} · {m.cohort}</div></div>
+                <span className={cx("idp-member__tag pill", m.lead ? "pill-live" : "pill-preview")}>{m.tag}</span>
               </div>
             ))}
           </div>
           <h3 style={{ marginTop: 22 }}>Travels for</h3>
-          <InterestChips />
+          <InterestChips interests={id.interests} />
         </div>
         <div className="idp__col">
-          <h3>The dream</h3>
-          <p className="idp-dream">“{dream}”</p>
-          <h3 style={{ marginTop: 20 }}>Shape</h3>
+          <h3>Budget style, per Well</h3>
           <div className="idp-chips">
-            <span className="idp-chip" style={{ background: "var(--surface-alt)", border: "1px solid var(--border)" }}><Icon name="calendar" small /> {PROFILE.trip.length}</span>
-            <span className="idp-chip" style={{ background: "var(--surface-alt)", border: "1px solid var(--border)" }}>{PROFILE.trip.window}</span>
+            {BUDGET_WELLS.map((w) => {
+              const sel = id.budget[w.id] || [];
+              if (!sel.length) return null;
+              return <span className="idp-chip" style={{ background: "var(--surface-alt)", border: "1px solid var(--border)" }} key={w.id}><Icon name={w.icon} small /> {sel.map((k) => tierLabel(w.id, k)).join(" · ")}</span>;
+            })}
+          </div>
+          <h3 style={{ marginTop: 20 }}>How you move</h3>
+          <div className="idp-chips">
+            {activityLabel(id.activity) && <span className="idp-chip" style={{ background: "var(--surface-alt)", border: "1px solid var(--border)" }}><Icon name="compass" small /> {activityLabel(id.activity)}</span>}
+            {id.access.map((a) => <span className="idp-chip" style={{ background: "var(--surface-alt)", border: "1px solid var(--border)" }} key={a}><Icon name="check" small /> {accessLabel(a)}</span>)}
+            {id.dietary && <span className="idp-chip" style={{ background: "var(--surface-alt)", border: "1px solid var(--border)" }}><Icon name="utensils" small /> {id.dietary}</span>}
+            {!id.activity && !id.access.length && !id.dietary && <span className="idp-member__meta">Fully mobile · no notes</span>}
           </div>
         </div>
       </div>
       <div className="idp__foot">
-        <span className="idp__sig">Signed, ready to travel. <span className="tw">Travel Well.</span></span>
-        <span className="pill pill-live">{synced ? "Saved to your account" : "Saved on this device"}</span>
+        <span className="idp__sig">The constant — who you are. Refreshed every trip, never rebuilt. <span className="tw">Travel Well.</span></span>
+        <span className="pill pill-live">{id.synced ? "Saved to your account" : "Saved on this device"}</span>
       </div>
     </div>
   );
@@ -107,9 +95,7 @@ export default function Profile() {
     else setRec(null);
   }, [user]);
 
-  const displayName = rec?.display_name || PROFILE.party[0].name;
-  const dream = rec?.trip_intent || PROFILE.dream;
-  const synced = Boolean(rec);
+  const id = deriveIdentity(rec, DEMO_IDENTITY);
 
   const Sec = ({ k, icon, title, children }: { k: string; icon: string; title: ReactNode; children: ReactNode }) => {
     if (editing === k) {
@@ -142,8 +128,10 @@ export default function Profile() {
       <div className="pf__head">
         <div>
           <Eyebrow>Your Travel ID</Eyebrow>
-          <h1>{displayName}'s travel identity</h1>
-          {synced && <p className="t-body-s" style={{ color: "var(--muted-foreground)", marginTop: 4 }}><Icon name="check" small /> Synced from your account · {user?.email}</p>}
+          <h1>{id.name}'s travel identity</h1>
+          {id.synced
+            ? <p className="t-body-s" style={{ color: "var(--muted-foreground)", marginTop: 4 }}><Icon name="check" small /> Synced from your account · {user?.email}</p>
+            : <p className="t-body-s" style={{ color: "var(--muted-foreground)", marginTop: 4 }}>Built once, refreshed every trip — you never start over.</p>}
         </div>
         <div className="pf__head-actions">
           {user
@@ -153,24 +141,38 @@ export default function Profile() {
         </div>
       </div>
 
-      <IdentityCard dream={dream} synced={synced} />
+      <IdentityCard id={id} />
+
+      {/* The VARIABLE — the current trip's vision, deliberately separate from the
+          permanent identity above. This is what the Lifetime Loop re-asks each trip. */}
+      <div className="pf-vision">
+        <div className="pf-vision__head">
+          <span className="pf-vision__eyebrow"><Icon name="sparkles" small /> This trip · the variable</span>
+          <span className="pill pill-gold">Changes every trip</span>
+        </div>
+        <p className="pf-vision__quote">“{id.vision}”</p>
+        <div className="pf-vision__foot">
+          <span className="pf-vision__note">Your identity above stays constant — only the vision changes. Next trip, Atlas just asks what you're picturing now.</span>
+          <button className="btn btn-secondary" onClick={() => openPanel("concierge")}><Icon name="sparkle" small /> Picture a new trip</button>
+        </div>
+      </div>
 
       <h2 className="t-h3" style={{ marginTop: 36, marginBottom: 4 }}>Edit any detail</h2>
       <p className="t-body-s" style={{ color: "var(--muted-foreground)", marginBottom: 18 }}>Change anything here and your dream trip quietly re-tunes. No account required — this lives on your device.</p>
 
       <div className="pf-sections">
         <Sec k="party" icon="heart" title="Traveling party">
-          {PROFILE.party.map((m) => <div className="pf-row" key={m.name}><span className="pf-row__k">{m.name}</span><span className="pf-row__v">{m.cohort} · {m.tag}</span></div>)}
+          {id.party.map((m) => <div className="pf-row" key={m.name + m.tag}><span className="pf-row__k">{m.name}</span><span className="pf-row__v">{m.cohort} · {m.tag}</span></div>)}
         </Sec>
 
-        <Sec k="interests" icon="compass" title="Interests"><InterestChips /></Sec>
+        <Sec k="interests" icon="compass" title="Interests"><InterestChips interests={id.interests} /></Sec>
 
         <Sec k="budget" icon="gift" title="Budget, per Well">
           <div className="pf-budget">
             {BUDGET_WELLS.map((w) => {
-              const tiers = tiersFor(w.id); const sel = PROFILE.budgets[w.id] || [];
-              const maxPct = Math.max(0, ...sel.map((k) => tiers[k]?.pct || 0));
-              const labels = sel.map((k) => tiers[k]?.label).filter(Boolean).join(" · ") || "—";
+              const sel = id.budget[w.id] || [];
+              const maxPct = tierPeak(w.id, sel);
+              const labels = sel.map((k) => tierLabel(w.id, k)).join(" · ") || "—";
               return (
                 <div className="pf-budget__row" key={w.id}>
                   <span className="pf-budget__name"><Icon name={w.icon} small /> {w.name}</span>
@@ -182,21 +184,13 @@ export default function Profile() {
           </div>
         </Sec>
 
-        <Sec k="dream" icon="sparkle" title="Trip intent & dream">
-          <div className="pf-row"><span className="pf-row__k">Trip type</span><span className="pf-row__v">{PROFILE.trip.type}</span></div>
-          <div className="pf-row"><span className="pf-row__k">Length</span><span className="pf-row__v">{PROFILE.trip.length} · {PROFILE.trip.window}</span></div>
-          <div style={{ marginTop: 14 }}><p className="idp-dream" style={{ fontSize: 16 }}>“{PROFILE.dream}”</p></div>
-        </Sec>
-
-        <Sec k="care" icon="shield" title="Dietary & accessibility">
-          <div className="pf-row"><span className="pf-row__k">Dietary</span><span className="pf-row__v">{PROFILE.diet.join(" · ")}</span></div>
-          <div className="pf-row"><span className="pf-row__k">Accessibility</span><span className="pf-row__v">{PROFILE.access.join(" · ") || "None noted"}</span></div>
-        </Sec>
-
-        <Sec k="contact" icon="message" title="Contact & consent">
-          <div className="pf-row"><span className="pf-row__k">Email</span><span className="pf-row__v">{PROFILE.contact.email}</span></div>
-          <div className="pf-row"><span className="pf-row__k">Reach me via</span><span className="pf-row__v">{PROFILE.contact.channel}</span></div>
-          <div className="pf-row"><span className="pf-row__k">Consents</span><span className="pf-row__v">{[PROFILE.consent.updates && "Updates", PROFILE.consent.safety && "Safety", PROFILE.consent.marketing && "Inspiration"].filter(Boolean).join(" · ")}</span></div>
+        <Sec k="care" icon="shield" title={<>Safer-Informed <span className="pf-sec__badge">Both sides</span></>}>
+          <div className="pf-row"><span className="pf-row__k">Pace</span><span className="pf-row__v">{activityLabel(id.activity) || "Not set"}</span></div>
+          <div className="pf-row"><span className="pf-row__k">Access</span><span className="pf-row__v">{id.access.map(accessLabel).join(" · ") || "Fully mobile"}</span></div>
+          <div className="pf-row"><span className="pf-row__k">Fully up for</span><span className="pf-row__v">{id.capabilities || "—"}</span></div>
+          <div className="pf-row"><span className="pf-row__k">Good to know</span><span className="pf-row__v">{id.accessibility || "Nothing noted"}</span></div>
+          <div className="pf-row"><span className="pf-row__k">Dietary</span><span className="pf-row__v">{id.dietary || "None noted"}</span></div>
+          <p className="pf-sec__promise"><Icon name="heart" small /> We use every answer to build the trip <b>around</b> you — never to limit you.</p>
         </Sec>
       </div>
 

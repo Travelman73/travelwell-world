@@ -14,7 +14,7 @@ export function MegaMenu() {
   const close = () => closePanel();
 
   return (
-    <div className="tw-mega" data-open={open} role="region" aria-label="Worlds of Adventure" aria-hidden={!open}>
+    <div id="tw-mega" className="tw-mega" data-open={open} role="region" aria-label="Worlds of Adventure" aria-hidden={!open} {...(open ? {} : ({ inert: "" } as any))}>
       <button className="tw-mega__close" aria-label="Close menu" onClick={close}>
         <Icon name="close" />
       </button>

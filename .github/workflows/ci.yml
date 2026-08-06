@@ -1,0 +1,34 @@
+name: CI
+
+# Quality gate — typecheck, build, and the automated accessibility audit.
+# Canon (CLAUDE.md): a11y is "checkable, not a vibe" — an a11y regression fails
+# the build here, the same discipline as the dossier QC gate.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Build
+        run: npm run build
+      - name: Install Chromium (for the a11y audit)
+        run: npx playwright install --with-deps chromium
+      - name: Accessibility gate (WCAG 2.1 A/AA)
+        env:
+          A11Y_BASE: http://localhost:4173
+        run: |
+          npm run preview -- --port 4173 --strictPort &
+          for i in $(seq 1 30); do curl -sf http://localhost:4173 >/dev/null && break; sleep 1; done
+          npm run a11y

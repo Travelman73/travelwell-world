@@ -6,10 +6,11 @@ import { Footer } from "./Footer";
 import { Concierge } from "./Concierge";
 import { TripTray } from "./TripTray";
 import { Emergency } from "./Emergency";
-import { SafetyFab } from "./SafetyFab";
+import { SafetyStack } from "./SafetyStack";
 import { Ambient } from "./Ambient";
 import { AtlasOrchestrator } from "./AtlasOrchestrator";
 import { TourGuide } from "./TourGuide";
+import { BackBar } from "./BackBar";
 import { CookieConsent } from "./CookieConsent";
 import { useStore, applyInitialLocale } from "@/store/useStore";
 import { getCurrentUser, onAuthChange } from "@/lib/auth";
@@ -118,10 +119,11 @@ export function Shell() {
       <Header />
       <MegaMenu />
       <main id="main" className="tw-main" data-page={slug}>
+        <BackBar />
         {/* Route pages are code-split (React.lazy in App.tsx). The Suspense
             boundary lives here so the header, footer and panels stay mounted
             while the next page's chunk loads. */}
-        <Suspense fallback={<div className="route-loading" aria-busy="true" aria-label="Loading" />}>
+        <Suspense fallback={<div className="route-loading" role="status" aria-busy="true" aria-label="Loading" />}>
           <Outlet />
         </Suspense>
       </main>
@@ -129,7 +131,7 @@ export function Shell() {
       <Concierge />
       <TripTray />
       <Emergency />
-      <SafetyFab />
+      <SafetyStack />
       <Ambient />
       <AtlasOrchestrator />
       <TourGuide />

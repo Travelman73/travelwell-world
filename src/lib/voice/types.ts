@@ -57,12 +57,19 @@ export interface VoiceBelt {
 
 export interface VoiceConfig {
   transport?: "browser" | "livekit";
-  mouth?: "browser" | "cartesia";
+  mouth?: "browser" | "cartesia" | "elevenlabs";
   ears?: "browser" | "deepgram";
   /** LiveKit room URL (wss://…) — from env, not hardcoded. */
   livekitUrl?: string;
   /** our edge function that mints a room token (keys stay server-side). */
   tokenEndpoint?: string;
+  /** preferred token path: mint through the app's Supabase client (handles auth). */
+  getToken?: (room: string) => Promise<{ url: string; token: string; room: string } | null>;
+  /** which LiveKit room to join (default "atlas"). */
+  room?: string;
+  /** THE MIRROR — Atlas's own words, to paint on screen while he speaks them.
+   *  Only meaningful on the livekit belt, where the agent holds the brain. */
+  onAgentText?: (text: string) => void;
   /** never leave the traveler mute: fall back to the browser belt if a premium
    *  slot isn't wired/available. Default true. */
   degradeToBrowser?: boolean;

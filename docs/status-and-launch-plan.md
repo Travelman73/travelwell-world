@@ -158,6 +158,8 @@ seed (starting to turn it over — NOT built yet):**
   them. The **language flip is just one scripted beat** in this same engine.
 
 ### Universe-inventory readiness (Jul 2026 — demonstrable vs architected)
+> **⚠️ Universe set corrected — David 2026-08 (supersedes the Sports/Olympics framing below).** The universes are now **FOUR front doors, David's exact names: General Travel · TravelWell-Ultra · TLEU / TravelWell Live Entertainment Universe · Romance, Marriages & Honeymoons**, with **Adventure floated but NOT locked — it is four, not five** (its case rides `safari` + `expedition`, both high-commission/premium). **Olympics and team-Sports travel are OUT as universes** — David is deliberately staying clear of athlete/team movement (a 75-yr US near-monopoly). **The sports play is a single Signature Interest: `spectator`** — ticket + travel for *spectators* (pro football's ~8–15% of a 65k-avg gate travels; plus colleges, marathons, Ironman), an underserved lane we can actually work. So: no Olympics/CCSTT/team-travel universe build; `olympic`/`sports`/`prosports`/`compsports` SIs are **parked** (leave as `preview`, don't invest); `spectator` is the one to grow. The **subject-not-person schema seam stays** (it serves Romance wedding-blocks / groups too) — just no longer "Olympic"-driven. Reconcile the paragraphs below against this note.
+
 David frames the offering as a family of "universes." Mapped to what's actually in the repo, so the VC deck shows built product and *labels* the roadmap as roadmap:
 - **General Travel (mothership) — REAL, demonstrable today.** The live MVP: 6 SIs (→ more on flip), 7 live regions (→ 12), 38 dossiers, Atlas (speak/type), the Wells, PWA, safety data. This is the proof.
 - **TravelWell-Ultra — REAL, demonstrable today as the luxury overlay.** `ultra` is a *live* SI/overlay + a budget tier; `LUX_WELLS` (Nanny-Well, Security-Well — ultra-only via `WellAudience`) are live. Not a separate app, but a genuine, shippable ultra layer across the product — a crisp "ultra mode" walkthrough is real.
@@ -181,15 +183,32 @@ profile and the World-Engine fields — not new build, just the right shape.
 - **Trips can have participants with roles.** Extend the existing `TripBlock.whom` hint toward role-scoped participants, so "show each person only their next task" has a home later without reshaping the trip model.
 - **Universe dimension on the catalog.** Keep the tank universe-taggable so a universe (TWW-main / Ultra / Sports / TLEU) filters the shared data — "one tank, many front doors."
 
-### Romance, Marriages & Honeymoons — the first fully-specified front door (David, Jul 2026)
-David's "crown" universe package. **Not a build ask; it's the picture + market/architecture proof for the VC.** The key point for us: it's a **presentation layer, nothing forks in the code** — and that's not a hope, it's already proven: **`/luxury` is exactly this pattern today** (a branded universe front door on the shared engine). Romance is the same move on the sealed **`romance` SI** (live: "Romance & Honeymoons," accent `#A8527A`) — its own name/landing/tone/tagline on the surface, same identity tank / Atlas / commission / safety / itinerary underneath.
-- **Tagline (locked):** *"If It's Love… TravelWell."* — joins the motto family ("If It's Safer Travel…", "If It's Informed Travel…"). TravelWell stays one word.
+### The living Travel ID — Identity Builder + Lifetime Loop (David-locked; spec 2026-05-28, age model 2026-07-29)
+David's spine for the whole product: **we're not booking a trip, we're building a Travel ID for life.** A short six-step onboarding *conversation* (not a form) produces the traveler's **Identity Card**; a lifetime loop refreshes it every trip after, so a returning traveler never starts over — Atlas already knows who they are and just confirms what's changed. Full source: `docs/identity-builder-and-age-budget.md` (David's file, filed verbatim).
+- **The six-step Identity Builder (conversation, scrolls as Atlas guides):**
+  1. **Who are you** — name + **age range** (12 cohorts, below).
+  2. **How you like to move** — activity level (Very / Moderately / Lightly Active · Leisurely Strolls) + access needs (Wheelchair · Cane · Frequent Rest · No/Some Stairs · Fully Mobile). Sets itinerary shape + tempo.
+  3. **Budget style** — **per Well, not one tier** (Essential · Comfort · Premier · Luxury · Ultra). The human default is **"Mix my ranges" — pick up to three** to float between per Well; nudge higher/lower anytime. **Fly-Well is the exception**: cabin classes (First · Business · Premium Economy · Economy), not the five tiers.
+  4. **Who's traveling** — party (adults · children w/ ages · seniors w/ ages) → activates Family / Senior / Group / Premium.
+  5. **What kind of trip** — interests, or "Mix my interests" → the matching Worlds.
+  6. **In your own words** — the vision, a couple of sentences, interpreted into Worlds/activities/budget/mobility/timing.
+- **The `constant` vs the `variable` (the key data-model insight):** the ID holds the **constant** (who they are — steps 1–4ish); the **vision (step 6) is the variable** that changes every trip (beach this year, ski next). Don't store the vision *as* identity — store it as the current-trip intent, re-asked each loop.
+- **Age is its own axis — age shapes pace/tone/mobility/itinerary, NEVER budget** (locked; matches the "Destination axes / separate axes" discipline). **12 cohorts** (seniors split 65–74 / 75–84 / 85+, supersedes the old single 65+): Infant&Toddler 0–3 · Young Child 4–8 · Tween 9–12 · Teen 13–17 · Young Adult 18–24 · Early Adult 25–34 · Established Adult 35–44 · Peak Earner 45–54 · Pre-Retirement 55–64 · Young Senior 65–74 · Senior 75–84 · Senior+ 85+. Each carries an energy/rest picture (per the source file) that Atlas uses to set pace — a stored *range*, never a birthday (privacy-by-design, matches today's Travel I.D.).
+- **Safer-Informed capabilities overlay (this is where the motto is earned):** up front and warmly, Atlas asks **both sides — what physical limitations/safety issues to know about AND what you're fully able to do** (pace, rest/naps, accessibility, any medical factor). **The promise, always: every fact builds the trip AROUND the traveler — enabling, never handing them limitations.** An explicit capability/limitation **overrides the age default** (a 35-yr-old with a heart condition = a 65-yr-old with one). Ties to the locked Safer-Informed principle and the safety gates.
+- **The Lifetime Loop — Attract → Guide → Extend → Reactivate → Repeat.** Built once, refreshed every trip. On return (maybe a year on) Atlas does a short warm check-in on the deltas: **age** (cohort may shift) · **health** (better/worse/same — "still up to what you did last trip?") · **budget** (moved/held) · **interests** (grown/changed) · **this trip's vision**. Never start over — confirm, refresh, and the options always look like what they just described. *Win the lifetime, not the booking; grow into their friends & family.*
+- **Voice guardrail (David, 2026-07-29):** keep **"honest / honestly" out of Atlas's vocabulary entirely** (reinforces the standing CLAUDE.md voice rule — prefer *accurate / plainly / straight*). Atlas stays tight: ~two sentences / ~25 words, senior-first big type. *(Traveler-facing app copy scrubbed to match — About page done 2026-08; internal planning docs are not Atlas voice.)*
+- **Integration read (what's real vs socket today):** the **speak/type → Atlas captures → writes the vision back → confirm** loop is genuinely built (`useSpeech` + `atlas/index.ts`); age-*ranges* + Travel I.D. persist to the DB and resume across devices. **Built (Aug 2026):** (a) the **permanent Identity Card** — the card leads with the person and durable facts, and the **vision is split out as the per-trip variable** (`src/lib/identity.ts` `deriveIdentity` + `Profile.tsx`); (b) **Sign-Up captured in canon vocabulary** — the 12 age cohorts (adult subset for self, all 12 for party) + per-Well tiers Essential…Ultra / Fly cabin classes, "Mix my ranges" capped at 3 per Well; (c) the **Safer-Informed capabilities overlay** — a new "How you move" onboarding step captures pace + access + **both sides** (`capabilities` = fully-up-for, `accessibility` = plan-around), stored structured (migration `0011`), shown on the card + a "Both sides" Profile section, and fed to Atlas (`insights.ts` profile.pace/access/ableTo/planAround) with a system-prompt rule to **build AROUND the traveler, never limit them** and let a stated factor **override the age default**. It's the socket the L3 gates will read (the gate *enforcement* itself is still ahead). (d) the **Lifetime Loop check-in** is built (`/welcome-back`, wired from Sign-In's recognized state): a returning traveler gets a short warm diff over the stored ID — age (confirm or bump a cohort), energy (better/same/easier → shifts the activity level), budget (steady/more/leaner → nudges every per-Well tier a notch), interests (confirm + add), and the **vision re-asked as the variable** — then it writes the deltas back via `saveTravelId` and drops them into the journey. Refresh, never rebuild. All ride the existing profile schema + the "subject-not-user" seam — no fork. **VC ask (#7):** the whole **Sign-up + Sign-in + full Onboarding** is now a first-class demo surface — the clearest "not like every other travel site" moment.
+
+### Romance, Marriages & Honeymoons — the first fully-specified front door (David, Jul 2026; re-confirmed Aug 2026)
+David's "crown" universe package. **Not a build ask; it's the picture + market/architecture proof for the VC.** The key point for us: it's a **presentation layer, nothing forks in the code** — and that's not a hope, it's already proven: **`/luxury` is exactly this pattern today** (a branded universe front door on the shared engine). Romance is the same move on the sealed **`romance` SI** (live, display "Romance, Marriages & Honeymoons", accent `#A8527A`) — its own name/landing/tone/tagline on the surface, same identity tank / Atlas / commission / safety / itinerary underneath. **David-locked (Aug 2026): it's a confirmed front-door universe — one of the four (General · Ultra · Live Entertainment · Romance) — and does NOT need to be live online for the VC; the market / monetization / vendor-ecosystem depth carries it in the deck. The `romance` slug stays sealed — do not touch it.**
+- **Tagline (locked):** *"If It's Love… TravelWell."* — already renders on the SI page via the `Tagline` primitive (`romance → "Love"` in `SI_TAGLINE_SUBJECT`). Joins the brand slogan family. TravelWell stays one word.
+- **Build-toward socket (David, Aug 2026): a per-universe Atlas vocabulary.** Romance gets its own register — how Atlas talks about weddings, honeymoons, blocks — layered on the same brain (a system-prompt/context overlay selected by universe, never a forked Atlas). Nothing to build now; just don't assume Atlas's voice is one-size — leave room for a universe-scoped tone overlay. A full monetization package lives in the business plan (not the repo).
 - **Slowmance — locked campaign copy** (verbatim, `TWW-Romance-Slowmance-Copy-LOCKED`): own "the exhale," one place / long single stay / "don't race your honeymoon, live it." Do not re-draft without David.
 - **Product tie-in that DOES land in the build: "pace before place."** The Slowmance cue = Atlas asks **pace before geography** in onboarding — which slots straight into the 4-step onboarding order (vision → activities → **pace** → budget) we're already shaping. Real, not just marketing.
 - **Why it's the crown (VC "why now"):** honeymoons ~$119B (2026) → ~$202B (2034); the reframe stat — **avg destination wedding ≈ 39 guests, ~72% travel → one wedding ≈ 40 bookings**; Mexico+Europe+Caribbean ≈ 80% of US destination weddings (own the top ~20 places). Stats are the median where analysts disagree (built to survive a hard question).
 - **Monetization shape** (maps onto our provider/commission model): rank **full-service planners first** (one-stop + best commission lane); **the block is the money** (wedding room-blocks + villa-blocks = the ~40-traveler concentrated node); all-inclusive resort portals (host/IATA lane); DMC-direct + insurance.
 - **Content-team warm lead** (`TWW-Romance-Content-Team-WARM-LEAD`): a TCI husband-and-wife photo/video team, known to David — a provider who **pays us commission** AND yields **ownable marketing content** from real booked trips. Slots into the provider ledger as a commission-lane + content node; **gated on a signed content/model release** before any footage is used.
-- **Four front doors total:** TravelWell (general) · Ultra · Live Entertainment · Romance — each a themed layer over an SI/tier slice of the one tank. Marginal cost of the next door is a fraction of the first; that compounding is the moat.
+- **Four front doors — David-locked, 2026-08. Use his exact names:** **General Travel** · **TravelWell-Ultra** · **TLEU / TravelWell Live Entertainment Universe** · **Romance, Marriages & Honeymoons** — each a themed layer over an SI/tier slice of the one tank. **It is four, not five:** Adventure was floated (it would ride `safari` + `expedition`) but is **not locked** — never publish it as a universe. **Not universes:** Olympics and team-Sports travel (dropped); the sports play is the `spectator` SI only. Marginal cost of the next door is a fraction of the first; that compounding is the moat.
 
 **Deliberately NOT pre-fit** (they attach to the core, they don't reshape it): the Equipment Intelligence Engine (carnets, chain-of-custody) and the 12 team-travel engines (Academic Constraint, Compliance, …). Keep the Wells/matching/booking core generic; don't contort the foundation guessing at them.
 
@@ -234,6 +253,53 @@ The evolution from handoff → **close on our own surface**, built the SAFE way 
   - **Sandbox account stood up (David, Jul 2026) — TEST mode only** (TravelWell.World LLC; live payments held until funded + business/bank verification). Set up as **"pick what you need," NOT Stripe's Managed Payments** (that 3.5%/txn add-on is Stripe-as-merchant-of-record — brutal on big travel tickets). Correct call to steer off the fee.
   - **The nuance to hold (this is the back door David named):** Stripe hosted checkout buys us **PCI SAQ A** (we never touch card data) — but that is **NOT** merchant-of-record protection. Stripe is a **processor, not a MoR shield.** The moment travel funds land in **our** Stripe balance as principal, **we become the seller/merchant of record** — bonding, chargebacks, refunds, fraud land on us — even though the card never hit our servers. Two separate protections; hosted checkout only buys the first.
   - **Canon-clean way to use Stripe (path a):** the **provider/DMC is the merchant of record** — either supplier-native rails (Duffel Payments for flights; aggregator billing for hotels) or **Stripe Connect with the provider/DMC as the connected account** taking the charge (direct charges), us as the **platform earning an application fee**. That keeps MoR with the provider *and* keeps us SAQ A, **with no 3.5%**. Stripe is also fine for **our own service/concierge/subscription fees**, where we genuinely *are* the seller. **Stripe-as-principal for travel inventory (funds to us) = becoming merchant of record = the deliberate, funded path-b decision** — never a default, never a drift.
+
+### Booking architecture — the three paths + the scale requirement (David, Jul 2026; session to lock)
+The frame *above* the toolbox. **Requirement: everyone books ON OUR SITE, at scale, automated** — not us
+processing one booking at a time by hand. The **human-advisor host model (Fora-style) is out** — it can't
+scale to what we're building (the deeper reason the Fora deal is off). We get started by **"dancing with the
+music that's out there"**: use the best rails available today, sign up with everyone we can, grab the best
+connections playing right now, and **refresh on the 30-day cadence** as newer/better ones come online. It's a
+transition dream→reality — the parts won't all mesh on day one; we adjust tension on the drive belts as we go
+(expected, not a problem).
+- **Path 1 — lead with what genuinely automates now (the spine).** Duffel (flights), Viator/GetYourGuide
+  (activities), Hotelbeds/bedbanks (hotels): instant-confirm, API, at scale, today. Most of every trip.
+- **Path 2 — request-to-book for inventory with no instant API yet.** The traveler still books **on our
+  site**; our system routes and confirms automatically or near-automatically. This is exactly the locked
+  itinerary state machine — idea → placed → handed-off → **confirmed** — with the confirmation-return field
+  **upgradeable email-parse → api**. The socket we've been pouring already anticipates async confirm.
+- **Path 3 — aggregators as the bridge.** Bedbanks / channel aggregators already carry many non-API brands
+  (even all-inclusives) via API — we reach those brands THROUGH the aggregator without a direct connection.
+
+**THE open question to lock (David wants it turning over):** for non-API inventory, is **instant, millisecond
+confirmation a HARD requirement** on our site — or is **"books on our site, confirmed within minutes/hours,
+automatically"** acceptable? That single answer decides how much high-margin inventory launches vs defers.
+*(Engineering lean, not final: minutes/hours-automated should be acceptable — the itinerary already models a
+pending→confirmed state, and a hard millisecond bar would exclude most high-margin non-API inventory — as long
+as the UX sets the expectation cleanly (a visible "confirming…" state, never a fake instant) and it never gates
+the instant-confirm spine.)*
+
+**Intel ask (standing).** Watch for any provider / brand / platform announcing they're going **API /
+agent-ready / AI-agent-integrated** (publications, LinkedIn, industry news, wherever). When the industry
+migrates to where we already are, we want to know FIRST and connect early — the human complement to the
+self-updating changelog watcher.
+
+**Why it matters — the real asset.** Not the booking plumbing — the **lifetime customer + their Atlas identity
+profile.** They come back; each time, more of the industry has gone agent-ready, so more of their trip books
+seamlessly. **Friction shrinks while the relationship deepens.** Build the plumbing swappable; bank the identity.
+
+### Flight rail — Stage 1 live; frame the copy as a stage, not "never" (David, Jul 2026)
+Duffel flight search is **live** — Atlas returns real airline fares on our own surface, behind our own
+`searchFlights()` seam (Duffel swappable; Sabre drops in later, no rebuild). **Search-only by design for
+the raise** — the whole value, de-risked, zero payment surface. But it's **Stage 1, not forever.**
+- **On-screen copy is Stage-1 framed, never "forever."** Retire "TravelWell never touches your card" —
+  it's true today but contradicts the Stage-2 story. Use **"for now, you book directly with the
+  airline."** (The *architecture* is unchanged — Stage 1 is still provider-as-MoR / PCI SAQ A; only the
+  *messaging* stops implying "never.")
+- **The VC line (David's exact wording):** *"Duffel integrated: Atlas searches 300+ airlines and returns
+  real airline fares on our own surface today. Search-only by design for now; the raise funds the flip to
+  full live booking with payments through TravelWell — bonded, seller-of-travel, merchant-of-record."*
+  ("Integrated," not "signed" — the Live Services Agreement is the piece we hold on purpose.)
 
 ### MoR staging — Stage 1 now, Stage 2 on purpose (David-locked, Jul 2026)
 Merchant-of-record is **staged, not binary**. Both stages are deliberate; we never *drift* between them.

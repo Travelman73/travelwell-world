@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { Icon } from "@/lib/icons";
-import { REGION_SI, type Region } from "@/data/taxonomy";
+import { REGION_SI, taglineSubject, type Region } from "@/data/taxonomy";
+import { Tagline } from "@/components/ui/primitives";
 import { type Provider, type Activity } from "@/data/places";
 import { siImg, regionImg } from "@/lib/images";
 import { useUnsplashImage } from "@/lib/unsplash";
@@ -184,6 +185,7 @@ export default function SiDetail() {
         <div className="sd-hero__sig">{si.sig.charAt(0).toUpperCase() + si.sig.slice(1)}</div>
         <h1 className="sd-hero__title">{si.name}</h1>
         <p className="sd-hero__promise">{ed ? ed.promise : si.sig}</p>
+        <Tagline subject={taglineSubject(si)} className="sd-hero__tagline" />
       </div>
     </section>
   );
@@ -267,7 +269,7 @@ export default function SiDetail() {
           <p className="sd-section__sub">
             Curated and scoped to your region during the journey. Prime Providers shown first.
           </p>
-          <div className="sd-rail">
+          <div className="sd-rail" tabIndex={0} role="group" aria-label="Vetted providers">
             {rail.map((p, i) => (
               <div className="sd-pv" key={`${p.well}-${p.name}-${i}`}>
                 <div className="sd-pv__body">

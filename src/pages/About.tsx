@@ -1,65 +1,110 @@
 import { Link } from "react-router-dom";
+import { Icon } from "@/lib/icons";
 import { Eyebrow } from "@/components/ui/primitives";
-import { useWells } from "@/store/useCatalog";
 
-const layers = (wellNames: string[]) => [
-  { num: "01", name: "Demand layer", chips: ["25 Special Interests", "13 Regions", "Activities graph", "Seasonal logic"] },
-  { num: "02", name: "Fulfillment layer", chips: wellNames.concat(["Nanny-Well", "Security-Well"]) },
-  { num: "03", name: "Engine layer", chips: ["Atlas concierge", "Provider matching", "Itinerary sync", "Safety Cards", "Book-It tracks"] },
-  { num: "04", name: "Data layer", chips: ["Travel ID", "Itinerary blocks", "Provider catalog", "Commission ledger", "Consent & locale"] },
+const STATS = [
+  { ic: "heart", v: "25", t: "Ways to travel", sub: "— from safaris to spas" },
+  { ic: "globe", v: "13", t: "World regions", sub: "to explore" },
+  { ic: "bag2", v: "10", t: "Trip needs,", sub: "each with its own “Well”" },
+  { ic: "check", v: "1", t: "Itinerary", sub: "that holds it all", hl: true },
 ];
 
-const LAWS = [
-  { t: "Accurate content", s: "Real vs. placeholder is always visually distinct." },
-  { t: "Disclosed economics", s: "FTC disclosure sits beside every monetized action." },
-  { t: "One itinerary", s: "Everything a traveler adds lands in a single saved trip." },
-  { t: "Safety first", s: "The Emergency Button and Safety Card travel everywhere." },
-  { t: "Accessible to all", s: "WCAG AA, full keyboard paths, read-or-hear, type-or-talk." },
-  { t: "The traveler chooses", s: "The Concierge suggests; the traveler always decides." },
+// How it works — the four steps as a vertical timeline (they map to the live
+// 4-step journey: Special Interests → Regions → the Wells → Book It).
+const STEPS = [
+  {
+    ic: "heart", title: "Tell us what moves you",
+    desc: "Start with a feeling, not a form. Pick the ways you love to travel — they light up as you choose.",
+    chips: ["Safaris", "Romance", "Food & wine", "Wellness"], more: "25 ways to travel",
+    to: "/special-interests", link: "Choose your interests",
+  },
+  {
+    ic: "globe", title: "Pick where in the world",
+    desc: "Thirteen regions, ranked by how well they fit what you chose — so the best matches rise to the top.",
+    chips: ["East Africa", "The Mediterranean", "Southeast Asia", "The Caribbean"], more: "13 regions",
+    to: "/regions", link: "Browse the regions",
+  },
+  {
+    ic: "bag2", title: "We fill in every need",
+    desc: "Every part of your trip has its own “Well” — flights, stays, dining, getting around — each pre-filled with our best matches for you.",
+    chips: ["Flights", "Places to stay", "Dining", "Getting around", "Activities"], more: "10 needs covered",
+    to: "/wells-surface", link: "Meet the Wells",
+  },
+  {
+    ic: "check", title: "Book it, all in one place",
+    desc: "Everything you pick lands in one itinerary, day by day. Book with trusted partners — and if we earn a commission, we say so right there. Atlas is beside you the whole way.",
+    chips: ["Trusted partners", "Clear pricing", "One itinerary", "Help from Atlas"],
+    to: "/itinerary", link: "See an itinerary",
+  },
+];
+
+// Six promises, kept on every page — the traveler-facing voice of the unbreakable laws.
+const PROMISES = [
+  { ic: "check", t: "We're clear about what's ready", s: "If something is still coming soon, we say so — plainly, right on the page." },
+  { ic: "info", t: "We tell you how we earn", s: "If a booking earns us a commission, you'll see a note right beside it. It never costs you extra." },
+  { ic: "bag2", t: "Everything lands in one trip", s: "Whatever you add — a flight, a dinner, a safari — it's saved to one itinerary, automatically." },
+  { ic: "shield", t: "Your safety travels with you", s: "Every destination has a Safety Card — nearest hospital, your embassy, the local emergency number." },
+  { ic: "message", t: "Easy for everyone", s: "Type or talk. Read or listen. Works with a keyboard alone — and in your language." },
+  { ic: "sparkles", t: "You're always in charge", s: "Atlas suggests; you decide. Nothing is ever booked without you." },
 ];
 
 export default function About() {
-  const LAYERS = layers(useWells().filter((w) => !w.lux).map((w) => w.name));
   return (
     <div className="ab">
       <div className="ab-hero">
-        <Eyebrow>About · Architecture</Eyebrow>
-        <h1>A travel platform, specified like an operating system.</h1>
-        <p>TravelWell is built spec-first: every layer — the taxonomy, the Wells, the engines, the schemas — is defined and agreed before a line of UI is written. This is what makes it legible, defensible, and accurate.</p>
+        <Eyebrow>About TravelWell</Eyebrow>
+        <h1>One place to dream, plan and book your whole trip.</h1>
+        <p>Most trips are planned across a dozen tabs — one site for flights, another for hotels, another for things to do. TravelWell brings it all together. Tell us how you love to travel, and we guide you — step by step — to a complete, booked journey.</p>
       </div>
 
-      <section className="ab" style={{ padding: 0, marginTop: 28 }}>
-        <div className="ab-stat-row">
-          <div className="ab-stat"><div className="ab-stat__v">25</div><div className="ab-stat__k">Special Interests</div></div>
-          <div className="ab-stat"><div className="ab-stat__v">13</div><div className="ab-stat__k">World Regions</div></div>
-          <div className="ab-stat"><div className="ab-stat__v">10</div><div className="ab-stat__k">Wells (+2 luxury)</div></div>
-          <div className="ab-stat"><div className="ab-stat__v">6</div><div className="ab-stat__k">Time blocks / day</div></div>
-        </div>
-      </section>
+      <div className="ab-stat-row">
+        {STATS.map((s) => (
+          <div className={"ab-stat" + (s.hl ? " ab-stat--hl" : "")} key={s.t}>
+            <span className="ab-stat__ic"><Icon name={s.ic} /></span>
+            <div className="ab-stat__v">{s.v}</div>
+            <div className="ab-stat__k"><b>{s.t}</b> {s.sub}</div>
+          </div>
+        ))}
+      </div>
 
-      <section className="rd-section" style={{ maxWidth: "none", padding: "56px 0 0" }}>
-        <div className="rd-section__head"><div><h2 className="t-h2">The OS layers</h2><p>Demand flows down; fulfillment and economics flow back up.</p></div></div>
-        <div className="ab-layers">
-          {LAYERS.map((l) => (
-            <div className="ab-layer" key={l.num}>
-              <div className="ab-layer__n"><div className="num">LAYER {l.num}</div><div className="name">{l.name}</div></div>
-              <div className="ab-layer__chips">{l.chips.map((c) => <span className="ab-chip" key={c}>{c}</span>)}</div>
+      <section className="ab-sec">
+        <div className="ab-sec__head"><h2 className="t-h2">How it works</h2><p>Four simple steps — from a feeling to a booked trip.</p></div>
+        <div className="ab-flow">
+          {STEPS.map((st, i) => (
+            <div className="ab-flow__step" key={st.title}>
+              <div className="ab-flow__node"><Icon name={st.ic} /></div>
+              <div className="ab-flow__card">
+                <div className="ab-flow__eyebrow">Step {i + 1} of 4</div>
+                <h3 className="ab-flow__title">{st.title}</h3>
+                <p className="ab-flow__desc">{st.desc}</p>
+                <div className="ab-flow__chips">
+                  {st.chips.map((c) => <span className="ab-chip" key={c}>{c}</span>)}
+                  {st.more && <span className="ab-chip ab-chip--more">… {st.more}</span>}
+                </div>
+                <Link className="ab-flow__link" to={st.to}>{st.link} <Icon name="arrow" small /></Link>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="rd-section" style={{ maxWidth: "none", padding: "56px 0 0" }}>
-        <div className="rd-section__head"><div><h2 className="t-h2">The spec-first philosophy</h2></div></div>
-        <div className="ab-philosophy">
-          <h3>Specification before implementation.</h3>
-          <p>Most travel sites grow as a pile of pages. TravelWell starts as a written specification — entities, fields, states, and the unbreakable laws — so the product is consistent by construction. The design you've been reviewing is the spec, made visible.</p>
+      <section className="ab-sec">
+        <div className="ab-sec__head"><h2 className="t-h2">Our promises to you</h2></div>
+        <div className="ab-trust">
+          <div className="ab-trust__bg" aria-hidden="true" />
+          <span className="ab-trust__ic"><Icon name="shield" /></span>
+          <div className="ab-trust__body">
+            <div className="ab-trust__eyebrow">Six promises, kept on every page</div>
+            <div className="ab-trust__title">Travel planning you can <span className="em">trust</span>.</div>
+            <p className="ab-trust__desc">Clear about what's real. Open about how we earn. Your safety, wherever you go. Not fine print — the way every page works.</p>
+            <div className="ab-trust__pillars">Clear · Open · Safe · Yours</div>
+          </div>
         </div>
-        <div className="ab-laws" style={{ marginTop: 20 }}>
-          {LAWS.map((l, i) => (
-            <div className="ab-law" key={l.t}>
-              <span className="ab-law__n">{i + 1}</span>
-              <div><div className="ab-law__t">{l.t}</div><div className="ab-law__s">{l.s}</div></div>
+        <div className="ab-promises">
+          {PROMISES.map((p) => (
+            <div className="ab-promise" key={p.t}>
+              <span className="ab-promise__ic"><Icon name={p.ic} small /></span>
+              <div><div className="ab-promise__t">{p.t}</div><div className="ab-promise__s">{p.s}</div></div>
             </div>
           ))}
         </div>
@@ -68,17 +113,17 @@ export default function About() {
       <section className="ab-close">
         <div className="ab-close__bg" aria-hidden="true" />
         <div className="ab-close__inner">
-          <Eyebrow className="ab-close__eyebrow">See it working</Eyebrow>
-          <h2 className="ab-close__title">The architecture,<br />in a <span className="ab-close__em">live platform</span>.</h2>
-          <p className="ab-close__sub">Everything you've read here is built. Walk the investor demo, or step into the traveler's journey from the very first screen.</p>
+          <Eyebrow className="ab-close__eyebrow">Ready when you are</Eyebrow>
+          <h2 className="ab-close__title">Your dream trip,<br /><span className="ab-close__em">one step at a time</span>.</h2>
+          <p className="ab-close__sub">No account needed to start. Pick what moves you, and watch a real, bookable journey take shape — or ask Atlas, and just talk it through.</p>
           <div className="ab-close__actions">
             <Link className="btn btn-gold" to="/special-interests" style={{ height: 56, padding: "0 32px", fontSize: 16 }}>Start the journey →</Link>
-            <Link className="btn ab-close__ghost" to="/demo">Walk the platform demo</Link>
+            <Link className="btn ab-close__ghost" to="/demo">Curious how it's built?</Link>
           </div>
           <div className="ab-close__stats">
-            <span><b>25</b> interests</span><span className="ab-close__dot" />
+            <span><b>25</b> ways to travel</span><span className="ab-close__dot" />
             <span><b>13</b> regions</span><span className="ab-close__dot" />
-            <span><b>10</b> Wells</span><span className="ab-close__dot" />
+            <span><b>10</b> trip needs</span><span className="ab-close__dot" />
             <span><b>1</b> itinerary</span>
           </div>
           <p className="ab-close__sig">However far you go — <span className="tw">Travel Well.</span></p>

@@ -35,7 +35,7 @@ export default function Plan() {
             return (
               <Link key={w.id} to="/wells-surface" className={`it-gap-cell ${cov ? "covered" : "gap"}`} title={w.name}>
                 <div className="it-gap-cell__iconwrap"><Icon name={w.icon} /></div>
-                <span className="it-gap-cell__lbl">{w.name.replace("-Well", "")}</span>
+                <span className="it-gap-cell__lbl">{w.name}</span>
               </Link>
             );
           })}

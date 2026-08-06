@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Icon } from "@/lib/icons";
-import { SI_GROUPS } from "@/data/taxonomy";
+import { SI_GROUPS, MASTER_TAGLINE_SUBJECT } from "@/data/taxonomy";
 import { siImg } from "@/lib/images";
 import { useStore } from "@/store/useStore";
 import { useSpecialInterests } from "@/store/useCatalog";
-import { Eyebrow } from "@/components/ui/primitives";
+import { Eyebrow, Tagline } from "@/components/ui/primitives";
 import { JourneyBar } from "@/components/ui/StepIndicator";
 import { SiPickBar } from "@/components/ui/SiPickBar";
 import { cx } from "@/lib/utils";
@@ -37,6 +37,7 @@ export default function SpecialInterests() {
         <p className="lead">
           {t("sip.lead")}
         </p>
+        <Tagline subject={MASTER_TAGLINE_SUBJECT} className="jn-tagline" />
 
         <div className="jn-toolbar">
           <span className="jn-sweet"><Icon name="sparkle" small /> {t("sip.sweet")} — <b style={{ color: "var(--foreground)" }}>{t("sip.sweetTail")}</b></span>

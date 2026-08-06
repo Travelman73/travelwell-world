@@ -14,6 +14,19 @@
 // Deploy:  supabase functions deploy unsplash
 // Secret:  supabase secrets set UNSPLASH_ACCESS_KEY=...   (Access Key only)
 // Needs migration 0009 (public.unsplash_cache).
+//
+// ── Re-picking photos after changing the selection logic ──────────────────
+// The picker below only runs on a cache MISS, so changing it does NOT change
+// photos that are already cached. To apply a new picker retroactively:
+//   1. DEPLOY THIS FUNCTION FIRST, then 2. clear the cache.
+//      (Clearing first just re-caches everything with the OLD logic.)
+//   2. In the SQL editor:  delete from public.unsplash_cache;
+// Safe: rows repopulate on demand as pages are viewed, and any gap falls back
+// to the bundled image. Mind the Unsplash rate limit — a full clear re-fetches
+// ~90 queries (destinations + regions + SIs); that's nothing on a production
+// app (5000/hr) but exceeds the demo tier (50/hr), so batch it there:
+//   delete from public.unsplash_cache
+//   where query in (select query from public.unsplash_cache limit 40);
 
 import { createClient } from "npm:@supabase/supabase-js@2";
 
@@ -49,12 +62,22 @@ Deno.serve(async (req: Request) => {
       if (hit) return ok({ url: hit.url, alt: hit.alt, credit: { name: hit.credit_name, link: hit.credit_link } });
     }
 
-    // 2. Miss → fetch once from Unsplash.
-    const url = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&orientation=${orientation}&per_page=1&content_filter=high`;
+    // 2. Miss → fetch once from Unsplash. Pull the top 10 by RELEVANCE, then keep
+    //    the strongest of them by likes. Relevance first keeps the photo actually
+    //    of the place; likes then picks the best shot among those — so we never
+    //    trade "the right place" for "a popular mountain". Automatic for every
+    //    destination, new ones included; nothing hand-picked.
+    const url = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&orientation=${orientation}&per_page=10&order_by=relevant&content_filter=high`;
     const res = await fetch(url, { headers: { Authorization: `Client-ID ${key}`, "Accept-Version": "v1" } });
     if (!res.ok) return Response.json({ degraded: true }, { headers: cors, status: 200 });
     const data = await res.json();
-    const photo = data?.results?.[0];
+    const results = Array.isArray(data?.results) ? data.results : [];
+    // Strictly-greater comparison, so ties (and missing `likes`) keep Unsplash's
+    // relevance order — i.e. the earlier, more relevant photo wins a tie.
+    const photo = results.reduce(
+      (best: any, cur: any) => ((cur?.likes ?? 0) > (best?.likes ?? 0) ? cur : best),
+      results[0],
+    );
     if (!photo) return ok(null);
 
     // Unsplash API Guideline: trigger the download endpoint on real use.

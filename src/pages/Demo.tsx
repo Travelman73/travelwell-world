@@ -26,6 +26,7 @@ const STATS: { v: ReactNode; k: string; tag: string }[] = [
   { v: "200+", k: "Vetted providers", tag: "Onboarding" },
 ];
 
+// All twelve Wells, each a revenue line (David: the VCs need to SEE all of them).
 const REV: { id: string; model: string; take: string }[] = [
   { id: "stay", model: "Commission on bookings", take: "10–18%" },
   { id: "fly", model: "Affiliate + GDS", take: "1–3%" },
@@ -35,6 +36,10 @@ const REV: { id: string; model: string; take: string }[] = [
   { id: "gear", model: "Retail affiliate", take: "4–10%" },
   { id: "beauty", model: "Booking commission", take: "10–20%" },
   { id: "shop", model: "Retail affiliate", take: "5–12%" },
+  { id: "nanny", model: "Vetted-childcare commission", take: "10–20%" },
+  { id: "security", model: "Close-protection commission", take: "10–15%" },
+  { id: "insure", model: "Travel-insurance commission · at launch", take: "20–40%" },
+  { id: "ship", model: "Logistics & shipping commission · at launch", take: "8–15%" },
 ];
 
 const ENGINES: { ic: string; t: string; s: string }[] = [
@@ -66,6 +71,22 @@ const STD_TRIP: { well: string; item: string; gross: number; rate: string }[] = 
   { well: "eat", item: "Bush dinners + Nairobi tables", gross: 1600, rate: "10%" },
   { well: "move", item: "Private transfers", gross: 900, rate: "15%" },
   { well: "beauty", item: "Couples spa", gross: 600, rate: "15%" },
+];
+
+// The Ultra sample — money made visible at luxury scale: two couples, private jet
+// to Paris, commission itemized per Well and totalled (~$24K on one trip). The
+// idea David's first MVP proved (Paris/Springsteen), rebuilt in the live engine.
+const LUX_TRIP: { well: string; item: string; gross: number; rate: string }[] = [
+  { well: "fly", item: "Private jet · Teterboro → Paris (round trip)", gross: 175000, rate: "3%" },
+  { well: "stay", item: "Le Bristol · two suites · 5 nights", gross: 33000, rate: "15%" },
+  { well: "activities", item: "Louvre after-hours · private Versailles · Champagne estate", gross: 23500, rate: "20%" },
+  { well: "shop", item: "Personal shopper · Avenue Montaigne", gross: 46000, rate: "8%" },
+  { well: "eat", item: "Michelin tastings · private chef · Seine dinner cruise", gross: 14000, rate: "12%" },
+  { well: "gear", item: "Travel wardrobe + luggage", gross: 9000, rate: "8%" },
+  { well: "security", item: "Discreet close protection · 2 outings", gross: 8000, rate: "12%" },
+  { well: "move", item: "Chauffeured Mercedes S-Class · 5 days", gross: 7000, rate: "15%" },
+  { well: "nanny", item: "Bilingual nanny · evenings", gross: 4500, rate: "15%" },
+  { well: "beauty", item: "Couples spa · Dior Institut", gross: 3500, rate: "15%" },
 ];
 
 const ROADMAP: { q: string; items: string[] }[] = [
@@ -305,7 +326,8 @@ function VcDashboard() {
   const wells = useWells();
   const allWells: Record<string, Well> = {};
   wells.forEach((w) => { allWells[w.id] = w; });
-  const trip = STD_TRIP;
+  const [tier, setTier] = useState<"std" | "ultra">("std");
+  const trip = tier === "ultra" ? LUX_TRIP : STD_TRIP;
   let totalGross = 0;
   let totalComm = 0;
   const rows = trip.map((r) => {
@@ -337,8 +359,8 @@ function VcDashboard() {
             <h1>The economics of one real trip.</h1>
             <p>A worked itinerary — every Well, every provider, every commission line — then how it scales.</p>
             <div className="inv-hero__tabs">
-              <Link className="inv-hero__tab" to="/vc-demo" aria-current="true">Standard trip</Link>
-              <Link className="inv-hero__tab" to="/vc-demo">Ultra trip</Link>
+              <button type="button" className="inv-hero__tab" aria-current={tier === "std" ? "true" : undefined} onClick={() => setTier("std")}>Standard trip</button>
+              <button type="button" className="inv-hero__tab" aria-current={tier === "ultra" ? "true" : undefined} onClick={() => setTier("ultra")}>Ultra trip</button>
             </div>
           </div>
         </section>
@@ -347,8 +369,8 @@ function VcDashboard() {
           <div className="inv-wrap">
             <div className="inv-section__head">
               <span className="eyebrow">Worked itinerary</span>
-              <h2>Kenya Anniversary Safari · 10 nights</h2>
-              <p>Two travelers · East Africa · comfort–premium tier</p>
+              <h2>{tier === "ultra" ? "Paris à Deux · two couples · 5 nights" : "Kenya Anniversary Safari · 10 nights"}</h2>
+              <p>{tier === "ultra" ? "Four travelers · private jet · Ultra tier" : "Two travelers · East Africa · comfort–premium tier"}</p>
             </div>
             <div className="inv-table">
               <div className="inv-table__row head">

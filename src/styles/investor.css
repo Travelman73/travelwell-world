@@ -18,7 +18,7 @@
 .inv-hero h1 { color: #fff; font-size: clamp(38px,6vw,68px); line-height: 1.02; letter-spacing: -.02em; max-width: 18ch; }
 .inv-hero p { color: var(--dark-band-muted); font-size: 19px; line-height: 1.6; margin-top: 16px; max-width: 58ch; }
 .inv-hero__tabs { display: flex; gap: 6px; margin-top: 28px; flex-wrap: wrap; }
-.inv-hero__tab { padding: 9px 16px; border-radius: var(--radius-pill); border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.06); color: rgba(255,255,255,.85); text-decoration: none; font-size: 13.5px; font-weight: 600; }
+.inv-hero__tab { padding: 9px 16px; border-radius: var(--radius-pill); border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.06); color: rgba(255,255,255,.85); text-decoration: none; font-size: 13.5px; font-weight: 600; font-family: inherit; cursor: pointer; }
 .inv-hero__tab[aria-current="true"] { background: var(--accent); color: var(--foreground); border-color: var(--accent); }
 .inv-hero__tab:hover { text-decoration: none; }
 

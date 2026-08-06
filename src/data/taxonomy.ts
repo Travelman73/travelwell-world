@@ -68,6 +68,27 @@ const BASE_SIS: SpecialInterest[] = [
 // Canonical SIs + David's additive drop (folded in at module load).
 export const SIS: SpecialInterest[] = [...BASE_SIS, ...(siExtra.special_interests as SpecialInterest[])];
 
+/**
+ * Brand slogan subjects — David's tagline system: "If It's [subject]… TravelWell."
+ * The subject is a tight noun (not the poetic `sig`), ending in the one-word brand
+ * mark. English-only, David-locked (like the Well names) — a coined brand line, so
+ * it doesn't localize. Falls back to the SI name where no shorter subject is set.
+ * romance → "Love" is locked (the Romance front-door line). See CLAUDE.md.
+ */
+export const SI_TAGLINE_SUBJECT: Record<string, string> = {
+  tropical: "Tropical", romance: "Love", safari: "Safari", liveaboard: "Liveaboards",
+  river: "River Cruising", expedition: "Expedition", ski: "Winter", ultra: "Ultra-Luxury",
+  adventure: "Adventure", diveglobal: "Diving", ocean: "Watersports", wellness: "Wellness",
+  wildlife: "Wildlife", culinary: "Culinary", culture: "Culture", family: "Family",
+  hiking: "Hiking", olympic: "the Olympics", entertainment: "Live Entertainment",
+};
+/** The tagline subject for an SI (map override, else its name). */
+export const taglineSubject = (si: { id: string; name: string }): string =>
+  SI_TAGLINE_SUBJECT[si.id] ?? si.name;
+/** Master brand slogans (non-SI). */
+export const MASTER_TAGLINE_SUBJECT = "Travel";
+export const SAFER_TAGLINE_SUBJECT = "Safer Informed Travel";
+
 export interface SiGroup { id: string; name: string; blurb: string; }
 export const SI_GROUPS: SiGroup[] = [
   { id: "premium", name: "Premium & Signature", blurb: "Our flagship ways to travel — live now." },
@@ -120,7 +141,7 @@ export const REGIONS: Region[] = [
   { code: "01F", name: "Western Europe", line: "Old-world capitals, modern ease", countries: 8, gateways: "CDG · LHR · AMS", status: "live" },
   { code: "02F", name: "The Mediterranean", line: "Sun, sea, and centuries", countries: 9, gateways: "BCN · FCO · ATH", status: "live" },
   { code: "03F", name: "Northern Europe & Nordics", line: "Fjords, design, long light", countries: 7, gateways: "CPH · OSL · HEL", status: "live" },
-  { code: "04A", name: "Middle East & Gulf", line: "Where ancient meets audacious", countries: 6, gateways: "DXB · DOH · AUH", status: "live" },
+  { code: "04A", name: "Middle East, Gulf & North Africa", line: "Where ancient meets audacious", countries: 8, gateways: "DXB · CAI · DOH", status: "live" },
   { code: "05A", name: "East Africa", line: "The cradle of the safari", countries: 5, gateways: "NBO · JRO · KGL", status: "live" },
   { code: "06A", name: "Southern Africa", line: "Big skies, bigger game", countries: 5, gateways: "CPT · JNB · WDH", status: "live" },
   { code: "07A", name: "South & Southeast Asia", line: "Temples, islands, spice", countries: 9, gateways: "BKK · SIN · DPS", status: "live" },
@@ -133,7 +154,7 @@ export const REGIONS: Region[] = [
 ];
 
 export const SUBREGIONS: Record<string, string[]> = {
-  "12A": ["Pacific Coast", "Mountain West", "The Southwest", "Texas & The Gulf", "The Midwest", "The South", "New England", "Mid-Atlantic", "Alaska", "Hawai‘i"],
+  "12A": ["Pacific Coast", "Pacific Northwest", "Mountain West", "The Southwest", "Texas & The Gulf", "The Midwest", "The South", "New England", "Mid-Atlantic", "Alaska", "Hawai‘i"],
   "13A": ["British Columbia", "The Rockies", "The Prairies", "Ontario", "Québec", "The Maritimes", "The North"],
 };
 
@@ -162,7 +183,7 @@ export const REGION_SI: Record<string, string[]> = {
   "01F": ["ski", "culture", "culinary", "romance", "arts", "heritage", "wine", "rail", "city"],
   "02F": ["romance", "culinary", "ocean", "wine", "sailing", "yacht", "culture", "heritage", "surf"],
   "03F": ["photo", "adventure", "eco", "wellness", "rail", "sacred", "ski"],
-  "04A": ["ultra", "yacht", "city", "culture", "heritage", "wellness", "family", "golf"],
+  "04A": ["ultra", "river", "culture", "heritage", "city", "yacht", "wellness", "family", "golf"],
   "05A": ["safari", "photo", "adventure", "eco", "romance", "family", "heritage"],
   "06A": ["safari", "wine", "adventure", "eco", "photo", "ocean"],
   "07A": ["wellness", "culinary", "diving", "surf", "sacred", "culture", "eco", "family"],

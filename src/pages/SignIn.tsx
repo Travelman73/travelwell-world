@@ -101,7 +101,12 @@ export default function SignIn() {
               <div className="si-avatar">{USER.initial}</div>
               <Eyebrow className="si-eyebrow">Signed in on this device</Eyebrow>
               <h1 className="si-title">Welcome back, {USER.name}.</h1>
-              <p className="si-sub">Ready when you are. Continue the trip you were designing, or start something new.</p>
+              <p className="si-sub">Ready when you are. Continue the trip you were designing, start something new — or take a quick check-in so it fits the you of today.</p>
+              <button className="si-checkin" onClick={() => navigate("/welcome-back")}>
+                <span className="si-checkin__ic"><Icon name="sparkles" /></span>
+                <span className="si-checkin__b"><span className="si-checkin__t">A quick check-in</span><span className="si-checkin__s">A year on? Confirm what's changed — we refresh, never rebuild.</span></span>
+                <span className="si-checkin__arrow"><Icon name="arrow" /></span>
+              </button>
               <div className="si-actions">
                 <div className="si-trip">
                   <div className="si-trip__media">

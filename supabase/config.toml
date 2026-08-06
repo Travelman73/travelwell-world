@@ -14,3 +14,10 @@ verify_jwt = false
 # Same reasoning — the image proxy is called from anonymous browsing too.
 [functions.unsplash]
 verify_jwt = false
+
+# Live voice must work for an anonymous traveler (no account needed to start —
+# and the VC demo is anonymous), so the token minter can't demand a JWT. Safe:
+# it grants only roomJoin on one room for 15 minutes, and the LiveKit API secret
+# never leaves the server. Same posture as `atlas`.
+[functions.livekit-token]
+verify_jwt = false

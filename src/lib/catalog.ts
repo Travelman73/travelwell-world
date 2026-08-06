@@ -42,7 +42,7 @@ export async function fetchCatalog(): Promise<DbCatalog | null> {
       sb.from("regions").select("code, name, line, countries, gateways, status, has_sub"),
       sb.from("sub_regions").select("region_code, name, position").order("position", { ascending: true }),
       sb.from("providers").select("name, well, tier, price, mode, description, commission, si, region, booking_url"),
-      sb.from("destinations").select("id, region_code, name, country, line, status, depth, img, sub_region, position").order("position", { ascending: true }),
+      sb.from("destinations").select("id, region_code, name, country, line, status, depth, img, sub_region, si, feel, tier_range, price_band, draw_rank, data, position").order("position", { ascending: true }),
       sb.from("guides").select("id, type, title, lede, read, updated, img, si, region, position").order("position", { ascending: true }),
     ]);
 
@@ -137,6 +137,14 @@ export async function fetchCatalog(): Promise<DbCatalog | null> {
           depth: (r.depth ?? "verified") as Destination["depth"],
           img: r.img as string,
           ...(r.sub_region ? { sub_region: r.sub_region as string } : {}),
+          // Rich dossier fields — carry them so the ingested depth (jewels, faq …)
+          // reaches the page, not just the bundle's samples.
+          ...(Array.isArray(r.si) ? { si: r.si as string[] } : {}),
+          ...(Array.isArray(r.feel) ? { feel: r.feel as string[] } : {}),
+          ...(Array.isArray(r.tier_range) ? { tier_range: r.tier_range as string[] } : {}),
+          ...(r.price_band ? { price_band: r.price_band as string } : {}),
+          ...(r.draw_rank ? { draw_rank: r.draw_rank as Destination["draw_rank"] } : {}),
+          ...(r.data ? { data: r.data as Destination["data"] } : {}),
         });
       }
       out.destinations = destinations;

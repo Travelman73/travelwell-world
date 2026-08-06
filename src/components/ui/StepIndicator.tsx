@@ -11,10 +11,12 @@ import { useStore } from "@/store/useStore";
 import { cx } from "@/lib/utils";
 import { useT } from "@/lib/i18n";
 
+// The four clean taps home → booked (David, Jul 2026): Special Interests →
+// Regions → the Wells → Book It. Activities stays a real page but an OPTIONAL
+// off-spine refinement, not a numbered step, so a first-timer sees four, not five.
 const STEPS = [
   { label: "Interest", key: "step.interest", to: "/special-interests" },
   { label: "Region", key: "step.region", to: "/regions" },
-  { label: "Activities", key: "step.activities", to: "/activities" },
   { label: "Wells", key: "step.wells", to: "/wells-surface" },
   { label: "Book It", key: "step.bookit", to: "/itinerary" },
 ];
@@ -31,11 +33,10 @@ const CRUMB_KEY: Record<string, string> = {
 
 /** Which steps have enough data to count as "done" (drives the checkmarks). */
 function useStepDone(): boolean[] {
-  const { journeySIs, region, journeyActs } = useStore();
+  const { journeySIs, region } = useStore();
   return [
     journeySIs.length > 0,
     Boolean(region),
-    journeyActs.length > 0,
     false, // Wells & Book It are the build/book phase — not auto-checked
     false,
   ];
@@ -44,6 +45,11 @@ function useStepDone(): boolean[] {
 export function StepIndicator({ current }: { current: number }) {
   const done = useStepDone();
   const t = useT();
+  // When Atlas is walking a traveler (the guided tour is active), the CURRENT
+  // numbered step breathes — the same warm glow as the hero flow — so the eye
+  // always knows where it is in the journey. One at a time (only the current
+  // step), and it advances on its own as the walk moves page to page.
+  const guiding = useStore((s) => s.tour) !== null;
   return (
     <div className="tw-steps" role="list" aria-label="Dream Journey progress">
       {STEPS.map((step, i) => {
@@ -57,6 +63,7 @@ export function StepIndicator({ current }: { current: number }) {
               to={step.to}
               className="tw-step"
               data-state={state}
+              data-pulse={isCurrent && guiding ? "true" : undefined}
               role="listitem"
               aria-current={isCurrent ? "step" : undefined}
               title={`${n} · ${t(step.key)}`}

@@ -42,10 +42,18 @@
 .tw-iconbtn:hover { background: var(--surface-alt); }
 .tw-iconbtn--emergency { color: var(--destructive); border-color: color-mix(in oklch, var(--destructive) 30%, var(--border)); }
 .tw-iconbtn--emergency:hover { background: color-mix(in oklch, var(--destructive) 8%, white); }
-.tw-iconbtn .badge { position: absolute; top: -3px; inset-inline-end: -3px; min-width: 18px; height: 18px; padding: 0 4px; border-radius: 9px; background: var(--primary); color: #fff; font-size: 11px; font-weight: 700; line-height: 1; display: flex; align-items: center; justify-content: center; text-align: center; border: 2px solid var(--background); box-sizing: border-box; }
+.tw-iconbtn .badge, .tw-trip-btn .badge { position: absolute; top: -3px; inset-inline-end: -3px; min-width: 18px; height: 18px; padding: 0 4px; border-radius: 9px; background: var(--primary); color: #fff; font-size: 11px; font-weight: 700; line-height: 1; display: flex; align-items: center; justify-content: center; text-align: center; border: 2px solid var(--background); box-sizing: border-box; }
+
+/* Itinerary — a prominent, easy-to-spot labelled pill (senior-first, David).
+   Outlined so it stands beside the filled-green Ask-Atlas without competing. */
+.tw-trip-btn { flex: 0 0 auto; position: relative; font-family: var(--font-sans); font-weight: 600; font-size: 15px; height: 48px; padding: 0 18px; border-radius: var(--radius-pill); background: var(--card); color: var(--foreground); border: 1.5px solid var(--primary); cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background-color .15s ease; }
+.tw-trip-btn .ic { width: 20px; height: 20px; color: var(--primary); }
+@media (hover: hover) { .tw-trip-btn:hover { background: var(--secondary); } }
+.tw-trip-btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 
 /* Talk-to-Me primary entry in header */
-.tw-talk-btn { flex: 0 0 auto; font-family: var(--font-sans); font-weight: 600; font-size: 14px; height: 42px; padding: 0 16px 0 14px; border-radius: var(--radius-pill); background: var(--primary); color: #fff; border: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: background-color .15s ease; }
+.tw-talk-btn { flex: 0 0 auto; font-family: var(--font-sans); font-weight: 600; font-size: 15px; height: 48px; padding: 0 20px 0 16px; border-radius: var(--radius-pill); background: var(--primary); color: #fff; border: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background-color .15s ease; }
+.tw-talk-btn .ic { width: 20px; height: 20px; }
 .tw-talk-btn:hover { background: var(--primary-hover); }
 
 /* locale switcher */
@@ -103,6 +111,17 @@
 .tw-step[data-state="done"] .tw-step__label { color: var(--foreground); }
 .tw-step[data-state="current"] .tw-step__dot { background: var(--secondary); border-color: var(--primary); color: var(--primary); }
 .tw-step[data-state="current"] .tw-step__label { color: var(--foreground); font-weight: 600; }
+/* Guided-flow pulse — the current numbered step breathes (same warm glow as the
+   hero flow) while Atlas is walking the traveler. One at a time; advances with
+   the journey. Reduced-motion holds it as a steady ring, meaning intact. */
+.tw-step[data-pulse="true"] .tw-step__dot { animation: tw-step-pulse 1.6s ease-in-out infinite; }
+@keyframes tw-step-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklch, var(--primary) 55%, transparent); }
+  50%      { box-shadow: 0 0 0 8px color-mix(in oklch, var(--primary) 0%, transparent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tw-step[data-pulse="true"] .tw-step__dot { animation: none; box-shadow: 0 0 0 3px color-mix(in oklch, var(--primary) 35%, transparent); }
+}
 
 /* ============================================================================
    CONCIERGE — "Talk to Me" panel (§3.2) — all states
@@ -172,6 +191,14 @@
 .tw-msg a { color: var(--primary); text-decoration: underline; text-underline-offset: 2px; }
 .tw-msg code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9em; background: rgba(0,0,0,.06); padding: 1px 5px; border-radius: 5px; }
 
+/* Back control — big, obvious, one consistent spot at the top of every page but
+   Home (senior-first: "how do I go back?" never a question). Content-aligned. */
+.tw-backbar { max-width: var(--content-max); margin-inline: auto; padding: 12px var(--gutter) 0; }
+.tw-back { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px 0 13px; border-radius: var(--radius-pill); background: var(--card); border: 1.5px solid var(--border); color: var(--foreground); font-family: var(--font-sans); font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: var(--e1); transition: background-color .15s ease, transform .15s ease; }
+@media (hover: hover) { .tw-back:hover { background: var(--surface-alt); transform: translateX(-2px); } }
+.tw-back:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.tw-back .ic { width: 18px; height: 18px; }
+
 /* guided-walk (choreography engine) — a spotlight ring + Atlas caption that
    points at ONE real element at a time. The ring dims everything else via a giant
    box-shadow but stays pointer-events:none, so the lit target underneath is fully
@@ -236,7 +263,7 @@
 /* input bar */
 .tw-input { display: flex; align-items: center; gap: 8px; background: var(--surface-alt); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 5px 6px 5px 16px; }
 .tw-input:focus-within { border-color: var(--primary); box-shadow: 0 0 0 3px var(--secondary); }
-.tw-input input { flex: 1; border: 0; background: none; font-family: var(--font-sans); font-size: 14.5px; color: var(--foreground); outline: none; }
+.tw-input input { flex: 1; border: 0; background: none; font-family: var(--font-sans); font-size: 16px; color: var(--foreground); outline: none; }
 .tw-input__send { width: 44px; height: 44px; border-radius: 50%; background: var(--primary); color: #fff; border: 0; display: grid; place-items: center; cursor: pointer; flex: none; transition: opacity .15s ease; }
 /* Disabled while recording (stop first) or while Atlas is replying. */
 .tw-input__send:disabled { opacity: .4; cursor: not-allowed; }
@@ -250,6 +277,12 @@
 @media (hover: hover) { .tw-input__mic:hover { background: var(--primary); color: #fff; } }
 .tw-input__mic[aria-pressed="true"] { background: #c0392b; color: #fff; border-color: #c0392b; animation: tw-mic-pulse 1.2s ease-in-out infinite; }
 @keyframes tw-mic-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(192,57,43,.5); } 50% { box-shadow: 0 0 0 7px rgba(192,57,43,0); } }
+/* Live-voice button — same 44px target as the mic, gold to read as the richer
+   mode (real-time conversation) rather than a second dictation button. */
+.tw-input__live { width: 44px; height: 44px; border-radius: 50%; background: var(--card); color: var(--gold-deep); border: 1.5px solid var(--gold-deep); display: grid; place-items: center; cursor: pointer; flex: none; transition: background .15s ease, color .15s ease; }
+@media (hover: hover) { .tw-input__live:hover { background: var(--gold-deep); color: #fff; } }
+.tw-input__live[aria-pressed="true"] { background: #c0392b; color: #fff; border-color: #c0392b; animation: tw-mic-pulse 1.2s ease-in-out infinite; }
+.tw-input__live:disabled { opacity: .55; cursor: default; animation: none; }
 
 /* read/hear/both toggle */
 .tw-io-toggle { display: flex; gap: 4px; background: var(--surface-alt); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 3px; margin-bottom: 12px; }
@@ -354,8 +387,8 @@
 @media (max-width: 920px) {
   .tw-nav { display: none; }
   .tw-burger { display: grid; }
-  .tw-talk-btn span.lbl { display: none; }
-  .tw-talk-btn { width: 42px; padding: 0; justify-content: center; border-radius: 50%; }
+  .tw-talk-btn span.lbl, .tw-trip-btn span.lbl { display: none; }
+  .tw-talk-btn, .tw-trip-btn { width: 48px; padding: 0; justify-content: center; border-radius: 50%; }
   .tw-mega__inner { grid-template-columns: 1fr 1fr; gap: 24px; }
   .tw-footer__top { grid-template-columns: 1fr 1fr; gap: 28px; }
   .tw-concierge, .tw-tray { width: 100vw; }
@@ -368,8 +401,8 @@
   .tw-header__bar { padding: 0 14px; gap: 6px; }
   .tw-header__actions { gap: 4px; }
   .tw-logo { font-size: 20px; margin-inline-end: 4px; }
-  .tw-iconbtn { width: 40px; height: 40px; }
-  .tw-talk-btn { width: 40px; height: 40px; }
+  .tw-iconbtn { width: 44px; height: 44px; }               /* was 40px — hold the >=44px tap-target bar */
+  .tw-talk-btn, .tw-trip-btn { width: 48px; height: 48px; } /* Ask Atlas + Itinerary: the two big, easy-to-tap actions */
   .tw-locale__btn { padding-inline: 8px; }
 }
 
@@ -404,23 +437,40 @@
   border: 1px solid var(--border); border-radius: 12px; background: var(--surface-alt);
 }
 
-/* ── Safety button — floats on every screen (Safer-Informed: calm, not an
-   alarm; help one tap away). Bottom-inline-start so it never collides with the
-   Atlas pill on the end side. ≥44px, labelled, visible focus (WCAG AA). */
-.tw-safety-fab {
+/* ── Safety corner — a floating STACK on every screen (David, Jul 2026). Red
+   EMERGENCY pill at the bottom (most thumb-reachable), two green cross buttons
+   above it. Bottom-inline-start so it never collides with the Atlas pill on the
+   end side. Safer-Informed: calm, labelled, help one tap away. WCAG AA: real
+   labelled buttons, ≥44px, visible focus, colour never the only signal. */
+.tw-safety-stack {
   position: fixed; inset-block-end: 22px; inset-inline-start: 22px; z-index: 94;
-  display: inline-flex; align-items: center; gap: 8px;
-  min-height: 48px; padding: 0 16px; border-radius: 999px;
-  background: var(--card); color: var(--destructive); font-weight: 600; font-size: 14px;
-  border: 1px solid color-mix(in oklch, var(--destructive) 35%, var(--border));
-  box-shadow: var(--e3); cursor: pointer;
-  transition: transform .15s ease, background-color .15s ease;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
 }
-.tw-safety-fab:hover { background: color-mix(in oklch, var(--destructive) 8%, white); transform: translateY(-2px); }
-.tw-safety-fab:focus-visible { outline: 2px solid var(--destructive); outline-offset: 3px; }
-.tw-safety-fab .ic { width: 20px; height: 20px; }
+.tw-safety-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px; padding: 0 16px; border-radius: 999px; border: 0;
+  font-family: var(--font-sans); font-weight: 700; font-size: 14px; color: #fff;
+  box-shadow: var(--e3); cursor: pointer; white-space: nowrap;
+  transition: transform .15s ease, filter .15s ease;
+}
+@media (hover: hover) { .tw-safety-btn:hover { transform: translateY(-2px); filter: brightness(1.06); } }
+.tw-safety-btn:focus-visible { outline: 3px solid #fff; outline-offset: -1px; box-shadow: 0 0 0 5px rgba(17,17,17,.35), var(--e3); }
+.tw-safety-btn__cross { display: grid; place-items: center; }
+.tw-safety-btn__cross .ic { width: 17px; height: 17px; }
+.tw-safety-btn--green { background: #15803d; }              /* medical green, white cross — AA on white text */
+.tw-safety-btn--red { background: var(--destructive); min-height: 52px; padding: 0 22px; font-size: 16px; letter-spacing: .04em; }
+.tw-safety-btn--red .ic { width: 18px; height: 18px; }
+
+/* the "find nearby" sheet (maps launcher) that pops above the green buttons */
+.tw-safety-dismiss { position: fixed; inset: 0; }
+.tw-safety-sheet { position: relative; background: var(--card); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--e3); padding: 8px; min-width: 216px; display: flex; flex-direction: column; gap: 2px; }
+.tw-safety-sheet__title { font-size: 12px; font-weight: 700; color: var(--muted-foreground); text-transform: uppercase; letter-spacing: .04em; padding: 6px 10px 2px; }
+.tw-safety-sheet__link { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 10px; border-radius: 10px; color: var(--foreground); font-weight: 600; font-size: 15px; text-decoration: none; }
+.tw-safety-sheet__link:hover { background: var(--surface-alt); text-decoration: none; }
+.tw-safety-sheet__link .ic { color: #15803d; width: 18px; height: 18px; }
+.tw-safety-sheet__note { font-size: 12px; line-height: 1.4; color: var(--muted-foreground); padding: 4px 10px 6px; max-width: 240px; }
 @media (max-width: 700px) {
-  .tw-safety-fab { inset-block-end: 16px; inset-inline-start: 16px; min-height: 44px; padding: 0 14px; }
+  .tw-safety-stack { inset-block-end: 16px; inset-inline-start: 16px; gap: 7px; }
 }
 
 /* ── Vision loop — Atlas writes the dream back, the traveler confirms ────── */

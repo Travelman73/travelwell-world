@@ -44,6 +44,7 @@ export function Header() {
           <div className="tw-locale" ref={localeRef}>
             <button
               className="tw-locale__btn"
+              aria-label="Change language"
               aria-haspopup="true"
               aria-expanded={localeOpen}
               onClick={(e) => { e.stopPropagation(); setLocaleOpen((o) => !o); }}
@@ -78,11 +79,11 @@ export function Header() {
           <button className="tw-iconbtn tw-iconbtn--emergency" aria-label="Emergency help" onClick={() => openPanel("emergency")}>
             <Icon name="cross" />
           </button>
-          <button className="tw-iconbtn" aria-label="Your Trip" onClick={() => openPanel("tray")}>
-            <Icon name="bag2" />
+          <button className="tw-trip-btn" aria-label="Your Trip" onClick={() => openPanel("tray")}>
+            <Icon name="bag2" /> <span className="lbl">Trip</span>
             {trip.length > 0 && <span className="badge">{trip.length}</span>}
           </button>
-          <button className="tw-talk-btn" onClick={() => openPanel("concierge")}>
+          <button className="tw-talk-btn" aria-label={t("nav.atlas")} onClick={() => openPanel("concierge")}>
             <Icon name="sparkles" small /> <span className="lbl">{t("nav.atlas")}</span>
           </button>
         </div>
