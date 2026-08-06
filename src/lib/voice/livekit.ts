@@ -32,12 +32,20 @@ export interface LiveKitBeltOpts {
   room?: string;
   mouth?: Mouth;
   ears?: Ears;
+  /** THE MIRROR — Atlas's own words, to render on screen while he speaks them.
+   *  Separate from `ears` on purpose: ears carry what the TRAVELER said. */
+  onAgentText?: (text: string) => void;
 }
 
 interface TokenResponse { url?: string; token?: string; room?: string; degraded?: boolean; note?: string }
 
-/** Decode the `transcript` data-channel payload the agent worker publishes. */
-interface TranscriptMsg { text?: string; final?: boolean; role?: "user" | "assistant" }
+/**
+ * The `transcript` data-channel payload, matching what the worker actually
+ * publishes (`voice-agent/index.ts`): `{ role, text }` on ConversationItemAdded.
+ * Note there is NO `final` flag — the worker emits COMPLETED items only, so every
+ * message is final. Keep this in step with the worker if that ever changes.
+ */
+interface TranscriptMsg { text?: string; role?: "user" | "assistant" }
 
 export function createLiveKitBelt(opts: LiveKitBeltOpts): VoiceBelt {
   let connected = false;
@@ -56,18 +64,23 @@ export function createLiveKitBelt(opts: LiveKitBeltOpts): VoiceBelt {
   };
 
   /**
-   * On this belt the AGENT decides what to say (brain-side), so speak() isn't the
-   * normal path — it's the scripted-line hook (the guided walk). It asks the agent
-   * to voice a specific line over the data channel; the audio still arrives as a
-   * track, so the "Atlas is speaking" signal is driven by playback, not by us.
+   * On this belt the AGENT decides what to say and speaks it server-side, so the
+   * client never drives TTS — speak() is NOT the normal path here.
+   *
+   * ⚠️ The scripted-line hook (for the guided walk) publishes on a `say` topic
+   * that the worker does NOT subscribe to yet — `voice-agent/index.ts` only
+   * PUBLISHES `transcript`, it reads nothing. So this is a no-op until a matching
+   * handler is added worker-side. Left in place (rather than removed) because the
+   * guided walk will need it, but it must not read as working.
    */
   const agentMouth: Mouth = {
     name: "livekit-agent",
     supported: () => true,
     async speak(text: string, o?: SpeakOptions) {
-      speakingCb = o ?? null;
+      speakingCb = o ?? null;                       // playback still drives the signal
       if (!room?.localParticipant) return;
       const payload = new TextEncoder().encode(JSON.stringify({ say: text, locale: o?.locale }));
+      // No worker-side subscriber yet — see the warning above.
       await room.localParticipant.publishData(payload, { reliable: true, topic: "say" });
     },
     stop() {
@@ -121,14 +134,18 @@ export function createLiveKitBelt(opts: LiveKitBeltOpts): VoiceBelt {
         audioEl = null;
       });
 
-      // 4. The mirror — the agent's transcript text over the data channel.
+      // 4. Transcript data channel. Route by ROLE — this matters: the worker
+      //    publishes both sides on one topic, so without the split Atlas's own
+      //    words would come back as if the traveler had said them (and land in
+      //    the composer). user → ears; assistant → the on-screen mirror.
+      //    Every message is a completed item, so user text is always final.
       room.on(RoomEvent.DataReceived, (payload: Uint8Array, _p: unknown, _k: unknown, topic?: string) => {
         if (topic && topic !== "transcript") return;
         try {
           const msg = JSON.parse(new TextDecoder().decode(payload)) as TranscriptMsg;
           if (!msg.text) return;
-          if (msg.final) earHandlers?.onFinal?.(msg.text);
-          else earHandlers?.onPartial?.(msg.text);
+          if (msg.role === "assistant") opts.onAgentText?.(msg.text);
+          else earHandlers?.onFinal?.(msg.text);
         } catch { /* ignore malformed frames */ }
       });
 
