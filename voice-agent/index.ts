@@ -74,7 +74,13 @@ export default defineAgent({
         const text = item?.textContent ?? (typeof item?.content === "string" ? item.content : undefined);
         if (!text) return;
         const payload = new TextEncoder().encode(JSON.stringify({ role: item?.role, text }));
-        void ctx.room.localParticipant?.publishData(payload, { topic: "transcript" });
+        // `reliable` is REQUIRED by rtc-node's protobuf — omitting it throws
+        // "cannot encode field ... reliable: required field not set" on every turn,
+        // which silently killed the mirror (the try/catch below can't catch it:
+        // publishData returns a promise, so it surfaced as an unhandled rejection).
+        void ctx.room.localParticipant
+          ?.publishData(payload, { topic: "transcript", reliable: true })
+          .catch((err: unknown) => console.error("[atlas] mirror publish failed:", err));
       } catch { /* mirror is best-effort */ }
     });
 
