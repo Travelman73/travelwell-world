@@ -33,6 +33,20 @@ CARTESIA_API_KEY=...
 ANTHROPIC_API_KEY=...        # the brain — same key family as the atlas edge fn
 ```
 
+## ⚠️ The LiveKit keys live in TWO places (easy to miss)
+Filling in `.env` below powers **this worker** only — it runs on your machine.
+The **browser** gets its room token from the `livekit-token` Supabase edge
+function, which runs on Supabase's servers and cannot see this file. So the same
+three values must ALSO be set as **Supabase secrets**:
+
+```bash
+supabase secrets set LIVEKIT_URL=wss://... LIVEKIT_API_KEY=... LIVEKIT_API_SECRET=...
+# or, no CLI: Dashboard → Project Settings → Edge Functions → Secrets
+```
+Only the three `LIVEKIT_*` values are needed there — Deepgram/Cartesia/Anthropic
+stay with the worker. Symptom of missing them: the app's live-voice button says
+*"Live voice isn't switched on yet"* even though the worker is running fine.
+
 ## How it connects to the app
 1. Browser asks the **`livekit-token`** Supabase edge function for a room token
    (LIVEKIT_* live as Supabase secrets there).
