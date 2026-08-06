@@ -277,6 +277,12 @@
 @media (hover: hover) { .tw-input__mic:hover { background: var(--primary); color: #fff; } }
 .tw-input__mic[aria-pressed="true"] { background: #c0392b; color: #fff; border-color: #c0392b; animation: tw-mic-pulse 1.2s ease-in-out infinite; }
 @keyframes tw-mic-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(192,57,43,.5); } 50% { box-shadow: 0 0 0 7px rgba(192,57,43,0); } }
+/* Live-voice button — same 44px target as the mic, gold to read as the richer
+   mode (real-time conversation) rather than a second dictation button. */
+.tw-input__live { width: 44px; height: 44px; border-radius: 50%; background: var(--card); color: var(--gold-deep); border: 1.5px solid var(--gold-deep); display: grid; place-items: center; cursor: pointer; flex: none; transition: background .15s ease, color .15s ease; }
+@media (hover: hover) { .tw-input__live:hover { background: var(--gold-deep); color: #fff; } }
+.tw-input__live[aria-pressed="true"] { background: #c0392b; color: #fff; border-color: #c0392b; animation: tw-mic-pulse 1.2s ease-in-out infinite; }
+.tw-input__live:disabled { opacity: .55; cursor: default; animation: none; }
 
 /* read/hear/both toggle */
 .tw-io-toggle { display: flex; gap: 4px; background: var(--surface-alt); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 3px; margin-bottom: 12px; }

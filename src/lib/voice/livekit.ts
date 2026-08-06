@@ -29,6 +29,9 @@ import { browserMouth, browserEars } from "./browser";
 export interface LiveKitBeltOpts {
   livekitUrl?: string;
   tokenEndpoint?: string;
+  /** Preferred over `tokenEndpoint`: mint the token through the app's Supabase
+   *  client so auth headers are handled for us (see getLiveKitToken). */
+  getToken?: (room: string) => Promise<{ url: string; token: string; room: string } | null>;
   room?: string;
   mouth?: Mouth;
   ears?: Ears;
@@ -97,17 +100,26 @@ export function createLiveKitBelt(opts: LiveKitBeltOpts): VoiceBelt {
     ears: opts.ears ?? agentEars,
 
     async connect() {
-      if (!opts.tokenEndpoint) throw new Error("liveKitBelt: no tokenEndpoint configured");
+      const roomName = opts.room ?? "atlas";
 
-      // 1. Mint a join token server-side (keys never touch the browser).
-      const res = await fetch(opts.tokenEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ room: opts.room ?? "atlas" }),
-      });
-      const data = (await res.json()) as TokenResponse;
-      if (data.degraded || !data.token) {
-        throw new Error(`liveKitBelt: ${data.note ?? "token endpoint returned no token"}`);
+      // 1. Mint a join token server-side (keys never touch the browser). Prefer
+      //    the injected getToken (goes through the Supabase client, so auth
+      //    headers are handled); fall back to a raw POST at a URL.
+      let data: TokenResponse | null = null;
+      if (opts.getToken) {
+        data = await opts.getToken(roomName);
+      } else if (opts.tokenEndpoint) {
+        const res = await fetch(opts.tokenEndpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ room: roomName }),
+        });
+        data = (await res.json()) as TokenResponse;
+      } else {
+        throw new Error("liveKitBelt: no getToken or tokenEndpoint configured");
+      }
+      if (!data || data.degraded || !data.token) {
+        throw new Error(`liveKitBelt: ${data?.note ?? "no token — is LiveKit configured?"}`);
       }
       const url = opts.livekitUrl ?? data.url;
       if (!url) throw new Error("liveKitBelt: no LiveKit URL (set LIVEKIT_URL secret or pass livekitUrl)");

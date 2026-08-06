@@ -53,3 +53,25 @@ export async function askAtlas(
     };
   }
 }
+
+/**
+ * Mint a LiveKit room token via the `livekit-token` edge function (the LiveKit
+ * API key/secret stay server-side). Returns null when Supabase or LiveKit isn't
+ * configured, so the caller degrades to the browser belt rather than erroring —
+ * the traveler is never left mute.
+ */
+export async function getLiveKitToken(
+  room = "atlas"
+): Promise<{ url: string; token: string; room: string } | null> {
+  const sb = getSupabase();
+  if (!sb) return null;
+  try {
+    const { data, error } = await sb.functions.invoke("livekit-token", { body: { room } });
+    if (error) throw error;
+    const d = data as { url?: string; token?: string; room?: string; degraded?: boolean };
+    if (d?.degraded || !d?.token || !d?.url) return null;   // secrets not set yet
+    return { url: d.url, token: d.token, room: d.room ?? room };
+  } catch {
+    return null;
+  }
+}

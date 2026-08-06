@@ -57,10 +57,16 @@ export function createVoiceSession(config: VoiceConfig = {}): VoiceBelt {
   const ears = pickEars(config.ears, degrade);
 
   if (config.transport === "livekit") {
+    // On this belt the agent supplies both slots (it transcribes and speaks
+    // server-side), so only pass mouth/ears through when the caller overrode them.
     const belt = createLiveKitBelt({
       livekitUrl: config.livekitUrl,
       tokenEndpoint: config.tokenEndpoint,
-      mouth, ears,
+      getToken: config.getToken,
+      room: config.room,
+      onAgentText: config.onAgentText,
+      ...(config.mouth ? { mouth } : {}),
+      ...(config.ears ? { ears } : {}),
     });
     return belt;
   }
