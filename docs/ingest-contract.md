@@ -60,6 +60,25 @@ Then on my side it's one command and a re-run of the migration:
   --format=esm --outfile=scratchpad/gen.mjs && node scratchpad/gen.mjs
 ```
 
+## 2b. The `img` token — answered (it barely matters)
+
+**`img` is only the instant placeholder.** Destination heroes and cards fetch the
+real, matched photo from Unsplash using `"{name}, {country}"` and swap it in; the
+token is what shows for the moment before that resolves (and if Unsplash is
+unavailable). So it does **not** need to be a real picture of the place.
+
+**You can use any of these 20 tokens, or omit `img` entirely:**
+`safariGiraffe · lion · safariJeep · elephant · tropicalBeach · oceanAerial ·
+maldivesResort · mountainValley · desertDunes · northernLights · baliRice · paris ·
+venice · marrakech · dubai · kyoto · santorini · restaurant · spaWellness · luxuryPool`
+
+Pick the nearest vibe (a dive site → `oceanAerial`, an alpine resort →
+`mountainValley`). **Omitting it is fine** — the generator supplies a default.
+
+*Previously an unrecognised token rendered an empty `<img>` src. It now falls back
+to a neutral image, so a token we've never seen can't break a page. That was worth
+catching before 36 dive destinations arrived with tokens none of which existed.*
+
 ## 3. The 30-second confirm
 
 **Is `main` stable?** Yes. The destination schema hasn't changed since 2026-07-10

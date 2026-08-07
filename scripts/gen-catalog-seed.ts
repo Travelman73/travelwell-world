@@ -294,6 +294,10 @@ function mergedDestinations(): Record<string, DestRow[]> {
   for (const [code, list] of Object.entries(readDestinationBatches())) {
     const target = (merged[code] ??= []);
     for (const d of list) {
+      // `img` is a placeholder token only (the real photo comes from Unsplash by
+      // name+country), so a batch may omit it — default rather than reject a good
+      // dossier over a cosmetic field the DB happens to mark not-null.
+      if (!d.img) d.img = "mountainValley";
       const i = target.findIndex((x) => x.id === d.id);
       if (i >= 0) target[i] = d; else target.push(d);   // batch wins
     }

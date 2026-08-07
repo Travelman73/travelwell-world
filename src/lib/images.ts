@@ -44,6 +44,19 @@ const REGION_IMG: Record<string, string> = {
   "12A": "desertDunes", "13A": "northernLights",
 };
 
-export const img = (key: string, w = 1400, q?: number) => (IDS[key] ? U(IDS[key], w, q) : "");
-export const siImg = (siId: string, w = 900) => img(SI_IMG[siId] || "mountainValley", w);
-export const regionImg = (code: string, w = 900) => img(REGION_IMG[code] || "mountainValley", w);
+/**
+ * The neutral placeholder for any token we don't recognise. Never return "" —
+ * an empty src is a visibly broken image, and the token is only ever the INSTANT
+ * placeholder anyway: destination heroes and cards fetch the real, matched photo
+ * from Unsplash by "{name}, {country}" and swap it in (see useUnsplashImage).
+ * So an ingested dossier can carry any sensible token — or a token we've never
+ * seen — and the page still looks right.
+ */
+export const FALLBACK_IMG = "mountainValley";
+
+export const img = (key: string, w = 1400, q?: number) =>
+  U(IDS[key] ?? IDS[FALLBACK_IMG], w, q);
+/** The tokens a conformed dossier can use as its placeholder (see docs/ingest-contract.md). */
+export const IMAGE_TOKENS = Object.keys(IDS);
+export const siImg = (siId: string, w = 900) => img(SI_IMG[siId] || FALLBACK_IMG, w);
+export const regionImg = (code: string, w = 900) => img(REGION_IMG[code] || FALLBACK_IMG, w);
