@@ -37,6 +37,13 @@ export interface SafetyInfo {
   source: string;
   /** Date verified, e.g. "2026-05". */
   verified: string;
+  /**
+   * TRUE when we have no verified advisory for this country — i.e. the fallback.
+   * Safety data must FAIL SAFE: an unknown country is "we haven't checked",
+   * never "normal precautions". Renderers must not print a level number for an
+   * unverified card, and the booking gate must treat it as not-freely-bookable.
+   */
+  unverified?: boolean;
 }
 
 /** Card top color per risk level. */
@@ -57,15 +64,29 @@ export const SAFE_HEADER_COLOR: Record<RiskLevel, string> = {
   4: "#9e2420", // dark red — do not travel
 };
 
-/** Neutral, accurate baseline for any country we don't have verified data for. */
+/**
+ * FAIL-SAFE baseline for any country we don't have verified data for.
+ *
+ * This used to claim "Level 1 — exercise normal precautions", which is the wrong
+ * direction for a safety-first product: it made every gap in our data look like
+ * the safest possible answer. A country under a live Level 4 advisory that we
+ * simply hadn't recorded would have rendered as "normal precautions" — the exact
+ * failure the Safer-Informed promise exists to prevent.
+ *
+ * Now it says what's true: we haven't verified this one, so check the official
+ * source. `lvl: 2` only drives the card's colour toward caution; `unverified`
+ * tells renderers not to print a level number at all, and tells the booking gate
+ * (when built) to treat this as not-freely-bookable.
+ */
 export const DEFAULT_SAFETY: SafetyInfo = {
   country: "This destination",
-  lvl: 1,
-  label: "Exercise normal precautions",
-  summary: "Standard travel precautions apply. Check your government's latest advisory before you travel.",
+  lvl: 2,
+  label: "Not yet verified — check the official advisory",
+  summary: "We haven't verified a current government advisory for this destination yet. Check your government's latest advisory before you book or travel.",
   considerations: [],
-  source: "Baseline — verify the latest official advisory before travel",
+  source: "No verified advisory on file — confirm with travel.state.gov / your national advisory",
   verified: "",
+  unverified: true,
 };
 
 /**
@@ -77,10 +98,10 @@ export const COUNTRY_ISO: Record<string, string> = {
   Australia: "AU", Austria: "AT", Bahamas: "BS", Cambodia: "KH", Canada: "CA", "Chile / Argentina": "CL",
   Colombia: "CO", Egypt: "EG", France: "FR", "French Polynesia": "PF", Germany: "DE", Greece: "GR",
   Iceland: "IS", Indonesia: "ID", Italy: "IT", Japan: "JP", Jordan: "JO", Kenya: "KE",
-  Namibia: "NA", Netherlands: "NL", "New Zealand": "NZ", Norway: "NO", Peru: "PE",
+  Ethiopia: "ET", Namibia: "NA", Netherlands: "NL", "New Zealand": "NZ", Norway: "NO", Peru: "PE",
   Portugal: "PT", Rwanda: "RW", "Saudi Arabia": "SA", "South Africa": "ZA", "South Korea": "KR",
   Spain: "ES", "St. Lucia": "LC", Switzerland: "CH", Tanzania: "TZ", Thailand: "TH",
-  "Turks & Caicos": "TC", UAE: "AE",
+  "Turks & Caicos": "TC", UAE: "AE", Uganda: "UG",
 };
 
 export const isoForCountry = (name: string): string | null => COUNTRY_ISO[name] ?? null;

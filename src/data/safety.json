@@ -14,20 +14,6 @@
     "source": "US State Dept L3 / UK FCDO, Mar 2026",
     "verified": "2026-06"
   },
-  "AU": {
-    "country": "Australia",
-    "lvl": 1,
-    "label": "Exercise normal precautions",
-    "summary": "Australia is very safe for travelers; the main risks are natural and environmental, not crime.",
-    "considerations": [
-      "Bushfire season (Nov-Mar) and tropical cyclones in the north; flash flooding.",
-      "Strong ocean rips, marine stingers and saltwater crocodiles in northern waters.",
-      "Intense sun and heat; vast outback driving distances."
-    ],
-    "medical": "High-quality care; tap water safe; evacuation insurance wise for remote/outback travel.",
-    "source": "US State Dept L1, May 2025",
-    "verified": "2026-06"
-  },
   "AT": {
     "country": "Austria",
     "lvl": 1,
@@ -41,6 +27,20 @@
     "medical": "No special vaccinations; EU-standard care; carry travel plus winter-sports/medevac cover for off-piste and high-alpine activity.",
     "source": "US State Dept L1, 2025",
     "verified": "2026-07"
+  },
+  "AU": {
+    "country": "Australia",
+    "lvl": 1,
+    "label": "Exercise normal precautions",
+    "summary": "Australia is very safe for travelers; the main risks are natural and environmental, not crime.",
+    "considerations": [
+      "Bushfire season (Nov-Mar) and tropical cyclones in the north; flash flooding.",
+      "Strong ocean rips, marine stingers and saltwater crocodiles in northern waters.",
+      "Intense sun and heat; vast outback driving distances."
+    ],
+    "medical": "High-quality care; tap water safe; evacuation insurance wise for remote/outback travel.",
+    "source": "US State Dept L1, May 2025",
+    "verified": "2026-06"
   },
   "BS": {
     "country": "Bahamas",
@@ -476,6 +476,21 @@
     "medical": "Yellow fever required if arriving from a risk country (Zanzibar enforces strictly); high malaria risk across the mainland and Zanzibar — prophylaxis strongly advised; Kilimanjaro's main hazard is altitude sickness; bottled/treated water; medevac insurance.",
     "source": "US State Dept L3 / UK FCDO, Oct 2025",
     "verified": "2026-06"
+  },
+  "UG": {
+    "country": "Uganda",
+    "lvl": 4,
+    "label": "Do not travel",
+    "summary": "Do not travel due to an active Ebola (Bundibugyo) outbreak. This is a health-driven Level 4 — the same regional emergency behind Rwanda's Level 3.",
+    "considerations": [
+      "Driven by an active Ebola (Bundibugyo) outbreak — a health advisory, separate from the security level.",
+      "Part of the same regional Ebola public-health emergency affecting neighbouring Rwanda.",
+      "Level 4 is content-only on TravelWell: we show the destination and why it's held, and do not offer booking.",
+      "Outbreak levels move quickly in both directions — re-check the official advisory before relying on this."
+    ],
+    "medical": "Active Ebola outbreak with heightened screening and entry/exit controls. Confirm current requirements with the CDC travel health notices and your national advisory before any travel.",
+    "source": "Reported by David (founder), Aug 2026, corroborated by the regional Ebola emergency in the Rwanda entry. NOT independently re-verified — confirm against travel.state.gov + CDC before public use.",
+    "verified": "2026-08"
   },
   "ZA": {
     "country": "South Africa",

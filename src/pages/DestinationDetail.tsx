@@ -205,10 +205,12 @@ export default function DestinationDetail() {
 
         <aside className="dd-side">
           <div className="safety-card">
+            {/* An unverified card must NOT assert a level we don't have — show "?"
+                and "Not yet verified" instead of inventing "Level 1 of 4". */}
             <div className="safety-card__top" style={{ background: SAFE_HEADER_COLOR[s.lvl] }}>
-              <div className="safety-card__lvl">{s.lvl}</div>
+              <div className="safety-card__lvl">{s.unverified ? "?" : s.lvl}</div>
               <div>
-                <div className="safety-card__title">Safety Card · Level {s.lvl} of 4</div>
+                <div className="safety-card__title">{s.unverified ? "Safety Card · Not yet verified" : `Safety Card · Level ${s.lvl} of 4`}</div>
                 <div className="safety-card__level-label">{s.label}</div>
               </div>
             </div>
