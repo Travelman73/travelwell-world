@@ -38,6 +38,12 @@ export interface LiveKitBeltOpts {
   /** THE MIRROR — Atlas's own words, to render on screen while he speaks them.
    *  Separate from `ears` on purpose: ears carry what the TRAVELER said. */
   onAgentText?: (text: string) => void;
+  /** Fires when the AGENT actually joins the room. Joining the room ourselves is
+   *  NOT the same as Atlas being there — the worker can take 10s+ to pick up the
+   *  job. Until this fires there is nobody listening, so the UI must not say
+   *  "live". (Observed: a 12s worker join made a traveler talk into an empty room,
+   *  give up, and tap again — which disconnected mid-greeting.) */
+  onAgentPresent?: (present: boolean) => void;
 }
 
 interface TokenResponse { url?: string; token?: string; room?: string; degraded?: boolean; note?: string }
@@ -161,9 +167,23 @@ export function createLiveKitBelt(opts: LiveKitBeltOpts): VoiceBelt {
         } catch { /* ignore malformed frames */ }
       });
 
-      room.on(RoomEvent.Disconnected, () => { connected = false; });
+      // 4b. Agent presence. The worker joins as a separate participant, often
+      //     seconds after we do — report it so the UI can wait instead of
+      //     claiming "live" while nobody is listening.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      room.on(RoomEvent.ParticipantConnected, () => opts.onAgentPresent?.(true));
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      room.on(RoomEvent.ParticipantDisconnected, (p: any) => {
+        if (room?.remoteParticipants?.size === 0) opts.onAgentPresent?.(false);
+        void p;
+      });
+
+      room.on(RoomEvent.Disconnected, () => { connected = false; opts.onAgentPresent?.(false); });
 
       await room.connect(url, data.token);
+      // The agent may already be in the room when we arrive — check, don't only
+      // wait for the event (which would never fire in that case).
+      if (room.remoteParticipants?.size > 0) opts.onAgentPresent?.(true);
 
       // 5. SAFARI/iOS: autoplay is blocked until a user gesture. connect() is
       //    called from a tap (the mic button), so unlocking here is the reliable

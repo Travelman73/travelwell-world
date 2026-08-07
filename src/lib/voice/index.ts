@@ -65,6 +65,7 @@ export function createVoiceSession(config: VoiceConfig = {}): VoiceBelt {
       getToken: config.getToken,
       room: config.room,
       onAgentText: config.onAgentText,
+      onAgentPresent: config.onAgentPresent,
       ...(config.mouth ? { mouth } : {}),
       ...(config.ears ? { ears } : {}),
     });

@@ -71,7 +71,7 @@ export function Concierge() {
   // Live voice — the real-time conversation (LiveKit belt + agent worker). A
   // separate mode from the dictation mic above: here Atlas hears and answers out
   // loud with no send button, and the worker holds the brain.
-  const { live, connecting: liveConnecting, start: startLive, stop: stopLive } = useLiveVoice();
+  const { live, agentReady, connecting: liveConnecting, start: startLive, stop: stopLive } = useLiveVoice();
 
   const onMic = () => {
     if (listening) { stopVoice(); return; }
@@ -416,7 +416,12 @@ export function Concierge() {
               <span className="tw-listen-copy">
                 {liveConnecting
                   ? <><b>Connecting…</b> allow the microphone when your browser asks.</>
-                  : <><b>Live with Atlas.</b> Just talk — he'll answer out loud, and every word appears here too.</>}
+                  : !agentReady
+                    // Do NOT say "just talk" yet — the worker can take 10s+ to join,
+                    // and inviting speech into an empty room is how you get someone
+                    // talking to nobody, then tapping again and killing the call.
+                    ? <><b>Waiting for Atlas to join…</b> this can take a few seconds — hold on, don't tap again.</>
+                    : <><b>Live with Atlas.</b> Just talk — he'll answer out loud, and every word appears here too.</>}
               </span>
             </div>
           )}

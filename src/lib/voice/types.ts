@@ -70,6 +70,9 @@ export interface VoiceConfig {
   /** THE MIRROR — Atlas's own words, to paint on screen while he speaks them.
    *  Only meaningful on the livekit belt, where the agent holds the brain. */
   onAgentText?: (text: string) => void;
+  /** Fires when the agent worker actually joins/leaves the room. Being in the
+   *  room ourselves is not the same as Atlas being there. */
+  onAgentPresent?: (present: boolean) => void;
   /** never leave the traveler mute: fall back to the browser belt if a premium
    *  slot isn't wired/available. Default true. */
   degradeToBrowser?: boolean;

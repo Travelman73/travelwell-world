@@ -23,6 +23,10 @@ import { useStore } from "@/store/useStore";
 export interface LiveVoiceState {
   /** true once the room is joined and the mic is publishing */
   live: boolean;
+  /** true once the AGENT is actually in the room. Joining the room is not the
+   *  same as Atlas being there — the worker can take 10s+ to pick up the job, and
+   *  telling someone to "just talk" before then makes them talk to nobody. */
+  agentReady: boolean;
   /** true while joining (token → WebRTC → mic permission) */
   connecting: boolean;
   start: () => Promise<void>;
@@ -31,6 +35,7 @@ export interface LiveVoiceState {
 
 export function useLiveVoice(): LiveVoiceState {
   const [live, setLive] = useState(false);
+  const [agentReady, setAgentReady] = useState(false);
   const [connecting, setConnecting] = useState(false);
   const beltRef = useRef<VoiceBelt | null>(null);
 
@@ -38,6 +43,7 @@ export function useLiveVoice(): LiveVoiceState {
     try { beltRef.current?.disconnect(); } catch { /* noop */ }
     beltRef.current = null;
     setLive(false);
+    setAgentReady(false);
     setConnecting(false);
   }, []);
 
@@ -52,6 +58,7 @@ export function useLiveVoice(): LiveVoiceState {
         getToken: getLiveKitToken,
         // Atlas's words → the on-screen mirror (he's already speaking them aloud).
         onAgentText: (text: string) => addAtlasMessage({ role: "assistant", content: text }),
+        onAgentPresent: (present: boolean) => setAgentReady(present),
       });
       // The traveler's words, as the worker finalizes each turn.
       belt.ears.start({
@@ -76,5 +83,5 @@ export function useLiveVoice(): LiveVoiceState {
     }
   }, [connecting, stop]);
 
-  return { live, connecting, start, stop };
+  return { live, agentReady, connecting, start, stop };
 }
