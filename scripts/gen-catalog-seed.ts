@@ -123,6 +123,7 @@ const jsonb = (o: unknown) => (o == null ? "null" : `'${JSON.stringify(o).replac
 const siRows = SIS.map(
   (s) => `  (${q(s.id)}, ${q(s.name)}, ${q(s.sig)}, ${q(s.status)}, ${q(s.accent)}, ${s.lux}, ${q(s.group)})`
 ).join(",\n");
+const siIdList = SIS.map((s) => q(s.id)).join(", ");
 
 const actRows = Object.entries(ACTIVITIES)
   .flatMap(([siId, acts]) =>
@@ -146,6 +147,13 @@ ${siRows}
 on conflict (id) do update set
   name = excluded.name, signature = excluded.signature, status = excluded.status,
   accent = excluded.accent, is_lux = excluded.is_lux, grp = excluded.grp;
+
+-- Self-clean, same discipline as the destinations seed: an SI RETIRED in
+-- src/data/taxonomy.ts must also leave the DB. Without this the seed was
+-- insert-and-upsert only, so a removed interest would linger in Postgres and —
+-- because the app reads DB-first with the bundle only as fallback — keep showing
+-- in production after it had been deleted from the source. Silent and confusing.
+delete from public.special_interests where id not in (${siIdList});
 
 -- Activities ------------------------------------------------------------------
 -- Laddered experiences per Special Interest. si_id is a plain key (not all

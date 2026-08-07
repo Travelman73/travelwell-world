@@ -183,7 +183,7 @@
     "destination_id": null,
     "region_code": "01F",
     "si": [
-      "prosports-spectator",
+      "spectator",
       "entertainment"
     ],
     "wells": [
@@ -358,7 +358,7 @@
     "destination_id": null,
     "region_code": "12A",
     "si": [
-      "prosports-spectator",
+      "spectator",
       "nightlife",
       "entertainment"
     ],
@@ -402,7 +402,7 @@
     "destination_id": null,
     "region_code": "12A",
     "si": [
-      "prosports-spectator",
+      "spectator",
       "entertainment"
     ],
     "wells": [
@@ -1154,7 +1154,7 @@
     "destination_id": null,
     "region_code": "12A",
     "si": [
-      "prosports-spectator",
+      "spectator",
       "nightlife"
     ],
     "wells": [
@@ -1460,7 +1460,7 @@
     "destination_id": null,
     "region_code": "04A",
     "si": [
-      "prosports-spectator",
+      "spectator",
       "nightlife"
     ],
     "wells": [
@@ -2646,7 +2646,7 @@
     "si": [
       "culture",
       "adventure",
-      "prosports-spectator"
+      "spectator"
     ],
     "wells": [
       "activities",
@@ -2688,7 +2688,7 @@
     "destination_id": null,
     "region_code": "09P",
     "si": [
-      "prosports-spectator",
+      "spectator",
       "entertainment"
     ],
     "wells": [
@@ -2731,7 +2731,7 @@
     "destination_id": null,
     "region_code": "09P",
     "si": [
-      "prosports-spectator",
+      "spectator",
       "nightlife",
       "culture"
     ],

@@ -46,6 +46,13 @@ on conflict (id) do update set
   name = excluded.name, signature = excluded.signature, status = excluded.status,
   accent = excluded.accent, is_lux = excluded.is_lux, grp = excluded.grp;
 
+-- Self-clean, same discipline as the destinations seed: an SI RETIRED in
+-- src/data/taxonomy.ts must also leave the DB. Without this the seed was
+-- insert-and-upsert only, so a removed interest would linger in Postgres and —
+-- because the app reads DB-first with the bundle only as fallback — keep showing
+-- in production after it had been deleted from the source. Silent and confusing.
+delete from public.special_interests where id not in ('ultra', 'tropical', 'romance', 'safari', 'expedition', 'adventure', 'liveaboard', 'river', 'diveglobal', 'ocean', 'wellness', 'wildlife', 'glamping', 'family', 'group', 'hiking', 'ski', 'olympic', 'senior', 'culinary', 'culture', 'deepdive', 'pilgrimage', 'entertainment', 'nightlife', 'sports', 'spectator', 'prosports', 'compsports', 'sailing', 'yacht', 'wine');
+
 -- Activities ------------------------------------------------------------------
 -- Laddered experiences per Special Interest. si_id is a plain key (not all
 -- activity groups map to a canonical SI in the prototype); well FKs to wells.
