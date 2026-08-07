@@ -1,0 +1,84 @@
+[
+  {
+    "_comment": "GOLD REFERENCE — one fully-conformed destination, every field populated. Match this shape byte-for-byte. Files starting with _ are ignored by the generator, so this example never ships as a real row. Delete every _comment key in real batches.",
+
+    "id": "cape-town-south-africa",
+    "region_code": "06A",
+    "name": "Cape Town",
+    "country": "South Africa",
+    "line": "Table Mountain over two oceans, wine country an hour out",
+    "status": "live",
+    "depth": "verified",
+    "img": "capeTown",
+    "sub_region": "South Africa",
+
+    "si": ["culinary", "wine", "culture", "ocean"],
+    "feel": ["dramatic", "cosmopolitan", "coastal"],
+    "tier_range": ["comfort", "premier", "luxury", "ultra"],
+    "price_band": "premier",
+    "draw_rank": "anchor",
+
+    "data": {
+      "reconciles_live_mvp": "cape-town-south-africa",
+
+      "safety": {
+        "advisory_level": "L2",
+        "posture": "book-freely",
+        "booking_hold": false,
+        "notes": "Exercise increased caution for crime. The tourist corridor (Atlantic Seaboard, V&A, Winelands) is well-policed; opportunistic theft is the real risk — don't walk with valuables after dark, use ride-hailing at night.",
+        "source": "US State Dept L2 / UK FCDO, Jun 2026",
+        "verified": "2026-06"
+      },
+
+      "timing": {
+        "season": "Nov–Mar",
+        "best_months": [2, 3, 11],
+        "notes": "Summer is dry and windy — Feb–Mar is the sweet spot (warm, calmer, harvest in the Winelands). Jun–Aug is green, quiet and cheap, with whales in Walker Bay."
+      },
+
+      "jewels": [
+        {
+          "name": "Table Mountain at first cable car",
+          "tier": "comfort",
+          "when": "clear windless mornings",
+          "blurb": "Beat the cloud and the queue — the whole peninsula laid out before the day starts.",
+          "si": "culture",
+          "commission": "Cableway ticket partner — commission lane"
+        },
+        {
+          "name": "A Franschhoek estate lunch, driver included",
+          "tier": "luxury",
+          "when": "Feb–Apr harvest",
+          "blurb": "Vines to the mountains, a long table, and nobody has to stay sober.",
+          "si": "wine",
+          "commission": "Winery + transfer affiliate"
+        }
+      ],
+
+      "faq": [
+        {
+          "q": "Is Cape Town safe for tourists?",
+          "a": "The visitor corridor is generally safe and well-policed, but South Africa carries a US Level 2 advisory for crime. Treat it like any big city: no valuables on show, ride-hail after dark, and don't hike Table Mountain alone.",
+          "source": "US State Dept advisory, Jun 2026"
+        },
+        {
+          "q": "When is the best time to visit Cape Town?",
+          "a": "February and March — warm, dry, less of the summer wind, and it's harvest in the Winelands. June to August is cooler and much cheaper, and it's when the whales are in Walker Bay.",
+          "source": "Verified 2026-06"
+        }
+      ],
+
+      "seo": {
+        "title": "Cape Town Travel Guide | TravelWell",
+        "meta": "When to go, what's safe, and the experiences worth the flight — Table Mountain, the Winelands and two oceans, planned around you.",
+        "canonical": "/destination/cape-town-south-africa",
+        "keywords": ["cape town travel guide", "cape town safety", "best time to visit cape town", "cape winelands"]
+      },
+
+      "booking": { "windows": ["Nov–Mar peak", "Feb–Apr harvest"], "commission_lane": "affiliate" },
+
+      "geo": { "lat": -33.92, "lng": 18.42 },
+      "dossier_id": "TWW-06A-CPT-001"
+    }
+  }
+]

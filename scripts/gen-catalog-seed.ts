@@ -255,10 +255,57 @@ console.log("Wrote supabase/migrations/0004_seed_providers_subregions.sql");
 console.log(`  ${seenPk.size} providers (${Object.values(PROVIDERS).flat().length} bundle + ${readProviderCsvs().length} csv), ${Object.values(SUBREGIONS).flat().length} sub-regions`);
 
 // ---------------------------------------------------------------------------
+/**
+ * Conformed dossier batches, dropped in as JSON — the same "add a file, it just
+ * works" path providers already have. The research library delivers
+ * `src/data/destinations/<batch>.json` and this picks it up automatically:
+ * nothing to hand-merge into places.ts, nothing to reshape.
+ *
+ * Each file is either an array of destinations, or an object keyed by region
+ * code. Every row must carry `region_code` (or sit under its region key).
+ * A batch row with the same `id` as a bundled row WINS — that's how a shallow
+ * hand-authored anchor gets upgraded by its full dossier.
+ */
+function readDestinationBatches(): Record<string, DestRow[]> {
+  const dir = "src/data/destinations";
+  let files: string[] = [];
+  try { files = readdirSync(dir).filter((f) => f.endsWith(".json") && !f.startsWith("_")); } catch { return {}; }
+  const out: Record<string, DestRow[]> = {};
+  for (const f of files.sort()) {
+    const raw = JSON.parse(readFileSync(`${dir}/${f}`, "utf8"));
+    const rows: DestRow[] = Array.isArray(raw)
+      ? raw
+      : Object.entries(raw).flatMap(([code, list]) =>
+          (list as DestRow[]).map((d) => ({ ...d, region_code: d.region_code ?? code })));
+    for (const d of rows) {
+      const code = d.region_code;
+      if (!code) throw new Error(`${f}: destination "${d.id ?? d.name}" has no region_code`);
+      (out[code] ??= []).push(d);
+    }
+  }
+  return out;
+}
+type DestRow = { id?: string; name: string; country: string; region_code?: string } & Record<string, unknown>;
+
+/** Bundled catalog + dropped-in batches, batches winning on id collision. */
+function mergedDestinations(): Record<string, DestRow[]> {
+  const merged: Record<string, DestRow[]> = {};
+  for (const [code, list] of Object.entries(DESTINATIONS)) merged[code] = [...(list as unknown as DestRow[])];
+  for (const [code, list] of Object.entries(readDestinationBatches())) {
+    const target = (merged[code] ??= []);
+    for (const d of list) {
+      const i = target.findIndex((x) => x.id === d.id);
+      if (i >= 0) target[i] = d; else target.push(d);   // batch wins
+    }
+  }
+  return merged;
+}
+
 // 0005 — Destinations + Guides
 // ---------------------------------------------------------------------------
-const allDests = Object.values(DESTINATIONS).flat();
-const destRows = Object.entries(DESTINATIONS)
+const DESTS = mergedDestinations();
+const allDests = Object.values(DESTS).flat();
+const destRows = Object.entries(DESTS)
   .flatMap(([code, list]) =>
     list.map((d, i) => `  (${q(d.id)}, ${q(code)}, ${q(d.name)}, ${q(d.country)}, ${q(d.line)}, ${q(d.status)}, ${q(d.depth)}, ${q(d.img)}, ${d.sub_region ? q(d.sub_region) : "null"}, ${pgArr(d.si)}, ${pgArr(d.feel)}, ${pgArr(d.tier_range)}, ${d.price_band ? q(d.price_band) : "null"}, ${d.draw_rank ? q(d.draw_rank) : "null"}, ${jsonb(d.data)}, ${i})`)
   )
@@ -378,7 +425,7 @@ on conflict (id) do update set
 
 writeFileSync("supabase/migrations/0005_seed_destinations_guides.sql", sql5);
 console.log("Wrote supabase/migrations/0005_seed_destinations_guides.sql");
-console.log(`  ${Object.values(DESTINATIONS).flat().length} destinations, ${GUIDES.length} guides`);
+console.log(`  ${allDests.length} destinations (${Object.values(DESTINATIONS).flat().length} bundled + ${allDests.length - Object.values(DESTINATIONS).flat().length} dropped-in), ${GUIDES.length} guides`);
 
 // ---------------------------------------------------------------------------
 // 0007 — Local & temporal signals (the "knows what's happening" layer)
