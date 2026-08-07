@@ -3,15 +3,16 @@
   "private": true,
   "version": "2.4.0",
   "type": "module",
-  "description": "TravelWell.World — a Travel Operating System. React + TypeScript + Tailwind + Supabase + Claude.",
+  "description": "TravelWell.World \u2014 a Travel Operating System. React + TypeScript + Tailwind + Supabase + Claude.",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run gen:sitemap && tsc -b && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "a11y": "node scripts/a11y-audit.mjs",
-    "validate:ingest": "esbuild scripts/validate-destinations.ts --bundle --platform=node --format=esm --define:import.meta.env={} --outfile=scratchpad/val.mjs && node scratchpad/val.mjs"
+    "validate:ingest": "esbuild scripts/validate-destinations.ts --bundle --platform=node --format=esm --define:import.meta.env={} --outfile=scratchpad/val.mjs && node scratchpad/val.mjs",
+    "gen:sitemap": "esbuild scripts/gen-sitemap.ts --bundle --platform=node --format=esm --define:import.meta.env={} --outfile=scratchpad/sitemap.mjs && node scratchpad/sitemap.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.4",
