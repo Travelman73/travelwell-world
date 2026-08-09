@@ -78,6 +78,14 @@ const perRegion: Record<string, number> = {};
 const seenIds = new Set<string>();
 const seenReconcile = new Set<string>();
 const refChecks: { at: string; ref: string }[] = [];
+// Image-reuse tracking. Two destinations showing the SAME photo is a trust
+// problem — a reader who sees one beach on Bonaire and Curaçao stops believing
+// the rest of the page. Tokens are only placeholders so reuse there is a soft
+// warning; a PINNED hero url reused is a hard error, because that one really
+// does render the identical picture twice.
+const byToken: Record<string, string[]> = {};
+const byHeroUrl: Record<string, string[]> = {};
+const byHeroQuery: Record<string, string[]> = {};
 let linked = 0;
 
 const { rows, source } = loadRows();
@@ -151,6 +159,11 @@ for (const { code, d } of rows) {
       for (const ref of Array.isArray(v) ? v : v != null ? [v] : []) if (typeof ref === "string") refChecks.push({ at, ref });
     }
   };
+  if (d.img) (byToken[String(d.img)] ??= []).push(id);
+  const h = (data ?? {}).hero as { url?: string; query?: string } | undefined;
+  if (h?.url) (byHeroUrl[h.url] ??= []).push(id);
+  if (h?.query) (byHeroQuery[h.query.toLowerCase()] ??= []).push(id);
+
   scan(d); scan(data);
   bump(perRegion, code);
 }
@@ -160,6 +173,17 @@ const known = new Set([...LIVE_IDS, ...incomingIds]);
 let brokenRefs = 0;
 for (const { at, ref } of refChecks) {
   if (!known.has(ref)) { errs.push(`${at}: see-also "${ref}" points to no destination (broken link)`); brokenRefs++; }
+}
+
+// ── Duplicate imagery ─────────────────────────────────────────────────────
+for (const [url, ids] of Object.entries(byHeroUrl)) {
+  if (ids.length > 1) errs.push(`duplicate pinned hero image — ${ids.join(", ")} all use ${url}. The same photo on two places reads as fake.`);
+}
+for (const [q, ids] of Object.entries(byHeroQuery)) {
+  if (ids.length > 1) warns.push(`same hero.query "${q}" on ${ids.join(", ")} — they will very likely resolve to the identical photo`);
+}
+for (const [tok, ids] of Object.entries(byToken)) {
+  if (ids.length > 3) warns.push(`placeholder token "${tok}" reused by ${ids.length} destinations (${ids.slice(0, 4).join(", ")}…) — only the pre-load image, but consider spreading them`);
 }
 
 // ── Report ────────────────────────────────────────────────────────────────
