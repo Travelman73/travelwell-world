@@ -67,13 +67,21 @@ export default function SpecialInterests() {
                   const isSoon = s.status !== "live";
                   const picked = journeySIs.includes(s.id);
                   const order = journeySIs.indexOf(s.id) + 1;
+                  const name = ct(`si.${s.id}.name`, s.name);
                   return (
                     <button
                       key={s.id}
                       data-si={s.id}
                       className={cx("si-tile", isSoon && "si-tile--soon")}
                       aria-pressed={isSoon ? undefined : picked}
-                      aria-disabled={isSoon || undefined}
+                      // A "coming soon" tile is NOT disabled — clicking it opens the
+                      // interest's page, which is currently the only route into our SI
+                      // pages from this board. It used to carry aria-disabled, so screen
+                      // readers and keyboard users were told it was switched off and
+                      // skipped past the one door that was open. The name says what the
+                      // click does instead, and starts with the visible label so the
+                      // accessible name still contains it (WCAG 2.5.3).
+                      aria-label={isSoon ? `${name} — coming soon. Opens its preview page.` : undefined}
                       onClick={() => (isSoon ? navigate(`/si/${s.id}`) : toggleSI(s.id))}
                     >
                       <span className="si-tile__img">
@@ -93,7 +101,7 @@ export default function SpecialInterests() {
                         )}
                       </span>
                       <span className="si-tile__body">
-                        <span className="si-tile__name">{ct(`si.${s.id}.name`, s.name)}</span>
+                        <span className="si-tile__name">{name}</span>
                         <span className="si-tile__sig">{s.sig.charAt(0).toUpperCase() + s.sig.slice(1)}</span>
                       </span>
                       <span className="si-tile__view">{isSoon ? t("pill.preview") : t("sip.view")} <Icon name="arrow" small /></span>

@@ -2,7 +2,7 @@ import { useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "@/lib/icons";
 import { type Well } from "@/data/taxonomy";
-import { useWells } from "@/store/useCatalog";
+import { useWells, useSiCount, useRegionCount, useWellCount } from "@/store/useCatalog";
 
 /* ============================================================================
    TravelWell.World — Platform Demo (public) + gated VC Demo.
@@ -19,10 +19,12 @@ const ACCESS_CODE = "TWW2026";
 const Ph = ({ children }: { children: ReactNode }) => <span className="ph">{children}</span>;
 
 /* ---- public demo data (mirrors demo.html <script>) ---- */
-const STATS: { v: ReactNode; k: string; tag: string }[] = [
+/** The taxonomy stat reads the live catalog — this page is shown to investors, so
+ *  a stale count here is the most expensive place to have one. */
+const stats = (si: number, regions: number, wells: number): { v: ReactNode; k: string; tag: string }[] => [
   { v: <><Ph>—</Ph>K</>, k: "Monthly travelers", tag: "Illustrative" },
   { v: <><Ph>$—</Ph>M</>, k: "Annualized GMV", tag: "Illustrative" },
-  { v: "25 / 13 / 10", k: "Interests · Regions · Wells", tag: "Live taxonomy" },
+  { v: `${si} / ${regions} / ${wells}`, k: "Interests · Regions · Wells", tag: "Live taxonomy" },
   { v: "200+", k: "Vetted providers", tag: "Onboarding" },
 ];
 
@@ -42,8 +44,8 @@ const REV: { id: string; model: string; take: string }[] = [
   { id: "ship", model: "Logistics & shipping commission · at launch", take: "8–15%" },
 ];
 
-const ENGINES: { ic: string; t: string; s: string }[] = [
-  { ic: "compass", t: "SI-anchored SEO", s: "25 interests × 13 regions × 10 Wells = thousands of high-intent landing pages, each a search entry point." },
+const engines = (si: number, regions: number, wells: number): { ic: string; t: string; s: string }[] => [
+  { ic: "compass", t: "SI-anchored SEO", s: `${si} interests × ${regions} regions × ${wells} Wells = thousands of high-intent landing pages, each a search entry point.` },
   { ic: "message", t: "The Concierge", s: "Conversational planning captures travelers who don't know where to start — and keeps them on-platform." },
   { ic: "sparkles", t: "Editorial desk", s: "Guides and seasonal content draw organic traffic and feed travelers into the journey." },
 ];
@@ -54,8 +56,8 @@ const DIFF: { ic: string; t: string; s: string }[] = [
   { ic: "bag2", t: "One itinerary, every Well", s: "We own the whole trip, not one booking — repeat surface area across ten needs." },
 ];
 
-const osLayers = (wellNames: string[]): { n: string; c: string; chips: string[] }[] => [
-  { n: "Demand layer", c: "taxonomy", chips: ["25 Special Interests", "13 Regions", "Activities graph"] },
+const osLayers = (wellNames: string[], si: number, regions: number): { n: string; c: string; chips: string[] }[] => [
+  { n: "Demand layer", c: "taxonomy", chips: [`${si} Special Interests`, `${regions} Regions`, "Activities graph"] },
   { n: "Fulfillment layer", c: "wells", chips: wellNames.concat(["+ Nanny", "+ Security"]) },
   { n: "Engine layer", c: "engines", chips: ["Atlas concierge", "Provider matching", "Itinerary sync", "Safety Cards", "Seasonal logic"] },
   { n: "Data layer", c: "schemas", chips: ["Travel ID", "Itinerary blocks", "Provider catalog", "Commission ledger"] },
@@ -115,9 +117,15 @@ function Disclaimer({ children }: { children: ReactNode }) {
    ========================================================================== */
 function PublicDemo() {
   const wells = useWells();
+  // Published counts, from the live catalog (see useCatalog).
+  const siCount = useSiCount();
+  const regionCount = useRegionCount();
+  const wellCount = useWellCount();
   const allWells: Record<string, Well> = {};
   wells.forEach((w) => { allWells[w.id] = w; });
-  const OS_LAYERS = osLayers(wells.filter((w) => !w.lux).map((w) => w.name));
+  const OS_LAYERS = osLayers(wells.filter((w) => !w.lux).map((w) => w.name), siCount, regionCount);
+  const STATS = stats(siCount, regionCount, wellCount);
+  const ENGINES = engines(siCount, regionCount, wellCount);
   return (
     <div className="inv">
       <Disclaimer>

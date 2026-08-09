@@ -1,6 +1,10 @@
 /**
  * TravelWell.World — Canonical taxonomy (the fixed nouns).
- * 25 Special Interests · 10 Wells (+2 luxury) · 13 Regions · launch locales.
+ * Special Interests · Wells (10 live + 2 soon) · Regions · launch locales.
+ * The lists below ARE the counts — never write a count as a literal anywhere in
+ * the app; read it from the catalog (`useSiCount` / `useRegionCount` /
+ * `useWellCount` in `src/store/useCatalog.ts`). This header used to say
+ * "25 Special Interests" while the catalog held 32.
  * Ported verbatim from the design prototype's js/data.js. This is
  * design-prototype data — names are taxonomy, not a real catalog (Law V-2).
  * Wire real data/APIs (Supabase) in implementation.

@@ -4,7 +4,7 @@ import { Icon } from "@/lib/icons";
 import { siImg, img } from "@/lib/images";
 import { taglineSubject } from "@/data/taxonomy";
 import { useStore } from "@/store/useStore";
-import { useSpecialInterests } from "@/store/useCatalog";
+import { useSpecialInterests, useSiCount, useWellCount, useRegionCount } from "@/store/useCatalog";
 import { ButtonLink, Button, Eyebrow, Tagline } from "@/components/ui/primitives";
 import { cx } from "@/lib/utils";
 import { useT } from "@/lib/i18n";
@@ -22,26 +22,29 @@ const STEPS = [
 /* ---- Featured SIs: David's 6, paired by row ---- */
 const FEAT_ORDER = ["romance", "tropical", "safari", "expedition", "ultra", "river"];
 
-/* ---- The four cinematic "Operating System" feature bands ---- */
+/* ---- The four cinematic "Operating System" feature bands ----
+   `countKey` instead of a hardcoded number: the band headline and its "+N more"
+   chip read the live catalog, so growing the interest board can't leave a stale
+   "25" on the home page. Band 4's "6" is not a catalog count and stays literal. */
 const OS_BANDS = [
   {
-    side: "left", num: "25", numSub: "", eyebrow: "os.band1.eyebrow", title: "os.band1.title",
+    side: "left", countKey: "si", numSub: "", eyebrow: "os.band1.eyebrow", title: "os.band1.title",
     body: "os.band1.body",
-    chips: ["Safari & Wildlife", "Culinary Journeys", "Wellness & Spa", "+22 more"], to: "/special-interests", cta: "os.band1.cta",
+    chips: ["Safari & Wildlife", "Culinary Journeys", "Wellness & Spa", "{more}"], to: "/special-interests", cta: "os.band1.cta",
     bg: "radial-gradient(120% 90% at 25% 15%, #d8b35e 0%, transparent 55%), linear-gradient(120deg, #8a5a2a 0%, #4a3019 55%, #28190d 100%)",
     image: "desertDunes",
   },
   {
-    side: "right", num: "10", numSub: "", eyebrow: "os.band2.eyebrow", title: "os.band2.title",
+    side: "right", countKey: "wells", numSub: "", eyebrow: "os.band2.eyebrow", title: "os.band2.title",
     body: "os.band2.body",
     chips: ["Fly-Well", "Stay-Well", "Eat-Well"], soonChip: "Insure-Well · soon", to: "/wells", cta: "os.band2.cta",
     bg: "radial-gradient(120% 90% at 75% 20%, #56a89c 0%, transparent 55%), linear-gradient(240deg, #2c6e68 0%, #1c4541 55%, #102825 100%)",
     image: "oceanAerial",
   },
   {
-    side: "left", num: "13", numSub: "", eyebrow: "os.band3.eyebrow", title: "os.band3.title",
+    side: "left", countKey: "regions", numSub: "", eyebrow: "os.band3.eyebrow", title: "os.band3.title",
     body: "os.band3.body",
-    chips: ["01F · Western Europe", "05A · East Africa", "11C · Caribbean", "+10 more"], to: "/regions", cta: "os.band3.cta",
+    chips: ["01F · Western Europe", "05A · East Africa", "11C · Caribbean", "{more}"], to: "/regions", cta: "os.band3.cta",
     bg: "radial-gradient(120% 90% at 25% 15%, #7b91c4 0%, transparent 55%), linear-gradient(120deg, #3a4f7a 0%, #25304f 55%, #141a2e 100%)",
     image: "mountainValley",
   },
@@ -195,6 +198,8 @@ export default function Home() {
   const ct = useCatalogName();
   const chip = useChip();
   const sis = useSpecialInterests();
+  // Published counts, straight from the catalog (see useCatalog).
+  const counts = { si: useSiCount(), wells: useWellCount(), regions: useRegionCount() };
   const featured = FEAT_ORDER.map((id) => sis.find((s) => s.id === id)).filter(Boolean) as NonNullable<ReturnType<typeof sis.find>>[];
 
   const TALK_FEATS = [
@@ -278,7 +283,7 @@ export default function Home() {
               <h2>{t("feat.title")}</h2>
               <p>{t("feat.lead")}</p>
             </div>
-            <Link className="section__link" to="/special-interests">{t("feat.link")} <Icon name="arrow" small /></Link>
+            <Link className="section__link" to="/special-interests">{t("feat.link", { n: counts.si })} <Icon name="arrow" small /></Link>
           </div>
           <div className="si-rail">
             {featured.map((s) => {
@@ -349,15 +354,19 @@ export default function Home() {
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 1 }} />
               <div className="os-feature__scrim" />
               <div className="os-feature__content">
-                <div className="os-feature__num">{b.num}{b.numSub && <span style={{ fontSize: ".42em", fontWeight: 600, verticalAlign: "middle", opacity: 0.85 }}> {b.numSub}</span>}</div>
+                <div className="os-feature__num">{"countKey" in b ? counts[b.countKey] : b.num}{b.numSub && <span style={{ fontSize: ".42em", fontWeight: 600, verticalAlign: "middle", opacity: 0.85 }}> {b.numSub}</span>}</div>
                 <Eyebrow>{t(b.eyebrow)}</Eyebrow>
                 <h3>{t(b.title)}</h3>
                 <p>{t(b.body)}</p>
                 <div className="os-feature__chips">
-                  {b.chips.map((c) => <span key={c} className="os-feature__chip">{chip(c)}</span>)}
+                  {b.chips.map((c) => (
+                    <span key={c} className="os-feature__chip">
+                      {c === "{more}" ? `+${Math.max(0, ("countKey" in b ? counts[b.countKey] : 0) - (b.chips.length - 1))} more` : chip(c)}
+                    </span>
+                  ))}
                   {"soonChip" in b && b.soonChip && <span className="os-feature__chip soon">{chip(b.soonChip)}</span>}
                 </div>
-                <Link className="os-feature__cta" to={b.to}>{t(b.cta)} <Icon name="arrow" small /></Link>
+                <Link className="os-feature__cta" to={b.to}>{t(b.cta, "countKey" in b ? { n: counts[b.countKey] } : undefined)} <Icon name="arrow" small /></Link>
               </div>
             </article>
           ))}

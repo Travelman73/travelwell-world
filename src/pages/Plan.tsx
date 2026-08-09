@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import { Icon } from "@/lib/icons";
 import { siImg, img } from "@/lib/images";
 import { useStore } from "@/store/useStore";
-import { useSpecialInterests, useWells, useGuides } from "@/store/useCatalog";
+import { useSpecialInterests, useWells, useGuides, useSiCount } from "@/store/useCatalog";
 import { Eyebrow, ButtonLink, StatusPill } from "@/components/ui/primitives";
 
 export default function Plan() {
   const { trip } = useStore();
   const sis = useSpecialInterests();
+  const siCount = useSiCount();
   const wells = useWells().filter((w) => !w.lux);
   const guides = useGuides();
   const covered = new Set(trip.map((b) => b.well)).size;
@@ -52,7 +53,7 @@ export default function Plan() {
         </Link>
 
         <section style={{ marginTop: 48 }}>
-          <div className="section__head"><div><Eyebrow>Start with a feeling</Eyebrow><h2>Live interests, ready now.</h2></div><Link className="section__link" to="/special-interests">All 25 <Icon name="arrow" small /></Link></div>
+          <div className="section__head"><div><Eyebrow>Start with a feeling</Eyebrow><h2>Live interests, ready now.</h2></div><Link className="section__link" to="/special-interests">All {siCount} <Icon name="arrow" small /></Link></div>
           <div className="si-grid">
             {liveSIs.slice(0, 6).map((s) => (
               <Link key={s.id} className="si-tile" to={`/si/${s.id}`}>

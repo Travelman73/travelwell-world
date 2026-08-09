@@ -1,33 +1,36 @@
 import { Link } from "react-router-dom";
 import { Icon } from "@/lib/icons";
 import { Eyebrow, BrandMark } from "@/components/ui/primitives";
+import { useSiCount, useRegionCount, useWellCount } from "@/store/useCatalog";
 
-const STATS = [
-  { ic: "heart", v: "25", t: "Ways to travel", sub: "— from safaris to spas" },
-  { ic: "globe", v: "13", t: "World regions", sub: "to explore" },
-  { ic: "bag2", v: "10", t: "Trip needs,", sub: "each with its own “Well”" },
+/** The counters read the live catalog — a published count that disagrees with
+ *  the taxonomy is the exact failure canon warns about (CLAUDE.md). */
+const stats = (si: number, regions: number, wells: number) => [
+  { ic: "heart", v: String(si), t: "Ways to travel", sub: "— from safaris to spas" },
+  { ic: "globe", v: String(regions), t: "World regions", sub: "to explore" },
+  { ic: "bag2", v: String(wells), t: "Trip needs,", sub: "each with its own “Well”" },
   { ic: "check", v: "1", t: "Itinerary", sub: "that holds it all", hl: true },
 ];
 
 // How it works — the four steps as a vertical timeline (they map to the live
 // 4-step journey: Special Interests → Regions → the Wells → Book It).
-const STEPS = [
+const steps = (si: number, regions: number, wells: number) => [
   {
     ic: "heart", title: "Tell us what moves you",
     desc: "Start with a feeling, not a form. Pick the ways you love to travel — they light up as you choose.",
-    chips: ["Safaris", "Romance", "Food & wine", "Wellness"], more: "25 ways to travel",
+    chips: ["Safaris", "Romance", "Food & wine", "Wellness"], more: `${si} ways to travel`,
     to: "/special-interests", link: "Choose your interests",
   },
   {
     ic: "globe", title: "Pick where in the world",
     desc: "Thirteen regions, ranked by how well they fit what you chose — so the best matches rise to the top.",
-    chips: ["East Africa", "The Mediterranean", "Southeast Asia", "The Caribbean"], more: "13 regions",
+    chips: ["East Africa", "The Mediterranean", "Southeast Asia", "The Caribbean"], more: `${regions} regions`,
     to: "/regions", link: "Browse the regions",
   },
   {
     ic: "bag2", title: "We fill in every need",
     desc: "Every part of your trip has its own “Well” — flights, stays, dining, getting around — each pre-filled with our best matches for you.",
-    chips: ["Flights", "Places to stay", "Dining", "Getting around", "Activities"], more: "10 needs covered",
+    chips: ["Flights", "Places to stay", "Dining", "Getting around", "Activities"], more: `${wells} needs covered`,
     to: "/wells-surface", link: "Meet the Wells",
   },
   {
@@ -49,6 +52,11 @@ const PROMISES = [
 ];
 
 export default function About() {
+  const siCount = useSiCount();
+  const regionCount = useRegionCount();
+  const wellCount = useWellCount();
+  const STATS = stats(siCount, regionCount, wellCount);
+  const STEPS = steps(siCount, regionCount, wellCount);
   return (
     <div className="ab">
       <div className="ab-hero">
@@ -121,9 +129,9 @@ export default function About() {
             <Link className="btn ab-close__ghost" to="/demo">Curious how it's built?</Link>
           </div>
           <div className="ab-close__stats">
-            <span><b>25</b> ways to travel</span><span className="ab-close__dot" />
-            <span><b>13</b> regions</span><span className="ab-close__dot" />
-            <span><b>10</b> trip needs</span><span className="ab-close__dot" />
+            <span><b>{siCount}</b> ways to travel</span><span className="ab-close__dot" />
+            <span><b>{regionCount}</b> regions</span><span className="ab-close__dot" />
+            <span><b>{wellCount}</b> trip needs</span><span className="ab-close__dot" />
             <span><b>1</b> itinerary</span>
           </div>
           <p className="ab-close__sig">However far you go — <span className="tw"><BrandMark /></span></p>

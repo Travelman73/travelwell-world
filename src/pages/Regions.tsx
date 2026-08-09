@@ -4,7 +4,7 @@ import { Icon } from "@/lib/icons";
 import { REGION_SI } from "@/data/taxonomy";
 import { regionImg } from "@/lib/images";
 import { useStore } from "@/store/useStore";
-import { useSpecialInterests, useRegions } from "@/store/useCatalog";
+import { useSpecialInterests, useRegions, useRegionCount } from "@/store/useCatalog";
 import { track } from "@/lib/track";
 import { Eyebrow, Pill } from "@/components/ui/primitives";
 import { JourneyBar } from "@/components/ui/StepIndicator";
@@ -21,6 +21,7 @@ function scoreFor(code: string, sis: string[]) {
 
 export default function Regions() {
   const { journeySIs, setRegion } = useStore();
+  const regionCount = useRegionCount();
   const t = useT();
   const ct = useCatalogName();
   const sis = useSpecialInterests();
@@ -56,7 +57,7 @@ export default function Regions() {
         ) : (
           <div className="jn-context" role="note">
             <div className="jn-context__ic"><Icon name="info" small /></div>
-            <div>{t("reg.browsePre")} <Link to="/special-interests" style={{ fontWeight: 600 }}>{t("reg.browseLink")}</Link> {t("reg.browsePost")}</div>
+            <div>{t("reg.browsePre", { n: regionCount })} <Link to="/special-interests" style={{ fontWeight: 600 }}>{t("reg.browseLink")}</Link> {t("reg.browsePost")}</div>
           </div>
         )}
 
@@ -66,7 +67,7 @@ export default function Regions() {
             <button aria-pressed={sort === "az"} onClick={() => compareSort("az")}>A–Z</button>
             <button aria-pressed={sort === "all"} onClick={() => compareSort("all")}>{t("reg.sortAll")}</button>
           </div>
-          <span className="jn-sweet"><Icon name="globe" small /> {t("reg.pick")}</span>
+          <span className="jn-sweet"><Icon name="globe" small /> {t("reg.pick", { n: regionCount })}</span>
         </div>
       </div>
 

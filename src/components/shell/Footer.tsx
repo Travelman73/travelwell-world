@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import { useT } from "@/lib/i18n";
+import { useSiCount, useRegionCount, useWellCount } from "@/store/useCatalog";
 import { Tagline } from "@/components/ui/primitives";
 import { MASTER_TAGLINE_SUBJECT } from "@/data/taxonomy";
 
 export function Footer() {
   const t = useT();
+  // Published counts read the live catalog — never a literal (see useCatalog).
+  const siCount = useSiCount();
+  const regionCount = useRegionCount();
+  const wellCount = useWellCount();
   return (
     <footer className="tw-footer">
       <div className="tw-footer__inner">
@@ -16,9 +21,9 @@ export function Footer() {
           <div className="tw-footer__col">
             <h5>{t("foot.system")}</h5>
             <Link to="/about">{t("foot.about")}</Link>
-            <Link to="/special-interests">{t("foot.si")}</Link>
-            <Link to="/regions">{t("foot.regions")}</Link>
-            <Link to="/wells">{t("foot.wells")}</Link>
+            <Link to="/special-interests">{t("foot.si", { n: siCount })}</Link>
+            <Link to="/regions">{t("foot.regions", { n: regionCount })}</Link>
+            <Link to="/wells">{t("foot.wells", { n: wellCount })}</Link>
             <Link to="/providers">{t("foot.providers")}</Link>
           </div>
           <div className="tw-footer__col">

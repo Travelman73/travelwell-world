@@ -72,7 +72,7 @@ export const MESSAGES: Record<string, Dict> = {
   "feat.eyebrow": { en: "Start with what moves you", es: "Empieza por lo que te mueve", ar: "ابدأ بما يحرّكك", zh: "从打动你的事物开始", fr: "Commencez par ce qui vous inspire" },
   "feat.title":   { en: "Pick up to 3. Two is the sweet spot.", es: "Elige hasta 3. Dos es el punto ideal.", ar: "اختر حتى 3. اثنان هو الأمثل.", zh: "最多选 3 个，两个最理想。", fr: "Choisissez-en jusqu'à 3. Deux, c'est l'idéal." },
   "feat.lead":    { en: "Tap the ways you love to travel — they light up as you go. Most journeys shine with 1–2, but some need 3 (Family + Tropical + Romance, say). You can fine-tune anytime.", es: "Toca las formas en que te gusta viajar — se iluminan a medida que avanzas. La mayoría de los viajes brillan con 1–2, pero algunos necesitan 3 (Familia + Tropical + Romance, por ejemplo). Ajústalo cuando quieras.", ar: "انقر على الطرق التي تحب السفر بها — تُضيء أثناء تقدّمك. معظم الرحلات تتألّق بواحدة أو اثنتين، لكن بعضها يحتاج ثلاثًا (عائلة + استوائي + رومانسية مثلًا). يمكنك التعديل في أي وقت.", zh: "点选你喜欢的旅行方式——它们会随之亮起。大多数旅程有 1–2 个就很出彩，有些需要 3 个（比如家庭 + 热带 + 浪漫）。你随时可以微调。", fr: "Touchez vos façons de voyager préférées — elles s'illuminent au fil de votre choix. La plupart des voyages brillent avec 1–2, mais certains en demandent 3 (Famille + Tropical + Romance). Ajustez à tout moment." },
-  "feat.link":    { en: "All 25 interests", es: "Los 25 intereses", ar: "كل الاهتمامات الـ25", zh: "全部 25 种兴趣", fr: "Les 25 centres d'intérêt" },
+  "feat.link":    { en: "All {n} interests", es: "Los {n} intereses", ar: "كل الاهتمامات الـ{n}", zh: "全部 {n} 种兴趣", fr: "Les {n} centres d'intérêt" },
   "pill.live":    { en: "Live", es: "En vivo", ar: "متاح", zh: "已上线", fr: "En ligne" },
   "pill.preview": { en: "Preview", es: "Próximamente", ar: "قريبًا", zh: "预览", fr: "Bientôt" },
   "card.lux":     { en: "Luxury & Ultra", es: "Lujo y Ultra", ar: "الفخامة و Ultra", zh: "奢华与 Ultra", fr: "Luxe & Ultra" },
@@ -85,7 +85,7 @@ export const MESSAGES: Record<string, Dict> = {
   "os.band1.eyebrow": { en: "Ways to travel", es: "Formas de viajar", ar: "طرق السفر", zh: "旅行的方式", fr: "Façons de voyager" },
   "os.band1.title":   { en: "Special Interests", es: "Intereses Especiales", ar: "الاهتمامات الخاصّة", zh: "特别兴趣", fr: "Centres d'Intérêt" },
   "os.band1.body":    { en: "Twenty-five reasons to go — from Safari & Wildlife to Culinary Journeys to Wellness. Pick one or two, and the system shapes everything else around them.", es: "Veinticinco razones para ir — de Safari y Vida Salvaje a Viajes Gastronómicos y Bienestar. Elige uno o dos, y el sistema moldea todo lo demás en torno a ellos.", ar: "خمسة وعشرون سببًا للسفر — من السفاري والحياة البرّية إلى رحلات الطهي والعافية. اختر واحدًا أو اثنين، ويشكّل النظام كل شيء آخر حولها.", zh: "二十五个出发的理由——从野生动物到美食之旅再到养生。选一两个，系统便围绕它们安排其余一切。", fr: "Vingt-cinq raisons de partir — du safari aux voyages gastronomiques en passant par le bien-être. Choisissez-en un ou deux, et le système organise tout le reste autour." },
-  "os.band1.cta":     { en: "Explore all 25", es: "Explora los 25", ar: "استكشف الـ25 كلّها", zh: "浏览全部 25 种", fr: "Explorer les 25" },
+  "os.band1.cta":     { en: "Explore all {n}", es: "Explora los {n}", ar: "استكشف الـ{n} كلّها", zh: "浏览全部 {n} 种", fr: "Explorer les {n}" },
   "os.band2.eyebrow": { en: "Every travel need, met", es: "Cada necesidad, cubierta", ar: "كل حاجة سفر مُلبّاة", zh: "每一项旅行需求，皆有着落", fr: "Chaque besoin, comblé" },
   "os.band2.title":   { en: "The Wells", es: "Los Wells", ar: "الـ Wells", zh: "各个 Well", fr: "Les Wells" },
   "os.band2.body":    { en: "Each Well maps to a need the way an organ maps to the body — Fly, Stay, Eat, Move, and more. Fill them as you go; the journey is whole when they are.", es: "Cada Well corresponde a una necesidad como un órgano al cuerpo — Fly, Stay, Eat, Move y más. Complétalos a medida que avanzas; el viaje está completo cuando ellos lo están.", ar: "كل Well يقابل حاجة كما يقابل العضو الجسد — الطيران، الإقامة، الطعام، التنقّل والمزيد. املأها تباعًا؛ تكتمل الرحلة باكتمالها.", zh: "每个 Well 都对应一项需求，如同器官之于身体——飞行、住宿、餐饮、出行等等。边走边填满它们；当它们齐全，旅程也就完整。", fr: "Chaque Well correspond à un besoin comme un organe au corps — Fly, Stay, Eat, Move et plus. Remplissez-les au fil du temps ; le voyage est complet quand ils le sont." },
@@ -93,7 +93,7 @@ export const MESSAGES: Record<string, Dict> = {
   "os.band3.eyebrow": { en: "From 01F to 13A", es: "De 01F a 13A", ar: "من 01F إلى 13A", zh: "从 01F 到 13A", fr: "De 01F à 13A" },
   "os.band3.title":   { en: "World Regions", es: "Regiones del Mundo", ar: "مناطق العالم", zh: "世界地区", fr: "Régions du Monde" },
   "os.band3.body":    { en: "The whole map, organized — Western Europe to the Caribbean, each region scored for safety and stitched into your route, never a detour off it.", es: "Todo el mapa, organizado — de Europa Occidental al Caribe, cada región puntuada por seguridad e integrada en tu ruta, nunca un desvío.", ar: "الخريطة كاملة، منظَّمة — من أوروبا الغربية إلى الكاريبي، كل منطقة مُقيَّمة أمنيًّا ومنسوجة في مسارك، لا التفافًا عنه.", zh: "整张地图，井然有序——从西欧到加勒比，每个地区都经过安全评分，并编织进你的路线，绝不偏离。", fr: "Toute la carte, organisée — de l'Europe de l'Ouest aux Caraïbes, chaque région évaluée pour sa sécurité et intégrée à votre itinéraire, jamais un détour." },
-  "os.band3.cta":     { en: "Browse all 13 regions", es: "Explora las 13 regiones", ar: "تصفّح المناطق الـ13", zh: "浏览全部 13 个地区", fr: "Parcourir les 13 régions" },
+  "os.band3.cta":     { en: "Browse all {n} regions", es: "Explora las {n} regiones", ar: "تصفّح المناطق الـ{n}", zh: "浏览全部 {n} 个地区", fr: "Parcourir les {n} régions" },
   "os.band4.eyebrow": { en: "Curated, never overwhelming", es: "Seleccionado, nunca abrumador", ar: "منتقى، دون إرباك", zh: "精选，绝不冗杂", fr: "Sélectionné, jamais accablant" },
   "os.band4.title":   { en: "The best matches, not endless lists", es: "Las mejores opciones, no listas interminables", ar: "أفضل الخيارات، لا قوائم لا تنتهي", zh: "最佳匹配，而非无尽清单", fr: "Les meilleures options, pas des listes sans fin" },
   "os.band4.body":    { en: "Six best recommendations for each part of your trip — matched to you and your budget. Want more? Tap “See more.” And if a booking earns us a commission, we say so right there.", es: "Seis mejores recomendaciones para cada parte de tu viaje — según tú y tu presupuesto. ¿Quieres más? Toca «Ver más». Y si una reserva nos da comisión, lo decimos ahí mismo.", ar: "ست توصيات هي الأفضل لكل جزء من رحلتك — مختارة لك ولميزانيتك. تريد المزيد؟ انقر «عرض المزيد». وإن كان الحجز يمنحنا عمولة، نقول ذلك هناك مباشرة.", zh: "为你旅程的每一环节精选六项最佳推荐——契合你与你的预算。想看更多？点“查看更多”。若某项预订让我们获得佣金，我们会当场说明。", fr: "Six meilleures recommandations pour chaque partie de votre voyage — selon vous et votre budget. Envie de plus ? Touchez « Voir plus ». Et si une réservation nous rapporte une commission, nous le disons sur-le-champ." },
@@ -123,9 +123,9 @@ export const MESSAGES: Record<string, Dict> = {
   "foot.partners":  { en: "Partners & Proof", es: "Socios y Pruebas", ar: "الشركاء والإثبات", zh: "合作伙伴与实证", fr: "Partenaires & Preuves" },
   "foot.company":   { en: "Company", es: "Empresa", ar: "الشركة", zh: "公司", fr: "Entreprise" },
   "foot.about":     { en: "About / Architecture", es: "Acerca de / Arquitectura", ar: "من نحن / البنية", zh: "关于 / 架构", fr: "À propos / Architecture" },
-  "foot.si":        { en: "25 Special Interests", es: "25 Intereses Especiales", ar: "25 اهتمامًا خاصًّا", zh: "25 种特别兴趣", fr: "25 Centres d'Intérêt" },
-  "foot.regions":   { en: "13 Regions", es: "13 Regiones", ar: "13 منطقة", zh: "13 个地区", fr: "13 Régions" },
-  "foot.wells":     { en: "10 Wells", es: "10 Wells", ar: "10 Wells", zh: "10 个 Well", fr: "10 Wells" },
+  "foot.si":        { en: "{n} Special Interests", es: "{n} Intereses Especiales", ar: "{n} اهتمامًا خاصًّا", zh: "{n} 种特别兴趣", fr: "{n} Centres d'Intérêt" },
+  "foot.regions":   { en: "{n} Regions", es: "{n} Regiones", ar: "{n} منطقة", zh: "{n} 个地区", fr: "{n} Régions" },
+  "foot.wells":     { en: "{n} Wells", es: "{n} Wells", ar: "{n} Wells", zh: "{n} 个 Well", fr: "{n} Wells" },
   "foot.providers": { en: "200+ Providers", es: "Más de 200 proveedores", ar: "أكثر من 200 مزوّد", zh: "200+ 家供应商", fr: "200+ prestataires" },
   "foot.plan":      { en: "Plan Your Trip", es: "Planifica tu viaje", ar: "خطّط لرحلتك", zh: "规划你的行程", fr: "Planifiez votre voyage" },
   "foot.guides":    { en: "Travel Guides", es: "Guías de viaje", ar: "أدلّة السفر", zh: "旅行指南", fr: "Guides de voyage" },
@@ -148,7 +148,7 @@ export const MESSAGES: Record<string, Dict> = {
   "reg.lead": { en: "Thirteen regions, each a different promise. We've ordered them by how well they fit the way you love to travel.", es: "Trece regiones, cada una una promesa distinta. Las hemos ordenado según lo bien que encajan con tu forma de viajar.", ar: "ثلاث عشرة منطقة، كلٌّ وعدٌ مختلف. رتّبناها بحسب مدى ملاءمتها لطريقتك في السفر.", zh: "十三个地区，各有不同的允诺。我们按它们与你旅行方式的契合度排序。", fr: "Treize régions, chacune une promesse différente. Nous les avons classées selon leur adéquation à votre façon de voyager." },
   "reg.sortMatch": { en: "Best for your interests", es: "Mejor para tus intereses", ar: "الأنسب لاهتماماتك", zh: "最契合你的兴趣", fr: "Idéal pour vos intérêts" },
   "reg.sortAll": { en: "All regions", es: "Todas las regiones", ar: "كل المناطق", zh: "所有地区", fr: "Toutes les régions" },
-  "reg.pick": { en: "13 regions · pick one to keep building", es: "13 regiones · elige una para seguir construyendo", ar: "13 منطقة · اختر واحدة لمواصلة البناء", zh: "13 个地区 · 选一个继续搭建", fr: "13 régions · choisissez-en une pour continuer" },
+  "reg.pick": { en: "{n} regions · pick one to keep building", es: "{n} regiones · elige una para seguir construyendo", ar: "{n} منطقة · اختر واحدة لمواصلة البناء", zh: "{n} 个地区 · 选一个继续搭建", fr: "{n} régions · choisissez-en une pour continuer" },
   "reg.countries": { en: "Countries", es: "Países", ar: "الدول", zh: "国家", fr: "Pays" },
   "reg.gateways": { en: "Gateways", es: "Puertas de entrada", ar: "بوّابات الوصول", zh: "门户机场", fr: "Portes d'entrée" },
   "reg.explore": { en: "Explore", es: "Explorar", ar: "استكشف", zh: "探索", fr: "Explorer" },
@@ -211,7 +211,7 @@ export const MESSAGES: Record<string, Dict> = {
   "grp.total": { en: "total", es: "en total", ar: "الإجمالي", zh: "共计", fr: "au total" },
 
   // ── Regions helper note ─────────────────────────────────────────────────
-  "reg.browsePre": { en: "Browsing all 13 regions.", es: "Explorando las 13 regiones.", ar: "تصفّح المناطق الـ13 كلّها.", zh: "正在浏览全部 13 个地区。", fr: "Exploration des 13 régions." },
+  "reg.browsePre": { en: "Browsing all {n} regions.", es: "Explorando las {n} regiones.", ar: "تصفّح المناطق الـ{n} كلّها.", zh: "正在浏览全部 {n} 个地区。", fr: "Exploration des {n} régions." },
   "reg.browseLink": { en: "Pick a couple of interests first", es: "Elige primero un par de intereses", ar: "اختر بعض الاهتمامات أولًا", zh: "先选几个兴趣", fr: "Choisissez d'abord quelques intérêts" },
   "reg.browsePost": { en: "and we'll rank these for you — or just choose a region below.", es: "y las ordenaremos para ti — o elige una región abajo.", ar: "وسنرتّبها لك — أو اختر منطقة أدناه.", zh: "我们会为你排序——或直接在下方选择一个地区。", fr: "et nous les classerons pour vous — ou choisissez une région ci-dessous." },
   "reg.ranked": { en: "Ranked for your interests.", es: "Ordenadas según tus intereses.", ar: "مرتّبة حسب اهتماماتك.", zh: "已按你的兴趣排序。", fr: "Classées selon vos intérêts." },
@@ -249,14 +249,24 @@ export const MESSAGES: Record<string, Dict> = {
   "atlas.cue": { en: "Type and press Enter, or tap the mic to talk. Choose Hear to have Atlas speak back.", es: "Escribe y pulsa Enter, o toca el micrófono para hablar. Elige Escuchar para que Atlas responda en voz alta.", ar: "اكتب واضغط Enter، أو انقر الميكروفون للتحدّث. اختر «استماع» ليجيبك Atlas بصوته.", zh: "输入后按 Enter，或点麦克风说话。选择“听”让 Atlas 出声回答。", fr: "Écrivez et appuyez sur Entrée, ou touchez le micro pour parler. Choisissez Écouter pour qu'Atlas réponde à voix haute." },
 };
 
-export function translate(key: string, locale: string): string {
+/**
+ * `vars` fills `{name}` placeholders. It exists for counts: "All 25 interests"
+ * had the number baked into five languages, so growing the catalog meant editing
+ * translated copy — which is how a stale number survives. Now the string carries
+ * `{n}` and the count is passed in from the live catalog.
+ */
+export type TVars = Record<string, string | number>;
+
+export function translate(key: string, locale: string, vars?: TVars): string {
   const entry = MESSAGES[key];
   if (!entry) return key;
-  return (entry as Record<string, string | undefined>)[locale] ?? entry.en ?? key;
+  const s = (entry as Record<string, string | undefined>)[locale] ?? entry.en ?? key;
+  if (!vars) return s;
+  return s.replace(/\{(\w+)\}/g, (m, k) => (vars[k] != null ? String(vars[k]) : m));
 }
 
-/** Hook: returns `t(key)` bound to the live locale; re-renders on switch. */
+/** Hook: returns `t(key, vars?)` bound to the live locale; re-renders on switch. */
 export function useT() {
   const locale = useStore((s) => s.locale);
-  return (key: string) => translate(key, locale);
+  return (key: string, vars?: TVars) => translate(key, locale, vars);
 }

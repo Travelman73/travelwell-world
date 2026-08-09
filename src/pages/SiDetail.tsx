@@ -7,7 +7,7 @@ import { type Provider, type Activity } from "@/data/places";
 import { siImg, regionImg } from "@/lib/images";
 import { useUnsplashImage } from "@/lib/unsplash";
 import { useStore } from "@/store/useStore";
-import { useSpecialInterests, useActivities, useRegions, useProviders, useWells } from "@/store/useCatalog";
+import { useSpecialInterests, useActivities, useRegions, useProviders, useWells, useSiCount } from "@/store/useCatalog";
 import { cx } from "@/lib/utils";
 
 /** Per-SI editorial copy — mirrors the design prototype's EDITORIAL map. */
@@ -56,8 +56,8 @@ const EDITORIAL: Record<string, { promise: string; intro: string[] }> = {
   },
 };
 
-const GENERIC_INTRO = (si: { name: string; sig: string }) => [
-  `${si.name} is one of the 25 ways travelers love to move through the world — ${si.sig}. This world is being curated now.`,
+const GENERIC_INTRO = (si: { name: string; sig: string }, count: number) => [
+  `${si.name} is one of the ${count} ways travelers love to move through the world — ${si.sig}. This world is being curated now.`,
 ];
 
 const FALLBACK_WELLS = ["stay", "activities", "eat", "move"];
@@ -243,6 +243,7 @@ export default function SiDetail() {
   const si = sis.find((s) => s.id === id) || sis.find((s) => s.id === "safari")!;
   const isSchema = si.status !== "live";
   const ed = EDITORIAL[si.id];
+  const siCount = useSiCount();
   const heroPhoto = useUnsplashImage(si.name, siImg(si.id, 1800), 1800);
   // TouristTrip + FAQPage + Event, straight off the dossier (layers 7 and 4b).
   useJsonLd(siJsonLd(si, typeof window !== "undefined" ? window.location.href : ""));
@@ -258,7 +259,7 @@ export default function SiDetail() {
           <span className="here">{si.name}</span>
         </nav>
         <Link className="btn btn-ghost" to="/special-interests">
-          ← All 25 interests
+          ← All {siCount} interests
         </Link>
       </div>
     </div>
@@ -313,7 +314,7 @@ export default function SiDetail() {
             </div>
             <h3>This world is on the way</h3>
             <p>
-              {si.name} is part of our taxonomy of 25 ways to travel, but it isn't bookable yet — we're curating
+              {si.name} is part of our taxonomy of {siCount} ways to travel, but it isn't bookable yet — we're curating
               partners and guides for it now. It can't be added to a trip until it goes live.
             </p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 22, flexWrap: "wrap" }}>
@@ -340,7 +341,7 @@ export default function SiDetail() {
 
   const wells = wellsActivated(si.id, activities);
   const rail = providerRail(si.id, activities, providers);
-  const intro = ed ? ed.intro : GENERIC_INTRO(si);
+  const intro = ed ? ed.intro : GENERIC_INTRO(si, siCount);
 
   return (
     <>

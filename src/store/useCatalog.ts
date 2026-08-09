@@ -101,6 +101,25 @@ export const useProviders = () => useCatalog((s) => s.providers);
 export const useDestinations = () => useCatalog((s) => s.destinations);
 export const useGuides = () => useCatalog((s) => s.guides);
 
+/**
+ * PUBLISHED COUNTS — always derived from the catalog the pages actually render,
+ * never typed as a literal.
+ *
+ * Canon (CLAUDE.md) forbids publishing a count that disagrees with the taxonomy,
+ * and a hardcoded number is exactly how that happens: the interest catalog grew
+ * to 32 while fifteen places on the site — the mega-menu, the About counters, the
+ * footer, the investor deck page, three translated strings — went on saying 25.
+ * Nobody edits fifteen places reliably. So they read from here instead, and the
+ * number is right by construction the moment David's board lands.
+ *
+ * These read the LIVE catalog (DB-first, bundle fallback), so the published
+ * number always matches the tiles a traveler can actually see.
+ */
+export const useSiCount = () => useCatalog((s) => s.sis.length);
+export const useRegionCount = () => useCatalog((s) => s.regions.length);
+/** LIVE Wells only — the number we publish ("10 Wells"); `soon` ones aren't live. */
+export const useWellCount = () => useCatalog((s) => s.wells.filter((w) => w.status === "live").length);
+
 /** Reactive single-item lookups (recompute when the underlying list changes). */
 export const useWellById = (id: string) => useCatalog((s) => s.wells.find((w) => w.id === id));
 export const useRegionByCode = (code: string) => useCatalog((s) => s.regions.find((r) => r.code === code));
