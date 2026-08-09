@@ -24,7 +24,12 @@ export interface SpecialInterest {
   status: Status;
   accent: string;
   lux: boolean;
+  /** The category. `grp` in the DB — free text, so a new category needs no
+   *  migration, only an SI_GROUPS entry so the UI can render and order it. */
   group: string;
+  /** The rich SI dossier (market, spend tiers, commission map, flagships,
+   *  seasonality, faq…). Mirrors `destinations.data` — migration 0012. */
+  data?: Record<string, unknown>;
 }
 
 const BASE_SIS: SpecialInterest[] = [

@@ -121,7 +121,7 @@ const pgArr = (xs?: string[]) => `'{${(xs ?? []).map((x) => `"${x.replace(/"/g, 
 const jsonb = (o: unknown) => (o == null ? "null" : `'${JSON.stringify(o).replace(/'/g, "''")}'::jsonb`);
 
 const siRows = SIS.map(
-  (s) => `  (${q(s.id)}, ${q(s.name)}, ${q(s.sig)}, ${q(s.status)}, ${q(s.accent)}, ${s.lux}, ${q(s.group)})`
+  (s) => `  (${q(s.id)}, ${q(s.name)}, ${q(s.sig)}, ${q(s.status)}, ${q(s.accent)}, ${s.lux}, ${q(s.group)}, ${jsonb(s.data)})`
 ).join(",\n");
 const siIdList = SIS.map((s) => q(s.id)).join(", ");
 
@@ -142,11 +142,11 @@ const sql = `-- TravelWell.World — seed the Special Interests + Activities cat
 -- Requires 0001 (tables) and 0002 (wells, for the activities.well FK).
 
 -- Special Interests -----------------------------------------------------------
-insert into public.special_interests (id, name, signature, status, accent, is_lux, grp) values
+insert into public.special_interests (id, name, signature, status, accent, is_lux, grp, data) values
 ${siRows}
 on conflict (id) do update set
   name = excluded.name, signature = excluded.signature, status = excluded.status,
-  accent = excluded.accent, is_lux = excluded.is_lux, grp = excluded.grp;
+  accent = excluded.accent, is_lux = excluded.is_lux, grp = excluded.grp, data = excluded.data;
 
 -- Self-clean, same discipline as the destinations seed: an SI RETIRED in
 -- src/data/taxonomy.ts must also leave the DB. Without this the seed was

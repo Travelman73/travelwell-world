@@ -36,7 +36,7 @@ export async function fetchCatalog(): Promise<DbCatalog | null> {
   if (!sb) return null;
   try {
     const [siRes, actRes, wellRes, regionRes, subRes, provRes, destRes, guideRes] = await Promise.all([
-      sb.from("special_interests").select("id, name, signature, status, accent, is_lux, grp"),
+      sb.from("special_interests").select("id, name, signature, status, accent, is_lux, grp, data"),
       sb.from("activities").select("si_id, id, name, well, line, position").order("position", { ascending: true }),
       sb.from("wells").select("id, name, tag, body, status, icon, is_lux"),
       sb.from("regions").select("code, name, line, countries, gateways, status, has_sub"),
@@ -58,6 +58,7 @@ export async function fetchCatalog(): Promise<DbCatalog | null> {
         accent: r.accent as string,
         lux: Boolean(r.is_lux),
         group: r.grp as string,
+        ...(r.data ? { data: r.data as Record<string, unknown> } : {}),
       }));
     }
 
