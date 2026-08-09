@@ -4,7 +4,7 @@ import type { Destination } from "@/data/places";
 import type { Region } from "@/data/taxonomy";
 import { useRegions, useDestinations } from "@/store/useCatalog";
 import { img } from "@/lib/images";
-import { useUnsplashImage } from "@/lib/unsplash";
+import { useDestinationImage } from "@/lib/unsplash";
 import { Eyebrow } from "@/components/ui/primitives";
 import { cx } from "@/lib/utils";
 
@@ -15,7 +15,7 @@ interface DestWithRegion extends Destination {
 /** A destination grid card. Uses the SAME Unsplash query as the destination
  *  detail hero (`name, country`) so the card and the page show the same photo. */
 function DestCard({ d }: { d: DestWithRegion }) {
-  const photo = useUnsplashImage(`${d.name}, ${d.country}`, img(d.img, 700), 700);
+  const photo = useDestinationImage(d, 700, img(d.img, 700));
   return (
     <Link className={cx("dx-card", d.depth !== "verified" && "dx-card--stub")} to={`/destination/${d.id}`}>
       <img src={photo.src} alt={d.name} loading="lazy" referrerPolicy="no-referrer" />

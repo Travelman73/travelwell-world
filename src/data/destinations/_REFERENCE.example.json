@@ -1,7 +1,6 @@
 [
   {
     "_comment": "GOLD REFERENCE — one fully-conformed destination, every field populated. Match this shape byte-for-byte. Files starting with _ are ignored by the generator, so this example never ships as a real row. Delete every _comment key in real batches.",
-
     "id": "cape-town-south-africa",
     "region_code": "06A",
     "name": "Cape Town",
@@ -11,16 +10,31 @@
     "depth": "verified",
     "img": "capeTown",
     "sub_region": "South Africa",
-
-    "si": ["culinary", "wine", "culture", "ocean"],
-    "feel": ["dramatic", "cosmopolitan", "coastal"],
-    "tier_range": ["comfort", "premier", "luxury", "ultra"],
+    "si": [
+      "culinary",
+      "wine",
+      "culture",
+      "ocean"
+    ],
+    "feel": [
+      "dramatic",
+      "cosmopolitan",
+      "coastal"
+    ],
+    "tier_range": [
+      "comfort",
+      "premier",
+      "luxury",
+      "ultra"
+    ],
     "price_band": "premier",
     "draw_rank": "anchor",
-
     "data": {
       "reconciles_live_mvp": "cape-town-south-africa",
-
+      "hero": {
+        "_comment": "OPTIONAL editorial override. Omit it and the page auto-fetches its own matched photo. `url` (https only) pins an exact image and wins outright — include `credit` if it's an Unsplash photo, their licence requires attribution. `query` instead just steers the automatic search.",
+        "query": "Cape Town Table Mountain aerial"
+      },
       "safety": {
         "advisory_level": "L2",
         "posture": "book-freely",
@@ -29,13 +43,15 @@
         "source": "US State Dept L2 / UK FCDO, Jun 2026",
         "verified": "2026-06"
       },
-
       "timing": {
         "season": "Nov–Mar",
-        "best_months": [2, 3, 11],
+        "best_months": [
+          2,
+          3,
+          11
+        ],
         "notes": "Summer is dry and windy — Feb–Mar is the sweet spot (warm, calmer, harvest in the Winelands). Jun–Aug is green, quiet and cheap, with whales in Walker Bay."
       },
-
       "jewels": [
         {
           "name": "Table Mountain at first cable car",
@@ -54,7 +70,6 @@
           "commission": "Winery + transfer affiliate"
         }
       ],
-
       "faq": [
         {
           "q": "Is Cape Town safe for tourists?",
@@ -67,17 +82,28 @@
           "source": "Verified 2026-06"
         }
       ],
-
       "seo": {
         "title": "Cape Town Travel Guide | TravelWell",
         "meta": "When to go, what's safe, and the experiences worth the flight — Table Mountain, the Winelands and two oceans, planned around you.",
         "canonical": "/destination/cape-town-south-africa",
-        "keywords": ["cape town travel guide", "cape town safety", "best time to visit cape town", "cape winelands"]
+        "keywords": [
+          "cape town travel guide",
+          "cape town safety",
+          "best time to visit cape town",
+          "cape winelands"
+        ]
       },
-
-      "booking": { "windows": ["Nov–Mar peak", "Feb–Apr harvest"], "commission_lane": "affiliate" },
-
-      "geo": { "lat": -33.92, "lng": 18.42 },
+      "booking": {
+        "windows": [
+          "Nov–Mar peak",
+          "Feb–Apr harvest"
+        ],
+        "commission_lane": "affiliate"
+      },
+      "geo": {
+        "lat": -33.92,
+        "lng": 18.42
+      },
       "dossier_id": "TWW-06A-CPT-001"
     }
   }

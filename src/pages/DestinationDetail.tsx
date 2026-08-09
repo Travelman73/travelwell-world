@@ -4,7 +4,7 @@ import { Icon } from "@/lib/icons";
 import type { Destination, Provider } from "@/data/places";
 import type { Region, Well } from "@/data/taxonomy";
 import { img } from "@/lib/images";
-import { useUnsplashImage } from "@/lib/unsplash";
+import { useDestinationImage } from "@/lib/unsplash";
 import { useStore } from "@/store/useStore";
 import { useRegions, useWells, useProviders, useDestinations, useGuides } from "@/store/useCatalog";
 import { cx } from "@/lib/utils";
@@ -65,7 +65,7 @@ export default function DestinationDetail() {
   const faq = data?.faq ?? [];
 
   // Destination-matched Unsplash hero, with the bundled image as instant fallback.
-  const hero = useUnsplashImage(`${DEST.name}, ${country}`, img(DEST.img, 1800), 1800);
+  const hero = useDestinationImage(DEST, 1800, img(DEST.img, 1800));
 
   const iso = isoForCountry(country);
   const s = getSafety(iso);
@@ -106,7 +106,11 @@ export default function DestinationDetail() {
         <div className="dd-hero__scrim" />
         {hero.credit && (
           <span style={{ position: "absolute", bottom: 8, insetInlineEnd: 12, zIndex: 3, fontSize: 11, color: "rgba(255,255,255,.8)" }}>
-            Photo · <a href={hero.credit.link} target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "underline" }}>{hero.credit.name}</a> / Unsplash
+            {/* Only claim Unsplash when it IS one — a pinned editorial hero may come
+                from an operator or our own shoot, and mislabelling the source is
+                both wrong and an attribution problem. */}
+            Photo · <a href={hero.credit.link} target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "underline" }}>{hero.credit.name}</a>
+            {/unsplash\.com/i.test(hero.credit.link) ? " / Unsplash" : ""}
           </span>
         )}
         <div className="dd-hero__inner">

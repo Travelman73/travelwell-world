@@ -4,7 +4,7 @@ import { Icon } from "@/lib/icons";
 import { REGION_DETAIL, SUBREGION_TOP, type Destination } from "@/data/places";
 import { useRegions, useSubregions, useDestinations } from "@/store/useCatalog";
 import { regionImg, img } from "@/lib/images";
-import { useUnsplashImage } from "@/lib/unsplash";
+import { useUnsplashImage, useDestinationImage } from "@/lib/unsplash";
 import { useStore } from "@/store/useStore";
 import { Eyebrow } from "@/components/ui/primitives";
 import { JourneyBar } from "@/components/ui/StepIndicator";
@@ -23,7 +23,7 @@ const AIRPORTS: Record<string, string> = {
 /** Region's destination card — same Unsplash query as the destination hero so
  *  the card and the page it opens show the same photo. */
 function RdDestCard({ d }: { d: Destination }) {
-  const photo = useUnsplashImage(`${d.name}, ${d.country}`, img(d.img, 600), 600);
+  const photo = useDestinationImage(d, 600, img(d.img, 600));
   return (
     <Link className={cx("rd-dest", d.depth !== "verified" && "rd-dest--stub")} to={`/destination/${d.id}`}>
       <img src={photo.src} alt={d.name} loading="lazy" referrerPolicy="no-referrer" />

@@ -127,6 +127,14 @@ for (const { code, d } of rows) {
     for (const [i, q] of (data.faq ?? []).entries()) {
       if (!q?.q || !q?.a) errs.push(`${at}: faq #${i + 1} needs both q and a (it emits FAQPage schema)`);
     }
+    // Editorial hero override (data.hero) — the content team's image pick.
+    const hero = data.hero as { url?: string; query?: string; credit?: { name?: string; link?: string } } | undefined;
+    if (hero) {
+      if (hero.url && !/^https:\/\//i.test(hero.url)) errs.push(`${at}: data.hero.url must be https (an http image breaks on a secure page)`);
+      if (hero.url && !hero.credit?.name) warns.push(`${at}: data.hero.url has no credit — if it's an Unsplash photo, attribution is required by their licence`);
+      if (!hero.url && !hero.query) warns.push(`${at}: data.hero is present but empty (needs url or query) — it will be ignored`);
+    }
+
     // reconciles_live_mvp → must resolve to an ACTUAL live MVP id (not just a slug).
     const rec = data.reconciles_live_mvp;
     if (rec == null) warns.push(`${at}: no data.reconciles_live_mvp (confirm this is net-new, not an existing MVP row)`);

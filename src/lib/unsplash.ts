@@ -55,8 +55,46 @@ export function useUnsplashImage(query: string, fallback: string, width = 1400):
   useEffect(() => {
     let active = true;
     setPhoto(null);
+    // An empty query means the caller already has its image (a pinned hero) —
+    // don't spend an Unsplash request we're going to throw away.
+    if (!query) return () => { active = false; };
     fetchUnsplashPhoto(query).then((p) => { if (active) setPhoto(p); });
     return () => { active = false; };
   }, [query]);
   return photo ? { src: sized(photo.url, width), credit: photo.credit } : { src: fallback };
+}
+
+
+/* ── Destination hero — the editorial override ────────────────────────────
+ * By default a destination shows its own matched Unsplash photo, fetched by
+ * "{name}, {country}". A dossier can override that from `data.hero`, so the
+ * content team picks the image without anyone handing out an API key:
+ *
+ *   "hero": { "url": "https://…", "credit": { "name": "…", "link": "…" } }
+ *   "hero": { "query": "Bonaire shore diving" }
+ *
+ * Precedence: hero.url  >  hero.query  >  automatic "{name}, {country}".
+ *
+ * `url` must be https (an http image breaks the page on a secure origin and is
+ * a mixed-content warning). If a pinned image is an Unsplash photo, supply
+ * `credit` too — their licence requires photographer attribution and we display
+ * it; the automatic path gets credit for free, a pinned one can't.
+ */
+export interface DestinationHero {
+  url?: string;
+  query?: string;
+  credit?: UnsplashCredit;
+}
+
+export function useDestinationImage(
+  dest: { name: string; country: string; img: string; data?: Record<string, unknown> },
+  width: number,
+  fallback: string,
+): { src: string; credit?: UnsplashCredit } {
+  const hero = (dest.data as { hero?: DestinationHero } | undefined)?.hero;
+  const pinned = hero?.url && /^https:\/\//i.test(hero.url) ? hero.url : undefined;
+  // Hooks can't be conditional — always call it, but pass "" when pinned so it
+  // never fetches.
+  const auto = useUnsplashImage(pinned ? "" : (hero?.query || `${dest.name}, ${dest.country}`), fallback, width);
+  return pinned ? { src: pinned, credit: hero?.credit } : auto;
 }

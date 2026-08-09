@@ -79,6 +79,28 @@ Pick the nearest vibe (a dive site → `oceanAerial`, an alpine resort →
 to a neutral image, so a token we've never seen can't break a page. That was worth
 catching before 36 dive destinations arrived with tokens none of which existed.*
 
+### The editorial hero override — your pick wins (no API key needed)
+
+You asked to take hero images off Sana's plate. You can, **without anyone
+handing out the Unsplash key** (which we don't send by email — the repo is
+public and an emailed key is a key we no longer control). Put it in the dossier:
+
+```jsonc
+"hero": { "query": "Cape Town Table Mountain aerial" }        // steer the auto-search
+"hero": { "url": "https://…/photo.jpg",                        // OR pin an exact image
+          "credit": { "name": "Photographer", "link": "https://…" } }
+```
+
+**Precedence: `hero.url` > `hero.query` > automatic `"{name}, {country}"`.**
+Omit `hero` entirely and nothing changes — the page fetches its own matched photo
+as it does today.
+
+Two rules the validator enforces: **`url` must be https** (an http image breaks on
+a secure page), and if it's an Unsplash photo **include `credit`** — their licence
+requires photographer attribution, which the automatic path gets for free but a
+pinned one can't. We display the credit, and we only say "/ Unsplash" when it
+actually is one.
+
 ## 3. The 30-second confirm
 
 **Is `main` stable?** Yes. The destination schema hasn't changed since 2026-07-10
