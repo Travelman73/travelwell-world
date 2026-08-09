@@ -1,7 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import { Icon } from "@/lib/icons";
-import { REGION_SI, taglineSubject, type Region } from "@/data/taxonomy";
+import { REGION_SI, taglineSubject, type Region, type SiData } from "@/data/taxonomy";
 import { Tagline } from "@/components/ui/primitives";
+import { siJsonLd, useJsonLd } from "@/lib/jsonld";
 import { type Provider, type Activity } from "@/data/places";
 import { siImg, regionImg } from "@/lib/images";
 import { useUnsplashImage } from "@/lib/unsplash";
@@ -102,6 +103,114 @@ function providerRail(
   return out.slice(0, 6);
 }
 
+const MONTH = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+/**
+ * The dossier sections — layers 4a, 4b and 7 of the nine-layer SI dossier,
+ * rendered progressively: each appears only when the dossier carries it, so a
+ * dossier can land in stages and the page never shows an empty shelf. The
+ * remaining layers (market, streams, sources) are in the jsonb and belong to the
+ * investor surface, not the traveler's page.
+ */
+function DossierSections({ data }: { data?: SiData }) {
+  const timing = data?.timing;
+  const events = data?.events ?? [];
+  const faq = data?.faq ?? [];
+  if (!timing && !events.length && !faq.length) return null;
+
+  return (
+    <>
+      {timing && (
+        <section className="sd-section">
+          <span className="eyebrow sd-section__eyebrow">When to go</span>
+          <h2 className="sd-section__title">Timing, and how far ahead it books</h2>
+          <div className="sd-timing">
+            {timing.season && (
+              <div className="sd-timing__row">
+                <span className="sd-timing__ic"><Icon name="compass" small /></span>
+                <div><div className="sd-timing__k">The season</div><div className="sd-timing__v">{timing.season}</div></div>
+              </div>
+            )}
+            {!!timing.best_months?.length && (
+              <div className="sd-timing__row">
+                <span className="sd-timing__ic"><Icon name="calendar" small /></span>
+                <div>
+                  <div className="sd-timing__k">Best months</div>
+                  <div className="sd-months">
+                    {MONTH.slice(1).map((m, i) => (
+                      <span className={cx("sd-month", timing.best_months!.includes(i + 1) && "sd-month--on")} key={m}>
+                        {m}{timing.best_months!.includes(i + 1) && <span className="sr-only"> — a good month to go</span>}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+            {timing.booking_window && (
+              <div className="sd-timing__row">
+                <span className="sd-timing__ic"><Icon name="check" small /></span>
+                <div><div className="sd-timing__k">Booking window</div><div className="sd-timing__v">{timing.booking_window}</div></div>
+              </div>
+            )}
+            {timing.notes && (
+              <div className="sd-timing__row">
+                <span className="sd-timing__ic"><Icon name="info" small /></span>
+                <div><div className="sd-timing__k">Worth knowing</div><div className="sd-timing__v">{timing.notes}</div></div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {events.length > 0 && (
+        <section className="sd-section">
+          <span className="eyebrow sd-section__eyebrow">The look-ahead</span>
+          <h2 className="sd-section__title">Dates worth planning around</h2>
+          <p className="sd-section__sub">
+            Absolute dates, years out — so Atlas can raise them while there is still room to book.
+          </p>
+          <ol className="sd-events">
+            {events.map((e, i) => (
+              <li className="sd-event" key={`${e.name}-${e.year ?? e.starts_on ?? i}`}>
+                <span className="sd-event__year">{e.year ?? e.starts_on?.slice(0, 4)}</span>
+                <span className="sd-event__body">
+                  <span className="sd-event__name">
+                    {e.name}
+                    {e.sold_out && <span className="sd-event__flag">Sold out</span>}
+                  </span>
+                  {e.place && <span className="sd-event__place"><Icon name="pin" small /> {e.place}</span>}
+                  {e.starts_on && (
+                    <span className="sd-event__when">
+                      {new Date(e.starts_on + "T00:00:00").toLocaleDateString(undefined, { day: "numeric", month: "short" })}
+                      {e.ends_on ? ` – ${new Date(e.ends_on + "T00:00:00").toLocaleDateString(undefined, { day: "numeric", month: "short" })}` : ""}
+                    </span>
+                  )}
+                  {e.note && <span className="sd-event__note">{e.note}</span>}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+
+      {faq.length > 0 && (
+        <section className="sd-section">
+          <span className="eyebrow sd-section__eyebrow">Travelers ask</span>
+          <h2 className="sd-section__title">The questions that actually come up</h2>
+          <div className="sd-faq">
+            {faq.map((f, i) => (
+              <details className="sd-faq__item" key={i}>
+                <summary className="sd-faq__q">{f.q}</summary>
+                <div className="sd-faq__a">{f.a}{f.source && <span className="sd-faq__src"> · {f.source}</span>}</div>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </>
+  );
+}
+
 function RegionsSection({ si }: { si: { id: string; name: string } }) {
   const regions = featuredRegions(si.id, useRegions());
   if (!regions.length) return null;
@@ -135,6 +244,8 @@ export default function SiDetail() {
   const isSchema = si.status !== "live";
   const ed = EDITORIAL[si.id];
   const heroPhoto = useUnsplashImage(si.name, siImg(si.id, 1800), 1800);
+  // TouristTrip + FAQPage + Event, straight off the dossier (layers 7 and 4b).
+  useJsonLd(siJsonLd(si, typeof window !== "undefined" ? window.location.href : ""));
 
   const subhead = (
     <div className="jn-subhead">
@@ -218,6 +329,9 @@ export default function SiDetail() {
             </div>
           </div>
         </div>
+        {/* A preview interest with a dossier still shows its depth — the page is
+            content-only (no Book button), not empty. Same rule as an L4 destination. */}
+        <DossierSections data={si.data} />
         <RegionsSection si={si} />
         <div style={{ height: 80 }} />
       </>
@@ -285,6 +399,8 @@ export default function SiDetail() {
           </div>
         </section>
       )}
+
+      <DossierSections data={si.data} />
 
       <RegionsSection si={si} />
 

@@ -17,6 +17,92 @@ export type IconName =
   | "plane" | "bed" | "utensils" | "car" | "bag" | "sparkle" | "compass"
   | "gift" | "shield" | "box" | "heart" | "lock";
 
+/**
+ * A sourced number. **David's rule, encoded: every figure is labeled `verified`
+ * or `estimate`, and no figure is unlabeled** — an unlabeled number is a guessed
+ * number, and the ingest gate rejects it. `value` is a string on purpose: the real
+ * research carries ranges, arrows and currencies ("$26B → $60B", "€2,041/trip")
+ * that a numeric column would flatten and lose.
+ */
+export interface Figure {
+  label: string;
+  value: string;
+  confidence: "verified" | "estimate";
+  source?: string;
+  note?: string;
+}
+
+/** A dated event in the multi-year look-ahead (layer 4). Absolute dates, never
+ *  "season" — canon: booking windows are absolute, multi-year dated series. */
+export interface SiEvent {
+  name: string;
+  year?: number;
+  starts_on?: string;              // ISO yyyy-mm-dd
+  ends_on?: string;
+  place?: string;
+  note?: string;
+  sold_out?: boolean;
+}
+
+/** How a provider can actually be booked (layer 6 — the API-first check). */
+export type BookingPath = "api" | "request-to-book" | "aggregator" | "lead";
+
+export interface SiProvider {
+  name: string;
+  well?: string;                   // the Well it hangs off (fly/stay/activities…)
+  booking_path: BookingPath;
+  mode?: string;                   // canon handoff mode: api|widget|affiliate|first-party
+  commission?: string;             // the earning lane — the money
+  confidence?: "verified" | "estimate";
+  note?: string;
+}
+
+/** A traveler Q&A — answer-first; the array emits FAQPage JSON-LD. Same shape as
+ *  the destination dossier's, deliberately: one FAQ shape across the whole system. */
+export interface SiFaq { q: string; a: string; source?: string }
+
+/**
+ * The Special-Interest dossier `data` jsonb — **the nine layers, David-locked
+ * 2026-08**, one key per layer, in his order. Mirrors `destinations.data`
+ * (migration 0012). Every layer is optional so a dossier can land in stages;
+ * the page renders whatever is present and stays silent about the rest.
+ *
+ *  1 market · 2 streams · 3 sources · 4 timing + events · 5 map ·
+ *  6 providers · 7 faq · 8 wells/whispers/safety · 9 seo/schema
+ *
+ * Extra keys pass through untouched — the jsonb holds a later pass with no
+ * migration, exactly as the destination dossier does.
+ */
+export interface SiData {
+  /** 1 — the market, sized and range-cited. */
+  market?: { summary?: string; figures?: Figure[] };
+  /** 2 — demand streams: the distinct ways people travel for it (play vs watch). */
+  streams?: { id?: string; name: string; blurb?: string; figures?: Figure[] }[];
+  /** 3 — source countries: who travels, from where, how many. The targeting map. */
+  sources?: { country: string; iso?: string; note?: string; figures?: Figure[] }[];
+  /** 4a — seasons and booking windows. */
+  timing?: { season?: string; best_months?: number[]; booking_window?: string; notes?: string };
+  /** 4b — the multi-year dated event look-ahead. */
+  events?: SiEvent[];
+  /** 5 — the global map. `destinations` are MVP destination ids; the gate resolves them. */
+  map?: { destinations?: string[]; regions?: string[]; anchors?: string[]; note?: string };
+  /** 6 — the money and the booking rails. */
+  providers?: SiProvider[];
+  /** 7 — the traveler's real questions → on-page FAQ + FAQPage schema. */
+  faq?: SiFaq[];
+  /** 8 — connective tissue: Well anchoring, Atlas whisper hooks, the safety layer. */
+  wells?: string[];
+  whispers?: string[];
+  safety?: Record<string, unknown>;
+  /** 9 — ship-ready: SEO/GEO keywords and the structured-data types this page emits. */
+  seo?: { title?: string; description?: string; keywords?: string[]; geo_keywords?: string[] };
+  schema?: string[];
+  /** The brand slogan's short subject — "If It's [Golf]… TravelWell™". A tight
+   *  noun, not the full name. English-only (the slogan never localizes). */
+  tagline_subject?: string;
+  [key: string]: unknown;
+}
+
 export interface SpecialInterest {
   id: string;
   name: string;
@@ -27,9 +113,10 @@ export interface SpecialInterest {
   /** The category. `grp` in the DB — free text, so a new category needs no
    *  migration, only an SI_GROUPS entry so the UI can render and order it. */
   group: string;
-  /** The rich SI dossier (market, spend tiers, commission map, flagships,
-   *  seasonality, faq…). Mirrors `destinations.data` — migration 0012. */
-  data?: Record<string, unknown>;
+  /** The rich SI dossier — the nine layers (market, streams, sources, timing +
+   *  events, map, providers, faq, connective tissue, ship-ready). Mirrors
+   *  `destinations.data` — migration 0012. */
+  data?: SiData;
 }
 
 const BASE_SIS: SpecialInterest[] = [
@@ -87,9 +174,18 @@ export const SI_TAGLINE_SUBJECT: Record<string, string> = {
   wildlife: "Wildlife", culinary: "Culinary", culture: "Culture", family: "Family",
   hiking: "Hiking", olympic: "the Olympics", entertainment: "Live Entertainment",
 };
-/** The tagline subject for an SI (map override, else its name). */
-export const taglineSubject = (si: { id: string; name: string }): string =>
-  SI_TAGLINE_SUBJECT[si.id] ?? si.name;
+/**
+ * The tagline subject for an SI. Precedence: the hand-locked map (David's own
+ * wording always wins) → the dossier's own `tagline_subject` → the SI name.
+ *
+ * The middle step exists because a net-new interest can now arrive as a drop-in
+ * dossier, and without it the slogan would fall back to the full name — "If It's
+ * Golf Globally… TravelWell™" instead of "If It's Golf… TravelWell™". The
+ * dossier carries its own short subject so a new interest ships with the brand
+ * line already right, and David can still override it here at any time.
+ */
+export const taglineSubject = (si: { id: string; name: string; data?: SiData }): string =>
+  SI_TAGLINE_SUBJECT[si.id] ?? (typeof si.data?.tagline_subject === "string" ? si.data.tagline_subject : undefined) ?? si.name;
 /** Master brand slogans (non-SI). */
 export const MASTER_TAGLINE_SUBJECT = "Travel";
 export const SAFER_TAGLINE_SUBJECT = "Safer Informed Travel";

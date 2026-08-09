@@ -120,10 +120,60 @@ const q = (s: string | null | undefined) => (s == null ? "null" : `'${s.replace(
 const pgArr = (xs?: string[]) => `'{${(xs ?? []).map((x) => `"${x.replace(/"/g, '\\"')}"`).join(",")}}'`;
 const jsonb = (o: unknown) => (o == null ? "null" : `'${JSON.stringify(o).replace(/'/g, "''")}'::jsonb`);
 
-const siRows = SIS.map(
-  (s) => `  (${q(s.id)}, ${q(s.name)}, ${q(s.sig)}, ${q(s.status)}, ${q(s.accent)}, ${s.lux}, ${q(s.group)}, ${jsonb(s.data)})`
+/**
+ * Drop-in Special-Interest dossiers — the same "add a file and it works" path
+ * the destination batches use. The research library delivers
+ * `src/data/interests/<batch>.json` and this picks it up automatically:
+ * nothing to hand-merge into taxonomy.ts, nothing to reshape.
+ *
+ * Each file is either an array of SIs or `{ "special_interests": [ … ] }`.
+ * Files beginning with `_` are ignored, so the gold reference can live in the
+ * folder without ever shipping as a row.
+ *
+ * Merge rule differs from destinations ON PURPOSE: an SI batch row is
+ * SHALLOW-MERGED onto the bundled row rather than replacing it. The common case
+ * is a dossier that only adds `data` to an interest that already exists — a
+ * straight replace would blank its name, accent and status. Keys the batch
+ * supplies win; keys it omits keep what the bundle has.
+ */
+function readSiBatches(): SiRow[] {
+  const dir = "src/data/interests";
+  let files: string[] = [];
+  try { files = readdirSync(dir).filter((f) => f.endsWith(".json") && !f.startsWith("_")); } catch { return []; }
+  const out: SiRow[] = [];
+  for (const f of files.sort()) {
+    const raw = JSON.parse(readFileSync(`${dir}/${f}`, "utf8"));
+    const rows: SiRow[] = Array.isArray(raw) ? raw : (raw.special_interests ?? []);
+    for (const s of rows) {
+      if (!s.id) throw new Error(`${f}: special interest "${s.name ?? "?"}" has no id`);
+      out.push(s);
+    }
+  }
+  return out;
+}
+type SiRow = { id: string; name?: string } & Record<string, unknown>;
+
+/** Bundled SIs + dropped-in dossiers, shallow-merged on id. */
+function mergedSis(): SiRow[] {
+  const merged: SiRow[] = SIS.map((s) => ({ ...s })) as unknown as SiRow[];
+  for (const s of readSiBatches()) {
+    const i = merged.findIndex((x) => x.id === s.id);
+    if (i >= 0) merged[i] = { ...merged[i], ...s };
+    else {
+      for (const f of ["name", "sig", "status", "accent", "group"]) {
+        if (s[f] == null) throw new Error(`interests batch: new SI "${s.id}" is missing required "${f}"`);
+      }
+      merged.push({ lux: false, ...s });
+    }
+  }
+  return merged;
+}
+
+const ALL_SIS = mergedSis();
+const siRows = ALL_SIS.map(
+  (s) => `  (${q(s.id)}, ${q(s.name as string)}, ${q(s.sig as string)}, ${q(s.status as string)}, ${q(s.accent as string)}, ${!!s.lux}, ${q(s.group as string)}, ${jsonb(s.data)})`
 ).join(",\n");
-const siIdList = SIS.map((s) => q(s.id)).join(", ");
+const siIdList = ALL_SIS.map((s) => q(s.id)).join(", ");
 
 const actRows = Object.entries(ACTIVITIES)
   .flatMap(([siId, acts]) =>
@@ -183,7 +233,7 @@ on conflict (si_id, id) do update set
 
 writeFileSync("supabase/migrations/0003_seed_si_activities.sql", sql);
 console.log("Wrote supabase/migrations/0003_seed_si_activities.sql");
-console.log(`  ${SIS.length} special interests, ${Object.values(ACTIVITIES).flat().length} activities`);
+console.log(`  ${ALL_SIS.length} special interests (${ALL_SIS.length - SIS.length} from src/data/interests batches), ${Object.values(ACTIVITIES).flat().length} activities`);
 
 // ---------------------------------------------------------------------------
 // 0004 — Providers + Sub-regions

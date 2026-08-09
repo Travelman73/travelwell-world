@@ -1,0 +1,204 @@
+{
+  "_comment": "GOLD REFERENCE — the nine-layer Special-Interest dossier, fully populated. Golf Globally, from David & Claude's 'Anatomy of a Special Interest' showcase (2026-08-02). Files beginning with _ are IGNORED by the generator, so this lives in the real folder without ever shipping as a row. Strip every _comment key from real batches. Match this shape field-for-field.",
+  "special_interests": [
+    {
+      "id": "golf",
+      "name": "Golf Globally",
+      "sig": "the round of your life",
+      "status": "preview",
+      "accent": "#3C7E55",
+      "lux": false,
+      "group": "active",
+
+      "data": {
+        "_comment": "LAYER 1 — the market, sized and range-cited. Every figure carries confidence + source. An unlabeled number is a guessed number and the gate rejects it.",
+        "market": {
+          "summary": "A large, fast-growing category with an unusually rich traveler: golfers out-spend other travelers by a wide margin, and the trip is booked far ahead.",
+          "figures": [
+            { "label": "Global golf-tourism market", "value": "$26B → $60B by the mid-2030s, +7–11%/yr", "confidence": "verified", "source": "six-firm consensus" },
+            { "label": "Americans who travel to play", "value": "12M → ~$40B", "confidence": "verified", "source": "NGF" },
+            { "label": "Golfer spend vs other travelers", "value": "+120%", "confidence": "verified", "source": "IAGTO" }
+          ]
+        },
+
+        "_comment2": "LAYER 2 — demand streams. The distinct reasons people travel for this interest. Golf has two, and the bundle of both is the product.",
+        "streams": [
+          {
+            "id": "play",
+            "name": "Travel to play",
+            "blurb": "The base of the market — buddies trips, luxury pairs, couples.",
+            "figures": [{ "label": "Stream size", "value": "~$40B", "confidence": "verified", "source": "NGF" }]
+          },
+          {
+            "id": "watch",
+            "name": "Travel to watch",
+            "blurb": "The Majors and the Ryder Cup — a separate, shorter, higher-intensity trip.",
+            "figures": [
+              { "label": "U.S. Open 2024 economic impact", "value": "$242.5M", "confidence": "verified", "source": "USGA" },
+              { "label": "Spend per visiting spectator", "value": "$1,156", "confidence": "verified", "source": "USGA" },
+              { "label": "Average stay", "value": "3.4 nights", "confidence": "verified", "source": "USGA" }
+            ]
+          },
+          {
+            "id": "bundle",
+            "name": "Watch the Major, play the host course",
+            "blurb": "The two streams combined — the highest-value itinerary we can build for this interest."
+          }
+        ],
+
+        "_comment3": "LAYER 3 — source countries. Who travels, from where, how many. This is the marketing + SEO targeting map, not decoration. NOTE the confidence split below: the US figures name their firm and are `verified`; the Korea/Japan/Germany figures came without a named firm, so they are `estimate` until one is pinned. That is the rule working, not a gap — `verified` with no `source` is a hard error, because verified means someone can check it.",
+        "sources": [
+          {
+            "country": "United States", "iso": "US",
+            "figures": [
+              { "label": "Golfers who travel to play", "value": "12M domestic", "confidence": "verified", "source": "NGF" },
+              { "label": "Travel abroad to play", "value": "2.7M", "confidence": "verified", "source": "NGF" }
+            ]
+          },
+          {
+            "country": "South Korea", "iso": "KR",
+            "note": "Carried as estimate until the citing firm is pinned — see the _comment below.",
+            "figures": [
+              { "label": "Golfers", "value": "5.6M", "confidence": "estimate" },
+              { "label": "Share who play abroad", "value": "41.7%", "confidence": "estimate" }
+            ]
+          },
+          {
+            "country": "Japan", "iso": "JP",
+            "figures": [
+              { "label": "Golfers", "value": "8.1M", "confidence": "estimate" },
+              { "label": "Courses", "value": "2,227", "confidence": "estimate" }
+            ]
+          },
+          {
+            "country": "Germany", "iso": "DE", "note": "Top spender per trip.",
+            "figures": [{ "label": "Spend per trip", "value": "€2,041", "confidence": "estimate" }]
+          },
+          { "country": "United Kingdom", "iso": "GB" },
+          { "country": "France", "iso": "FR" },
+          { "country": "Sweden", "iso": "SE" }
+        ],
+
+        "_comment4": "LAYER 4a — seasons and booking windows. How far ahead it books is as important as when to go: it sets how early Atlas has to raise it.",
+        "timing": {
+          "season": "Scotland and Ireland May–Sep; Iberia is a shoulder-season game.",
+          "best_months": [3, 4, 5, 6, 9, 10],
+          "booking_window": "12–18 months for links Scotland (Portrush 18–24). The Old Course guarantees only 1.5–2 years out; day-of play runs on a 48-hour ballot and an annual lottery.",
+          "notes": "Algarve shoulder Mar–Jun and Sep–Oct is the value window. Domestic US peak is Arizona/Florida Jan–Apr."
+        },
+
+        "_comment5": "LAYER 4b — the multi-year dated event look-ahead. Absolute dated series, never 'season' (canon). Omit starts_on/ends_on rather than invent them; `year` alone is valid and is what most look-aheads have.",
+        "events": [
+          { "name": "Ryder Cup", "year": 2025, "place": "Bethpage Black, New York" },
+          { "name": "Ryder Cup", "year": 2027, "place": "Adare Manor, Ireland" },
+          { "name": "Ryder Cup", "year": 2029, "place": "Hazeltine, Minnesota" },
+          { "name": "Ryder Cup", "year": 2031, "place": "Camiral, Spain" },
+          { "name": "The Open Championship", "year": 2027, "place": "St Andrews, Scotland" },
+          { "name": "U.S. Open", "year": 2027, "place": "Pebble Beach, California" },
+          {
+            "name": "WM Phoenix Open", "year": 2026, "place": "Scottsdale, Arizona",
+            "note": "719k attendance — the largest gallery in golf."
+          },
+          {
+            "name": "The Players Championship", "year": 2026, "place": "TPC Sawgrass, Florida",
+            "note": "~$150M economic impact."
+          }
+        ],
+
+        "_comment6": "LAYER 5 — the global map. `destinations` are MVP destination ids and the gate resolves every one of them; a name that points at nothing is a broken shelf. `anchors` is free text for places we don't carry yet.",
+        "map": {
+          "destinations": ["algarve", "turks", "cape-town-south-africa", "kyoto"],
+          "regions": ["01F", "02F", "06A", "08A", "11C"],
+          "anchors": [
+            "Scotland — St Andrews, the home of the game",
+            "Ireland — Adare Manor, Ballybunion",
+            "Portugal — the Algarve (€4.2B sector)",
+            "Japan — Kawana",
+            "Australia / New Zealand — Tara Iti",
+            "South Africa — safari-and-golf pairings",
+            "Canada — Cabot (ranked #13 in the world)",
+            "Turks & Caicos — Provo, the only course in the country"
+          ],
+          "note": "Width and depth, not a starter set: the classic links belt, the Asian growth belt, and the safari-and-golf pairing that no golf-only operator can build."
+        },
+
+        "_comment7": "LAYER 6 — the money and the booking rails. booking_path is the API-first check: api | request-to-book | aggregator | lead. `mode` is the canon handoff mode. The provider is always merchant of record.",
+        "providers": [
+          {
+            "name": "GolfNow / TeeOff", "well": "activities", "booking_path": "api", "mode": "api",
+            "commission": "6% net", "confidence": "verified",
+            "note": "A genuine instant-book tee-time API — rare at this altitude and the reason golf can close on our own surface."
+          },
+          {
+            "name": "Golfbreaks", "well": "activities", "booking_path": "lead", "mode": "affiliate",
+            "commission": "$10–20 per qualified inquiry", "confidence": "verified"
+          },
+          {
+            "name": "Old Course Authorized Providers", "well": "stay", "booking_path": "request-to-book", "mode": "affiliate",
+            "commission": "package margin", "confidence": "estimate",
+            "note": "The authorized-provider list is the moat — guaranteed tee times only come through it."
+          },
+          {
+            "name": "Pebble Beach stay-and-play", "well": "stay", "booking_path": "request-to-book", "mode": "affiliate",
+            "commission": "package margin", "confidence": "estimate"
+          }
+        ],
+
+        "_comment8": "LAYER 7 — the traveler's real questions, answer-first. This array emits FAQPage structured data; it is the block AI answer engines quote, so it is the highest-value field in the file.",
+        "faq": [
+          {
+            "q": "Can I just turn up and play the Old Course at St Andrews?",
+            "a": "No — play is allocated three ways: a daily ballot entered two days ahead, an annual advance lottery, and guaranteed times booked through an authorized provider roughly 1.5–2 years out. Plan on the ballot being luck, not a plan.",
+            "source": "St Andrews Links"
+          },
+          {
+            "q": "Do I need a handicap certificate to play the famous courses?",
+            "a": "For the Old Course, yes — a certificate is required, with a maximum handicap of 24 for men and 36 for women. Many resort courses ask for nothing at all, so check per course rather than per country.",
+            "source": "St Andrews Links"
+          },
+          {
+            "q": "How far ahead should I book a Scotland golf trip?",
+            "a": "12–18 months for the links belt in high season, and 18–24 months if Royal Portrush is on the list. Tee times, not hotel rooms, are the constraint.",
+            "source": "IAGTO / VisitScotland"
+          },
+          {
+            "q": "Can I buy Masters tickets through a travel company?",
+            "a": "Not legitimately — Masters tickets are distributed only through the tournament's own official lottery. Any package promising guaranteed Masters badges is worth treating with suspicion.",
+            "source": "Augusta National"
+          },
+          {
+            "q": "When is the best value time to play the Algarve?",
+            "a": "The shoulder seasons — March to June and September to October. You get playable weather without peak green fees, and the courses are far less crowded than in the winter peak."
+          },
+          {
+            "q": "Caddie or buggy on the links courses?",
+            "a": "A caddie, if the budget allows. Blind tee shots and wind reading are most of the challenge on a true links, and buggies are restricted or unavailable on several of the famous courses."
+          }
+        ],
+
+        "_comment9": "LAYER 8 — the connective tissue. Which Wells this interest switches on, the Atlas whisper hooks, and the safety layer.",
+        "wells": ["fly", "stay", "move", "eat", "activities", "gear"],
+        "whispers": [
+          "The Ryder Cup is at Adare Manor in 2027 — want the tickets and a round on the host course?",
+          "The Old Course guarantees tee times about two years out. Shall I look at 2028 while it's still open?",
+          "You're already going to Cape Town — South Africa is the one place you can pair a safari and a top-50 course in the same week."
+        ],
+        "safety": {
+          "notes": "Golf destinations are overwhelmingly L1/L2. The safety layer matters most on the safari-and-golf pairings, where the destination advisory governs, not the course."
+        },
+
+        "_comment10": "LAYER 9 — ship-ready. Keywords for search and for AI answer engines, and the structured-data types this page emits.",
+        "seo": {
+          "title": "Golf Travel, Globally — Tee Times, Majors and Stay-and-Play",
+          "description": "Plan a golf trip anywhere in the world: links Scotland and Ireland, the Algarve, Japan, safari-and-golf in South Africa — with tee times, booking windows and the Majors calendar.",
+          "keywords": ["golf travel", "golf holidays", "stay and play", "St Andrews Old Course booking", "Ryder Cup 2027 Adare Manor", "Algarve golf", "safari and golf South Africa"],
+          "geo_keywords": ["how far ahead to book a Scotland golf trip", "can you play the Old Course without a handicap", "best value time to golf in Portugal"]
+        },
+        "schema": ["TouristTrip", "Event", "FAQPage"],
+
+        "_comment11": "The brand slogan's short subject. Without this the line falls back to the full name — 'If It's Golf Globally… TravelWell™' instead of 'If It's Golf… TravelWell™'. A tight noun. English-only: the slogan is a coined brand line and never localizes.",
+        "tagline_subject": "Golf"
+      }
+    }
+  ]
+}

@@ -68,6 +68,8 @@ Shapes the experience / itinerary / provider records from the first pour so Atla
   - Regenerate: `./node_modules/.bin/esbuild scripts/gen-catalog-seed.ts --bundle --platform=node --format=esm --outfile=scratchpad/gen.mjs && node scratchpad/gen.mjs`
 - The app reads the catalog **DB-first with a bundle fallback** (`src/store/useCatalog.ts` + `src/lib/catalog.ts`). Production reads Supabase; the bundle covers offline/preview.
 - After changing the catalog: regenerate the seed **and** re-run the affected migration in the Supabase SQL editor. Seeds are idempotent (`on conflict do update`); some self-heal schema (add columns, swap constraints) so a single re-run reconciles.
+- **Drop-in dossiers — two folders, two gates.** Destinations: `src/data/destinations/*.json` → `npm run validate:ingest`. Special Interests: `src/data/interests/*.json` → `npm run validate:si`. `_`-prefixed files are references and never ship. Destination batches **replace** on id collision; SI batches **shallow-merge** (a data-only `{id, data}` patch is valid and must not blank the row).
+- **The SI dossier is nine layers (David-locked 2026-08)** — `market · streams · sources · timing+events · map · providers · faq · wells/whispers/safety · seo/schema` in `special_interests.data` (migration 0012), typed as `SiData` in `taxonomy.ts`. **Every figure is `{label, value, confidence, source?}` and `confidence` is REQUIRED** (`verified` | `estimate`); `verified` without a `source` is a hard error. An unlabeled number is a guessed number — the gate refuses it. Contract: `docs/ingest-contract.md` §4; gold reference `src/data/interests/_REFERENCE.golf.json`.
 
 ## Working rules
 - Run **`npm run build`** and **`npx tsc --noEmit`** green before committing.

@@ -263,3 +263,11 @@ img { max-width: 100%; display: block; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
+
+/* ---- Screen-reader-only text (§9.5) ----------------------------------
+   For meaning a sighted reader gets from styling alone — e.g. the highlighted
+   months in a best-months strip. Never colour/shape alone (accessibility canon). */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}

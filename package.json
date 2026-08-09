@@ -12,7 +12,8 @@
     "typecheck": "tsc --noEmit",
     "a11y": "node scripts/a11y-audit.mjs",
     "validate:ingest": "esbuild scripts/validate-destinations.ts --bundle --platform=node --format=esm --define:import.meta.env={} --outfile=scratchpad/val.mjs && node scratchpad/val.mjs",
-    "gen:sitemap": "esbuild scripts/gen-sitemap.ts --bundle --platform=node --format=esm --define:import.meta.env={} --outfile=scratchpad/sitemap.mjs && node scratchpad/sitemap.mjs"
+    "gen:sitemap": "esbuild scripts/gen-sitemap.ts --bundle --platform=node --format=esm --define:import.meta.env={} --outfile=scratchpad/sitemap.mjs && node scratchpad/sitemap.mjs",
+    "validate:si": "esbuild scripts/validate-si.ts --bundle --platform=node --format=esm --define:import.meta.env={} --outfile=scratchpad/valsi.mjs && node scratchpad/valsi.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.4",

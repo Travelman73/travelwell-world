@@ -12,6 +12,7 @@
  */
 import { useEffect } from "react";
 import type { Destination } from "@/data/places";
+import type { SiData } from "@/data/taxonomy";
 
 interface Faq { q: string; a: string; source?: string }
 
@@ -37,6 +38,56 @@ export function destinationJsonLd(d: Destination, regionName: string, url: strin
         name: f.q,
         acceptedAnswer: { "@type": "Answer", text: f.source ? `${f.a} (Source: ${f.source})` : f.a },
       })),
+    });
+  }
+  return out;
+}
+
+/**
+ * Build the JSON-LD for a Special-Interest page from its nine-layer dossier —
+ * `TouristTrip` always, plus `FAQPage` (layer 7) and one `Event` per dated
+ * entry in the look-ahead (layer 4b). These are the three types the dossier's
+ * own layer-9 manifest names.
+ */
+export function siJsonLd(
+  si: { id: string; name: string; sig: string; data?: SiData },
+  url: string
+): object[] {
+  const d = si.data ?? {};
+  const out: object[] = [
+    {
+      "@context": "https://schema.org",
+      "@type": "TouristTrip",
+      name: si.name,
+      description: d.seo?.description || si.sig,
+      ...(url ? { url } : {}),
+      ...(d.seo?.keywords?.length ? { keywords: d.seo.keywords.join(", ") } : {}),
+    },
+  ];
+  if (d.faq?.length) {
+    out.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: d.faq.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.source ? `${f.a} (Source: ${f.source})` : f.a },
+      })),
+    });
+  }
+  for (const e of d.events ?? []) {
+    // Only emit an Event when we have a real date. schema.org requires startDate,
+    // and a year alone would have to be faked into "2027-01-01" — a wrong date is
+    // worse than no structured data, so year-only entries render but don't emit.
+    if (!e.starts_on) continue;
+    out.push({
+      "@context": "https://schema.org",
+      "@type": "Event",
+      name: e.name,
+      startDate: e.starts_on,
+      ...(e.ends_on ? { endDate: e.ends_on } : {}),
+      ...(e.place ? { location: { "@type": "Place", name: e.place } } : {}),
+      ...(e.note ? { description: e.note } : {}),
     });
   }
   return out;

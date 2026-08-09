@@ -127,6 +127,94 @@ exactly what the live-advisory system needs.
 
 ---
 
+## 4. Special-Interest dossiers — the nine layers, locked
+
+*Added 2026-08-09, from David & Claude's "How we build & showcase every Special
+Interest" note. Same discipline as destinations: a shape, a folder, a gate.*
+
+The nine layers **are** the schema. One key per layer, in David's order, in the
+`special_interests.data` jsonb (migration 0012, live in production):
+
+| # | Layer | Key |
+|---|---|---|
+| 1 | The market — sized and range-cited | `market` |
+| 2 | Demand streams (play vs watch) | `streams` |
+| 3 | Source countries — the targeting map | `sources` |
+| 4 | Seasons + booking windows / the event look-ahead | `timing` / `events` |
+| 5 | The global map | `map` |
+| 6 | The money and the booking rails | `providers` |
+| 7 | Traveler Q&A | `faq` |
+| 8 | Connective tissue — Wells, whispers, safety | `wells` / `whispers` / `safety` |
+| 9 | Ship-ready — SEO/GEO + schema | `seo` / `schema` |
+
+**Every layer is optional.** A dossier can land in stages and the page renders
+whatever is present — it never shows an empty shelf. Extra keys pass straight
+through the jsonb, so a later pass needs no migration.
+
+### The one hard rule: no unlabeled numbers
+
+Every figure is `{ label, value, confidence, source? }`, and **`confidence` is
+required** — `verified` or `estimate`. The gate rejects an unlabeled number,
+because an unlabeled number is a guessed number, and a guessed number is the one
+mistake this whole system exists to make impossible.
+
+`verified` **also requires a `source`.** Verified means someone can check it. If
+the citing firm isn't pinned down yet, the figure is an `estimate` until it is —
+that's the rule working, not a gap. (The gold reference deliberately shows both:
+the US figures name NGF and are verified; the Korea/Japan/Germany figures came
+without a named firm and are carried as estimates.)
+
+`value` is a **string** on purpose — the real research carries ranges, arrows and
+currencies (`"$26B → $60B"`, `"€2,041/trip"`) that a numeric column would flatten.
+
+### The handoff
+
+**Gold reference:** `src/data/interests/_REFERENCE.golf.json` — Golf Globally,
+every layer populated, from the anatomy showcase. `_`-prefixed files are ignored
+by the generator, so it lives in the real folder without ever shipping.
+
+**Deliver:** `src/data/interests/<batch>.json` — an array, or
+`{ "special_interests": [ … ] }`. Drop the file in, open a PR; the generator
+picks it up automatically.
+
+**Merge rule — differs from destinations, on purpose.** An SI batch row is
+**shallow-merged** onto the bundled row, not a straight replace. The common case
+is a dossier that only adds `data` to an interest that already exists, and a
+replace would blank its name, accent and status. So a **data-only patch is
+valid**: `{ "id": "safari", "data": { … } }` and nothing else. A **net-new**
+interest must bring the full row (`name`, `sig`, `status`, `accent`, `group`).
+
+**Before you send:**
+```bash
+npm run validate:si -- src/data/interests/<batch>.json
+```
+
+What it checks beyond the figures rule: status/accent/group shape · events are
+absolute dated series (`year` or ISO `starts_on` — never "season", and a `year`
+that disagrees with its `starts_on` is an error) · `booking_path` is one of
+`api | request-to-book | aggregator | lead` (the API-first check) · `well` and
+`map.regions` resolve to live canon · **`map.destinations` resolve to real MVP
+destination ids** (a name pointing at nothing is a broken shelf) · FAQ has both
+q and a.
+
+### What renders today
+
+`timing`, `events` and `faq` render on the SI page now, and `faq` + dated
+`events` emit `FAQPage` / `Event` JSON-LD alongside `TouristTrip` — the layer-9
+manifest, made real. A **preview** interest with a dossier shows its depth too
+(content-only, no Book button — the same rule as an L4 destination).
+
+`market`, `streams` and `sources` land in the jsonb now and are read by the
+investor surface, not the traveler's page — a $26B market figure isn't something
+a honeymooner needs on a hero.
+
+**One field worth not forgetting:** `tagline_subject`. Without it the brand line
+falls back to the full name — *"If It's Golf Globally… TravelWell™"* instead of
+*"If It's Golf… TravelWell™"*. A tight noun. English-only; the slogan never
+localizes. David's hand-locked map in `taxonomy.ts` still overrides it.
+
+---
+
 ## What's on each side
 
 - **Yours:** conformed JSON batches matching the reference, validator green.

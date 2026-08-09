@@ -280,6 +280,38 @@
   [data-page="si-detail"] .sd-rg__scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,22,20,.1), rgba(15,22,20,.72)); }
   [data-page="si-detail"] .sd-rg__name { position: absolute; bottom: 12px; inset-inline: 14px; color: #fff; font-family: var(--font-display); font-weight: 600; font-size: 17px; text-shadow: 0 1px 10px rgba(0,0,0,.4); }
   [data-page="si-detail"] .sd-rg__code { position: absolute; top: 10px; inset-inline-start: 12px; font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em; color:#fff; background: rgba(20,28,26,.4); padding: 3px 8px; border-radius: var(--radius-pill); }
+  /* ---- The dossier layers (timing · events · FAQ) ---------------------
+     Rendered only when the nine-layer SI dossier carries them, so a page never
+     shows an empty shelf. */
+  [data-page="si-detail"] .sd-timing { margin-top: 26px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); box-shadow: var(--e1); overflow: hidden; }
+  [data-page="si-detail"] .sd-timing__row { display: flex; gap: 14px; padding: 18px 20px; align-items: flex-start; }
+  [data-page="si-detail"] .sd-timing__row + .sd-timing__row { border-top: 1px solid var(--border); }
+  [data-page="si-detail"] .sd-timing__ic { width: 34px; height: 34px; border-radius: 9px; background: var(--secondary); color: var(--primary); display: grid; place-items: center; flex: none; }
+  [data-page="si-detail"] .sd-timing__k { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-foreground); }
+  [data-page="si-detail"] .sd-timing__v { font-size: 15.5px; line-height: 1.55; margin-top: 4px; max-width: 68ch; }
+  [data-page="si-detail"] .sd-months { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  [data-page="si-detail"] .sd-month { font-size: 12.5px; font-weight: 600; padding: 6px 10px; border-radius: var(--radius-pill); background: var(--surface-alt); color: var(--muted-foreground); border: 1px solid var(--border); }
+  /* On-months carry a filled ground AND a check-weight border — never colour alone. */
+  [data-page="si-detail"] .sd-month--on { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
+  [data-page="si-detail"] .sd-events { margin-top: 26px; list-style: none; padding: 0; border-inline-start: 2px solid var(--border); }
+  [data-page="si-detail"] .sd-event { display: flex; gap: 18px; padding: 14px 0 14px 22px; position: relative; align-items: baseline; }
+  [data-page="si-detail"] .sd-event::before { content: ""; position: absolute; inset-inline-start: -6px; top: 22px; width: 10px; height: 10px; border-radius: 50%; background: var(--primary); }
+  [data-page="si-detail"] .sd-event__year { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--primary); flex: none; min-width: 4ch; }
+  [data-page="si-detail"] .sd-event__body { display: flex; flex-direction: column; gap: 3px; }
+  [data-page="si-detail"] .sd-event__name { font-family: var(--font-display); font-weight: 600; font-size: 17px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  [data-page="si-detail"] .sd-event__flag { font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: var(--radius-pill); background: var(--secondary); color: var(--secondary-foreground); }
+  [data-page="si-detail"] .sd-event__place,
+  [data-page="si-detail"] .sd-event__when { font-size: 13.5px; color: var(--muted-foreground); display: inline-flex; align-items: center; gap: 6px; }
+  [data-page="si-detail"] .sd-event__note { font-size: 13.5px; color: var(--muted-foreground); line-height: 1.5; max-width: 62ch; }
+  [data-page="si-detail"] .sd-faq { margin-top: 26px; }
+  [data-page="si-detail"] .sd-faq__item { border: 1px solid var(--border); border-radius: var(--radius); background: var(--card); margin-bottom: 10px; overflow: hidden; }
+  [data-page="si-detail"] .sd-faq__q { cursor: pointer; padding: 16px 20px; font-weight: 600; font-size: 15.5px; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; }
+  [data-page="si-detail"] .sd-faq__q::-webkit-details-marker { display: none; }
+  [data-page="si-detail"] .sd-faq__q::after { content: "+"; font-size: 20px; color: var(--primary); font-weight: 400; }
+  [data-page="si-detail"] .sd-faq__item[open] .sd-faq__q::after { content: "\2212"; }
+  [data-page="si-detail"] .sd-faq__q:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
+  [data-page="si-detail"] .sd-faq__a { padding: 0 20px 18px; color: var(--muted-foreground); font-size: var(--t-body-s); line-height: 1.6; max-width: 72ch; }
+  [data-page="si-detail"] .sd-faq__src { font-style: italic; opacity: .85; }
   /* CTA band */
   [data-page="si-detail"] .sd-cta { max-width: var(--content-max); margin: 72px auto 0; padding: 0 var(--gutter); }
   [data-page="si-detail"] .sd-cta__card { border-radius: var(--radius-lg); padding: 48px; color: #fff; position: relative; overflow: hidden; }
@@ -301,6 +333,13 @@
   @media (max-width: 900px) {
   [data-page="si-detail"] .sd-wells { grid-template-columns: 1fr; }
   [data-page="si-detail"] .sd-regions { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 560px) {
+  /* The event row goes year-over-body on a narrow screen so long venue names
+     don't squeeze the title into a two-character column. */
+  [data-page="si-detail"] .sd-event { flex-direction: column; gap: 4px; padding-inline-start: 18px; }
+  [data-page="si-detail"] .sd-event::before { top: 20px; }
+  [data-page="si-detail"] .sd-timing__row { padding: 16px; }
+  [data-page="si-detail"] .sd-month { padding: 7px 9px; } }
 
 /* ===== regions.html ===== */
   [data-page="regions"] .rg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 16px; }
@@ -635,7 +674,12 @@
   [data-page="destination-detail"] .safety-card { border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--e1); background:var(--card); }
   [data-page="destination-detail"] .safety-card__top { padding:16px 18px; display:flex; align-items:center; gap:12px; color:#fff; }
   [data-page="destination-detail"] .safety-card__lvl { width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,.22); display:grid; place-items:center; font-family:var(--font-display); font-weight:700; font-size:20px; flex:none; }
-  [data-page="destination-detail"] .safety-card__title { font-weight:700; font-size:12px; letter-spacing:.1em; text-transform:uppercase; opacity:.9; }
+  /* No `opacity` here. The header sits on a dark hued fill with white text; an
+     opacity fade is unresolvable for contrast checkers (axe scored this 1.09:1
+     against the page ground rather than the actual green, a standing false
+     positive in the audit) and buys nothing visually at .9. Full white keeps the
+     real ratio at its maximum and keeps the a11y gate meaningful. */
+  [data-page="destination-detail"] .safety-card__title { font-weight:700; font-size:12px; letter-spacing:.1em; text-transform:uppercase; }
   [data-page="destination-detail"] .safety-card__level-label { font-family:var(--font-display); font-size:18px; font-weight:600; }
   [data-page="destination-detail"] .safety-card__body { padding:16px 18px; }
   [data-page="destination-detail"] .safety-row { display:flex; gap:10px; align-items:flex-start; padding:9px 0; font-size:13.5px; }
