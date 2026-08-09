@@ -32,3 +32,7 @@ tsconfig.tsbuildinfo
 
 # Throwaway generator/build scratch (regenerate on demand)
 scratchpad/
+
+# Generated build artifact — `npm run gen:sitemap` runs before every build
+# (including Vercel's), so tracking it only produces a daily lastmod diff.
+public/sitemap.xml
