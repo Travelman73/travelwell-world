@@ -1346,3 +1346,15 @@
 .fl-add { min-height: 44px; border-color: var(--gold-deep); color: var(--gold-deep); }
 @media (max-width: 560px) { .fl-leg__dir, .fl-leg__date { width: auto; } .fl-leg { gap: 10px; } }
 @media (prefers-reduced-motion: reduce) { .fl-card { transition: none; } }
+
+/* Trademark marker — small and raised so the mark reads as a mark without
+   shouting. aria-hidden: a screen reader saying "trademark" after every brand
+   mention is noise, and the symbol carries no meaning for a listener. */
+  .tagline__tm, .tw-tm { font-size: .58em; vertical-align: super; line-height: 0; margin-inline-start: 1px; opacity: .8; font-style: normal; }
+
+/* The slogan on DARK grounds (the footer band). The base .tagline colours are
+   tuned for light backgrounds — dropped into the dark footer the mark rendered
+   at 1.01:1, i.e. invisible. Per brand canon "Well" goes gold on dark. */
+  .tw-footer__sig .tagline { color: var(--dark-band-muted); }
+  .tw-footer__sig .tagline__mark { color: #fff; }
+  .tw-footer__sig .tagline__well { color: var(--accent); }

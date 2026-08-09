@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useT } from "@/lib/i18n";
+import { Tagline } from "@/components/ui/primitives";
+import { MASTER_TAGLINE_SUBJECT } from "@/data/taxonomy";
 
 export function Footer() {
   const t = useT();
@@ -9,7 +11,7 @@ export function Footer() {
         <div className="tw-footer__top">
           <div className="tw-footer__brand">
             <Link className="tw-logo" to="/" dir="ltr">Travel<span className="lwell">Well</span><span className="lworld">.world</span></Link>
-            <p className="tw-footer__sig">{t("foot.sig")} <span className="tw">Travel Well.</span></p>
+            <p className="tw-footer__sig"><Tagline subject={MASTER_TAGLINE_SUBJECT} /></p>
           </div>
           <div className="tw-footer__col">
             <h5>{t("foot.system")}</h5>

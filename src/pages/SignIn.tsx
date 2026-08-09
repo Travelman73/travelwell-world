@@ -4,7 +4,7 @@ import { Icon } from "@/lib/icons";
 import { img } from "@/lib/images";
 import { useStore } from "@/store/useStore";
 import { sendMagicLink, isSupabaseConfigured } from "@/lib/auth";
-import { Eyebrow } from "@/components/ui/primitives";
+import { Eyebrow, BrandMark } from "@/components/ui/primitives";
 
 const USER = { name: "Amara", initial: "A", email: "amara@email.com" };
 const TRIP = { name: "Kenya: Anniversary Safari", region: "East Africa", dates: "Jul 12–22, 2026", party: "2 travelers", coverage: 3, total: 6, img: "safariGiraffe" };
@@ -52,7 +52,7 @@ export default function SignIn() {
         <div className="si-art__quote">
           <Eyebrow>Welcome back</Eyebrow>
           <h2>{QUOTES[state]}</h2>
-          <p className="si-art__sig">Pick up the thread. <span className="tw">Travel Well.</span></p>
+          <p className="si-art__sig">Pick up the thread. <span className="tw"><BrandMark /></span></p>
         </div>
       </aside>
 

@@ -96,13 +96,35 @@ export function Card({ children, className, isPreview }: { children: ReactNode; 
 
 /**
  * Brand slogan (David-locked system): "If It's {subject}… TravelWell."
- * Ends in the one-word brand mark ("Well" accented, mirroring the logo). Distinct
- * from the poetic "…Travel Well." pun sign-off. English-only — a coined brand line.
+ * Ends in the one-word brand mark ("Well" accented, mirroring the logo) plus the
+ * ™. English-only — a coined brand line, and the wording must be EXACT: the
+ * ellipsis is part of the mark, a variant is a different mark.
  */
 export function Tagline({ subject, className }: { subject: string; className?: string }) {
   return (
     <p className={cx("tagline", className)}>
-      If It&rsquo;s {subject}&hellip; <span className="tagline__mark">Travel<span className="tagline__well">Well</span></span>
+      If It&rsquo;s {subject}&hellip;{" "}
+      <span className="tagline__mark">
+        Travel<span className="tagline__well">Well</span>
+        <span className="tagline__tm" aria-hidden="true">&trade;</span>
+      </span>
     </p>
+  );
+}
+
+/**
+ * The one-word brand mark for sign-offs — `TravelWell™`, or `TravelWell.World™`.
+ *
+ * Trademark discipline (attorney, 2026-08): the mark is ONE word, always. The
+ * two-word "Travel Well." pun that used to close these lines was retired
+ * everywhere — a variant is a different mark, and using it weakens the claim.
+ * Rendered through this component so the wording can never drift again.
+ */
+export function BrandMark({ world = false }: { world?: boolean }) {
+  return (
+    <>
+      TravelWell{world ? ".World" : ""}
+      <span className="tw-tm" aria-hidden="true">&trade;</span>
+    </>
   );
 }

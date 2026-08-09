@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Icon } from "@/lib/icons";
-import { Eyebrow } from "@/components/ui/primitives";
+import { Eyebrow, BrandMark } from "@/components/ui/primitives";
 
 const STATS = [
   { ic: "heart", v: "25", t: "Ways to travel", sub: "— from safaris to spas" },
@@ -126,7 +126,7 @@ export default function About() {
             <span><b>10</b> trip needs</span><span className="ab-close__dot" />
             <span><b>1</b> itinerary</span>
           </div>
-          <p className="ab-close__sig">However far you go — <span className="tw">Travel Well.</span></p>
+          <p className="ab-close__sig">However far you go — <span className="tw"><BrandMark /></span></p>
         </div>
       </section>
     </div>

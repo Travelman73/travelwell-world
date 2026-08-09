@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Icon } from "@/lib/icons";
 import { useStore } from "@/store/useStore";
 import { useSpecialInterests } from "@/store/useCatalog";
-import { Eyebrow } from "@/components/ui/primitives";
+import { Eyebrow, BrandMark } from "@/components/ui/primitives";
 import { fetchTravelId, saveTravelId, type TravelIdRecord } from "@/lib/travelId";
 import {
   deriveIdentity, DEMO_IDENTITY, cohortLabel, activityLabel, tierLabel,
@@ -183,7 +183,7 @@ export default function WelcomeBack() {
         <button className="btn btn-primary" onClick={refresh} style={{ height: 54, padding: "0 30px", fontSize: 16 }}>Refresh & keep planning →</button>
         <button className="btn btn-secondary" onClick={() => { showToast("Kept as-is — welcome back."); navigate("/special-interests"); }}>Keep it exactly as it is</button>
       </div>
-      <p className="wb__sig">Built once, refreshed every trip — never rebuilt. <span className="tw">Travel Well.</span></p>
+      <p className="wb__sig">Built once, refreshed every trip — never rebuilt. <span className="tw"><BrandMark /></span></p>
     </div>
   );
 }

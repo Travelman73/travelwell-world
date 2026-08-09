@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Icon } from "@/lib/icons";
 import { useStore } from "@/store/useStore";
 import { useSpecialInterests } from "@/store/useCatalog";
-import { Eyebrow } from "@/components/ui/primitives";
+import { Eyebrow, BrandMark } from "@/components/ui/primitives";
 import { cx } from "@/lib/utils";
 import { fetchTravelId, type TravelIdRecord } from "@/lib/travelId";
 import { deriveIdentity, tierLabel, tierPeak, activityLabel, accessLabel, DEMO_IDENTITY, type DisplayIdentity } from "@/lib/identity";
@@ -77,7 +77,7 @@ function IdentityCard({ id }: { id: DisplayIdentity }) {
         </div>
       </div>
       <div className="idp__foot">
-        <span className="idp__sig">The constant — who you are. Refreshed every trip, never rebuilt. <span className="tw">Travel Well.</span></span>
+        <span className="idp__sig">The constant — who you are. Refreshed every trip, never rebuilt. <span className="tw"><BrandMark /></span></span>
         <span className="pill pill-live">{id.synced ? "Saved to your account" : "Saved on this device"}</span>
       </div>
     </div>

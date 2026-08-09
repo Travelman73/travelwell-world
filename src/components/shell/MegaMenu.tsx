@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { Icon } from "@/lib/icons";
 import { useStore } from "@/store/useStore";
 import { useSpecialInterests, useWells, useRegions } from "@/store/useCatalog";
-import { ButtonLink } from "@/components/ui/primitives";
+import { ButtonLink, Tagline, BrandMark } from "@/components/ui/primitives";
+import { MASTER_TAGLINE_SUBJECT } from "@/data/taxonomy";
 
 export function MegaMenu() {
   const { panel, closePanel } = useStore();
@@ -23,7 +24,7 @@ export function MegaMenu() {
           <div className="tw-mega__feature">
             <span className="eyebrow">Start here</span>
             <h3>Design Your Dream Journey</h3>
-            <p className="sig">If it's the trip of a lifetime… <span style={{ color: "var(--accent)" }}>Travel Well.</span></p>
+            <Tagline subject={MASTER_TAGLINE_SUBJECT} className="sig" />
           </div>
           <h4>Special Interests · 25</h4>
           <div className="tw-mega__si-grid">
@@ -68,7 +69,7 @@ export function MegaMenu() {
           <Link className="tw-mega__link" to="/demo" onClick={close}><Icon name="sparkles" />Investor Demo</Link>
         </div>
         <div className="tw-mega__signature">
-          <p className="signature">A Travel Operating System — <span className="tw">Travel Well.</span></p>
+          <p className="signature">A Travel Operating System — <span className="tw"><BrandMark world /></span></p>
           <ButtonLink to="/special-interests" onClick={close}>Design Your Next Adventure</ButtonLink>
         </div>
       </div>

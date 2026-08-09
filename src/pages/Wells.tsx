@@ -3,7 +3,7 @@ import { Icon } from "@/lib/icons";
 import { type Well, WELL_AUDIENCE } from "@/data/taxonomy";
 import { WELL_DETAIL } from "@/data/places";
 import { useWells } from "@/store/useCatalog";
-import { Eyebrow } from "@/components/ui/primitives";
+import { Eyebrow, BrandMark } from "@/components/ui/primitives";
 import { cx } from "@/lib/utils";
 import { useT } from "@/lib/i18n";
 import { useCatalogName, useChip } from "@/lib/i18n-catalog";
@@ -56,7 +56,7 @@ export default function Wells() {
           <Eyebrow>{t("wl.eyebrow")}</Eyebrow>
           <h1>{t("wl.h1")}</h1>
           <p>{t("wl.lead")}</p>
-          <p className="wi-hero__sig">A Travel Operating System. <span className="tw">Travel Well.</span></p>
+          <p className="wi-hero__sig">A Travel Operating System. <span className="tw"><BrandMark world /></span></p>
         </div>
       </section>
 

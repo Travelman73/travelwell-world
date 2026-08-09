@@ -2,9 +2,10 @@ import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Icon } from "@/lib/icons";
 import { siImg, img } from "@/lib/images";
+import { taglineSubject } from "@/data/taxonomy";
 import { useStore } from "@/store/useStore";
 import { useSpecialInterests } from "@/store/useCatalog";
-import { ButtonLink, Button, Eyebrow } from "@/components/ui/primitives";
+import { ButtonLink, Button, Eyebrow, Tagline } from "@/components/ui/primitives";
 import { cx } from "@/lib/utils";
 import { useT } from "@/lib/i18n";
 import { useCatalogName, useChip } from "@/lib/i18n-catalog";
@@ -293,7 +294,7 @@ export default function Home() {
                   </div>
                   <div className="si-card__body">
                     <h3>{ct(`si.${s.id}.name`, s.name)}</h3>
-                    <p className="sig">If it's {s.sig}… <span className="tw">Travel Well.</span></p>
+                    <Tagline subject={taglineSubject(s)} className="sig" />
                     <div className="si-card__foot">
                       <span>{s.lux ? t("card.lux") : t("card.all")}</span>
                     </div>
