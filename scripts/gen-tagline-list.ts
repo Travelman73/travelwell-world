@@ -13,15 +13,18 @@
  * Writes docs/tagline-family.md.
  */
 import { writeFileSync } from "node:fs";
-import { SIS, SI_TAGLINE_SUBJECT, MASTER_TAGLINE_SUBJECT, SAFER_TAGLINE_SUBJECT, taglineSubject } from "../src/data/taxonomy";
+import { SIS, boardSis, SI_TAGLINE_SUBJECT, MASTER_TAGLINE_SUBJECT, SAFER_TAGLINE_SUBJECT, taglineSubject } from "../src/data/taxonomy";
 
 const MARK = "TravelWell";
 const line = (subject: string) => `If It's ${subject}… ${MARK}™`;
 
 const stamp = process.env.TAGLINE_DATE || new Date().toISOString().slice(0, 10);
 
-const live = SIS.filter((s) => s.status === "live");
-const preview = SIS.filter((s) => s.status !== "live");
+// THE BOARD only — a retired interest is not a mark in commerce, so it must not
+// appear in evidence filed with the trademark attorney.
+const BOARD = boardSis(SIS) as typeof SIS;
+const live = BOARD.filter((s) => s.status === "live");
+const preview = BOARD.filter((s) => s.status !== "live");
 const row = (s: { id: string; name: string; status: string; data?: unknown }) => {
   const subject = taglineSubject(s as never);
   const src = SI_TAGLINE_SUBJECT[s.id] ? "locked map" : "falls back to full name";
@@ -46,10 +49,10 @@ every instance on the site is the same construction by build, not by convention.
 
 | | |
 |---|---|
-| Distinct variants in active use | **${2 + SIS.length}** |
+| Distinct variants in active use | **${2 + BOARD.length}** |
 | — master | 1 |
 | — category (Safer Informed Travel) | 1 |
-| — special-interest subjects | ${SIS.length} (${live.length} on live interests, ${preview.length} on preview interests) |
+| — special-interest subjects | ${BOARD.length} (${live.length} on live interests, ${preview.length} on preview interests) |
 | Closing mark, every variant | \`${MARK}™\` |
 
 ## 1. The master variant
@@ -98,4 +101,4 @@ ${preview.map(row).join("\n")}
 `;
 
 writeFileSync("docs/tagline-family.md", md);
-console.log(`Wrote docs/tagline-family.md — ${2 + SIS.length} variants (${live.length} live SIs, ${preview.length} preview SIs)`);
+console.log(`Wrote docs/tagline-family.md — ${2 + BOARD.length} variants (${live.length} live SIs, ${preview.length} preview SIs)`);

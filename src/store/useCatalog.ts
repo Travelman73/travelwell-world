@@ -20,6 +20,7 @@
 import { create } from "zustand";
 import {
   SIS as BUNDLE_SIS,
+  boardSis,
   WELLS as BUNDLE_WELLS,
   LUX_WELLS as BUNDLE_LUX_WELLS,
   REGIONS as BUNDLE_REGIONS,
@@ -64,7 +65,12 @@ function mergeByKey<T>(bundle: T[], db: T[], key: (t: T) => string): T[] {
 }
 
 export const useCatalog = create<CatalogState>((set) => ({
-  sis: BUNDLE_SIS,
+  // THE BOARD only. Retired interests keep their Postgres row (the seed would
+  // otherwise delete them) but must never reach a tile, a counter or a picker —
+  // so they're filtered out once, here, rather than at twelve call sites where
+  // one would eventually be missed. Filtering in the selector instead would
+  // return a fresh array on every render and thrash zustand's equality check.
+  sis: boardSis(BUNDLE_SIS) as SpecialInterest[],
   activities: BUNDLE_ACTIVITIES,
   wells: BUNDLE_ALL_WELLS,
   regions: BUNDLE_REGIONS,
@@ -78,7 +84,7 @@ export const useCatalog = create<CatalogState>((set) => ({
     if (!db) return; // offline / unconfigured / empty → keep the bundle
 
     set((s) => ({
-      sis: db.sis ? mergeByKey(BUNDLE_SIS, db.sis, (x) => x.id) : s.sis,
+      sis: db.sis ? (boardSis(mergeByKey(BUNDLE_SIS, db.sis, (x) => x.id)) as SpecialInterest[]) : s.sis,
       activities: db.activities ? { ...BUNDLE_ACTIVITIES, ...db.activities } : s.activities,
       wells: db.wells ? mergeByKey(BUNDLE_ALL_WELLS, db.wells, (x) => x.id) : s.wells,
       regions: db.regions ? mergeByKey(BUNDLE_REGIONS, db.regions, (x) => x.code) : s.regions,
@@ -117,8 +123,17 @@ export const useGuides = () => useCatalog((s) => s.guides);
  */
 export const useSiCount = () => useCatalog((s) => s.sis.length);
 export const useRegionCount = () => useCatalog((s) => s.regions.length);
-/** LIVE Wells only — the number we publish ("10 Wells"); `soon` ones aren't live. */
-export const useWellCount = () => useCatalog((s) => s.wells.filter((w) => w.status === "live").length);
+/**
+ * The FULL Well roster — 13 (David-locked, 2026-08-10: "THE 13 WELLS").
+ *
+ * This counted only `live` Wells until his board note, which is why the site read
+ * "10" against his 13: two answers to the same question. He was right on both
+ * branches he offered — the counter was reading a subset AND one Well (Pets-Well)
+ * was genuinely missing from the data. The published number is now the roster,
+ * matching how he names it; the Wells page still marks the not-yet-live ones
+ * "Soon", so nobody is told something is bookable when it isn't.
+ */
+export const useWellCount = () => useCatalog((s) => s.wells.length);
 
 /** Reactive single-item lookups (recompute when the underlying list changes). */
 export const useWellById = (id: string) => useCatalog((s) => s.wells.find((w) => w.id === id));

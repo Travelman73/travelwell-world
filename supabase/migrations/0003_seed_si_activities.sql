@@ -15,7 +15,16 @@ insert into public.special_interests (id, name, signature, status, accent, is_lu
   ('romance', 'Romance, Marriages & Honeymoons', 'the two of you', 'live', '#A8527A', false, 'premium', null),
   ('safari', 'Safari Adventures', 'the wild calling', 'live', '#B07A3C', false, 'premium', null),
   ('expedition', 'Global Expedition Adventures', 'to the edges of the map', 'live', '#5C5C5C', false, 'premium', null),
-  ('adventure', 'Global Adventures', 'the world, wide open', 'preview', '#3C7E55', false, 'premium', null),
+  ('ski', 'Winter/Ski', 'the first track', 'live', '#5B86A8', false, 'premium', null),
+  ('golf', 'Golf Globally', 'the round of your life', 'preview', '#2F6B3A', false, 'premium', null),
+  ('rail', 'Global Rail Journeys', 'the long way, beautifully', 'preview', '#6B5B4F', false, 'journeys', null),
+  ('barge', 'Hotel-Barge & Canal Cruising', 'six knots, no hurry', 'preview', '#4F7A8C', false, 'journeys', null),
+  ('privatejet', 'Private-Jet Expeditions', 'the world in one arc', 'preview', '#8C7A4F', false, 'journeys', null),
+  ('caravan', 'Desert & Camel Caravans', 'dunes at first light', 'preview', '#C08A4A', false, 'journeys', null),
+  ('overland', 'Luxury Overland Expeditions', 'the road as the journey', 'preview', '#8A6234', false, 'journeys', null),
+  ('motoring', 'Classic-Car & Motorcycle Touring', 'the open road, in something special', 'preview', '#9E3B2E', false, 'journeys', null),
+  ('adventure', 'Global Adventures', 'the world, wide open', 'preview', '#3C7E55', false, 'adventure', null),
+  ('hiking', 'Hiking & Trekking', 'the trail ahead', 'preview', '#4A8C5E', false, 'adventure', null),
   ('liveaboard', 'Dive Liveaboards', 'sleep above the reef', 'live', '#2E6E8C', false, 'water', null),
   ('river', 'River Cruises', 'the slow current', 'live', '#5B86A8', false, 'water', null),
   ('diveglobal', 'Dive Globally', 'the world below', 'preview', '#1F6E8C', false, 'water', null),
@@ -23,25 +32,23 @@ insert into public.special_interests (id, name, signature, status, accent, is_lu
   ('wellness', 'Wellness, Spa & Retreats', 'coming home to yourself', 'preview', '#4F8C7A', false, 'nature', null),
   ('wildlife', 'Wildlife & Nature', 'wild places, up close', 'preview', '#4A7A3C', false, 'nature', null),
   ('glamping', 'Global Glamping', 'wild, but well-appointed', 'preview', '#7A6B4F', false, 'nature', null),
-  ('family', 'Family Travel', 'everyone, together', 'preview', '#C98A2E', false, 'active', null),
-  ('group', 'Group Travel', 'better, together', 'preview', '#C27A3C', false, 'active', null),
-  ('hiking', 'Hiking & Trekking', 'the trail ahead', 'preview', '#3C7E55', false, 'active', null),
-  ('ski', 'Winter/Ski', 'the first track', 'live', '#5B86A8', false, 'active', null),
-  ('olympic', 'Olympic Travel', 'the world''s stage', 'preview', '#C2562E', false, 'active', null),
-  ('senior', 'Senior Travel', 'unhurried, well-earned', 'preview', '#7A5B3B', false, 'active', null),
-  ('culinary', 'Culinary Experiences', 'a table worth the flight', 'preview', '#9C5B3B', false, 'culture', null),
+  ('family', 'Family Travel', 'everyone, together', 'preview', '#C98A2E', false, 'lifestage', null),
+  ('group', 'Group Travel', 'better, together', 'preview', '#C27A3C', false, 'lifestage', null),
+  ('senior', 'Senior Travel', 'unhurried, well-earned', 'preview', '#7A5B3B', false, 'lifestage', null),
   ('culture', 'Culture & Heritage', 'the soul of a place', 'preview', '#7A5BA8', false, 'culture', null),
   ('deepdive', 'Cultural Deep Dives', 'beneath the surface', 'preview', '#6B4F9E', false, 'culture', null),
   ('pilgrimage', 'Religious & Pilgrimage', 'the road as devotion', 'preview', '#8C6B4F', false, 'culture', null),
-  ('entertainment', 'Live Entertainment', 'the lights come up', 'preview', '#C2562E', false, 'culture', null),
+  ('entertainment', 'Global Live Entertainment', 'the lights come up', 'preview', '#C2562E', false, 'entertainment', null),
+  ('culinary', 'Culinary Experiences', 'a table worth the flight', 'preview', '#9C5B3B', false, 'culinary', null),
+  ('sports', 'Individual Sports', 'your sport, somewhere new', 'preview', '#3C7E55', false, 'sports', null),
+  ('spectator', 'Sports Spectator Travel', 'from the stands', 'preview', '#2C6E68', false, 'sports', null),
   ('nightlife', 'Nightlife & City', 'the city after dark', 'preview', '#3C3C5C', false, 'culture', null),
-  ('sports', 'Sports Travel', 'where the action is', 'preview', '#3C7E55', false, 'sports', null),
-  ('spectator', 'Spectator Sports Travel', 'from the stands', 'preview', '#2C6E68', false, 'sports', null),
+  ('olympic', 'Olympic Travel', 'the world’s stage', 'preview', '#C2562E', false, 'sports', null),
   ('prosports', 'Pro Sports Team Travel', 'follow the pros', 'preview', '#B07A3C', false, 'sports', null),
   ('compsports', 'Competitive Sports Team Travel', 'travel to compete', 'preview', '#2E6E8C', false, 'sports', null),
   ('sailing', 'Sailing Charters', 'wind in your favor', 'preview', '#2E6E8C', false, 'water', null),
   ('yacht', 'Yacht Charters', 'the open sea, served well', 'preview', '#1F5C73', true, 'water', null),
-  ('wine', 'Wine & Whiskey/Spirits Tours', 'the world, one glass at a time', 'live', '#7B3F52', false, 'culture', null)
+  ('wine', 'Wine & Whiskey/Spirits Tours', 'the world, one glass at a time', 'live', '#7B3F52', false, 'culinary', null)
 on conflict (id) do update set
   name = excluded.name, signature = excluded.signature, status = excluded.status,
   accent = excluded.accent, is_lux = excluded.is_lux, grp = excluded.grp, data = excluded.data;
@@ -51,7 +58,7 @@ on conflict (id) do update set
 -- insert-and-upsert only, so a removed interest would linger in Postgres and —
 -- because the app reads DB-first with the bundle only as fallback — keep showing
 -- in production after it had been deleted from the source. Silent and confusing.
-delete from public.special_interests where id not in ('ultra', 'tropical', 'romance', 'safari', 'expedition', 'adventure', 'liveaboard', 'river', 'diveglobal', 'ocean', 'wellness', 'wildlife', 'glamping', 'family', 'group', 'hiking', 'ski', 'olympic', 'senior', 'culinary', 'culture', 'deepdive', 'pilgrimage', 'entertainment', 'nightlife', 'sports', 'spectator', 'prosports', 'compsports', 'sailing', 'yacht', 'wine');
+delete from public.special_interests where id not in ('ultra', 'tropical', 'romance', 'safari', 'expedition', 'ski', 'golf', 'rail', 'barge', 'privatejet', 'caravan', 'overland', 'motoring', 'adventure', 'hiking', 'liveaboard', 'river', 'diveglobal', 'ocean', 'wellness', 'wildlife', 'glamping', 'family', 'group', 'senior', 'culture', 'deepdive', 'pilgrimage', 'entertainment', 'culinary', 'sports', 'spectator', 'nightlife', 'olympic', 'prosports', 'compsports', 'sailing', 'yacht', 'wine');
 
 -- Activities ------------------------------------------------------------------
 -- Laddered experiences per Special Interest. si_id is a plain key (not all

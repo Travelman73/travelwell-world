@@ -1,31 +1,135 @@
 {
   "special_interests": [
-    { "id": "sailing", "name": "Sailing Charters", "sig": "wind in your favor", "status": "preview", "accent": "#2E6E8C", "lux": false, "group": "water" },
-    { "id": "yacht", "name": "Yacht Charters", "sig": "the open sea, served well", "status": "preview", "accent": "#1F5C73", "lux": true, "group": "water" },
-    { "id": "wine", "name": "Wine & Whiskey/Spirits Tours", "sig": "the world, one glass at a time", "status": "live", "accent": "#7B3F52", "lux": false, "group": "culture" }
+    {
+      "id": "sailing",
+      "name": "Sailing Charters",
+      "sig": "wind in your favor",
+      "status": "preview",
+      "accent": "#2E6E8C",
+      "lux": false,
+      "group": "water"
+    },
+    {
+      "id": "yacht",
+      "name": "Yacht Charters",
+      "sig": "the open sea, served well",
+      "status": "preview",
+      "accent": "#1F5C73",
+      "lux": true,
+      "group": "water"
+    },
+    {
+      "id": "wine",
+      "name": "Wine & Whiskey/Spirits Tours",
+      "sig": "the world, one glass at a time",
+      "status": "live",
+      "accent": "#7B3F52",
+      "lux": false,
+      "group": "culinary"
+    }
   ],
   "activities": {
     "sailing": [
-      { "id": "skippered-charter", "name": "Skippered day charter", "well": "activities", "line": "Out for the day with a skipper at the helm" },
-      { "id": "bareboat-sailing", "name": "Bareboat charter", "well": "move", "line": "Captain your own sailboat, the freedom of the wind" },
-      { "id": "crewed-sailing", "name": "Crewed sailing yacht", "well": "move", "line": "Your own yacht and crew for the week" },
-      { "id": "flotilla", "name": "Flotilla sailing", "well": "activities", "line": "Island-hop in a small, friendly fleet" },
-      { "id": "sailing-school", "name": "Sailing school", "well": "activities", "line": "Learn to sail with certified instructors" },
-      { "id": "marina-stay", "name": "Marina-side stay", "well": "stay", "line": "Wake up on the water, dock to dock" }
+      {
+        "id": "skippered-charter",
+        "name": "Skippered day charter",
+        "well": "activities",
+        "line": "Out for the day with a skipper at the helm"
+      },
+      {
+        "id": "bareboat-sailing",
+        "name": "Bareboat charter",
+        "well": "move",
+        "line": "Captain your own sailboat, the freedom of the wind"
+      },
+      {
+        "id": "crewed-sailing",
+        "name": "Crewed sailing yacht",
+        "well": "move",
+        "line": "Your own yacht and crew for the week"
+      },
+      {
+        "id": "flotilla",
+        "name": "Flotilla sailing",
+        "well": "activities",
+        "line": "Island-hop in a small, friendly fleet"
+      },
+      {
+        "id": "sailing-school",
+        "name": "Sailing school",
+        "well": "activities",
+        "line": "Learn to sail with certified instructors"
+      },
+      {
+        "id": "marina-stay",
+        "name": "Marina-side stay",
+        "well": "stay",
+        "line": "Wake up on the water, dock to dock"
+      }
     ],
     "yacht": [
-      { "id": "superyacht-charter", "name": "Superyacht charter", "well": "move", "line": "A superyacht and full crew, nothing held back" },
-      { "id": "crewed-motor-yacht", "name": "Crewed motor yacht", "well": "move", "line": "Captain, crew, and the run of the coast" },
-      { "id": "day-motor-charter", "name": "Day motor charter", "well": "move", "line": "A day on the water, captain included" },
-      { "id": "marina-berth", "name": "Marina berth & stay", "well": "stay", "line": "Step off the deck into the harbor town" }
+      {
+        "id": "superyacht-charter",
+        "name": "Superyacht charter",
+        "well": "move",
+        "line": "A superyacht and full crew, nothing held back"
+      },
+      {
+        "id": "crewed-motor-yacht",
+        "name": "Crewed motor yacht",
+        "well": "move",
+        "line": "Captain, crew, and the run of the coast"
+      },
+      {
+        "id": "day-motor-charter",
+        "name": "Day motor charter",
+        "well": "move",
+        "line": "A day on the water, captain included"
+      },
+      {
+        "id": "marina-berth",
+        "name": "Marina berth & stay",
+        "well": "stay",
+        "line": "Step off the deck into the harbor town"
+      }
     ],
     "wine": [
-      { "id": "wine-country-tour", "name": "Wine country tour", "well": "activities", "line": "Vineyard tastings from Napa to Bordeaux to Mendoza" },
-      { "id": "whisky-trail", "name": "Whisky & whiskey trail", "well": "activities", "line": "Scotch and Irish whiskey trails with the makers" },
-      { "id": "world-distilleries", "name": "World distilleries", "well": "activities", "line": "Japanese whisky, rum, tequila and cognac journeys" },
-      { "id": "harvest-experience", "name": "Harvest experience", "well": "activities", "line": "Hands in the harvest - crush, blend, foot-tread" },
-      { "id": "vineyard-estate-stay", "name": "Vineyard estate stay", "well": "stay", "line": "Sleep among the vines" },
-      { "id": "rum-and-sail", "name": "Rum & sail", "well": "activities", "line": "Caribbean distillery tour plus a sunset sail" }
+      {
+        "id": "wine-country-tour",
+        "name": "Wine country tour",
+        "well": "activities",
+        "line": "Vineyard tastings from Napa to Bordeaux to Mendoza"
+      },
+      {
+        "id": "whisky-trail",
+        "name": "Whisky & whiskey trail",
+        "well": "activities",
+        "line": "Scotch and Irish whiskey trails with the makers"
+      },
+      {
+        "id": "world-distilleries",
+        "name": "World distilleries",
+        "well": "activities",
+        "line": "Japanese whisky, rum, tequila and cognac journeys"
+      },
+      {
+        "id": "harvest-experience",
+        "name": "Harvest experience",
+        "well": "activities",
+        "line": "Hands in the harvest - crush, blend, foot-tread"
+      },
+      {
+        "id": "vineyard-estate-stay",
+        "name": "Vineyard estate stay",
+        "well": "stay",
+        "line": "Sleep among the vines"
+      },
+      {
+        "id": "rum-and-sail",
+        "name": "Rum & sail",
+        "well": "activities",
+        "line": "Caribbean distillery tour plus a sunset sail"
+      }
     ]
   }
 }

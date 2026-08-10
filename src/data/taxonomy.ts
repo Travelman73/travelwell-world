@@ -121,45 +121,102 @@ export interface SpecialInterest {
    *  events, map, providers, faq, connective tissue, ship-ready). Mirrors
    *  `destinations.data` — migration 0012. */
   data?: SiData;
+  /**
+   * OFF THE BOARD, but NOT deleted. David's 2026-08-10 board collapsed eight
+   * sports interests into two and dropped nightlife, and was explicit that the
+   * old rows must not be deleted on his word alone — they're flagged for a
+   * screen share instead. So they stay in `SIS`, which matters concretely: the
+   * generated seed carries a `delete ... where id not in (...)`, so removing a
+   * row here really does drop it from Postgres.
+   *
+   * Retired rows keep their database row and their history, and are filtered out
+   * of every board, counter and picker by `boardSis()`. Un-retiring is deleting
+   * one word. Deleting for real is a separate, deliberate decision.
+   */
+  retired?: boolean;
 }
 
+/**
+ * THE BOARD — 35 Special Interests in 10 categories (David-locked, 2026-08-10:
+ * "This is locked and it will not move again"). Ordered by category, and within
+ * a category in his order, so the page renders the board as he wrote it.
+ *
+ * Three rows are RENAMES of existing ids, not new rows — keeping the id keeps the
+ * activities, region rankings and provider links attached:
+ *   sports  -> "Individual Sports"        (participatory: the traveler takes part)
+ *   spectator -> "Sports Spectator Travel" (watching; the Olympic Games are event
+ *                rows underneath this, not an interest of their own)
+ *   entertainment -> "Global Live Entertainment"
+ *
+ * Four rows are RETIRED, not deleted — see `retired` on the interface. `nightlife`
+ * became a City Well whisper; `olympic`/`prosports`/`compsports` fell out of the
+ * sports collapse and need trademark clearance before any public use.
+ */
 const BASE_SIS: SpecialInterest[] = [
-  /* Premium & Signature */
+  /* 1 — Premium & Signature (7) */
   { id: "ultra", name: "Ultra-Luxury", sig: "the extraordinary", status: "live", accent: "#A8873F", lux: true, group: "premium" },
   { id: "tropical", name: "Tropical Islands", sig: "barefoot luxury", status: "live", accent: "#2E8C8C", lux: false, group: "premium" },
   { id: "romance", name: "Romance, Marriages & Honeymoons", sig: "the two of you", status: "live", accent: "#A8527A", lux: false, group: "premium" },
   { id: "safari", name: "Safari Adventures", sig: "the wild calling", status: "live", accent: "#B07A3C", lux: false, group: "premium" },
   { id: "expedition", name: "Global Expedition Adventures", sig: "to the edges of the map", status: "live", accent: "#5C5C5C", lux: false, group: "premium" },
-  { id: "adventure", name: "Global Adventures", sig: "the world, wide open", status: "preview", accent: "#3C7E55", lux: false, group: "premium" },
-  /* Water & Cruise */
+  { id: "ski", name: "Winter/Ski", sig: "the first track", status: "live", accent: "#5B86A8", lux: false, group: "premium" },
+  { id: "golf", name: "Golf Globally", sig: "the round of your life", status: "preview", accent: "#2F6B3A", lux: false, group: "premium" },
+
+  /* 2 — Journeys of a Lifetime (6) — the ultra-premium halo: the journey IS the
+     destination. All net-new; dossiers are being written. */
+  { id: "rail", name: "Global Rail Journeys", sig: "the long way, beautifully", status: "preview", accent: "#6B5B4F", lux: false, group: "journeys" },
+  { id: "barge", name: "Hotel-Barge & Canal Cruising", sig: "six knots, no hurry", status: "preview", accent: "#4F7A8C", lux: false, group: "journeys" },
+  { id: "privatejet", name: "Private-Jet Expeditions", sig: "the world in one arc", status: "preview", accent: "#8C7A4F", lux: false, group: "journeys" },
+  { id: "caravan", name: "Desert & Camel Caravans", sig: "dunes at first light", status: "preview", accent: "#C08A4A", lux: false, group: "journeys" },
+  { id: "overland", name: "Luxury Overland Expeditions", sig: "the road as the journey", status: "preview", accent: "#8A6234", lux: false, group: "journeys" },
+  { id: "motoring", name: "Classic-Car & Motorcycle Touring", sig: "the open road, in something special", status: "preview", accent: "#9E3B2E", lux: false, group: "journeys" },
+
+  /* 3 — Adventure & Active (2) */
+  { id: "adventure", name: "Global Adventures", sig: "the world, wide open", status: "preview", accent: "#3C7E55", lux: false, group: "adventure" },
+  { id: "hiking", name: "Hiking & Trekking", sig: "the trail ahead", status: "preview", accent: "#4A8C5E", lux: false, group: "adventure" },
+
+  /* 4 — Water & Cruise (6) — sailing + yacht arrive from special-interests.json */
   { id: "liveaboard", name: "Dive Liveaboards", sig: "sleep above the reef", status: "live", accent: "#2E6E8C", lux: false, group: "water" },
   { id: "river", name: "River Cruises", sig: "the slow current", status: "live", accent: "#5B86A8", lux: false, group: "water" },
   { id: "diveglobal", name: "Dive Globally", sig: "the world below", status: "preview", accent: "#1F6E8C", lux: false, group: "water" },
   { id: "ocean", name: "Ocean & Watersports", sig: "the open water", status: "preview", accent: "#2C6E68", lux: false, group: "water" },
-  /* Nature & Wellbeing */
+
+  /* 5 — Nature & Wellbeing (3) */
   { id: "wellness", name: "Wellness, Spa & Retreats", sig: "coming home to yourself", status: "preview", accent: "#4F8C7A", lux: false, group: "nature" },
   { id: "wildlife", name: "Wildlife & Nature", sig: "wild places, up close", status: "preview", accent: "#4A7A3C", lux: false, group: "nature" },
   { id: "glamping", name: "Global Glamping", sig: "wild, but well-appointed", status: "preview", accent: "#7A6B4F", lux: false, group: "nature" },
-  /* Life-stage & Active */
-  { id: "family", name: "Family Travel", sig: "everyone, together", status: "preview", accent: "#C98A2E", lux: false, group: "active" },
-  { id: "group", name: "Group Travel", sig: "better, together", status: "preview", accent: "#C27A3C", lux: false, group: "active" },
-  { id: "hiking", name: "Hiking & Trekking", sig: "the trail ahead", status: "preview", accent: "#3C7E55", lux: false, group: "active" },
-  { id: "ski", name: "Winter/Ski", sig: "the first track", status: "live", accent: "#5B86A8", lux: false, group: "active" },
-  { id: "olympic", name: "Olympic Travel", sig: "the world's stage", status: "preview", accent: "#C2562E", lux: false, group: "active" },
-  { id: "senior", name: "Senior Travel", sig: "unhurried, well-earned", status: "preview", accent: "#7A5B3B", lux: false, group: "active" },
-  /* Culture & Entertainment */
-  { id: "culinary", name: "Culinary Experiences", sig: "a table worth the flight", status: "preview", accent: "#9C5B3B", lux: false, group: "culture" },
+
+  /* 6 — Life-Stage (3) */
+  { id: "family", name: "Family Travel", sig: "everyone, together", status: "preview", accent: "#C98A2E", lux: false, group: "lifestage" },
+  { id: "group", name: "Group Travel", sig: "better, together", status: "preview", accent: "#C27A3C", lux: false, group: "lifestage" },
+  { id: "senior", name: "Senior Travel", sig: "unhurried, well-earned", status: "preview", accent: "#7A5B3B", lux: false, group: "lifestage" },
+
+  /* 7 — Culture, Heritage & Pilgrimage (3) */
   { id: "culture", name: "Culture & Heritage", sig: "the soul of a place", status: "preview", accent: "#7A5BA8", lux: false, group: "culture" },
   { id: "deepdive", name: "Cultural Deep Dives", sig: "beneath the surface", status: "preview", accent: "#6B4F9E", lux: false, group: "culture" },
   { id: "pilgrimage", name: "Religious & Pilgrimage", sig: "the road as devotion", status: "preview", accent: "#8C6B4F", lux: false, group: "culture" },
-  { id: "entertainment", name: "Live Entertainment", sig: "the lights come up", status: "preview", accent: "#C2562E", lux: false, group: "culture" },
-  { id: "nightlife", name: "Nightlife & City", sig: "the city after dark", status: "preview", accent: "#3C3C5C", lux: false, group: "culture" },
-  /* Sports */
-  { id: "sports", name: "Sports Travel", sig: "where the action is", status: "preview", accent: "#3C7E55", lux: false, group: "sports" },
-  { id: "spectator", name: "Spectator Sports Travel", sig: "from the stands", status: "preview", accent: "#2C6E68", lux: false, group: "sports" },
-  { id: "prosports", name: "Pro Sports Team Travel", sig: "follow the pros", status: "preview", accent: "#B07A3C", lux: false, group: "sports" },
-  { id: "compsports", name: "Competitive Sports Team Travel", sig: "travel to compete", status: "preview", accent: "#2E6E8C", lux: false, group: "sports" },
+
+  /* 8 — Global Entertainment (1) — the TLEU front door */
+  { id: "entertainment", name: "Global Live Entertainment", sig: "the lights come up", status: "preview", accent: "#C2562E", lux: false, group: "entertainment" },
+
+  /* 9 — Culinary, Wine & Spirits (2) — wine arrives from special-interests.json */
+  { id: "culinary", name: "Culinary Experiences", sig: "a table worth the flight", status: "preview", accent: "#9C5B3B", lux: false, group: "culinary" },
+
+  /* 10 — Sports (2) — collapsed from eight. Participate, or watch. */
+  { id: "sports", name: "Individual Sports", sig: "your sport, somewhere new", status: "preview", accent: "#3C7E55", lux: false, group: "sports" },
+  { id: "spectator", name: "Sports Spectator Travel", sig: "from the stands", status: "preview", accent: "#2C6E68", lux: false, group: "sports" },
+
+  /* ── OFF THE BOARD — retired, NOT deleted ────────────────────────────────
+     These keep their Postgres rows (the seed deletes any id missing from this
+     array) and are filtered out of every board, counter and picker. David asked
+     that the sports collapse be walked through on a screen share before anything
+     is really removed, so removal stays his call, not a side effect of this edit. */
+  { id: "nightlife", name: "Nightlife & City", sig: "the city after dark", status: "preview", accent: "#3C3C5C", lux: false, group: "culture", retired: true },
+  { id: "olympic", name: "Olympic Travel", sig: "the world\u2019s stage", status: "preview", accent: "#C2562E", lux: false, group: "sports", retired: true },
+  { id: "prosports", name: "Pro Sports Team Travel", sig: "follow the pros", status: "preview", accent: "#B07A3C", lux: false, group: "sports", retired: true },
+  { id: "compsports", name: "Competitive Sports Team Travel", sig: "travel to compete", status: "preview", accent: "#2E6E8C", lux: false, group: "sports", retired: true },
 ];
+
 
 // Canonical SIs + David's additive drop (folded in at module load).
 export const SIS: SpecialInterest[] = [...BASE_SIS, ...(siExtra.special_interests as SpecialInterest[])];
@@ -176,7 +233,14 @@ export const SI_TAGLINE_SUBJECT: Record<string, string> = {
   river: "River Cruising", expedition: "Expedition", ski: "Winter", ultra: "Ultra-Luxury",
   adventure: "Adventure", diveglobal: "Diving", ocean: "Watersports", wellness: "Wellness",
   wildlife: "Wildlife", culinary: "Culinary", culture: "Culture", family: "Family",
-  hiking: "Hiking", olympic: "the Olympics", entertainment: "Live Entertainment",
+  hiking: "Hiking", entertainment: "Live Entertainment",
+  // The 2026-08-10 board's new interests. Tight nouns, not the full names —
+  // "If It's Golf… TravelWell", never "If It's Golf Globally… TravelWell".
+  golf: "Golf", rail: "Rail", barge: "Canal Cruising", privatejet: "Private Jets",
+  caravan: "the Desert", overland: "Overland", motoring: "the Open Road",
+  wine: "Wine", sailing: "Sailing", yacht: "Yachts", spectator: "the Big Game",
+  // `olympic` is retired and needs trademark clearance before any public use —
+  // deliberately no slogan subject.
 };
 /**
  * The tagline subject for an SI. Precedence: the hand-locked map (David's own
@@ -196,13 +260,18 @@ export const SAFER_TAGLINE_SUBJECT = "Safer Informed Travel";
 
 export interface SiGroup { id: string; name: string; blurb: string; }
 export const SI_GROUPS: SiGroup[] = [
-  { id: "premium", name: "Premium & Signature", blurb: "Our flagship ways to travel — live now." },
+  { id: "premium", name: "Premium & Signature", blurb: "Our flagship ways to travel." },
+  { id: "journeys", name: "Journeys of a Lifetime", blurb: "Where the journey itself is the destination." },
+  { id: "adventure", name: "Adventure & Active", blurb: "The world, on your own two feet." },
   { id: "water", name: "Water & Cruise", blurb: "On, under and beside the water." },
   { id: "nature", name: "Nature & Wellbeing", blurb: "Wild places, and coming home to yourself." },
-  { id: "active", name: "Life-stage & Active", blurb: "For every age, pace and energy." },
-  { id: "culture", name: "Culture & Entertainment", blurb: "The soul of a place, and its nightlife." },
-  { id: "sports", name: "Sports", blurb: "Play it, watch it, travel for it." },
+  { id: "lifestage", name: "Life-Stage", blurb: "For every age, pace and party." },
+  { id: "culture", name: "Culture, Heritage & Pilgrimage", blurb: "The soul of a place, and the road to it." },
+  { id: "entertainment", name: "Global Entertainment", blurb: "The lights come up, wherever you are." },
+  { id: "culinary", name: "Culinary, Wine & Spirits", blurb: "A table, a vineyard, a distillery worth the flight." },
+  { id: "sports", name: "Sports", blurb: "Take part, or take a seat." },
 ];
+
 
 export interface Well {
   id: string;
@@ -225,6 +294,10 @@ export const WELLS: Well[] = [
   { id: "shop", name: "Shop-Well", tag: "Taking it home", body: "Memory", status: "live", icon: "gift" },
   { id: "insure", name: "Insure-Well", tag: "Peace of mind", body: "Immunity", status: "soon", icon: "shield" },
   { id: "ship", name: "Ship-Well", tag: "Sending it ahead", body: "Circulation", status: "soon", icon: "box" },
+  // The 13th Well (David, 2026-08-10). ~4 million people a year travel with a pet
+  // and nobody serves them — this is a real lane, not a nicety. `soon` until it's
+  // built; flip to `live` when it has providers behind it.
+  { id: "pets", name: "Pets-Well", tag: "Traveling with your companion", body: "Loyalty", status: "soon", icon: "heart" },
 ];
 
 export const LUX_WELLS: Well[] = [
@@ -317,6 +390,13 @@ export const WELL_AUDIENCE: Record<string, WellAudience> = {
   security: "ultra",
 };
 export const wellAudience = (id: string): WellAudience | undefined => WELL_AUDIENCE[id];
+/**
+ * THE BOARD — every interest a traveler can see or pick. Retired rows stay in
+ * `SIS` (so the seed keeps their Postgres rows) but must never reach a tile, a
+ * counter, a picker or Atlas. Always read the board through this, not `SIS`.
+ */
+export const boardSis = (sis: { retired?: boolean }[] = SIS) => sis.filter((s) => !s.retired);
+
 export const siById = (id: string) => SIS.find((s) => s.id === id);
 export const regionByCode = (code: string) => REGIONS.find((r) => r.code === code);
 

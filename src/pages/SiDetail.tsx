@@ -5,7 +5,7 @@ import { Tagline } from "@/components/ui/primitives";
 import { siJsonLd, useJsonLd } from "@/lib/jsonld";
 import { type Provider, type Activity } from "@/data/places";
 import { siImg, regionImg } from "@/lib/images";
-import { useUnsplashImage } from "@/lib/unsplash";
+import { useSiImage } from "@/lib/unsplash";
 import { useStore } from "@/store/useStore";
 import { useSpecialInterests, useActivities, useRegions, useProviders, useWells, useSiCount } from "@/store/useCatalog";
 import { cx } from "@/lib/utils";
@@ -244,7 +244,9 @@ export default function SiDetail() {
   const isSchema = si.status !== "live";
   const ed = EDITORIAL[si.id];
   const siCount = useSiCount();
-  const heroPhoto = useUnsplashImage(si.name, siImg(si.id, 1800), 1800);
+  // Honors the dossier's editorial hero (data.hero) before falling back to a
+  // name-matched photo — the interest's own pick wins, same rule as destinations.
+  const heroPhoto = useSiImage(si, 1800, siImg(si.id, 1800));
   // TouristTrip + FAQPage + Event, straight off the dossier (layers 7 and 4b).
   useJsonLd(siJsonLd(si, typeof window !== "undefined" ? window.location.href : ""));
 

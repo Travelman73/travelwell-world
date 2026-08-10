@@ -86,6 +86,24 @@ export interface DestinationHero {
   credit?: UnsplashCredit;
 }
 
+/**
+ * The same editorial hero override, for a Special Interest. David is naming a
+ * hero for all 35 interests in `data.hero` — without this the SI page ignored it
+ * and every new interest sat on the generic mountain photo.
+ *
+ * Precedence: `data.hero.url` (pinned) > `data.hero.query` > the interest name.
+ */
+export function useSiImage(
+  si: { name: string; data?: Record<string, unknown> },
+  width: number,
+  fallback: string,
+): { src: string; credit?: UnsplashCredit } {
+  const hero = (si.data as { hero?: DestinationHero } | undefined)?.hero;
+  const pinned = hero?.url && /^https:\/\//i.test(hero.url) ? hero.url : undefined;
+  const auto = useUnsplashImage(pinned ? "" : (hero?.query || si.name), fallback, width);
+  return pinned ? { src: pinned, credit: hero?.credit } : auto;
+}
+
 export function useDestinationImage(
   dest: { name: string; country: string; img: string; data?: Record<string, unknown> },
   width: number,
