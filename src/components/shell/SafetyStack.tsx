@@ -9,6 +9,15 @@ import { useStore } from "@/store/useStore";
  *   • Human Safety → nearest hospitals / urgent care / pharmacies
  *   • Pet Safety   → nearest vets / animal ER / groomers  (~4M travellers bring pets)
  *
+ * FOOTPRINT (2026-08-10): the stack rests as icon-only circles and expands to its
+ * full labels on hover, focus or tap. Measured, the labelled stack was 187px wide
+ * and sat over the interest grid at EVERY width (65px into it at 1440, 145px at
+ * 1280, the whole first tile at 1024) and over the journey selection bar
+ * everywhere. Corners don't fix that — only size does. The labels stay in the DOM
+ * throughout, so a screen reader always reads "Human Safety", and every button
+ * keeps its own aria-label. EMERGENCY stays ONE TAP: it is never hidden behind a
+ * toggle, only unlabelled until you reach for it.
+ *
  * HONEST BY DESIGN: the green finders open a **maps search near the traveller**
  * (no data invented, no geolocation stored). This is a locator — NOT the
  * aspirational pet-safety *engine* (airline × import rules), which stays roadmap.
@@ -30,14 +39,17 @@ const PET = [
 ];
 
 export function SafetyStack() {
-  const { openPanel, panel } = useStore();
+  const { openPanel, panel, journeySIs } = useStore();
   const [sheet, setSheet] = useState<null | "human" | "pet">(null);
   if (panel === "emergency") return null; // the full panel is open; don't double up
 
   const items = sheet === "human" ? HUMAN : sheet === "pet" ? PET : [];
 
   return (
-    <div className="tw-safety-stack">
+    // `data-lifted` raises the stack clear of the journey selection bar, which is
+    // full-width and fixed to the same edge — the stack was sitting on top of the
+    // traveler's own picks at every screen size.
+    <div className="tw-safety-stack" data-lifted={journeySIs.length > 0 ? "true" : undefined} data-open={sheet ? "true" : undefined}>
       {sheet && (
         <>
           <div className="tw-safety-dismiss" onClick={() => setSheet(null)} aria-hidden="true" />
@@ -57,14 +69,17 @@ export function SafetyStack() {
 
       <button className="tw-safety-btn tw-safety-btn--green" aria-expanded={sheet === "human"} aria-haspopup="menu"
         onClick={() => setSheet(sheet === "human" ? null : "human")}>
-        <span className="tw-safety-btn__cross"><Icon name="cross" small /></span> Human Safety
+        <span className="tw-safety-btn__cross"><Icon name="cross" small /></span>
+        <span className="tw-safety-btn__label">Human Safety</span>
       </button>
       <button className="tw-safety-btn tw-safety-btn--green" aria-expanded={sheet === "pet"} aria-haspopup="menu"
         onClick={() => setSheet(sheet === "pet" ? null : "pet")}>
-        <span className="tw-safety-btn__cross"><Icon name="cross" small /></span> Pet Safety
+        <span className="tw-safety-btn__cross"><Icon name="paw" small /></span>
+        <span className="tw-safety-btn__label">Pet Safety</span>
       </button>
       <button className="tw-safety-btn tw-safety-btn--red" onClick={() => openPanel("emergency")} aria-label="Emergency help — call for help now">
-        <Icon name="sos" small /> EMERGENCY
+        <Icon name="sos" small />
+        <span className="tw-safety-btn__label">EMERGENCY</span>
       </button>
     </div>
   );

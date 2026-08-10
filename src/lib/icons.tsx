@@ -38,6 +38,9 @@ export const ICON_PATHS: Record<string, string> = {
   calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/>',
   check: '<path d="M5 12l5 5L20 6"/>',
   plus: '<path d="M12 5v14M5 12h14"/>',
+  // Pet Safety's glyph. The safety stack rests unlabelled, so its two green
+  // buttons must be tellable apart by shape alone — two identical crosses aren't.
+  paw: '<circle cx="7" cy="10.5" r="1.9"/><circle cx="11" cy="7.6" r="2"/><circle cx="15.4" cy="8" r="2"/><circle cx="18.8" cy="11.6" r="1.9"/><path d="M12.6 12.4c-2.2 0-4.1 1.7-4.8 3.5-.6 1.7.5 3.3 2.2 3.3.9 0 1.7-.3 2.6-.3s1.7.3 2.6.3c1.7 0 2.8-1.6 2.2-3.3-.7-1.8-2.6-3.5-4.8-3.5z"/>',
   sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2m20 0h-2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/>',
   message: '<path d="M4 5h16v11H8l-4 4z"/>',
   info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',

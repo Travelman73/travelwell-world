@@ -443,22 +443,41 @@
    end side. Safer-Informed: calm, labelled, help one tap away. WCAG AA: real
    labelled buttons, ≥44px, visible focus, colour never the only signal. */
 .tw-safety-stack {
-  position: fixed; inset-block-end: 22px; inset-inline-start: 22px; z-index: 94;
+  position: fixed; inset-block-end: 22px; inset-inline-start: 12px; z-index: 94;
   display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+  transition: inset-block-end .3s cubic-bezier(.4,0,.2,1);
 }
+/* The journey selection bar is fixed to the same edge and full width, so the
+   stack has to step above it or it covers the traveler's own picks. */
+.tw-safety-stack[data-lifted="true"] { inset-block-end: 104px; }
 .tw-safety-btn {
   display: inline-flex; align-items: center; gap: 8px;
-  min-height: 44px; padding: 0 16px; border-radius: 999px; border: 0;
+  min-height: 44px; padding: 0 13px; border-radius: 999px; border: 0;
   font-family: var(--font-sans); font-weight: 700; font-size: 14px; color: #fff;
-  box-shadow: var(--e3); cursor: pointer; white-space: nowrap;
+  cursor: pointer; box-shadow: var(--e3); white-space: nowrap;
   transition: transform .15s ease, filter .15s ease;
 }
+/* Icon-only at rest; the label unfurls on hover, keyboard focus, or when its
+   sheet is open. The text is never removed from the DOM — it is clipped, so
+   assistive tech still reads it and the buttons keep their own aria-labels. */
+.tw-safety-btn__label {
+  display: inline-block; max-width: 0; opacity: 0; overflow: hidden;
+  transition: max-width .22s cubic-bezier(.4,0,.2,1), opacity .18s ease;
+}
+.tw-safety-btn:hover .tw-safety-btn__label,
+.tw-safety-btn:focus-visible .tw-safety-btn__label,
+.tw-safety-btn[aria-expanded="true"] .tw-safety-btn__label,
+.tw-safety-stack[data-open="true"] .tw-safety-btn__label { max-width: 12rem; opacity: 1; }
 @media (hover: hover) { .tw-safety-btn:hover { transform: translateY(-2px); filter: brightness(1.06); } }
 .tw-safety-btn:focus-visible { outline: 3px solid #fff; outline-offset: -1px; box-shadow: 0 0 0 5px rgba(17,17,17,.35), var(--e3); }
 .tw-safety-btn__cross { display: grid; place-items: center; }
 .tw-safety-btn__cross .ic { width: 17px; height: 17px; }
 .tw-safety-btn--green { background: #15803d; }              /* medical green, white cross — AA on white text */
-.tw-safety-btn--red { background: var(--destructive); min-height: 52px; padding: 0 22px; font-size: 16px; letter-spacing: .04em; }
+/* EMERGENCY is never hidden behind a toggle and never shrinks below the others —
+   it stays the biggest, reddest, most thumb-reachable thing here, and one tap. */
+/* Taller than the others (bigger thumb target), but the same width at rest so
+   the collapsed stack is one narrow column and clears the content grid. */
+.tw-safety-btn--red { background: var(--destructive); min-height: 52px; padding: 0 13px; font-size: 16px; letter-spacing: .04em; }
 .tw-safety-btn--red .ic { width: 18px; height: 18px; }
 
 /* the "find nearby" sheet (maps launcher) that pops above the green buttons */
@@ -470,7 +489,10 @@
 .tw-safety-sheet__link .ic { color: #15803d; width: 18px; height: 18px; }
 .tw-safety-sheet__note { font-size: 12px; line-height: 1.4; color: var(--muted-foreground); padding: 4px 10px 6px; max-width: 240px; }
 @media (max-width: 700px) {
-  .tw-safety-stack { inset-block-end: 16px; inset-inline-start: 16px; gap: 7px; }
+  .tw-safety-stack { inset-block-end: 16px; inset-inline-start: 12px; gap: 7px; }
+  /* The selection bar wraps on a phone (~154px tall, vs ~73px on desktop), so
+     the lift has to clear the tall one. */
+  .tw-safety-stack[data-lifted="true"] { inset-block-end: 178px; }
 }
 
 /* ── Vision loop — Atlas writes the dream back, the traveler confirms ────── */
