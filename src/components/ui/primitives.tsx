@@ -100,12 +100,21 @@ export function Card({ children, className, isPreview }: { children: ReactNode; 
  * ™. English-only — a coined brand line, and the wording must be EXACT: the
  * ellipsis is part of the mark, a variant is a different mark.
  */
+/**
+ * THE MARK. Exact wording every time — "If It's [X]… TravelWell.™"
+ *
+ * The ellipsis AND the closing full stop are part of it (David/attorney,
+ * 2026-08-10: "the wording is not adjustable"). We were rendering it without the
+ * full stop, on all 37 instances — a variant is a different mark, and using two
+ * forms weakens both. Fixed here, so every instance on the site is the same mark
+ * by build rather than by convention.
+ */
 export function Tagline({ subject, className }: { subject: string; className?: string }) {
   return (
     <p className={cx("tagline", className)}>
       If It&rsquo;s {subject}&hellip;{" "}
       <span className="tagline__mark">
-        Travel<span className="tagline__well">Well</span>
+        Travel<span className="tagline__well">Well</span>.
         <span className="tagline__tm" aria-hidden="true">&trade;</span>
       </span>
     </p>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Icon } from "@/lib/icons";
 import { useStore, type TripBlock } from "@/store/useStore";
-import { useWells, useRegionByCode } from "@/store/useCatalog";
+import { useWells, useRegionByCode, useLiveWellCount } from "@/store/useCatalog";
 import { Pill } from "@/components/ui/primitives";
 import { JourneyBar } from "@/components/ui/StepIndicator";
 import { cx, cap } from "@/lib/utils";
@@ -25,6 +25,7 @@ export default function Itinerary() {
   const navigate = useNavigate();
   const [whom, setWhom] = useState<string>("all");
   const covered = new Set(trip.map((b) => b.well)).size;
+  const liveWells = useLiveWellCount();
   const wells = useWells().filter((w) => !w.lux);
   const regionName = useRegionByCode(region || "05A")?.name || "East Africa";
 
@@ -91,7 +92,7 @@ export default function Itinerary() {
           <div className="it-summary">
             <div className="it-cov">
               <div className="it-cov__bar">{wells.map((w) => <i key={w.id} className={trip.some((b) => b.well === w.id) ? "on" : ""} />)}</div>
-              <span className="it-cov__label"><b>{covered} of 10 Wells</b> covered</span>
+              <span className="it-cov__label"><b>{covered} of {liveWells} Wells</b> covered</span>
             </div>
             <div className="it-statuses">
               <span className="it-stat"><span className="swatch" style={{ background: STATUS_SWATCH.confirmed }} /> {counts.confirmed} confirmed</span>
@@ -145,7 +146,7 @@ export default function Itinerary() {
 
         <aside className="it-side">
           <div className="it-panel">
-            <div className="it-panel__head"><Icon name="compass" /><h3>Well coverage</h3><Pill kind="gold">{covered}/10</Pill></div>
+            <div className="it-panel__head"><Icon name="compass" /><h3>Well coverage</h3><Pill kind="gold">{covered}/{liveWells}</Pill></div>
             <div className="it-panel__body">
               <div className="it-gap-grid">
                 {wells.map((w) => {

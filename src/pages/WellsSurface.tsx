@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Icon } from "@/lib/icons";
 import { WELL_DETAIL, type Provider, type Price } from "@/data/places";
 import { useStore } from "@/store/useStore";
-import { useWells, useProviders, useRegionByCode } from "@/store/useCatalog";
+import { useWells, useProviders, useRegionByCode, useLiveWellCount } from "@/store/useCatalog";
 import { WELL_AUDIENCE } from "@/data/taxonomy";
 import { matchProviders } from "@/lib/matching";
 import { track } from "@/lib/track";
@@ -80,6 +80,7 @@ export default function WellsSurface() {
 
   const wellCount = (id: string) => trip.filter((b) => b.well === id).length;
   const covered = new Set(trip.map((b) => b.well)).size;
+  const liveWells = useLiveWellCount();
 
   // "Considered" signal: switching Wells = browsing those providers.
   const browseWell = (wid: string) => {
@@ -193,10 +194,10 @@ export default function WellsSurface() {
       <div className="wp-continue">
         <div className="wp-continue__inner">
           <div className="wp-continue__summary">
-            <div className="wp-continue__cov" role="img" aria-label={`${covered} of 10 Wells covered`}>
+            <div className="wp-continue__cov" role="img" aria-label={`${covered} of ${liveWells} Wells covered`}>
               {standardWells.map((w) => <i key={w.id} className={trip.some((b) => b.well === w.id) ? "on" : ""} />)}
             </div>
-            <span className="wp-continue__text"><b>{covered}/10 Wells</b> covered · {trip.length} in your trip</span>
+            <span className="wp-continue__text"><b>{covered}/{liveWells} Wells</b> covered · {trip.length} in your trip</span>
           </div>
           <button className="btn btn-primary" onClick={() => navigate("/itinerary")}>Continue to Book It <Icon name="arrow" small /></button>
         </div>

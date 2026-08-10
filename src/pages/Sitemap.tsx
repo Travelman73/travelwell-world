@@ -20,7 +20,7 @@ type Node = { n: string; f: string; d: string; s?: string; child?: boolean };
 const MODS: { ic: string; t: string; c: string; nodes: Node[] }[] = [
   { ic: "compass", t: "Entry & Home", c: "Start here", nodes: [
     { n: "Home", f: "Home.html (index.html)", d: "live", s: "Hero · what-we-do · pick interests · Atlas" },
-    { n: "Plan Your Trip", f: "plan.html", d: "live", s: "Seasonal banner · 10-Well checklist" },
+    { n: "Plan Your Trip", f: "plan.html", d: "live", s: "Seasonal banner · Well-coverage checklist" },
   ] },
   { ic: "bag", t: "Onboarding · Travel ID", c: "Account", nodes: [
     { n: "Sign Up — 6-step wizard", f: "Sign Up.html", d: "flow", s: "Builds Travel Personality + budget ranges" },

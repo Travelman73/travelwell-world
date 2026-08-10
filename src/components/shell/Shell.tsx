@@ -1,6 +1,7 @@
 import { useEffect, Suspense } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "./Header";
+import { MottoBand } from "./MottoBand";
 import { MegaMenu } from "./MegaMenu";
 import { Footer } from "./Footer";
 import { Concierge } from "./Concierge";
@@ -116,6 +117,7 @@ export function Shell() {
     <>
       <a className="skip-link" href="#main">Skip to content</a>
       <Header />
+      <MottoBand />
       <MegaMenu />
       <main id="main" className="tw-main" data-page={slug}>
         <BackBar />

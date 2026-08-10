@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Icon } from "@/lib/icons";
 import { useStore } from "@/store/useStore";
-import { useWells } from "@/store/useCatalog";
+import { useWells, useLiveWellCount } from "@/store/useCatalog";
 import { cap } from "@/lib/utils";
 
 export function TripTray() {
@@ -9,6 +9,7 @@ export function TripTray() {
   const wells = useWells().filter((w) => !w.lux);
   const open = panel === "tray";
   const covered = new Set(trip.map((b) => b.well)).size;
+  const liveWells = useLiveWellCount();
 
   return (
     <div className="tw-tray" data-open={open} role="dialog" aria-modal="false" aria-label="Your Trip" aria-hidden={!open} {...(open ? {} : ({ inert: "" } as any))}>
@@ -16,7 +17,7 @@ export function TripTray() {
         <div>
           <div className="tw-concierge__title" style={{ fontSize: 18 }}>Your Trip</div>
           <div className="tw-concierge__sub">
-            {trip.length === 0 ? "Nothing yet — let's begin" : `${trip.length} added · ${covered}/10 Wells covered`}
+            {trip.length === 0 ? "Nothing yet — let's begin" : `${trip.length} added · ${covered}/${liveWells} Wells covered`}
           </div>
         </div>
         <button className="tw-iconbtn" aria-label="Close trip" style={{ width: 36, height: 36, border: 0, background: "var(--surface-alt)" }} onClick={closePanel}>
@@ -35,7 +36,7 @@ export function TripTray() {
           </div>
         ) : (
           <>
-            <div className="tw-trip-coverage" aria-label={`${covered} of 10 Wells covered`}>
+            <div className="tw-trip-coverage" aria-label={`${covered} of ${liveWells} Wells covered`}>
               {wells.map((w) => <i key={w.id} className={trip.some((b) => b.well === w.id) ? "on" : ""} />)}
             </div>
             {trip.map((b, i) => (

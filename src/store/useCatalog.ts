@@ -134,6 +134,14 @@ export const useRegionCount = () => useCatalog((s) => s.regions.length);
  * "Soon", so nobody is told something is bookable when it isn't.
  */
 export const useWellCount = () => useCatalog((s) => s.wells.length);
+/**
+ * LIVE Wells only — the denominator for trip COVERAGE ("3 of 10 Wells covered").
+ * Deliberately different from the published roster above: a traveler can only
+ * cover a Well that exists, so counting Insure/Ship/Pets here would make every
+ * trip look permanently incomplete. Roster = what we offer; live = what a trip
+ * can actually fill.
+ */
+export const useLiveWellCount = () => useCatalog((s) => s.wells.filter((w) => w.status === "live").length);
 
 /** Reactive single-item lookups (recompute when the underlying list changes). */
 export const useWellById = (id: string) => useCatalog((s) => s.wells.find((w) => w.id === id));

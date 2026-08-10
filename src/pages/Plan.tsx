@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Icon } from "@/lib/icons";
 import { siImg, img } from "@/lib/images";
 import { useStore } from "@/store/useStore";
-import { useSpecialInterests, useWells, useGuides, useSiCount } from "@/store/useCatalog";
+import { useSpecialInterests, useWells, useGuides, useSiCount, useLiveWellCount } from "@/store/useCatalog";
 import { Eyebrow, ButtonLink, StatusPill } from "@/components/ui/primitives";
 
 export default function Plan() {
@@ -12,6 +12,7 @@ export default function Plan() {
   const wells = useWells().filter((w) => !w.lux);
   const guides = useGuides();
   const covered = new Set(trip.map((b) => b.well)).size;
+  const liveWells = useLiveWellCount();
   const liveSIs = sis.filter((s) => s.status === "live");
   const month = new Date(2026, 5).toLocaleString("en", { month: "long" });
 
@@ -29,7 +30,7 @@ export default function Plan() {
           <div><b>It's {month} 2026.</b> Prime season for the Great Migration in East Africa and warm seas across the Mediterranean.</div>
         </div>
 
-        <Eyebrow>Your 10-Well coverage</Eyebrow>
+        <Eyebrow>Your {liveWells}-Well coverage</Eyebrow>
         <div className="it-gap-grid" style={{ gridTemplateColumns: "repeat(5, 1fr)", marginTop: 14, display: "grid", gap: 8 }}>
           {wells.map((w) => {
             const cov = trip.some((b) => b.well === w.id);
@@ -41,7 +42,7 @@ export default function Plan() {
             );
           })}
         </div>
-        <p className="t-body-s" style={{ color: "var(--muted-foreground)", marginTop: 12 }}><b>{covered}/10 Wells</b> covered in your current trip. <Link to="/wells-surface">Fill the gaps →</Link></p>
+        <p className="t-body-s" style={{ color: "var(--muted-foreground)", marginTop: 12 }}><b>{covered}/{liveWells} Wells</b> covered in your current trip. <Link to="/wells-surface">Fill the gaps →</Link></p>
 
         <Link to="/flights" className="card" style={{ marginTop: 20, padding: 20, display: "flex", gap: 16, alignItems: "center", color: "inherit", textDecoration: "none" }}>
           <div className="jn-context__ic" style={{ flexShrink: 0 }}><Icon name="plane" /></div>

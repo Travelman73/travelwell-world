@@ -15,7 +15,9 @@
 import { writeFileSync } from "node:fs";
 import { SIS, boardSis, SI_TAGLINE_SUBJECT, MASTER_TAGLINE_SUBJECT, SAFER_TAGLINE_SUBJECT, taglineSubject } from "../src/data/taxonomy";
 
-const MARK = "TravelWell";
+// The mark, exactly as the site renders it: the ellipsis AND the closing full
+// stop are part of it, then the ™. A variant is a different mark.
+const MARK = "TravelWell.";
 const line = (subject: string) => `If It's ${subject}… ${MARK}™`;
 
 const stamp = process.env.TAGLINE_DATE || new Date().toISOString().slice(0, 10);
@@ -36,10 +38,10 @@ const md = `# The TravelWell slogan family — in active use
 *Generated from the live taxonomy by \`scripts/gen-tagline-list.ts\` on ${stamp}.
 Do not hand-edit — regenerate.*
 
-**The construction:** \`If It's [X]… TravelWell™\`
+**The construction:** \`If It's [X]… TravelWell.™\`
 
 The subject \`[X]\` varies; the closing brand mark never does. The mark is one
-word, always, and the line is English-only in every market — it is a coined brand
+word, always, and the ellipsis and closing full stop are part of it — and the line is English-only in every market — it is a coined brand
 line, not copy, so it is not translated (the same rule as the "-Well" family).
 
 Rendered by one component (\`Tagline\` in \`src/components/ui/primitives.tsx\`), so

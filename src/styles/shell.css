@@ -465,3 +465,24 @@
 .tw-vision__dream p { margin: 4px 0 0; font-family: var(--font-display, serif); font-size: 17px; line-height: 1.4; color: var(--foreground); }
 .tw-well-chip.is-picked { border-color: var(--primary); background: color-mix(in oklch, var(--primary) 12%, var(--surface-alt)); color: var(--primary); font-weight: 600; }
 .tw-well-chip[aria-pressed="true"]::after { content: " ✓"; }
+
+/* ── The motto band — the mark, near the top of every page ─────────────────
+   Trademark evidence first, branding second: a mark only in the footer is
+   weaker evidence than one at the top. David's constraint is that it must not
+   compete with the nav, the Atlas button or Emergency — so it gets its own
+   quiet band under the header rather than a slot in the header itself, reads at
+   a calm weight, and does not stick (only the header does). Unmissable, not
+   loud. */
+.tw-motto {
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-alt);
+}
+.tw-motto__line {
+  max-width: var(--content-max); margin-inline: auto;
+  padding: 9px var(--gutter);
+  text-align: center; font-size: 15px; line-height: 1.35;
+  color: var(--foreground);                 /* full-strength ink: AA on the band */
+}
+@media (max-width: 700px) {
+  .tw-motto__line { font-size: 13.5px; padding: 8px 14px; }
+}
