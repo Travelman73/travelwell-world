@@ -76,8 +76,17 @@ export function Header() {
               </div>
             )}
           </div>
-          <button className="tw-iconbtn tw-iconbtn--emergency" aria-label="Emergency help" onClick={() => openPanel("emergency")}>
+          {/* THE emergency control — one, in the sticky header, on every page and at
+              every scroll position. Solid red and labelled, because the test is
+              "found in a hurry, on a phone, without hunting" — an outline icon
+              among other outline icons fails that. Placement is deliberate: the
+              header never overlaps content, unlike the floating stack it replaces. */}
+          <button className="tw-emerg-btn" aria-label="Emergency help — emergency numbers and first aid" onClick={() => openPanel("emergency")}>
+            {/* A white cross on red, not the SOS starburst. On a narrow header the
+                label collapses and the glyph is all a person has to go on, so it
+                has to be the symbol everyone already reads as "help". */}
             <Icon name="cross" />
+            <span className="lbl">Emergency</span>
           </button>
           <button className="tw-trip-btn" aria-label="Your Trip" onClick={() => openPanel("tray")}>
             <Icon name="bag2" /> <span className="lbl">Trip</span>

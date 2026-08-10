@@ -7,7 +7,31 @@ import {
   getEmergencyNumbers,
 } from "@/data/emergency-numbers";
 
-type Tab = "call" | "cardiac" | "choking";
+type Tab = "call" | "nearby" | "cardiac" | "choking";
+
+/** The "find care near me" locators, moved here from the floating safety stack.
+ *  They open a maps search near the traveler — nothing invented, nothing stored.
+ *  They are locators, not crisis controls, so they belong one tap inside the
+ *  safety surface rather than floating over every page. */
+const maps = (q: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+const NEARBY: { group: string; note: string; items: { label: string; q: string }[] }[] = [
+  {
+    group: "For people", note: "Hospitals, urgent care and pharmacies near you.",
+    items: [
+      { label: "Hospitals", q: "hospital near me" },
+      { label: "Urgent care", q: "urgent care clinic near me" },
+      { label: "Pharmacies", q: "pharmacy near me" },
+    ],
+  },
+  {
+    group: "For pets", note: "Around four million people a year travel with a pet.",
+    items: [
+      { label: "Veterinarians", q: "veterinarian near me" },
+      { label: "Animal hospital / ER", q: "emergency animal hospital near me" },
+      { label: "Pet groomers", q: "pet groomer near me" },
+    ],
+  },
+];
 
 /**
  * Emergency panel — location-aware emergency numbers + first-aid protocols.
@@ -75,6 +99,7 @@ export function Emergency() {
         {/* Tabs — Call / Cardiac / Choking */}
         <div role="tablist" aria-label="Emergency sections" style={{ display: "flex", gap: 8, padding: "12px 24px 0" }}>
           <TabButton id="call" active={tab} onClick={setTab}>Call</TabButton>
+          <TabButton id="nearby" active={tab} onClick={setTab}>Nearby</TabButton>
           <TabButton id="cardiac" active={tab} onClick={setTab}>Cardiac</TabButton>
           <TabButton id="choking" active={tab} onClick={setTab}>Choking</TabButton>
         </div>
@@ -128,6 +153,30 @@ export function Emergency() {
               )}
             </div>
           </>
+        )}
+
+        {tab === "nearby" && (
+          <div style={{ padding: "14px 24px 4px" }}>
+            {NEARBY.map((g) => (
+              <div key={g.group} style={{ marginBottom: 18 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 2 }}>
+                  <Icon name={g.group === "For pets" ? "paw" : "cross"} small />
+                  <strong>{g.group}</strong>
+                </div>
+                <p className="t-body-s" style={{ color: "var(--muted-foreground)", marginBottom: 8 }}>{g.note}</p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                  {g.items.map((it) => (
+                    <a key={it.q} className="btn btn-secondary" href={maps(it.q)} target="_blank" rel="noopener noreferrer">
+                      <Icon name="pin" small /> {it.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <p className="t-body-s" style={{ color: "var(--muted-foreground)" }}>
+              These open a maps search near you — we don't store your location. In a crisis, use the Call tab first.
+            </p>
+          </div>
         )}
 
         {tab === "cardiac" && (
