@@ -11,6 +11,36 @@
       rel="stylesheet"
     />
     <title>TravelWell.World — Designed around you.</title>
+
+    <!-- Social / link-preview cards. The brand name appears here as it appears
+         everywhere: ONE word. These are static and site-wide; per-route og tags
+         need the prerender pass (a client-rendered page can't vary its head). -->
+    <meta property="og:site_name" content="TravelWell.World" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://travelwell.world/" />
+    <meta property="og:title" content="TravelWell.World — Designed around you." />
+    <meta property="og:description" content="TravelWell.World — a Travel Operating System. From a feeling to a beautifully booked trip." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="TravelWell.World — Designed around you." />
+    <meta name="twitter:description" content="TravelWell.World — a Travel Operating System. From a feeling to a beautifully booked trip." />
+
+    <!-- The organization record. This is the field an AI answer engine reads when
+         it names or attributes us, so it is STATIC here rather than injected by
+         JavaScript: a crawler that doesn't run JS still sees the brand spelled
+         correctly. Page-level structured data points its `publisher` at this @id. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://travelwell.world/#organization",
+        "name": "TravelWell.World",
+        "alternateName": "TravelWell",
+        "url": "https://travelwell.world/",
+        "slogan": "If It's Travel… TravelWell",
+        "description": "A Travel Operating System — from a feeling to a beautifully booked trip."
+      }
+    </script>
+
     <!-- PWA / add-to-home-screen -->
     <meta name="theme-color" content="#244a3c" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

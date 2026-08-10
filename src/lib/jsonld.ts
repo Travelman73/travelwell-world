@@ -14,6 +14,15 @@ import { useEffect } from "react";
 import type { Destination } from "@/data/places";
 import type { SiData } from "@/data/taxonomy";
 
+/**
+ * The organization record lives STATICALLY in index.html so a crawler that
+ * doesn't run JavaScript still reads the brand spelled correctly — it is the
+ * field an answer engine quotes when it names us. Page-level objects reference
+ * it by @id rather than restating the name, so the brand string exists in
+ * exactly one place and can't drift to two words in one of them.
+ */
+const PUBLISHER = { "@id": "https://travelwell.world/#organization" };
+
 interface Faq { q: string; a: string; source?: string }
 
 /** Build the JSON-LD objects for a destination page. */
@@ -25,6 +34,7 @@ export function destinationJsonLd(d: Destination, regionName: string, url: strin
       name: d.name,
       description: d.line,
       address: { "@type": "PostalAddress", addressCountry: d.country, addressRegion: regionName },
+      publisher: PUBLISHER,
       ...(url ? { url } : {}),
     },
   ];
@@ -60,6 +70,7 @@ export function siJsonLd(
       "@type": "TouristTrip",
       name: si.name,
       description: d.seo?.description || si.sig,
+      publisher: PUBLISHER,
       ...(url ? { url } : {}),
       ...(d.seo?.keywords?.length ? { keywords: d.seo.keywords.join(", ") } : {}),
     },

@@ -150,7 +150,9 @@ img { max-width: 100%; display: block; }
   color: var(--primary);
 }
 
-/* The brand signature line (§2) — italic serif + upright teal "Travel Well." */
+/* The brand signature line (§2) — italic serif + upright teal brand mark.
+   (The two-word "Travel Well." pun this once closed is RETIRED, 2026-08-09 —
+   the mark is one word. Don't reinstate it from this comment.) */
 .signature { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 16px; line-height: 1.5; color: var(--muted-foreground); }
 .signature .tw { color: var(--primary); font-style: normal; }
 
