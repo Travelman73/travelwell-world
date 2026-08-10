@@ -280,6 +280,19 @@
   [data-page="si-detail"] .sd-rg__scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,22,20,.1), rgba(15,22,20,.72)); }
   [data-page="si-detail"] .sd-rg__name { position: absolute; bottom: 12px; inset-inline: 14px; color: #fff; font-family: var(--font-display); font-weight: 600; font-size: 17px; text-shadow: 0 1px 10px rgba(0,0,0,.4); }
   [data-page="si-detail"] .sd-rg__code { position: absolute; top: 10px; inset-inline-start: 12px; font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em; color:#fff; background: rgba(20,28,26,.4); padding: 3px 8px; border-radius: var(--radius-pill); }
+  /* ---- The add control on the interest page --------------------------
+     The traveler opened this page to decide; it has to be able to take the
+     decision. Mirrors the board tile's control so the action reads the same in
+     both places. */
+  [data-page="si-detail"] .sd-hero__pick { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 22px; }
+  [data-page="si-detail"] .sd-add { display: inline-flex; align-items: center; gap: 9px; min-height: 52px; padding: 0 26px; border: 0; border-radius: var(--radius-pill); cursor: pointer; background: #fff; color: var(--foreground); font-family: var(--font-sans); font-size: 16px; font-weight: 700; box-shadow: 0 2px 18px rgba(15,22,20,.3); transition: transform .18s, background-color .18s, color .18s; }
+  [data-page="si-detail"] .sd-add:hover { transform: translateY(-1px); }
+  [data-page="si-detail"] .sd-add:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  [data-page="si-detail"] .sd-add--on { background: var(--primary); color: var(--primary-foreground); }
+  /* On the dark hero photo this needs its own contrast — the muted token would
+     sit at ~2:1 over the scrim. */
+  [data-page="si-detail"] .sd-hero__count { font-size: 14px; color: rgba(255,255,255,.92); text-shadow: 0 1px 10px rgba(0,0,0,.5); }
+
   /* ---- The dossier layers (timing · events · FAQ) ---------------------
      Rendered only when the nine-layer SI dossier carries them, so a page never
      shows an empty shelf. */

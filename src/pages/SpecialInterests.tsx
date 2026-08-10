@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Icon } from "@/lib/icons";
 import { SI_GROUPS, MASTER_TAGLINE_SUBJECT } from "@/data/taxonomy";
 import { siImg } from "@/lib/images";
@@ -19,7 +19,6 @@ export default function SpecialInterests() {
   const t = useT();
   const ct = useCatalogName();
   const SIS = useSpecialInterests();
-  const navigate = useNavigate();
   // Default to the live set so the page opens showing what's ready now (no
   // "coming soon" clutter on first view); the roadmap is one tap away.
   const [filter, setFilter] = useState<Filter>("live");
@@ -66,46 +65,54 @@ export default function SpecialInterests() {
                 {items.map((s) => {
                   const isSoon = s.status !== "live";
                   const picked = journeySIs.includes(s.id);
-                  const order = journeySIs.indexOf(s.id) + 1;
                   const name = ct(`si.${s.id}.name`, s.name);
                   return (
-                    <button
+                    /* TWO TARGETS, not one (David-agreed 2026-08-10). The CARD
+                       opens the interest so the traveler chooses with their eyes
+                       open; a distinct, loud control adds it. They are siblings,
+                       never nested — a button inside a link is invalid markup and
+                       breaks keyboard and screen-reader behaviour both ways. */
+                    <div
                       key={s.id}
                       data-si={s.id}
+                      data-picked={picked ? "true" : undefined}
                       className={cx("si-tile", isSoon && "si-tile--soon")}
-                      aria-pressed={isSoon ? undefined : picked}
-                      // A "coming soon" tile is NOT disabled — clicking it opens the
-                      // interest's page, which is currently the only route into our SI
-                      // pages from this board. It used to carry aria-disabled, so screen
-                      // readers and keyboard users were told it was switched off and
-                      // skipped past the one door that was open. The name says what the
-                      // click does instead, and starts with the visible label so the
-                      // accessible name still contains it (WCAG 2.5.3).
-                      aria-label={isSoon ? `${name} — coming soon. Opens its preview page.` : undefined}
-                      onClick={() => (isSoon ? navigate(`/si/${s.id}`) : toggleSI(s.id))}
                     >
-                      <span className="si-tile__img">
-                        <img src={siImg(s.id, 700)} alt="" loading="lazy" referrerPolicy="no-referrer" />
-                      </span>
-                      <span className="si-tile__scrim" />
-                      <span className="si-tile__accent" style={{ background: s.accent }} />
-                      <span className="si-tile__top">
-                        {isSoon ? (
-                          <><span /><span className="si-soon-badge">{t("sip.soon")}</span></>
-                        ) : (
-                          <>
-                            <span className="si-tile__order">{picked ? order : ""}</span>
-                            <span />
-                            <span className="si-check" aria-hidden="true"><Icon name="check" small /></span>
-                          </>
-                        )}
-                      </span>
-                      <span className="si-tile__body">
-                        <span className="si-tile__name">{name}</span>
-                        <span className="si-tile__sig">{s.sig.charAt(0).toUpperCase() + s.sig.slice(1)}</span>
-                      </span>
-                      <span className="si-tile__view">{isSoon ? t("pill.preview") : t("sip.view")} <Icon name="arrow" small /></span>
-                    </button>
+                      <Link
+                        className="si-tile__open"
+                        to={`/si/${s.id}`}
+                        aria-label={isSoon ? t("sip.openSoonLabel", { name }) : t("sip.openLabel", { name })}
+                      >
+                        <span className="si-tile__img">
+                          <img src={siImg(s.id, 700)} alt="" loading="lazy" referrerPolicy="no-referrer" />
+                        </span>
+                        <span className="si-tile__scrim" />
+                        <span className="si-tile__accent" style={{ background: s.accent }} />
+                        <span className="si-tile__body">
+                          <span className="si-tile__name">{name}</span>
+                          <span className="si-tile__sig">{s.sig.charAt(0).toUpperCase() + s.sig.slice(1)}</span>
+                        </span>
+                        <span className="si-tile__view">{isSoon ? t("pill.preview") : t("sip.view")} <Icon name="arrow" small /></span>
+                      </Link>
+
+                      {isSoon ? (
+                        <span className="si-soon-badge">{t("sip.soon")}</span>
+                      ) : (
+                        /* The loudest thing on the card, per David — a solid
+                           labelled pill, not a subtle heart. Two picks is the
+                           sweet spot, so easier browsing must not make
+                           over-selecting easier. */
+                        <button
+                          className="si-tile__add"
+                          aria-pressed={picked}
+                          aria-label={picked ? t("sip.removeLabel", { name }) : t("sip.addLabel", { name })}
+                          onClick={() => toggleSI(s.id)}
+                        >
+                          <Icon name={picked ? "check" : "plus"} small />
+                          <span className="si-tile__add-t">{picked ? t("sip.added") : t("sip.add")}</span>
+                        </button>
+                      )}
+                    </div>
                   );
                 })}
               </div>

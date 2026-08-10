@@ -37,6 +37,7 @@ export const ICON_PATHS: Record<string, string> = {
   back: '<path d="M19 12H5M11 6l-6 6 6 6"/>',
   calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/>',
   check: '<path d="M5 12l5 5L20 6"/>',
+  plus: '<path d="M12 5v14M5 12h14"/>',
   sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2m20 0h-2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/>',
   message: '<path d="M4 5h16v11H8l-4 4z"/>',
   info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',

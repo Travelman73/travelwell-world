@@ -33,12 +33,16 @@
 .si-group__blurb { font-size: 14.5px; color: var(--muted-foreground); }
 .si-group__count { margin-inline-start: auto; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--primary); background: var(--secondary); border-radius: var(--radius-pill); padding: 5px 12px; }
 .si-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 16px; }
-.si-tile { position: relative; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4 / 5; background: var(--surface-alt); border: 1px solid var(--border); cursor: pointer; display: block; text-align: start; padding: 0; font-family: var(--font-sans); transition: transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s ease; }
+/* ── The interest tile — TWO targets ───────────────────────────────────────
+   The card is a link that OPENS the interest; the add control is a separate
+   sibling button. The container itself is not interactive. */
+.si-tile { position: relative; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4 / 5; background: var(--surface-alt); border: 1px solid var(--border); transition: transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s ease; }
 .si-tile:hover { transform: translateY(-4px); box-shadow: var(--e2); }
+.si-tile__open { position: absolute; inset: 0; display: block; text-align: start; cursor: pointer; color: inherit; text-decoration: none; }
 /* Keyboard focus. The tile is a photo under a dark scrim, so the UA default ring
-   all but disappears on it; a double ring (white inside pine) stays visible over
-   any image. Required — these tiles are a primary keyboard target. */
-.si-tile:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; box-shadow: 0 0 0 2px #fff, var(--e2); }
+   all but disappears on it; a pine ring with a white inner edge stays visible
+   over any image. Required — these are a primary keyboard target. */
+.si-tile__open:focus-visible { outline: 3px solid var(--ring); outline-offset: -4px; box-shadow: inset 0 0 0 2px #fff; }
 .si-tile__img { position: absolute; inset: 0; }
 .si-tile__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.2,.7,.3,1); }
 .si-tile:hover .si-tile__img img { transform: scale(1.05); }
@@ -47,28 +51,39 @@
 .si-tile__body { position: absolute; inset-inline: 0; bottom: 0; z-index: 2; padding: 20px; color: #fff; }
 .si-tile__name { display: block; font-family: var(--font-display); font-weight: 600; font-size: 23px; line-height: 1.08; text-shadow: 0 1px 12px rgba(0,0,0,.35); }
 .si-tile__sig { display: block; font-family: var(--font-display); font-style: italic; font-size: 14.5px; color: rgba(255,255,255,.9); margin-top: 4px; text-shadow: 0 1px 10px rgba(0,0,0,.4); }
-.si-tile__top { position: absolute; top: 14px; inset-inline: 14px; z-index: 3; display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
 
-/* select checkbox */
-.si-check { width: 32px; height: 32px; border-radius: 50%; border: 2px solid rgba(255,255,255,.85); background: rgba(20,28,26,.35); backdrop-filter: blur(4px); display: grid; place-items: center; color: #fff; transition: background-color .18s, border-color .18s, transform .18s; }
-.si-check svg { opacity: 0; transform: scale(.5); transition: opacity .18s, transform .18s; }
-.si-tile[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--primary), var(--e2); }
-.si-tile[aria-pressed="true"] .si-check { background: var(--primary); border-color: var(--primary); transform: scale(1.05); }
-.si-tile[aria-pressed="true"] .si-check svg { opacity: 1; transform: scale(1); }
-.si-tile[aria-pressed="true"] .si-tile__order { position:absolute; }
+/* ── The ADD control — the loudest thing on the card (David-agreed) ────────
+   A solid, labelled pill, not a subtle heart: browsing got easier, so
+   over-selecting must not. Sits ABOVE the card link, so it never triggers it. */
+.si-tile__add {
+  position: absolute; top: 12px; inset-inline-end: 12px; z-index: 4;
+  display: inline-flex; align-items: center; gap: 7px;
+  min-height: 44px; padding: 0 16px;                     /* a real thumb target */
+  border: 0; border-radius: var(--radius-pill); cursor: pointer;
+  background: #fff; color: var(--foreground);
+  font-family: var(--font-sans); font-size: 14px; font-weight: 700;
+  box-shadow: 0 2px 14px rgba(15,22,20,.28);
+  transition: background-color .18s, color .18s, transform .18s;
+}
+.si-tile__add:hover { transform: translateY(-1px); }
+.si-tile__add:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+/* Selected: filled pine + a check + the word "Added" + the pick order — shape,
+   text and number, never colour alone. */
+.si-tile[data-picked="true"] .si-tile__add { background: var(--primary); color: var(--primary-foreground); }
+.si-tile[data-picked="true"] { box-shadow: 0 0 0 3px var(--primary), var(--e2); }
+.si-tile__add-t { line-height: 1; }
+/* No pick-order number on the pill — "Added 2" reads as a quantity, not a
+   position. The selection bar already lists the picks in order. */
 
 /* lit badge (profiled pre-lit) */
 .si-lit { background: var(--accent); color: var(--accent-foreground); font-weight: 700; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; padding: 4px 9px; border-radius: var(--radius-pill); }
 
 /* schema / coming-soon tiles.
-   These are NOT inert — clicking one opens the interest's page. The cursor used
-   to say `not-allowed` and the hover response was suppressed, so the tile looked
-   dead while being the only route into an SI page from this board. It keeps the
-   desaturated image and the "Coming soon" badge (that's the real status signal)
-   and gets its interactive feedback back. */
+   These are NOT inert — the card opens the interest's page. They keep the
+   desaturated image and the "Coming soon" badge (the real status signal) and
+   have no add control, because a preview interest can't be picked. */
 .si-tile--soon .si-tile__img img { filter: saturate(.18) brightness(1.04); }
-.si-tile--soon:hover { transform: translateY(-2px); box-shadow: var(--e1); }
-.si-soon-badge { background: rgba(255,255,255,.92); color: var(--muted-foreground); font-weight: 600; font-size: 11px; padding: 5px 11px; border-radius: var(--radius-pill); display: inline-flex; align-items: center; gap: 5px; }
+.si-soon-badge { position: absolute; top: 14px; inset-inline-end: 14px; z-index: 4; background: rgba(255,255,255,.92); color: var(--muted-foreground); font-weight: 600; font-size: 11px; padding: 5px 11px; border-radius: var(--radius-pill); display: inline-flex; align-items: center; gap: 5px; }
 .si-soon-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; border: 1.5px solid var(--muted-foreground); }
 
 /* "view" affordance on hover for any tile */

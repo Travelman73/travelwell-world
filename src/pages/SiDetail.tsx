@@ -6,7 +6,8 @@ import { siJsonLd, useJsonLd } from "@/lib/jsonld";
 import { type Provider, type Activity } from "@/data/places";
 import { siImg, regionImg } from "@/lib/images";
 import { useSiImage } from "@/lib/unsplash";
-import { useStore } from "@/store/useStore";
+import { useStore, MAX_SIS } from "@/store/useStore";
+import { SiPickBar } from "@/components/ui/SiPickBar";
 import { useSpecialInterests, useActivities, useRegions, useProviders, useWells, useSiCount } from "@/store/useCatalog";
 import { cx } from "@/lib/utils";
 
@@ -234,7 +235,7 @@ function RegionsSection({ si }: { si: { id: string; name: string } }) {
 
 export default function SiDetail() {
   const { id } = useParams();
-  const { openPanel, showToast } = useStore();
+  const { openPanel, showToast, journeySIs, toggleSI } = useStore();
   const sis = useSpecialInterests();
   const activities = useActivities();
   const providers = useProviders();
@@ -244,6 +245,7 @@ export default function SiDetail() {
   const isSchema = si.status !== "live";
   const ed = EDITORIAL[si.id];
   const siCount = useSiCount();
+  const picked = journeySIs.includes(si.id);
   // Honors the dossier's editorial hero (data.hero) before falling back to a
   // name-matched photo — the interest's own pick wins, same rule as destinations.
   const heroPhoto = useSiImage(si, 1800, siImg(si.id, 1800));
@@ -300,6 +302,28 @@ export default function SiDetail() {
         <h1 className="sd-hero__title">{si.name}</h1>
         <p className="sd-hero__promise">{ed ? ed.promise : si.sig}</p>
         <Tagline subject={taglineSubject(si)} className="sd-hero__tagline" />
+        {/* Opening a page that can't do the one thing the traveler came for makes
+            the journey longer, not richer (David-agreed) — so the add control and
+            the pick counter live here too, not only on the board. */}
+        {!isSchema && (
+          <div className="sd-hero__pick">
+            <button
+              className={cx("sd-add", picked && "sd-add--on")}
+              aria-pressed={picked}
+              onClick={() => toggleSI(si.id)}
+            >
+              <Icon name={picked ? "check" : "plus"} />
+              {picked ? `Added to your journey` : `Add to your journey`}
+            </button>
+            <span className="sd-hero__count" aria-live="polite">
+              {picked
+                ? `${journeySIs.length} of ${MAX_SIS} chosen`
+                : journeySIs.length >= MAX_SIS
+                  ? `${MAX_SIS} of ${MAX_SIS} chosen — swap one out to add this`
+                  : `${journeySIs.length} of ${MAX_SIS} chosen · 1–2 is the sweet spot`}
+            </span>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -443,6 +467,7 @@ export default function SiDetail() {
         </div>
       </div>
       <div style={{ height: 80 }} />
+      <SiPickBar />
     </>
   );
 }

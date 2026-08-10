@@ -166,6 +166,12 @@ export const MESSAGES: Record<string, Dict> = {
   "sip.sweet": { en: "Choose up to 3", es: "Elige hasta 3", ar: "اختر حتى 3", zh: "最多选 3 个", fr: "Choisissez-en jusqu'à 3" },
   "sip.sweetTail": { en: "1–2 is the sweet spot", es: "1–2 es el punto ideal", ar: "1–2 هو الأمثل", zh: "1–2 个最理想", fr: "1–2, c'est l'idéal" },
   "sip.view": { en: "View", es: "Ver", ar: "عرض", zh: "查看", fr: "Voir" },
+  "sip.add": { en: "Add", es: "Añadir", ar: "أضف", zh: "添加", fr: "Ajouter" },
+  "sip.added": { en: "Added", es: "Añadido", ar: "مُضاف", zh: "已添加", fr: "Ajouté" },
+  "sip.addLabel": { en: "Add {name} to your journey", es: "Añadir {name} a tu viaje", ar: "أضف {name} إلى رحلتك", zh: "将{name}加入你的旅程", fr: "Ajouter {name} à votre voyage" },
+  "sip.removeLabel": { en: "Remove {name} from your journey", es: "Quitar {name} de tu viaje", ar: "أزل {name} من رحلتك", zh: "从旅程中移除{name}", fr: "Retirer {name} de votre voyage" },
+  "sip.openLabel": { en: "Open {name}", es: "Abrir {name}", ar: "افتح {name}", zh: "打开{name}", fr: "Ouvrir {name}" },
+  "sip.openSoonLabel": { en: "{name} — coming soon. Open its page.", es: "{name} — próximamente. Abrir su página.", ar: "{name} — قريبًا. افتح صفحته.", zh: "{name}——即将推出。打开其页面。", fr: "{name} — bientôt. Ouvrir sa page." },
 
   // ── Wells page ──────────────────────────────────────────────────────────
   "wl.eyebrow": { en: "The TravelWell Ecosystem", es: "El Ecosistema TravelWell", ar: "منظومة TravelWell", zh: "TravelWell 生态", fr: "L'Écosystème TravelWell" },
