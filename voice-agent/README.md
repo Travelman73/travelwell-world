@@ -9,7 +9,20 @@ barge-in — and mirrors each spoken turn as text over a data channel.
 touches it. Deploy it wherever long-running Node services live (LiveKit Cloud
 agent hosting, a small container, Fly/Render, etc.).
 
-## Status (honest)
+## The prompt reads the live catalog
+
+Atlas's voice prompt is built at start-up from `src/data/taxonomy.ts` — the same
+source the website renders — so the interests, regions and Wells it offers can
+never drift from what we actually sell. Watch for this line on the first job:
+
+```
+[atlas] voice prompt built from the live catalog — 8 interests, 13 regions, 10 live Wells
+```
+
+If you instead see `COULD NOT READ THE LIVE CATALOG`, the worker still runs but
+on a static fallback list that may be out of date — fix it before a demo.
+
+## Status
 Authored against the LiveKit Agents Node SDK docs; **not yet run** — it needs a
 live LiveKit project + keys, which the build sandbox can't reach. Running it (below)
 is the completing step of the voice spike: it pins exact plugin/API versions and
