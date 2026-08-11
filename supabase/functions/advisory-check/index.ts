@@ -77,8 +77,13 @@ async function getJson(url: string): Promise<unknown> {
  * for ~200 countries, not 200 requests. If it's blocked we fall back to the RSS
  * feed, which carries the same levels in the item titles.
  */
-async function readState(isoByName: Record<string, string>): Promise<Reading[]> {
+async function readState(isoByName: Record<string, string>): Promise<{ readings: Reading[]; diag: Record<string, unknown> }> {
   const out: Reading[] = [];
+  // When we parse ZERO rows, the run has to say WHY. Reporting "read: 0" and
+  // nothing else means a human has to go and curl the API by hand to find out
+  // whether it moved, renamed a field, or wrapped the array in an envelope. The
+  // shape we actually received goes in the run log instead.
+  const diag: Record<string, unknown> = {};
   const push = async (name: string, title: string, updated: string | null, body: string) => {
     const iso = isoByName[name.trim().toLowerCase()];
     if (!iso) return;                      // a country we don't carry — skip, don't invent
@@ -94,23 +99,51 @@ async function readState(isoByName: Record<string, string>): Promise<Reading[]> 
   };
 
   try {
-    const data = await getJson(STATE_API) as Array<Record<string, unknown>>;
-    for (const row of data ?? []) {
-      const name = String(row.Country ?? row.country ?? row.Title ?? "");
-      const title = String(row.Title ?? row.title ?? "");
-      const body = String(row.Summary ?? row.summary ?? row.Description ?? "");
-      const updated = (row.PubDate ?? row.pubDate ?? row.Updated ?? null) as string | null;
+    const raw = await getJson(STATE_API);
+    // The array may arrive bare or inside an envelope. Rather than assume one
+    // shape, take the first array we can find — and record what we found, so a
+    // future rename shows up in the log instead of as a silent zero.
+    const rows: Array<Record<string, unknown>> = Array.isArray(raw)
+      ? raw as Array<Record<string, unknown>>
+      : (() => {
+          const obj = (raw ?? {}) as Record<string, unknown>;
+          diag.envelope_keys = Object.keys(obj).slice(0, 12);
+          const arr = Object.values(obj).find((v) => Array.isArray(v));
+          return (arr as Array<Record<string, unknown>>) ?? [];
+        })();
+    diag.rows = rows.length;
+    if (rows.length) diag.row_keys = Object.keys(rows[0] ?? {}).slice(0, 20);
+
+    for (const row of rows) {
+      const name = String(
+        row.Country ?? row.country ?? row.CountryName ?? row.Country_Name ??
+        row.Name ?? row.name ?? row.Title ?? row.title ?? "",
+      );
+      const title = String(row.Title ?? row.title ?? row.AdvisoryLevel ?? row.Advisory_Level ?? row.Level ?? "");
+      const body = String(row.Summary ?? row.summary ?? row.Description ?? row.description ?? "");
+      const updated = (row.PubDate ?? row.pubDate ?? row.Updated ?? row.updated ?? row.Date ?? null) as string | null;
       if (name) await push(name, title, updated ? new Date(updated).toISOString() : null, body);
     }
-    return out;
+    diag.matched = out.length;
+    // Zero matches with rows present means the NAMES didn't line up, not the
+    // fetch — so log a few of theirs next to ours. That's the fix in one glance.
+    if (rows.length && !out.length) {
+      diag.their_first_names = rows.slice(0, 5).map((r) =>
+        String(r.Country ?? r.CountryName ?? r.Country_Name ?? r.Name ?? r.Title ?? "?"));
+      diag.our_first_names = Object.keys(isoByName).slice(0, 5);
+    }
+    if (out.length) return { readings: out, diag };
+    diag.note = "API parsed but matched nothing — falling back to RSS";
   } catch (apiErr) {
+    diag.api_error = (apiErr as Error).message.slice(0, 160);
     console.warn("[advisory] State API unavailable, trying RSS:", apiErr);
   }
 
   // RSS fallback — titles look like "Kenya - Level 2: Exercise Increased Caution".
   const res = await fetch(STATE_RSS, { headers: HEADERS, redirect: "follow" });
-  if (!res.ok) throw new Error(`state rss ${res.status}`);
+  if (!res.ok) { diag.rss_error = `${res.status}`; return { readings: out, diag }; }
   const xml = await res.text();
+  diag.rss_items = (xml.match(/<item>/g) ?? []).length;
   for (const m of xml.matchAll(/<item>([\s\S]*?)<\/item>/g)) {
     const item = m[1];
     const title = (/<title>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/title>/.exec(item)?.[1] ?? "").trim();
@@ -118,7 +151,8 @@ async function readState(isoByName: Record<string, string>): Promise<Reading[]> 
     const name = title.split(" - ")[0];
     if (name) await push(name, title, date ? new Date(date).toISOString() : null, title);
   }
-  return out;
+  diag.rss_matched = out.length;
+  return { readings: out, diag };
 }
 
 /**
@@ -201,9 +235,9 @@ Deno.serve(async (req: Request) => {
 
     // ── State ──────────────────────────────────────────────────────────────
     try {
-      const r = await readState(isoByName);
+      const { readings: r, diag } = await readState(isoByName);
       readings.push(...r);
-      notes.state = { read: r.length };
+      notes.state = { read: r.length, ...diag };
     } catch (err) {
       // FREEZE: no state rows written for this source; the previous values stand.
       notes.state = { failed: (err as Error).message.slice(0, 120) };

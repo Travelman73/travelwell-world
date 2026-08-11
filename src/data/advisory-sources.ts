@@ -71,7 +71,10 @@ const SLUG_OVERRIDES: Record<string, Partial<Record<AdvisorySourceId, string>>> 
   AE: { state: "united-arab-emirates", fcdo: "united-arab-emirates", cdc: "united-arab-emirates" },
   TC: { state: "turks-and-caicos-islands", fcdo: "turks-and-caicos-islands", cdc: "turks-and-caicos-islands" },
   LC: { state: "saint-lucia", fcdo: "st-lucia", cdc: "saint-lucia" },
-  BS: { state: "the-bahamas", fcdo: "the-bahamas", cdc: "bahamas" },
+  // FCDO is `bahamas`, not `the-bahamas` — the checker's first live run 404'd on
+  // it (2026-08-11). Empirical beats plausible: this is the whole reason the run
+  // reports per-country failures instead of a single pass/fail.
+  BS: { state: "the-bahamas", fcdo: "bahamas", cdc: "bahamas" },
   KR: { state: "south-korea", fcdo: "south-korea", cdc: "south-korea" },
   PF: { state: "french-polynesia", fcdo: "french-polynesia", cdc: "french-polynesia" },
   ZA: { state: "south-africa", fcdo: "south-africa", cdc: "south-africa" },
