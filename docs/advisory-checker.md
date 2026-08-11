@@ -122,6 +122,35 @@ where id = <id>;
 | `text` | Same level, changed wording | Read it — regional carve-outs move here without the number moving |
 | `withdrawn` | The source dropped it | Confirm before removing anything |
 
+## Live-run findings (2026-08-11)
+
+**The FCDO leg works.** 36 of 36 countries read, no failures, 36 changes queued as
+`pending`. The full loop — fetch, diff, queue, freeze, audit — is proven on this
+source. One slug was wrong and the run said so: the Bahamas is `bahamas`, not
+`the-bahamas`. Fixed in `advisory-sources.ts`, which also corrects the
+traveler-facing deep link.
+
+**State answers 200 with nothing, from Supabase only.** A plain `curl` from a
+laptop got **682,146 bytes** from `cadataapi.state.gov`. The Edge Function, minutes
+later, got a 200 with an **empty array**.
+
+That's the wrong way round for a simple IP block — and it fits a filter that
+scores a full Chrome User-Agent arriving over a non-browser TLS stack as *more*
+suspicious than an honest client that admits it's a script. The laptop sent no
+custom headers at all; the function was sending a browser disguise.
+
+So the function now tries three header profiles in order — curl-like, minimal,
+browser-like — treats a 200 carrying an empty body as a failure rather than an
+answer, and records which profile actually returned content. **If none of them
+work, that's measured evidence for an IP-level block**, and the allow-listed-egress
+conversation starts with a number instead of a hunch.
+
+**The RSS fallback is not a safety net.** `travel.state.gov/_res/rss/TAs.xml`
+returned **343 bytes** — an empty shell with no items — to the same healthy laptop
+curl. It isn't blocked; it's empty. Kept because it costs one request and the
+probe records what it served, but it should not be relied on. If State stays
+unreachable, the next thing to try is `cadatacatalog.state.gov`, not the RSS.
+
 ## What isn't done yet
 
 - **The CDC leg.** State and the FCDO are wired; CDC health notices are the

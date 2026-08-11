@@ -37,6 +37,27 @@ const HEADERS = {
   "Accept-Language": "en-GB,en;q=0.9",
 };
 
+/**
+ * Header profiles, tried in order, for a source that answers 200-but-empty.
+ *
+ * Evidence (2026-08-11): a plain `curl` from a laptop got 682KB from the State
+ * API. This function, sending a full Chrome User-Agent, got a 200 with an empty
+ * array from the same endpoint minutes later. That is the wrong way round for a
+ * simple IP block — and it fits a filter that scores a browser User-Agent
+ * arriving over a non-browser TLS stack as MORE suspicious than an honest client
+ * that says it's a script.
+ *
+ * So we try honest-and-plain first and browser-mimicking last, and we record
+ * which profile actually returned content. If none do, that's real evidence for
+ * an IP-level block rather than a guess, and the allow-listed-egress
+ * conversation starts with a measurement instead of a hunch.
+ */
+const HEADER_PROFILES: Array<{ name: string; headers: Record<string, string> }> = [
+  { name: "curl-like", headers: { "User-Agent": "curl/8.7.1", Accept: "*/*" } },
+  { name: "minimal", headers: { Accept: "application/json" } },
+  { name: "browser-like", headers: HEADERS },
+];
+
 const STATE_API = "https://cadataapi.state.gov/api/TravelAdvisories";
 const STATE_RSS = "https://travel.state.gov/_res/rss/TAs.xml";
 const GOVUK_CONTENT = "https://www.gov.uk/api/content/foreign-travel-advice";
@@ -76,22 +97,42 @@ function levelFrom(text: string | null | undefined): number | null {
  * So we keep the status, the content type, the length and the first 200
  * characters. All public government endpoints; nothing sensitive to leak.
  */
-async function getJsonDiag(url: string): Promise<{ data: unknown; probe: Record<string, unknown> }> {
-  const res = await fetch(url, { headers: HEADERS, redirect: "follow" });
-  const text = await res.text();
-  const probe: Record<string, unknown> = {
-    status: res.status,
-    type: res.headers.get("content-type")?.slice(0, 60) ?? null,
-    bytes: text.length,
-    head: text.slice(0, 200),
-    final_url: res.url !== url ? res.url.slice(0, 120) : undefined,
-  };
-  if (!res.ok) throw Object.assign(new Error(`${res.status} ${url}`), { probe });
-  try {
-    return { data: JSON.parse(text), probe };
-  } catch {
-    throw Object.assign(new Error(`non-JSON body from ${url}`), { probe });
+async function getJsonDiag(
+  url: string,
+  profiles: Array<{ name: string; headers: Record<string, string> }> = [{ name: "browser-like", headers: HEADERS }],
+): Promise<{ data: unknown; probe: Record<string, unknown> }> {
+  const attempts: Array<Record<string, unknown>> = [];
+  let last: { data: unknown; probe: Record<string, unknown> } | null = null;
+
+  for (const p of profiles) {
+    const res = await fetch(url, { headers: p.headers, redirect: "follow" });
+    const text = await res.text();
+    const probe: Record<string, unknown> = {
+      profile: p.name,
+      status: res.status,
+      type: res.headers.get("content-type")?.slice(0, 60) ?? null,
+      bytes: text.length,
+      head: text.slice(0, 200),
+      final_url: res.url !== url ? res.url.slice(0, 120) : undefined,
+    };
+    attempts.push({ profile: p.name, status: res.status, bytes: text.length });
+    if (res.ok) {
+      try {
+        const data = JSON.parse(text);
+        last = { data, probe: { ...probe, attempts } };
+        // A 200 carrying nothing is not a success — keep trying the other
+        // profiles rather than accepting an empty answer as the truth.
+        const empty = (Array.isArray(data) && data.length === 0) || text.length < 512;
+        if (!empty) return last;
+      } catch {
+        last = { data: null, probe: { ...probe, attempts, parse: "non-JSON" } };
+      }
+    } else {
+      last = { data: null, probe: { ...probe, attempts } };
+    }
   }
+  if (last?.data !== null && last?.data !== undefined) return last;
+  throw Object.assign(new Error(`no usable response from ${url}`), { probe: last?.probe ?? { attempts } });
 }
 
 async function getJson(url: string): Promise<unknown> {
@@ -125,7 +166,7 @@ async function readState(isoByName: Record<string, string>): Promise<{ readings:
   };
 
   try {
-    const { data: raw, probe } = await getJsonDiag(STATE_API);
+    const { data: raw, probe } = await getJsonDiag(STATE_API, HEADER_PROFILES);
     diag.api_probe = probe;
     // The array may arrive bare or inside an envelope. Rather than assume one
     // shape, take the first array we can find — and record what we found, so a
@@ -168,7 +209,10 @@ async function readState(isoByName: Record<string, string>): Promise<{ readings:
     console.warn("[advisory] State API unavailable, trying RSS:", apiErr);
   }
 
-  // RSS fallback — titles look like "Kenya - Level 2: Exercise Increased Caution".
+  // RSS fallback. NOTE (2026-08-11): this feed returned 343 bytes — an empty
+  // shell with no <item> elements — to a plain curl from a laptop, so it is not
+  // a working safety net today. Kept because it costs one request and the probe
+  // records what it actually served, but do not count on it.
   const res = await fetch(STATE_RSS, { headers: HEADERS, redirect: "follow" });
   const xml = await res.text();
   diag.rss_probe = {
