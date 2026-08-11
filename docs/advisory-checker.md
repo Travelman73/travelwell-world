@@ -130,28 +130,47 @@ source. One slug was wrong and the run said so: the Bahamas is `bahamas`, not
 `the-bahamas`. Fixed in `advisory-sources.ts`, which also corrects the
 traveler-facing deep link.
 
-**State answers 200 with nothing, from Supabase only.** A plain `curl` from a
-laptop got **682,146 bytes** from `cadataapi.state.gov`. The Edge Function, minutes
-later, got a 200 with an **empty array**.
+**State answers 200 with nothing, from Supabase only. Settled — it is the egress,
+not our request.**
 
-That's the wrong way round for a simple IP block — and it fits a filter that
-scores a full Chrome User-Agent arriving over a non-browser TLS stack as *more*
-suspicious than an honest client that admits it's a script. The laptop sent no
-custom headers at all; the function was sending a browser disguise.
+Three header profiles were tried from the Edge Function in one run:
 
-So the function now tries three header profiles in order — curl-like, minimal,
-browser-like — treats a 200 carrying an empty body as a failure rather than an
-answer, and records which profile actually returned content. **If none of them
-work, that's measured evidence for an IP-level block**, and the allow-listed-egress
-conversation starts with a number instead of a hunch.
+| Profile | Status | Bytes |
+|---|---|---|
+| curl-like (`User-Agent: curl/8.7.1`) | 200 | **2** |
+| minimal (`Accept: application/json` only) | 200 | **2** |
+| browser-like (full Chrome UA) | 200 | **2** |
 
-**The RSS fallback is not a safety net.** `travel.state.gov/_res/rss/TAs.xml`
-returned **343 bytes** — an empty shell with no items — to the same healthy laptop
-curl. It isn't blocked; it's empty. Kept because it costs one request and the
-probe records what it served, but it should not be relied on. If State stays
-unreachable, the next thing to try is `cadatacatalog.state.gov`, not the RSS.
+Two bytes is `[]`. A well-formed, correctly-typed, **empty** JSON array, every
+time. Meanwhile a plain `curl` from a laptop got **682,146 bytes** from the same
+URL in the same window.
 
-## What isn't done yet
+So the headers hypothesis is dead — and that is worth having tested, because it
+was the cheap explanation and it would have been embarrassing to ask for an
+egress allowlist without ruling it out. `cadataapi.state.gov` returns an empty
+array to Supabase's datacenter IPs and real data to a laptop. It degrades
+silently rather than returning 403, which is why this looked like a parsing bug
+for two runs.
+
+**There is no code fix.** The remaining options are environmental or
+source-level:
+
+1. **Ask State for access** — legitimate, free, slow. They publish this data to be
+   consumed; a request for programmatic access is a reasonable one.
+2. **Try `cadatacatalog.state.gov`** — a different host, possibly not behind the
+   same filter. Cheapest thing to try, and untested.
+3. **Route the State fetch through a non-datacenter egress** — costs money, adds a
+   vendor, and arguably works against the filter's intent. Least favourite.
+4. **Treat the FCDO as the primary source** — it works at 36/36 today. But it
+   carries no numeric level, and our Safety Card is built on the L1–L4 scale, so
+   this is a data-model change rather than a swap.
+
+**The RSS is separately empty**, and not a fallback. Its probe shows a
+well-formed feed — `<rss><channel><title>travel.state.gov: Travel
+Advisories</title>` — with **343 bytes and zero `<item>` elements**, to the
+laptop as well as to us. It isn't blocked; there is nothing in it.
+
+## What isn't done yet## What isn't done yet
 
 - **The CDC leg.** State and the FCDO are wired; CDC health notices are the
   fastest-moving layer and are the next thing to add.
