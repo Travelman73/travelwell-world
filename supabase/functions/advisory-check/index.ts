@@ -66,10 +66,36 @@ function levelFrom(text: string | null | undefined): number | null {
   return m ? Number(m[1]) : null;
 }
 
-async function getJson(url: string): Promise<unknown> {
+/**
+ * Fetch + parse, keeping enough of the raw response to explain a bad one.
+ *
+ * The first two live runs both came back 200 with valid-but-EMPTY content from
+ * State — no error to report, nothing to parse. That signature (a success code
+ * carrying no content) is what a soft bot-block looks like, and it's
+ * indistinguishable from a moved endpoint unless you keep the response itself.
+ * So we keep the status, the content type, the length and the first 200
+ * characters. All public government endpoints; nothing sensitive to leak.
+ */
+async function getJsonDiag(url: string): Promise<{ data: unknown; probe: Record<string, unknown> }> {
   const res = await fetch(url, { headers: HEADERS, redirect: "follow" });
-  if (!res.ok) throw new Error(`${res.status} ${url}`);
-  return await res.json();
+  const text = await res.text();
+  const probe: Record<string, unknown> = {
+    status: res.status,
+    type: res.headers.get("content-type")?.slice(0, 60) ?? null,
+    bytes: text.length,
+    head: text.slice(0, 200),
+    final_url: res.url !== url ? res.url.slice(0, 120) : undefined,
+  };
+  if (!res.ok) throw Object.assign(new Error(`${res.status} ${url}`), { probe });
+  try {
+    return { data: JSON.parse(text), probe };
+  } catch {
+    throw Object.assign(new Error(`non-JSON body from ${url}`), { probe });
+  }
+}
+
+async function getJson(url: string): Promise<unknown> {
+  return (await getJsonDiag(url)).data;
 }
 
 /**
@@ -99,7 +125,8 @@ async function readState(isoByName: Record<string, string>): Promise<{ readings:
   };
 
   try {
-    const raw = await getJson(STATE_API);
+    const { data: raw, probe } = await getJsonDiag(STATE_API);
+    diag.api_probe = probe;
     // The array may arrive bare or inside an envelope. Rather than assume one
     // shape, take the first array we can find — and record what we found, so a
     // future rename shows up in the log instead of as a silent zero.
@@ -136,13 +163,22 @@ async function readState(isoByName: Record<string, string>): Promise<{ readings:
     diag.note = "API parsed but matched nothing — falling back to RSS";
   } catch (apiErr) {
     diag.api_error = (apiErr as Error).message.slice(0, 160);
+    const p = (apiErr as { probe?: unknown }).probe;
+    if (p) diag.api_probe = p;
     console.warn("[advisory] State API unavailable, trying RSS:", apiErr);
   }
 
   // RSS fallback — titles look like "Kenya - Level 2: Exercise Increased Caution".
   const res = await fetch(STATE_RSS, { headers: HEADERS, redirect: "follow" });
-  if (!res.ok) { diag.rss_error = `${res.status}`; return { readings: out, diag }; }
   const xml = await res.text();
+  diag.rss_probe = {
+    status: res.status,
+    type: res.headers.get("content-type")?.slice(0, 60) ?? null,
+    bytes: xml.length,
+    head: xml.slice(0, 200),
+    final_url: res.url !== STATE_RSS ? res.url.slice(0, 120) : undefined,
+  };
+  if (!res.ok) { diag.rss_error = `${res.status}`; return { readings: out, diag }; }
   diag.rss_items = (xml.match(/<item>/g) ?? []).length;
   for (const m of xml.matchAll(/<item>([\s\S]*?)<\/item>/g)) {
     const item = m[1];
