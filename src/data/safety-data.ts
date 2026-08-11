@@ -44,6 +44,22 @@ export interface SafetyInfo {
    * unverified card, and the booking gate must treat it as not-freely-bookable.
    */
   unverified?: boolean;
+  /**
+   * Set when a DESTINATION-level carve-out is in force — a named zone whose
+   * advisory differs from its country's (the FCDO 7km volcanic exclusion on
+   * Flores, which State doesn't carry, is the worked example). The card must say
+   * so rather than silently showing a different number from the country page:
+   * a traveler who checks the country advisory and sees something else needs to
+   * know which one they're looking at and why.
+   */
+  carveOut?: {
+    /** The country-wide level this destination departs from, when we have one. */
+    countryLevel?: RiskLevel;
+    countryLabel?: string;
+  };
+  /** From the dossier: this destination is content-only, no Book button (L4 /
+   *  blocked L3). Kept on the resolved record so one read answers both. */
+  bookingHold?: boolean;
 }
 
 /** Card top color per risk level. */
@@ -114,8 +130,73 @@ export const isoForCountry = (name: string): string | null => COUNTRY_ISO[name] 
  */
 export const SAFETY_DATA = safetyJson as Record<string, SafetyInfo>;
 
-/** Look up safety info by ISO code. Always returns something (DEFAULT fallback). */
+/** Look up COUNTRY-level safety by ISO code. Always returns something (DEFAULT fallback). */
 export function getSafety(iso: string | null | undefined): SafetyInfo {
   if (!iso) return DEFAULT_SAFETY;
   return SAFETY_DATA[iso.toUpperCase()] ?? DEFAULT_SAFETY;
+}
+
+const LEVEL_FROM_ADVISORY: Record<string, RiskLevel> = { L1: 1, L2: 2, L3: 3, L4: 4 };
+const LABEL_FOR_LEVEL: Record<RiskLevel, string> = {
+  1: "Exercise normal precautions",
+  2: "Exercise increased caution",
+  3: "Reconsider travel",
+  4: "Do not travel",
+};
+
+/** The dossier's own safety block (ingest contract §3). */
+interface DossierSafety {
+  advisory_level?: string;
+  posture?: string;
+  booking_hold?: boolean;
+  notes?: string;
+  source?: string;
+  verified?: string;
+}
+
+/**
+ * THE CASCADE, resolved: country advisory → destination carve-out.
+ *
+ * The country level is the baseline; a destination's own dossier can override it
+ * for a named zone. Both halves were already specified — the country data keyed
+ * by ISO, and `data.safety` in the ingest contract, which the gate validates —
+ * but nothing read the carve-out, so a dossier could declare a Level 3 exclusion
+ * and the page would calmly show the country's Level 1.
+ *
+ * When a carve-out is in force the result carries `carveOut` with the country
+ * level it departs from, so the card can name both. Silently showing a different
+ * number than the government page a traveler just read is exactly the kind of
+ * unexplained discrepancy that costs trust.
+ */
+export function resolveSafety(
+  dest: { data?: Record<string, unknown> } | null | undefined,
+  iso: string | null | undefined,
+): SafetyInfo {
+  const base = getSafety(iso);
+  const carve = (dest?.data as { safety?: DossierSafety } | undefined)?.safety;
+  if (!carve) return base;
+
+  const lvl = carve.advisory_level ? LEVEL_FROM_ADVISORY[carve.advisory_level.toUpperCase()] : undefined;
+  const hold = carve.booking_hold === true || lvl === 4;
+  // A dossier that only carries notes (no level) enriches the country record
+  // rather than overriding it — it isn't a carve-out.
+  if (!lvl) {
+    return {
+      ...base,
+      ...(carve.notes ? { considerations: [...base.considerations, carve.notes] } : {}),
+      ...(hold ? { bookingHold: true } : {}),
+    };
+  }
+  const differs = !base.unverified && lvl !== base.lvl;
+  return {
+    ...base,
+    lvl,
+    label: LABEL_FOR_LEVEL[lvl],
+    ...(carve.notes ? { summary: carve.notes } : {}),
+    ...(carve.source ? { source: carve.source } : {}),
+    ...(carve.verified ? { verified: carve.verified } : {}),
+    unverified: false,
+    bookingHold: hold,
+    ...(differs ? { carveOut: { countryLevel: base.lvl, countryLabel: base.label } } : {}),
+  };
 }

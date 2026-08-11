@@ -8,7 +8,8 @@ import { useDestinationImage } from "@/lib/unsplash";
 import { useStore } from "@/store/useStore";
 import { useRegions, useWells, useProviders, useDestinations, useGuides } from "@/store/useCatalog";
 import { cx } from "@/lib/utils";
-import { getSafety, isoForCountry, SAFE_HEADER_COLOR } from "@/data/safety-data";
+import { resolveSafety, isoForCountry, SAFE_HEADER_COLOR } from "@/data/safety-data";
+import { CheckItYourself } from "@/components/ui/CheckItYourself";
 import { getEmergencyNumbers, UNIVERSAL_EMERGENCY } from "@/data/emergency-numbers";
 
 const TIER: Record<string, string> = { prime: "★ Prime", vetted: "Vetted", prospective: "Prospective" };
@@ -68,7 +69,10 @@ export default function DestinationDetail() {
   const hero = useDestinationImage(DEST, 1800, img(DEST.img, 1800));
 
   const iso = isoForCountry(country);
-  const s = getSafety(iso);
+  // THE CASCADE: country advisory, then this destination's own carve-out if the
+  // dossier declares one (ingest contract §3). Previously only the country level
+  // was read, so a named-zone exclusion in a dossier never reached the page.
+  const s = resolveSafety(DEST, iso);
   // Local emergency line joins off the same ISO key (David's emergency-numbers data).
   const localEmergency = iso ? (getEmergencyNumbers(iso).emergency || UNIVERSAL_EMERGENCY) : UNIVERSAL_EMERGENCY;
 
@@ -219,6 +223,23 @@ export default function DestinationDetail() {
               </div>
             </div>
             <div className="safety-card__body">
+              {s.carveOut && (
+                // A traveler who just read the country advisory will see a
+                // different number here. Name both, or it reads as an error.
+                <div className="safety-row safety-row--carve">
+                  <span className="safety-row__ic"><Icon name="pin" small /></span>
+                  <span>
+                    <span className="safety-row__k">This destination specifically:</span> the {country}-wide advisory is
+                    Level {s.carveOut.countryLevel} ({s.carveOut.countryLabel}); this place carries its own level, shown above.
+                  </span>
+                </div>
+              )}
+              {s.bookingHold && (
+                <div className="safety-row safety-row--hold">
+                  <span className="safety-row__ic"><Icon name="info" small /></span>
+                  <span><span className="safety-row__k">Not bookable with us right now.</span> We keep the page so you can read it &mdash; we won&rsquo;t sell you a trip here while this stands.</span>
+                </div>
+              )}
               <div className="safety-row"><span className="safety-row__ic"><Icon name="info" small /></span><span>{s.summary}</span></div>
               {s.considerations.map((c, i) => (
                 <div className="safety-row" key={i}><span className="safety-row__ic"><Icon name="pin" small /></span><span>{c}</span></div>
@@ -234,6 +255,8 @@ export default function DestinationDetail() {
               {s.verified && <span style={{ marginInlineStart: "auto" }}>Verified {s.verified}</span>}
             </div>
           </div>
+
+          <CheckItYourself country={country} iso={iso} verified={s.verified} unverified={s.unverified} />
 
           <div className="dd-quick">
             <h4>At a glance</h4>

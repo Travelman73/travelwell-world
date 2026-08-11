@@ -125,6 +125,39 @@ Keeping suppression in the safety layer rather than in `status` is deliberate: i
 means an advisory can change daily without anyone re-editing the dossier, which is
 exactly what the live-advisory system needs.
 
+### The cascade — and your carve-out now actually renders
+
+Country advisory is the baseline; a dossier's own `data.safety.advisory_level`
+**overrides it for that destination**. This is what a named-zone carve-out is: the
+FCDO's 7 km volcanic exclusion on Flores, which State doesn't carry, belongs on
+the Komodo dossier, not in the country record.
+
+*Until 2026-08-10 the page read only the country level, so a carve-out validated,
+stored, and then displayed the country's number anyway. It's wired now.*
+
+Two behaviours worth knowing when you author one:
+- **A carve-out that differs from its country is labelled as such on the card** —
+  it names the country-wide level too. A traveler who just read the government
+  page and sees a different number here needs to know which is which.
+- **`booking_hold: true` (or `L4`, which implies it) prints a plain line saying we
+  won't sell a trip there.** The page stays; the sale doesn't.
+
+A dossier that carries `data.safety` with **notes but no `advisory_level`** is
+treated as enrichment, not a carve-out — the note is added to the country card
+rather than replacing its level.
+
+### The traveler's own check — deep links, not a gesture
+
+Every destination page now names the sources, publishes our verification date,
+and links **to that country's page** on State, the FCDO and the CDC. Slugs live in
+`src/data/advisory-sources.ts`; where we have no confirmed slug the link falls
+back to that source's index and says so on the page, because a deep link that
+404s reads as "we checked" when we didn't.
+
+**`npm run check:advisory-links` fetches every generated URL and reports what
+resolves.** It needs outbound network — run it from an environment that has some,
+and fix any slug it flags in that one file.
+
 ---
 
 ## 4. Special-Interest dossiers — the nine layers, locked
