@@ -1,0 +1,75 @@
+/**
+ * Emit every advisory deep link as a checkable list, for David to resolve.
+ *
+ * He offered: "send me the list and I will resolve every one from my side and
+ * send back the ones that fail." This is that list — one row per country per
+ * source, with the exact URL and a column for him to mark.
+ *
+ * `npm run gen:advisory-links` → docs/advisory-links.md
+ *
+ * The slugs come from src/data/advisory-sources.ts, so a correction goes in that
+ * one file and this regenerates. Don't edit the output.
+ */
+import { writeFileSync } from "node:fs";
+import { COUNTRY_ISO } from "../src/data/safety-data";
+import { advisoryLinks, isMultiCountry, ADVISORY_SOURCES } from "../src/data/advisory-sources";
+
+const stamp = process.env.LINKS_DATE || new Date().toISOString().slice(0, 10);
+const countries = Object.entries(COUNTRY_ISO).sort(([a], [b]) => a.localeCompare(b));
+
+let deep = 0, index = 0, skipped = 0;
+const rows: string[] = [];
+for (const [country, iso] of countries) {
+  if (isMultiCountry(country)) {
+    skipped++;
+    rows.push(`| ${country} | ${iso} | — | *spans two countries — no single advisory page* | |`);
+    continue;
+  }
+  for (const l of advisoryLinks(country, iso)) {
+    if (l.deep) deep++; else index++;
+    rows.push(`| ${country} | ${iso} | ${l.source.name} | ${l.deep ? `<${l.href}>` : `*index only* — <${l.href}>`} | |`);
+  }
+}
+
+const md = `# Advisory deep links — to verify
+
+*Generated ${stamp} by \`scripts/gen-advisory-link-list.ts\`. Do not hand-edit —
+fix a slug in \`src/data/advisory-sources.ts\` and regenerate.*
+
+**What to do with this:** open each link. Mark the last column **OK** or **404**.
+Send back only the failures. A 403 or a bot-block is not a failure of the slug —
+mark those **blocked** and we'll confirm them another way.
+
+**Why it matters:** a deep link that 404s is worse than a link to the homepage,
+because it looks like we checked and didn't.
+
+## Summary
+
+| | |
+|---|---|
+| Countries | ${countries.length} |
+| Deep links to verify | **${deep}** |
+| Index fallbacks (no confirmed slug — expected to work, but not country-specific) | ${index} |
+| Skipped (a destination spanning two countries) | ${skipped} |
+
+Sources: ${Object.values(ADVISORY_SOURCES).map((s) => s.name).join(" · ")}
+
+## The list
+
+| Country | ISO | Source | URL | OK / 404 / blocked |
+|---|---|---|---|---|
+${rows.join("\n")}
+
+## Known-irregular slugs
+
+These are the ones that don't derive from the country name, so they're the most
+likely to be wrong. Worth checking first: **the UAE · Turks & Caicos · St. Lucia ·
+the Bahamas · South Korea · French Polynesia · Saudi Arabia**.
+
+If a source uses a different slug from the others for the same country — St. Lucia
+is \`st-lucia\` at the FCDO but \`saint-lucia\` at State, as far as we can tell —
+that's expected and each is recorded separately.
+`;
+
+writeFileSync("docs/advisory-links.md", md);
+console.log(`Wrote docs/advisory-links.md — ${deep} deep links, ${index} index fallbacks, ${skipped} skipped`);

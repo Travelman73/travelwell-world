@@ -23,7 +23,10 @@ export const MESSAGES: Record<string, Dict> = {
   // ── Header nav ──────────────────────────────────────────────────────────
   "nav.worlds":  { en: "Worlds of Adventure", es: "Mundos de Aventura", ar: "عوالم المغامرة", zh: "冒险世界", fr: "Mondes d'Aventure" },
   "nav.plan":    { en: "Plan", es: "Planificar", ar: "خطّط", zh: "规划", fr: "Planifier" },
-  "nav.guides":  { en: "Guides", es: "Guías", ar: "أدلّة", zh: "指南", fr: "Guides" },
+  // "Read Before Travel", not "Guides" (David 2026-08-10). It's an instruction
+  // rather than a label, and it's the half that was doing the work — measured, the
+  // header had no room for both.
+  "nav.guides":  { en: "Read Before Travel", es: "Léelo antes de viajar", ar: "اقرأ قبل السفر", zh: "出行前必读", fr: "À lire avant de partir" },
   "nav.about":   { en: "About", es: "Acerca de", ar: "من نحن", zh: "关于", fr: "À propos" },
   "nav.signin":  { en: "Sign in", es: "Iniciar sesión", ar: "تسجيل الدخول", zh: "登录", fr: "Se connecter" },
   "nav.atlas":   { en: "Speak with Atlas", es: "Habla con Atlas", ar: "تحدّث مع Atlas", zh: "与 Atlas 对话", fr: "Parler avec Atlas" },

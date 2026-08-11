@@ -11,7 +11,7 @@
    HEADER NAV (§3.1) — minimal top bar, full IA in the mega-menu
    ========================================================================== */
 .tw-header { position: sticky; top: 0; z-index: 80; background: color-mix(in oklch, var(--background) 90%, transparent); backdrop-filter: blur(12px) saturate(1.2); border-bottom: 1px solid var(--border); }
-.tw-header__bar { max-width: var(--content-max); margin-inline: auto; padding: 0 var(--gutter); height: 68px; display: flex; align-items: center; gap: 8px; }
+.tw-header__bar { max-width: var(--content-max); margin-inline: auto; padding: 0 var(--gutter); height: 68px; display: flex; align-items: center; gap: 6px; }
 
 .tw-logo { display: inline-flex; align-items: baseline; gap: 0; font-family: var(--font-display); font-weight: 600; font-size: 23px; color: var(--foreground); text-decoration: none; letter-spacing: -.01em; margin-inline-end: 8px; }
 .tw-logo:hover { text-decoration: none; }
@@ -21,6 +21,10 @@
 .tw-logo .world { font-size: 13px; font-weight: 500; color: var(--muted-foreground); font-family: var(--font-sans); letter-spacing: .04em; margin-inline-start: 3px; }
 
 .tw-nav { display: flex; align-items: center; gap: 2px; }
+/* Only the Read Before Travel pill is held to one line — a bordered pill that
+   wraps looks broken in a way a plain link doesn't. "Worlds of Adventure" keeps
+   its historic two-line wrap; forcing it flat costs 60px the bar hasn't got. */
+.tw-nav__link--read { white-space: nowrap; }
 .tw-nav__link, .tw-nav__trigger {
   font-family: var(--font-sans); font-weight: 500; font-size: 15px; color: var(--foreground);
   background: none; border: 0; cursor: pointer; padding: 9px 14px; border-radius: var(--radius-pill);
@@ -32,7 +36,7 @@
 .tw-nav__trigger[aria-expanded="true"] .chev { transform: rotate(180deg); }
 
 .tw-header__spacer { flex: 1; }
-.tw-header__actions { display: flex; align-items: center; gap: 6px; }
+.tw-header__actions { display: flex; align-items: center; gap: 4px; }
 .tw-signin { font-family: var(--font-sans); font-weight: 600; font-size: 14px; color: var(--foreground); text-decoration: none; padding: 9px 14px; border-radius: var(--radius-pill); transition: background-color .15s ease; white-space: nowrap; }
 .tw-signin:hover { background: var(--secondary); text-decoration: none; }
 @media (max-width: 560px) { .tw-signin { display: none; } }
@@ -396,9 +400,24 @@
 /* ============================================================================
    RESPONSIVE (§12 mobile-first)
    ========================================================================== */
-@media (max-width: 920px) {
+/* The bar is tight at EVERY desktop width, not just narrow ones: the container
+   caps at --content-max (1200px), so a 1440 screen has exactly as much room as a
+   1280 one. Two labels therefore collapse to their icons unconditionally rather
+   than behind a breakpoint that would fix 1280 and leave 1440 clipped — the
+   language code (the globe reads as language, and the button keeps its
+   aria-label) and the Trip word (the bag plus its count is unambiguous). */
+.tw-locale__btn span.loc-lbl { display: none; }
+.tw-trip-btn span.lbl { display: none; }
+.tw-trip-btn { padding: 0 14px; }
+
+/* The inline nav collapses to the burger at 1180px, not 920: below that the bar
+   genuinely runs out of room once Emergency, Trip and Atlas are in it, and a
+   clipped nav is worse than a menu. Measured, not guessed. */
+@media (max-width: 1180px) {
   .tw-nav { display: none; }
   .tw-burger { display: grid; }
+}
+@media (max-width: 920px) {
   .tw-talk-btn span.lbl, .tw-trip-btn span.lbl { display: none; }
   .tw-talk-btn, .tw-trip-btn { width: 48px; padding: 0; justify-content: center; border-radius: 50%; }
   .tw-mega__inner { grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -486,3 +505,15 @@
 @media (max-width: 700px) {
   .tw-motto__line { font-size: 13.5px; padding: 8px 14px; }
 }
+
+/* "Read Before Travel" — a pill rather than a plain nav link, because it is an
+   instruction, not a section name (David 2026-08-10). Quiet enough not to fight
+   Emergency or Atlas: a bordered pill, not a filled one. */
+.tw-nav__link--read {
+  border: 1.5px solid color-mix(in oklch, var(--primary) 45%, var(--border));
+  border-radius: var(--radius-pill);
+  padding: 8px 13px;
+  font-weight: 600;
+  font-size: 14.5px;
+}
+@media (hover: hover) { .tw-nav__link--read:hover { background: var(--secondary); } }

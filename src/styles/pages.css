@@ -1433,3 +1433,20 @@
   /* The carve-out and hold rows carry weight — they are the exception, not the summary. */
   [data-page="destination-detail"] .safety-row--carve span:last-child,
   [data-page="destination-detail"] .safety-row--hold span:last-child { font-weight: 500; }
+
+  /* ---- Worldwide advisory note --------------------------------------------
+     Above the country card, collapsed by default: it applies to every
+     destination, so expanded on all of them it becomes wallpaper and stops
+     being read. The summary line always states that it is worldwide and who
+     issued it — those are the two facts that stop it being mistaken for this
+     destination's own level. */
+  [data-page="destination-detail"] .gadv { margin-top: 14px; border: 1px solid color-mix(in oklch, var(--safety-2) 45%, var(--border)); border-radius: var(--radius); background: color-mix(in oklch, var(--safety-2) 8%, var(--card)); overflow: hidden; }
+  [data-page="destination-detail"] .gadv__sum { display: flex; gap: 10px; align-items: flex-start; padding: 13px 15px; cursor: pointer; font-size: 13.5px; line-height: 1.45; list-style: none; min-height: 44px; }
+  [data-page="destination-detail"] .gadv__sum::-webkit-details-marker { display: none; }
+  [data-page="destination-detail"] .gadv__sum::after { content: "+"; margin-inline-start: auto; font-size: 18px; color: var(--muted-foreground); }
+  [data-page="destination-detail"] .gadv[open] .gadv__sum::after { content: "\2212"; }
+  [data-page="destination-detail"] .gadv__sum:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
+  [data-page="destination-detail"] .gadv__ic { color: var(--gold-deep); display: grid; place-items: center; flex: none; margin-top: 1px; }
+  [data-page="destination-detail"] .gadv__body { padding: 0 15px 14px; }
+  [data-page="destination-detail"] .gadv__quote { font-size: 13.5px; line-height: 1.6; font-style: italic; color: var(--foreground); }
+  [data-page="destination-detail"] .gadv__meta { font-size: 12.5px; color: var(--muted-foreground); margin-top: 9px; line-height: 1.5; }

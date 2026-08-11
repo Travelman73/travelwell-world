@@ -15,7 +15,8 @@
     "gen:sitemap": "esbuild scripts/gen-sitemap.ts --bundle --platform=node --format=esm --define:import.meta.env={} --outfile=scratchpad/sitemap.mjs && node scratchpad/sitemap.mjs",
     "validate:si": "esbuild scripts/validate-si.ts --bundle --platform=node --format=esm --define:import.meta.env={} --outfile=scratchpad/valsi.mjs && node scratchpad/valsi.mjs",
     "gen:taglines": "esbuild scripts/gen-tagline-list.ts --bundle --platform=node --format=esm --define:import.meta.env={} --outfile=scratchpad/tag.mjs && node scratchpad/tag.mjs",
-    "check:advisory-links": "esbuild scripts/check-advisory-links.ts --bundle --platform=node --format=esm --define:import.meta.env={} --outfile=scratchpad/links.mjs && node scratchpad/links.mjs"
+    "check:advisory-links": "esbuild scripts/check-advisory-links.ts --bundle --platform=node --format=esm --define:import.meta.env={} --outfile=scratchpad/links.mjs && node scratchpad/links.mjs",
+    "gen:advisory-links": "esbuild scripts/gen-advisory-link-list.ts --bundle --platform=node --format=esm --define:import.meta.env={} --outfile=scratchpad/genlinks.mjs && node scratchpad/genlinks.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.4",

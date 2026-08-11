@@ -33,8 +33,12 @@ export function Header() {
             {t("nav.worlds")} <Icon name="chev" small className="chev" />
           </button>
           <Link className="tw-nav__link" to="/plan">{t("nav.plan")}</Link>
-          <Link className="tw-nav__link" to="/guides">{t("nav.guides")}</Link>
-          <Link className="tw-nav__link" to="/about">{t("nav.about")}</Link>
+          <Link className="tw-nav__link tw-nav__link--read" to="/guides">{t("nav.guides")}</Link>
+          {/* "About" left the primary nav to make room for "Read Before Travel"
+              (David 2026-08-10). Measured, the bar overflowed by 66px with both;
+              something had to go, and About is reachable from the menu and twice
+              from the footer, while Read Before Travel is the safety instruction.
+              Reversible in one line if the trade should go the other way. */}
         </nav>
         <div className="tw-header__spacer" />
         <div className="tw-header__actions">

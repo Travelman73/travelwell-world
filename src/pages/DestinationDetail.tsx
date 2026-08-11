@@ -10,6 +10,7 @@ import { useRegions, useWells, useProviders, useDestinations, useGuides } from "
 import { cx } from "@/lib/utils";
 import { resolveSafety, isoForCountry, SAFE_HEADER_COLOR } from "@/data/safety-data";
 import { CheckItYourself } from "@/components/ui/CheckItYourself";
+import { GlobalAdvisoryNote } from "@/components/ui/GlobalAdvisoryNote";
 import { getEmergencyNumbers, UNIVERSAL_EMERGENCY } from "@/data/emergency-numbers";
 
 const TIER: Record<string, string> = { prime: "★ Prime", vetted: "Vetted", prospective: "Prospective" };
@@ -255,6 +256,11 @@ export default function DestinationDetail() {
               {s.verified && <span style={{ marginInlineStart: "auto" }}>Verified {s.verified}</span>}
             </div>
           </div>
+
+          {/* Worldwide advisories sit ABOVE the country level, never folded into
+              it — a global caution doesn't change this country's number, and
+              merging them would misreport both. */}
+          <GlobalAdvisoryNote />
 
           <CheckItYourself country={country} iso={iso} verified={s.verified} unverified={s.unverified} />
 
