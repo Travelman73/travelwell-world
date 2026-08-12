@@ -48,7 +48,7 @@ insert into public.special_interests (id, name, signature, status, accent, is_lu
   ('compsports', 'Competitive Sports Team Travel', 'travel to compete', 'preview', '#2E6E8C', false, 'sports', null),
   ('sailing', 'Sailing Charters', 'wind in your favor', 'preview', '#2E6E8C', false, 'water', null),
   ('yacht', 'Yacht Charters', 'the open sea, served well', 'preview', '#1F5C73', true, 'water', null),
-  ('wine', 'Wine & Whiskey/Spirits Tours', 'the world, one glass at a time', 'live', '#7B3F52', false, 'culinary', null)
+  ('wine', 'Wine & Whiskey/Spirits Tours', 'the world, one glass at a time', 'preview', '#7B3F52', false, 'culinary', null)
 on conflict (id) do update set
   name = excluded.name, signature = excluded.signature, status = excluded.status,
   accent = excluded.accent, is_lux = excluded.is_lux, grp = excluded.grp, data = excluded.data;

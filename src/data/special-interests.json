@@ -22,7 +22,7 @@
       "id": "wine",
       "name": "Wine & Whiskey/Spirits Tours",
       "sig": "the world, one glass at a time",
-      "status": "live",
+      "status": "preview",
       "accent": "#7B3F52",
       "lux": false,
       "group": "culinary"
