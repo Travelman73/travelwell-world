@@ -31,6 +31,13 @@ begin
   if not exists (select 1 from vault.decrypted_secrets where name = 'advisory_check_key') then
     raise exception 'Vault secret advisory_check_key is missing. Create it first (see the header of this file) — a job scheduled without it would fail 401 every morning and still look scheduled.';
   end if;
+  -- A key stored with a stray newline breaks the request in a way that looks
+  -- nothing like a key problem. See the note above the Authorization header.
+  if exists (select 1 from vault.decrypted_secrets
+             where name = 'advisory_check_key'
+               and trim(both E' \t\r\n' from decrypted_secret) ~ '\s') then
+    raise exception 'The stored advisory_check_key contains whitespace inside it — that is a corrupted paste, not a key. Re-create the secret from a clean copy.';
+  end if;
 end
 $guard$;
 
@@ -47,10 +54,18 @@ select cron.schedule(
   $job$
   select net.http_post(
     url     := 'https://xgjidkgctqqdprxtxeui.supabase.co/functions/v1/advisory-check',
+    -- TRIM IS LORE, NOT TIDINESS. A key copied with a trailing newline makes the
+    -- header value end in a line break; pg_net then writes its own CRLF after it,
+    -- and the two together form the blank line that ENDS the header section. Every
+    -- header pg_net adds next — User-Agent, Content-Length — plus the JSON lands
+    -- in the body instead. The function then reports a malformed body, which
+    -- points at the payload and never at the key. Cost us an afternoon; the fix is
+    -- one function call and it belongs here permanently.
     headers := jsonb_build_object(
                  'Content-Type', 'application/json',
                  'Authorization', 'Bearer ' || (
-                   select decrypted_secret from vault.decrypted_secrets
+                   select trim(both E' \t\r\n' from decrypted_secret)
+                   from vault.decrypted_secrets
                    where name = 'advisory_check_key')),
     body    := $json${"countries":[{"iso":"AE","name":"UAE","match":["uae","united arab emirates"],"fcdo_slug":"united-arab-emirates"},{"iso":"AT","name":"Austria","match":["austria"],"fcdo_slug":"austria"},{"iso":"AU","name":"Australia","match":["australia"],"fcdo_slug":"australia"},{"iso":"BS","name":"Bahamas","match":["bahamas","the bahamas"],"fcdo_slug":"bahamas"},{"iso":"CA","name":"Canada","match":["canada"],"fcdo_slug":"canada"},{"iso":"CH","name":"Switzerland","match":["switzerland"],"fcdo_slug":"switzerland"},{"iso":"CO","name":"Colombia","match":["colombia"],"fcdo_slug":"colombia"},{"iso":"DE","name":"Germany","match":["germany"],"fcdo_slug":"germany"},{"iso":"EG","name":"Egypt","match":["egypt"],"fcdo_slug":"egypt"},{"iso":"ES","name":"Spain","match":["spain"],"fcdo_slug":"spain"},{"iso":"ET","name":"Ethiopia","match":["ethiopia"],"fcdo_slug":"ethiopia"},{"iso":"FR","name":"France","match":["france"],"fcdo_slug":"france"},{"iso":"GR","name":"Greece","match":["greece"],"fcdo_slug":"greece"},{"iso":"ID","name":"Indonesia","match":["indonesia"],"fcdo_slug":"indonesia"},{"iso":"IS","name":"Iceland","match":["iceland"],"fcdo_slug":"iceland"},{"iso":"IT","name":"Italy","match":["italy"],"fcdo_slug":"italy"},{"iso":"JO","name":"Jordan","match":["jordan"],"fcdo_slug":"jordan"},{"iso":"JP","name":"Japan","match":["japan"],"fcdo_slug":"japan"},{"iso":"KE","name":"Kenya","match":["kenya"],"fcdo_slug":"kenya"},{"iso":"KH","name":"Cambodia","match":["cambodia"],"fcdo_slug":"cambodia"},{"iso":"KR","name":"South Korea","match":["south korea"],"fcdo_slug":"south-korea"},{"iso":"LC","name":"St. Lucia","match":["st. lucia","st lucia","saint lucia"],"fcdo_slug":"st-lucia"},{"iso":"NA","name":"Namibia","match":["namibia"],"fcdo_slug":"namibia"},{"iso":"NL","name":"Netherlands","match":["netherlands"],"fcdo_slug":"netherlands"},{"iso":"NO","name":"Norway","match":["norway"],"fcdo_slug":"norway"},{"iso":"NZ","name":"New Zealand","match":["new zealand"],"fcdo_slug":"new-zealand"},{"iso":"PE","name":"Peru","match":["peru"],"fcdo_slug":"peru"},{"iso":"PF","name":"French Polynesia","match":["french polynesia"],"fcdo_slug":"french-polynesia"},{"iso":"PT","name":"Portugal","match":["portugal"],"fcdo_slug":"portugal"},{"iso":"RW","name":"Rwanda","match":["rwanda"],"fcdo_slug":"rwanda"},{"iso":"SA","name":"Saudi Arabia","match":["saudi arabia"],"fcdo_slug":"saudi-arabia"},{"iso":"TC","name":"Turks & Caicos","match":["turks & caicos","turks and caicos islands"],"fcdo_slug":"turks-and-caicos-islands"},{"iso":"TH","name":"Thailand","match":["thailand"],"fcdo_slug":"thailand"},{"iso":"TZ","name":"Tanzania","match":["tanzania"],"fcdo_slug":"tanzania"},{"iso":"UG","name":"Uganda","match":["uganda"],"fcdo_slug":"uganda"},{"iso":"ZA","name":"South Africa","match":["south africa"],"fcdo_slug":"south-africa"}]}$json$::jsonb,
     -- pg_net defaults to 5s. The timeout can't break a run — http_post is

@@ -91,6 +91,13 @@ begin
   if not exists (select 1 from vault.decrypted_secrets where name = 'advisory_check_key') then
     raise exception 'Vault secret advisory_check_key is missing. Create it first (see the header of this file) — a job scheduled without it would fail 401 every morning and still look scheduled.';
   end if;
+  -- A key stored with a stray newline breaks the request in a way that looks
+  -- nothing like a key problem. See the note above the Authorization header.
+  if exists (select 1 from vault.decrypted_secrets
+             where name = 'advisory_check_key'
+               and trim(both E' \\t\\r\\n' from decrypted_secret) ~ '\\s') then
+    raise exception 'The stored advisory_check_key contains whitespace inside it — that is a corrupted paste, not a key. Re-create the secret from a clean copy.';
+  end if;
 end
 $guard$;
 
@@ -107,10 +114,18 @@ select cron.schedule(
   $job$
   select net.http_post(
     url     := 'https://${ref}.supabase.co/functions/v1/advisory-check',
+    -- TRIM IS LORE, NOT TIDINESS. A key copied with a trailing newline makes the
+    -- header value end in a line break; pg_net then writes its own CRLF after it,
+    -- and the two together form the blank line that ENDS the header section. Every
+    -- header pg_net adds next — User-Agent, Content-Length — plus the JSON lands
+    -- in the body instead. The function then reports a malformed body, which
+    -- points at the payload and never at the key. Cost us an afternoon; the fix is
+    -- one function call and it belongs here permanently.
     headers := jsonb_build_object(
                  'Content-Type', 'application/json',
                  'Authorization', 'Bearer ' || (
-                   select decrypted_secret from vault.decrypted_secrets
+                   select trim(both E' \\t\\r\\n' from decrypted_secret)
+                   from vault.decrypted_secrets
                    where name = 'advisory_check_key')),
     body    := $json$${JSON.stringify({ countries })}$json$::jsonb,
     -- pg_net defaults to 5s. The timeout can't break a run — http_post is

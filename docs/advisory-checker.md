@@ -170,6 +170,54 @@ never checked anything, and a row reading `checked: 0` is indistinguishable from
 a real run that found nothing — the exact ambiguity the audit trail exists to
 remove.
 
+### The one that cost us an afternoon: a newline in the Vault secret
+
+The first scheduled run came back 400, and the diagnostic showed the function had
+received this as its **body**:
+
+```
+User-Agent: pg_net/0.20.3\r\nContent-Length: 89\r\n\r\n{"countries": [...
+```
+
+Two of pg_net's own headers, inside the body. That has exactly one cause: the
+HTTP header section was terminated early, so everything written after it became
+payload. The terminator is a blank line — and a key copied with a trailing line
+break produces one. The header value ends in a newline, pg_net appends its own
+CRLF, and those two form the empty line that ends the headers. Every header
+pg_net writes next, and then the JSON, land in the body.
+
+**Nothing about the symptom points at the key.** It reads as a malformed payload,
+so you go looking at the payload, the dollar-quoting, the size of the job command
+— all of which are fine.
+
+The fix is in the job permanently: the Authorization value is built with
+`trim(both E' \t\r\n' from decrypted_secret)`, and 0015's guard now refuses to
+schedule if the stored secret has whitespace *inside* it (which is a corrupted
+paste, not a key). To check a stored secret without printing it:
+
+```sql
+select name,
+       length(decrypted_secret)                                as len,
+       length(trim(both E' \t\r\n' from decrypted_secret))     as trimmed_len,
+       decrypted_secret ~ '\s'                                 as has_whitespace
+from vault.decrypted_secrets where name = 'advisory_check_key';
+```
+
+`len` above `trimmed_len` is the newline. To clean it in place, still without
+printing it:
+
+```sql
+select vault.update_secret(
+  (select id from vault.secrets where name = 'advisory_check_key'),
+  (select trim(both E' \t\r\n' from decrypted_secret)
+   from vault.decrypted_secrets where name = 'advisory_check_key'));
+```
+
+**The general lesson, worth carrying to any other job we schedule this way:** a
+secret read from storage and concatenated into a header is an injection point for
+whatever whitespace came along with it. Trim at the point of use, not at the point
+of entry — you don't control how it got in.
+
 ## Reading the results
 
 ```sql
