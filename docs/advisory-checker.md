@@ -64,28 +64,88 @@ it in the dashboard editor (it's a single self-contained file, like `atlas`).
 
 **3 · Schedule it daily.** The function takes the country list as a POST body —
 it never guesses which countries to check, so a country can't quietly go
-unchecked. Generate the payload and schedule it:
+unchecked. Generate the payload first:
 
 ```bash
 npm run gen:advisory-payload      # → docs/advisory-countries.json
 ```
 
+Then three statements in the SQL editor, **in this order**. Extensions first:
+
 ```sql
--- Supabase SQL editor, once. Runs 06:00 UTC daily.
+create extension if not exists pg_cron  with schema extensions;
+create extension if not exists pg_net   with schema extensions;
+```
+
+**Put the service-role key in Vault, not in the job.** `cron.schedule` stores its
+command as plain text in `cron.job`, which anyone with database access can read —
+so a key pasted inline is a key sitting in a table forever. Vault holds it
+encrypted and the job asks for it at run time:
+
+```sql
+select vault.create_secret('<service-role-key>', 'advisory_check_key',
+                           'Service-role key used by the daily advisory checker');
+```
+
+Now the job itself. Paste the **contents of `docs/advisory-countries.json`** where
+marked — that file is not secret, and having it visible in the job is a feature:
+the country list the checker actually runs with is readable without deploying
+anything.
+
+```sql
+-- Once. Runs 06:00 UTC daily.
 select cron.schedule(
   'advisory-check-daily', '0 6 * * *',
-  $$ select net.http_post(
-       url     := 'https://<project>.supabase.co/functions/v1/advisory-check',
-       headers := '{"Content-Type":"application/json","Authorization":"Bearer <service-role-key>"}'::jsonb,
-       body    := '<paste docs/advisory-countries.json here>'::jsonb
-     ) $$
+  $$
+  select net.http_post(
+    url     := 'https://<project>.supabase.co/functions/v1/advisory-check',
+    headers := jsonb_build_object(
+                 'Content-Type', 'application/json',
+                 'Authorization', 'Bearer ' || (
+                   select decrypted_secret from vault.decrypted_secrets
+                   where name = 'advisory_check_key')),
+    body    := '<paste docs/advisory-countries.json here>'::jsonb,
+    timeout_milliseconds := 120000   -- 36 countries, one request each — see below
+  )
+  $$
 );
 ```
 
+06:00 UTC is deliberate: the FCDO publishes on London business hours, so an
+early-UTC run reads yesterday's settled state rather than catching a page
+mid-edit, and anything it queues is waiting when someone opens the laptop.
+
+`timeout_milliseconds` is worth raising even though it can't break a run.
+`net.http_post` is asynchronous — it hands back a request id immediately and the
+cron job reports success either way, so a timeout doesn't stop the checker; the
+function keeps running server-side and still writes its tables. What a 5-second
+default (pg_net's) costs you is the **response**: `net._http_response` records a
+timeout instead of the summary, and the first place you'd look after a bad run
+shows an error that didn't happen. Raise it so the diagnostic matches reality.
+
 **Regenerate the payload whenever a destination adds a new country**, and update
-the job. If the two drift, the checker silently stops covering that country while
+the job (`select cron.unschedule('advisory-check-daily');` then re-run the block
+above). If the two drift, the checker silently stops covering that country while
 still reporting a successful run — the worst kind of gap, because the number
 looks right.
+
+**4 · Prove it's actually scheduled.** A cron job that was never registered looks
+identical to a quiet week, and `advisory_runs` can't tell you the difference —
+it only records runs that happened.
+
+```sql
+-- The job exists and is active
+select jobid, schedule, active from cron.job where jobname = 'advisory-check-daily';
+
+-- It fired, and pg_net didn't fail before the function was reached
+select status, return_message, start_time from cron.job_run_details
+where jobid = (select jobid from cron.job where jobname = 'advisory-check-daily')
+order by start_time desc limit 5;
+```
+
+`status = 'succeeded'` here means *the HTTP call was dispatched*, not that the
+checker read anything — that answer is in `advisory_runs`, and the two are worth
+reading together the first morning after scheduling.
 
 ## Reading the results
 
