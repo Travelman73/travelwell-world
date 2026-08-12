@@ -143,6 +143,33 @@ end $$;
 
 Then read `advisory_runs` — a new row with `checked = 36` means the loop closed.
 
+**If the response is a 400**, the request reached the function (the gateway let it
+through and our own code answered) but the country list didn't arrive with it.
+The 400 body carries a `diagnostic` block naming which of the three ways it went
+wrong — no body at all, a body that wasn't JSON, or valid JSON without a
+`countries` key — because at 06:00 those read identically and each has a
+different fix. Two things to check first:
+
+```sql
+-- Is the stored job command intact, and does it still carry the payload?
+select length(command) as chars, position('countries' in command) as has_payload
+from cron.job where jobname = 'advisory-check-daily';
+
+-- Does a minimal body get through? Isolates the mechanism from the payload.
+select net.http_post(
+  url     := 'https://xgjidkgctqqdprxtxeui.supabase.co/functions/v1/advisory-check',
+  headers := jsonb_build_object('Content-Type', 'application/json',
+               'Authorization', 'Bearer ' || (select decrypted_secret
+                 from vault.decrypted_secrets where name = 'advisory_check_key')),
+  body    := '{"countries":[{"iso":"KE","name":"Kenya","match":["kenya"],"fcdo_slug":"kenya"}]}'::jsonb,
+  timeout_milliseconds := 60000);
+```
+
+A 400 rejection deliberately writes **no** `advisory_runs` row. A rejected call
+never checked anything, and a row reading `checked: 0` is indistinguishable from
+a real run that found nothing — the exact ambiguity the audit trail exists to
+remove.
+
 ## Reading the results
 
 ```sql

@@ -309,20 +309,48 @@ Deno.serve(async (req: Request) => {
     { auth: { persistSession: false } },
   );
 
+  // ── The country list arrives in the body, so read it BEFORE opening a run ──
+  // The list is OURS — we only check what we actually serve, which is why this is
+  // ~90 lookups and not 200. Passed in so the function has no build-time
+  // dependency on the app bundle.
+  //
+  // Validated before `advisory_runs` gets a row, deliberately. A rejected call
+  // never checked anything, and a run row saying `checked: 0` is indistinguishable
+  // from a real run that found nothing — which is exactly the ambiguity the audit
+  // trail exists to remove. No run happened, so no run is recorded.
+  const raw = req.method === "POST" ? await req.text().catch(() => "") : "";
+  let parsed: { countries?: unknown } = {};
+  let parseError: string | null = null;
+  if (raw) {
+    try { parsed = JSON.parse(raw); } catch (err) { parseError = (err as Error).message.slice(0, 120); }
+  }
+  const countries = (Array.isArray(parsed.countries) ? parsed.countries : []) as Array<{
+    iso: string; name: string; match?: string[]; fcdo_slug?: string;
+  }>;
+  if (!countries.length) {
+    // Say WHICH of the three ways it went wrong. "Send a list" is a fine message
+    // for a human with curl and a useless one for a scheduled caller at 06:00 —
+    // an empty body, a malformed body and a well-formed body with the wrong key
+    // all read identically, and each has a different fix.
+    return Response.json({
+      error: "POST { countries: [{iso, name, fcdo_slug}] } — the checker never guesses the list",
+      diagnostic: {
+        method: req.method,
+        content_type: req.headers.get("content-type"),
+        body_bytes: raw.length,
+        parse_error: parseError,
+        top_level_keys: parseError ? null : Object.keys(parsed ?? {}),
+        received_head: raw.slice(0, 120),
+      },
+    }, { status: 400 });
+  }
+
   const { data: run } = await sb.from("advisory_runs").insert({}).select("id").single();
   const runId = run?.id;
   const notes: Record<string, unknown> = {};
   let checked = 0, ok = 0, failed = 0, changed = 0;
 
   try {
-    // The country list is OURS — we only check what we actually serve, which is
-    // why this is ~90 lookups and not 200. Passed in so the function has no
-    // build-time dependency on the app bundle.
-    const body = req.method === "POST" ? await req.json().catch(() => ({})) : {};
-    const countries: Array<{ iso: string; name: string; match?: string[]; fcdo_slug?: string }> = body.countries ?? [];
-    if (!countries.length) {
-      return Response.json({ error: "POST { countries: [{iso, name, fcdo_slug}] } — the checker never guesses the list" }, { status: 400 });
-    }
     // Index every alias, not just our display name: State says "United Arab
     // Emirates" where we say "UAE". Matching on our name alone would drop those
     // countries from the run while it still reported success — the worst kind of
