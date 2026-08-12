@@ -1,6 +1,6 @@
 # The TravelWell slogan family — in active use
 
-*Generated from the live taxonomy by `scripts/gen-tagline-list.ts` on 2026-08-10.
+*Generated from the live taxonomy by `scripts/gen-tagline-list.ts` on 2026-08-12.
 Do not hand-edit — regenerate.*
 
 **The construction:** `If It's [X]… TravelWell.™`
@@ -19,7 +19,7 @@ every instance on the site is the same construction by build, not by convention.
 | Distinct variants in active use | **37** |
 | — master | 1 |
 | — category (Safer Informed Travel) | 1 |
-| — special-interest subjects | 35 (9 on live interests, 26 on preview interests) |
+| — special-interest subjects | 35 (8 on live interests, 27 on preview interests) |
 | Closing mark, every variant | `TravelWell.™` |
 
 ## 1. The master variant
@@ -42,7 +42,7 @@ One per interest, rendered on that interest's page and on its card on the home
 page. **Live interests** are in commerce now; **preview interests** render the
 line on a published page that is not yet bookable.
 
-### Live interests (9)
+### Live interests (8)
 
 | id | Interest | Subject `[X]` | Rendered line | Subject source |
 |---|---|---|---|---|
@@ -54,9 +54,8 @@ line on a published page that is not yet bookable.
 | `ski` | Winter/Ski | Winter | If It's Winter… TravelWell.™ | locked map |
 | `liveaboard` | Dive Liveaboards | Liveaboards | If It's Liveaboards… TravelWell.™ | locked map |
 | `river` | River Cruises | River Cruising | If It's River Cruising… TravelWell.™ | locked map |
-| `wine` | Wine & Whiskey/Spirits Tours | Wine | If It's Wine… TravelWell.™ | locked map |
 
-### Preview interests (26)
+### Preview interests (27)
 
 | id | Interest | Subject `[X]` | Rendered line | Subject source |
 |---|---|---|---|---|
@@ -86,6 +85,7 @@ line on a published page that is not yet bookable.
 | `spectator` | Sports Spectator Travel | the Big Game | If It's the Big Game… TravelWell.™ | locked map |
 | `sailing` | Sailing Charters | Sailing | If It's Sailing… TravelWell.™ | locked map |
 | `yacht` | Yacht Charters | Yachts | If It's Yachts… TravelWell.™ | locked map |
+| `wine` | Wine & Whiskey/Spirits Tours | Wine | If It's Wine… TravelWell.™ | locked map |
 
 ## Notes for the file
 
