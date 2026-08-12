@@ -26,12 +26,12 @@ not-yet-checkable. Say so rather than letting it through.
 | Destinations | 44 | src/data/places.ts:79 |
 | …with a `price_band` | 7 | src/data/places.ts:67 |
 | …at `depth: verified` | 33 | src/data/places.ts:36 |
-| Activities | 60 | src/data/places.ts:414 |
-| Providers **in the bundle** | 58 (CSVs under `src/data/providers/` merge on top at seed time — run `npm run gen:catalog` to see the DB total) | src/data/places.ts:276 |
+| Activities | 60 | src/data/places.ts:477 |
+| Providers **in the bundle** | 58 (CSVs under `src/data/providers/` merge on top at seed time — run `npm run gen:catalog` to see the DB total) | src/data/places.ts:339 |
 | Regions | 13 | src/data/taxonomy.ts:318 |
 | Wells (10 live + 3 soon) | 13 | src/data/taxonomy.ts:286 |
-| Sub-region lists | 18 | src/data/places.ts:231 |
-| Guides | 9 | src/data/places.ts:374 |
+| Sub-region lists | 18 | src/data/places.ts:294 |
+| Guides | 9 | src/data/places.ts:437 |
 | Countries with a safety row | 37 | src/data/safety-data.ts |
 
 ## The Signature-Interest dossier — NINE layers
@@ -72,8 +72,8 @@ hard error in `npm run validate:si`. An unlabeled number is a guessed number.
 
 | Vocabulary | Values | Read from |
 |---|---|---|
-| Budget tier (`price`) | `essential` · `comfort` · `premier` · `luxury` · `ultra` | src/data/places.ts:256 |
-| Provider curation (`tier`) | `prime` · `vetted` · `prospective` | src/data/places.ts:252 |
+| Budget tier (`price`) | `essential` · `comfort` · `premier` · `luxury` · `ultra` | src/data/places.ts:319 |
+| Provider curation (`tier`) | `prime` · `vetted` · `prospective` | src/data/places.ts:315 |
 | Interest status | `live` · `preview` · `soon` | src/data/taxonomy.ts:19 |
 | Destination status | `live` · `future` | src/data/places.ts:35 |
 | Destination depth | `verified` · `stub` · `cached` | src/data/places.ts:36 |
@@ -105,8 +105,8 @@ the provider.
    → 13 regions
    → `src/data/taxonomy.ts:318`
 
-⚠️ **Destination id is `<city>-<country>`, lowercase and hyphenated**
-   → 13 of 44 are hyphenated multi-part; 31 are single-word and cannot conform (paris, amsterdam, alps, santorini, amalfi, barcelona, algarve, reykjavik, …)
+✅ **Destination id is `<city>-<country>`, lowercase and hyphenated**
+   → 44 of 44 are hyphenated multi-part; 0 are single-word and cannot conform
    → `src/data/places.ts:79`
 
 ✅ **Every interest dossier layer is optional, but a populated one must carry labeled figures**

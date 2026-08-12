@@ -1,5 +1,22 @@
 # The 45 live-row reconcile map (for the library normalize)
 
+> **APPLIED 2026-08-12 — the MVP rows now carry the target ids in column 3.**
+> 34 of the 44 live rows were renamed to `<city>-<country>` (`paris` →
+> `paris-france`, `kruger` → `greater-kruger-south-africa`), against this table.
+> Three ⚠ rows needed the call this table left to the dossier, and no dossier
+> exists yet, so the recommendation was taken and **stays reversible**:
+> `alps` → `swiss-alps-switzerland`, `patagonia` → `patagonia-chile-argentina`,
+> and `st-lucia` kept as-is rather than `saint-lucia`. If a dossier's canonical
+> key disagrees, the dossier still wins — change the id and add the old one to
+> `LEGACY_DEST_ID`.
+>
+> **Column 2 still works and still means what it meant.** `reconciles_live_mvp`
+> resolves through `LEGACY_DEST_ID` (`src/data/places.ts`) and the ingest
+> validator accepts legacy slugs, so every dossier already authored against
+> `kruger` lands on the right row. Nothing needs re-authoring. Two dossiers
+> claiming the same row under different spellings now collide at the gate rather
+> than creating a duplicate, which is what this map was for.
+
 These are the **only** dossiers that need `reconciles_live_mvp` — the 45 places
 already live in the MVP (38 original + 7 alpine anchors, rows 39–45). Every other dossier is net-new (no linkage; it just
 gets its derived `<city>-<country>` id).

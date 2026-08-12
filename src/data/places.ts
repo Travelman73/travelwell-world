@@ -77,7 +77,7 @@ const D = (id: string, name: string, country: string, line: string, quality: "li
   ({ id, name, country, line, status: "live", depth: quality === "live" ? "verified" : "stub", img, ...(sub_region ? { sub_region } : {}) });
 
 export const DESTINATIONS: Record<string, Destination[]> = {
-  "01F": [D("paris", "Paris", "France", "The first and last word in romance", "live", "paris"), D("amsterdam", "Amsterdam", "Netherlands", "Canals, galleries, easy charm", "live", "venice"), D("alps", "The Alps", "Switzerland", "Peaks, spas and slow trains", "live", "mountainValley"),
+  "01F": [D("paris-france", "Paris", "France", "The first and last word in romance", "live", "paris"), D("amsterdam-netherlands", "Amsterdam", "Netherlands", "Canals, galleries, easy charm", "live", "venice"), D("swiss-alps-switzerland", "The Alps", "Switzerland", "Peaks, spas and slow trains", "live", "mountainValley"),
     // Winter/Ski launch shelf — hand-authored, real destinations (swap for full
     // dossiers when the alpine library is ingested). depth:"verified" so they
     // render as live, populated pages (not the preview/no-providers path).
@@ -215,18 +215,81 @@ export const DESTINATIONS: Record<string, Destination[]> = {
       },
     },
   ],
-  "02F": [D("santorini", "Santorini", "Greece", "Whitewashed cliffs over a caldera", "live", "santorini"), D("amalfi", "Amalfi Coast", "Italy", "Lemon groves and vertical villages", "live", "venice"), D("barcelona", "Barcelona", "Spain", "Gaudí, tapas and Mediterranean light", "live", "marrakech"), D("algarve", "The Algarve", "Portugal", "Golden cliffs and quiet coves", "stub", "tropicalBeach")],
-  "03F": [D("reykjavik", "Reykjavík & Ring Road", "Iceland", "Waterfalls, lava and aurora", "live", "northernLights"), D("lofoten", "Lofoten Islands", "Norway", "Sea-cliff drama above the Arctic Circle", "stub", "mountainValley")],
-  "04A": [D("dubai", "Dubai", "UAE", "Audacious, golden, around the clock", "live", "dubai"), D("petra", "Petra & Wadi Rum", "Jordan", "Rose-red city and red-sand desert", "live", "desertDunes"), D("alula", "AlUla", "Saudi Arabia", "Ancient tombs in a living desert", "stub", "desertDunes")],
-  "05A": [D("masai-mara", "Maasai Mara", "Kenya", "Front-row seat to the Great Migration", "live", "safariGiraffe"), D("serengeti", "Serengeti", "Tanzania", "Endless plains, endless herds", "live", "lion"), D("ngorongoro", "Ngorongoro Crater", "Tanzania", "A natural amphitheatre of wildlife", "live", "elephant"), D("volcanoes", "Volcanoes NP", "Rwanda", "Mountain gorillas in the mist", "stub", "mountainValley")],
-  "06A": [D("cape-town-south-africa", "Cape Town", "South Africa", "Where the mountain meets two oceans", "live", "oceanAerial", "South Africa"), D("kruger", "Greater Kruger", "South Africa", "Big Five in the lowveld", "live", "elephant", "South Africa"), D("sossusvlei", "Sossusvlei", "Namibia", "The world's tallest dunes", "stub", "desertDunes", "Namibia Desert & Coast")],
-  "07A": [D("bali", "Bali", "Indonesia", "Rice terraces, temples and surf", "live", "baliRice"), D("bangkok", "Bangkok", "Thailand", "Street food capital of the world", "live", "restaurant"), D("phuket-thailand", "Phuket & Phi Phi", "Thailand", "Limestone islands and warm seas", "live", "tropicalBeach"), D("siem-reap", "Siem Reap", "Cambodia", "Sunrise over Angkor Wat", "stub", "kyoto")],
-  "08A": [D("kyoto", "Kyoto", "Japan", "Geisha districts and golden temples", "live", "kyoto"), D("tokyo", "Tokyo", "Japan", "Neon, Michelin stars and calm shrines", "live", "dubai"), D("seoul", "Seoul", "South Korea", "Palaces, markets and midnight food", "stub", "marrakech")],
-  "09P": [D("queenstown", "Queenstown", "New Zealand", "Adventure capital of the south", "live", "mountainValley"), D("bora-bora", "Bora Bora", "French Polynesia", "Overwater bungalows on a lagoon", "live", "maldivesResort"), D("gbr", "Great Barrier Reef", "Australia", "The largest living thing on Earth", "stub", "oceanAerial")],
-  "10S": [D("machu", "Machu Picchu", "Peru", "The lost city in the clouds", "live", "mountainValley"), D("patagonia", "Patagonia", "Chile / Argentina", "Granite spires and turquoise lakes", "live", "mountainValley"), D("cartagena", "Cartagena", "Colombia", "Walled city of color and rhythm", "stub", "marrakech")],
-  "11C": [D("turks", "Turks & Caicos", "Turks & Caicos", "Grace Bay's impossible blues", "live", "oceanAerial", "Turks & Caicos"), D("st-lucia", "St. Lucia", "St. Lucia", "The Pitons above the sea", "live", "tropicalBeach", "Eastern Caribbean — Windwards & South"), D("exuma", "The Exumas", "Bahamas", "Sandbars and swimming pigs", "stub", "maldivesResort", "Bahamas")],
-  "13A": [D("banff", "Banff & Lake Louise", "Canada", "Turquoise lakes under the Rockies", "live", "mountainValley"), D("vancouver", "Vancouver", "Canada", "Sea, city and mountains at once", "stub", "oceanAerial")],
+  "02F": [D("santorini-greece", "Santorini", "Greece", "Whitewashed cliffs over a caldera", "live", "santorini"), D("amalfi-coast-italy", "Amalfi Coast", "Italy", "Lemon groves and vertical villages", "live", "venice"), D("barcelona-spain", "Barcelona", "Spain", "Gaudí, tapas and Mediterranean light", "live", "marrakech"), D("algarve-portugal", "The Algarve", "Portugal", "Golden cliffs and quiet coves", "stub", "tropicalBeach")],
+  "03F": [D("reykjavik-iceland", "Reykjavík & Ring Road", "Iceland", "Waterfalls, lava and aurora", "live", "northernLights"), D("lofoten-islands-norway", "Lofoten Islands", "Norway", "Sea-cliff drama above the Arctic Circle", "stub", "mountainValley")],
+  "04A": [D("dubai-united-arab-emirates", "Dubai", "UAE", "Audacious, golden, around the clock", "live", "dubai"), D("petra-jordan", "Petra & Wadi Rum", "Jordan", "Rose-red city and red-sand desert", "live", "desertDunes"), D("alula-saudi-arabia", "AlUla", "Saudi Arabia", "Ancient tombs in a living desert", "stub", "desertDunes")],
+  "05A": [D("maasai-mara-kenya", "Maasai Mara", "Kenya", "Front-row seat to the Great Migration", "live", "safariGiraffe"), D("serengeti-tanzania", "Serengeti", "Tanzania", "Endless plains, endless herds", "live", "lion"), D("ngorongoro-tanzania", "Ngorongoro Crater", "Tanzania", "A natural amphitheatre of wildlife", "live", "elephant"), D("volcanoes-national-park-rwanda", "Volcanoes NP", "Rwanda", "Mountain gorillas in the mist", "stub", "mountainValley")],
+  "06A": [D("cape-town-south-africa", "Cape Town", "South Africa", "Where the mountain meets two oceans", "live", "oceanAerial", "South Africa"), D("greater-kruger-south-africa", "Greater Kruger", "South Africa", "Big Five in the lowveld", "live", "elephant", "South Africa"), D("sossusvlei-namibia", "Sossusvlei", "Namibia", "The world's tallest dunes", "stub", "desertDunes", "Namibia Desert & Coast")],
+  "07A": [D("bali-indonesia", "Bali", "Indonesia", "Rice terraces, temples and surf", "live", "baliRice"), D("bangkok-thailand", "Bangkok", "Thailand", "Street food capital of the world", "live", "restaurant"), D("phuket-thailand", "Phuket & Phi Phi", "Thailand", "Limestone islands and warm seas", "live", "tropicalBeach"), D("siem-reap-cambodia", "Siem Reap", "Cambodia", "Sunrise over Angkor Wat", "stub", "kyoto")],
+  "08A": [D("kyoto-japan", "Kyoto", "Japan", "Geisha districts and golden temples", "live", "kyoto"), D("tokyo-japan", "Tokyo", "Japan", "Neon, Michelin stars and calm shrines", "live", "dubai"), D("seoul-south-korea", "Seoul", "South Korea", "Palaces, markets and midnight food", "stub", "marrakech")],
+  "09P": [D("queenstown-new-zealand", "Queenstown", "New Zealand", "Adventure capital of the south", "live", "mountainValley"), D("bora-bora-french-polynesia", "Bora Bora", "French Polynesia", "Overwater bungalows on a lagoon", "live", "maldivesResort"), D("great-barrier-reef-australia", "Great Barrier Reef", "Australia", "The largest living thing on Earth", "stub", "oceanAerial")],
+  "10S": [D("machu-picchu-peru", "Machu Picchu", "Peru", "The lost city in the clouds", "live", "mountainValley"), D("patagonia-chile-argentina", "Patagonia", "Chile / Argentina", "Granite spires and turquoise lakes", "live", "mountainValley"), D("cartagena-colombia", "Cartagena", "Colombia", "Walled city of color and rhythm", "stub", "marrakech")],
+  "11C": [D("turks-and-caicos", "Turks & Caicos", "Turks & Caicos", "Grace Bay's impossible blues", "live", "oceanAerial", "Turks & Caicos"), D("st-lucia", "St. Lucia", "St. Lucia", "The Pitons above the sea", "live", "tropicalBeach", "Eastern Caribbean — Windwards & South"), D("exuma-bahamas", "The Exumas", "Bahamas", "Sandbars and swimming pigs", "stub", "maldivesResort", "Bahamas")],
+  "13A": [D("banff-canada", "Banff & Lake Louise", "Canada", "Turquoise lakes under the Rockies", "live", "mountainValley"), D("vancouver-canada", "Vancouver", "Canada", "Sea, city and mountains at once", "stub", "oceanAerial")],
 };
+
+/**
+ * OLD ID → NEW ID. The destination key is `<city>-<country>` (canon), and 34 of
+ * the 44 rows predated that rule: `paris`, `kruger`, `gbr`, `machu`. Renamed
+ * 2026-08-12 against `docs/live-row-reconcile-map.md`, which already carried the
+ * agreed target for every row — the targets are not invented here.
+ *
+ * THE OLD IDS DO NOT DIE, for three reasons, and each would bite on its own:
+ *
+ *  1. **Saved trips.** A traveler's stored itinerary holds destination ids. A
+ *     rename without aliasing silently empties their trip, and `findDestination`
+ *     falls back to the FIRST destination in East Africa rather than erroring —
+ *     so they'd get a confidently wrong page, not a missing one.
+ *  2. **Shared and indexed URLs.** `/destination/paris` has been out in the
+ *     world. It resolves.
+ *  3. **`reconciles_live_mvp`.** Library dossiers link to a live row by its
+ *     CURRENT slug, and the ingest validator hard-errors on a value that isn't a
+ *     live MVP id. Every dossier already authored against `kruger` would fail
+ *     the gate the moment we renamed the row. Aliasing keeps that linkage
+ *     working — which is the whole point of the reconcile map.
+ *
+ * So this map is permanent, not a migration aid to delete later.
+ */
+export const LEGACY_DEST_ID: Record<string, string> = {
+  paris: "paris-france",
+  amsterdam: "amsterdam-netherlands",
+  alps: "swiss-alps-switzerland",
+  santorini: "santorini-greece",
+  amalfi: "amalfi-coast-italy",
+  barcelona: "barcelona-spain",
+  algarve: "algarve-portugal",
+  reykjavik: "reykjavik-iceland",
+  lofoten: "lofoten-islands-norway",
+  dubai: "dubai-united-arab-emirates",
+  petra: "petra-jordan",
+  alula: "alula-saudi-arabia",
+  "masai-mara": "maasai-mara-kenya",       // spelling drift fixed at the same time
+  serengeti: "serengeti-tanzania",
+  ngorongoro: "ngorongoro-tanzania",
+  volcanoes: "volcanoes-national-park-rwanda",
+  kruger: "greater-kruger-south-africa",
+  sossusvlei: "sossusvlei-namibia",
+  bali: "bali-indonesia",
+  bangkok: "bangkok-thailand",
+  "siem-reap": "siem-reap-cambodia",
+  kyoto: "kyoto-japan",
+  tokyo: "tokyo-japan",
+  seoul: "seoul-south-korea",
+  queenstown: "queenstown-new-zealand",
+  "bora-bora": "bora-bora-french-polynesia",
+  gbr: "great-barrier-reef-australia",
+  machu: "machu-picchu-peru",
+  patagonia: "patagonia-chile-argentina",
+  cartagena: "cartagena-colombia",
+  turks: "turks-and-caicos",
+  exuma: "exuma-bahamas",
+  banff: "banff-canada",
+  vancouver: "vancouver-canada",
+};
+
+/** Resolve a destination id, accepting a legacy slug. Identity for current ids. */
+export const resolveDestId = (id?: string): string | undefined =>
+  id === undefined ? undefined : LEGACY_DEST_ID[id] ?? id;
 
 export const SUBREGION_TOP: Record<string, string[]> = {
   "Pacific Coast": ["San Francisco", "Big Sur", "Los Angeles", "San Diego"],

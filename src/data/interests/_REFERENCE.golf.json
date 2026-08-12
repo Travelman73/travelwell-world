@@ -107,7 +107,7 @@
 
         "_comment6": "LAYER 5 — the global map. `destinations` are MVP destination ids and the gate resolves every one of them; a name that points at nothing is a broken shelf. `anchors` is free text for places we don't carry yet.",
         "map": {
-          "destinations": ["algarve", "turks", "cape-town-south-africa", "kyoto"],
+          "destinations": ["algarve-portugal", "turks-and-caicos", "cape-town-south-africa", "kyoto-japan"],
           "regions": ["01F", "02F", "06A", "08A", "11C"],
           "anchors": [
             "Scotland — St Andrews, the home of the game",

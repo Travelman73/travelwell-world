@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { destinationJsonLd, useJsonLd } from "@/lib/jsonld";
 import { Icon } from "@/lib/icons";
-import type { Destination, Provider } from "@/data/places";
+import { resolveDestId, type Destination, type Provider } from "@/data/places";
 import type { Region, Well } from "@/data/taxonomy";
 import { img } from "@/lib/images";
 import { useDestinationImage } from "@/lib/unsplash";
@@ -15,12 +15,19 @@ import { getEmergencyNumbers, UNIVERSAL_EMERGENCY } from "@/data/emergency-numbe
 
 const TIER: Record<string, string> = { prime: "★ Prime", vetted: "Vetted", prospective: "Prospective" };
 
-/** Find a destination by id across every region's list; return it with its region and sibling list. */
+/**
+ * Find a destination by id across every region's list; return it with its region
+ * and sibling list. Accepts a LEGACY slug (`/destination/paris` → `paris-france`)
+ * — shared links and saved trips still carry the pre-rename ids, and the fallback
+ * below hands back a *different* destination rather than erroring, so an
+ * unresolved id shows a confidently wrong page. Resolve before matching.
+ */
 function findDestination(
   regions: Region[],
   destinations: Record<string, Destination[]>,
-  id?: string
+  rawId?: string
 ): { dest: Destination; region: Region; list: Destination[] } {
+  const id = resolveDestId(rawId);
   const fallbackRegion = regions.find((r) => r.code === "05A")!;
   for (const r of regions) {
     const list = destinations[r.code] || [];

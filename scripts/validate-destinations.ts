@@ -18,7 +18,7 @@
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { REGIONS, SIS, SUBREGIONS } from "../src/data/taxonomy";
-import { DESTINATIONS } from "../src/data/places";
+import { DESTINATIONS, LEGACY_DEST_ID, resolveDestId } from "../src/data/places";
 
 // ── Canon, straight from the live source ──────────────────────────────────
 const REGION_CODES = new Set(REGIONS.map((r) => r.code));
@@ -29,9 +29,18 @@ const DEPTH = new Set(["verified", "stub", "cached"]);
 const DRAW = new Set(["anchor", "core", "emerging"]);
 const FEEL = new Set(["dramatic","serene","rugged","refined","wild","polished","cosmopolitan","buzzy","festive","romantic","secluded","family-friendly","coastal","alpine","historic","tropical","urban","remote","pastoral","adventurous"]);
 const ADVISORY = new Set(["L1", "L2", "L3", "L4"]);
-// The 38 (and growing) live MVP ids — the universe a reconciles_live_mvp / see-also
-// must resolve into. Built from our own bundle so it's always current.
-const LIVE_IDS = new Set(Object.values(DESTINATIONS).flat().map((d) => d.id));
+// The live MVP ids — the universe a reconciles_live_mvp / see-also must resolve
+// into. Built from our own bundle so it's always current.
+//
+// LEGACY SLUGS COUNT. The whole point of `reconciles_live_mvp` is that a dossier
+// names the row by the slug it was authored against, and 34 of those slugs were
+// renamed on 2026-08-12 (`paris` → `paris-france`). Dossiers already written
+// against `kruger` are not wrong; they are exactly what the reconcile map asked
+// for. Rejecting them would punish authors for following the instruction.
+const LIVE_IDS = new Set([
+  ...Object.values(DESTINATIONS).flat().map((d) => d.id),
+  ...Object.keys(LEGACY_DEST_ID),
+]);
 
 const ID_RE = /^[a-z0-9]+(?:-[a-z0-9]+)+$/;
 const SLUG_RE = /^[a-z0-9-]+$/;
@@ -148,7 +157,16 @@ for (const { code, d } of rows) {
     if (rec == null) warns.push(`${at}: no data.reconciles_live_mvp (confirm this is net-new, not an existing MVP row)`);
     else if (typeof rec !== "string" || !SLUG_RE.test(rec)) errs.push(`${at}: reconciles_live_mvp "${String(rec)}" isn't a clean lowercase slug`);
     else if (!LIVE_IDS.has(rec)) errs.push(`${at}: reconciles_live_mvp "${rec}" is not a live MVP id (would map onto nothing)`);
-    else { linked++; if (seenReconcile.has(rec)) errs.push(`${at}: reconciles_live_mvp "${rec}" already claimed (collision)`); else seenReconcile.add(rec); }
+    else {
+      linked++;
+      // Collide on the RESOLVED id, not the string. Two dossiers claiming the
+      // same row — one as `kruger`, one as `greater-kruger-south-africa` — are a
+      // duplicate, and comparing raw strings would wave both through, producing
+      // exactly the duplicate row the reconcile map exists to prevent.
+      const canon = resolveDestId(rec)!;
+      if (seenReconcile.has(canon)) errs.push(`${at}: reconciles_live_mvp "${rec}" already claimed (collision — resolves to "${canon}")`);
+      else seenReconcile.add(canon);
+    }
   }
 
   // Collect cross-references for a resolution pass once every id is known.

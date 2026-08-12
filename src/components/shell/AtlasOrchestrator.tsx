@@ -15,6 +15,7 @@ import { useLocation } from "react-router-dom";
 import { useStore } from "@/store/useStore";
 import { fetchSignals } from "@/lib/signals";
 import { isActiveInMonth } from "@/data/local-signals";
+import { resolveDestId } from "@/data/places";
 
 // Planning-stage routes — where a whisper is a help, not an interruption.
 const FLOW = new Set([
@@ -26,7 +27,10 @@ function flowContext(path: string, region: string | null, sis: string[]) {
   const [a, b] = path.replace(/\/+$/, "").split("/").filter(Boolean);
   if (!FLOW.has(a)) return null;
   return {
-    destination: a === "destination" ? b : null,
+    // Resolve a legacy slug: signals are keyed by the current destination id, so
+    // an old shared link (/destination/paris) would silently match nothing and
+    // the traveler would just never see a whisper — a failure with no symptom.
+    destination: a === "destination" ? resolveDestId(b) ?? null : null,
     region: a === "region" ? b : region,
     si: a === "si" && b ? [b, ...sis] : sis,
   };
