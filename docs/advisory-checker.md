@@ -36,9 +36,10 @@ stale one, because nobody is watching it.
 |---|---|
 | `supabase/migrations/0013_advisory_state.sql` | Three tables: current state, the change queue, the run log |
 | `supabase/migrations/0014_advisory_same_day.sql` | Adds `same_day` — both directions surface together |
+| `supabase/migrations/0015_advisory_schedule.sql` | The daily 06:00 UTC job — **generated**, don't hand-edit |
 | `supabase/functions/advisory-check/index.ts` | The checker itself |
 | `docs/advisory-countries.json` | The country list it's called with — **generated** |
-| `npm run gen:advisory-payload` | Regenerates that list from the live catalog |
+| `npm run gen:advisory-payload` | Regenerates that list *and* 0015, from the live catalog, in one command |
 
 ## Sources — structured endpoints, never scraping
 
@@ -56,80 +57,58 @@ buying time against a page that can be redesigned out from under us.
 
 ## Setting it up
 
-**1 · Apply the migration.** Paste `0013_advisory_state.sql` into the Supabase SQL
-editor.
+**1 · Apply the migrations.** Paste `0013_advisory_state.sql`, then
+`0014_advisory_same_day.sql`, into the Supabase SQL editor.
 
 **2 · Deploy the function.** `supabase functions deploy advisory-check`, or paste
 it in the dashboard editor (it's a single self-contained file, like `atlas`).
+Note it's an **Edge Function**, not SQL — the code editor under Edge Functions →
+advisory-check, never the SQL editor.
 
-**3 · Schedule it daily.** The function takes the country list as a POST body —
-it never guesses which countries to check, so a country can't quietly go
-unchecked. Generate the payload first:
+**3 · Enable `pg_cron` and `pg_net`.** Dashboard → Database → Extensions. Both,
+once. (Migration 0015 checks for them and refuses to schedule anything without
+them, rather than leaving a job that can't run.)
 
-```bash
-npm run gen:advisory-payload      # → docs/advisory-countries.json
-```
-
-Then three statements in the SQL editor, **in this order**. Extensions first:
-
-```sql
-create extension if not exists pg_cron  with schema extensions;
-create extension if not exists pg_net   with schema extensions;
-```
-
-**Put the service-role key in Vault, not in the job.** `cron.schedule` stores its
-command as plain text in `cron.job`, which anyone with database access can read —
-so a key pasted inline is a key sitting in a table forever. Vault holds it
-encrypted and the job asks for it at run time:
+**4 · Put the service-role key in Vault.** `cron.schedule` stores its command as
+plain text in `cron.job`, readable by anyone with database access — so a key
+pasted into a job is a key sitting in a table forever, and it would be in the git
+repo besides. Vault holds it encrypted and the job asks for it at run time. One
+statement, in the SQL editor, and the key goes nowhere else — not into a file,
+not into an email, not into a chat:
 
 ```sql
 select vault.create_secret('<service-role-key>', 'advisory_check_key',
                            'Service-role key used by the daily advisory checker');
 ```
 
-Now the job itself. Paste the **contents of `docs/advisory-countries.json`** where
-marked — that file is not secret, and having it visible in the job is a feature:
-the country list the checker actually runs with is readable without deploying
-anything.
+The name must be exactly `advisory_check_key` — that's what the job looks up.
 
-```sql
--- Once. Runs 06:00 UTC daily.
-select cron.schedule(
-  'advisory-check-daily', '0 6 * * *',
-  $$
-  select net.http_post(
-    url     := 'https://<project>.supabase.co/functions/v1/advisory-check',
-    headers := jsonb_build_object(
-                 'Content-Type', 'application/json',
-                 'Authorization', 'Bearer ' || (
-                   select decrypted_secret from vault.decrypted_secrets
-                   where name = 'advisory_check_key')),
-    body    := '<paste docs/advisory-countries.json here>'::jsonb,
-    timeout_milliseconds := 120000   -- 36 countries, one request each — see below
-  )
-  $$
-);
-```
+**5 · Apply `0015_advisory_schedule.sql`.** Paste it into the SQL editor. That
+schedules the job at **06:00 UTC daily** with the country list already inlined.
 
 06:00 UTC is deliberate: the FCDO publishes on London business hours, so an
 early-UTC run reads yesterday's settled state rather than catching a page
 mid-edit, and anything it queues is waiting when someone opens the laptop.
 
-`timeout_milliseconds` is worth raising even though it can't break a run.
-`net.http_post` is asynchronous — it hands back a request id immediately and the
-cron job reports success either way, so a timeout doesn't stop the checker; the
-function keeps running server-side and still writes its tables. What a 5-second
-default (pg_net's) costs you is the **response**: `net._http_response` records a
-timeout instead of the summary, and the first place you'd look after a bad run
-shows an error that didn't happen. Raise it so the diagnostic matches reality.
-
-**Regenerate the payload whenever a destination adds a new country**, and update
-the job (`select cron.unschedule('advisory-check-daily');` then re-run the block
-above). If the two drift, the checker silently stops covering that country while
-still reporting a successful run — the worst kind of gap, because the number
+**0015 is generated, not hand-written** — `npm run gen:advisory-payload` writes
+`docs/advisory-countries.json` *and* the migration in one command. That is the
+whole point: the payload the job actually sends and the payload in the repo have
+to be the same bytes. **Regenerate whenever a destination adds a country, then
+re-apply 0015** — it unschedules the old job before scheduling the new one, so
+re-applying is the correct and only step. If the list and the job drift, the
+checker silently stops covering that country while still reporting a successful
+run — the worst shape a failure can take, because the number at the end still
 looks right.
 
-**4 · Prove it's actually scheduled.** A cron job that was never registered looks
+`timeout_milliseconds` is set to 120s in the job, and it's worth knowing why even
+though it can't break a run. `net.http_post` is asynchronous — it hands back a
+request id immediately and the cron job reports success either way, so a timeout
+doesn't stop the checker; the function keeps running server-side and still writes
+its tables. What pg_net's 5-second default costs you is the **response**:
+`net._http_response` records a timeout instead of the run summary, and the first
+place you'd look after a bad morning shows an error that didn't happen.
+
+**6 · Prove it's actually scheduled.** A cron job that was never registered looks
 identical to a quiet week, and `advisory_runs` can't tell you the difference —
 it only records runs that happened.
 
@@ -146,6 +125,23 @@ order by start_time desc limit 5;
 `status = 'succeeded'` here means *the HTTP call was dispatched*, not that the
 checker read anything — that answer is in `advisory_runs`, and the two are worth
 reading together the first morning after scheduling.
+
+Rather than wait until 06:00 to find out, fire the job's own command once by
+hand. It reads `cron.job` rather than repeating the SQL, so what runs now is the
+same bytes as what runs tomorrow — a hand-typed "test" that differs from the real
+job proves the wrong thing:
+
+```sql
+do $$
+declare cmd text;
+begin
+  select command into cmd from cron.job where jobname = 'advisory-check-daily';
+  if cmd is null then raise exception 'No job named advisory-check-daily — 0015 was not applied.'; end if;
+  execute cmd;
+end $$;
+```
+
+Then read `advisory_runs` — a new row with `checked = 36` means the loop closed.
 
 ## Reading the results
 
