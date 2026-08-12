@@ -16,6 +16,7 @@ import { cohortLabel, activityLabel, accessLabel } from "./identity";
 import { fetchSignals } from "./signals";
 import { useStore } from "@/store/useStore";
 import { useCatalog } from "@/store/useCatalog";
+import { resolveDestId } from "@/data/places";
 
 interface Considered {
   regions: string[];
@@ -29,7 +30,8 @@ function hereFrom(path: string | null): { kind: "destination" | "region" | "si";
   if (!path) return null;
   const [a, b] = path.replace(/\/+$/, "").split("/").filter(Boolean);
   if (!b) return null;
-  if (a === "destination") return { kind: "destination", id: b };
+  // A legacy link still tells Atlas where they actually are.
+  if (a === "destination") return { kind: "destination", id: resolveDestId(b) ?? b };
   if (a === "region") return { kind: "region", id: b };
   if (a === "si") return { kind: "si", id: b };
   return null;

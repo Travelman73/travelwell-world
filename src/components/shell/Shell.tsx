@@ -16,6 +16,7 @@ import { useStore, applyInitialLocale } from "@/store/useStore";
 import { getCurrentUser, onAuthChange } from "@/lib/auth";
 import { flushPendingTravelId } from "@/lib/travelId";
 import { track, type EventEntity } from "@/lib/track";
+import { resolveDestId } from "@/data/places";
 
 // Map a route to a typed exploration event, so the log is queryable by entity
 // (/si/sailing → view si sailing) rather than just raw paths.
@@ -24,7 +25,9 @@ function routeView(pathname: string): { entity: EventEntity; entityId: string } 
   switch (a) {
     case "si": return { entity: "si", entityId: b };
     case "region": return { entity: "region", entityId: b };
-    case "destination": return { entity: "destination", entityId: b };
+    // Log the CURRENT id even when the traveler arrived on a legacy link, so one
+    // place is one row in the log rather than two that never add up.
+    case "destination": return { entity: "destination", entityId: resolveDestId(b) ?? b };
     case "guide": return { entity: "guide", entityId: b };
     case "well": return { entity: "well", entityId: b };
     default: return { entity: "page", entityId: pathname || "/" };
