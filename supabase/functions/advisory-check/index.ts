@@ -1,9 +1,10 @@
 // TravelWell.World — the daily advisory checker (David's verification cycle).
 //
-// ONE checker, run DAILY. It escalates the moment something moves and writes
-// everything to an audit log; the 1st and the 15th are when we PUBLISH, not when
-// we check. A separate "urgent path" was the alternative and it doubles the
-// failure surface — the half that breaks is the half you need.
+// ONE checker, run DAILY. It surfaces the moment something moves — IN EITHER
+// DIRECTION — and writes everything to an audit log; the 1st and the 15th are
+// when we PUBLISH, not when we check. A separate "urgent path" was the
+// alternative and it doubles the failure surface — the half that breaks is the
+// half you need.
 //
 // Deploy:  supabase functions deploy advisory-check
 // Schedule: daily via pg_cron / Supabase scheduled functions (see docs/advisory-checker.md)
@@ -268,12 +269,37 @@ async function readFcdo(slugs: Array<{ iso: string; slug: string }>): Promise<{ 
   return { readings, failures };
 }
 
-function severityFor(from: number | null, to: number | null, hashChanged: boolean):
-  "escalation" | "de-escalation" | "new" | "text" | null {
+type Severity = "escalation" | "de-escalation" | "new" | "text" | "withdrawn";
+
+function severityFor(from: number | null, to: number | null, hashChanged: boolean): Severity | null {
   if (from === null && to !== null) return "new";
   if (from !== null && to !== null && to > from) return "escalation";
   if (from !== null && to !== null && to < from) return "de-escalation";
   return hashChanged ? "text" : null;
+}
+
+/**
+ * Does this change need a human TODAY?
+ *
+ * David, 2026-08-11 — drop the escalation/de-escalation split. A de-escalation
+ * is not housekeeping: Uganda dropping from Level 4 to Level 3 turns four
+ * gorilla-trekking destinations from never-bookable into bookable, and holding
+ * that for a fortnight is being wrong in the direction that merely sounds
+ * careful. So ANY level move, either direction, is same-day — as is a first
+ * appearance or a withdrawal.
+ *
+ * The subtle one is `text`. On a source that HAS numbers, a text-only change
+ * means the number did NOT move, which is genuinely lower urgency. But the FCDO
+ * publishes no numeric level at all, so for it the text IS the signal — its
+ * regional exclusions (the Flores volcanic zone that State doesn't carry) move
+ * here and nowhere else. Treating text as routine would have silently demoted
+ * our only currently-working source.
+ *
+ * The severity label survives this change. It just no longer decides the timing.
+ */
+function needsSameDay(severity: Severity, source: SourceId): boolean {
+  if (severity === "text") return source === "fcdo";
+  return true;
 }
 
 Deno.serve(async (req: Request) => {
@@ -352,6 +378,10 @@ Deno.serve(async (req: Request) => {
           from_label: before?.level_label ?? null,
           to_label: r.level_label,
           severity: sev,
+          // Recorded at detection, not re-derived at read time — the audit trail
+          // should say what we judged when we saw it, not what today's code
+          // would judge. Same discipline as freezing on failure.
+          same_day: needsSameDay(sev, r.source),
         });
         changed++;
       }
@@ -377,13 +407,22 @@ Deno.serve(async (req: Request) => {
       finished_at: new Date().toISOString(), checked, ok, failed, changed, notes,
     }).eq("id", runId);
 
-    // An escalation is the one worth waking someone for.
-    const { data: escalations } = await sb
+    // Everything that needs a human today — both directions, not just the ones
+    // that went up. This used to filter on severity = 'escalation', which is
+    // exactly the batching David threw out.
+    const { data: needsToday } = await sb
       .from("advisory_changes")
-      .select("country_iso, source, from_level, to_level")
-      .eq("status", "pending").eq("severity", "escalation");
+      .select("country_iso, source, severity, from_level, to_level")
+      .eq("status", "pending").eq("same_day", true)
+      .order("detected_at", { ascending: false });
 
-    return Response.json({ runId, checked, ok, failed, changed, escalations: escalations ?? [] });
+    return Response.json({
+      runId, checked, ok, failed, changed,
+      needsToday: needsToday ?? [],
+      // Kept separately so an alert can still shout louder for a level going UP,
+      // without that distinction delaying anything.
+      escalations: (needsToday ?? []).filter((c: { severity: string }) => c.severity === "escalation"),
+    });
   } catch (err) {
     console.error("[advisory] run failed", err);
     await sb.from("advisory_runs").update({

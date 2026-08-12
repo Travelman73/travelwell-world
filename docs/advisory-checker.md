@@ -2,7 +2,8 @@
 
 *David's safety verification cycle, built. Sana, 2026-08-11.*
 
-**One checker. Runs daily. Escalates immediately, publishes fortnightly.**
+**One checker. Runs daily. Surfaces any move — in either direction — the same
+day, and publishes fortnightly.**
 
 That's the one design decision worth restating, because it isn't what the spec
 originally asked for. A fortnightly sweep with a separate urgent path doubles the
@@ -34,6 +35,7 @@ stale one, because nobody is watching it.
 | Piece | What it is |
 |---|---|
 | `supabase/migrations/0013_advisory_state.sql` | Three tables: current state, the change queue, the run log |
+| `supabase/migrations/0014_advisory_same_day.sql` | Adds `same_day` — both directions surface together |
 | `supabase/functions/advisory-check/index.ts` | The checker itself |
 | `docs/advisory-countries.json` | The country list it's called with — **generated** |
 | `npm run gen:advisory-payload` | Regenerates that list from the live catalog |
@@ -88,11 +90,13 @@ looks right.
 ## Reading the results
 
 ```sql
--- What's waiting for a human right now
-select * from public.advisory_changes where status = 'pending' order by detected_at desc;
+-- What needs a human TODAY — both directions
+select country_iso, source, severity, from_level, to_level, detected_at
+from public.advisory_changes
+where status = 'pending' and same_day order by detected_at desc;
 
--- Escalations only — the ones worth interrupting someone for
-select * from public.advisory_changes where status = 'pending' and severity = 'escalation';
+-- Everything pending, including the routine text changes
+select * from public.advisory_changes where status = 'pending' order by detected_at desc;
 
 -- Did it run, and did anything fail?
 select started_at, checked, ok, failed, changed, notes from public.advisory_runs
@@ -112,15 +116,36 @@ set status = 'confirmed', confirmed_by = 'sana', confirmed_at = now(), note = 'c
 where id = <id>;
 ```
 
-## Severities
+## Severities — and why none of them wait
 
-| Severity | Means | What it deserves |
+**Both directions are same-day (David, 2026-08-11).** The checker originally held
+de-escalations for the fortnightly publish. That was wrong: Uganda dropping from
+Level 4 to Level 3 turns four gorilla-trekking destinations from never-bookable
+into bookable, and sitting on that for two weeks is being wrong in the direction
+that merely *sounds* careful.
+
+The label survives; it just no longer decides the timing.
+
+| Severity | Means | Same-day? |
 |---|---|---|
-| `escalation` | The level went **up** | Interrupt someone |
-| `de-escalation` | The level went **down** | Confirm at the next publish — still matters: Oman went ordered → authorized departure on 2026-06-27 and stayed Level 3. Materially different, and no content refresh would ever catch it |
-| `new` | A country we had no reading for | Confirm before it shows |
-| `text` | Same level, changed wording | Read it — regional carve-outs move here without the number moving |
-| `withdrawn` | The source dropped it | Confirm before removing anything |
+| `escalation` | The level went **up** | **Yes** — and an alert can shout louder for these |
+| `de-escalation` | The level went **down** | **Yes.** Oman went ordered → authorized departure and stayed Level 3 — materially different, invisible to any content refresh |
+| `new` | A country we had no reading for | **Yes** — confirm before it shows |
+| `withdrawn` | The source dropped it | **Yes** — confirm before removing anything |
+| `text` | Same level, changed wording | **Depends on the source** — see below |
+
+**The `text` case is the one worth understanding.** On a source that publishes
+numbers, a text-only change means the number did *not* move — genuinely lower
+urgency. But **the FCDO publishes no numeric level at all**, so for it the text
+*is* the signal: its regional exclusions, which is where named-zone carve-outs
+come from, move here and nowhere else. Treating text as routine would have
+silently demoted our only currently-working source to background noise.
+
+So `text` is same-day for the FCDO and routine for State.
+
+The judgement is stored on the row (`same_day`) at detection time rather than
+re-derived when read, so the audit trail records what we decided when we saw it —
+not what today's code would decide. Same discipline as freezing on failure.
 
 ## Live-run findings (2026-08-11)
 
