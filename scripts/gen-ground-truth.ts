@@ -256,7 +256,7 @@ it is.
 |---|---|
 | \`npm run validate:ingest\` | A destination batch that breaks the destination contract |
 | \`npm run validate:si\` | An interest dossier with an unlabeled figure, or \`verified\` with no \`source\` |
-| \`npm run check:advisory-links\` | An advisory deep link that 404s (needs outbound network) |
+| \`npm run check:advisory-links\` | An advisory deep link that 404s — **and a run that proved nothing** (exit 2), or a partial one (exit 3). Needs outbound network. |
 | \`npx tsc --noEmit\` + \`npm run build\` | Anything that doesn't type-check or build |
 `;
 

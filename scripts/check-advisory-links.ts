@@ -74,10 +74,28 @@ console.log(`index fallbacks (no confirmed slug): ${rows.filter((r) => !r.deep).
 if (blocked.length) {
   console.log(`\n⚠︎ Blocked — these could not be proved either way. Re-run from an allow-listed egress:`);
   for (const r of blocked.slice(0, 10)) console.log(`  ${r.code}  ${r.country} · ${r.source}`);
+  if (blocked.length > 10) console.log(`  …and ${blocked.length - 10} more`);
 }
 if (bad.length) {
   console.log(`\n✗ WRONG SLUGS — fix these in src/data/advisory-sources.ts (SLUG_OVERRIDES):`);
   for (const r of bad) console.log(`  ${r.country} (${r.iso}) · ${r.source}\n     ${r.href}`);
   process.exit(1);
 }
-console.log(`\n✓ No 404s. Every deep link that could be reached resolves.`);
+
+// NOT PROVEN IS NOT PASSED. "No 404s" is trivially true when nothing was
+// reached, and this printed a green tick on a run where all 108 links were
+// blocked — the same shape as a 404 that reads as "we checked" when we didn't.
+// A verifier that can return a tick without verifying anything is worse than no
+// verifier, because it is the thing someone points at before shipping.
+if (!ok.length) {
+  console.log(`\n✗ NOTHING WAS VERIFIED — 0 of ${deep.length} deep links were reached.`);
+  console.log(`  This is not a pass. Every link is still unproven. Run it from an egress`);
+  console.log(`  that can reach travel.state.gov, gov.uk and cdc.gov before these go public.`);
+  process.exit(2);
+}
+// A partial run is a partial answer, and says so.
+if (blocked.length || errored.length) {
+  console.log(`\n⚠︎ PARTIAL — ${ok.length} of ${deep.length} links proven, ${blocked.length + errored.length} still unproven. No 404s among those reached.`);
+  process.exit(3);
+}
+console.log(`\n✓ All ${ok.length} deep links resolve. None 404.`);
