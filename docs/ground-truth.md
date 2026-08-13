@@ -42,7 +42,8 @@ good as regenerating it.
 | Wells (10 live + 3 soon) | 13 | src/data/taxonomy.ts:286 · `export const WELLS: Well[] = [` |
 | Sub-region lists | 18 | src/data/places.ts:294 · `export const SUBREGION_TOP: Record<string, str` |
 | Guides | 9 | src/data/places.ts:437 · `export const GUIDES: Guide[] = [` |
-| Countries with a safety row | 37 | src/data/safety-data.ts |
+| Country name→ISO entries (`COUNTRY_ISO`) | 37 | src/data/safety-data.ts:134 · `export const COUNTRY_ISO: Record<string, strin` |
+| …of those, countries WITH an advisory row (`safety.json`) | 36 | src/data/safety-data.ts:152 · `export const SAFETY_DATA = safetyJson as Recor` |
 
 ## The Signature-Interest dossier — NINE layers
 
@@ -126,6 +127,10 @@ the provider.
 ✅ **Every country holding a destination **currently in the catalog** has a country-level safety row (the advisory cascade is country → destination)**
    → all 33 covered
    → `src/data/safety-data.ts (COUNTRY_ISO) vs src/data/places.ts (DESTINATIONS)`
+
+⚠️ **Every country in `COUNTRY_ISO` has an advisory row — it is the set the daily checker asks about, so a missing row is a country we query and hold no baseline for**
+   → 1 with no row: ET — checked daily, nothing to compare against
+   → `src/data/safety-data.ts (COUNTRY_ISO) vs src/data/safety.json`
 
 ✅ **No safety row claims verification its own `source` string denies (the source RENDERS on the destination page)**
    → all 36 rows consistent

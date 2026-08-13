@@ -98,6 +98,12 @@ const provenanceLies = safetyRows.filter(([, r]) =>
   r.source && SELF_FLAGGED.test(r.source) && !r.reported && !r.unverified);
 const claimsBoth = safetyRows.filter(([, r]) => r.reported && r.verified);
 
+// Every country we know by name should have an advisory row. `COUNTRY_ISO` is
+// the set we recognise — it drives the advisory checker's daily payload — so an
+// ISO in there with no row in safety.json is a country we ask about every
+// morning and hold no baseline for. The counts differing is how this surfaced.
+const isoNoRow = [...new Set(Object.values(COUNTRY_ISO))].filter((i) => !(i in SAFETY_DATA));
+
 const checks: { rule: string; result: string; ok: boolean; where: string }[] = [
   {
     rule: "The board is 35 Signature Interests in 10 categories (David-locked 2026-08-10)",
@@ -148,6 +154,14 @@ const checks: { rule: string; result: string; ok: boolean; where: string }[] = [
       : `all ${destCountries.length} covered`,
     ok: missingSafety.length === 0,
     where: "src/data/safety-data.ts (COUNTRY_ISO) vs src/data/places.ts (DESTINATIONS)",
+  },
+  {
+    rule: "Every country in `COUNTRY_ISO` has an advisory row — it is the set the daily checker asks about, so a missing row is a country we query and hold no baseline for",
+    result: isoNoRow.length
+      ? `${isoNoRow.length} with no row: ${isoNoRow.join(", ")} — checked daily, nothing to compare against`
+      : `all ${Object.keys(SAFETY_DATA).length} covered`,
+    ok: isoNoRow.length === 0,
+    where: "src/data/safety-data.ts (COUNTRY_ISO) vs src/data/safety.json",
   },
   {
     rule: "No safety row claims verification its own `source` string denies (the source RENDERS on the destination page)",
@@ -236,7 +250,12 @@ ${rows([
   ["Wells (10 live + 3 soon)", String(allWells.length), lineOf(TAX, /export const WELLS/)],
   ["Sub-region lists", String(Object.keys(SUBREGION_TOP).length), lineOf(PLACES, /export const SUBREGION_TOP/)],
   ["Guides", String(GUIDES.length), lineOf(PLACES, /export const GUIDES/)],
-  ["Countries with a safety row", String(Object.keys(COUNTRY_ISO).length), "src/data/safety-data.ts"],
+  // These were one row reading "Countries with a safety row: 37", which was
+  // wrong twice: it counted name→ISO entries, not advisory rows, and the
+  // mislabel hid the fact that the two numbers differ. Reported by David's
+  // nineteen-rules v3 as an inconsistency; it turned out to conceal a gap.
+  ["Country name→ISO entries (`COUNTRY_ISO`)", String(Object.keys(COUNTRY_ISO).length), lineOf("src/data/safety-data.ts", /export const COUNTRY_ISO/)],
+  ["…of those, countries WITH an advisory row (`safety.json`)", String(Object.keys(SAFETY_DATA).length), lineOf("src/data/safety-data.ts", /export const SAFETY_DATA/)],
 ])}
 
 ## The Signature-Interest dossier — NINE layers
