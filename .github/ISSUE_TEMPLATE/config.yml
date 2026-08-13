@@ -1,0 +1,8 @@
+# Keep the blank-issue escape hatch: a template that can't be skipped becomes a
+# reason not to file at all, and an unfiled observation is worth less than a
+# messy one.
+blank_issues_enabled: true
+contact_links:
+  - name: The fact sheet — every count, field and vocabulary
+    url: https://github.com/sanaafzal-create/travelwell-world/blob/main/docs/ground-truth.md
+    about: Read from source with file and line. Check a number here before asserting it anywhere.
