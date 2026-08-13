@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# TravelWell.World — pre-commit.
+#
+# One job: no commit may leave a generated file out of step with its source.
+# Runs every generator and fails if the repo changed. Takes about a second.
+#
+# Enabled automatically by `npm install` (the "prepare" script points
+# core.hooksPath at this directory). To set it up by hand:
+#
+#   git config core.hooksPath .githooks
+#
+# It lives in the repo rather than .git/hooks so it survives a fresh clone and
+# applies to everyone — a hook only one machine has is a hook that catches
+# nothing.
+#
+# Skipping it is `git commit --no-verify`. That exists for a reason and is
+# sometimes right; it is also how a check quietly stops being a check, so if you
+# find yourself reaching for it twice, the check is wrong and should be fixed
+# rather than dodged.
+set -euo pipefail
+
+# No node_modules (fresh clone, CI shell) — say so and let the commit through
+# rather than blocking work on a toolchain that isn't installed yet.
+if [ ! -x node_modules/.bin/esbuild ]; then
+  echo "pre-commit: skipping the generated-file check — node_modules isn't installed."
+  exit 0
+fi
+
+npm run --silent check:generated

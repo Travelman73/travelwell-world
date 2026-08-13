@@ -12,7 +12,7 @@
  *     --platform=node --format=esm --outfile=scratchpad/tag.mjs && node scratchpad/tag.mjs
  * Writes docs/tagline-family.md.
  */
-import { writeFileSync } from "node:fs";
+import { writeGenerated, VOLATILE_DATE } from "./lib/write-generated";
 import { SIS, boardSis, SI_TAGLINE_SUBJECT, MASTER_TAGLINE_SUBJECT, SAFER_TAGLINE_SUBJECT, taglineSubject } from "../src/data/taxonomy";
 
 // The mark, exactly as the site renders it: the ellipsis AND the closing full
@@ -35,8 +35,8 @@ const row = (s: { id: string; name: string; status: string; data?: unknown }) =>
 
 const md = `# The TravelWell slogan family — in active use
 
-*Generated from the live taxonomy by \`scripts/gen-tagline-list.ts\` on ${stamp}.
-Do not hand-edit — regenerate.*
+*Generated from the live taxonomy by \`scripts/gen-tagline-list.ts\`. Content
+last changed ${stamp}. Do not hand-edit — regenerate.*
 
 **The construction:** \`If It's [X]… TravelWell.™\`
 
@@ -102,5 +102,5 @@ ${preview.map(row).join("\n")}
 - The count grows as the interest board grows. Regenerate before filing.
 `;
 
-writeFileSync("docs/tagline-family.md", md);
-console.log(`Wrote docs/tagline-family.md — ${2 + BOARD.length} variants (${live.length} live SIs, ${preview.length} preview SIs)`);
+const taglineWrite = writeGenerated("docs/tagline-family.md", md, VOLATILE_DATE);
+console.log(`${taglineWrite === "written" ? "Wrote" : "Unchanged:"} docs/tagline-family.md — ${2 + BOARD.length} variants (${live.length} live SIs, ${preview.length} preview SIs)`);

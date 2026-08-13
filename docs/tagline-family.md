@@ -1,7 +1,7 @@
 # The TravelWell slogan family — in active use
 
-*Generated from the live taxonomy by `scripts/gen-tagline-list.ts` on 2026-08-13.
-Do not hand-edit — regenerate.*
+*Generated from the live taxonomy by `scripts/gen-tagline-list.ts`. Content
+last changed 2026-08-13. Do not hand-edit — regenerate.*
 
 **The construction:** `If It's [X]… TravelWell.™`
 
