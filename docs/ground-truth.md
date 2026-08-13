@@ -15,28 +15,38 @@ name, a section number, a count, a file path — and find it here. Anything you
 cannot find is unverified, which is not the same as wrong, but it is the same as
 not-yet-checkable. Say so rather than letting it through.
 
+**Citations carry an anchor, not just a line number.** Every `file:line` below is
+followed by the source text it points at. Line numbers rot silently — insert one
+line above and the number points elsewhere while still looking precise — so grep
+the anchor and ignore the number if the two disagree. Regenerating fixes both.
+
+**You can read this file instead of running it.** A pre-commit hook re-runs every
+generator and refuses the commit if any generated file is out of step, so the
+committed copy cannot be behind the source it describes. Reading it at HEAD is as
+good as regenerating it.
+
 ## Inventory
 
 | Thing | Count | Read from |
 |---|---|---|
-| Signature Interests on the board | 35 | src/data/taxonomy.ts:222 |
-| …rows in `SIS` including retired | 39 | src/data/taxonomy.ts:398 |
-| …at `status: live` (incl. `ultra` overlay) | 8 | src/data/taxonomy.ts:222 |
-| SI categories | 10 | src/data/taxonomy.ts:262 |
-| Destinations | 44 | src/data/places.ts:79 |
-| …with a `price_band` | 7 | src/data/places.ts:67 |
-| …at `depth: verified` | 33 | src/data/places.ts:36 |
-| Activities | 60 | src/data/places.ts:477 |
-| Providers **in the bundle** | 58 (CSVs under `src/data/providers/` merge on top at seed time — run `npm run gen:catalog` to see the DB total) | src/data/places.ts:339 |
-| Regions | 13 | src/data/taxonomy.ts:318 |
-| Wells (10 live + 3 soon) | 13 | src/data/taxonomy.ts:286 |
-| Sub-region lists | 18 | src/data/places.ts:294 |
-| Guides | 9 | src/data/places.ts:437 |
+| Signature Interests on the board | 35 | src/data/taxonomy.ts:222 · `export const SIS: SpecialInterest[] = [...BASE` |
+| …rows in `SIS` including retired | 39 | src/data/taxonomy.ts:398 · `export const boardSis = (sis: { retired?: bool` |
+| …at `status: live` (incl. `ultra` overlay) | 8 | src/data/taxonomy.ts:222 · `export const SIS: SpecialInterest[] = [...BASE` |
+| SI categories | 10 | src/data/taxonomy.ts:262 · `export const SI_GROUPS: SiGroup[] = [` |
+| Destinations | 44 | src/data/places.ts:79 · `export const DESTINATIONS: Record<string, Dest` |
+| …with a `price_band` | 7 | src/data/places.ts:67 · `price_band?: string; // coarse overall price l` |
+| …at `depth: verified` | 33 | src/data/places.ts:36 · `export type DestDepth = "verified" | "stub" | ` |
+| Activities | 60 | src/data/places.ts:477 · `export const ACTIVITIES: Record<string, Activi` |
+| Providers **in the bundle** | 58 (CSVs under `src/data/providers/` merge on top at seed time — run `npm run gen:catalog` to see the DB total) | src/data/places.ts:339 · `export const PROVIDERS: Record<string, Provide` |
+| Regions | 13 | src/data/taxonomy.ts:318 · `export const REGIONS: Region[] = [` |
+| Wells (10 live + 3 soon) | 13 | src/data/taxonomy.ts:286 · `export const WELLS: Well[] = [` |
+| Sub-region lists | 18 | src/data/places.ts:294 · `export const SUBREGION_TOP: Record<string, str` |
+| Guides | 9 | src/data/places.ts:437 · `export const GUIDES: Guide[] = [` |
 | Countries with a safety row | 37 | src/data/safety-data.ts |
 
 ## The Signature-Interest dossier — NINE layers
 
-Defined by `SiData` at src/data/taxonomy.ts:80. There is no
+Defined by `SiData` at src/data/taxonomy.ts:80 · `export interface SiData {`. There is no
 nineteen-section structure in this repository.
 
 | Layer | Field path | Type |
@@ -53,11 +63,11 @@ nineteen-section structure in this repository.
 | 9 | `data.seo` · `data.schema` | `{ title?, description?, keywords?, geo_keywords? } · string[]` |
 
 **Booking windows are layer 4a**, at `data.timing.booking_window`
-(src/data/taxonomy.ts:88), typed `string`. Layer 6 is `providers`.
+(src/data/taxonomy.ts:88 · `timing?: { season?: string; best_months?: numb`), typed `string`. Layer 6 is `providers`.
 
 **Every figure carries its own confidence.** `Figure` is
 `{label, value, confidence, source?}` with `confidence` REQUIRED
-(src/data/taxonomy.ts:31); `verified` without a `source` is a
+(src/data/taxonomy.ts:31 · `export interface Figure {`); `verified` without a `source` is a
 hard error in `npm run validate:si`. An unlabeled number is a guessed number.
 
 ## Live roster
@@ -72,12 +82,12 @@ hard error in `npm run validate:si`. An unlabeled number is a guessed number.
 
 | Vocabulary | Values | Read from |
 |---|---|---|
-| Budget tier (`price`) | `essential` · `comfort` · `premier` · `luxury` · `ultra` | src/data/places.ts:319 |
-| Provider curation (`tier`) | `prime` · `vetted` · `prospective` | src/data/places.ts:315 |
-| Interest status | `live` · `preview` · `soon` | src/data/taxonomy.ts:19 |
-| Destination status | `live` · `future` | src/data/places.ts:35 |
-| Destination depth | `verified` · `stub` · `cached` | src/data/places.ts:36 |
-| Booking path | `api` · `request-to-book` · `aggregator` · `lead` | src/data/taxonomy.ts:52 |
+| Budget tier (`price`) | `essential` · `comfort` · `premier` · `luxury` · `ultra` | src/data/places.ts:319 · `export type Price = "essential" | "comfort" | ` |
+| Provider curation (`tier`) | `prime` · `vetted` · `prospective` | src/data/places.ts:315 · `export type Tier = "prime" | "vetted" | "prosp` |
+| Interest status | `live` · `preview` · `soon` | src/data/taxonomy.ts:19 · `export type Status = "live" | "preview" | "soo` |
+| Destination status | `live` · `future` | src/data/places.ts:35 · `export type DestStatus = "live" | "future"; //` |
+| Destination depth | `verified` · `stub` · `cached` | src/data/places.ts:36 · `export type DestDepth = "verified" | "stub" | ` |
+| Booking path | `api` · `request-to-book` · `aggregator` · `lead` | src/data/taxonomy.ts:52 · `export type BookingPath = "api" | "request-to-` |
 
 Budget tier and provider curation are **different axes** that both get called
 "tier" in conversation. `price` is what it costs; `tier` is how well we know
@@ -87,31 +97,31 @@ the provider.
 
 ✅ **The board is 35 Signature Interests in 10 categories (David-locked 2026-08-10)**
    → 35 on the board, 10 categories
-   → `src/data/taxonomy.ts:262`
+   → `src/data/taxonomy.ts:262 · `export const SI_GROUPS: SiGroup[] = [``
 
 ✅ **Retired interests stay in SIS (the seed carries `delete … where id not in (…)`)**
    → 4 retired rows still present: nightlife, olympic, prosports, compsports
-   → `src/data/taxonomy.ts:398`
+   → `src/data/taxonomy.ts:398 · `export const boardSis = (sis: { retired?: bool``
 
 ✅ **7 launch interests are live, plus `ultra` as the luxury overlay — 8 rows at status live**
    → 8 live: ultra, tropical, romance, safari, expedition, ski, liveaboard, river
-   → `src/data/taxonomy.ts:222`
+   → `src/data/taxonomy.ts:222 · `export const SIS: SpecialInterest[] = [...BASE``
 
 ✅ **13 Wells total, 10 live + 3 soon**
    → 13 total, 10 live, 3 not live
-   → `src/data/taxonomy.ts:286`
+   → `src/data/taxonomy.ts:286 · `export const WELLS: Well[] = [``
 
 ✅ **13-code region scheme**
    → 13 regions
-   → `src/data/taxonomy.ts:318`
+   → `src/data/taxonomy.ts:318 · `export const REGIONS: Region[] = [``
 
 ✅ **Destination id is `<city>-<country>`, lowercase and hyphenated**
    → 44 of 44 are hyphenated multi-part; 0 are single-word and cannot conform
-   → `src/data/places.ts:79`
+   → `src/data/places.ts:79 · `export const DESTINATIONS: Record<string, Dest``
 
 ✅ **Every interest dossier layer is optional, but a populated one must carry labeled figures**
    → 0 of 39 interests carry a dossier
-   → `src/data/taxonomy.ts:80`
+   → `src/data/taxonomy.ts:80 · `export interface SiData {``
 
 ✅ **Every country holding a destination **currently in the catalog** has a country-level safety row (the advisory cascade is country → destination)**
    → all 33 covered

@@ -28,11 +28,25 @@ import { SIS, boardSis, REGIONS, WELLS, LUX_WELLS, SI_GROUPS } from "../src/data
 import { DESTINATIONS, ACTIVITIES, PROVIDERS, GUIDES, SUBREGION_TOP } from "../src/data/places";
 import { COUNTRY_ISO, SAFETY_DATA } from "../src/data/safety-data";
 
-/** Line number of the first line matching `re` — so citations survive edits. */
+/**
+ * A citation that survives the file moving underneath it.
+ *
+ * LINE NUMBERS ROT, and they rot silently — insert one line above and
+ * `taxonomy.ts:222` now points at something else while still looking precise.
+ * This repo ships daily, so a citation written this morning can be quietly
+ * misdirecting by evening, and nothing about it looks stale.
+ *
+ * So every citation carries BOTH: the line number, which is exact right now and
+ * regenerates on every run, and the matched source text, which is how a reader
+ * finds the thing again after the number has drifted. Grep the anchor, ignore
+ * the number.
+ */
 function lineOf(file: string, re: RegExp): string {
   const lines = readFileSync(file, "utf8").split("\n");
   const i = lines.findIndex((l) => re.test(l));
-  return i === -1 ? `${file}` : `${file}:${i + 1}`;
+  if (i === -1) return `${file}`;
+  const anchor = lines[i].trim().replace(/\s+/g, " ").slice(0, 46);
+  return `${file}:${i + 1} · \`${anchor}\``;
 }
 
 const dests = Object.values(DESTINATIONS).flat();
@@ -190,6 +204,16 @@ worse than none — it launders a stale claim as a verified one.
 name, a section number, a count, a file path — and find it here. Anything you
 cannot find is unverified, which is not the same as wrong, but it is the same as
 not-yet-checkable. Say so rather than letting it through.
+
+**Citations carry an anchor, not just a line number.** Every \`file:line\` below is
+followed by the source text it points at. Line numbers rot silently — insert one
+line above and the number points elsewhere while still looking precise — so grep
+the anchor and ignore the number if the two disagree. Regenerating fixes both.
+
+**You can read this file instead of running it.** A pre-commit hook re-runs every
+generator and refuses the commit if any generated file is out of step, so the
+committed copy cannot be behind the source it describes. Reading it at HEAD is as
+good as regenerating it.
 
 ## Inventory
 
