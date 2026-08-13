@@ -25,6 +25,7 @@ import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, basename } from "node:path";
 import { SIS, SI_GROUPS, ALL_WELLS, REGIONS, SI_TAGLINE_SUBJECT } from "../src/data/taxonomy";
 import { DESTINATIONS } from "../src/data/places";
+import { checkHero } from "./lib/check-hero";
 
 // ── Canon, straight from the live source ──────────────────────────────────
 const SI_SLUGS = new Set(SIS.map((s) => s.id));
@@ -206,6 +207,9 @@ for (const { d, from } of rows) {
   if (data.faq?.length && !(data.schema ?? []).includes("FAQPage")) {
     warns.push(`${at}: has faq but schema doesn't list "FAQPage" (we emit it anyway — this is just the manifest disagreeing)`);
   }
+
+  checkHero(at, data.hero, { errs, warns });
+
 }
 
 // ── Cross-reference resolution — the "map → empty shelf" bug ───────────────

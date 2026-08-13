@@ -19,6 +19,7 @@ import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { REGIONS, SIS, SUBREGIONS } from "../src/data/taxonomy";
 import { DESTINATIONS, LEGACY_DEST_ID, resolveDestId } from "../src/data/places";
+import { checkHero } from "./lib/check-hero";
 
 // ── Canon, straight from the live source ──────────────────────────────────
 const REGION_CODES = new Set(REGIONS.map((r) => r.code));
@@ -145,12 +146,10 @@ for (const { code, d } of rows) {
       if (!q?.q || !q?.a) errs.push(`${at}: faq #${i + 1} needs both q and a (it emits FAQPage schema)`);
     }
     // Editorial hero override (data.hero) — the content team's image pick.
-    const hero = data.hero as { url?: string; query?: string; credit?: { name?: string; link?: string } } | undefined;
-    if (hero) {
-      if (hero.url && !/^https:\/\//i.test(hero.url)) errs.push(`${at}: data.hero.url must be https (an http image breaks on a secure page)`);
-      if (hero.url && !hero.credit?.name) warns.push(`${at}: data.hero.url has no credit — if it's an Unsplash photo, attribution is required by their licence`);
-      if (!hero.url && !hero.query) warns.push(`${at}: data.hero is present but empty (needs url or query) — it will be ignored`);
-    }
+    // Shared with the SI gate so the two can't drift: a missing credit on a
+    // PINNED url used to be a warning here and nothing at all there, which is
+    // two answers to one question.
+    checkHero(at, data.hero, { errs, warns });
 
     // reconciles_live_mvp → must resolve to an ACTUAL live MVP id (not just a slug).
     const rec = data.reconciles_live_mvp;
