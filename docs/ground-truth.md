@@ -117,6 +117,14 @@ the provider.
    → all 33 covered
    → `src/data/safety-data.ts (COUNTRY_ISO) vs src/data/places.ts (DESTINATIONS)`
 
+✅ **No safety row claims verification its own `source` string denies (the source RENDERS on the destination page)**
+   → all 36 rows consistent
+   → `src/data/safety.json vs src/data/safety-data.ts (SafetyInfo.reported)`
+
+✅ **A `reported` safety row carries no `verified` date — we act on it, we don't claim it**
+   → none claim both
+   → `src/data/safety.json`
+
 ✅ **`_`-prefixed dossier files are references and never ship**
    → interests/: 1 file(s), 0 shipping · destinations/: 1 file(s), 0 shipping
    → `src/data/interests/, src/data/destinations/`

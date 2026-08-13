@@ -112,10 +112,27 @@ catalog read carries `data` from the DB (not just the bundle). Reference row:
 migration):** `seo`, `trails`/supply, `ultra`, `facts`, `quotes`. Omit them now
 rather than half-fill.
 
-**`vibe[]` / `feel[]` — leave empty on ingest (deliberate).** It's a live field but
-not in the dossier recipe; we populate it later from the **Identity Card's read of
-the traveler's vision** (the living Travel ID), not from dossier prose. Seen, not
-dropped.
+**`vibe[]` / `feel[]` — author it from the prose, or leave it empty. Both are
+valid; what is NOT valid is a value outside the vocabulary.** *(Resolved
+2026-08-13 — this document previously said three different things about `feel` in
+three places: "map each dossier's prose to 2–4 tags" above, "leave empty on
+ingest (deliberate)" here, and "only if cleanly inferable" in the stub recipe.
+Job 16 populated 377 rows against the first, having been told the second. That
+ambiguity was ours.)*
+
+The rule now, in one place:
+
+- **The vocabulary is closed and the validator hard-errors outside it** — the 20
+  words listed above, checked at `validate-destinations.ts`. That is the part
+  that matters, and it is enforced rather than asked for.
+- **Populated is preferred, empty is fine.** Authoring 2–4 tags from the prose is
+  useful and safe. Leaving it empty is not a defect and never blocks ingest.
+- **Never invent a tag to fill the field.** An absent `feel` costs nothing today;
+  a wrong one pollutes clustering the day the match engine reads it.
+- **Nothing reads it yet.** No runtime code consumes `feel` — see
+  `status-and-launch-plan.md` ("we carry SI + region but not feel yet"). It is
+  being populated ahead of the match engine, not for anything shipping now, so
+  it is never a reason to hold a dossier back.
 
 **The buffet block drives AI citation (AEO), so it maps 1:1 to the source:**
 - `facts` = the fast facts, each with a **hard number** and a **`source`** — one claim per entry so the AI can lift it as a standalone chunk.
@@ -162,7 +179,8 @@ now as `depth: stub`, don't quarantine them.** Reasoning:
 - **Map each to the minimum object:** `id` (`<city>-<country>` from name+country),
   `name`, `country`, `line` (first strong prose sentence), `region_code`, `status`
   (`future`/preview unless it's a live row), `depth: "stub"`, `img` (Unsplash query),
-  and `si`/`feel` **only if cleanly inferable** from the prose. **Omit every `data.*`
+  and `si`/`feel` **only if cleanly inferable** from the prose (see the `feel`
+  rule above — populated or empty are both fine, invented is not). **Omit every `data.*`
   block — never fabricate one to look verified** (the omit-don't-invent rule). The
   validator treats stubs as warnings, not errors, so they pass clean.
 - **Upgrade path (phase 2, optional):** run the prose through an extraction pass to

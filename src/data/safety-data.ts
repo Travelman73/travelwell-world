@@ -45,6 +45,27 @@ export interface SafetyInfo {
    */
   unverified?: boolean;
   /**
+   * TRUE when we DO hold a level but its provenance is a report we have not
+   * independently confirmed against an official advisory.
+   *
+   * Distinct from `unverified`, and the distinction matters: `unverified` means
+   * we have nothing and must not print a number; `reported` means we have a
+   * claim worth acting on but cannot call it verified. Collapsing the two would
+   * either hide a real risk (printing "?" over an active outbreak) or overstate
+   * our sourcing (printing "Verified" over a founder's note).
+   *
+   * A `reported` row keeps its level and its booking posture — we do not soften
+   * a Do-Not-Travel because our paperwork is thin — but the card must not claim
+   * verification, and the traveler is told where the reading came from.
+   *
+   * Why this exists: Uganda carried lvl 4 with `verified: "2026-08"` while its
+   * own source string read "NOT independently re-verified — confirm against
+   * travel.state.gov + CDC before public use." That string RENDERS, so the card
+   * showed a traveler an internal instruction to ourselves, directly beside a
+   * "Verified" badge contradicting it.
+   */
+  reported?: boolean;
+  /**
    * Set when a DESTINATION-level carve-out is in force — a named zone whose
    * advisory differs from its country's (the FCDO 7km volcanic exclusion on
    * Flores, which State doesn't carry, is the worked example). The card must say

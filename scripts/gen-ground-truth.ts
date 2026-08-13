@@ -26,7 +26,7 @@
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { SIS, boardSis, REGIONS, WELLS, LUX_WELLS, SI_GROUPS } from "../src/data/taxonomy";
 import { DESTINATIONS, ACTIVITIES, PROVIDERS, GUIDES, SUBREGION_TOP } from "../src/data/places";
-import { COUNTRY_ISO } from "../src/data/safety-data";
+import { COUNTRY_ISO, SAFETY_DATA } from "../src/data/safety-data";
 
 /** Line number of the first line matching `re` — so citations survive edits. */
 function lineOf(file: string, re: RegExp): string {
@@ -69,6 +69,20 @@ const shipping = (files: string[]) => files.filter((f) => !f.startsWith("_"));
 // baseline underneath it has nothing to carve out of.
 const destCountries = [...new Set(dests.map((d) => d.country))];
 const missingSafety = destCountries.filter((c) => !(c in COUNTRY_ISO));
+
+// A safety row must not claim verification its own source denies. Uganda carried
+// lvl 4 with `verified: "2026-08"` beside a source reading "NOT independently
+// re-verified — confirm ... before public use". Both strings RENDER on the
+// destination page, so a traveler saw an internal note to ourselves next to a
+// Verified badge contradicting it. The caveat was written down and then ignored
+// by every field that drives the UI.
+const SELF_FLAGGED = /not independently|reported by|unconfirmed|not re-?verified|before public use/i;
+const safetyRows = Object.entries(SAFETY_DATA as Record<string, {
+  source?: string; verified?: string; reported?: boolean; unverified?: boolean; lvl?: number;
+}>);
+const provenanceLies = safetyRows.filter(([, r]) =>
+  r.source && SELF_FLAGGED.test(r.source) && !r.reported && !r.unverified);
+const claimsBoth = safetyRows.filter(([, r]) => r.reported && r.verified);
 
 const checks: { rule: string; result: string; ok: boolean; where: string }[] = [
   {
@@ -120,6 +134,20 @@ const checks: { rule: string; result: string; ok: boolean; where: string }[] = [
       : `all ${destCountries.length} covered`,
     ok: missingSafety.length === 0,
     where: "src/data/safety-data.ts (COUNTRY_ISO) vs src/data/places.ts (DESTINATIONS)",
+  },
+  {
+    rule: "No safety row claims verification its own `source` string denies (the source RENDERS on the destination page)",
+    result: provenanceLies.length
+      ? `${provenanceLies.length} row(s) self-flag as unconfirmed but carry neither \`reported\` nor \`unverified\`: ${provenanceLies.map(([iso]) => iso).join(", ")}`
+      : `all ${safetyRows.length} rows consistent`,
+    ok: provenanceLies.length === 0,
+    where: "src/data/safety.json vs src/data/safety-data.ts (SafetyInfo.reported)",
+  },
+  {
+    rule: "A `reported` safety row carries no `verified` date — we act on it, we don't claim it",
+    result: claimsBoth.length ? `${claimsBoth.length}: ${claimsBoth.map(([iso]) => iso).join(", ")}` : "none claim both",
+    ok: claimsBoth.length === 0,
+    where: "src/data/safety.json",
   },
   {
     rule: "`_`-prefixed dossier files are references and never ship",

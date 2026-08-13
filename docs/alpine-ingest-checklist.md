@@ -32,7 +32,7 @@ Companion docs: `docs/alpine-ingest-brief.md` (what CC delivers),
       fold into *Switzerland & the Alps* (the Alps are trans-national) unless the
       volume earns a new "The Dolomites" sub_region (a Pacific-Northwest-style
       call — if I add one, update `SUBREGIONS["01F"]`, the master, and the count).
-- [ ] Keep `feel: []` empty (populated later from the Identity Card).
+- [ ] `feel[]` is either empty or drawn ONLY from the closed 20-word vocabulary — never invented (see `dossier-ingest-shape.md`).
 
 ### 3. Regenerate the seed (never hand-edit 0005)
 - [ ] `./node_modules/.bin/esbuild scripts/gen-catalog-seed.ts --bundle --platform=node --format=esm --outfile=scratchpad/gen.mjs && node scratchpad/gen.mjs`

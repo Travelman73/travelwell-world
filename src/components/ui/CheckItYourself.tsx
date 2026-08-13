@@ -15,8 +15,8 @@ import { advisoryLinks } from "@/data/advisory-sources";
  * SAYS so, because a link that 404s reads as "we checked" when we didn't.
  */
 export function CheckItYourself({
-  country, iso, verified, unverified,
-}: { country: string; iso: string | null; verified?: string; unverified?: boolean }) {
+  country, iso, verified, unverified, reported,
+}: { country: string; iso: string | null; verified?: string; unverified?: boolean; reported?: boolean }) {
   const links = advisoryLinks(country, iso);
   return (
     <section className="chk" aria-labelledby="chk-h">
@@ -26,6 +26,10 @@ export function CheckItYourself({
       <p className="chk__lead">
         {unverified
           ? <>We don&rsquo;t have a verified advisory for {country} on file yet. Read the official one before you book.</>
+          /* A reported reading is acted on but not claimed as verified — saying
+             "verified on the date shown" with no date would be the worse lie. */
+          : reported
+          ? <>Our reading of {country} comes from a report we haven&rsquo;t independently confirmed against an official advisory. Read the official one before you book.</>
           : <>Our reading of {country} was verified {verified ? <b>{verified}</b> : "on the date shown"}. Advisories change between our checks &mdash; read the official one before you travel.</>}
       </p>
       <ul className="chk__list">

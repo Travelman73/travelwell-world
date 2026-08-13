@@ -269,7 +269,7 @@ export default function DestinationDetail() {
               merging them would misreport both. */}
           <GlobalAdvisoryNote />
 
-          <CheckItYourself country={country} iso={iso} verified={s.verified} unverified={s.unverified} />
+          <CheckItYourself country={country} iso={iso} verified={s.verified} unverified={s.unverified} reported={s.reported} />
 
           <div className="dd-quick">
             <h4>At a glance</h4>

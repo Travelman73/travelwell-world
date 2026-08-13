@@ -50,8 +50,11 @@ half-fill.
   (the AI-citation), so it's high value — include the top traveler + safety Qs.
 - **`safety`** — `advisory_level` must be `L1|L2|L3|L4`. Alpine risk is
   weather/avalanche; note "ski in-bounds / hire a guide off-piste," not fear.
-- **`feel[]` / vibe:** leave empty — it's populated later from the Identity Card,
-  not dossier prose.
+- **`feel[]` / vibe:** populated or empty, both fine — but only from the closed
+  20-word vocabulary, which the validator hard-errors outside of. Never invent a
+  tag to fill the field. (Resolved 2026-08-13; this line used to say "leave
+  empty" while `dossier-ingest-shape.md` said "map 2–4 tags from the prose" —
+  see that file's `feel` rule, which is now the single statement.)
 
 ---
 

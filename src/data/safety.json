@@ -489,8 +489,9 @@
       "Outbreak levels move quickly in both directions — re-check the official advisory before relying on this."
     ],
     "medical": "Active Ebola outbreak with heightened screening and entry/exit controls. Confirm current requirements with the CDC travel health notices and your national advisory before any travel.",
-    "source": "Reported by David (founder), Aug 2026, corroborated by the regional Ebola emergency in the Rwanda entry. NOT independently re-verified — confirm against travel.state.gov + CDC before public use.",
-    "verified": "2026-08"
+    "source": "Founder report, Aug 2026 — an active Ebola (Bundibugyo) outbreak, consistent with the regional emergency behind Rwanda's level. Not independently confirmed against an official advisory.",
+    "verified": "",
+    "reported": true
   },
   "ZA": {
     "country": "South Africa",
