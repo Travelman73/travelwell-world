@@ -366,27 +366,54 @@ Deno.serve(async (req: Request) => {
     const prev = new Map((prevRows ?? []).map((r: any) => [`${r.country_iso}:${r.source}`, r]));
 
     const readings: Reading[] = [];
+    // Sources that couldn't be read this run. Named, not inferred from a count —
+    // "36 failures" and "one source is down" look identical in a number and mean
+    // completely different things to whoever reads the run log next week.
+    const degraded: string[] = [];
 
-    // ── State ──────────────────────────────────────────────────────────────
-    try {
-      const { readings: r, diag } = await readState(isoByName);
-      readings.push(...r);
-      notes.state = { read: r.length, ...diag };
-    } catch (err) {
-      // FREEZE: no state rows written for this source; the previous values stand.
-      notes.state = { failed: (err as Error).message.slice(0, 120) };
-      failed += countries.length;
-      console.error("[advisory] State unreadable — holding last known values:", err);
-    }
-
-    // ── FCDO ───────────────────────────────────────────────────────────────
+    // ── FCDO — PRIMARY (David, 2026-08-13) ─────────────────────────────────
+    // Runs FIRST because it is the source we can actually read: 36 of 36, no
+    // failures, every run since the checker went live. It is also where the
+    // regional carve-outs live, which is the detail a named-zone exclusion comes
+    // from and which no other source publishes.
+    //
+    // PRIMARY DOES NOT MEAN IT SUPPLIES LEVELS — and this is the part not to
+    // gloss. The FCDO publishes no numeric level at all. Our L1–L4 values remain
+    // the curated baseline in `safety.json`, sourced from State. So while State
+    // is unreachable the checker detects CHANGE and cannot detect a LEVEL MOVE
+    // from the source that numbers them. That is a real gap, it is why State
+    // access is worth chasing, and it must not be softened into "we have it
+    // covered."
     const slugs = countries.filter((c) => c.fcdo_slug).map((c) => ({ iso: c.iso.toUpperCase(), slug: c.fcdo_slug! }));
     if (slugs.length) {
       const { readings: fr, failures } = await readFcdo(slugs);
       readings.push(...fr);
       failed += failures.length;
-      notes.fcdo = { read: fr.length, failed: failures.length, examples: failures.slice(0, 5) };
+      notes.fcdo = { role: "primary", read: fr.length, failed: failures.length, examples: failures.slice(0, 5) };
+      if (!fr.length) degraded.push("fcdo");
     }
+
+    // ── State — enrichment while the egress question is open ───────────────
+    // Still wired, still tried every run, so the day access is granted it starts
+    // working with no deploy. Its failures no longer count toward `failed`: a
+    // blocked source was adding 36 to the failure count and making a healthy run
+    // read like a catastrophic one, which trains everyone to ignore the number.
+    // It is recorded as DEGRADED instead — visible, named, and impossible to
+    // mistake for either success or a per-country failure.
+    try {
+      const { readings: r, diag } = await readState(isoByName);
+      readings.push(...r);
+      notes.state = { role: "enrichment", read: r.length, ...diag };
+      if (!r.length) degraded.push("state");
+    } catch (err) {
+      // FREEZE: no state rows written; the previous values stand, with their
+      // original fetched_at, so the staleness stays visible.
+      notes.state = { role: "enrichment", read: 0, failed: (err as Error).message.slice(0, 120) };
+      degraded.push("state");
+      console.error("[advisory] State unreadable — holding last known values:", err);
+    }
+
+    if (degraded.length) notes.degraded = degraded;
 
     // ── Diff, queue, and only THEN write state ─────────────────────────────
     for (const r of readings) {
@@ -446,6 +473,10 @@ Deno.serve(async (req: Request) => {
 
     return Response.json({
       runId, checked, ok, failed, changed,
+      // Surfaced in the response, not just buried in notes, so whoever reads a
+      // run — a human or an alert — sees "the primary source is down" without
+      // having to open the JSON and infer it from a count.
+      degraded,
       needsToday: needsToday ?? [],
       // Kept separately so an alert can still shout louder for a level going UP,
       // without that distinction delaying anything.

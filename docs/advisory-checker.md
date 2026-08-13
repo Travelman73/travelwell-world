@@ -43,13 +43,32 @@ stale one, because nobody is watching it.
 
 ## Sources — structured endpoints, never scraping
 
-- **US State**, Consular Affairs API: `cadataapi.state.gov/api/TravelAdvisories`
-  — one request for every country, not one per country. Falls back to the RSS
-  feed (`travel.state.gov/_res/rss/TAs.xml`) if the API is unavailable.
-- **UK FCDO**, via the GOV.UK Content API: `www.gov.uk/api/content/foreign-travel-advice/<slug>`
-  — one request per country. No numeric level; what matters here is the
-  **regional** detail, which is where named-zone carve-outs come from.
+**The FCDO is PRIMARY (David, 2026-08-13).** It is the source we can actually
+read — 36 of 36 countries, no failures, every run since the checker went live —
+and it carries the regional carve-outs that no other source publishes.
+
+**Primary does not mean it supplies levels, and this is the part not to gloss.**
+The FCDO publishes no numeric level at all. Our L1–L4 values remain the curated
+baseline in `safety.json`, sourced from State. So while State is unreachable the
+checker detects **change** but cannot detect a **level move** from the source
+that numbers them. That is a real gap. It is why State access is worth chasing,
+and it should not be softened into "we have it covered."
+
+- **UK FCDO — primary**, via the GOV.UK Content API:
+  `www.gov.uk/api/content/foreign-travel-advice/<slug>` — one request per
+  country. No numeric level; the **regional** detail is the signal.
+- **US State — enrichment**, Consular Affairs API:
+  `cadataapi.state.gov/api/TravelAdvisories` — one request for every country.
+  Still tried every run, so the day access is granted it starts working with no
+  deploy. Falls back to the RSS feed (`travel.state.gov/_res/rss/TAs.xml`).
 - **CDC** health notices — the layer that moves fastest, and the next one to wire.
+
+**A blocked source is `degraded`, not 36 failures.** State's outage used to add
+`countries.length` to `failed`, so a healthy run read like a catastrophic one —
+which teaches everyone to ignore the number, and then the real failure goes
+unnoticed too. Unreadable sources are now named in `notes.degraded` and in the
+response body. "36 failures" and "one source is down" look identical in a count
+and mean completely different things.
 
 Both sources bot-block a bare request, so the function sends browser-like
 headers. That's a small durable fix applied to a structured endpoint, rather than
