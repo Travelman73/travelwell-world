@@ -1,6 +1,6 @@
 # Advisory deep links — to verify
 
-*Generated 2026-08-11 by `scripts/gen-advisory-link-list.ts`. Do not hand-edit —
+*Generated 2026-08-13 by `scripts/gen-advisory-link-list.ts`. Do not hand-edit —
 fix a slug in `src/data/advisory-sources.ts` and regenerate.*
 
 **What to do with this:** open each link. Mark the last column **OK** or **404**.
@@ -32,7 +32,7 @@ Sources: US State Department · UK FCDO · CDC Travel Health Notices
 | Austria | AT | UK FCDO | <https://www.gov.uk/foreign-travel-advice/austria> | |
 | Austria | AT | CDC Travel Health Notices | <https://wwwnc.cdc.gov/travel/destinations/traveler/none/austria> | |
 | Bahamas | BS | US State Department | <https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/the-bahamas-travel-advisory.html> | |
-| Bahamas | BS | UK FCDO | <https://www.gov.uk/foreign-travel-advice/the-bahamas> | |
+| Bahamas | BS | UK FCDO | <https://www.gov.uk/foreign-travel-advice/bahamas> | |
 | Bahamas | BS | CDC Travel Health Notices | <https://wwwnc.cdc.gov/travel/destinations/traveler/none/bahamas> | |
 | Cambodia | KH | US State Department | <https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/cambodia-travel-advisory.html> | |
 | Cambodia | KH | UK FCDO | <https://www.gov.uk/foreign-travel-advice/cambodia> | |
