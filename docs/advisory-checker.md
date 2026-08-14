@@ -312,42 +312,55 @@ build sandbox.
 **The FCDO and CDC slug tables are verified.** Every one lands on the right
 country page, which is what §7B asks for.
 
-**State's 403 is not our egress**, and neither, it turns out, is the empty API.
-Both earlier readings were wrong and the retraction is worth keeping in full,
-because a wrong diagnosis sent to a founder as a decision is more expensive than
-the bug.
+### The State API — the measured matrix, after three wrong readings
 
-**What is actually true, measured 2026-08-13 from a laptop:**
+This question got answered wrong three times in two days, each time from a single
+measurement. Here is the whole grid instead. **Do not re-diagnose this from one
+data point; add a cell.**
 
-| Endpoint | From our Edge Function | From a laptop |
+`cadataapi.state.gov/api/TravelAdvisories`, response size:
+
+| | curl-style UA | browser UA |
 |---|---|---|
-| `cadataapi.state.gov/api/TravelAdvisories` | 200, `[]` (2 bytes) | **200, `[]` — identical** |
-| `travel.state.gov/...advisory.html` | 403 | **403 — identical** |
-| `travel.state.gov/_res/rss/TAs.xml` | 200, 343 bytes, 0 items | 200, 343 bytes, 0 items |
+| **Laptop** (residential IP) | 200, `[]` | **200, 952 KB ✓** |
+| **Edge Function** (datacenter IP) | 200, `[]` | 200, `[]` |
 
-**So nothing about State is about where our request leaves from.** The API
-returns an empty array to everyone; the HTML pages refuse automation from
-everyone; the RSS feed is empty for everyone. Three different failures, none of
-them ours, and re-running from a different network fixes none of them.
+*Laptop cells measured 2026-08-13; Edge Function cells 2026-08-11, all three
+header profiles in one run. The Edge Function's "browser-like" profile sends a
+full Chrome 126 User-Agent — not a token gesture.*
 
-**The retracted claim, on the record:** this document previously said the API
-"answers a laptop with 682KB and our Edge Function with an empty body — that one
-is egress." That was built on a 682,146-byte measurement taken on 2026-08-12 and
-attributed to this endpoint without checking which command produced it. Today the
-same endpoint returns 2 bytes to the same laptop, so the number came from
-somewhere else. **A measurement whose provenance was not recorded is not
-evidence**, and it was used to shape a recommendation to David. That is the same
-failure this repo spent the week building gates against, committed by the person
-building them.
+**One cell works.** Both factors matter: a script-shaped User-Agent gets an empty
+array even from a residential IP, and a full browser User-Agent gets an empty
+array from a datacenter IP. **The origin is the constraint we cannot change from
+Supabase**, so no amount of header tuning in the Edge Function will fix it. That
+line of work is closed.
 
-**Consequence for the plan:** requesting API access is now more clearly right,
-not less — a public endpoint returning `[]` to every caller suggests registration
-is genuinely required rather than that we are being filtered. And the FCDO being
-primary stands on its own evidence: 36 of 36, every run.
+The other two State surfaces are simpler: `travel.state.gov` HTML pages 403 to
+automation from **both** origins (bot protection on the website — a browser is
+fine, which is what it is defending), and the RSS feed returns 343 bytes with
+zero items to both.
 
-**The 36 State deep links** remain unproven and are verifiable by hand in a
-browser (a browser is not blocked — that is what the 403 defends against). No
-automated route to them exists today.
+**The three wrong readings, on the record, because the method matters more than
+the answer:**
+
+1. *"It's the egress"* — right by luck, on a 682KB measurement whose command was
+   never recorded.
+2. *"It returns `[]` to everyone, the egress theory is dead"* — from a laptop
+   curl with no UA flag. The command was mine and I had not controlled for the
+   variable I was testing.
+3. The truth is both, and it took a 2×2 to see it.
+
+**A measurement whose provenance is not recorded is not evidence**, and neither
+is one that changes two variables at once. Reading 2 was as unsound as reading 1
+even though it contradicted it.
+
+**Consequences, which survive all of this:** FCDO-primary stands on its own
+evidence (36 of 36, every run) and never depended on this. Requesting API access
+is still right. And if we ever want State read automatically, it needs a
+non-datacenter egress or a registered key — not a better header.
+
+**The 36 State deep links** remain unproven, and are verifiable by hand in a
+browser. No automated route exists today.
 
 ## Live-run findings (2026-08-11)
 
