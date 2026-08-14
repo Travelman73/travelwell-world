@@ -16,28 +16,49 @@ import { getEmergencyNumbers, UNIVERSAL_EMERGENCY } from "@/data/emergency-numbe
 const TIER: Record<string, string> = { prime: "★ Prime", vetted: "Vetted", prospective: "Prospective" };
 
 /**
- * Find a destination by id across every region's list; return it with its region
- * and sibling list. Accepts a LEGACY slug (`/destination/paris` → `paris-france`)
- * — shared links and saved trips still carry the pre-rename ids, and the fallback
- * below hands back a *different* destination rather than erroring, so an
- * unresolved id shows a confidently wrong page. Resolve before matching.
+ * Find a destination by id across every region's list. Accepts a LEGACY slug
+ * (`/destination/paris` → `paris-france`), because shared links and saved trips
+ * still carry the pre-rename ids.
+ *
+ * RETURNS NULL WHEN IT CAN'T FIND ONE, and that is the whole point of this
+ * function's second draft.
+ *
+ * It used to fall back to `list[0]` of East Africa — the first row in the region,
+ * which is the Maasai Mara. So a mistyped or dead link rendered a COMPLETE and
+ * confident page about a different country: its name, its providers, its guides,
+ * and its safety card carrying Kenya's advisory level. A traveller reading a
+ * level for a place they never asked about is the exact inverse of
+ * Safer-Informed, and nothing on the page hinted anything was wrong.
+ *
+ * A page that says "we don't have this one" is worth more than a page that
+ * confidently answers the wrong question.
  */
 function findDestination(
   regions: Region[],
   destinations: Record<string, Destination[]>,
   rawId?: string
-): { dest: Destination; region: Region; list: Destination[] } {
+): { dest: Destination; region: Region; list: Destination[] } | null {
   const id = resolveDestId(rawId);
-  const fallbackRegion = regions.find((r) => r.code === "05A")!;
+  if (!id) return null;
   for (const r of regions) {
     const list = destinations[r.code] || [];
     const dest = list.find((d) => d.id === id);
     if (dest) return { dest, region: r, list };
   }
-  const list = destinations[fallbackRegion.code] || [];
-  const stub: Destination = { id: "x", name: id || "This place", country: fallbackRegion.name, line: "A destination in " + fallbackRegion.name, status: "live", depth: "stub", img: "mountainValley" };
-  return { dest: list[0] || stub, region: fallbackRegion, list };
+  return null;
 }
+
+/**
+ * Placeholders for the not-found branch. They exist only so the hooks below can
+ * run unconditionally — React forbids an early return above a hook — and NOTHING
+ * from them is rendered: the page returns the not-found panel before any of it
+ * reaches the screen. `country: ""` in particular keeps `isoForCountry` from
+ * resolving, so no safety level is ever computed for a place we can't identify.
+ */
+const NOT_FOUND_DEST: Destination = {
+  id: "", name: "", country: "", line: "", status: "live", depth: "stub", img: "mountainValley",
+};
+const NOT_FOUND_REGION = { code: "", name: "", blurb: "", img: "" } as unknown as Region;
 
 function providersByWell(allWells: Record<string, Well>, providers: Record<string, Provider[]>, regionCode?: string): { well: Well; items: Provider[] }[] {
   const groups: { well: Well; items: Provider[] }[] = [];
@@ -62,7 +83,12 @@ export default function DestinationDetail() {
   const guides = useGuides();
   const allWells: Record<string, Well> = {};
   wells.forEach((w) => { allWells[w.id] = w; });
-  const { dest: DEST, region: R, list } = findDestination(regions, destinations, id);
+  const found = findDestination(regions, destinations, id);
+  // Hooks below run unconditionally, so the not-found branch renders AFTER them
+  // (see the early return further down) rather than short-circuiting here.
+  const { dest: DEST, region: R, list } = found ?? {
+    dest: NOT_FOUND_DEST, region: regions[0] ?? NOT_FOUND_REGION, list: [] as Destination[],
+  };
   const country = DEST.country || R.name;
   // AEO: emit TouristDestination + FAQ (buffet Q&A) structured data so answer
   // engines can parse the page into quotable chunks. (Authoritative once the
@@ -99,6 +125,35 @@ export default function DestinationDetail() {
       : guides.filter((gg) => gg.region === R.code);
     return matched.slice(0, 2);
   })();
+
+  // ── NOT FOUND ────────────────────────────────────────────────────────────
+  // Every hook above has run, so this early return is safe. It says plainly that
+  // we don't carry this one and points at the two places worth going next. No
+  // safety card, no providers, no level — we cannot identify the place, so we
+  // assert nothing about it.
+  if (!found) {
+    return (
+      <div className="dd-missing" style={{ maxWidth: "var(--content-max)", margin: "0 auto", padding: "3rem 1.25rem" }}>
+        <nav className="jn-crumbs" aria-label="Breadcrumb">
+          <Link to="/">Home</Link><span className="sep">/</span>
+          <Link to="/regions">Regions</Link>
+        </nav>
+        <h1 style={{ marginTop: "1rem" }}>We don&rsquo;t have this destination</h1>
+        <p style={{ maxWidth: "62ch" }}>
+          Nothing in our catalogue matches <code>{id}</code>. That is usually an out-of-date
+          link or a small typo &mdash; the place may still be one we cover under a different name.
+        </p>
+        <p style={{ maxWidth: "62ch" }}>
+          <strong>We haven&rsquo;t shown you a safety level or an advisory for it</strong>, because we
+          can&rsquo;t tell which place you meant, and a level for the wrong country is worse than none.
+        </p>
+        <p style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1.5rem" }}>
+          <Link className="btn btn--primary" to="/regions">Browse the 13 regions</Link>
+          <Link className="btn" to="/special-interests">Start from an interest instead</Link>
+        </p>
+      </div>
+    );
+  }
 
   return (
     <>
