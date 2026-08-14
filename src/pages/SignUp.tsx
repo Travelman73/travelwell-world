@@ -11,14 +11,32 @@ import {
   ACTIVITY_LEVELS, ACCESS_NEEDS, activityLabel, accessLabel,
 } from "@/lib/identity";
 
+/**
+ * THE BUILDER ENDS ON THE VISION (David, confirmed 2026-08).
+ *
+ * Every step before the last collects a CONSTANT — who they are, how they move,
+ * what they can spend, who is with them. Those are true next year too. The
+ * vision is the VARIABLE: beach this year, ski next, and it is re-asked at the
+ * start of every trip rather than stored as identity.
+ *
+ * So the order isn't cosmetic, it's the architecture in sequence. Sign-up earns
+ * the constants and finishes by asking what they're dreaming of; the trip flow
+ * then OPENS on the vision, because the constants are already on file. "Earn the
+ * picture, then interpret it" at sign-up; dream-first every trip after.
+ *
+ * `dream` used to sit sixth of seven, with budget as the finale — so the builder
+ * closed on a price grid rather than on the traveller's own words. Steps are
+ * selected by `key` (never by index) and validation is keyed too, so this array
+ * IS the running order: reorder here and the flow follows.
+ */
 const STEPS = [
   { key: "you", label: "You", sub: "Name & email" },
   { key: "age", label: "Age range", sub: "Safe & exciting" },
   { key: "move", label: "How you move", sub: "Pace & access" },
   { key: "party", label: "Your party", sub: "Who's traveling" },
-  { key: "notif", label: "Notifications", sub: "Who hears from us" },
-  { key: "dream", label: "Your dream", sub: "Theme & length" },
   { key: "budget", label: "Budget blend", sub: "Per-Well tiers" },
+  { key: "notif", label: "Notifications", sub: "Who hears from us" },
+  { key: "dream", label: "Your dream", sub: "In your own words" },
 ] as const;
 
 const THEMES = [
@@ -316,9 +334,12 @@ export default function SignUp() {
 
             {!isBuild && STEPS[step].key === "dream" && (
               <>
-                <Eyebrow className="ob__eyebrow">Your dream</Eyebrow>
+                <Eyebrow className="ob__eyebrow">Last one — your dream</Eyebrow>
                 <h2 className="ob__title">Paint the trip in your own words.</h2>
-                <Why ic="sparkles">One sentence is plenty — the Concierge reads this to seed your dream trip. You can be vague ("somewhere warm") or specific.</Why>
+                {/* The closing step, and the only one that changes trip to trip.
+                    Everything before it is the constant; this is the variable,
+                    which is why it ends the builder and opens every trip after. */}
+                <Why ic="sparkles">Now we know who you are — tell us where you&rsquo;re dreaming of. A couple of sentences is plenty, vague ("somewhere warm") or specific. Atlas reads this to seed your first trip, and asks it fresh every time after.</Why>
                 <div className="ob__fields">
                   <div className="fld">
                     <label htmlFor="f-dream">Your dream, in a line or two</label>
