@@ -297,6 +297,34 @@ The judgement is stored on the row (`same_day`) at detection time rather than
 re-derived when read, so the audit trail records what we decided when we saw it —
 not what today's code would decide. Same discipline as freezing on failure.
 
+## Deep-link verification (2026-08-13) — 72 of 108 proven, zero 404s
+
+First clean run of `npm run check:advisory-links`, from a laptop rather than the
+build sandbox.
+
+| Source | Deep links | Result |
+|---|---|---|
+| **UK FCDO** | 36 | **all resolve** |
+| **US CDC** | 36 | **all resolve** |
+| **US State** | 36 | 403 — blocked to automation, slug unproven |
+| | | **0 404s among everything reached** |
+
+**The FCDO and CDC slug tables are verified.** Every one lands on the right
+country page, which is what §7B asks for.
+
+**State's 403 is not our egress, and this corrects an earlier reading.** The
+*API* (`cadataapi.state.gov`) answers a laptop with 682KB and our Edge Function
+with an empty body — that one is egress. But `travel.state.gov`, the HTML pages,
+403s a laptop too. Those pages refuse automated requests from anywhere, so no
+network gets past them with a script and re-running from a different one is
+wasted effort.
+
+Which leaves the 36 State slugs verifiable two ways: by hand in a browser (a
+browser is not blocked — that is what the 403 is defending against), or against
+the Consular Affairs API, which is the machine-readable source David directed us
+to and does answer a laptop. The API route is one request instead of 36 and
+checks the slug against the publisher's own list rather than against a page load.
+
 ## Live-run findings (2026-08-11)
 
 **The FCDO leg works.** 36 of 36 countries read, no failures, 36 changes queued as
