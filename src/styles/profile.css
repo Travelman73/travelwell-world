@@ -40,6 +40,14 @@
 .idp-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; padding: 6px 12px; border-radius: var(--radius-pill); background: var(--secondary); color: var(--secondary-foreground); }
 .idp-chip .dot { width: 7px; height: 7px; border-radius: 50%; }
 
+/* The enabling line — the traveller's own words about what they're up for.
+   Set at body size rather than as a chip: it is a sentence, not a tag, and
+   shrinking it would undo the point of leading with it. Meets the AA body
+   contrast bar against the card ground. */
+.idp-cap { margin: 6px 0 0; font-size: 15px; line-height: 1.5; color: var(--foreground); max-width: 46ch; }
+.idp-cap--empty { color: var(--muted-foreground); font-style: italic; }
+.idp-cap--plan { color: var(--muted-foreground); }
+
 /* dream quote */
 .idp-dream { font-family: var(--font-display); font-style: italic; font-size: 18px; line-height: 1.45; color: var(--foreground); border-inline-start: 3px solid var(--accent); padding-inline-start: 16px; }
 

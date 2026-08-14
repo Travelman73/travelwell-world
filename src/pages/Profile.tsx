@@ -67,6 +67,28 @@ function IdentityCard({ id }: { id: DisplayIdentity }) {
               return <span className="idp-chip" style={{ background: "var(--surface-alt)", border: "1px solid var(--border)" }} key={w.id}><Icon name={w.icon} small /> {sel.map((k) => tierLabel(w.id, k)).join(" · ")}</span>;
             })}
           </div>
+          {/*
+            ENABLING FIRST — this is canon, not layout preference. "Build AROUND
+            them, never limit them… lead with what they CAN do. Never hand
+            someone their limitations."
+
+            The card used to show pace and access needs and omit `capabilities`
+            entirely — the enabling side, the sentence where the traveller says
+            what they are fully up for. So the one artifact we call their
+            Identity Card listed what they cannot do and left out what they can.
+            For the elderly and low-vision travellers David calls our best-spending
+            market, that is the whole difference between a profile that reads as a
+            welcome and one that reads as a medical form.
+
+            So: what they're up for comes first and in their own words. Pace and
+            access follow as the practical detail. "Anything to plan around" sits
+            last and only when they gave one.
+          */}
+          <h3 style={{ marginTop: 20 }}>What you&rsquo;re up for</h3>
+          {id.capabilities
+            ? <p className="idp-cap">{id.capabilities}</p>
+            : <p className="idp-cap idp-cap--empty">Tell Atlas what you&rsquo;re fully up for and every trip gets shaped around it.</p>}
+
           <h3 style={{ marginTop: 20 }}>How you move</h3>
           <div className="idp-chips">
             {activityLabel(id.activity) && <span className="idp-chip" style={{ background: "var(--surface-alt)", border: "1px solid var(--border)" }}><Icon name="compass" small /> {activityLabel(id.activity)}</span>}
@@ -74,6 +96,12 @@ function IdentityCard({ id }: { id: DisplayIdentity }) {
             {id.dietary && <span className="idp-chip" style={{ background: "var(--surface-alt)", border: "1px solid var(--border)" }}><Icon name="utensils" small /> {id.dietary}</span>}
             {!id.activity && !id.access.length && !id.dietary && <span className="idp-member__meta">Fully mobile · no notes</span>}
           </div>
+          {id.accessibility && (
+            <>
+              <h3 style={{ marginTop: 20 }}>We&rsquo;ll plan around</h3>
+              <p className="idp-cap idp-cap--plan">{id.accessibility}</p>
+            </>
+          )}
         </div>
       </div>
       <div className="idp__foot">
