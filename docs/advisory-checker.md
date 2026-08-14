@@ -312,18 +312,42 @@ build sandbox.
 **The FCDO and CDC slug tables are verified.** Every one lands on the right
 country page, which is what §7B asks for.
 
-**State's 403 is not our egress, and this corrects an earlier reading.** The
-*API* (`cadataapi.state.gov`) answers a laptop with 682KB and our Edge Function
-with an empty body — that one is egress. But `travel.state.gov`, the HTML pages,
-403s a laptop too. Those pages refuse automated requests from anywhere, so no
-network gets past them with a script and re-running from a different one is
-wasted effort.
+**State's 403 is not our egress**, and neither, it turns out, is the empty API.
+Both earlier readings were wrong and the retraction is worth keeping in full,
+because a wrong diagnosis sent to a founder as a decision is more expensive than
+the bug.
 
-Which leaves the 36 State slugs verifiable two ways: by hand in a browser (a
-browser is not blocked — that is what the 403 is defending against), or against
-the Consular Affairs API, which is the machine-readable source David directed us
-to and does answer a laptop. The API route is one request instead of 36 and
-checks the slug against the publisher's own list rather than against a page load.
+**What is actually true, measured 2026-08-13 from a laptop:**
+
+| Endpoint | From our Edge Function | From a laptop |
+|---|---|---|
+| `cadataapi.state.gov/api/TravelAdvisories` | 200, `[]` (2 bytes) | **200, `[]` — identical** |
+| `travel.state.gov/...advisory.html` | 403 | **403 — identical** |
+| `travel.state.gov/_res/rss/TAs.xml` | 200, 343 bytes, 0 items | 200, 343 bytes, 0 items |
+
+**So nothing about State is about where our request leaves from.** The API
+returns an empty array to everyone; the HTML pages refuse automation from
+everyone; the RSS feed is empty for everyone. Three different failures, none of
+them ours, and re-running from a different network fixes none of them.
+
+**The retracted claim, on the record:** this document previously said the API
+"answers a laptop with 682KB and our Edge Function with an empty body — that one
+is egress." That was built on a 682,146-byte measurement taken on 2026-08-12 and
+attributed to this endpoint without checking which command produced it. Today the
+same endpoint returns 2 bytes to the same laptop, so the number came from
+somewhere else. **A measurement whose provenance was not recorded is not
+evidence**, and it was used to shape a recommendation to David. That is the same
+failure this repo spent the week building gates against, committed by the person
+building them.
+
+**Consequence for the plan:** requesting API access is now more clearly right,
+not less — a public endpoint returning `[]` to every caller suggests registration
+is genuinely required rather than that we are being filtered. And the FCDO being
+primary stands on its own evidence: 36 of 36, every run.
+
+**The 36 State deep links** remain unproven and are verifiable by hand in a
+browser (a browser is not blocked — that is what the 403 defends against). No
+automated route to them exists today.
 
 ## Live-run findings (2026-08-11)
 
