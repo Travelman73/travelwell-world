@@ -24,7 +24,7 @@
  * which is the question a spec is really asking when it assumes a shape.
  */
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
-import { SIS, boardSis, REGIONS, WELLS, LUX_WELLS, SI_GROUPS } from "../src/data/taxonomy";
+import { SIS, boardSis, REGIONS, WELLS, LUX_WELLS, SI_GROUPS, taglineSubject } from "../src/data/taxonomy";
 import { DESTINATIONS, ACTIVITIES, PROVIDERS, GUIDES, SUBREGION_TOP } from "../src/data/places";
 import { COUNTRY_ISO, SAFETY_DATA } from "../src/data/safety-data";
 
@@ -104,6 +104,15 @@ const claimsBoth = safetyRows.filter(([, r]) => r.reported && r.verified);
 // morning and hold no baseline for. The counts differing is how this surfaced.
 const isoNoRow = [...new Set(Object.values(COUNTRY_ISO))].filter((i) => !(i in SAFETY_DATA));
 
+// No two interests may share a slogan subject (David, nineteen-rules §1). Two
+// interests resolving to the same "If It's [X]… TravelWell." makes the line
+// ambiguous about which world it is selling — and for a mark whose filing rests
+// on consistent use, an ambiguous instance is worse than a plain one. Caught
+// this way once already: `liveaboard` and `diveglobal` both held "Diving".
+const subjects = board.map((s) => [s.id, taglineSubject(s as never)] as const);
+const dupSubjects = subjects.filter(([, sub], i) =>
+  subjects.findIndex(([, other]) => other.toLowerCase() === sub.toLowerCase()) !== i);
+
 const checks: { rule: string; result: string; ok: boolean; where: string }[] = [
   {
     rule: "The board is 35 Signature Interests in 10 categories (David-locked 2026-08-10)",
@@ -122,6 +131,14 @@ const checks: { rule: string; result: string; ok: boolean; where: string }[] = [
     result: `${live.length} live: ${live.map((s) => s.id).join(", ")}`,
     ok: live.length === 8 && live.some((s) => s.id === "ultra"),
     where: lineOf(TAX, /export const SIS/),
+  },
+  {
+    rule: "No two interests share a slogan subject — the `If It's [X]…` slot must name one world",
+    result: dupSubjects.length
+      ? `${dupSubjects.length} duplicate: ${dupSubjects.map(([id, sub]) => `${id} → "${sub}"`).join(", ")}`
+      : `all ${subjects.length} subjects distinct`,
+    ok: dupSubjects.length === 0,
+    where: lineOf(TAX, /export const SI_TAGLINE_SUBJECT/),
   },
   {
     rule: "13 Wells total, 10 live + 3 soon",

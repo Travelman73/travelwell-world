@@ -30,16 +30,16 @@ good as regenerating it.
 | Thing | Count | Read from |
 |---|---|---|
 | Signature Interests on the board | 35 | src/data/taxonomy.ts:222 · `export const SIS: SpecialInterest[] = [...BASE` |
-| …rows in `SIS` including retired | 39 | src/data/taxonomy.ts:398 · `export const boardSis = (sis: { retired?: bool` |
+| …rows in `SIS` including retired | 39 | src/data/taxonomy.ts:413 · `export const boardSis = (sis: { retired?: bool` |
 | …at `status: live` (incl. `ultra` overlay) | 8 | src/data/taxonomy.ts:222 · `export const SIS: SpecialInterest[] = [...BASE` |
-| SI categories | 10 | src/data/taxonomy.ts:262 · `export const SI_GROUPS: SiGroup[] = [` |
+| SI categories | 10 | src/data/taxonomy.ts:277 · `export const SI_GROUPS: SiGroup[] = [` |
 | Destinations | 44 | src/data/places.ts:79 · `export const DESTINATIONS: Record<string, Dest` |
 | …with a `price_band` | 7 | src/data/places.ts:67 · `price_band?: string; // coarse overall price l` |
 | …at `depth: verified` | 33 | src/data/places.ts:36 · `export type DestDepth = "verified" | "stub" | ` |
 | Activities | 60 | src/data/places.ts:477 · `export const ACTIVITIES: Record<string, Activi` |
 | Providers **in the bundle** | 58 (CSVs under `src/data/providers/` merge on top at seed time — run `npm run gen:catalog` to see the DB total) | src/data/places.ts:339 · `export const PROVIDERS: Record<string, Provide` |
-| Regions | 13 | src/data/taxonomy.ts:318 · `export const REGIONS: Region[] = [` |
-| Wells (10 live + 3 soon) | 13 | src/data/taxonomy.ts:286 · `export const WELLS: Well[] = [` |
+| Regions | 13 | src/data/taxonomy.ts:333 · `export const REGIONS: Region[] = [` |
+| Wells (10 live + 3 soon) | 13 | src/data/taxonomy.ts:301 · `export const WELLS: Well[] = [` |
 | Sub-region lists | 18 | src/data/places.ts:294 · `export const SUBREGION_TOP: Record<string, str` |
 | Guides | 9 | src/data/places.ts:437 · `export const GUIDES: Guide[] = [` |
 | Country name→ISO entries (`COUNTRY_ISO`) | 37 | src/data/safety-data.ts:134 · `export const COUNTRY_ISO: Record<string, strin` |
@@ -98,23 +98,27 @@ the provider.
 
 ✅ **The board is 35 Signature Interests in 10 categories (David-locked 2026-08-10)**
    → 35 on the board, 10 categories
-   → `src/data/taxonomy.ts:262 · `export const SI_GROUPS: SiGroup[] = [``
+   → `src/data/taxonomy.ts:277 · `export const SI_GROUPS: SiGroup[] = [``
 
 ✅ **Retired interests stay in SIS (the seed carries `delete … where id not in (…)`)**
    → 4 retired rows still present: nightlife, olympic, prosports, compsports
-   → `src/data/taxonomy.ts:398 · `export const boardSis = (sis: { retired?: bool``
+   → `src/data/taxonomy.ts:413 · `export const boardSis = (sis: { retired?: bool``
 
 ✅ **7 launch interests are live, plus `ultra` as the luxury overlay — 8 rows at status live**
    → 8 live: ultra, tropical, romance, safari, expedition, ski, liveaboard, river
    → `src/data/taxonomy.ts:222 · `export const SIS: SpecialInterest[] = [...BASE``
 
+✅ **No two interests share a slogan subject — the `If It's [X]…` slot must name one world**
+   → all 35 subjects distinct
+   → `src/data/taxonomy.ts:231 · `export const SI_TAGLINE_SUBJECT: Record<string``
+
 ✅ **13 Wells total, 10 live + 3 soon**
    → 13 total, 10 live, 3 not live
-   → `src/data/taxonomy.ts:286 · `export const WELLS: Well[] = [``
+   → `src/data/taxonomy.ts:301 · `export const WELLS: Well[] = [``
 
 ✅ **13-code region scheme**
    → 13 regions
-   → `src/data/taxonomy.ts:318 · `export const REGIONS: Region[] = [``
+   → `src/data/taxonomy.ts:333 · `export const REGIONS: Region[] = [``
 
 ✅ **Destination id is `<city>-<country>`, lowercase and hyphenated**
    → 44 of 44 are hyphenated multi-part; 0 are single-word and cannot conform

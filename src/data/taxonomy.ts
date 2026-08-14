@@ -229,9 +229,24 @@ export const SIS: SpecialInterest[] = [...BASE_SIS, ...(siExtra.special_interest
  * romance → "Love" is locked (the Romance front-door line). See CLAUDE.md.
  */
 export const SI_TAGLINE_SUBJECT: Record<string, string> = {
-  tropical: "Tropical", romance: "Love", safari: "Safari", liveaboard: "Liveaboards",
-  river: "River Cruising", expedition: "Expedition", ski: "Winter", ultra: "Ultra-Luxury",
-  adventure: "Adventure", diveglobal: "Diving", ocean: "Watersports", wellness: "Wellness",
+  // THE RULE FOR THIS SLOT (David, 2026-08-04): **the [X] slot takes the thing
+  // the traveller WANTS, not the thing we sell.** Love, not Romance. Diving, not
+  // Liveaboards. The River, not River Cruising. The best subjects in the set are
+  // nouns of desire; a product category is the tell that we drifted.
+  //
+  // Applied 2026-08-14 — his two corrections had never been made:
+  //   liveaboard  "Liveaboards"    → "Diving"      trade vocabulary; a first-time
+  //                                                diver doesn't know the word, and
+  //                                                it named the boat, not the want.
+  //   river       "River Cruising" → "the River"   a product category became a longing.
+  tropical: "Tropical", romance: "Love", safari: "Safari", liveaboard: "Diving",
+  river: "the River", expedition: "Expedition", ski: "Winter", ultra: "Ultra-Luxury",
+  // `diveglobal` held "Diving" and had to move: David's own rule is that no two
+  // interests share a subject, and `liveaboard` is a LIVE launch interest while
+  // this one is preview — so the live one takes the prime noun. "the World Below"
+  // is this interest's own `sig`, so it isn't invented. One line to change if he
+  // wants it the other way round.
+  adventure: "Adventure", diveglobal: "the World Below", ocean: "Watersports", wellness: "Wellness",
   wildlife: "Wildlife", culinary: "Culinary", culture: "Culture", family: "Family",
   hiking: "Hiking", entertainment: "Live Entertainment",
   // The 2026-08-10 board's new interests. Tight nouns, not the full names —

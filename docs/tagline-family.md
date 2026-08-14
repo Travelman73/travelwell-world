@@ -1,7 +1,7 @@
 # The TravelWell slogan family — in active use
 
 *Generated from the live taxonomy by `scripts/gen-tagline-list.ts`. Content
-last changed 2026-08-13. Do not hand-edit — regenerate.*
+last changed 2026-08-14. Do not hand-edit — regenerate.*
 
 **The construction:** `If It's [X]… TravelWell.™`
 
@@ -52,8 +52,8 @@ line on a published page that is not yet bookable.
 | `safari` | Safari Adventures | Safari | If It's Safari… TravelWell.™ | locked map |
 | `expedition` | Global Expedition Adventures | Expedition | If It's Expedition… TravelWell.™ | locked map |
 | `ski` | Winter/Ski | Winter | If It's Winter… TravelWell.™ | locked map |
-| `liveaboard` | Dive Liveaboards | Liveaboards | If It's Liveaboards… TravelWell.™ | locked map |
-| `river` | River Cruises | River Cruising | If It's River Cruising… TravelWell.™ | locked map |
+| `liveaboard` | Dive Liveaboards | Diving | If It's Diving… TravelWell.™ | locked map |
+| `river` | River Cruises | the River | If It's the River… TravelWell.™ | locked map |
 
 ### Preview interests (27)
 
@@ -68,7 +68,7 @@ line on a published page that is not yet bookable.
 | `motoring` | Classic-Car & Motorcycle Touring | the Open Road | If It's the Open Road… TravelWell.™ | locked map |
 | `adventure` | Global Adventures | Adventure | If It's Adventure… TravelWell.™ | locked map |
 | `hiking` | Hiking & Trekking | Hiking | If It's Hiking… TravelWell.™ | locked map |
-| `diveglobal` | Dive Globally | Diving | If It's Diving… TravelWell.™ | locked map |
+| `diveglobal` | Dive Globally | the World Below | If It's the World Below… TravelWell.™ | locked map |
 | `ocean` | Ocean & Watersports | Watersports | If It's Watersports… TravelWell.™ | locked map |
 | `wellness` | Wellness, Spa & Retreats | Wellness | If It's Wellness… TravelWell.™ | locked map |
 | `wildlife` | Wildlife & Nature | Wildlife | If It's Wildlife… TravelWell.™ | locked map |
