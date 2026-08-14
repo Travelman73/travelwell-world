@@ -6,8 +6,27 @@
 
 ## PART 1 — Where the foundation actually stands
 
+> **NO COUNTS IN THIS DOCUMENT (2026-08-14).** Every number that used to sit in
+> Part 1 had drifted: it claimed 32 interests with 6 live, 12 Wells, 62 providers
+> and 38 destinations, against a reality of 35 on the board with 8 live, 13 Wells
+> and 44 destinations. It also said we had no CI, weeks after CI started gating
+> every push. A funding plan or a build plan written on top of those numbers
+> inherits every one of them.
+>
+> **The counts live in one generated place and nowhere else:**
+> [`docs/reset-facts.txt`](reset-facts.txt) — the 30-line paste block, or
+> [`docs/ground-truth.md`](ground-truth.md) for the full sheet with a file and
+> line behind every figure. `npm run gen:ground-truth` regenerates both, and a
+> pre-commit hook refuses any commit where they don't match the source.
+>
+> What stays here is what a count can't express: what is solid, what is
+> half-built, what blocks launch, and why. Those change slowly and are worth
+> writing by hand. Numbers change daily and aren't.
+
 ### ✅ Built and solid (in production)
-- **Data spine & catalog read-layer** — Postgres + RLS, DB-served catalog with a bundle fallback (migrations 0001–0010). 13 regions, 32 SIs (6 live), 12 Wells, 62 providers, 38 destinations, 9 guides, sub-regions, local signals. One canonical vocabulary end-to-end: one SI list, one region scheme, the 5 budget tiers, the commission-gate set, the live/future switch.
+- **Data spine & catalog read-layer** — Postgres + RLS, DB-served catalog with a bundle fallback. One canonical vocabulary end-to-end: one SI list, one region scheme, the 5 budget tiers, the commission-gate set, the live/future switch. Counts: see the fact sheet.
+- **The safety spine** — a country → destination advisory cascade, deep links to State/FCDO/CDC on every destination, a header Emergency control that works offline with no SIM, and a **daily advisory checker** (Edge Function + pg_cron) that surfaces a level move in either direction the same day and publishes nothing without a human. FCDO primary; State blocked at the source, documented in `advisory-checker.md`.
+- **The ingest gates** — `validate:ingest` and `validate:si` refuse a batch that breaks canon; the SI gate hard-errors on an unlabelled figure. CI runs typecheck, build and a WCAG audit on every push, and a pre-commit hook refuses a commit that leaves a generated file stale.
 - **The matching keystone** — providers filter by SI + region with graceful fallback; verified live on the Caribbean set (tropical+11C → 15 stays; region-less airlines pass; wellness narrows correctly).
 - **Atlas (the messenger)** — Claude-backed Edge Function, grounded in the live journey; **persistent conversation spine** shipped (survives navigation + reload — the narrative-continuity foundation).
 - **Traveler journey & Travel I.D.** — persisted to the DB, resumes across devices; age *ranges*, never birthdays (privacy by design).
@@ -19,15 +38,15 @@
 ### 🟡 Half-built / stubbed (works, not finished)
 - **Booking** — affiliate **handoff** (`/go` → `booking_url`) with a checkout UI shell (3 tracks). **Locked as the permanent model** (David): the provider is merchant of record, the traveler books and pays them directly, Atlas never touches payment. Keeps us at PCI SAQ A, off the liability hook — a feature, not a gap. No payment processing to build, ever.
 - **Atlas guided journey** — the *spine* is built; **Guided Mode** (Atlas driving page-to-page, pre-setting choices, the glow/spotlight) is Phase 2–4, not built.
-- **Content depth** — destinations are shallow (a line + image). The **deep dossier model** (jsonb: jewels, safety, SEO, booking-window) is validated (Cape Town ingest test passed) but not built/ingested. Providers cover ~2 regions partially.
-- **Voice** — Web Speech input works; degrades cleanly where unsupported.
+- **Content depth** — the dossier models are BUILT on both sides now: destinations (`data` jsonb + `validate:ingest`) and the nine-layer Signature-Interest dossier (migration 0012 + `validate:si`). What is missing is not the machinery but the content — see the fact sheet's "what is NOT populated yet", which is the honest read and the one that matters for a launch date.
+- **Voice** — the real-time pipeline is spike-proven (Deepgram ears, Cartesia/ElevenLabs mouth, our Claude brain, LiveKit moving audio). The worker is not deployed anywhere: live voice depends on someone starting that process.
 - **Analytics** — event logging to DB exists; no attribution or outbound.
 
 ### 🔴 Still ahead before soft launch
 - **Guided Mode (Phase 2)** — the guided walk; the product promise.
-- **Destination data model + first real dossiers** for the live-6 SIs in launch regions.
+- **Real dossiers** for the launch interests. The model is built and gated; the content is the gap.
 - **SEO rendering** — we are a client-rendered SPA; crawlers get one static title/meta for every route. The ATTRACT/SEO landing-page strategy needs server-render or prerender + per-route meta + structured data + sitemap. **The biggest launch-blocker for the traffic model.**
-- **Test suite + CI** — none today.
+- **A test suite.** CI exists and gates typecheck, build and accessibility on every push — but there are no unit or integration tests behind it. Verification today is a gate plus a browser check, which catches shape and misses behaviour.
 - **Analytics/attribution socket** + basic observability.
 
 ---
@@ -57,6 +76,13 @@
 > **We never touch the card; the provider is always merchant of record** (locked — see CLAUDE.md). Today that's the affiliate handoff (`/go`). The agent-era evolution (David, 2026-07) is that **Atlas may *close* the booking on our own surface** — orchestrate discover→decide→book with no leaky handoff — *but the provider/aggregator stays merchant of record and holds the card* (Duffel Payments, aggregator billing, Stripe hosted checkout). We still never touch card data (PCI SAQ A) and never become seller of record. **Becoming merchant of record ourselves is a separate, deliberate, funded decision** (PCI-DSS + bonding + liability), not a drift.
 
 **Heavy lifts / where people concentrate:** i18n, SEO rendering, the monthly-sweep automation, content production at scale.
+
+> **SNAPSHOT, NOT CURRENT STATE.** The two sections below are dated assessments
+> from July 2026 and their figures are true as of then, deliberately left as
+> written — a snapshot edited to agree with today stops being evidence of what we
+> knew and when. Several have since moved: the safety spine is built and visible,
+> `ski` is live, CI gates every push. Read Part 1 above and the generated fact
+> sheet for current state; read these for the reasoning at the time.
 
 ### 14-day launch-surface assessment (Jul 2026 — "what's genuinely flippable")
 David's question: past the 6-SI soft launch, how much more can go *genuinely* live in ~14 days for a VC demo — real, not planned. Audited the catalog. **The core finding: `live` vs `preview` is almost entirely a status decision, not a content gap.** Every preview region carries the same depth as the live ones (each ~2–4 destinations, mostly 2–3 `verified` + 1 `stub`); the only region with a real provider roster is 05A (39, safari) + 11C (~23 CSV, Caribbean) — and the *live* regions launched without per-region provider rosters too. So the fastest real wins are flipping content we already built and filling the empty rooms in what's already live — not new build.
