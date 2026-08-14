@@ -333,5 +333,66 @@ it is.
 
 writeFileSync("docs/ground-truth.md", md);
 const failing = checks.filter((c) => !c.ok);
+
+/**
+ * THE PASTE BLOCK — the short version, for a surface that cannot read the repo.
+ *
+ * The daily reset carries counts, and eleven of the nineteen defects found in it
+ * were STALE — true when written, false by the time they were read. That is not
+ * carelessness, it is the format: a hand-maintained document of numbers drifts
+ * every day, and no amount of care fixes it.
+ *
+ * The obvious remedy — "point the reset at ground-truth.md" — does not actually
+ * work. The surface that most needs these numbers has no filesystem and no
+ * GitHub connector, so it cannot open the file; and at 170+ lines the file is
+ * too long to paste into a chat every morning anyway.
+ *
+ * So: this. Short enough to paste, current by construction, and it names the
+ * commit it came from so a reader can tell how old it is. Plain text, no tables
+ * — it has to survive being pasted into Notion, an email, or a chat window.
+ *
+ * The counts come OUT of the reset and this goes in, regenerated when it looks
+ * stale. Nothing else about the reset changes: the strategy, the priorities and
+ * the open questions belong there, and they don't drift the way a number does.
+ */
+const liveIds = live.filter((s) => s.id !== "ultra").map((s) => s.id);
+const wellsLive = allWells.filter((w) => w.status === "live");
+const wellsSoon = allWells.filter((w) => w.status !== "live");
+const withDossier = SIS.filter((s) => s.data && Object.keys(s.data).length).length;
+
+const block = `TRAVELWELL MVP — THE NUMBERS, GENERATED
+Regenerate with: npm run gen:ground-truth   ·   full detail: docs/ground-truth.md
+
+These replace any count written from memory. If a number below disagrees with a
+number elsewhere in this document, this one is right and the other is stale.
+
+CATALOGUE
+  Destinations ............ ${dests.length}   (all ids conform to <city>-<country>)
+  Activities .............. ${acts.length}
+  Signature Interests ..... ${board.length} on the board, in ${Object.keys(SI_GROUPS).length} categories
+                          ${SIS.length} rows in total, ${SIS.length - board.length} retired but not deleted
+  Live interests .......... ${live.length} rows, of which ultra is the luxury overlay
+                          so the bookable set is ${liveIds.length}: ${liveIds.join(", ")}
+  Regions ................. ${REGIONS.length}
+  Wells ................... ${allWells.length} — ${wellsLive.length} live, ${wellsSoon.length} not yet (${wellsSoon.map((w) => w.name).join(", ")})
+  Providers ............... ${provs.length} in the bundle; more once the CSVs merge at seed time
+  Slogan variants ......... ${2 + board.length} — 1 master, 1 category, ${board.length} interest subjects
+
+NOT POPULATED YET  (an empty structure and a filled one look identical in a schema)
+  Interests with a dossier ....... ${withDossier} of ${SIS.length}
+  Destinations with price_band ... ${dests.filter((d) => d.price_band).length} of ${dests.length}
+  Destinations with feel tags .... ${dests.filter((d) => d.feel?.length).length} of ${dests.length}
+  Destinations with sub_region ... ${dests.filter((d) => d.sub_region).length} of ${dests.length}
+
+CONFORMANCE  ${checks.length} checks, ${failing.length} failing
+${failing.length ? failing.map((f) => `  FAILING — ${f.rule.replace(/\*\*/g, "").split(" — ")[0].slice(0, 72)}\n           ${f.result}`).join("\n") : "  All passing."}
+
+THE RESEARCH LIBRARY IS A DIFFERENT INVENTORY. Its dossier counts answer a
+different question from these. Never compare the two without saying which is which.
+`;
+
+writeFileSync("docs/reset-facts.txt", block);
+
 console.log(`Wrote docs/ground-truth.md — ${checks.length} conformance checks, ${failing.length} not conforming`);
+console.log(`Wrote docs/reset-facts.txt — the paste block, ${block.split("\n").length} lines`);
 for (const f of failing) console.log(`  ⚠️  ${f.rule}\n      ${f.result}`);

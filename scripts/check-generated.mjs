@@ -31,7 +31,7 @@ import { createHash } from "node:crypto";
 const GENERATORS = [
   ["gen:catalog", "the seed migrations (0003, 0004, 0005, 0007)"],
   ["gen:sitemap", "public/sitemap.xml"],
-  ["gen:ground-truth", "docs/ground-truth.md"],
+  ["gen:ground-truth", "docs/ground-truth.md + docs/reset-facts.txt"],
   ["gen:taglines", "docs/tagline-family.md"],
   ["gen:advisory-links", "docs/advisory-links.md"],
   ["gen:advisory-payload", "docs/advisory-countries.json + migration 0015"],
@@ -47,6 +47,10 @@ const OWNED = [
   "supabase/migrations/0015_advisory_schedule.sql",
   "public/sitemap.xml",
   "docs/ground-truth.md",
+  // The paste block goes stale the same way everything else does — and it is the
+  // one artifact whose whole purpose is being current somewhere the repo can't
+  // be read, so an unguarded copy would be the worst of the set.
+  "docs/reset-facts.txt",
   "docs/tagline-family.md",
   "docs/advisory-links.md",
   "docs/advisory-countries.json",

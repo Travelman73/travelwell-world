@@ -1,0 +1,30 @@
+TRAVELWELL MVP — THE NUMBERS, GENERATED
+Regenerate with: npm run gen:ground-truth   ·   full detail: docs/ground-truth.md
+
+These replace any count written from memory. If a number below disagrees with a
+number elsewhere in this document, this one is right and the other is stale.
+
+CATALOGUE
+  Destinations ............ 44   (all ids conform to <city>-<country>)
+  Activities .............. 60
+  Signature Interests ..... 35 on the board, in 10 categories
+                          39 rows in total, 4 retired but not deleted
+  Live interests .......... 8 rows, of which ultra is the luxury overlay
+                          so the bookable set is 7: tropical, romance, safari, expedition, ski, liveaboard, river
+  Regions ................. 13
+  Wells ................... 13 — 10 live, 3 not yet (Insure-Well, Ship-Well, Pets-Well)
+  Providers ............... 58 in the bundle; more once the CSVs merge at seed time
+  Slogan variants ......... 37 — 1 master, 1 category, 35 interest subjects
+
+NOT POPULATED YET  (an empty structure and a filled one look identical in a schema)
+  Interests with a dossier ....... 0 of 39
+  Destinations with price_band ... 7 of 44
+  Destinations with feel tags .... 7 of 44
+  Destinations with sub_region ... 13 of 44
+
+CONFORMANCE  12 checks, 1 failing
+  FAILING — Every country in `COUNTRY_ISO` has an advisory row
+           1 with no row: ET — checked daily, nothing to compare against
+
+THE RESEARCH LIBRARY IS A DIFFERENT INVENTORY. Its dossier counts answer a
+different question from these. Never compare the two without saying which is which.
