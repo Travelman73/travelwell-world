@@ -1,0 +1,922 @@
+[
+ {
+  "id": "budapest-hungary",
+  "region_code": "01F",
+  "name": "Budapest",
+  "country": "Hungary",
+  "line": "Where the Danube splits a capital in two",
+  "status": "live",
+  "depth": "verified",
+  "img": "venice",
+  "sub_region": "Hungary & the Middle Danube",
+  "si": [
+   "river",
+   "romance",
+   "wellness",
+   "culinary",
+   "culture",
+   "deepdive",
+   "entertainment",
+   "nightlife",
+   "adventure",
+   "family",
+   "senior",
+   "sports"
+  ],
+  "tier_range": [
+   "essential",
+   "comfort",
+   "premier",
+   "luxury",
+   "ultra"
+  ],
+  "draw_rank": "anchor",
+  "data": {
+   "key_facts": [
+    "UNESCO 'Banks of the Danube, the Buda Castle Quarter and Andrassy Avenue' (inscribed 1987, extended 2002)",
+    "By-night Danube panorama — Parliament, Szechenyi Chain Bridge, Buda Castle, Gellert Hill — the Danube's most photographed sight",
+    "Eastern anchor of the Upper Danube cruise: embarkation + one-ways to/from Passau/Regensburg/Nuremberg via Vienna, Bratislava, the Wachau",
+    "Confirmed lines: Viking, AmaWaterways, Avalon, Uniworld, Scenic, Tauck, Emerald, CroisiEurope, Riviera Travel; local by-night fleets Legenda + Mahart PassNave",
+    "'City of Spas' — Szechenyi (among Europe's largest), Gellert (Art Nouveau), Rudas (Ottoman, rooftop Danube pool)",
+    "7 Michelin stars (Stand 2*, Babel, Borkonyha, Costes, essencia, Rumour, Salt); Great Market Hall; Tokaji/Egri Bikaver/Villany + palinka",
+    "Cultural deep-dives: House of Terror (Andrassy 60), Memento Park, Jewish-Quarter ghetto/synagogues",
+    "State Opera + Liszt Academy (1875); ruin bars (Szimpla Kert); Palvolgyi + Szemlohegyi thermal caves; SPAR Budapest Marathon (~10-11 Oct 2026)"
+   ],
+   "safety": {
+    "emergency": "112 / 104 ambulance / 107 police / 105 fire",
+    "hospital": "Semmelweis University clinical centres; full international-standard + private network",
+    "advisory_level": "L1",
+    "malaria": "none",
+    "yellow_fever": "not required",
+    "activity_note": "Danube fast/deep/cold, not for swimming; baths hot (hydrate, slippery marble); caves guided 8-10C; marathon Oct heat/training; palinka strong ~40-50% ABV; nightlife pickpocket/overcharge (agree taxi fares); Castle Hill cobbles ice in winter; official taxis/apps only; HUF not euro (beware DCC + street exchange scams)"
+   },
+   "timing": {
+    "peak": "May-Sep (cruise season + terraces + baths) + Advent/Christmas markets (late Nov-Dec); SPAR Marathon spike mid-Oct",
+    "shoulder": "Apr + Oct (mild, open, softer rates)",
+    "green": "Jan-Feb (cold, quiet; by-night boats paused; baths + opera in full swing)",
+    "booking_lead": "cruises 6-12 mo; central/Advent hotels 3-6 mo; Michelin + Opera 1-3 mo; marathon 3-6 mo; dinner cruise + baths + wine bars 1-4 wk",
+    "off_season_specials": "Nov-Feb thermal-bath + city-break + opera/dining weekends; midweek shoulder; New Year on the Danube",
+    "event_peaks": "Advent markets (late Nov-Dec); SPAR Budapest Marathon (~10-11 Oct 2026); cruise season ~late Mar-late Dec; opera/concert ~Sep-Jun",
+    "campaign_start": "Cruises + Christmas-market sailings by prior year; spring city-break + baths + opera by Feb; marathon by spring; Advent by early Oct"
+   },
+   "jewels": [
+    {
+     "name": "Budapest embarkation — the classic Upper Danube",
+     "si_tag": "river",
+     "status": "live",
+     "tier": "premier",
+     "price_band": "~€2,000-6,000+/pp/week",
+     "timing": "~late Mar-late Dec",
+     "commission_path": "cruise-line 10-16%",
+     "draw_rank": 1,
+     "hook": "the eastern anchor of the great Danube cruise"
+    },
+    {
+     "name": "The Danube-by-night dinner cruise (Legenda / Mahart PassNave)",
+     "si_tag": "river",
+     "status": "live",
+     "tier": "essential",
+     "price_band": "~€9-390/pp",
+     "timing": "evening ~Apr-Dec; daytime year-round",
+     "commission_path": "operator/affiliate 8-15%",
+     "draw_rank": 2,
+     "hook": "evening panorama + candlelit/buffet dinner cruises, daytime hop-on, Danube Bend hydrofoils"
+    },
+    {
+     "name": "Christmas-market Danube sailing",
+     "si_tag": "river",
+     "status": "live",
+     "tier": "premier",
+     "price_band": "~€2,000-5,000+/pp",
+     "timing": "late Nov-Dec — verify",
+     "commission_path": "cruise-line 10-16%",
+     "draw_rank": 3
+    },
+    {
+     "name": "A Danube-view suite + by-night dinner cruise + thermal-bath evening",
+     "si_tag": "romance",
+     "status": "live",
+     "tier": "premier",
+     "price_band": "~€200-700+/night + cruise",
+     "timing": "standing; peak summer + Advent",
+     "commission_path": "consortia/host",
+     "draw_rank": 1,
+     "hook": "a river-facing room at a Pest palace hotel, the illuminated-panorama dinner cruise, a late soak — one of Europe's most atmospheric city honeymoons"
+    },
+    {
+     "name": "Sunset from Fisherman's Bastion, then a Michelin table",
+     "si_tag": "romance",
+     "status": "live",
+     "tier": "premier",
+     "price_band": "~€120-400/pp",
+     "timing": "May-Sep  + Advent/Christmas markets",
+     "commission_path": "venue/DMC",
+     "draw_rank": 2,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "the neo-Romanesque terraces at golden hour, the whole Pest skyline lit below, then dinner at Babel or Costes"
+    },
+    {
+     "name": "The grand thermal-bath circuit — Szechenyi, Gellert, Rudas",
+     "si_tag": "wellness",
+     "status": "live",
+     "tier": "essential",
+     "price_band": "~€20-90/pp",
+     "timing": "year-round",
+     "commission_path": "venue/affiliate 8-15%",
+     "draw_rank": 1,
+     "timing_type": "ALWAYS-ON",
+     "hook": "the \"City of Spas\" — Neo-Baroque Széchenyi, Art-Nouveau Gellért, Ottoman-domed Rudas; the everyday Budapest ritual"
+    },
+    {
+     "name": "A Rudas rooftop-pool sunset",
+     "si_tag": "wellness",
+     "status": "live",
+     "tier": "comfort",
+     "price_band": "~€25-60/pp",
+     "timing": "May-Sep  + Advent/Christmas markets",
+     "commission_path": "venue/affiliate",
+     "draw_rank": 2,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "the 16th-century Ottoman bathhouse with a rooftop hot pool looking down the Danube to Gellért Hill"
+    },
+    {
+     "name": "The Szechenyi sparty",
+     "si_tag": "wellness",
+     "status": "live",
+     "tier": "comfort",
+     "price_band": "~€45-75/pp",
+     "timing": "year-round",
+     "commission_path": "venue/affiliate",
+     "draw_rank": 3,
+     "timing_type": "ALWAYS-ON"
+    },
+    {
+     "name": "Seven Michelin stars (Stand 2*, Babel, Borkonyha, Costes, essencia, Rumour, Salt)",
+     "si_tag": "culinary",
+     "status": "future",
+     "tier": "premier",
+     "price_band": "~€90-250/pp",
+     "timing": "May-Sep  + Advent/Christmas markets",
+     "commission_path": "bundle/venue",
+     "draw_rank": 1,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW"
+    },
+    {
+     "name": "The Great Market Hall (Nagycsarnok)",
+     "si_tag": "culinary",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~€10-60/pp",
+     "timing": "May-Sep  + Advent/Christmas markets",
+     "commission_path": "food-tour 10-15%",
+     "draw_rank": 2,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "the 1897 iron-and-tile market — paprika, salami, a first-floor lángos counter; a food-tour anchor"
+    },
+    {
+     "name": "A Pest wine-bar flight — Tokaji, Egri Bikaver, Villany + palinka",
+     "si_tag": "culinary",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~€8-90/pp",
+     "timing": "May-Sep  + Advent/Christmas markets",
+     "commission_path": "venue/tour 10-15%",
+     "draw_rank": 3,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "Hungary's showcase in one sitting — botrytis Tokaji"
+    },
+    {
+     "name": "The Hungarian table + cafe-house culture (goulash, kurtoskalacs)",
+     "si_tag": "culinary",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~€10-45/pp",
+     "timing": "May-Sep  + Advent/Christmas markets",
+     "commission_path": "bundle/venue",
+     "draw_rank": 4,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW"
+    },
+    {
+     "name": "The UNESCO Danube panorama",
+     "si_tag": "culture",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~€0-20",
+     "timing": "May-Sep  + Advent/Christmas markets",
+     "commission_path": "DMC/tour wrapper",
+     "draw_rank": 1,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "Parliament, the Chain Bridge, the Castle Quarter and Gellért Hill — the World Heritage set-piece from the water or the Buda ramparts"
+    },
+    {
+     "name": "Buda Castle District — palace, Matthias Church, Fisherman's Bastion",
+     "si_tag": "culture",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~€10-40",
+     "timing": "year-round",
+     "commission_path": "operator on guided walk",
+     "draw_rank": 2,
+     "timing_type": "ALWAYS-ON",
+     "hook": "the medieval royal hill — the neo-Gothic bastion terraces, the tiled Matthias Church, the palace museums"
+    },
+    {
+     "name": "Andrassy Avenue — Opera to Heroes' Square (2002 UNESCO extension)",
+     "si_tag": "culture",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~€15-90",
+     "timing": "May-Sep  + Advent/Christmas markets",
+     "commission_path": "bundle/operator",
+     "draw_rank": 3,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "the grand boulevard of Art-Nouveau palaces, the Opera House, Heroes' Square"
+    },
+    {
+     "name": "The dark 20th century — House of Terror + Memento Park + Jewish Quarter",
+     "si_tag": "deepdive",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~€15-120/pp",
+     "timing": "year-round",
+     "commission_path": "DMC/operator 10-15%",
+     "draw_rank": 1,
+     "timing_type": "ALWAYS-ON",
+     "hook": "the Andrássy-60 headquarters of the Arrow Cross then the communist secret police, paired with the statue-graveyard of toppled regime monuments on the city edge"
+    },
+    {
+     "name": "A night at the Hungarian State Opera",
+     "si_tag": "entertainment",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~€10-120/pp",
+     "timing": "season ~Sep-Jun — verify",
+     "commission_path": "venue/ticketing/affiliate",
+     "draw_rank": 1,
+     "hook": "one of Europe's most beautiful opera interiors on Andrássy Avenue — a performance or a guided tour"
+    },
+    {
+     "name": "A concert at the Liszt Academy (1875)",
+     "si_tag": "entertainment",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~€15-90/pp",
+     "timing": "season Sep-Jun",
+     "commission_path": "venue/ticketing/affiliate",
+     "draw_rank": 2,
+     "hook": "the conservatory's Art-Nouveau Nagyterem — classical, jazz and folk-world in one of the continent's great halls"
+    },
+    {
+     "name": "The ruin bars of the Jewish Quarter (Szimpla Kert)",
+     "si_tag": "nightlife",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~€10-45/pp",
+     "timing": "year-round",
+     "commission_path": "bundle/venue",
+     "draw_rank": 1,
+     "timing_type": "ALWAYS-ON",
+     "hook": "Szimpla Kert and the District VII romkocsma scene — derelict courtyards reborn as string-lit bars, the template Budapest gave the world"
+    },
+    {
+     "name": "Caving under the Buda Hills (Palvolgyi + Szemlohegyi)",
+     "si_tag": "globaladv",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~€12-60/pp",
+     "timing": "May-Sep  + Advent/Christmas markets",
+     "commission_path": "operator/affiliate 10-15%",
+     "draw_rank": 1,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "guided walks of the thermal-carved Pálvölgyi and the show-cave Szemlőhegyi \"Underground Flower Garden\" — a genuinely distinctive urban adventure, ~8–10 °C"
+    },
+    {
+     "name": "The 'no-bad-day' family circuit — bath, castle, boat, show cave, Margaret Island",
+     "si_tag": "family",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~€10-90/family activity",
+     "timing": "year-round",
+     "commission_path": "DMC/affiliate",
+     "draw_rank": 1,
+     "timing_type": "ALWAYS-ON"
+    },
+    {
+     "name": "The river-cruise-and-spa senior city break",
+     "si_tag": "senior",
+     "status": "future",
+     "tier": "comfort",
+     "price_band": "~€150-500/day land",
+     "timing": "shoulder Apr + Oct ideal",
+     "commission_path": "cruise-line/DMC 10-16%",
+     "draw_rank": 1,
+     "hook": "Budapest is a top Danube-cruise turn plus flat Pest boulevards, accessible baths and gentle, high-reward culture"
+    },
+    {
+     "name": "The SPAR Budapest Marathon",
+     "si_tag": "sports",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "entry ~€40-120 + stay",
+     "timing": "entries spring; race ~10-11 Oct 2026 — verify",
+     "commission_path": "running-travel operator/DMC 10-15%",
+     "draw_rank": 1,
+     "hook": "the 41st-edition October running festival — marathon / half / 30k / 14k / 10k / 5k along the Danube"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Is Budapest safe to visit right now?",
+     "a": "Yes — freely bookable. Hungary is US Level 1 (Exercise Normal Precautions), the safest tier, reissued 15 April 2026; the only everyday caution is pickpocketing on transport and in nightlife districts.",
+     "source": "bbj.hu",
+     "si_tag": "safety"
+    },
+    {
+     "q": "What's the real risk to plan for in Budapest?",
+     "a": "Not crime — the water and the money: the Danube runs fast, deep and cold (not for swimming), and the Forint invites dynamic-currency-conversion and street-exchange scams, so keep to crew-supervised boats and pay by card.",
+     "source": "visithungary.com",
+     "si_tag": "safety"
+    },
+    {
+     "q": "Is caving in Budapest dangerous?",
+     "a": "No — it is guided and beginner-friendly. Tours of the Palvolgyi and Szemlohegyi caves run 50-60 minutes at a constant 8-10 C with a guide; Szemlohegyi is a squeeze-free show cave good for families.",
+     "source": "budapestbylocals.com",
+     "si_tag": "globaladv"
+    },
+    {
+     "q": "When is the best time to cruise the Danube from Budapest?",
+     "a": "Late March to late December — spring and summer for terraces and baths, and late November-December for the Christmas-market sailings that make Budapest a marquee Advent start.",
+     "source": "usnews.com",
+     "si_tag": "river"
+    },
+    {
+     "q": "Which river-cruise lines leave from Budapest?",
+     "a": "Nine confirmed — Viking, AmaWaterways, Avalon, Uniworld, Scenic, Tauck, Emerald, CroisiEurope and Riviera Travel — because Budapest is the eastern terminus of the classic Upper Danube itinerary to Passau, Regensburg and Nuremberg.",
+     "source": "usnews.com",
+     "si_tag": "river"
+    },
+    {
+     "q": "Which Budapest thermal bath should I choose?",
+     "a": "It depends: Szechenyi (among Europe's largest, Neo-Baroque, City Park) for the grand day and the night sparty; Gellert for Art-Nouveau elegance; Rudas (16th-century Ottoman) for the Danube-view rooftop pool.",
+     "source": "visithungary.com",
+     "si_tag": "wellness"
+    },
+    {
+     "q": "Is Budapest a serious food city?",
+     "a": "Yes — it holds 7 Michelin stars (Stand at two), because a modern-Hungarian fine-dining scene has matured atop the classic table; pair a starred dinner with the 1897 Great Market Hall and a Tokaji or palinka flight.",
+     "source": "guide.michelin.com",
+     "si_tag": "culinary"
+    },
+    {
+     "q": "Can you run a marathon in Budapest?",
+     "a": "Yes — the SPAR Budapest Marathon (41st edition, ~10-11 Oct 2026) runs 6 distances from 5 km to the full 42.2 km along the Danube, sold as an entry-plus-stay running-travel package.",
+     "source": "worldsmarathons.com",
+     "si_tag": "sports"
+    }
+   ],
+   "seo": {
+    "meta_title": "Budapest Travel Guide: Danube River Cruises, Thermal Baths, Michelin Dining & the UNESCO Panorama",
+    "meta_description": "Plan Budapest — the Danube's eastern anchor: the UNESCO riverfront panorama, the Danube-cruise embarkation hub, the by-night dinner cruise, the thermal-bath City of Spas, 7 Michelin stars, Hungarian wine and palinka, the State Opera, House of Terror and Buda-Hills caves.",
+    "slug": "budapest-hungary",
+    "primary_keyword": "Budapest travel guide",
+    "long_tail": [
+     "Budapest Danube river cruise embarkation",
+     "Szechenyi thermal baths Budapest",
+     "Budapest Michelin star restaurants",
+     "Tokaji wine tasting Budapest",
+     "House of Terror Memento Park",
+     "SPAR Budapest Marathon"
+    ],
+    "search_language": "hu-HU",
+    "local_keywords": [
+     "Budapest utazas",
+     "Duna latkep",
+     "Orszaghaz",
+     "Lanchid",
+     "Budai Var",
+     "Halaszbastya",
+     "Szechenyi gyogyfurdo",
+     "Gellert furdo",
+     "Rudas furdo",
+     "Nagycsarnok",
+     "Tokaji bor",
+     "Egri Bikaver",
+     "palinka",
+     "Magyar Allami Operahaz",
+     "Liszt Ferenc Zeneakademia",
+     "Terror Haza",
+     "Palvolgyi-barlang",
+     "SPAR Budapest Maraton",
+     "romkocsma"
+    ],
+    "hreflang": [
+     "en",
+     "hu-HU"
+    ],
+    "jsonld_type": "TouristDestination",
+    "author_byline": "By David McCallister — commercial pilot, 56 countries",
+    "content_freshness": "2026-07-27"
+   },
+   "booking": {
+    "bin": "freely_bookable",
+    "level": "L1",
+    "codes": [],
+    "advisory_updated": "2026-04-15",
+    "consent_flow": false,
+    "note": "Hungary US L1 (Exercise Normal Precautions), safest tier"
+   },
+   "si_checklist_25": {
+    "run_date": "2026-07-27",
+    "hits": 13,
+    "misses": 9,
+    "disregarded": 3,
+    "note": "Canonical 25-SI list; sports limited to My Sports Travel (participant); spectator/prosports/compsports disregarded per scope"
+   },
+   "sis_present": [
+    {
+     "si": "river",
+     "name": "river",
+     "status": "live"
+    },
+    {
+     "si": "romance",
+     "name": "Romance, Marriages & Honeymoons",
+     "status": "live"
+    },
+    {
+     "si": "wellness",
+     "name": "Wellness Spas & Retreats",
+     "status": "live"
+    },
+    {
+     "si": "culinary",
+     "name": "culinary",
+     "status": "future"
+    },
+    {
+     "si": "culture",
+     "name": "Culture & History",
+     "status": "future"
+    },
+    {
+     "si": "deepdive",
+     "name": "deepdive",
+     "status": "future"
+    },
+    {
+     "si": "entertainment",
+     "name": "entertainment",
+     "status": "future"
+    },
+    {
+     "si": "nightlife",
+     "name": "nightlife",
+     "status": "future"
+    },
+    {
+     "si": "globaladv",
+     "name": "adventure",
+     "status": "future"
+    },
+    {
+     "si": "family",
+     "name": "family",
+     "status": "future"
+    },
+    {
+     "si": "senior",
+     "name": "senior",
+     "status": "future"
+    },
+    {
+     "si": "sports",
+     "name": "My Sports Travel",
+     "status": "future"
+    }
+   ],
+   "ultra": [
+    {
+     "name": "Luxury Danube cruise anchored at Budapest (Uniworld/Scenic/Tauck/AmaWaterways/Emerald)",
+     "why_ultra": "suite embarking beneath the floodlit Parliament, Christmas-market dates",
+     "earning": "cruise-line/host 10-16%",
+     "virtuoso_value_add": true,
+     "mor": "commissionable",
+     "tier": "ultra",
+     "price_band": "~€4,000-12,000+/pp"
+    },
+    {
+     "name": "Four Seasons Gresham Palace / Matild Palace — Danube-front Art-Nouveau suite",
+     "why_ultra": "river-view suite over the Chain Bridge, the grandest Pest address, spa + fine dining",
+     "earning": "consortia/Virtuoso on application",
+     "virtuoso_value_add": true,
+     "mor": "commissionable-rack",
+     "tier": "ultra",
+     "price_band": "~€600-1,500+/night"
+    },
+    {
+     "name": "A private Budapest night — chartered dinner cruise + two-star table + after-hours thermal bath",
+     "why_ultra": "private boat past the illuminated panorama, dinner at Stand, a curated late soak, chauffeured",
+     "earning": "DMC + venue",
+     "virtuoso_value_add": false,
+     "mor": "commissionable",
+     "tier": "luxury-ultra",
+     "price_band": "on application"
+    }
+   ],
+   "source_verified": "2026-07-27"
+  }
+ },
+ {
+  "id": "douro-valley-portugal",
+  "region_code": "02F",
+  "name": "The Douro Valley",
+  "country": "Portugal",
+  "line": "The wine world's most beautiful river",
+  "status": "live",
+  "depth": "verified",
+  "img": "venice",
+  "sub_region": "Portugal & the Douro",
+  "si": [
+   "river",
+   "romance",
+   "culinary",
+   "culture",
+   "deepdive",
+   "wellness",
+   "senior"
+  ],
+  "tier_range": [
+   "essential",
+   "comfort",
+   "premier",
+   "luxury",
+   "ultra"
+  ],
+  "draw_rank": "core",
+  "data": {
+   "key_facts": [
+    "Alto Douro Wine Region UNESCO-inscribed 2001; viticulture 2,000+ years old; terraces, quintas, villages",
+    "Home of Port (made here since the 18th c.) + Douro DOC table wine; Vila Nova de Gaia lodges age the Port",
+    "TravelWell's second river-cruise anchor after the Danube: 7 lines from Porto (Viking/AmaWaterways/Avalon/CroisiEurope/Scenic/Emerald/Uniworld), ~8-day via Regua + Pinhao",
+    "The Yeatman (Gaia) — 2 Michelin stars (Ricardo Costa since 2010), Caudalie Vinotherapie Spa, 109 river-view rooms, 25,000-bottle cellar",
+    "Six Senses Douro Valley — restored 19th-c. manor, vineyard-heritage spa, among northern Portugal's finest",
+    "Porto the gateway (Ribeira UNESCO 1996); scenic Porto-Pinhao Douro railway; harvest (vindima) Sep-Oct the peak"
+   ],
+   "safety": {
+    "emergency": "112",
+    "hospital": "Porto — Centro Hospitalar Universitario de Sao Joao; valley care limited (Regua/Vila Real + transfer to Porto)",
+    "advisory_level": "L1",
+    "malaria": "none",
+    "yellow_fever": "not required",
+    "activity_note": "Terraces steep/sun-exposed (hat/water/shoes); Douro a dammed locked working river (follow crew); N222 valley road tight switchbacks — driver or Porto-Pinhao train, no driving after tastings; EUR/eurozone"
+   },
+   "timing": {
+    "peak": "Sep-Oct harvest (pinnacle) + Jun-Aug summer",
+    "shoulder": "Apr-Jun + late Oct (mild, softer rates)",
+    "green": "Nov-Mar (quiet, cooler; some quintas + sailings pause)",
+    "booking_lead": "cruises 6-12 mo (harvest first); Six Senses/Yeatman 3-6 mo peak; quinta tastings + day cruises 1-4 wk",
+    "off_season_specials": "Nov-Mar Porto city-break + Gaia tastings + spa weekends; midweek shoulder",
+    "event_peaks": "Harvest/vindima (~Sep-Oct) the calendar's gravity; Sao Joao (Porto, 23-24 Jun); cruise season ~Mar-Nov",
+    "campaign_start": "Harvest cruises + quinta stays by prior winter; spring wine-and-river by Feb; harvest by Jul; Porto winter city-break + spa by Oct"
+   },
+   "jewels": [
+    {
+     "name": "The Douro cruise from Porto",
+     "si_tag": "river",
+     "status": "live",
+     "tier": "premier",
+     "price_band": "~€2,000-5,500+/pp/week",
+     "timing": "~Mar-Nov; harvest Sep-Oct",
+     "commission_path": "cruise-line 10-16%",
+     "draw_rank": 1,
+     "hook": "the primary sell — embark at Porto and sail the dammed river up through the UNESCO terraces to Régua, Pinhão and the Spanish border"
+    },
+    {
+     "name": "The Regua-Pinhao scenic reach + a quinta call",
+     "si_tag": "river",
+     "status": "live",
+     "tier": "premier",
+     "price_band": "quinta call ~€25-80/pp",
+     "timing": "~Mar-Nov; harvest peak",
+     "commission_path": "cruise-line/venue",
+     "draw_rank": 2,
+     "hook": "the valley's core — the classic terraced panoramas, the Museu do Douro at Régua, Pinhão's azulejo station and a quinta harvest visit"
+    },
+    {
+     "name": "A Porto day-cruise / rabelo trip",
+     "si_tag": "river",
+     "status": "live",
+     "tier": "essential",
+     "price_band": "~€15-90/pp",
+     "timing": "~Mar-Nov",
+     "commission_path": "operator/affiliate 8-15%",
+     "draw_rank": 3,
+     "hook": "the pre/post-cruise bookend — the Six-Bridges Douro cruise or a traditional rabelo from the Gaia quays"
+    },
+    {
+     "name": "A river-view quinta suite + a Michelin dinner over Porto",
+     "si_tag": "romance",
+     "status": "live",
+     "tier": "premier",
+     "price_band": "~€300-900+/night",
+     "timing": "standing; peak harvest + summer",
+     "commission_path": "consortia/host",
+     "draw_rank": 1,
+     "hook": "Six Senses Douro Valley in a 19th-c. manor among the vines, or The Yeatman's terraced river-view rooms above the Gaia lodges"
+    },
+    {
+     "name": "Sunset over the terraces with a glass of Port",
+     "si_tag": "romance",
+     "status": "live",
+     "tier": "comfort",
+     "price_band": "~€20-120/pp",
+     "timing": "spring-autumn",
+     "commission_path": "venue/DMC",
+     "draw_rank": 2,
+     "hook": "the quiet, couples-not-crowds evening — a private terrace above the dry-stone vineyards as the valley turns gold, a tawny in hand"
+    },
+    {
+     "name": "The Yeatman — two Michelin stars over the Douro",
+     "si_tag": "culinary",
+     "status": "future",
+     "tier": "premier",
+     "price_band": "~€150-250/pp",
+     "timing": "Sep-Oct harvest  + Jun-Aug summer",
+     "commission_path": "venue/host",
+     "draw_rank": 1,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "Chef Ricardo Costa's tasting menu and a 25,000-bottle all-Portuguese cellar, on the hill above the Gaia Port lodges"
+    },
+    {
+     "name": "Port at the Vila Nova de Gaia lodges",
+     "si_tag": "culinary",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~€15-75/pp",
+     "timing": "Sep-Oct harvest  + Jun-Aug summer",
+     "commission_path": "venue/DMC 10-15%",
+     "draw_rank": 2,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "taste Port where it is aged — the great Gaia lodges across the river from Porto's Ribeira, an 18th-century tradition"
+    },
+    {
+     "name": "Douro DOC table wine at a valley quinta",
+     "si_tag": "culinary",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~€15-90/pp",
+     "timing": "year-round; harvest Sep-Oct",
+     "commission_path": "venue/DMC",
+     "draw_rank": 3,
+     "hook": "the unfortified side of the same terroir — a quinta tasting in the Régua–Pinhão heart"
+    },
+    {
+     "name": "Porto's table — francesinha to the Bolhao",
+     "si_tag": "culinary",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~€10-60/pp",
+     "timing": "Sep-Oct harvest  + Jun-Aug summer",
+     "commission_path": "bundle/venue",
+     "draw_rank": 4,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "the gateway city's food — the francesinha, the Mercado do Bolhão, the seafood — the essential pre-cruise graze"
+    },
+    {
+     "name": "The Alto Douro UNESCO landscape",
+     "si_tag": "culture",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~€0-40",
+     "timing": "Sep-Oct harvest  + Jun-Aug summer",
+     "commission_path": "DMC/tour wrapper",
+     "draw_rank": 1,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "a living 2,000-year cultural landscape of terraces, quintas and villages, inscribed 2001 — best read from the river or a terrace viewpoint"
+    },
+    {
+     "name": "Porto's Ribeira + the Gaia lodges",
+     "si_tag": "culture",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~€10-60",
+     "timing": "Sep-Oct harvest  + Jun-Aug summer",
+     "commission_path": "operator/affiliate",
+     "draw_rank": 2,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "the UNESCO old town tumbling to the water, the Dom Luís I bridge, and the Port houses opposite — the gateway's set-piece"
+    },
+    {
+     "name": "The Port harvest, from terrace to lodge",
+     "si_tag": "deepdive",
+     "status": "future",
+     "tier": "comfort",
+     "price_band": "~€40-150/pp",
+     "timing": "harvest Sep-Oct",
+     "commission_path": "DMC/quinta 10-15%",
+     "draw_rank": 1,
+     "hook": "the immersive September–October vindima — picking the vertiginous terraces, treading in lagares, the rabelo tradition that once carried the pipes downriver"
+    },
+    {
+     "name": "Vine-therapy spas — Caudalie + Six Senses",
+     "si_tag": "wellness",
+     "status": "future",
+     "tier": "comfort",
+     "price_band": "~€60-350/pp",
+     "timing": "year-round",
+     "commission_path": "venue/host 10-15%",
+     "draw_rank": 1,
+     "timing_type": "ALWAYS-ON",
+     "hook": "The Yeatman's Caudalie Vinothérapie Spa and Six Senses Douro Valley's grape-antioxidant vineyard treatments — wellness built on the terroir itself"
+    },
+    {
+     "name": "The low-exertion wine-and-river break",
+     "si_tag": "senior",
+     "status": "future",
+     "tier": "comfort",
+     "price_band": "~€150-500/day land",
+     "timing": "shoulder Apr-Jun + Oct ideal",
+     "commission_path": "cruise-line/DMC 10-16%",
+     "draw_rank": 1,
+     "hook": "the dammed Douro's gentle lock-cruising plus the scenic Porto–Pinhão railway make a rich, low-mobility itinerary"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Is the Douro Valley safe to visit right now?",
+     "a": "Yes — freely bookable. Portugal is US Level 1 (Exercise Normal Precautions), the safest tier, issued 23 December 2025; the only routine caution is pickpocketing in crowded Porto and on transport.",
+     "source": "travel.state.gov",
+     "si_tag": "safety"
+    },
+    {
+     "q": "What's the real risk to plan for in the Douro?",
+     "a": "Not crime — sun, water and the road: the terraces are steep and sun-exposed, the Douro is a dammed locked working river (follow crew on boats), and the N222 valley road is a tight switchback — use a driver or the Porto-Pinhao train, and never drive after tastings.",
+     "source": "whc.unesco.org",
+     "si_tag": "safety"
+    },
+    {
+     "q": "When is the best time for a Douro cruise?",
+     "a": "Spring to autumn (roughly March-November), with September-October the harvest peak — you cruise past picking in progress and the quintas are liveliest, so harvest sailings book earliest.",
+     "source": "cruisecritic.com",
+     "si_tag": "river"
+    },
+    {
+     "q": "Which cruise lines sail the Douro from Porto?",
+     "a": "Seven confirmed — Viking, AmaWaterways, Avalon, CroisiEurope, Scenic, Emerald and Uniworld — because Porto is the single embarkation gateway for the ~8-day run up to Regua, Pinhao and the Spanish border.",
+     "source": "cruisecritic.com",
+     "si_tag": "river"
+    },
+    {
+     "q": "What's the difference between Port and Douro wine?",
+     "a": "Both come from the same Alto Douro terraces, but Port is fortified and aged in the Vila Nova de Gaia lodges (an 18th-century tradition), while Douro DOC is unfortified table wine — taste both, one at a Gaia lodge, one at a valley quinta.",
+     "source": "whc.unesco.org",
+     "si_tag": "culinary"
+    },
+    {
+     "q": "Where should I stay for a luxury Douro base?",
+     "a": "Two anchors: Six Senses Douro Valley, a restored 19th-century manor with a vineyard-heritage spa, for the valley itself; or The Yeatman above the Gaia Port lodges — 109 terraced river-view rooms, a two-Michelin-star table and a Caudalie Vinotherapie spa.",
+     "source": "scottdunn.com",
+     "si_tag": "ultra"
+    },
+    {
+     "q": "Is the Douro good for a honeymoon?",
+     "a": "Yes — a quiet, high-romance wine landscape: a river-view quinta suite, a private terrace over the vines at sunset, and a Michelin dinner across from Porto's lit Ribeira. It reads couples, not crowds.",
+     "source": "the-yeatman-hotel.com",
+     "si_tag": "romance"
+    }
+   ],
+   "seo": {
+    "meta_title": "Douro Valley Travel Guide: River Cruises, Port Wine, the UNESCO Terraces & Porto",
+    "meta_description": "Plan Portugal's Douro Valley — TravelWell's second great river-cruise anchor: 7 cruise lines from Porto, the UNESCO Alto Douro terraces, the home of Port, The Yeatman's two Michelin stars, Six Senses Douro Valley.",
+    "slug": "douro-valley-portugal",
+    "primary_keyword": "Douro Valley travel guide",
+    "long_tail": [
+     "Douro river cruise from Porto 2026",
+     "Alto Douro UNESCO wine region",
+     "Port wine Vila Nova de Gaia lodges",
+     "The Yeatman two Michelin stars",
+     "Six Senses Douro Valley",
+     "Pinhao Regua quinta tasting"
+    ],
+    "search_language": "pt-PT",
+    "local_keywords": [
+     "Vale do Douro",
+     "cruzeiro no Douro",
+     "Alto Douro Vinhateiro UNESCO",
+     "vinho do Porto",
+     "caves de Vila Nova de Gaia",
+     "Douro DOC",
+     "Pinhao",
+     "Peso da Regua",
+     "quinta do Douro",
+     "The Yeatman",
+     "Six Senses Douro Valley",
+     "vindima"
+    ],
+    "hreflang": [
+     "en",
+     "pt-PT"
+    ],
+    "jsonld_type": "TouristDestination",
+    "author_byline": "By David McCallister — commercial pilot, 56 countries",
+    "content_freshness": "2026-07-27"
+   },
+   "booking": {
+    "bin": "freely_bookable",
+    "level": "L1",
+    "codes": [],
+    "advisory_updated": "2025-12-23",
+    "consent_flow": false,
+    "note": "Portugal US L1 (Exercise Normal Precautions), safest tier"
+   },
+   "si_checklist_25": {
+    "run_date": "2026-07-27",
+    "hits": 8,
+    "misses": 14,
+    "disregarded": 3,
+    "note": "Canonical 25-SI list; sports limited to My Sports Travel (participant); spectator/prosports/compsports disregarded"
+   },
+   "sis_present": [
+    {
+     "si": "river",
+     "name": "river",
+     "status": "live"
+    },
+    {
+     "si": "romance",
+     "name": "Romance, Marriages & Honeymoons",
+     "status": "live"
+    },
+    {
+     "si": "culinary",
+     "name": "culinary",
+     "status": "future"
+    },
+    {
+     "si": "culture",
+     "name": "Culture & History",
+     "status": "future"
+    },
+    {
+     "si": "deepdive",
+     "name": "deepdive",
+     "status": "future"
+    },
+    {
+     "si": "wellness",
+     "name": "Wellness Spas & Retreats",
+     "status": "future"
+    },
+    {
+     "si": "senior",
+     "name": "senior",
+     "status": "future"
+    }
+   ],
+   "ultra": [
+    {
+     "name": "Six Senses Douro Valley — restored 19th-c. manor among the vines",
+     "why_ultra": "northern Portugal's finest, vineyard-heritage spa, valley-terrace views",
+     "earning": "consortia/Virtuoso on application",
+     "virtuoso_value_add": true,
+     "mor": "commissionable-rack",
+     "tier": "ultra",
+     "price_band": "~€500-1,200+/night"
+    },
+    {
+     "name": "The Yeatman — 2-Michelin-star river-view suite over the Gaia lodges",
+     "why_ultra": "109 terraced rooms facing Porto's Ribeira, two-star tasting menu, Caudalie Vinotherapie spa",
+     "earning": "consortia/host",
+     "virtuoso_value_add": true,
+     "mor": "commissionable-rack",
+     "tier": "ultra",
+     "price_band": "~€400-1,000+/night"
+    },
+    {
+     "name": "Luxury Douro cruise + private quinta harvest day (Uniworld/Scenic/Emerald)",
+     "why_ultra": "suite on a blue-ribbon Douro sailing with a private harvest visit + Port-house tasting",
+     "earning": "cruise-line/host 10-16%",
+     "virtuoso_value_add": true,
+     "mor": "commissionable",
+     "tier": "ultra",
+     "price_band": "~€4,000-9,000+/pp"
+    }
+   ],
+   "source_verified": "2026-07-27"
+  }
+ }
+]
