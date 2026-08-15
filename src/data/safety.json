@@ -18,7 +18,7 @@
     "country": "Austria",
     "lvl": 1,
     "label": "Exercise normal precautions",
-    "summary": "Exercise normal precautions. Austria is very safe; the real alpine risk is weather and avalanche, managed by resort patrol.",
+    "summary": "Exercise normal precautions. Crime is low and rarely violent; the risk to plan for is the mountain — weather and avalanche, managed by resort patrol.",
     "considerations": [
       "Ski in-bounds and heed piste closures and avalanche warnings; hire a certified guide off the marked runs.",
       "Standard urban petty theft and pickpocketing in tourist areas (Vienna, Salzburg, Innsbruck).",
@@ -32,7 +32,7 @@
     "country": "Australia",
     "lvl": 1,
     "label": "Exercise normal precautions",
-    "summary": "Australia is very safe for travelers; the main risks are natural and environmental, not crime.",
+    "summary": "Exercise normal precautions. The risks to plan for are natural and environmental — surf, heat, bushfire and wildlife — rather than crime.",
     "considerations": [
       "Bushfire season (Nov-Mar) and tropical cyclones in the north; flash flooding.",
       "Strong ocean rips, marine stingers and saltwater crocodiles in northern waters.",
@@ -60,7 +60,7 @@
     "country": "Canada",
     "lvl": 1,
     "label": "Exercise normal precautions",
-    "summary": "Canada is very safe; ordinary precautions apply.",
+    "summary": "Exercise normal precautions. Crime is low; plan for weather and distance, which are the practical risks across most of the country.",
     "considerations": [
       "Petty theft and vehicle break-ins in tourist areas.",
       "Winter snow and ice (some provinces require snow tires); remote Arctic areas have slow emergency response.",
@@ -73,7 +73,7 @@
     "country": "Switzerland",
     "lvl": 1,
     "label": "Exercise normal precautions",
-    "summary": "Switzerland is very safe; ordinary precautions apply.",
+    "summary": "Exercise normal precautions. Crime is low; the risk to plan for is the mountain — weather, altitude and avalanche.",
     "considerations": [
       "Year-round alpine hazards: avalanche, sudden weather changes, unmarked terrain.",
       "Pickpocketing at tourist sites and on public transport.",
@@ -198,7 +198,7 @@
     "country": "Iceland",
     "lvl": 1,
     "label": "Exercise normal precautions",
-    "summary": "Iceland is very safe; the real risks are environmental, not crime.",
+    "summary": "Exercise normal precautions. The real risks are environmental — weather, road conditions and an unforgiving coastline — rather than crime.",
     "considerations": [
       "Rapidly changing, severe weather is the top hazard.",
       "Ongoing Reykjanes Peninsula volcanic activity can affect the Grindavik area and occasionally airport access.",
@@ -241,7 +241,7 @@
     "country": "Japan",
     "lvl": 1,
     "label": "Exercise normal precautions",
-    "summary": "Japan is very safe; ordinary precautions apply.",
+    "summary": "Exercise normal precautions. Crime is low; plan for earthquakes and the typhoon season, and know your building's evacuation route.",
     "considerations": [
       "Significant natural-hazard exposure: earthquakes, tsunamis, typhoons, heavy northern winter snow.",
       "Very strict drug laws — some common US prescription medicines are banned.",
@@ -285,7 +285,7 @@
     "country": "South Korea",
     "lvl": 1,
     "label": "Exercise normal precautions",
-    "summary": "South Korea (Republic of Korea) is very safe; ordinary precautions apply — this is not North Korea, which is Do Not Travel.",
+    "summary": "Exercise normal precautions. Crime is low — and note this is the Republic of Korea, not North Korea, which is Do Not Travel.",
     "considerations": [
       "Periodic North Korean missile tests and routine civil-defense drills are background context, not an elevated risk.",
       "Large demonstrations can arise quickly; foreigners are barred from political activity by law.",
@@ -352,7 +352,7 @@
     "country": "New Zealand",
     "lvl": 1,
     "label": "Exercise normal precautions",
-    "summary": "New Zealand is very safe; ordinary precautions apply.",
+    "summary": "Exercise normal precautions. The risks to plan for are environmental — weather, water and backcountry terrain — rather than crime.",
     "considerations": [
       "Driving on the left on narrow rural roads is a leading cause of visitor injury.",
       "Earthquakes, volcanic activity and fast-changing alpine/coastal weather.",
@@ -413,7 +413,7 @@
     "considerations": [
       "Driven by a regional Ebola public-health emergency (declared May 2026) plus eastern-DRC conflict.",
       "Level 4 \"Do Not Travel\" within ~10 km of the DRC border (incl. parts of Rusizi, Lake Kivu islands, Kamembe airport).",
-      "Reduced US emergency-consular capacity; Kigali itself is normally very safe.",
+      "Reduced US emergency-consular capacity; crime in Kigali is low, but plan around the thinner consular support.",
       "Gorilla-trekking areas (Volcanoes NP) are near the northwest border — check status before booking."
     ],
     "medical": "Active regional Ebola outbreak with heightened screening; yellow fever required if arriving from a transmission country; malaria prophylaxis; bottled/treated water; medevac insurance essential.",

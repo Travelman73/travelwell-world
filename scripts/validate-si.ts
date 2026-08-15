@@ -26,6 +26,7 @@ import { join, basename } from "node:path";
 import { SIS, SI_GROUPS, ALL_WELLS, REGIONS, SI_TAGLINE_SUBJECT } from "../src/data/taxonomy";
 import { DESTINATIONS } from "../src/data/places";
 import { checkHero } from "./lib/check-hero";
+import { checkSafetyLanguage } from "./lib/check-safety-language";
 
 // ── Canon, straight from the live source ──────────────────────────────────
 const SI_SLUGS = new Set(SIS.map((s) => s.id));
@@ -209,6 +210,9 @@ for (const { d, from } of rows) {
   }
 
   checkHero(at, data.hero, { errs, warns });
+  // Layer 8 carries a safety block and layer 7 the FAQ — both render, and the
+  // FAQ emits FAQPage structured data. Never promise "safe" in either.
+  checkSafetyLanguage(at, data, { errs, warns });
 
 }
 

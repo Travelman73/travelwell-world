@@ -126,7 +126,7 @@ export const DESTINATIONS: Record<string, Destination[]> = {
       si: ["ski", "adventure"], feel: ["alpine", "dramatic", "rugged"],
       tier_range: ["comfort", "premier", "luxury"], price_band: "premier", draw_rank: "core",
       data: {
-        safety: { advisory_level: "L2", posture: "book-freely", booking_hold: false, notes: "Exercise increased caution (France-wide, mainly urban); the valley itself is safe — high-alpine routes and the Vallée Blanche need a qualified guide.", source: "US State Dept L2 / French authorities", verified: "2026-06" },
+        safety: { advisory_level: "L2", posture: "book-freely", booking_hold: false, notes: "Exercise increased caution (France-wide, mainly urban). In the valley the practical risk is the mountain rather than crime — high-alpine routes and the Vallée Blanche need a qualified guide.", source: "US State Dept L2 / French authorities", verified: "2026-06" },
         timing: { season: "Dec–Apr", best_months: [1, 2, 3], notes: "Serious terrain; the Vallée Blanche is spring-dependent — check conditions." },
         jewels: [
           { name: "Aiguille du Midi cable car", tier: "comfort", when: "clear days", blurb: "3,842m and the roof of Europe in twenty minutes.", si: "adventure", commission: "Lift + experience partner" },
@@ -164,7 +164,7 @@ export const DESTINATIONS: Record<string, Destination[]> = {
       si: ["ski", "wellness"], feel: ["alpine", "refined", "polished"],
       tier_range: ["premier", "luxury", "ultra"], price_band: "luxury", draw_rank: "anchor",
       data: {
-        safety: { advisory_level: "L2", posture: "book-freely", booking_hold: false, notes: "Exercise increased caution (France-wide, mainly urban); the resort is safe — off-piste across the Trois Vallées needs a qualified guide.", source: "US State Dept L2 / French authorities", verified: "2026-06" },
+        safety: { advisory_level: "L2", posture: "book-freely", booking_hold: false, notes: "Exercise increased caution (France-wide, mainly urban). In resort the practical risk is the mountain rather than crime — off-piste across the Trois Vallées needs a qualified guide.", source: "US State Dept L2 / French authorities", verified: "2026-06" },
         timing: { season: "Dec–Apr", best_months: [1, 2, 3], notes: "Gateway to the 3 Vallées — 600km of linked pistes; Feb–Mar for depth and sun." },
         jewels: [
           { name: "First tracks across the Trois Vallées", tier: "premier", when: "after a snowfall", blurb: "The world's largest linked ski area, empty, at dawn.", si: "ski", commission: "Lift + guide partner" },
@@ -183,7 +183,7 @@ export const DESTINATIONS: Record<string, Destination[]> = {
       si: ["ski", "adventure"], feel: ["alpine", "dramatic", "refined"],
       tier_range: ["premier", "luxury"], price_band: "luxury", draw_rank: "anchor",
       data: {
-        safety: { advisory_level: "L2", posture: "book-freely", booking_hold: false, notes: "Exercise increased caution (Italy-wide, mainly urban posture); Cortina itself is safe — Dolomiti Superski off-piste and via ferrata need a guide.", source: "US State Dept L2 / Italian authorities", verified: "2026-06" },
+        safety: { advisory_level: "L2", posture: "book-freely", booking_hold: false, notes: "Exercise increased caution (Italy-wide, mainly urban posture). In Cortina the practical risk is the mountain rather than crime — Dolomiti Superski off-piste and via ferrata need a guide.", source: "US State Dept L2 / Italian authorities", verified: "2026-06" },
         timing: { season: "Dec–Apr", best_months: [1, 2, 3], notes: "Co-hosts the Milano-Cortina 2026 Winter Olympics — book well ahead for the Games window." },
         jewels: [
           { name: "Sunset on the Tofane from a Dolomiti rifugio", tier: "premier", when: "clear afternoons", blurb: "Pink light on the Dolomites, a plate of casunziei, the pistes gone quiet.", si: "ski", commission: "Mountain-hut partner" },

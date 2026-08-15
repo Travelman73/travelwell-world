@@ -20,6 +20,7 @@ import { join } from "node:path";
 import { REGIONS, SIS, SUBREGIONS } from "../src/data/taxonomy";
 import { DESTINATIONS, LEGACY_DEST_ID, resolveDestId } from "../src/data/places";
 import { checkHero } from "./lib/check-hero";
+import { checkSafetyLanguage } from "./lib/check-safety-language";
 
 // ── Canon, straight from the live source ──────────────────────────────────
 const REGION_CODES = new Set(REGIONS.map((r) => r.code));
@@ -150,6 +151,8 @@ for (const { code, d } of rows) {
     // PINNED url used to be a warning here and nothing at all there, which is
     // two answers to one question.
     checkHero(at, data.hero, { errs, warns });
+    // Never promise "safe" — locked canon, and the FAQ ships as structured data.
+    checkSafetyLanguage(at, data, { errs, warns });
 
     // reconciles_live_mvp → must resolve to an ACTUAL live MVP id (not just a slug).
     const rec = data.reconciles_live_mvp;
