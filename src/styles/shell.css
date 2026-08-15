@@ -517,3 +517,22 @@
   font-size: 14.5px;
 }
 @media (hover: hover) { .tw-nav__link--read:hover { background: var(--secondary); } }
+
+
+/* ── The iOS install card ──────────────────────────────────────────────────
+   In the page flow on purpose (see InstallCard.tsx): bottom-fixed would collide
+   with the pick/switch bars that already sit at z-70 on home, si-detail and
+   itinerary, and the retired floating safety stack is the standing lesson about
+   overlaying content. This pushes, never covers. */
+.tw-install { max-width: var(--content-max); margin: 12px auto 0; padding: 0 var(--gutter, 20px); }
+.tw-install__inner { display: flex; gap: 14px; align-items: flex-start; background: var(--surface-alt); border: 1px solid var(--border); border-radius: var(--radius-lg, 14px); padding: 16px 16px 16px 18px; }
+.tw-install__body { flex: 1 1 auto; min-width: 0; }
+.tw-install__h { font-size: 1rem; font-weight: 650; margin: 0; color: var(--foreground); }
+.tw-install__lead { font-size: 0.875rem; line-height: 1.5; color: var(--muted-foreground); margin: 4px 0 10px; }
+.tw-install__steps { margin: 0; padding-inline-start: 1.25rem; font-size: 0.9375rem; line-height: 1.75; color: var(--foreground); }
+.tw-install__inline { display: inline-flex; align-items: center; gap: 4px; font-weight: 600; white-space: nowrap; }
+.tw-install__glyph { vertical-align: -3px; }
+/* 44px target — the same thumb rule as every other control. */
+.tw-install__x { flex: none; width: 44px; height: 44px; display: grid; place-items: center; border: 0; background: transparent; color: var(--muted-foreground); border-radius: 50%; cursor: pointer; }
+.tw-install__x:hover { background: var(--secondary); color: var(--foreground); }
+.tw-install__x:focus-visible { outline: 2px solid var(--ring, currentColor); outline-offset: 2px; }

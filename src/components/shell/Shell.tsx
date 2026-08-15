@@ -2,6 +2,7 @@ import { useEffect, Suspense } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "./Header";
 import { MottoBand } from "./MottoBand";
+import { InstallCard } from "./InstallCard";
 import { MegaMenu } from "./MegaMenu";
 import { Footer } from "./Footer";
 import { Concierge } from "./Concierge";
@@ -124,6 +125,7 @@ export function Shell() {
       <MegaMenu />
       <main id="main" className="tw-main" data-page={slug}>
         <BackBar />
+        <InstallCard />
         {/* Route pages are code-split (React.lazy in App.tsx). The Suspense
             boundary lives here so the header, footer and panels stay mounted
             while the next page's chunk loads. */}
