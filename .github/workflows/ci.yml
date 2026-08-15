@@ -23,6 +23,12 @@ jobs:
         run: npm run typecheck
       - name: Build
         run: npm run build
+      - name: Brand mark — one form only
+        # Scans the BUILT output, so it covers metadata, og: tags, JSON-LD and
+        # every translated string, not just visible copy. David, 2026-08-04:
+        # structured data is the machine-readable version of the mark, so it is
+        # what an AI cites when it names us.
+        run: npm run check:brand
       - name: Install Chromium (for the a11y audit)
         run: npx playwright install --with-deps chromium
       - name: Accessibility gate (WCAG 2.1 A/AA)

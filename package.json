@@ -21,6 +21,7 @@
     "gen:ground-truth": "esbuild scripts/gen-ground-truth.ts --bundle --platform=node --format=esm --define:import.meta.env={} --outfile=scratchpad/gengt.mjs && node scratchpad/gengt.mjs",
     "gen:catalog": "esbuild scripts/gen-catalog-seed.ts --bundle --platform=node --format=esm --outfile=scratchpad/gen.mjs && node scratchpad/gen.mjs",
     "check:generated": "node scripts/check-generated.mjs",
+    "check:brand": "node scripts/check-brand.mjs",
     "prepare": "git config core.hooksPath .githooks 2>/dev/null || true"
   },
   "dependencies": {
