@@ -41296,6 +41296,251 @@
   }
  },
  {
+  "id": "isla-mujeres-mexico",
+  "region_code": "10S",
+  "name": "Isla Mujeres",
+  "country": "Mexico",
+  "line": "*If it's a golf-cart island with the world's calmest",
+  "status": "live",
+  "depth": "verified",
+  "img": "tropicalBeach",
+  "sub_region": "Quintana Roo (Cancún & Riviera Maya)",
+  "si": [
+   "tropical",
+   "ocean",
+   "diveglobal",
+   "adventure"
+  ],
+  "tier_range": [
+   "comfort",
+   "premier"
+  ],
+  "draw_rank": "anchor",
+  "data": {
+   "key_facts": [
+    "Whale-shark snorkel capital, roughly June-September (snorkel-only, no scuba)",
+    "MUSA statues 3.5-8 m deep - divable by Open Water divers and snorkelers",
+    "Punta Sur summer loggerhead-turtle mating aggregation in strong currents",
+    "Playa Norte among the region's most sargassum-protected beaches",
+    "Short ferry from Cancún; gateway for Isla Contoy day trips"
+   ],
+   "safety": {
+    "emergency": "911",
+    "hospital": "local clinic; major trauma in Cancún (Galenia/Hospiten - verify); hyperbaric via SSS Cancún / Cozumel",
+    "advisory_level": "L2",
+    "malaria": "none in QR tourist zones (verify); dengue precautions",
+    "yellow_fever": "none required"
+   },
+   "timing": {
+    "peak": "Dec-Apr (region dry/high season) + Jun-Sep whale-shark event peak (snorkel-only)",
+    "shoulder": "May-Jun & Nov (~30-40% off winter rates)",
+    "green": "Jun-mid-Oct (hurricane season, ~40-60% off; whale-shark peak sits inside it)",
+    "booking_lead": "whale-shark tours ~30-39 days (book 3-6 wks ahead, sells out summer); shoulder beds 2-4 wks; ultra/boutique suites Dec-Apr + holidays 3-6+ months",
+    "off_season_specials": "green-season play = discounted island bed + premium whale-shark excursion ('cheap bed, peak wildlife'); disclose hurricane/sargassum",
+    "event_peaks": "Christmas-New Year, US spring break (Mar); whale-shark open (early Jun) + Jul-Aug midsummer height",
+    "campaign_start": "whale-shark Mar-Apr (6-8 wks pre-open); winter/honeymoon-suite Aug-Sep; green-season value Apr-May"
+   },
+   "jewels": [
+    {
+     "name": "Whale-shark snorkel departures",
+     "si_tag": "ocean",
+     "status": "future",
+     "tier": "comfort",
+     "hook": "island boats to the aggregation, Jun-Sept, snorkel-only",
+     "bookable_category": "boat snorkel excursion",
+     "commission_path": "DMC/local operator → OTA affiliate",
+     "source": "https://mexicodivers.com/"
+    },
+    {
+     "name": "MUSA south wing",
+     "si_tag": "diveglobal",
+     "status": "future",
+     "tier": "comfort",
+     "hook": "shallow sculpture reef divable by beginners and snorkelers",
+     "bookable_category": "dive/snorkel tour",
+     "commission_path": "local dive-op → OTA affiliate",
+     "source": "https://www.bluewaterdivetravel.com/scuba-musa-isla-mujeres-cancun",
+     "timing": "Dec-Apr  + Jun-Sep whale-shark event peak",
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW"
+    },
+    {
+     "name": "Punta Sur loggerhead-turtle dive",
+     "si_tag": "diveglobal",
+     "status": "future",
+     "tier": "premier",
+     "hook": "summer mating aggregation in south-point current",
+     "bookable_category": "guided drift dive",
+     "commission_path": "local dive-op (advanced) → curated-recommend",
+     "source": "https://www.pocnadivecenter.com/post/scuba-diving-with-loggerheads-in-isla-mujeres"
+    },
+    {
+     "name": "Playa Norte at dawn",
+     "si_tag": "tropical",
+     "status": "live",
+     "tier": "comfort",
+     "hook": "waist-deep glass-calm turquoise, sargassum-protected",
+     "bookable_category": "hotel + ferry",
+     "commission_path": "bed-bank/boutique portal → OTA; ferry pass-through",
+     "source": "https://www.howisthesargassum.com/blog/cancun-hurricane-season-2026",
+     "timing": "Dec-Apr  + Jun-Sep whale-shark event peak",
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW"
+    },
+    {
+     "name": "Isla Contoy day trip",
+     "si_tag": "globaladv",
+     "status": "future",
+     "tier": "comfort",
+     "hook": "200/day capped bird-sanctuary reserve + Ixlaché reef",
+     "bookable_category": "authorized eco day tour",
+     "commission_path": "authorized Contoy operator/DMC → curated (fee pass-through)",
+     "source": "https://contoyadventures.com/isla-contoy/",
+     "timing": "Dec-Apr  + Jun-Sep whale-shark event peak",
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Is Isla Mujeres safe to visit right now?",
+     "a": "Yes — freely bookable, no hold. Isla Mujeres sits in Quintana Roo, which carries a standard US State Dept Level 2 \"Exercise Increased Caution\" (dated 2026-05-29). It is a small, calm golf-cart island; it has a local clinic, with major trauma care a short ferry and drive away in Cancún (Galenia, Hospiten).",
+     "source": "travel.state.gov",
+     "si_tag": "safety"
+    },
+    {
+     "q": "What's the real risk to plan for on Isla Mujeres?",
+     "a": "Water, weather and currents — not crime. Drink bottled water, use repellent for dengue (no malaria in the tourist zone), and note hurricane season runs June–November with September riskiest. Playa Norte is comparatively sargassum-protected, but 2026 is heavy region-wide; the Punta Sur loggerhead dives sit in strong currents, so they are for advanced divers only.",
+     "source": "howisthesargassum.com",
+     "si_tag": "safety"
+    },
+    {
+     "q": "Is swimming with whale sharks or diving Punta Sur dangerous?",
+     "a": "The whale-shark encounter is snorkel-only with no decompression restriction — wear the vest, no touching, stay with the guide against boat traffic and open-water current. Punta Sur's summer loggerhead dive is a strong-current drift for advanced divers with a local guide; observe no-fly of 18–24 hours after any scuba.",
+     "source": "pocnadivecenter.com",
+     "si_tag": "safety"
+    },
+    {
+     "q": "When and how can I swim with whale sharks from Isla Mujeres?",
+     "a": "Roughly June to September, on a snorkel-only boat excursion to the aggregation — the island is the whale-shark snorkel capital of the region. Tours book about 30–39 days out on average and sell out fast in peak summer, so reserve at least 3–6 weeks ahead; it is snorkel-only, with no scuba allowed.",
+     "source": "mexicodivers.com",
+     "si_tag": "ocean"
+    },
+    {
+     "q": "Can beginners dive MUSA from Isla Mujeres?",
+     "a": "Yes — MUSA is one of the most accessible dives anywhere. Its 470+ statues sit just 3.5–8 m down, shallow enough for Open Water divers and snorkelers, and at ≤9 m these are easy day dives. Advanced divers can add the Punta Sur loggerhead drift in summer, which sits in strong current and is guided-only.",
+     "source": "bluewaterdivetravel.com",
+     "si_tag": "diveglobal"
+    },
+    {
+     "q": "Is Playa Norte good, and will sargassum ruin it?",
+     "a": "It is the island's signature beach — waist-deep, glass-calm turquoise you can wade out a hundred meters into — and one of the most sargassum-protected stretches in the region. In a heavy year like 2026 that protection is a genuine edge, but still disclose: no beach is fully immune, and mornings are cleanest.",
+     "source": "howisthesargassum.com",
+     "si_tag": "tropical"
+    }
+   ],
+   "seo": {
+    "meta_title": "Isla Mujeres, Mexico: Whale Sharks, MUSA & Playa Norte",
+    "meta_description": "A golf-cart island off Cancún — snorkel the whale-shark run, dive MUSA and Punta Sur loggerheads, and wade Playa Norte's calm turquoise. Season, safety, booking.",
+    "slug": "isla-mujeres-mexico",
+    "primary_keyword": "Isla Mujeres whale shark snorkeling",
+    "long_tail": [
+     "Isla Mujeres MUSA diving",
+     "Playa Norte Isla Mujeres",
+     "Punta Sur loggerhead turtles",
+     "Isla Mujeres whale shark season",
+     "Isla Contoy tour from Isla Mujeres"
+    ],
+    "search_language": "es-MX (restated, not machine-translated)",
+    "local_keywords": [
+     "nadar con tiburón ballena Isla Mujeres",
+     "buceo MUSA Cancún",
+     "Playa Norte Isla Mujeres",
+     "temporada de tiburón ballena",
+     "tortugas caguama Punta Sur",
+     "qué hacer en Isla Mujeres",
+     "villas de lujo Isla Mujeres"
+    ],
+    "hreflang": [
+     "en",
+     "es-MX"
+    ],
+    "jsonld_type": "TouristDestination",
+    "author_byline": "By David McCallister — commercial pilot, 56 countries",
+    "content_freshness": "2026-07-04"
+   },
+   "booking": {
+    "bin": "freely_bookable",
+    "level": "L2",
+    "codes": [],
+    "consent_flow": false,
+    "note": "Quintana Roo/Mexico US L2 (Exercise Increased Caution) - freely bookable; MXN currency, USD widely accepted"
+   },
+   "si_checklist_25": {
+    "run_date": "2026-07-31",
+    "hits": 7,
+    "misses": 15,
+    "disregarded": 3,
+    "note": "Canonical 25-SI list; sports limited to participant; spectator/prosports/compsports disregarded"
+   },
+   "sis_present": [
+    {
+     "si": "tropical",
+     "name": "tropical",
+     "status": "live"
+    },
+    {
+     "si": "ocean",
+     "name": "ocean",
+     "status": "future"
+    },
+    {
+     "si": "diveglobal",
+     "name": "diveglobal",
+     "status": "future"
+    },
+    {
+     "si": "globaladv",
+     "name": "adventure",
+     "status": "future"
+    }
+   ],
+   "ultra": [
+    {
+     "name": "Impression Isla Mujeres by Secrets",
+     "why_ultra": "125 all-suite adults-only, butler + Endless Privileges, 8 restaurants, private catamaran transfer; 'Most Instagrammable Hotel in the World' 2 yrs running — island's true ultra flagship",
+     "earning": "on application / via host-Virtuoso (Hyatt Inclusive Collection); verify %",
+     "virtuoso_value_add": "verify Virtuoso/Hyatt Prive amenities - not documented",
+     "mor": "commission-on-net; no net-rate resale markup",
+     "source": "https://www.hyattinclusivecollection.com/en/resorts-hotels/impression-by-secrets/mexico/isla-mujeres/"
+    },
+    {
+     "name": "Mia Reef Isla Mujeres (All-Inclusive)",
+     "why_ultra": "private-island feel at Playa Norte tip, dock-connected, 93 rooms + 63 suites, King's Pool snorkel lagoon — upper-luxe marquee, not five-diamond (reviews flag dated facilities)",
+     "earning": "on application via host/OTA; verify",
+     "virtuoso_value_add": "verify - not documented",
+     "mor": "commission-on-net; no resale markup",
+     "source": "https://www.tripadvisor.com/Hotel_Review-g150810-d259074-Reviews-Mia_Reef_Isla_Mujeres-Isla_Mujeres_Yucatan_Peninsula.html"
+    },
+    {
+     "name": "Nearest true ultra: Cancún Nizuc / Playa Mujeres / Mayakoba corridor (mainland)",
+     "why_ultra": "AAA Five-Diamond / Virtuoso-preferred ultra is mainland (Nizuc, Mayakoba Rosewood/Banyan Tree/Fairmont/Andaz); Isla Mujeres = day-trip / honeymoon-island add-on",
+     "earning": "on application - see Puerto Morelos/Mayakoba dossier",
+     "virtuoso_value_add": "see corridor dossier",
+     "mor": "commission-on-net",
+     "source": "https://www.jetsetchristina.com/where-to-stay-in-mayakoba-mexico-rosewood-vs-fairmont-vs-andaz-vs-banyan-tree/"
+    }
+   ],
+   "source_verified": "2026-07-04",
+   "hero": {
+    "query": "Isla Mujeres, Mexico"
+   }
+  },
+  "feel": [
+   "tropical"
+  ]
+ },
+ {
   "id": "isle-of-skye-scotland",
   "region_code": "03F",
   "name": "The Isle of Skye",
@@ -81696,6 +81941,306 @@
   ]
  },
  {
+  "id": "samburu-kenya",
+  "region_code": "05A",
+  "name": "Samburu National Reserve",
+  "country": "Kenya",
+  "line": "Northern Kenya's wild frontier",
+  "status": "live",
+  "depth": "verified",
+  "img": "safariJeep",
+  "sub_region": "Kenya — Samburu / Northern Frontier",
+  "si": [
+   "safari",
+   "ultra",
+   "romance",
+   "adventure",
+   "deepdive",
+   "culture"
+  ],
+  "tier_range": [
+   "essential",
+   "comfort",
+   "premier",
+   "luxury",
+   "ultra"
+  ],
+  "draw_rank": "core",
+  "data": {
+   "key_facts": [
+    "The 'Samburu Special Five' - Grevy's zebra (80%+ of the world's remaining), reticulated giraffe, Beisa oryx, gerenuk, Somali ostrich - arid-country species found ONLY in Kenya's northern reserves, not the southern parks",
+    "~900 elephants + some of Kenya's best leopard (riverine forest of the Ewaso Ng'iro River); far fewer vehicles than the south - the connoisseur's Kenya",
+    "The Born Free legacy - George + Joy Adamson raised Elsa the lioness here; home of the proud Samburu people (cousins of the Maasai)",
+    "US L2 overall BUT far-north border counties (Mandera, Wajir, Garissa; parts of Marsabit/Turkana) are US L4 Do Not Travel - Samburu is NOT among them (mainstream safari zone); ROUTE VIA FLY-IN",
+    "Best Jul-Sep + Jan-Feb (dry); 2-3 days ideal, pairs with Laikipia (rhino); sold via Kenya safari DMCs 10-25% - IATAN/host-gated, CLIA has NO Africa representation",
+    "KES (~129/USD) + M-Pesa but safari quoted USD; eTA required; malaria prophylaxis advised (chloroquine-resistant); YF only if arriving from a risk country; AMREF Flying Doctors for evac"
+   ],
+   "safety": {
+    "emergency": "999 / 112 / 911 (limited response in the remote north); Kenya Red Cross ambulance 1199; AMREF Flying Doctors for bush evac",
+    "hospital": "Remote north - AMREF Flying Doctors (~$40 pp/30d) + travel-medical insurance; nearest referral Nanyuki/Nairobi",
+    "advisory_level": "L2",
+    "malaria": "prophylaxis advised (Samburu qualifies, chloroquine-resistant); DEET at dusk",
+    "yellow_fever": "compulsory only if arriving from a risk country; CDC recommends for most",
+    "activity_note": "L2 overall + FAR-NORTH L4 CARVE-OUT (Mandera/Wajir/Garissa + parts of Marsabit/Turkana are Do Not Travel - Samburu is NOT among them; route via fly-in, verify current advisory). Dangerous game at close range - stay in the vehicle, follow the guide; camel/bush walks with armed guides. Remote north - carry AMREF evac + insurance"
+   },
+   "timing": {
+    "peak": "Jul-Sep (dry, hot, wildlife on the river) + Jan-Feb (dry)",
+    "shoulder": "Jun + Oct (good game, softer rates)",
+    "green": "Mar-May + Nov (rains - lush, birdlife, quietest, cheapest)",
+    "booking_lead": "river lodges + fly-in 3-6 mo (Jul-Sep + Jan-Feb; distinctive lodges are small); shoulder 2-4 mo; green 1-2 mo",
+    "off_season_specials": "green-season value + birding; combine Laikipia (rhino) an hour away, or Mara/Amboseli",
+    "event_peaks": "Jul-Sep + Christmas/NY + Easter",
+    "campaign_start": "Jul-Sep + Jan-Feb Special-Five safaris 4-6 mo out; green birding value by prior Sep-Oct; bundle Samburu + Laikipia (northern-Kenya pairing)"
+   },
+   "jewels": [
+    {
+     "name": "The Samburu Special Five",
+     "si_tag": "safari",
+     "status": "live",
+     "tier": "comfort",
+     "price_band": "~$500-2,000/pp/day",
+     "timing": "Jul-Sep + Jan-Feb",
+     "commission_path": "safari DMC 10-25%",
+     "draw_rank": 1,
+     "hook": "Grevy's zebra, reticulated giraffe, gerenuk, Beisa oryx and Somali ostrich — arid-country species you won't see in the southern parks"
+    },
+    {
+     "name": "Leopard + elephants on the Ewaso Ng'iro",
+     "si_tag": "safari",
+     "status": "live",
+     "tier": "comfort",
+     "price_band": "~$500-2,000/pp/day",
+     "timing": "Jul-Sep  + Jan-Feb",
+     "commission_path": "safari DMC 10-25%",
+     "draw_rank": 2,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "some of Kenya's best leopard in the doum-palm riverine forest, plus ~900 elephants and big cats drawn to the river"
+    },
+    {
+     "name": "A camel safari + bush walk",
+     "si_tag": "globaladv",
+     "status": "live",
+     "tier": "premier",
+     "price_band": "~$60-150/pp",
+     "timing": "Jul-Sep  + Jan-Feb",
+     "commission_path": "camp/DMC",
+     "draw_rank": 1,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "ride the Samburu country by camel with the warriors, a rare on-foot/on-camel angle among the wildlife and the culture"
+    },
+    {
+     "name": "The Born Free / Elsa legacy",
+     "si_tag": "deepdive",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "on application",
+     "timing": "Jul-Sep  + Jan-Feb",
+     "commission_path": "DMC/venue",
+     "draw_rank": 1,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "the Adamsons' country — the story of Elsa the lioness and Born Free, and the conservation lineage it began; a deeper wildlife-heritage layer"
+    },
+    {
+     "name": "A Samburu village visit",
+     "si_tag": "culture",
+     "status": "future",
+     "tier": "essential",
+     "price_band": "~$20-50/pp",
+     "timing": "Jul-Sep  + Jan-Feb",
+     "commission_path": "DMC/community",
+     "draw_rank": 1,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "the proud Samburu people — a manyatta visit, warriors' dances and beadwork with a fair-trade, community-benefiting operator"
+    },
+    {
+     "name": "A river-lodge honeymoon (Saruni / Sasaab)",
+     "si_tag": "ultra",
+     "status": "live",
+     "tier": "luxury",
+     "price_band": "~$600-1,600+/night all-in",
+     "timing": "standing; peak 3-6 mo",
+     "commission_path": "consortia/Virtuoso + DMC",
+     "draw_rank": 1,
+     "hook": "Samburu's distinctive lodges — Saruni's rock-set suites, Sasaab's Moroccan-Swahili tents over the Ewaso Ng'iro — private, stylish and quiet; honeymoon-grade"
+    },
+    {
+     "name": "A Samburu river honeymoon",
+     "si_tag": "romance",
+     "status": "live",
+     "tier": "luxury",
+     "price_band": "on application",
+     "timing": "Jul-Sep  + Jan-Feb",
+     "commission_path": "consortia/host",
+     "draw_rank": 1,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Is Samburu safe to visit right now?",
+     "a": "Yes to book, with a clear-eyed note. Kenya is US Level 2, and Samburu itself is the mainstream safari zone flown into by the major operators. But it sits in northern Kenya, where the far-north border counties are Level 4 'Do Not Travel' - Samburu is not among them, and we route you to the reserve by air, not through those areas. We disclose the L2 and the northern boundary plainly.",
+     "source": "travel.state.gov",
+     "si_tag": "safety"
+    },
+    {
+     "q": "What's the real risk to plan for in Samburu?",
+     "a": "The northern-frontier context and remoteness. Stick to the licensed-operator reserve programme (fly-in recommended over long northern road transfers), follow your guide with dangerous game, and carry AMREF Flying Doctors (~$40 pp/30 days) + travel-medical insurance - public EMS is limited in the north. Malaria prophylaxis is essential.",
+     "source": "cdc.gov",
+     "si_tag": "safety"
+    },
+    {
+     "q": "What makes Samburu different from the Mara or Amboseli?",
+     "a": "The Special Five - Grevy's zebra, reticulated giraffe, oryx, gerenuk and Somali ostrich you won't see in the southern parks - plus top leopard in the riverine forest, elephants on the Ewaso Ng'iro, and far fewer vehicles. It's the connoisseur's Kenya.",
+     "source": "charmingsafariz.com",
+     "si_tag": "safari"
+    },
+    {
+     "q": "When is the best time to visit Samburu?",
+     "a": "Jun-Sep and Jan-Feb (dry) - hot and dry, when wildlife concentrates on the river and game-viewing peaks (Jul-Sep is the sweet spot). The green rains bring lush scenery, birdlife and lower rates.",
+     "source": "samburureserve.org",
+     "si_tag": "safari"
+    },
+    {
+     "q": "How many days do I need in Samburu?",
+     "a": "2-3 days is ideal to work the river circuits and find the Special Five plus leopard; it pairs naturally with Laikipia (rhino, an hour's drive/short hop) or the Mara/Amboseli.",
+     "source": "africaunpacked.com",
+     "si_tag": "safari"
+    },
+    {
+     "q": "Do I need a visa or yellow-fever certificate for Kenya?",
+     "a": "An eTA (Kenya replaced visas with the eTA in 2024 - apply at least 2 weeks ahead). Yellow fever is compulsory only if you arrive from a YF-risk country; CDC recommends the vaccine for most.",
+     "source": "cdc.gov",
+     "si_tag": "safari"
+    }
+   ],
+   "seo": {
+    "meta_title": "Samburu Safari Guide: The Special Five, Leopard, Best Time & Northern-Kenya Safety",
+    "meta_description": "Plan a Samburu safari - northern Kenya's Special Five (Grevy's zebra, reticulated giraffe, gerenuk, oryx, Somali ostrich), Kenya's best leopard on the Ewaso Ng'iro, the Born Free legacy and far fewer vehicles - with the fly-in northern-Kenya safety picture, timing and cost.",
+    "slug": "samburu-kenya",
+    "primary_keyword": "Samburu safari",
+    "long_tail": [
+     "Samburu Special Five",
+     "Grevy's zebra Samburu",
+     "Samburu leopard",
+     "best time to visit Samburu",
+     "Samburu vs Maasai Mara",
+     "is Samburu safe",
+     "Ewaso Ng'iro Samburu"
+    ],
+    "search_language": "sw",
+    "local_keywords": [
+     "Samburu",
+     "Ewaso Ng'iro",
+     "punda milia wa Grevy",
+     "twiga",
+     "chui",
+     "Wasamburu",
+     "Elsa"
+    ],
+    "hreflang": [
+     "en",
+     "sw"
+    ],
+    "jsonld_type": "TouristDestination",
+    "author_byline": "By David McCallister — commercial pilot, 56 countries",
+    "content_freshness": "2026-07-31"
+   },
+   "booking": {
+    "bin": "freely_bookable",
+    "level": "L2",
+    "codes": [
+     "exercise-increased-caution",
+     "far-north-l4-carveout",
+     "crime"
+    ],
+    "consent_flow": false,
+    "book_suppressed": false,
+    "note": "Kenya US L2 overall; Samburu is the SAFE MAINSTREAM safari zone but lies in northern Kenya where far-north border counties (Mandera, Wajir, Garissa; parts of Marsabit/Turkana) are US L4 Do Not Travel - Samburu is NOT among them. Route via fly-in; disclose L2 + the northern boundary. Re-verify each cycle."
+   },
+   "si_checklist_25": {
+    "run_date": "2026-07-31",
+    "hits": 7,
+    "misses": 15,
+    "disregarded": 3,
+    "note": "Canonical 25-SI list; SAFARI is the launch/demo SI - primary safari not globaladv; camel safari + cultural walks = globaladv; Born Free/Elsa = deepdive; sports limited to participant; spectator/prosports/compsports disregarded"
+   },
+   "sis_present": [
+    {
+     "si": "safari",
+     "name": "safari",
+     "status": "live",
+     "note": "Special Five, leopard, elephants"
+    },
+    {
+     "si": "ultra",
+     "name": "ultra",
+     "status": "live"
+    },
+    {
+     "si": "romance",
+     "name": "Romance, Marriages & Honeymoons",
+     "status": "live"
+    },
+    {
+     "si": "globaladv",
+     "name": "adventure",
+     "status": "live",
+     "note": "camel safari + cultural bush walks"
+    },
+    {
+     "si": "deepdive",
+     "name": "deepdive",
+     "status": "future",
+     "note": "Born Free / Elsa the lioness"
+    },
+    {
+     "si": "culture",
+     "name": "culture",
+     "status": "future",
+     "note": "the Samburu people"
+    }
+   ],
+   "ultra": [
+    {
+     "name": "Saruni Samburu / Sasaab - the river's apex stays",
+     "why_ultra": "dramatic rock-and-river suites, private guiding, camel safaris and the Special Five to yourselves",
+     "earning": "consortia/Virtuoso",
+     "virtuoso_value_add": true,
+     "mor": "commissionable-rack",
+     "tier": "ultra",
+     "price_band": "~$900-1,800+/night"
+    },
+    {
+     "name": "A private Samburu fly-in + camel + culture week",
+     "why_ultra": "exclusive-vehicle Special-Five safari + a camel-back day + a Samburu cultural immersion, privately guided",
+     "earning": "DMC/consortia",
+     "virtuoso_value_add": false,
+     "mor": "commissionable",
+     "tier": "ultra",
+     "price_band": "on application"
+    },
+    {
+     "name": "A northern-Kenya pairing (Samburu + Laikipia rhino)",
+     "why_ultra": "the Special Five + the rhino conservancies of Laikipia, private-guided fly-in throughout",
+     "earning": "DMC/consortia",
+     "virtuoso_value_add": false,
+     "mor": "commissionable",
+     "tier": "ultra",
+     "price_band": "on application"
+    }
+   ],
+   "source_verified": "2026-07-31",
+   "hero": {
+    "query": "Samburu National Reserve, Kenya"
+   }
+  }
+ },
+ {
   "id": "san-cristobal-de-las-casas-mexico",
   "region_code": "10S",
   "name": "San Cristóbal de las Casas, Mexico",
@@ -101993,6 +102538,296 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Virgin Gorda, British Virgin Islands"
+   }
+  }
+ },
+ {
+  "id": "volcanoes-national-park-rwanda",
+  "region_code": "05A",
+  "name": "Volcanoes National Park",
+  "country": "Rwanda",
+  "line": "Gorillas in the mist",
+  "status": "live",
+  "depth": "verified",
+  "img": "safariGiraffe",
+  "sub_region": "Rwanda — Volcanoes / Virunga",
+  "si": [
+   "safari",
+   "adventure",
+   "ultra",
+   "romance",
+   "deepdive"
+  ],
+  "tier_range": [
+   "essential",
+   "comfort",
+   "premier",
+   "luxury",
+   "ultra"
+  ],
+  "draw_rank": "anchor",
+  "data": {
+   "key_facts": [
+    "Rwanda's flagship mountain-gorilla trek (the wow) in the Virunga volcanoes - a one-hour habituated-family encounter; world mountain-gorilla population now 1,063 (no longer critically endangered); the birthplace of African conservation (Dian Fossey/Karisoke 1967)",
+    "Permit $1,500/trekker (RDB), only 98/day, sells out - book 3-6 months ahead via a licensed operator or RDB (Irembo); min age 15; ~2h from Kigali - the accessible, premium gorilla trek",
+    "Also: golden-monkey trekking (bamboo), Mount Bisoke crater-lake hike (3,711m, most popular), Karisimbi summit (4,507m, Rwanda's highest, 2-day), Dian Fossey grave hike, Kwita Izina gorilla-naming (Sep)",
+    "US L3 Reconsider Travel (2026 regional Ebola-alert; was L2) - bookable disclose+consent; PLUS a standing US L4 carve-out within 10km of the DRC border (Volcanoes' sectors/lodges are on the Rwandan side); Rwanda is Africa's safest by crime",
+    "UGANDA IS L4 (Ebola) - Rwanda Volcanoes is the LIVE gorilla redirect; gorilla trek = strenuous high-altitude (~2,500-3,700m) muddy rainforest hike (moderate fitness); trekking rules: 7m distance, mask, max 1hr, max 8/group, armed ranger, no trekking if ill",
+    "Sold via Rwandan safari DMCs 10-20% - IATAN/host-gated, CLIA has NO Africa representation; the $1,500 RDB permit is non-commissionable pass-through; RWF (~1,467/USD); visa on arrival $30; malaria year-round (prophylaxis); AMREF for evac"
+   ],
+   "safety": {
+    "emergency": "112 (police) / 912 ambulance / 111 fire; AMREF Flying Doctors for high-terrain evac",
+    "hospital": "Remote/high terrain - AMREF Flying Doctors (~$40 pp/30d) + travel-medical insurance; nearest referral Musanze/Kigali",
+    "advisory_level": "L3",
+    "malaria": "present year-round (chloroquine-resistant) - prophylaxis advised; DEET at dusk (lower at altitude but real)",
+    "yellow_fever": "required only if arriving from a YF-endemic country (not direct from the US)",
+    "activity_note": "L3 DISCLOSE + CONSENT (2026 regional Ebola-alert precaution; Rwanda is Africa's safest by crime). Standing US L4 within 10km of the DRC border - route to the Rwandan-side sectors/lodges, not the border. Gorilla trek = strenuous high-altitude (~2,500-3,700m) muddy hike (moderate fitness); rules: 7m/1hr/mask/max 8/armed ranger/no trekking if ill. Volcano climbs = altitude sickness risk. Remote - carry AMREF evac + insurance"
+   },
+   "timing": {
+    "peak": "Jun-Sep + Dec-Feb (drier, firmer trails; permits sell out; Kwita Izina Sep spikes demand)",
+    "shoulder": "early Mar + late Nov (softer)",
+    "green": "Mar-May + Oct-Nov (rains - lush, muddier; 30% low-season permit discount Nov-May IF you also pre-book Akagera and/or Nyungwe nights)",
+    "booking_lead": "permits + luxury lodges 3-6 mo (Jun-Sep + Dec-Feb sell out; only 98 permits/day); green 1-3 mo",
+    "off_season_specials": "the Nov-May 30%-off permit (with Akagera/Nyungwe nights) - sell a 3-park Rwanda circuit to unlock it",
+    "event_peaks": "Kwita Izina (Sep) + Christmas/NY + Jun-Sep dry",
+    "campaign_start": "Jun-Sep + Dec-Feb 6-9 mo out; Nov-May discounted 3-park circuit by prior Aug-Sep; position as the Uganda-L4 gorilla redirect now"
+   },
+   "jewels": [
+    {
+     "name": "The mountain-gorilla trek",
+     "si_tag": "safari",
+     "status": "live",
+     "tier": "premier",
+     "price_band": "~$1,000-3,000+/pp/day (permit-inclusive)",
+     "timing": "year-round; Jun-Sep + Dec-Feb peak; book 3-6 mo",
+     "commission_path": "DMC 10-20% (permit pass-through)",
+     "draw_rank": 1,
+     "hook": "the single most moving hour in wildlife travel"
+    },
+    {
+     "name": "Kwita Izina - the gorilla-naming ceremony",
+     "si_tag": "safari",
+     "status": "live",
+     "tier": "premier",
+     "price_band": "event + trek",
+     "timing": "September",
+     "commission_path": "DMC + event",
+     "draw_rank": 2,
+     "hook": "Rwanda's global conservation celebration each September — newborn gorillas named before thousands; a rare, meaningful event to time a trip around"
+    },
+    {
+     "name": "Golden-monkey trekking",
+     "si_tag": "globaladv",
+     "status": "live",
+     "tier": "premier",
+     "price_band": "~$100/pp",
+     "timing": "Jun-Sep + Dec-Feb",
+     "commission_path": "DMC/RDB",
+     "draw_rank": 1,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "the Virungas' other primate — troops of endangered golden monkeys in the bamboo, a budget-friendlier, joyful half-day"
+    },
+    {
+     "name": "Mount Bisoke crater-lake hike + Karisimbi summit",
+     "si_tag": "globaladv",
+     "status": "live",
+     "tier": "premier",
+     "price_band": "~$75-400/pp",
+     "timing": "dry season; guided",
+     "commission_path": "DMC/RDB",
+     "draw_rank": 2,
+     "hook": "the park's most popular hike to Bisoke's crater lake, or the strenuous 2-day summit of Karisimbi — volcano-country adventure between gorilla days"
+    },
+    {
+     "name": "The Dian Fossey grave hike (Karisoke)",
+     "si_tag": "deepdive",
+     "status": "future",
+     "tier": "premier",
+     "price_band": "~$75/pp",
+     "timing": "Jun-Sep + Dec-Feb",
+     "commission_path": "DMC/RDB",
+     "draw_rank": 1,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "a pilgrimage through the forest to Fossey's grave beside her gorilla Digit, at the site of the 1967 Karisoke Research Center"
+    },
+    {
+     "name": "A gorilla-lodge honeymoon (Singita / One&Only / Bisate)",
+     "si_tag": "ultra",
+     "status": "live",
+     "tier": "luxury",
+     "price_band": "~$1,500-5,000+/night all-in",
+     "timing": "standing; peak 3-6 mo",
+     "commission_path": "consortia/Virtuoso + DMC",
+     "draw_rank": 1,
+     "hook": "the Virungas' apex lodges — Singita Kwitonda's volcano-view suites, One&Only Gorilla's Nest, Bisate's cone-shaped villas — fireside luxury after the trek; honeymoon-grade"
+    },
+    {
+     "name": "A Virunga honeymoon",
+     "si_tag": "romance",
+     "status": "live",
+     "tier": "luxury",
+     "price_band": "on application",
+     "timing": "Jun-Sep + Dec-Feb",
+     "commission_path": "consortia/host",
+     "draw_rank": 1,
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Is Volcanoes / Rwanda safe to visit right now?",
+     "a": "Yes to book - with disclosure. Rwanda carries a US Level 3 'Reconsider Travel' advisory in 2026 (a regional Ebola-alert precaution, not crime - Rwanda is Africa's safest country by crime index). One standing caveat: the US flags a 'Do Not Travel' carve-out within 10 km of the DRC border; Volcanoes' trekking sectors and lodges are on the Rwandan side - we route you there, not the border. We disclose the L3 and confirm consent.",
+     "source": "traveladvisory.io",
+     "si_tag": "safety"
+    },
+    {
+     "q": "What's the real risk to plan for at Volcanoes?",
+     "a": "The health advisory and the trek itself - not crime. The L3 is a health precaution (Ebola is a regional concern). The gorilla trek is a strenuous, high-altitude (~2,500-3,700m), often muddy rainforest hike - come with moderate fitness; malaria is year-round (prophylaxis + DEET), and it's remote - carry AMREF Flying Doctors + insurance.",
+     "source": "cdc.gov",
+     "si_tag": "safety"
+    },
+    {
+     "q": "How much is the gorilla permit and how do I book it?",
+     "a": "US$1,500 per trekker, and with only 98 permits/day it sells out - book 3-6 months ahead through a licensed operator or the Rwanda Development Board (Irembo). Minimum age 15.",
+     "source": "volcanoesnationalpark.org",
+     "si_tag": "safari"
+    },
+    {
+     "q": "How hard is the gorilla trek and what are the rules?",
+     "a": "Moderate-to-strenuous: 1-7 hours through steep, muddy, high-altitude forest to reach the family, then max 1 hour with them, 7 m minimum distance, a face mask, max 8 per group, an armed ranger, and no trekking if you're ill. Porters are available and recommended.",
+     "source": "visitrwandagorilla.com",
+     "si_tag": "safari"
+    },
+    {
+     "q": "Rwanda or Uganda for gorillas in 2026?",
+     "a": "Rwanda, right now. Rwanda's permit is pricier ($1,500 vs Uganda's $800) but Volcanoes is 2 hours from Kigali and the choice while Uganda is under a US Level 4 'Do Not Travel' (Ebola outbreak). We route gorilla demand to Volcanoes until Uganda's advisory clears.",
+     "source": "travelweekly.com",
+     "si_tag": "safari"
+    },
+    {
+     "q": "When is the best time to visit, and what else can I do?",
+     "a": "Best in the drier Jun-Sep and Dec-Feb; beyond the gorillas, track golden monkeys, hike Bisoke's crater lake, climb Karisimbi, and make the Dian Fossey grave pilgrimage - a 2-3-day stay rewards.",
+     "source": "volcanoesparkrwanda.org",
+     "si_tag": "globaladv"
+    }
+   ],
+   "seo": {
+    "meta_title": "Volcanoes NP Rwanda Gorilla Trekking Guide: Permits, Fitness, Best Time & Safety",
+    "meta_description": "Plan a Volcanoes National Park gorilla trek - Rwanda's flagship mountain-gorilla experience in the Virungas: the $1,500 permit and how to book it, the fitness and rules, Dian Fossey's Karisoke, golden monkeys and volcano hikes, 2 hours from Kigali - with the US Level-3 advisory, altitude and health intel.",
+    "slug": "volcanoes-np-rwanda",
+    "primary_keyword": "Volcanoes National Park gorilla trekking",
+    "long_tail": [
+     "Rwanda gorilla permit cost 2026",
+     "gorilla trekking fitness Rwanda",
+     "Dian Fossey grave hike",
+     "golden monkey trekking Rwanda",
+     "Mount Bisoke hike",
+     "Rwanda vs Uganda gorillas",
+     "is Rwanda safe"
+    ],
+    "search_language": "fr",
+    "local_keywords": [
+     "Parc National des Volcans",
+     "ingagi",
+     "Karisoke",
+     "Bisoke",
+     "Karisimbi",
+     "Kwita Izina",
+     "inguge z'izahabu"
+    ],
+    "hreflang": [
+     "en",
+     "fr"
+    ],
+    "jsonld_type": "TouristDestination",
+    "author_byline": "By David McCallister — commercial pilot, 56 countries",
+    "content_freshness": "2026-08-01"
+   },
+   "booking": {
+    "bin": "book_with_disclosure",
+    "level": "L3",
+    "codes": [
+     "reconsider-travel",
+     "regional-ebola-alert",
+     "drc-border-10km-l4-carveout"
+    ],
+    "consent_flow": true,
+    "book_suppressed": false,
+    "note": "Rwanda US L3 Reconsider Travel (2026 regional Ebola-alert precaution; was L2) - yet Africa's safest by crime. Disclose L3 + confirm consent. Standing US L4 Do Not Travel carve-out within 10km of the DRC border - Volcanoes' sectors + lodges are on the Rwandan side (route there, not the border). Uganda's L4 makes Rwanda the LIVE gorilla choice. Re-verify each cycle."
+   },
+   "si_checklist_25": {
+    "run_date": "2026-08-01",
+    "hits": 7,
+    "misses": 15,
+    "disregarded": 3,
+    "note": "Canonical 25-SI list; SAFARI is the launch/demo SI - the mountain-gorilla trek is primary safari; golden monkeys + volcano hikes + Fossey grave hike = globaladv; Fossey/Karisoke conservation legacy = deepdive; sports limited to participant; spectator/prosports/compsports disregarded"
+   },
+   "sis_present": [
+    {
+     "si": "safari",
+     "name": "safari",
+     "status": "live",
+     "note": "mountain gorilla trekking"
+    },
+    {
+     "si": "globaladv",
+     "name": "adventure",
+     "status": "live",
+     "note": "golden monkeys + Bisoke/Karisimbi volcano hikes + Dian Fossey grave hike"
+    },
+    {
+     "si": "ultra",
+     "name": "ultra",
+     "status": "live",
+     "note": "Singita/One&Only/Bisate/Sabyinyo"
+    },
+    {
+     "si": "romance",
+     "name": "Romance, Marriages & Honeymoons",
+     "status": "live"
+    },
+    {
+     "si": "deepdive",
+     "name": "deepdive",
+     "status": "future",
+     "note": "Dian Fossey / Karisoke"
+    }
+   ],
+   "ultra": [
+    {
+     "name": "Singita Kwitonda / One&Only Gorilla's Nest - the Virungas' apex stays",
+     "why_ultra": "volcano-view suites, private guiding + butlered luxury at the forest edge, the gorilla trek from the doorstep",
+     "earning": "consortia/Virtuoso",
+     "virtuoso_value_add": true,
+     "mor": "commissionable-rack",
+     "tier": "ultra",
+     "price_band": "~$2,500-5,000+/night"
+    },
+    {
+     "name": "A private double-gorilla-permit + golden-monkey + Fossey week",
+     "why_ultra": "two gorilla treks (different families) + golden monkeys + the Fossey grave hike + a Bisoke climb, privately guided from an ultra lodge",
+     "earning": "DMC/consortia",
+     "virtuoso_value_add": false,
+     "mor": "commissionable",
+     "tier": "ultra",
+     "price_band": "on application"
+    },
+    {
+     "name": "A 3-park Rwanda circuit (Volcanoes + Akagera + Nyungwe)",
+     "why_ultra": "gorillas + Big-Five Akagera + Nyungwe chimps/canopy walk, private-guided - and it unlocks the Nov-May 30% permit discount",
+     "earning": "DMC/consortia",
+     "virtuoso_value_add": false,
+     "mor": "commissionable",
+     "tier": "ultra",
+     "price_band": "on application"
+    }
+   ],
+   "source_verified": "2026-08-01",
+   "hero": {
+    "query": "Volcanoes National Park, Rwanda"
    }
   }
  },
