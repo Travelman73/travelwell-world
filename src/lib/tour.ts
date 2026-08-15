@@ -72,7 +72,10 @@ export const SAFARI_TOUR: TourDef = {
       place: "above",
     },
     {
-      route: "/destination/masai-mara",
+      // Canonical id. This read `/destination/masai-mara` — the pre-rename slug —
+      // and only still worked because LEGACY_DEST_ID resolves it. A demo running
+      // on an alias is a demo one cleanup away from a dead step.
+      route: "/destination/maasai-mara-kenya",
       selector: ".dd-pv",
       line: "These are your options — vetted stays, straight pricing. I'll hold this one for you.",
       place: "above",
@@ -107,4 +110,85 @@ export const SAFARI_TOUR: TourDef = {
   ],
 };
 
-export const TOURS: Record<string, TourDef> = { safari: SAFARI_TOUR };
+/**
+ * THE WINTER/SKI WALK — and the reason it exists is worth stating.
+ *
+ * The safari tour was the first, and it walks into the thinnest data we have.
+ * Measured 2026-08-14: SEVEN of our 44 destinations carry a real dossier — jewels,
+ * FAQs, a safety carve-out, a sub-region, a tier range, a price band — and all
+ * seven are the alpine rows. Not one safari destination carries so much as an
+ * `si` tag.
+ *
+ * So a tester handed `?tour=safari` sees the guided walk working perfectly and
+ * arrives at a one-line destination with a photo. David's own instruction for the
+ * tester round is to show "our fully live and best filled" interests. By that
+ * measure the answer is Winter/Ski, and it is not close.
+ *
+ * The irony is worth keeping: `ski` was flipped live for the demo with the shelf
+ * described as empty until alpine destinations were ingested. They were then
+ * hand-authored with full dossiers — so the shelf nobody expected to be ready is
+ * the only one that is.
+ *
+ * The LINES here are drafts. Structure is the part that had to be right; the
+ * words are David's to rewrite and cost nothing to change.
+ */
+export const SKI_TOUR: TourDef = {
+  id: "ski",
+  label: "Winter/Ski · The Alps",
+  beats: [
+    {
+      route: "/special-interests",
+      selector: '[data-si="ski"]',
+      line: "Let's build a winter week — tap Winter/Ski to start your journey.",
+      place: "below",
+      advanceNav: "/regions",
+    },
+    {
+      route: "/regions",
+      selector: '[data-region="01F"]',
+      line: "Now the where. Western Europe holds the Alps — open it.",
+      place: "below",
+    },
+    {
+      route: "/region/01F",
+      selector: ".rd-dest",
+      line: "Seven resorts, each one written up properly. Tap Zermatt and see how deep it goes.",
+      place: "above",
+    },
+    {
+      // Zermatt over the others deliberately: car-free, an L1 advisory whose real
+      // risk is the mountain rather than crime, and two jewels that show the
+      // range — a sunrise cog railway and a glacier spa. It demonstrates the
+      // safety spine saying something true and specific rather than reassuring.
+      route: "/destination/zermatt-switzerland",
+      selector: ".dd-pv",
+      line: "Vetted stays, straight pricing, and the safety read is the mountain — not crime. I'll hold this one.",
+      place: "above",
+      advanceNav: "/itinerary",
+      hold: { well: "stay", icon: "bed", name: "Backstage Hotel Zermatt", meta: "Stay-Well · held by Atlas", status: "idea" },
+    },
+    {
+      route: "/itinerary",
+      selector: ".it-head",
+      line: "Your winter week, taking shape — every piece I hold, kept in order and always saved.",
+      place: "below",
+    },
+    {
+      route: "/itinerary",
+      selector: ".tw-locale__btn",
+      line: "One last thing — I speak your language. Watch this.",
+      place: "below",
+      setLocale: "ar",
+    },
+    {
+      route: "/itinerary",
+      selector: ".it-head",
+      line: "أينما ذهبت، أنا معك — لنسافر بإتقان.",
+      place: "below",
+      lang: "ar",
+      rtl: true,
+    },
+  ],
+};
+
+export const TOURS: Record<string, TourDef> = { safari: SAFARI_TOUR, ski: SKI_TOUR };
