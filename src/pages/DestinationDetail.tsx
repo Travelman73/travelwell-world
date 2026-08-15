@@ -222,9 +222,34 @@ export default function DestinationDetail() {
                       <span className={`dd-pv__tier dd-pv__tier--${p.tier}`}>{TIER[p.tier]}</span>
                     </div>
                     <div className="dd-pv__desc">{p.desc}</div>
+                    {/*
+                      LEVEL 4 NEVER BOOKS. Absolute — no consent override, no
+                      workaround (David, 2026-08-05). `bookingHold` is set by
+                      resolveSafety for an L4 advisory or an explicit hold in a
+                      dossier carve-out.
+
+                      Until now this was HALF built, which is the worst state to
+                      be in: the safety card printed "Not bookable with us right
+                      now — we won't sell you a trip here while this stands", and
+                      then every provider below it rendered a live Book It button.
+                      The page contradicted itself, and the contradiction resolved
+                      in favour of the booking.
+
+                      Nothing is silently hidden. A vanished button reads as a
+                      broken page; a stated reason reads as a decision, and it is
+                      the same reason the card gives above.
+                    */}
                     <div className="dd-pv__row">
-                      <button className="btn btn-primary" onClick={() => openPanel("concierge")} style={{ minHeight: 38, padding: "0 16px", fontSize: 13 }}>Book It</button>
-                      <span className="pv__mode" style={{ fontSize: 11.5, color: "var(--muted-foreground)" }}>{p.mode === "affiliate" ? "Opens partner site" : "Book in TravelWell"}</span>
+                      {s.bookingHold ? (
+                        <span className="dd-pv__held">
+                          <Icon name="shield" small /> Not bookable — this destination is under a Do Not Travel advisory.
+                        </span>
+                      ) : (
+                        <>
+                          <button className="btn btn-primary" onClick={() => openPanel("concierge")} style={{ minHeight: 38, padding: "0 16px", fontSize: 13 }}>Book It</button>
+                          <span className="pv__mode" style={{ fontSize: 11.5, color: "var(--muted-foreground)" }}>{p.mode === "affiliate" ? "Opens partner site" : "Book in TravelWell"}</span>
+                        </>
+                      )}
                     </div>
                     {p.mode === "affiliate" && (
                       <p className="dd-pv__ftc"><Icon name="info" small /> <span>{p.commission}. We may earn a commission — at no extra cost to you.</span></p>
