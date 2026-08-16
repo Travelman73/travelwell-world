@@ -55362,6 +55362,114 @@
   }
  },
  {
+  "id": "lalibela-ethiopia",
+  "region_code": "05A",
+  "name": "Lalibela",
+  "country": "Ethiopia",
+  "line": "Eleven churches carved from living rock **TravelVisions",
+  "status": "live",
+  "depth": "verified",
+  "img": "kyoto",
+  "sub_region": "Horn & Highlands",
+  "si": [
+   "culture",
+   "deepdive",
+   "pilgrimage"
+  ],
+  "tier_range": [
+   "essential",
+   "comfort"
+  ],
+  "data": {
+   "key_facts": null,
+   "safety": {
+    "posture": "no-booking",
+    "booking_hold": true,
+    "notes": "FCDO advises against all travel to parts of Ethiopia, including the Amhara region, in which Lalibela sits. We do not book this destination. SINGLE SOURCE: travel.state.gov returned HTTP 403 on a fourth attempt (2026-08-16), so no US level was obtained.",
+    "source": "UK Foreign, Commonwealth & Development Office — Ethiopia travel advice",
+    "verified": "2026-05-29",
+    "emergency": "991 police · 907 ambulance (Red Cross) · 911 general",
+    "malaria": "Active outbreak across all 14 regions; transmission below ~2,500 m. Lalibela sits at ~2,500 m; lowland transit legs carry risk and chemoprophylaxis is advised.",
+    "yellow_fever": "Proof required if arriving from or transiting more than 12 hours in a yellow-fever risk country; not required direct from the US. CDC recommends the vaccine for travellers 9 months and over.",
+    "activity_note": "Steep church steps, dark interconnecting tunnels and uneven rock. Mild altitude at ~2,500 m; the Asheton Maryam monastery hike rises above 3,000 m."
+   },
+   "timing": null,
+   "jewels": [
+    {
+     "name": "Bete Giyorgis, the Church of St George",
+     "tier": "essential",
+     "si": "culture",
+     "blurb": "A perfectly symmetrical Greek-cross monolith hewn about 12 m down into the rock, the best-preserved of the eleven.",
+     "source": "https://en.wikipedia.org/wiki/Church_of_Saint_George,_Lalibela"
+    },
+    {
+     "name": "The two interconnected church clusters",
+     "tier": "essential",
+     "si": "culture",
+     "blurb": "Eleven medieval monolithic churches carved from solid rock in the late 12th to early 13th century, UNESCO-listed in 1978.",
+     "source": "https://whc.unesco.org/en/list/18/"
+    },
+    {
+     "name": "Genna at Lalibela",
+     "tier": "essential",
+     "si": "pilgrimage",
+     "blurb": "Ethiopian Christmas on 7 January, when the rock-hewn churches fill with the chant of a living faith.",
+     "source": "https://www.brilliant-ethiopia.com/christmas-in-lalibela"
+    },
+    {
+     "name": "The Asheton Maryam monastery hike",
+     "tier": "comfort",
+     "si": "deepdive",
+     "blurb": "A climb above 3,000 m to a monastery in the cliffs over the town.",
+     "source": "https://www.brilliant-ethiopia.com/asheton-maryam-monastery-lalibela"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Can I book a trip to Lalibela through TravelVisions?",
+     "a": "No. FCDO advises against all travel to parts of Ethiopia, including the Amhara region, in which Lalibela sits. We do not book this destination. SINGLE SOURCE: travel.state.gov returned HTTP 403 on a fourth attempt (2026-08-16), so no US level was obtained. The page stays open because the place is worth knowing about; the booking path does not.",
+     "source": "https://www.gov.uk/foreign-travel-advice/ethiopia"
+    },
+    {
+     "q": "What is Lalibela?",
+     "a": "Eleven medieval monolithic churches carved straight down into solid volcanic rock in the late 12th to early 13th century, UNESCO-listed in 1978 and still a living Orthodox worship site. It was conceived as a New Jerusalem so Ethiopian Christians could make pilgrimage at home after Muslim conquests cut off the Holy Land.",
+     "source": "https://whc.unesco.org/en/list/18/"
+    },
+    {
+     "q": "When do the churches fill with pilgrims?",
+     "a": "At Genna, Ethiopian Christmas, on 7 January. The dry season runs October to March at roughly 15 to 25C.",
+     "source": "https://www.brilliant-ethiopia.com/christmas-in-lalibela"
+    },
+    {
+     "q": "What are the emergency numbers in Ethiopia?",
+     "a": "991 for police, 907 for the Red Cross ambulance, 911 general. An older note circulating as 939 is the fire service, not an ambulance.",
+     "source": "https://addisababa.embassy.qa/en/ethiopia/important-numbers"
+    }
+   ],
+   "seo": {
+    "meta_title": "Lalibela, Ethiopia — the rock-hewn churches | TravelVisions.World",
+    "meta_description": "Eleven medieval monolithic churches carved from living rock, UNESCO-listed in 1978, still a living Orthodox pilgrimage site. Why we do not currently book Ethiopia's Amhara region.",
+    "slug": "lalibela-ethiopia",
+    "jsonld_type": "TouristDestination",
+    "author_byline": "TravelVisions.World research",
+    "content_freshness": "2026-08-16",
+    "primary_keyword": "Lalibela rock-hewn churches"
+   },
+   "booking": null,
+   "si_checklist_25": null,
+   "sis_present": [
+    "culture",
+    "deepdive",
+    "pilgrimage"
+   ],
+   "ultra": null,
+   "source_verified": "2026-08-16",
+   "hero": {
+    "query": "Lalibela, Ethiopia"
+   }
+  }
+ },
+ {
   "id": "lapland-finland",
   "region_code": "03F",
   "name": "Finnish Lapland",
