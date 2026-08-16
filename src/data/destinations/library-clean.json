@@ -16206,258 +16206,6 @@
   }
  },
  {
-  "id": "bwindi-impenetrable-uganda",
-  "region_code": "05A",
-  "name": "Bwindi Impenetrable National Park",
-  "country": "Uganda",
-  "line": "Half the world's mountain gorillas",
-  "status": "future",
-  "depth": "verified",
-  "img": "mountainValley",
-  "sub_region": "Uganda — Bwindi / SW gorilla country",
-  "si": [
-   "safari",
-   "adventure",
-   "ultra",
-   "deepdive",
-   "culture"
-  ],
-  "tier_range": [
-   "essential",
-   "comfort",
-   "premier",
-   "luxury",
-   "ultra"
-  ],
-  "data": {
-   "key_facts": [
-    "BOOKING HOLD: Uganda US L4 Do Not Travel driven by an Ebola (Sudan virus) outbreak - PHEIC declared 2026-05-17. CONTENT-ONLY, no Book path, no waiver. DYNAMIC - re-verify each cycle, flip to live when it clears. Redirect gorilla demand to Rwanda Volcanoes",
-    "The world's premier gorilla forest (UNESCO 1994): ~459 mountain gorillas - nearly HALF the world's - across ~25 habituated groups (9 for trekking) in an ancient Afromontane rainforest",
-    "Permit $800 (foreign non-resident; $600 low-season Apr/May/Nov), operator-only since 1 Mar 2026; the Uganda-ONLY 4-hour Gorilla Habituation Experience (Rushaga) $1,500 -> $1,800 on 1 Jan 2027 (all latent while held)",
-    "One of Earth's most biodiverse forests: 200+ trees, 350+ birds (Albertine Rift endemics), 202 butterflies; the Batwa first people",
-    "Yellow fever MANDATORY for entry (all >=1yr, checked at Entebbe); eVisa (no visa-on-arrival); malaria in all regions incl. Bwindi (prophylaxis); strenuous steep/muddy trek (sectors Buhoma easiest, Nkuringo hardest) - all latent while held",
-    "Live twin = volcanoes-np-rwanda (Rwanda, bookable). Trek rules when reopened: 7-10m distance, mandatory mask, max 1hr, max 8/group, armed ranger, min age 15, no trekking if ill"
-   ],
-   "safety": {
-    "emergency": "999 / 112",
-    "hospital": "Remote - AMREF Flying Doctors (~$40 pp/30d) + travel-medical insurance; nearest referral Kihihi/Kampala (all latent while held)",
-    "advisory_level": "L4",
-    "malaria": "present in all regions incl. Bwindi lowland forest - prophylaxis (latent while held)",
-    "yellow_fever": "MANDATORY for entry (all >=1yr, checked at Entebbe, >=10 days before)",
-    "ebola": "Sudan virus outbreak - PHEIC declared 2026-05-17 - the dominant, disqualifying hazard",
-    "activity_note": "HEALTH-SPINE DOMINANT: Ebola (Sudan virus) outbreak + US L4 Do Not Travel is the disqualifying hazard - CONTENT-ONLY, Book suppressed, no waiver, redirect to Rwanda. DYNAMIC - re-verify each cycle. Gorilla-trek + malaria hazards secondary and moot while held. When reopened: trek rules 7-10m/mask/1hr/max8/armed ranger/no-trek-if-ill; YF mandatory; strenuous high-forest hike"
-   },
-   "timing": {
-    "booking_status": "HELD - no live demand capture while Level 4 stands (no campaigns/fire-dates)",
-    "latent_peak": "Jun-Aug/Sep + Dec-Feb (drier, firmer trails; permits scarce) - IF cleared",
-    "latent_green": "Apr/May + Nov (rains, muddier; $600 low-season permit)",
-    "latent_booking_lead": "permits + lodges 3-6 mo - NOT applicable while held",
-    "reverify_trigger": "check Uganda's advisory EVERY publish cycle - DYNAMIC health advisory; flip Bwindi to live the moment it drops below L4",
-    "redirect": "live gorilla demand -> volcanoes-np-rwanda (Rwanda, bookable, US L3, ~2h from Kigali)"
-   },
-   "jewels": [
-    {
-     "name": "The mountain-gorilla trek",
-     "si_tag": "safari",
-     "status": "held",
-     "tier": "premier",
-     "price_band": "HELD - no book path ($800 permit latent)",
-     "timing": "HELD; latent Jun-Aug + Dec-Feb",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "nearly half the world's mountain gorillas in an ancient UNESCO forest — a one-hour habituated-family encounter on a $800 permit. STATUS: HELD"
-    },
-    {
-     "name": "The 4-hour Gorilla Habituation Experience",
-     "si_tag": "globaladv",
-     "status": "held",
-     "tier": "ultra",
-     "price_band": "HELD ($1,500 -> $1,800 2027 latent)",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "Uganda-only — four hours with a semi-habituated family and the researchers, in the Rushaga sector. STATUS: HELD"
-    },
-    {
-     "name": "The biodiversity of an ancient forest",
-     "si_tag": "deepdive",
-     "status": "held",
-     "tier": "premier",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "one of Earth's most biodiverse Afromontane rainforests — 200+ trees, 350+ birds, 202 butterflies. STATUS: HELD"
-    },
-    {
-     "name": "The Batwa cultural experience",
-     "si_tag": "culture",
-     "status": "held",
-     "tier": "essential",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "the forest's first people — a moving visit to Batwa communities on the forest edge, their music, hunting heritage and displacement story. STATUS: HELD"
-    },
-    {
-     "name": "A forest-lodge gorilla honeymoon (held)",
-     "si_tag": "ultra",
-     "status": "held",
-     "tier": "luxury",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "Bwindi Lodge, Sanctuary Gorilla Forest Camp, Clouds Mountain Gorilla Lodge — fireside forest luxury after the trek"
-    }
-   ],
-   "faq": [
-    {
-     "q": "Is Bwindi safe to visit right now?",
-     "a": "No - and it is not bookable through TravelWell. Uganda is under a US Level 4 'Do Not Travel' advisory driven by an Ebola (Sudan virus) outbreak (PHEIC declared 2026-05-17); we present Bwindi as content and suppress the Book button until the advisory clears. This is the disqualifying fact, ahead of any gorilla or lodge.",
-     "source": "travel.state.gov",
-     "si_tag": "safety"
-    },
-    {
-     "q": "Where can I trek gorillas instead, right now?",
-     "a": "Rwanda - Volcanoes National Park (US L3, bookable). It's ~2 hours from Kigali, the permit is $1,500 (vs Uganda's $800), and it is the responsible live choice while Uganda is on the Ebola hold. We route all gorilla demand there.",
-     "source": "travelweekly.com",
-     "si_tag": "safety"
-    },
-    {
-     "q": "Will this clear - should I wait for Bwindi?",
-     "a": "Possibly - this is a health-driven, dynamic advisory (an outbreak, not conflict), so it can be lifted when the outbreak is contained. We re-verify Uganda's status every publish cycle and will flip Bwindi to bookable the moment it drops below Level 4. For a firm 2026 trip, book Rwanda now.",
-     "source": "travelweekly.com",
-     "si_tag": "safety"
-    },
-    {
-     "q": "What would Bwindi offer when it reopens?",
-     "a": "The world's premier gorilla forest - nearly half the planet's mountain gorillas, the $800 permit (cheaper than Rwanda), the Uganda-only 4-hour Habituation Experience, exceptional biodiversity and the Batwa culture. All held until the advisory lifts.",
-     "source": "whc.unesco.org",
-     "si_tag": "safari"
-    },
-    {
-     "q": "When it reopens, how hard is the Bwindi trek and what are the rules?",
-     "a": "Moderate-to-strenuous - 1-6 hours through steep, muddy forest (sectors from easy Buhoma to hard Nkuringo); then max 1 hour, 7-10m distance, a mandatory face mask, max 8 per group, an armed ranger, and no trekking if ill (gorillas are highly susceptible to human disease).",
-     "source": "kabiza.com",
-     "si_tag": "safari"
-    },
-    {
-     "q": "What are the non-Ebola health requirements for Uganda?",
-     "a": "Yellow fever is mandatory for entry (all travelers >=1 yr, checked at Entebbe, vaccinate >=10 days before); malaria prophylaxis is essential (all regions incl. Bwindi); carry AMREF Flying Doctors + insurance. All moot while the L4 hold stands.",
-     "source": "cdc.gov",
-     "si_tag": "safety"
-    }
-   ],
-   "seo": {
-    "meta_title": "Bwindi Gorilla Trekking, Uganda: Half the World's Mountain Gorillas - On Hold (Level 4 / Ebola)",
-    "meta_description": "Bwindi Impenetrable Forest - nearly half the world's mountain gorillas, the $800 permit and the Uganda-only 4-hour Habituation Experience - is currently a US Level 4 'Do Not Travel' zone (Ebola outbreak). What it is, why it's held, and where to trek gorillas instead (Rwanda's Volcanoes NP).",
-    "slug": "bwindi-impenetrable-uganda",
-    "primary_keyword": "Bwindi gorilla trekking",
-    "long_tail": [
-     "Bwindi mountain gorillas",
-     "Uganda gorilla permit $800",
-     "gorilla habituation experience Uganda",
-     "is Uganda safe Ebola",
-     "Bwindi vs Volcanoes Rwanda",
-     "Bwindi UNESCO"
-    ],
-    "search_language": "en",
-    "local_keywords": [
-     "Bwindi",
-     "empologoma z'ensozi",
-     "Rushaga",
-     "Buhoma",
-     "Batwa",
-     "UNESCO"
-    ],
-    "hreflang": [
-     "en"
-    ],
-    "jsonld_type": "TouristDestination",
-    "author_byline": "By David McCallister — commercial pilot, 56 countries",
-    "content_freshness": "2026-08-01"
-   },
-   "booking": {
-    "bin": "booking_hold",
-    "level": "L4",
-    "codes": [
-     "do-not-travel",
-     "ebola-sudan-virus-pheic",
-     "health-outbreak"
-    ],
-    "consent_flow": true,
-    "book_suppressed": true,
-    "waiver": false,
-    "dynamic": true,
-    "note": "Uganda US L4 Do Not Travel driven by an Ebola (Sudan virus) outbreak - PHEIC declared 2026-05-17. CONTENT-ONLY, Book button suppressed, no waiver. DYNAMIC health advisory - re-verify EVERY publish cycle; flip to live the moment it drops below L4. Redirect live gorilla demand to volcanoes-np-rwanda (Rwanda, bookable)."
-   },
-   "si_checklist_25": {
-    "run_date": "2026-08-01",
-    "hits": 7,
-    "misses": 15,
-    "disregarded": 3,
-    "note": "Canonical 25-SI list; EVERY hit is HELD behind the L4 booking hold - no SI is servable while Level 4 stands; safari = the gorilla trek (primary when live), globaladv = the Habituation Experience; sports limited to participant; spectator/prosports/compsports disregarded"
-   },
-   "sis_present": [
-    {
-     "si": "safari",
-     "name": "safari",
-     "status": "held",
-     "note": "mountain gorilla trek"
-    },
-    {
-     "si": "globaladv",
-     "name": "adventure",
-     "status": "held",
-     "note": "the 4-hour Gorilla Habituation Experience (Uganda-only)"
-    },
-    {
-     "si": "ultra",
-     "name": "ultra",
-     "status": "held"
-    },
-    {
-     "si": "deepdive",
-     "name": "deepdive",
-     "status": "held",
-     "note": "UNESCO biodiversity"
-    },
-    {
-     "si": "culture",
-     "name": "culture",
-     "status": "held",
-     "note": "the Batwa"
-    }
-   ],
-   "ultra": [
-    {
-     "name": "Clouds Mountain Gorilla Lodge / Bwindi Lodge (HELD)",
-     "why_ultra": "the forest's apex stays - barefoot-luxury on the Nkuringo/Buhoma edge; documented for the day the hold lifts, sold by no one today",
-     "earning": "none while held",
-     "virtuoso_value_add": false,
-     "mor": "n/a (L4 booking hold)",
-     "tier": "ultra",
-     "status": "HELD"
-    },
-    {
-     "name": "A private double-permit + Habituation week (HELD)",
-     "why_ultra": "the standard trek + the Uganda-only 4-hour habituation + biodiversity + Batwa, privately guided - latent",
-     "earning": "none while held",
-     "virtuoso_value_add": false,
-     "mor": "n/a (L4 booking hold)",
-     "tier": "ultra",
-     "status": "HELD"
-    }
-   ],
-   "source_verified": "2026-08-01",
-   "hero": {
-    "query": "Bwindi Impenetrable National Park, Uganda"
-   }
-  }
- },
- {
   "id": "cabarete-dominican-republic",
   "region_code": "11C",
   "name": "Cabarete",
@@ -17277,6 +17025,253 @@
    "source_verified": "2026-08-03",
    "hero": {
     "query": "Cairo, Egypt"
+   }
+  }
+ },
+ {
+  "id": "calakmul-mexico",
+  "region_code": "10S",
+  "name": "Calakmul, Mexico",
+  "country": "Mexico",
+  "line": "Calakmul",
+  "status": "live",
+  "depth": "verified",
+  "img": "mountainValley",
+  "sub_region": "Campeche (Campeche City & Calakmul)",
+  "si": [
+   "culture",
+   "wildlife",
+   "expedition"
+  ],
+  "tier_range": [
+   "essential",
+   "comfort"
+  ],
+  "data": {
+   "key_facts": null,
+   "safety": {
+    "emergency": "911",
+    "advisory_level": "L1",
+    "book_enabled": true,
+    "bin": "freely bookable (L1)",
+    "air_access_verified": true,
+    "access_notes": "Campeche (CPE) / Chetumal (CTM) airports + Tren Maya Xpujil station (live Dec 2024); 60–110 km jungle drive to ruins; car mandatory for final leg",
+    "remote_flag": true,
+    "health_flags": [
+     "malaria (P. vivax, low, prophylaxis recommended for Campeche)",
+     "dengue/Zika/chikungunya (tropical, day-biting)",
+     "heat/humidity",
+     "unlit wildlife access road"
+    ],
+    "water": "bottled/purified only"
+   },
+   "timing": {
+    "peak": "November–April (dry season; wildlife at waterholes, road passable)",
+    "inflection": "October (wet-season taper + Yucatán high-season pull)",
+    "fire_date": "2026-09-15 to 2026-09-22 (curve-start minus 1–2 weeks)",
+    "attach": [
+     "Campeche/Yucatán itinerary",
+     "Tren Maya circuit",
+     "Bacalar",
+     "Chetumal",
+     "Palenque"
+    ],
+    "off_season": "May–October wet season — heat, humidity, road degradation, higher vector risk"
+   },
+   "jewels": [
+    {
+     "name": "Structure II summit over the canopy + Great Plaza",
+     "si_tag": "expedition",
+     "tier": "comfort",
+     "commission_path": "DMC guided-climb + sunrise transfer",
+     "source": "https://en.wikipedia.org/wiki/Calakmul",
+     "timing": "year-round",
+     "timing_type": "ALWAYS-ON",
+     "hook": "Climb the tallest pyramid at Calakmul at first light"
+    },
+    {
+     "name": "Dawn howler & spider monkeys + toucans + jaguar sign",
+     "si_tag": "expedition",
+     "tier": "comfort",
+     "commission_path": "licensed wildlife-guide add-on, DMC-bundled",
+     "source": "http://world-heritage-datasheets.unep-wcmc.org/datasheet/output/site/ancient-maya-city-and-protected-tropical-forests-of-calakmul-campeche/",
+     "timing": "November–April",
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "The reserve holds Mexico's highest jaguar density and 365+ bird species"
+    },
+    {
+     "name": "Bat Cave (Volcán de los Murciélagos) dusk exodus",
+     "si_tag": "expedition",
+     "tier": "essential",
+     "commission_path": "dusk-timed guided add-on / DMC evening leg",
+     "source": "https://www.beyondtheordinary.co.uk/features/calakmul-bat-cave/",
+     "timing": "November–April",
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "One of only two \"bat volcano\" spectacles on Earth"
+    },
+    {
+     "name": "Birding — 350+ species",
+     "si_tag": "expedition",
+     "tier": "comfort",
+     "commission_path": "specialist birding-guide day, DMC-bundled",
+     "source": "http://world-heritage-datasheets.unep-wcmc.org/datasheet/output/site/ancient-maya-city-and-protected-tropical-forests-of-calakmul-campeche/",
+     "timing": "November–April",
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "From ocellated turkey to keel-billed toucan to raptors over the canopy; the reserve is a top Yucatán-Peninsula birding target"
+    },
+    {
+     "name": "Río Bec route — Becán, Chicanná, Xpujil, Balamkú (16.8 m stucco frieze)",
+     "si_tag": "culture",
+     "tier": "essential",
+     "commission_path": "heritage day-loop add-on, DMC-bundled",
+     "source": "https://lostruinsoftheamericas.com/balamku/",
+     "timing": "November–April",
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "A corridor of Río Bec-style ruins: theatrical false towers, rounded corners, and monster-mouth doorways, all within short drives of Xpujil"
+    },
+    {
+     "name": "Calakmul as Snake Kingdom (Kaan) capital — Tikal rivalry narrative",
+     "si_tag": "culture",
+     "tier": "comfort",
+     "commission_path": "archaeologist-led interpretive guiding, DMC premium",
+     "source": "https://en.wikipedia.org/wiki/Calakmul",
+     "timing": "November–April",
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "The narrative jewel: seat of the Kaan dynasty"
+    },
+    {
+     "name": "Zoh-Laguna village nature base",
+     "si_tag": "wildlife",
+     "tier": "essential",
+     "commission_path": "small-lodge stay + local guide",
+     "source": "https://riobecdreams.com/",
+     "timing": "November–April",
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW"
+    },
+    {
+     "name": "Tren Maya arrival (Xpujil station)",
+     "si_tag": "wildlife",
+     "commission_path": "rail affiliate + DMC meet-and-transfer",
+     "source": "https://www.mexicotravelandleisure.com/blog/maya-train-route-and-guide/",
+     "timing": "November–April",
+     "when_source": "derived from destination timing",
+     "timing_type": "SEASONAL-WINDOW",
+     "hook": "The rail arrival is itself a jewel now: glide inland from Cancún/Palenque to Xpujil, then transfer to the jungle"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Is Calakmul safe to visit?",
+     "a": "Yes — freely bookable, with the right logistics. Campeche is one of only two Mexican states at US State Dept Level 1 \"Exercise Normal Precautions,\" and there are no US-government travel restrictions in the state. The real risks here are wilderness and logistics, not the security profile that drives higher Mexican advisories.",
+     "source": "travel.state.gov, 2026-07-07",
+     "si_tag": "safety"
+    },
+    {
+     "q": "What's the real risk to plan for at Calakmul?",
+     "a": "The drive itself. The reserve is 60–110 km of narrow, unlit jungle road past the last fuel and signal at Xpujil, with a ~30 km/h wildlife limit and no in-reserve hospital — serious trauma means a 2–4 hr evacuation to Campeche City or Chetumal. Carry evacuation-grade insurance, fuel up in Xpujil, and note that rural Campeche is a CDC malaria-prophylaxis (P. vivax) state with dengue present, so bite prevention matters.",
+     "source": "casakaan.com / wwwnc.cdc.gov, 2026-07-07",
+     "si_tag": "safety"
+    },
+    {
+     "q": "What is the Structure II pyramid climb like?",
+     "a": "A 45 m (148 ft) ascent on steep, uneven ancient stone, best done at first light before the tropical heat. There are no railings and the stone is slick after rain, so climb early, go with a guide for pacing, and descend facing the steps. The payoff is a canopy that rolls out like a green sea, with howler monkeys roaring in the trees below.",
+     "source": "en.wikipedia.org, 2026-07-07",
+     "si_tag": "expedition"
+    },
+    {
+     "q": "Will I actually see jaguars and wildlife?",
+     "a": "You'll see plenty, though jaguars are rare. The reserve holds Mexico's highest jaguar density but sightings are uncommon; on a pre-dawn drive you reliably get howler and spider monkeys, toucans and many of the 365+ bird species as the canopy wakes. Stay on marked routes with a licensed guide — no approach, no touch, no feeding, and watch for fer-de-lance in the leaf litter.",
+     "source": "unep-wcmc.org, 2026-07-07",
+     "si_tag": "wildlife"
+    },
+    {
+     "q": "What is the Calakmul Bat Cave?",
+     "a": "Volcán de los Murciélagos, one of only two \"bat volcano\" spectacles on Earth: an estimated 2–5 million bats erupt in a swirling vortex about an hour before dusk, off Highway 186 near km 107. Time it with a guide so the drive back out is managed in the dark, wear repellent at peak biting hour, and pack a headlamp.",
+     "source": "beyondtheordinary.co.uk, 2026-07-07",
+     "si_tag": "expedition"
+    },
+    {
+     "q": "Why does Calakmul matter historically?",
+     "a": "It was the capital of the Snake Kingdom (the Kaan dynasty), the Maya superpower whose two-century rivalry with Tikal defined the Classic period until Calakmul's defeat in 695 CE. It is a UNESCO mixed World Heritage site — culture (2002) and nature (2014) on one deed — and the nearby Río Bec route adds Becán, Chicanná, Xpujil and Balamkú's 16.8 m stucco frieze.",
+     "source": "whc.unesco.org, 2026-07-07",
+     "si_tag": "culture"
+    },
+    {
+     "q": "How do I get to Calakmul, and does the Tren Maya reach it?",
+     "a": "The Tren Maya's Xpujil station has run since December 2024, connecting the jungle base town to Palenque, Campeche, Bacalar and Cancún — but the final 60–110 km into the reserve is still a car. Critically, book the Xpujil station, not the isolated \"Calakmul\"-named halt, which leaves travelers stranded without services.",
+     "source": "mexicotravelandleisure.com / casakaan.com, 2026-07-07",
+     "si_tag": "access"
+    }
+   ],
+   "seo": {
+    "meta_title": "Calakmul, Mexico: The Lost Maya City in the Jungle — Ruins, Jaguars & the Bat Cave | TravelWell",
+    "search_language": "es-MX",
+    "local_keywords": [
+     "ruinas de Calakmul",
+     "reserva de la biosfera Calakmul",
+     "Río Bec Xpujil",
+     "cómo llegar a Calakmul",
+     "Estructura II Calakmul pirámide",
+     "Volcán de los Murciélagos Calakmul",
+     "Tren Maya estación Xpujil"
+    ],
+    "hreflang": [
+     "en",
+     "es-MX"
+    ],
+    "jsonld_type": "TouristDestination",
+    "author_byline": "By David McCallister — commercial pilot, 56 countries",
+    "freshness": "2026-07-07",
+    "primary_keyword": "Calakmul"
+   },
+   "booking": null,
+   "si_checklist_25": null,
+   "sis_present": [
+    {
+     "si": "culture",
+     "status": "live"
+    },
+    {
+     "si": "wildlife",
+     "status": "live"
+    },
+    {
+     "si": "expedition",
+     "status": "live"
+    }
+   ],
+   "ultra": [
+    {
+     "property": "Hotel Puerta Calakmul",
+     "type": "cabaña lodge at reserve gate",
+     "mor": "direct/DMC",
+     "tier": "mid (ceiling)",
+     "earning": "small-property commission; value = proximity"
+    },
+    {
+     "property": "Río Bec Dreams",
+     "type": "7-Jungalow eco-lodge near Becán/Chicanná",
+     "mor": "direct/DMC",
+     "tier": "comfort",
+     "earning": "direct commission; strong for Río Bec route"
+    },
+    {
+     "property": "Zoh-Laguna / Xpujil cabañas",
+     "type": "village cabañas / small hotels",
+     "mor": "bedbank/direct",
+     "tier": "essential",
+     "earning": "thin margin; volume base"
+    }
+   ],
+   "source_verified": null,
+   "hero": {
+    "query": "Calakmul, Mexico, Mexico"
    }
   }
  },
@@ -46634,6 +46629,238 @@
   }
  },
  {
+  "id": "izamal-mexico",
+  "region_code": "10S",
+  "name": "Izamal",
+  "country": "Mexico",
+  "line": "*If it's a whole city painted the color of",
+  "status": "live",
+  "depth": "verified",
+  "img": "kyoto",
+  "sub_region": "Yucatán (Mérida & Chichén Itzá)",
+  "si": [
+   "culture",
+   "romance",
+   "culinary"
+  ],
+  "tier_range": [
+   "comfort",
+   "premier",
+   "ultra"
+  ],
+  "data": {
+   "key_facts": [
+    "Mexico's FIRST Pueblo Mágico, designated 2002-02-16 — launched the entire Magical Towns program",
+    "Convento de San Antonio de Padua founded 1549 / completed 1561 atop a Maya temple; 75-arch atrium among the largest monastery atriums in the world",
+    "Kinich Kakmó pyramid ~200m x ~180m, c. 400-600 AD, dedicated to the Maya sun god, climbable to the summit",
+    "Pope John Paul II visited August 1993; standardized ochre-yellow color tradition dates to that visit ('the Yellow City')",
+    "~70 km / ~1h10 from Mérida — an easy day-trip, roughly midway toward Chichén Itzá"
+   ],
+   "safety": {
+    "emergency_number": "911",
+    "nearest_trauma": "Mérida (~1h10 west; regional hospital hub)",
+    "advisory_level": "L1",
+    "book_enabled": true,
+    "air_access_verified": true,
+    "air_access_note": "MID Mérida ~1h10 drive; US nonstops incl. Houston, Miami, Dallas, Atlanta",
+    "primary_hazards": [
+     "heat/sun exposure (shadeless plazas + exposed pyramid climb)",
+     "Kinich Kakmó footing (steep, handrail-free Maya steps)",
+     "calesa/town traffic (low)",
+     "dengue (rainy season)",
+     "non-potable tap water"
+    ],
+    "climbing_note": "Kinich Kakmó IS climbable to summit — genuine draw; steep uneven risers, no handrails"
+   },
+   "timing": {
+    "inflection_curve_start": "2026-11-01",
+    "peak": "2026-12 to 2027-04",
+    "shoulder": "2026-05 to 2026-10 (hot/humid; hurricane exposure Aug-Oct; year-round photo baseline)",
+    "fire_date": "2026-10-20",
+    "trigger_rule": "curve-start minus 1-2 weeks; front-runs both dry-season inflection and Hanal Pixán; attaches to Mérida-base / in-town boutique lead time",
+    "booking_lead_days": {
+     "day_tour": "2-7",
+     "in_town_boutique": "7-28",
+     "merida_base_high_season": "28-84"
+    },
+    "event_peaks": [
+     "Hanal Pixán / Día de Muertos 2026-10-31 to 2026-11-02 (headline)",
+     "year-round artisan & photo-travel demand",
+     "calesa demand steady all year"
+    ],
+    "note": "sharpen on live tracking — Mérida occupancy + Izamal Pueblo-Mágico visitor counts + Hanal Pixán calendar"
+   },
+   "jewels": [
+    {
+     "name": "Convento de San Antonio de Padua (golden convent, sunset)",
+     "si_tag": "culture_heritage",
+     "commission_path": "non-commissionable entry; anchors tour + sunset-stay night",
+     "source": "https://www.atlasobscura.com/places/yellow-city-of-izamal | Accessed 2026-07-06"
+    },
+    {
+     "name": "Kinich Kakmó pyramid (climbable)",
+     "si_tag": "culture_heritage",
+     "tier": "comfort",
+     "commission_path": "day-tour inclusion (guiding); entry non-commissionable",
+     "source": "https://tourtochichenitza.com/destinations/izamal | Accessed 2026-07-06",
+     "hook": "Unlike El Castillo at Chichén, Izamal's Kinich Kakmó is climbable to the summit for rooftop views over the yellow city.]"
+    },
+    {
+     "name": "Pope John Paul II heritage (1993 visit, JP-II statue)",
+     "si_tag": "culture_heritage",
+     "tier": "comfort",
+     "commission_path": "guided-tour narrative anchor; faith-travel draw",
+     "source": "https://en.wikipedia.org/wiki/Izamal | Accessed 2026-07-06"
+    },
+    {
+     "name": "Centro Cultural y Artesanal (folk-art museum + workshops)",
+     "si_tag": "culture_heritage",
+     "tier": "comfort",
+     "commission_path": "experience add-on (affiliate/Viator); workshop packages",
+     "source": "https://themexicoreport.com/entrepreneurs-preserve-mayan-culture-and-traditions-at-centro-cultural-y-artesanal-in-izamal-yucatan/ | Accessed 2026-07-06",
+     "timing": "year-round",
+     "timing_type": "ALWAYS-ON"
+    },
+    {
+     "name": "Sunset calesa (horse-carriage) ride",
+     "si_tag": "romance",
+     "tier": "comfort",
+     "commission_path": "bookable experience add-on (Viator/GetYourGuide; Host for private)",
+     "source": "https://tourtochichenitza.com/destinations/izamal | Accessed 2026-07-06",
+     "hook": "low-speed, low-risk, but shared with light town traffic; standard care boarding/alighting. Guided calesa tours are the norm and low-hazard"
+    },
+    {
+     "name": "Golden-hour photo circuit (yellow arcades + convent)",
+     "si_tag": "romance",
+     "tier": "premier",
+     "commission_path": "private photo-tour upsell; drives one-night boutique room-night",
+     "source": "https://www.bontraveler.com/izamal-yucatan-mexico-yellow-city/ | Accessed 2026-07-06"
+    },
+    {
+     "name": "Hammock & artisan workshops (huipil, alebrijes)",
+     "si_tag": "culinary",
+     "tier": "comfort",
+     "commission_path": "artisan-experience + retail add-on; Centro Cultural packages",
+     "source": "https://yucatantoday.com/en/blog/yucatans-most-iconic-handcrafts-artisan-towns | Accessed 2026-07-06"
+    },
+    {
+     "name": "Santa Bárbara cenotes (nearby, ~49 km)",
+     "si_tag": "romance",
+     "tier": "comfort",
+     "commission_path": "adventure add-on (operator/Viator)",
+     "source": "https://tourtochichenitza.com/destinations/izamal | Accessed 2026-07-06"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Why is Izamal called the Yellow City, and what makes it special?",
+     "a": "It is Mexico's first Pueblo Mágico (designated 2002), and the entire historic center is painted one standardized ochre-gold — a color tradition set for Pope John Paul II's August 1993 visit and maintained ever since. The city is built in layers: the Spanish set the great Franciscan convent atop a Maya temple, and the Kinich Kakmó sun-god pyramid still rises above the rooftops.",
+     "source": "en.wikipedia.org / casaloltun.com, 2026-07-06",
+     "si_tag": "culture"
+    },
+    {
+     "q": "Can you climb the pyramid in Izamal?",
+     "a": "Yes — Kinich Kakmó is climbable to the summit, which sets it apart from Chichén Itzá, where El Castillo has been closed to climbers since 2008. The ~200 × 180 m pyramid dates to c. 400–600 AD; the steps are steep, uneven Maya risers with no handrails, so wear sturdy shoes and mind your footing on the descent.",
+     "source": "tourtochichenitza.com, 2026-07-06",
+     "si_tag": "culture"
+    },
+    {
+     "q": "Is Izamal good for a romantic day or honeymoon?",
+     "a": "Yes — it is a golden-hour romance magnet. The convent glows like a lantern above the plaza at sunset, a 45–60 min horse-drawn calesa ride winds through the yellow arcades, and the light seems to come from the buildings themselves. Most couples day-trip it from Mérida (70 km / ~1h10) or book one night in an in-town boutique to shoot the convent at golden hour.",
+     "source": "bontraveler.com, 2026-07-06",
+     "si_tag": "romance"
+    },
+    {
+     "q": "What is there to do beyond the convent?",
+     "a": "Hands-on Maya craft: the Centro Cultural y Artesanal runs artisan workshops and tours to hammock weavers, huipil embroiderers and alebrije painters who often work in-shop while you eat. Yucatecan cuisine and Hanal Pixán (the Maya Day of the Dead food tradition) give a soft culinary layer for later.",
+     "source": "yucatantoday.com, 2026-07-06",
+     "si_tag": "culinary"
+    },
+    {
+     "q": "Is Izamal safe right now?",
+     "a": "Yes — freely bookable. Izamal is a small, calm Pueblo Mágico in Yucatán, one of only two Mexican states rated US State Dept Level 1 \"Exercise Normal Precautions.\" Normal precautions suffice; the town is comfortably self-guided on foot.",
+     "source": "travel.state.gov, 2026-07-06",
+     "si_tag": "safety"
+    },
+    {
+     "q": "What's the real risk to plan for in Izamal?",
+     "a": "Heat and footing, not crime. The shadeless plazas and the exposed, handrail-free Kinich Kakmó climb get hot at midday, so carry water, a hat and sunscreen and shoot golden hour rather than noon. Izamal has local clinics only — the nearest full trauma care is Mérida, ~1h10 west.",
+     "source": "travel.state.gov, 2026-07-06",
+     "si_tag": "safety"
+    }
+   ],
+   "seo": {
+    "jsonld_type": "TouristAttraction",
+    "meta_title": "Izamal, the Yellow City: Pueblo Mágico Guide (2026) | TravelWell.World",
+    "search_language": "en",
+    "local_keywords": [
+     "Izamal ciudad amarilla",
+     "Convento Izamal",
+     "Convento de San Antonio de Padua",
+     "pirámide Kinich Kakmó",
+     "calesa Izamal",
+     "Pueblo Mágico Izamal",
+     "artesanías Izamal"
+    ],
+    "long_tail_en": [
+     "Izamal yellow city guide 2026",
+     "Izamal from Mérida day trip",
+     "Convento San Antonio de Padua Izamal",
+     "Kinich Kakmó pyramid climb",
+     "Izamal calesa horse carriage ride",
+     "Izamal sunset photography"
+    ],
+    "hreflang": [
+     "en",
+     "es-MX"
+    ],
+    "author_byline": "By David McCallister — commercial pilot, 56 countries",
+    "content_freshness": "2026-07-06"
+   },
+   "booking": null,
+   "si_checklist_25": null,
+   "sis_present": [
+    "culture_heritage",
+    "romance",
+    "culinary"
+   ],
+   "ultra": [
+    {
+     "name": "Hotel San Miguel Arcángel (in-town)",
+     "tier": "premier_boutique",
+     "earning_path": "Host FIT / MoR",
+     "note": "ceiling in-town; no true ultra hotel in Izamal itself",
+     "source": "https://yucatantoday.com/en/izamal/ | Accessed 2026-07-06"
+    },
+    {
+     "name": "Chablé Yucatán",
+     "tier": "ultra",
+     "earning_path": "Virtuoso / Fora",
+     "note": "nearest ultra; ~30 min Mérida; #13 World's Best Hotels 2023",
+     "source": "https://www.virtuoso.com/travel/luxury-hotels/15452675/chable-yucatan | Accessed 2026-07-06"
+    },
+    {
+     "name": "Hacienda Temozón (Luxury Collection)",
+     "tier": "ultra",
+     "earning_path": "Virtuoso / Marriott STARS / Fora / MoR",
+     "note": "28-room grand hacienda",
+     "source": "https://www.travelweekly.com/Hotels/Abala-Mexico/Hacienda-Temozon-Luxury-Collection-p51093491 | Accessed 2026-07-06"
+    },
+    {
+     "name": "Hacienda Santa Rosa (Luxury Collection)",
+     "tier": "ultra",
+     "earning_path": "Virtuoso / Marriott STARS / MoR",
+     "note": "intimate 11 rooms",
+     "source": "https://www.letstraveltomexico.com/yucatan-haciendas/ | Accessed 2026-07-06"
+    }
+   ],
+   "source_verified": "2026-07-06",
+   "hero": {
+    "query": "Izamal, Mexico"
+   }
+  }
+ },
+ {
   "id": "jarabacoa-dominican-republic",
   "region_code": "11C",
   "name": "Jarabacoa",
@@ -47947,250 +48174,6 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Kasane, Botswana"
-   }
-  }
- },
- {
-  "id": "kibale-forest-uganda",
-  "region_code": "05A",
-  "name": "Kibale Forest National Park",
-  "country": "Uganda",
-  "line": "The primate capital of the world",
-  "status": "future",
-  "depth": "verified",
-  "img": "mountainValley",
-  "sub_region": "Uganda — Kibale Forest",
-  "si": [
-   "adventure",
-   "deepdive",
-   "ultra",
-   "culture"
-  ],
-  "tier_range": [
-   "essential",
-   "comfort",
-   "premier",
-   "ultra"
-  ],
-  "data": {
-   "key_facts": [
-    "BOOKING HOLD: Uganda US L4 Do Not Travel driven by an Ebola (Sudan virus) outbreak - PHEIC declared 2026-05-17. CONTENT-ONLY, no Book path, no waiver. DYNAMIC - re-verify each cycle, flip to live when it clears. Redirect chimp demand to Rwanda's Nyungwe",
-    "The primate capital of the world: up to ~1,500 chimpanzees and 13 primate species in a lush tropical rainforest - the richest primate community in East Africa",
-    "The chimp trek is the draw (globaladv-primary) - $250 permit (foreign non-resident), plus the full-day Habituation Experience ~$300; safari (big game) is a documented MISS - a forest, not a savanna",
-    "Bigodi wetland (Magombe) community birding walk on the forest edge (200+ birds + primates) - a model of community tourism (all latent while held)",
-    "Yellow fever MANDATORY for entry (all >=1yr, checked at Entebbe); eVisa (no visa-on-arrival); malaria in all regions incl. Kibale forest (prophylaxis); chimp-trek rules ~8m/mask/1hr/ranger/no-trek-if-ill - all latent while held",
-    "Live twin = nyungwe-forest-rwanda (Rwanda, bookable, US L3 - same chimp trek). Anchors the Uganda cluster with bwindi/queen-elizabeth/murchison-falls"
-   ],
-   "safety": {
-    "emergency": "999 / 112",
-    "hospital": "Remote - AMREF Flying Doctors (~$40 pp/30d) + travel-medical insurance; nearest referral Fort Portal/Kampala (all latent while held)",
-    "advisory_level": "L4",
-    "malaria": "present in all regions incl. Kibale forest - prophylaxis (latent while held)",
-    "yellow_fever": "MANDATORY for entry (all >=1yr, checked at Entebbe, >=10 days before)",
-    "ebola": "Sudan virus outbreak - PHEIC declared 2026-05-17 - the dominant, disqualifying hazard",
-    "activity_note": "HEALTH-SPINE DOMINANT: Ebola (Sudan virus) outbreak + US L4 Do Not Travel is the disqualifying hazard - CONTENT-ONLY, Book suppressed, no waiver, redirect to Rwanda's Nyungwe. DYNAMIC - re-verify each cycle. Chimp-trek + malaria hazards secondary and moot while held. When reopened: chimp-trek rules ~8m/mask/1hr/ranger/no-trek-if-ill; warm humid forest walk (moderate)"
-   },
-   "timing": {
-    "booking_status": "HELD - no live demand capture while Level 4 stands (no campaigns/fire-dates)",
-    "latent_peak": "Jun-Sep + Dec-Feb (drier, firmer forest trails; permits scarce) - IF cleared",
-    "latent_green": "Mar-May + Oct-Nov (rains, muddier; chimps lower/closer with fruiting)",
-    "latent_booking_lead": "permits + lodges 2-4 mo peak - NOT applicable while held",
-    "reverify_trigger": "check Uganda's advisory EVERY publish cycle - DYNAMIC health advisory; flip to live the moment it drops below L4",
-    "redirect": "live chimp-trek demand -> nyungwe-forest-rwanda (Rwanda, bookable, US L3 - the direct live twin)"
-   },
-   "jewels": [
-    {
-     "name": "Chimpanzee trekking in the primate capital",
-     "si_tag": "globaladv",
-     "status": "held",
-     "tier": "premier",
-     "price_band": "HELD ($250 permit latent)",
-     "timing": "HELD; latent Jun-Sep + Dec-Feb",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "the finest chimp trek in Africa — up to 1,500 chimps in a lush rainforest"
-    },
-    {
-     "name": "The full-day Chimpanzee Habituation Experience",
-     "si_tag": "globaladv",
-     "status": "held",
-     "tier": "premier",
-     "price_band": "HELD (~$300 latent)",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "shadow the researchers from dawn nest to dusk nest with a semi-habituated community"
-    },
-    {
-     "name": "13 primates + a birding forest",
-     "si_tag": "deepdive",
-     "status": "held",
-     "tier": "premier",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "the richest primate community in East Africa — 13 species plus 370+ birds; a specialist primate/birding week. STATUS: HELD"
-    },
-    {
-     "name": "The Bigodi wetland community walk",
-     "si_tag": "culture",
-     "status": "held",
-     "tier": "essential",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "the community-run Bigodi Swamp walk on the forest edge — 200+ birds, more primates and a model of community tourism. STATUS: HELD"
-    },
-    {
-     "name": "A crater-and-forest lodge honeymoon (held)",
-     "si_tag": "ultra",
-     "status": "held",
-     "tier": "comfort",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "Kyaninga Lodge above its crater lake, Ndali Lodge, Primate Lodge in the forest — the ultra way to do the chimps"
-    }
-   ],
-   "faq": [
-    {
-     "q": "Is Kibale Forest safe to visit right now?",
-     "a": "No - and it is not bookable through TravelWell. Uganda is under a US Level 4 'Do Not Travel' advisory driven by an Ebola (Sudan virus) outbreak (PHEIC declared 2026-05-17); we present Kibale as content and suppress the Book button until the advisory clears. This is the disqualifying fact, ahead of any chimp trek.",
-     "source": "travel.state.gov",
-     "si_tag": "safety"
-    },
-    {
-     "q": "Where can I trek chimps instead, right now?",
-     "a": "Rwanda - Nyungwe Forest (US L3, bookable). It is the direct live twin - chimpanzee trekking on a $250 permit, plus the canopy walk and colobus troops - the responsible live choice while Uganda is on the Ebola hold. We route all chimp demand there.",
-     "source": "travelweekly.com",
-     "si_tag": "safety"
-    },
-    {
-     "q": "Will this clear - should I wait for Kibale?",
-     "a": "Possibly - this is a health-driven, dynamic advisory (an outbreak, not conflict), so it can be lifted when the outbreak is contained. We re-verify Uganda's status every publish cycle and will flip Kibale to bookable the moment it drops below Level 4. For a firm 2026 chimp trek, book Nyungwe now.",
-     "source": "travelweekly.com",
-     "si_tag": "safety"
-    },
-    {
-     "q": "What would Kibale offer when it reopens?",
-     "a": "The primate capital of the world - up to 1,500 chimps and 13 primate species, the $250 chimp trek (and the full-day ~$300 Habituation Experience), plus the Bigodi wetland birding walk. All held until the advisory lifts.",
-     "source": "gorillatrackers.com",
-     "si_tag": "globaladv"
-    },
-    {
-     "q": "Is Kibale a safari (big-game) destination?",
-     "a": "No - it is a rainforest of primates, not a savanna, so big-game safari is a documented miss; the draw is the chimp and primate trek (a Global Adventures product), exactly like Rwanda's Nyungwe. For Big game, we route to Kenya, Tanzania or Akagera.",
-     "source": "gorillatrackers.com",
-     "si_tag": "globaladv"
-    },
-    {
-     "q": "What are the non-Ebola health requirements for Uganda?",
-     "a": "Yellow fever is mandatory for entry (all travelers >=1 yr, checked at Entebbe, vaccinate >=10 days before); malaria prophylaxis is essential (all regions); carry AMREF Flying Doctors + insurance. All moot while the L4 hold stands.",
-     "source": "cdc.gov",
-     "si_tag": "safety"
-    }
-   ],
-   "seo": {
-    "meta_title": "Kibale Forest, Uganda: Chimpanzee Trekking in the Primate Capital - On Hold (Level 4 / Ebola)",
-    "meta_description": "Kibale Forest National Park - the 'primate capital of the world,' up to 1,500 chimpanzees and 13 primate species, the $250 chimp trek and the full-day Habituation Experience - is currently a US Level 4 'Do Not Travel' zone (Ebola outbreak). What it is, why it's held, and where to trek chimps instead (Rwanda's Nyungwe Forest).",
-    "slug": "kibale-forest-uganda",
-    "primary_keyword": "Kibale Forest chimpanzee trekking",
-    "long_tail": [
-     "Kibale chimpanzee permit cost 2026",
-     "chimpanzee habituation experience Uganda",
-     "Kibale primate capital",
-     "Bigodi wetland walk",
-     "is Uganda safe Ebola",
-     "Kibale vs Nyungwe"
-    ],
-    "search_language": "en",
-    "local_keywords": [
-     "Kibale",
-     "chimpanzee",
-     "Bigodi",
-     "Magombe",
-     "Kanyanchu",
-     "red colobus"
-    ],
-    "hreflang": [
-     "en"
-    ],
-    "jsonld_type": "TouristDestination",
-    "author_byline": "By David McCallister — commercial pilot, 56 countries",
-    "content_freshness": "2026-08-01"
-   },
-   "booking": {
-    "bin": "booking_hold",
-    "level": "L4",
-    "codes": [
-     "do-not-travel",
-     "ebola-sudan-virus-pheic",
-     "health-outbreak"
-    ],
-    "consent_flow": true,
-    "book_suppressed": true,
-    "waiver": false,
-    "dynamic": true,
-    "note": "Uganda US L4 Do Not Travel driven by an Ebola (Sudan virus) outbreak - PHEIC declared 2026-05-17. CONTENT-ONLY, Book button suppressed, no waiver. DYNAMIC health advisory - re-verify EVERY publish cycle; flip to live the moment it drops below L4. Redirect live chimp-trek demand to nyungwe-forest-rwanda (Rwanda, bookable, US L3 - the direct live twin)."
-   },
-   "si_checklist_25": {
-    "run_date": "2026-08-01",
-    "hits": 6,
-    "misses": 16,
-    "disregarded": 3,
-    "note": "Canonical 25-SI list; EVERY hit is HELD behind the L4 booking hold - no SI is servable while Level 4 stands; per the safari-build rule the chimp trek is globaladv (PRIMARY here) - safari (big game) is a documented MISS on a rainforest; birding/13-primates = deepdive; sports limited to participant; spectator/prosports/compsports disregarded"
-   },
-   "sis_present": [
-    {
-     "si": "globaladv",
-     "name": "adventure",
-     "status": "held",
-     "note": "chimp trek + full-day Habituation Experience (PRIMARY)"
-    },
-    {
-     "si": "deepdive",
-     "name": "deepdive",
-     "status": "held",
-     "note": "13 primate species / birding"
-    },
-    {
-     "si": "ultra",
-     "name": "ultra",
-     "status": "held"
-    },
-    {
-     "si": "culture",
-     "name": "culture",
-     "status": "held",
-     "note": "Bigodi wetland community walk"
-    }
-   ],
-   "ultra": [
-    {
-     "name": "Kyaninga Lodge / Ndali Lodge (HELD)",
-     "why_ultra": "the area's apex stays - hand-built log-and-crater-lake lodges above the forest; documented for the day the hold lifts, sold by no one today",
-     "earning": "none while held",
-     "virtuoso_value_add": false,
-     "mor": "n/a (L4 booking hold)",
-     "tier": "ultra",
-     "status": "HELD"
-    },
-    {
-     "name": "A private double-chimp + Habituation + Bigodi week (HELD)",
-     "why_ultra": "the standard trek + the full-day habituation + the 13 primates + the Bigodi wetland, privately guided - latent",
-     "earning": "none while held",
-     "virtuoso_value_add": false,
-     "mor": "n/a (L4 booking hold)",
-     "tier": "ultra",
-     "status": "HELD"
-    }
-   ],
-   "source_verified": "2026-08-01",
-   "hero": {
-    "query": "Kibale Forest National Park, Uganda"
    }
   }
  },
@@ -63283,178 +63266,6 @@
   }
  },
  {
-  "id": "medjumbe-island-mozambique",
-  "region_code": "06A",
-  "name": "Medjumbe Island",
-  "country": "Mozambique",
-  "line": "Twelve villas, one tiny island, and reef walls plunging",
-  "status": "future",
-  "depth": "verified",
-  "img": "venice",
-  "sub_region": "Mozambique & Coast",
-  "si": [
-   "romance",
-   "diveglobal"
-  ],
-  "tier_range": [
-   "premier",
-   "ultra"
-  ],
-  "data": {
-   "key_facts": [
-    "BOOKING HOLD: private island in the Quirimbas / Cabo Delgado, US Level 4 Do Not Travel (ISIS-linked insurgency; islands occupied; kidnapping; Palma 2021). CONTENT-ONLY, no Book path, no waiver even for this ultra-luxury island",
-    "~1 km x 500 m private island; home to Anantara Medjumbe (12 beach pool villas, formerly Rani flagship), 'ultimate honeymooners' getaway'",
-    "Reef drop-offs up to 400 m + coral caves (Napoleon wrasse; humpback whales in season) - world-class wall diving (HELD)",
-    "Signature romance ('Night Under the Stars' castaway dining on Quissanga sandbank) (HELD)",
-    "MALARIA HIGH; cyclone Dec-Apr; nearest care Pemba is itself L4; no assured evacuation from a remote island",
-    "Live redirect: Bazaruto Archipelago / southern Mozambique (bookable, far from Cabo Delgado)"
-   ],
-   "safety": {
-    "emergency": "police 119 (also 112); INEM ambulance 117 (non-functional in conflict zone)",
-    "hospital": "Pemba - itself L4; no assured evacuation",
-    "advisory_level": "L4",
-    "malaria": "HIGH",
-    "yellow_fever": "required only if arriving from an endemic country",
-    "cyclone": "Dec-Apr",
-    "activity_note": "SECURITY-DOMINANT: ISIS-linked insurgency + kidnapping is the disqualifying hazard - Quirimbas islands occupied, no assured evac from a remote island. World-class 400m wall diving + HIGH malaria are secondary and moot while held. CONTENT-ONLY, no waiver."
-   },
-   "timing": {
-    "booking_status": "HELD - no live demand while Level 4 stands",
-    "latent_peak": "May-Nov (dry, best diving; humpbacks ~Jul-Oct) - IF cleared",
-    "latent_green_cyclone": "Dec-Apr (cyclone season)",
-    "reverify_trigger": "check Cabo Delgado advisory every publish cycle; booking stays suppressed until State Dept + UK FCDO stand down",
-    "redirect": "live honeymoon/island demand -> Bazaruto Archipelago (southern Mozambique) / Seychelles / Zanzibar / Maldives"
-   },
-   "jewels": [
-    {
-     "name": "Anantara Medjumbe Island Resort",
-     "si_tag": "romance",
-     "status": "held",
-     "tier": "ultra",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null
-    },
-    {
-     "name": "'Night Under the Stars' / Quissanga sandbank",
-     "si_tag": "romance",
-     "status": "held",
-     "tier": "ultra",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null
-    },
-    {
-     "name": "Medjumbe reef-wall dives (400m + coral caves)",
-     "si_tag": "diveglobal",
-     "status": "held",
-     "tier": "premier",
-     "price_band": "HELD - no book path",
-     "timing": "HELD; latent seasonal",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null
-    }
-   ],
-   "faq": [
-    {
-     "q": "Is Medjumbe safe to visit right now?",
-     "a": "No - and it is not bookable through TravelWell. Medjumbe is a private island in the Quirimbas / Cabo Delgado, inside a US Level 4 'Do Not Travel' zone; we present it as content and suppress the Book button until the advisory clears - the ultra-luxury lodge does not change that.",
-     "source": "travel.state.gov",
-     "si_tag": "safety"
-    },
-    {
-     "q": "Why is an exclusive private island held?",
-     "a": "Because the danger is regional, not on-property. Cabo Delgado's ISIS-linked insurgency has physically occupied Quirimbas islands and kidnapped foreigners; a remote island in an active-conflict zone offers no assured evacuation, and even the gateway (Pemba) is high-risk. No waiver - content-only.",
-     "source": "clubofmozambique.com",
-     "si_tag": "safety"
-    },
-    {
-     "q": "Where should honeymooners go in the Indian Ocean instead?",
-     "a": "To bookable alternatives - southern Mozambique's Bazaruto Archipelago, or the Seychelles, Zanzibar and Maldives - private-island romance without a Level 4 hold. Medjumbe stays in the library as content until Cabo Delgado clears.",
-     "source": "gov.uk",
-     "si_tag": "safety"
-    }
-   ],
-   "seo": {
-    "meta_title": "Medjumbe Island, Mozambique: Private-Island Reefs (On Hold - Level 4)",
-    "meta_description": "An ultra-luxury private-island honeymoon over 400 m reef walls - currently a US Level 4 'Do Not Travel' zone (Cabo Delgado insurgency). What it is, why it's held, and where to go instead.",
-    "slug": "medjumbe-island-mozambique",
-    "primary_keyword": "Medjumbe Island Mozambique",
-    "long_tail": [
-     "Anantara Medjumbe",
-     "Medjumbe diving 400m walls",
-     "Quirimbas private island",
-     "is Cabo Delgado safe",
-     "Medjumbe honeymoon"
-    ],
-    "search_language": "pt",
-    "local_keywords": [
-     "Ilha Medjumbe",
-     "Anantara Medjumbe",
-     "Quirimbas",
-     "Cabo Delgado"
-    ],
-    "hreflang": [
-     "en",
-     "pt"
-    ],
-    "jsonld_type": "TouristDestination",
-    "author_byline": "By David McCallister — commercial pilot, 56 countries",
-    "content_freshness": "2026-07-30"
-   },
-   "booking": {
-    "bin": "booking_hold",
-    "level": "L4",
-    "codes": [
-     "do-not-travel",
-     "terrorism",
-     "kidnapping",
-     "armed-conflict"
-    ],
-    "consent_flow": true,
-    "book_suppressed": true,
-    "waiver": false,
-    "note": "Quirimbas / Cabo Delgado US L4 Do Not Travel (ISIS-linked ASWJ insurgency; islands occupied; kidnapping; Palma 2021). CONTENT-ONLY, Book suppressed, no waiver even for this ultra-luxury island. Re-verify each publish cycle. Parent: quirimbas-archipelago-mozambique."
-   },
-   "si_checklist_25": {
-    "run_date": "2026-07-30",
-    "hits": 5,
-    "misses": 17,
-    "disregarded": 3,
-    "note": "Canonical 25-SI list; EVERY hit is HELD behind the L4 booking hold - one-resort private island; sports limited to participant; spectator/prosports/compsports disregarded"
-   },
-   "sis_present": [
-    {
-     "si": "romance",
-     "name": "Romance, Marriages & Honeymoons",
-     "status": "held"
-    },
-    {
-     "si": "diveglobal",
-     "name": "diveglobal",
-     "status": "held"
-    }
-   ],
-   "ultra": [
-    {
-     "name": "Anantara Medjumbe Private Island (HELD)",
-     "why_ultra": "a 12-villa private-island honeymoon over 400m reef drop-offs - the barefoot-ultra of the Quirimbas; documented for the day the hold lifts, sold by no one today",
-     "earning": "none while held",
-     "virtuoso_value_add": false,
-     "mor": "n/a (L4 booking hold)",
-     "tier": "ultra",
-     "status": "HELD"
-    }
-   ],
-   "source_verified": "2026-07-30",
-   "hero": {
-    "query": "Medjumbe Island, Mozambique"
-   }
-  }
- },
- {
   "id": "megeve-france",
   "region_code": "01F",
   "name": "Megève",
@@ -69185,250 +68996,6 @@
    "source_verified": "2026-07-10",
    "hero": {
     "query": "Munich, Germany"
-   }
-  }
- },
- {
-  "id": "murchison-falls-uganda",
-  "region_code": "05A",
-  "name": "Murchison Falls National Park",
-  "country": "Uganda",
-  "line": "The world's most powerful waterfall, four of the Big",
-  "status": "future",
-  "depth": "verified",
-  "img": "safariJeep",
-  "sub_region": "Uganda — Murchison Falls / Nile",
-  "si": [
-   "safari",
-   "adventure",
-   "ultra",
-   "deepdive"
-  ],
-  "tier_range": [
-   "essential",
-   "comfort",
-   "premier",
-   "ultra"
-  ],
-  "data": {
-   "key_facts": [
-    "BOOKING HOLD: Uganda US L4 Do Not Travel driven by an Ebola (Sudan virus) outbreak - PHEIC declared 2026-05-17. CONTENT-ONLY, no Book path, no waiver. DYNAMIC - re-verify each cycle, flip to live when it clears. Redirect safari demand to Kenya/Tanzania/Akagera",
-    "Uganda's largest park (~3,840 km2), bisected by the Victoria Nile which funnels through a 7-m gorge and plunges 43 m - often called the world's most powerful waterfall",
-    "The Big Four (lion, elephant, buffalo, leopard - NO rhino in-park; rhino at the separate Ziwa Rhino Sanctuary en route) + endangered Nubian giraffe, across 76+ mammals; 450+ birds incl. the shoebill",
-    "The Nile boat safari to the base of the falls ($30) - hippos, giant crocs, elephants, buffalo; delta shoebill cruise; the top-of-falls hike (all latent while held)",
-    "Park fee $40 (24h); yellow fever MANDATORY for entry (all >=1yr, checked at Entebbe); eVisa (no visa-on-arrival); ~300 km / 4h NW of Kampala; malaria in all regions (prophylaxis) - all latent while held",
-    "Live twins = Kenya (Maasai Mara/Amboseli L2), Tanzania (Serengeti L3), akagera-np-rwanda (Rwanda Big Five L3). Anchors the Uganda cluster with bwindi/queen-elizabeth/kibale"
-   ],
-   "safety": {
-    "emergency": "999 / 112",
-    "hospital": "Remote - AMREF Flying Doctors (~$40 pp/30d) + travel-medical insurance; nearest referral Masindi/Gulu/Kampala (all latent while held)",
-    "advisory_level": "L4",
-    "malaria": "present in all regions - prophylaxis (latent while held)",
-    "yellow_fever": "MANDATORY for entry (all >=1yr, checked at Entebbe, >=10 days before)",
-    "ebola": "Sudan virus outbreak - PHEIC declared 2026-05-17 - the dominant, disqualifying hazard",
-    "activity_note": "HEALTH-SPINE DOMINANT: Ebola (Sudan virus) outbreak + US L4 Do Not Travel is the disqualifying hazard - CONTENT-ONLY, Book suppressed, no waiver, redirect to Kenya/Tanzania/Akagera. DYNAMIC - re-verify each cycle. Safari/boat/falls + malaria hazards secondary and moot while held. When reopened: top-of-falls behind railings/guides, keep back from hippos/crocs on the Nile boat, standard game-drive rules"
-   },
-   "timing": {
-    "booking_status": "HELD - no live demand capture while Level 4 stands (no campaigns/fire-dates)",
-    "latent_peak": "Dec-Feb + Jun-Sep (drier - game near the Nile, firmer tracks) - IF cleared",
-    "latent_green": "Mar-May + Oct-Nov (rains, lush/birdy, softer rates; falls fullest after rain)",
-    "latent_booking_lead": "lodges 2-4 mo peak - NOT applicable while held",
-    "reverify_trigger": "check Uganda's advisory EVERY publish cycle - DYNAMIC health advisory; flip to live the moment it drops below L4",
-    "redirect": "live safari demand -> Kenya (Maasai Mara/Amboseli L2) / Tanzania (Serengeti L3) / akagera-np-rwanda (Rwanda Big Five L3)"
-   },
-   "jewels": [
-    {
-     "name": "Big-Four game on the Nile plains",
-     "si_tag": "safari",
-     "status": "held",
-     "tier": "premier",
-     "price_band": "HELD - no book path",
-     "timing": "HELD; latent Dec-Feb + Jun-Sep",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "four of the Big Five — lion, elephant, buffalo, leopard — plus herds of the endangered Nubian giraffe across Uganda's largest park"
-    },
-    {
-     "name": "The Nile boat safari to the base of the falls",
-     "si_tag": "globaladv",
-     "status": "held",
-     "tier": "essential",
-     "price_band": "HELD (Nile boat $30 latent)",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "a boat cruise up the Victoria Nile to the foot of the thundering falls"
-    },
-    {
-     "name": "The top-of-the-falls hike",
-     "si_tag": "globaladv",
-     "status": "held",
-     "tier": "essential",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "a short, steep walk to the lip where the entire Nile is squeezed through a 7-m slot and hurled 43 m"
-    },
-    {
-     "name": "A shoebill + 450-bird delta",
-     "si_tag": "deepdive",
-     "status": "held",
-     "tier": "premier",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "the Nile delta is one of the best places on Earth to see the prehistoric, statue-still shoebill"
-    },
-    {
-     "name": "A Nile safari-lodge honeymoon (held)",
-     "si_tag": "ultra",
-     "status": "held",
-     "tier": "comfort",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "Nile Safari Lodge and Baker's Lodge on the river's edge, Paraa and Chobe overlooking the water"
-    }
-   ],
-   "faq": [
-    {
-     "q": "Is Murchison Falls safe to visit right now?",
-     "a": "No - and it is not bookable through TravelWell. Uganda is under a US Level 4 'Do Not Travel' advisory driven by an Ebola (Sudan virus) outbreak (PHEIC declared 2026-05-17); we present the park as content and suppress the Book button until the advisory clears. This is the disqualifying fact, ahead of any waterfall or game drive.",
-     "source": "travel.state.gov",
-     "si_tag": "safety"
-    },
-    {
-     "q": "Where can I go on safari instead, right now?",
-     "a": "Kenya (Maasai Mara / Amboseli, US L2, bookable) or Tanzania (Serengeti / Ngorongoro, US L3, bookable) for the classic Big-game plains - or Akagera, Rwanda (US L3, a Big-Five comeback ~2h from Kigali) for the nearest live savanna. We route all Uganda safari demand there.",
-     "source": "travelweekly.com",
-     "si_tag": "safety"
-    },
-    {
-     "q": "Will this clear - should I wait for Murchison?",
-     "a": "Possibly - this is a health-driven, dynamic advisory (an outbreak, not conflict), so it can be lifted when the outbreak is contained. We re-verify Uganda's status every publish cycle and will flip the park to bookable the moment it drops below Level 4. For a firm 2026 safari, book Kenya, Tanzania or Akagera now.",
-     "source": "travelweekly.com",
-     "si_tag": "safety"
-    },
-    {
-     "q": "What would Murchison offer when it reopens?",
-     "a": "Uganda's largest park - the world's most powerful waterfall (the Nile through a 7-m gorge), four of the Big Five plus Nubian giraffe, the Nile boat safari to the falls' base, delta shoebill cruises and a top-of-falls hike. All held until the advisory lifts.",
-     "source": "mustseespots.com",
-     "si_tag": "safari"
-    },
-    {
-     "q": "Is there rhino - is it a Big Five park?",
-     "a": "Four of the five: lion, elephant, buffalo and leopard live in the park - no rhino in Murchison itself. Rhino are seen at the separate Ziwa Rhino Sanctuary on the drive up from Kampala (also held while Uganda is L4).",
-     "source": "worldblossomsafari.com",
-     "si_tag": "safari"
-    },
-    {
-     "q": "What are the non-Ebola health requirements for Uganda?",
-     "a": "Yellow fever is mandatory for entry (all travelers >=1 yr, checked at Entebbe, vaccinate >=10 days before); malaria prophylaxis is essential (all regions); carry AMREF Flying Doctors + insurance. All moot while the L4 hold stands.",
-     "source": "cdc.gov",
-     "si_tag": "safety"
-    }
-   ],
-   "seo": {
-    "meta_title": "Murchison Falls NP, Uganda: The World's Most Powerful Waterfall & Nile Safari - On Hold (Level 4 / Ebola)",
-    "meta_description": "Murchison Falls National Park - Uganda's largest park: the world's most powerful waterfall (the Nile through a 7-m gorge), four of the Big Five, the Nile boat safari and shoebill delta - is currently a US Level 4 'Do Not Travel' zone (Ebola outbreak). What it is, why it's held, and where to safari instead (Kenya, Tanzania, Rwanda's Akagera).",
-    "slug": "murchison-falls-uganda",
-    "primary_keyword": "Murchison Falls National Park safari",
-    "long_tail": [
-     "Murchison Falls Nile boat cruise",
-     "world's most powerful waterfall",
-     "Murchison Big Four",
-     "shoebill Murchison delta",
-     "is Uganda safe Ebola",
-     "Murchison vs Serengeti"
-    ],
-    "search_language": "en",
-    "local_keywords": [
-     "Murchison",
-     "Kabalega Falls",
-     "Victoria Nile",
-     "Paraa",
-     "shoebill",
-     "Nubian giraffe"
-    ],
-    "hreflang": [
-     "en"
-    ],
-    "jsonld_type": "TouristDestination",
-    "author_byline": "By David McCallister — commercial pilot, 56 countries",
-    "content_freshness": "2026-08-01"
-   },
-   "booking": {
-    "bin": "booking_hold",
-    "level": "L4",
-    "codes": [
-     "do-not-travel",
-     "ebola-sudan-virus-pheic",
-     "health-outbreak"
-    ],
-    "consent_flow": true,
-    "book_suppressed": true,
-    "waiver": false,
-    "dynamic": true,
-    "note": "Uganda US L4 Do Not Travel driven by an Ebola (Sudan virus) outbreak - PHEIC declared 2026-05-17. CONTENT-ONLY, Book button suppressed, no waiver. DYNAMIC health advisory - re-verify EVERY publish cycle; flip to live the moment it drops below L4. Redirect live safari demand to Kenya (Maasai Mara/Amboseli L2), Tanzania (Serengeti L3), akagera-np-rwanda (Rwanda Big Five L3)."
-   },
-   "si_checklist_25": {
-    "run_date": "2026-08-01",
-    "hits": 6,
-    "misses": 16,
-    "disregarded": 3,
-    "note": "Canonical 25-SI list; EVERY hit is HELD behind the L4 booking hold - no SI is servable while Level 4 stands; safari = Big-Four game (primary when live), globaladv = Nile boat safari + top-of-falls hike; sports limited to participant; spectator/prosports/compsports disregarded"
-   },
-   "sis_present": [
-    {
-     "si": "safari",
-     "name": "safari",
-     "status": "held",
-     "note": "Big-Four game (lion/elephant/buffalo/leopard) + Nubian giraffe"
-    },
-    {
-     "si": "globaladv",
-     "name": "adventure",
-     "status": "held",
-     "note": "Nile boat safari to the base of the falls + top-of-falls hike"
-    },
-    {
-     "si": "ultra",
-     "name": "ultra",
-     "status": "held"
-    },
-    {
-     "si": "deepdive",
-     "name": "deepdive",
-     "status": "held",
-     "note": "shoebill / 450+ birds"
-    }
-   ],
-   "ultra": [
-    {
-     "name": "Nile Safari Lodge / Baker's Lodge (HELD)",
-     "why_ultra": "the park's apex stays - barefoot-luxury bandas on the Nile's edge; documented for the day the hold lifts, sold by no one today",
-     "earning": "none while held",
-     "virtuoso_value_add": false,
-     "mor": "n/a (L4 booking hold)",
-     "tier": "ultra",
-     "status": "HELD"
-    },
-    {
-     "name": "A private falls + Nile + delta + Ziwa-rhino week (HELD)",
-     "why_ultra": "the top-of-falls hike + the boat to the base + the shoebill delta + a Ziwa rhino add-on en route, privately guided - latent",
-     "earning": "none while held",
-     "virtuoso_value_add": false,
-     "mor": "n/a (L4 booking hold)",
-     "tier": "ultra",
-     "status": "HELD"
-    }
-   ],
-   "source_verified": "2026-08-01",
-   "hero": {
-    "query": "Murchison Falls National Park, Uganda"
    }
   }
  },
@@ -78320,91 +77887,6 @@
   }
  },
  {
-  "id": "pemba-mozambique",
-  "region_code": "06A",
-  "name": "Pemba",
-  "country": "Mozambique",
-  "line": "One of the world's great bays and a gateway",
-  "status": "live",
-  "depth": "verified",
-  "img": "oceanAerial",
-  "sub_region": "Mozambique & Coast",
-  "si": [
-   "diveglobal"
-  ],
-  "tier_range": [
-   "premier",
-   "ultra"
-  ],
-  "data": {
-   "key_facts": [
-    "Capital of Cabo Delgado Province; on one of the world's largest natural bays",
-    "Gateway to the Quirimbas Archipelago & NP; world-class reefs",
-    "Province's only international airport + public hospital; International SOS clinic",
-    "State Dept explicitly names Pemba as vulnerable to attack",
-    "Humanitarian/security hub of the Cabo Delgado conflict; LEVEL 4; BOOKING HOLD"
-   ],
-   "safety": {
-    "emergency": "police 119 (also 112); INEM ambulance 117",
-    "hospital": "Hospital Provincial de Pemba + International SOS clinic - but the city itself is L4",
-    "advisory_level": "L4",
-    "malaria": "HIGH",
-    "yellow_fever": "required only if arriving from an endemic country"
-   },
-   "timing": null,
-   "jewels": [
-    {
-     "name": "Pemba Bay / Wimbi Beach reefs",
-     "si_tag": "Dive Globally",
-     "status": "future",
-     "hook": "wall dives off one of the world's great bays",
-     "bookable_category": "CONTENT-ONLY - no Book path (Level 4 Cabo Delgado)",
-     "commission_path": "none (advisory hold)",
-     "source": "https://www.mozambique.co.za/Dive_Destinations-travel/dive-sites-in-pemba.html"
-    },
-    {
-     "name": "Ci Dive Centre (Pemba)",
-     "si_tag": "Dive Globally",
-     "status": "future",
-     "hook": "historical PADI gateway to the Quirimbas",
-     "bookable_category": "CONTENT-ONLY - no Book path (Level 4 Cabo Delgado)",
-     "commission_path": "none (advisory hold)",
-     "source": "https://www.madbookings.com/mozambique/diving/ci_pemba.htm"
-    }
-   ],
-   "faq": null,
-   "seo": {
-    "meta_title": "Pemba, Mozambique: The Bay Dive Gateway (On Hold)",
-    "meta_description": "One of the world's great natural bays + the Quirimbas dive gateway — currently a Level 4 Do Not Travel zone (Cabo Delgado). What it is, and why it's on hold.",
-    "slug": "pemba-mozambique",
-    "primary_keyword": "Pemba Mozambique",
-    "long_tail": [
-     "Pemba diving",
-     "Pemba Bay",
-     "is Cabo Delgado safe",
-     "Quirimbas gateway",
-     "Pemba travel advisory"
-    ],
-    "jsonld_type": "TouristDestination",
-    "author_byline": "By David McCallister — commercial pilot, 56 countries",
-    "content_freshness": "2026-07-01"
-   },
-   "booking": null,
-   "si_checklist_25": null,
-   "sis_present": [
-    {
-     "si": "diveglobal",
-     "status": "future"
-    }
-   ],
-   "ultra": null,
-   "source_verified": "2026-07-01",
-   "hero": {
-    "query": "Pemba, Mozambique"
-   }
-  }
- },
- {
   "id": "peninsula-valdes-argentina",
   "region_code": "10S",
   "name": "Península Valdés & Puerto Madryn, Argentina",
@@ -83354,522 +82836,6 @@
   ]
  },
  {
-  "id": "queen-elizabeth-np-uganda",
-  "region_code": "05A",
-  "name": "Queen Elizabeth National Park",
-  "country": "Uganda",
-  "line": "Tree-climbing lions, a hippo-thronged channel and 600 birds",
-  "status": "future",
-  "depth": "verified",
-  "img": "lion",
-  "sub_region": "Uganda — Queen Elizabeth / Rift Valley",
-  "si": [
-   "safari",
-   "adventure",
-   "ultra",
-   "deepdive"
-  ],
-  "tier_range": [
-   "essential",
-   "comfort",
-   "premier",
-   "ultra"
-  ],
-  "data": {
-   "key_facts": [
-    "BOOKING HOLD: Uganda US L4 Do Not Travel driven by an Ebola (Sudan virus) outbreak - PHEIC declared 2026-05-17. CONTENT-ONLY, no Book path, no waiver. DYNAMIC - re-verify each cycle, flip to live when it clears. Redirect safari demand to Kenya/Tanzania/Akagera",
-    "Uganda's most popular savanna park (~1,978 km2, est. 1952 as Kazinga NP, renamed for Queen Elizabeth II): 95+ mammals and 600+ birds - the country's most biodiverse safari",
-    "The tree-climbing lions of Ishasha (lions in fig/acacia trees - rare behaviour); the Kazinga Channel (40km, Lakes Edward<->George; UWA boat $30 - hippos/crocs/elephants/birds); Kyambura Gorge chimps (all latent while held)",
-    "Western edge borders Virunga (DR Congo) - a separate STANDING security concern even apart from the Ebola L4",
-    "Park fee $40 (24h); yellow fever MANDATORY for entry (all >=1yr, checked at Entebbe); eVisa (no visa-on-arrival); malaria in all regions (prophylaxis) - all latent while held",
-    "Live twins = Kenya (Maasai Mara/Amboseli L2), Tanzania (Serengeti L3), akagera-np-rwanda (Rwanda Big Five L3). Anchors the Uganda cluster with bwindi/murchison-falls/kibale"
-   ],
-   "safety": {
-    "emergency": "999 / 112",
-    "hospital": "Remote - AMREF Flying Doctors (~$40 pp/30d) + travel-medical insurance; nearest referral Kasese/Mbarara/Kampala (all latent while held)",
-    "advisory_level": "L4",
-    "malaria": "present in all regions - prophylaxis (latent while held)",
-    "yellow_fever": "MANDATORY for entry (all >=1yr, checked at Entebbe, >=10 days before)",
-    "ebola": "Sudan virus outbreak - PHEIC declared 2026-05-17 - the dominant, disqualifying hazard",
-    "drc_border": "western edge borders Virunga (DR Congo) - separate standing security concern; when live, keep to eastern/central sectors",
-    "activity_note": "HEALTH-SPINE DOMINANT: Ebola (Sudan virus) outbreak + US L4 Do Not Travel is the disqualifying hazard - CONTENT-ONLY, Book suppressed, no waiver, redirect to Kenya/Tanzania/Akagera. DYNAMIC - re-verify each cycle. Safari/boat + malaria hazards + the DRC border are secondary/standing and moot for booking while held. When reopened: standard game-drive/boat rules, keep back from hippos/crocs, ranger-guided"
-   },
-   "timing": {
-    "booking_status": "HELD - no live demand capture while Level 4 stands (no campaigns/fire-dates)",
-    "latent_peak": "Jun-Sep + Dec-Feb (drier - game at water, firmer tracks) - IF cleared",
-    "latent_green": "Mar-May + Oct-Nov (rains, lush/birdy, softer rates)",
-    "latent_booking_lead": "lodges 2-4 mo peak - NOT applicable while held",
-    "reverify_trigger": "check Uganda's advisory EVERY publish cycle - DYNAMIC health advisory; flip to live the moment it drops below L4; re-verify western DRC/Virunga line before live routing",
-    "redirect": "live safari demand -> Kenya (Maasai Mara/Amboseli L2) / Tanzania (Serengeti L3) / akagera-np-rwanda (Rwanda Big Five L3)"
-   },
-   "jewels": [
-    {
-     "name": "The tree-climbing lions of Ishasha",
-     "si_tag": "safari",
-     "status": "held",
-     "tier": "premier",
-     "price_band": "HELD - no book path",
-     "timing": "HELD; latent Jun-Sep + Dec-Feb",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "one of only a couple of places on Earth where lions habitually lounge in fig and acacia trees"
-    },
-    {
-     "name": "The Kazinga Channel boat cruise",
-     "si_tag": "globaladv",
-     "status": "held",
-     "tier": "essential",
-     "price_band": "HELD (UWA boat $30 latent)",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "a 40-km natural channel between Lakes Edward and George"
-    },
-    {
-     "name": "Kyambura Gorge chimpanzee trek",
-     "si_tag": "globaladv",
-     "status": "held",
-     "tier": "premier",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "a sunken \"valley of apes\" — a forested gorge in the savanna holding a habituated chimp community; a globaladv trek unique to Queen Elizabeth"
-    },
-    {
-     "name": "A 600-bird birder's grail",
-     "si_tag": "deepdive",
-     "status": "held",
-     "tier": "premier",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "Uganda's most bird-rich park — 600+ species across savanna, wetland, forest and lake habitats, from shoebill-country wetlands to Kazinga's pelicans and skimmers"
-    },
-    {
-     "name": "A Rift-Valley safari-lodge honeymoon (held)",
-     "si_tag": "ultra",
-     "status": "held",
-     "tier": "comfort",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "Mweya Safari Lodge on its channel-side peninsula, Ishasha Wilderness Camp, Kyambura Gorge Lodge — crater-lake and channel luxury after the game drive"
-    }
-   ],
-   "faq": [
-    {
-     "q": "Is Queen Elizabeth National Park safe to visit right now?",
-     "a": "No - and it is not bookable through TravelWell. Uganda is under a US Level 4 'Do Not Travel' advisory driven by an Ebola (Sudan virus) outbreak (PHEIC declared 2026-05-17); we present the park as content and suppress the Book button until the advisory clears. This is the disqualifying fact, ahead of any lion or boat cruise.",
-     "source": "travel.state.gov",
-     "si_tag": "safety"
-    },
-    {
-     "q": "Where can I go on safari instead, right now?",
-     "a": "Kenya (Maasai Mara / Amboseli, US L2, bookable) or Tanzania (Serengeti / Ngorongoro, US L3, bookable) for the classic Big-game plains - or Akagera, Rwanda (US L3, a Big-Five comeback ~2h from Kigali) for the nearest live savanna. We route all Uganda safari demand there.",
-     "source": "travelweekly.com",
-     "si_tag": "safety"
-    },
-    {
-     "q": "Will this clear - should I wait for Queen Elizabeth?",
-     "a": "Possibly - this is a health-driven, dynamic advisory (an outbreak, not conflict), so it can be lifted when the outbreak is contained. We re-verify Uganda's status every publish cycle and will flip the park to bookable the moment it drops below Level 4. For a firm 2026 safari, book Kenya, Tanzania or Akagera now.",
-     "source": "travelweekly.com",
-     "si_tag": "safety"
-    },
-    {
-     "q": "What would Queen Elizabeth offer when it reopens?",
-     "a": "Uganda's most popular savanna - the tree-climbing lions of Ishasha, the Kazinga Channel boat cruise (hippos, crocs, elephants, 600+ birds), Kyambura Gorge chimps, and a Rift-Valley backdrop of crater lakes. All held until the advisory lifts.",
-     "source": "ugandawildlife.org",
-     "si_tag": "safari"
-    },
-    {
-     "q": "Is the DRC border a concern too?",
-     "a": "Yes - separately. The park's western edge borders Virunga in the DR Congo, a standing security concern in its own right; when the park is live, itineraries keep to the eastern/central sectors. But the Ebola L4 is the disqualifying fact today, and it holds the whole park.",
-     "source": "national-parks.org",
-     "si_tag": "safety"
-    },
-    {
-     "q": "What are the non-Ebola health requirements for Uganda?",
-     "a": "Yellow fever is mandatory for entry (all travelers >=1 yr, checked at Entebbe, vaccinate >=10 days before); malaria prophylaxis is essential (all regions); carry AMREF Flying Doctors + insurance. All moot while the L4 hold stands.",
-     "source": "cdc.gov",
-     "si_tag": "safety"
-    }
-   ],
-   "seo": {
-    "meta_title": "Queen Elizabeth NP, Uganda: Tree-Climbing Lions & the Kazinga Channel - On Hold (Level 4 / Ebola)",
-    "meta_description": "Queen Elizabeth National Park - Uganda's most popular savanna: the tree-climbing lions of Ishasha, the Kazinga Channel boat cruise, Kyambura Gorge chimps and 600+ birds - is currently a US Level 4 'Do Not Travel' zone (Ebola outbreak). What it is, why it's held, and where to safari instead (Kenya, Tanzania, Rwanda's Akagera).",
-    "slug": "queen-elizabeth-np-uganda",
-    "primary_keyword": "Queen Elizabeth National Park tree-climbing lions",
-    "long_tail": [
-     "Kazinga Channel boat cruise",
-     "Ishasha tree-climbing lions",
-     "Kyambura Gorge chimps",
-     "is Uganda safe Ebola",
-     "Queen Elizabeth vs Maasai Mara",
-     "Queen Elizabeth NP birds"
-    ],
-    "search_language": "en",
-    "local_keywords": [
-     "Queen Elizabeth",
-     "Kazinga",
-     "Ishasha",
-     "Kyambura",
-     "empologoma",
-     "Mweya"
-    ],
-    "hreflang": [
-     "en"
-    ],
-    "jsonld_type": "TouristDestination",
-    "author_byline": "By David McCallister — commercial pilot, 56 countries",
-    "content_freshness": "2026-08-01"
-   },
-   "booking": {
-    "bin": "booking_hold",
-    "level": "L4",
-    "codes": [
-     "do-not-travel",
-     "ebola-sudan-virus-pheic",
-     "health-outbreak",
-     "drc-border-adjacent"
-    ],
-    "consent_flow": true,
-    "book_suppressed": true,
-    "waiver": false,
-    "dynamic": true,
-    "note": "Uganda US L4 Do Not Travel driven by an Ebola (Sudan virus) outbreak - PHEIC declared 2026-05-17. CONTENT-ONLY, Book button suppressed, no waiver. DYNAMIC health advisory - re-verify EVERY publish cycle; flip to live the moment it drops below L4. Separately note the western DRC/Virunga border (standing security concern). Redirect live safari demand to Kenya (Maasai Mara/Amboseli L2), Tanzania (Serengeti L3), akagera-np-rwanda (Rwanda Big Five L3)."
-   },
-   "si_checklist_25": {
-    "run_date": "2026-08-01",
-    "hits": 6,
-    "misses": 16,
-    "disregarded": 3,
-    "note": "Canonical 25-SI list; EVERY hit is HELD behind the L4 booking hold - no SI is servable while Level 4 stands; safari = Big-game + tree-climbing lions (primary when live), globaladv = Kazinga boat + Kyambura chimp trek; sports limited to participant; spectator/prosports/compsports disregarded"
-   },
-   "sis_present": [
-    {
-     "si": "safari",
-     "name": "safari",
-     "status": "held",
-     "note": "Big-game + tree-climbing lions of Ishasha"
-    },
-    {
-     "si": "globaladv",
-     "name": "adventure",
-     "status": "held",
-     "note": "Kazinga Channel boat + Kyambura Gorge chimps"
-    },
-    {
-     "si": "ultra",
-     "name": "ultra",
-     "status": "held"
-    },
-    {
-     "si": "deepdive",
-     "name": "deepdive",
-     "status": "held",
-     "note": "600+ birds - birder's grail"
-    }
-   ],
-   "ultra": [
-    {
-     "name": "Kyambura Gorge Lodge / Mweya Safari Lodge (HELD)",
-     "why_ultra": "the park's apex stays - a converted coffee store above the chimp gorge and a channel-side peninsula lodge; documented for the day the hold lifts, sold by no one today",
-     "earning": "none while held",
-     "virtuoso_value_add": false,
-     "mor": "n/a (L4 booking hold)",
-     "tier": "ultra",
-     "status": "HELD"
-    },
-    {
-     "name": "A private Ishasha + Kazinga + Kyambura week (HELD)",
-     "why_ultra": "tree-climbing lions + the channel boat + the chimp gorge + the crater lakes, privately guided - latent",
-     "earning": "none while held",
-     "virtuoso_value_add": false,
-     "mor": "n/a (L4 booking hold)",
-     "tier": "ultra",
-     "status": "HELD"
-    }
-   ],
-   "source_verified": "2026-08-01",
-   "hero": {
-    "query": "Queen Elizabeth National Park, Uganda"
-   }
-  }
- },
- {
-  "id": "quirimbas-archipelago-mozambique",
-  "region_code": "06A",
-  "name": "Quirimbas Archipelago",
-  "country": "Mozambique",
-  "line": "Some of Africa's richest reefs and a 400-year-old Swahili",
-  "status": "future",
-  "depth": "verified",
-  "img": "oceanAerial",
-  "sub_region": "Mozambique & Coast",
-  "si": [
-   "diveglobal",
-   "tropical",
-   "culture",
-   "deepdive",
-   "adventure",
-   "ultra"
-  ],
-  "tier_range": [
-   "essential",
-   "comfort",
-   "premier",
-   "luxury",
-   "ultra"
-  ],
-  "data": {
-   "key_facts": [
-    "BOOKING HOLD: entirely within Cabo Delgado Province, US Level 4 Do Not Travel (ISIS-linked ASWJ insurgency; islands occupied by militants; foreigners kidnapped; Palma 2021 attack ~1,193 killed/missing, 209 kidnapped). CONTENT-ONLY, no Book path, no waiver",
-    "~32 islands off NE Mozambique (Ibo, Matemo, Medjumbe, Vamizi, Quirimba, Rolas) inside Quirimbas National Park",
-    "Reefs among the world's richest - Neptune's Arm cited among the best dive sites in the world; humpback whales, whale sharks, humpback dolphins in season (all HELD)",
-    "Ibo Island: 400-year-old Swahili-Portuguese stone town, fort, silversmiths (UNESCO-tentative); barefoot-ultra islands Anantara Medjumbe + Vamizi (HELD)",
-    "MALARIA HIGH; cyclone Dec-Apr; even the gateway Pemba is high-risk; evacuation not assured",
-    "Rest of Mozambique differs - southern coast (Bazaruto, Tofo, Vilanculos, Inhambane, Maputo) is bookable and far from the conflict"
-   ],
-   "safety": {
-    "emergency": "police 119 (also 112); INEM ambulance 117 (non-functional in conflict zone)",
-    "hospital": "Pemba (Provincial Hospital / International SOS) - but Pemba itself is L4; evacuation not assured",
-    "advisory_level": "L4",
-    "malaria": "HIGH (prophylaxis + bite prevention essential)",
-    "yellow_fever": "required only if arriving from an endemic country",
-    "cyclone": "Dec-Apr",
-    "activity_note": "SECURITY-DOMINANT: ISIS-linked ASWJ insurgency + kidnapping is the disqualifying hazard - islands occupied, foreigners kidnapped, evacuation not assured. Marine/health hazards (HIGH malaria, cyclone, remote chamber) are secondary and moot while held. CONTENT-ONLY, no waiver."
-   },
-   "timing": {
-    "booking_status": "HELD - no live demand capture while Level 4 stands (no campaigns/fire-dates)",
-    "latent_peak": "May-Nov (dry, calmer seas, best diving; humpback whales ~Jul-Oct) - IF cleared",
-    "latent_green_cyclone": "Dec-Apr (hot, wet, cyclone season)",
-    "latent_booking_lead": "remote fly-in island lodges 4-9 mo - NOT applicable while held",
-    "reverify_trigger": "check Cabo Delgado advisory status every publish cycle; booking stays suppressed until US State Dept + UK FCDO both stand down from do-not-travel",
-    "redirect": "live Mozambique demand -> Bazaruto Archipelago / Tofo / Vilanculos / Inhambane / Maputo (bookable, far from Cabo Delgado)"
-   },
-   "jewels": [
-    {
-     "name": "Neptune's Arm + the world-class reefs",
-     "si_tag": "diveglobal",
-     "status": "held",
-     "tier": "premier",
-     "price_band": "HELD - no book path",
-     "timing": "HELD; latent May-Nov",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "In peacetime the diving is elite: \"Neptune's Arm\" is cited among the best dive sites in the world"
-    },
-    {
-     "name": "Humpback whales + whale sharks in season",
-     "si_tag": "globaladv",
-     "status": "held",
-     "tier": "premier",
-     "price_band": "HELD - no book path",
-     "timing": "HELD; latent seasonal",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "the reefs see humpback whales on migration, whale sharks and humpback dolphins — a genuine marine-wildlife draw, all currently held. STATUS: HELD"
-    },
-    {
-     "name": "Ibo Island Stone Town",
-     "si_tag": "culture",
-     "status": "held",
-     "tier": "essential",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "a 400-year-old Swahili-Portuguese fort town of coral-stone ruins and working silversmiths — the archipelago's cultural heart. STATUS: HELD"
-    },
-    {
-     "name": "The Swahili + slave-trade history of Ibo",
-     "si_tag": "deepdive",
-     "status": "held",
-     "tier": "essential",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "Ibo was a Swahili-coast and Portuguese trading and slaving hub"
-    },
-    {
-     "name": "The powder-sand private islands (Medjumbe, Vamizi, Matemo)",
-     "si_tag": "tropical",
-     "status": "held",
-     "tier": "luxury",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null
-    },
-    {
-     "name": "Anantara Medjumbe & Vamizi (barefoot-ultra)",
-     "si_tag": "ultra",
-     "status": "held",
-     "tier": "ultra",
-     "price_band": "HELD - no book path",
-     "timing": "HELD",
-     "commission_path": "none (advisory hold)",
-     "draw_rank": null,
-     "hook": "the archipelago's exclusive fly-in island lodges — the ultra expression of the Quirimbas"
-    }
-   ],
-   "faq": [
-    {
-     "q": "Is the Quirimbas Archipelago safe to visit right now?",
-     "a": "No - and it is not bookable through TravelWell. The archipelago lies entirely in Cabo Delgado Province under a US Level 4 'Do Not Travel' advisory; we present it as content and suppress the Book button until the advisory clears.",
-     "source": "travel.state.gov",
-     "si_tag": "safety"
-    },
-    {
-     "q": "What exactly is the danger in the Quirimbas?",
-     "a": "An active ISIS-linked insurgency (ASWJ). Armed groups have attacked villages and occupied islands in the archipelago and the mainland port of Mocimboa da Praia; foreigners have been kidnapped, and the 2021 Palma attack killed or displaced thousands. Marine and health hazards are secondary to the conflict.",
-     "source": "ctc.westpoint.edu",
-     "si_tag": "safety"
-    },
-    {
-     "q": "Could I go with a private security arrangement or a waiver?",
-     "a": "No - TravelWell offers no waiver and no book path for a Level 4 zone. Evacuation from a remote island in an active-conflict setting is not assured, and even the gateway city of Pemba is high-risk. The responsible answer is to wait for the advisory to change.",
-     "source": "mz.usembassy.gov",
-     "si_tag": "safety"
-    },
-    {
-     "q": "Is the rest of Mozambique off-limits too?",
-     "a": "No - this hold is Cabo Delgado-specific. Southern Mozambique (Maputo, Tofo, Vilanculos, the Bazaruto Archipelago, Inhambane) is far from the conflict and remains a bookable Indian-Ocean destination; that is where we point Mozambique demand today.",
-     "source": "gov.uk",
-     "si_tag": "safety"
-    },
-    {
-     "q": "When the advisory clears, what would the Quirimbas offer?",
-     "a": "Elite diving (Neptune's Arm and untouched reefs), humpback whales and whale sharks in season, the Swahili stone town of Ibo, and barefoot-luxury private islands (Medjumbe, Vamizi) - a world-class dive-and-heritage archipelago. All of it is held until the advisory lifts.",
-     "source": "expertafrica.com",
-     "si_tag": "diveglobal"
-    },
-    {
-     "q": "What are the non-security health risks to know?",
-     "a": "Malaria is HIGH (prophylaxis + bite prevention essential), cyclone season is Dec-Apr, yellow-fever proof is needed only if arriving from an endemic country, and in-conflict medical/evacuation capacity is minimal - reinforcing the booking hold.",
-     "source": "wwwnc.cdc.gov",
-     "si_tag": "safety"
-    }
-   ],
-   "seo": {
-    "meta_title": "Quirimbas Archipelago, Mozambique: World-Class Reefs & Ibo Stone Town - On Hold (Level 4)",
-    "meta_description": "The Quirimbas Archipelago - ~32 islands of world-class reefs (Neptune's Arm), humpback whales and the 400-year-old Swahili stone town of Ibo - is currently a US Level 4 'Do Not Travel' zone (Cabo Delgado insurgency). What it is, why it's held, and where to go in Mozambique instead.",
-    "slug": "quirimbas-archipelago-mozambique",
-    "primary_keyword": "Quirimbas Archipelago Mozambique",
-    "long_tail": [
-     "Quirimbas islands diving",
-     "Neptune's Arm dive site",
-     "Ibo Island stone town",
-     "is Cabo Delgado safe",
-     "Anantara Medjumbe",
-     "Vamizi Island",
-     "Quirimbas National Park"
-    ],
-    "search_language": "pt",
-    "local_keywords": [
-     "Arquipelago das Quirimbas",
-     "Ilha do Ibo",
-     "Parque Nacional das Quirimbas",
-     "Cabo Delgado",
-     "mergulho Quirimbas",
-     "Medjumbe",
-     "Vamizi"
-    ],
-    "hreflang": [
-     "en",
-     "pt"
-    ],
-    "jsonld_type": "TouristDestination",
-    "author_byline": "By David McCallister — commercial pilot, 56 countries",
-    "content_freshness": "2026-07-30"
-   },
-   "booking": {
-    "bin": "booking_hold",
-    "level": "L4",
-    "codes": [
-     "do-not-travel",
-     "terrorism",
-     "kidnapping",
-     "armed-conflict"
-    ],
-    "consent_flow": true,
-    "book_suppressed": true,
-    "waiver": false,
-    "note": "Cabo Delgado Province US L4 Do Not Travel (ISIS-linked ASWJ insurgency; islands occupied; kidnapping; Palma 2021). CONTENT-ONLY, Book button suppressed, no waiver. Re-verify each publish cycle. Overall Mozambique L3; Cabo Delgado carved out at L4."
-   },
-   "si_checklist_25": {
-    "run_date": "2026-07-30",
-    "hits": 7,
-    "misses": 15,
-    "disregarded": 3,
-    "note": "Canonical 25-SI list; EVERY hit is HELD behind the L4 booking hold - no SI is servable while Level 4 stands; sports limited to participant; spectator/prosports/compsports disregarded"
-   },
-   "sis_present": [
-    {
-     "si": "diveglobal",
-     "name": "diveglobal",
-     "status": "held"
-    },
-    {
-     "si": "tropical",
-     "name": "tropical",
-     "status": "held"
-    },
-    {
-     "si": "culture",
-     "name": "culture",
-     "status": "held"
-    },
-    {
-     "si": "deepdive",
-     "name": "deepdive",
-     "status": "held"
-    },
-    {
-     "si": "globaladv",
-     "name": "adventure",
-     "status": "held"
-    },
-    {
-     "si": "ultra",
-     "name": "ultra",
-     "status": "held"
-    }
-   ],
-   "ultra": [
-    {
-     "name": "Anantara Medjumbe Private Island (HELD)",
-     "why_ultra": "an exclusive one-resort island - the ultra of the Quirimbas; documented for the day the hold lifts, sold by no one today",
-     "earning": "none while held",
-     "virtuoso_value_add": false,
-     "mor": "n/a (L4 booking hold)",
-     "tier": "ultra",
-     "status": "HELD"
-    },
-    {
-     "name": "Vamizi Island Lodge (HELD)",
-     "why_ultra": "~12 luxury beach villas over a healthy reef; barefoot-ultra, currently closed/threatened",
-     "earning": "none while held",
-     "virtuoso_value_add": false,
-     "mor": "n/a (L4 booking hold)",
-     "tier": "ultra",
-     "status": "HELD"
-    }
-   ],
-   "source_verified": "2026-07-30",
-   "hero": {
-    "query": "Quirimbas Archipelago, Mozambique"
-   }
-  },
-  "feel": [
-   "tropical"
-  ]
- },
- {
   "id": "quito-ecuador",
   "region_code": "10S",
   "name": "Quito & the Northern Andes, Ecuador",
@@ -87479,6 +86445,267 @@
     "query": "Riyadh, Saudi Arabia"
    }
   }
+ },
+ {
+  "id": "roatan-honduras",
+  "region_code": "10S",
+  "name": "Roatán, Honduras (Bay Islands)",
+  "country": "Honduras",
+  "line": "Roatán",
+  "status": "live",
+  "depth": "verified",
+  "img": "oceanAerial",
+  "sub_region": "Honduras",
+  "si": [
+   "diveglobal",
+   "tropical"
+  ],
+  "tier_range": [
+   "essential",
+   "comfort",
+   "premier",
+   "luxury",
+   "ultra"
+  ],
+  "data": {
+   "key_facts": [
+    "Roatán sits on the Mesoamerican Barrier Reef, the second-largest coral-reef system on earth; Bay Islands ranked highest in coral health in the 2015 Mesoamerican assessment.",
+    "30+ dive shops on the west side; ~30 named dive sites within a 10-minute boat ride off West Bay/West End, with walls dropping past 100 ft and the El Aguila/Odyssey wrecks.",
+    "The Roatán Aggressor IV liveaboard runs Sat->Sat (18 guests, ~24-27 dives) across Roatán, Cayos Cochinos, and Utila.",
+    "Whale sharks are snorkel-only and protected; Utila (a short hop from Roatán) offers year-round potential peaking late March-April.",
+    "Roatán has an on-island recompression chamber (Cornerstone Hyperbaric, adjacent to Anthony's Key Resort; DAN IPPN partner) — a first-response advantage for wall diving."
+   ],
+   "safety": {
+    "emergency": "911",
+    "hyperbaric_chamber": "Cornerstone Hyperbaric Chamber & Clinic, Sandy Bay (adjacent to Anthony's Key Resort) — on-island recompression chamber + ER/lab/pharmacy, DAN International Preferred Provider Network partner",
+    "book_enabled": true,
+    "bin": "BOOK WITH WARNING",
+    "consent_flow": {
+     "bin": "BOOK WITH WARNING",
+     "disclosure_required": true,
+     "renders": "full verbatim live US State Dept advisory for Honduras (level + reason + named-danger areas + complete 'If you decide to travel' guidance, pulled live), plus traveler acknowledgment",
+     "wording_status": "hook set only — final consent language PENDING compliance-attorney sign-off"
+    },
+    "air_access_verified": "Direct air into Juan Manuel Gálvez Intl (RTB), Roatán — Bay Islands reachable without transiting mainland gang zones",
+    "no_fly_after_diving": "18-24 hours before RTB departure flight (DAN protocol)",
+    "environmental": [
+     "west-wall depth discipline",
+     "currents on walls/channels",
+     "dengue (CDC)",
+     "bottled water only"
+    ]
+   },
+   "timing": {
+    "peak_season": "mid-December to April (dry season); whale-shark peak late March-April; secondary Oct-Dec",
+    "best_visibility": "July-September",
+    "curve_start": "late November (dry-season); early March (whale-shark spike)",
+    "inflection": "December peak; late-March-April whale-shark peak",
+    "fire_date": "early-to-mid November (dry-season peak); mid-February (whale-shark spike)",
+    "booking_lead_months": "4-6",
+    "off_season_fill": "September-November (rain / hurricane-fringe) — value window, visibility-driven dive messaging",
+    "dive_calendar": true
+   },
+   "jewels": [
+    {
+     "name": "West End Wall + Mary's Place",
+     "si_tag": "diveglobal",
+     "tier": "premier",
+     "commission_path": "dive-resort package (Fora) / own-CLIA liveaboard",
+     "source": "https://sundiversroatan.com/roatan-diving/",
+     "hook": "West End Wall is a top-tier wall dive"
+    },
+    {
+     "name": "Shark Dive — Cara a Cara (via Waihuka)",
+     "si_tag": "Diving/GEA",
+     "tier": "comfort",
+     "commission_path": "excursion via DMC/dive-resort (Fora)",
+     "source": "https://roatan.online/cara-cara-shark-dive",
+     "hook": "face-to-face with 8–15 Caribbean reef sharks at ~70 ft; ~$120 pp + 15% tax"
+    },
+    {
+     "name": "Cayos Cochinos",
+     "si_tag": "Diving/Liveaboard",
+     "tier": "premier",
+     "commission_path": "own-CLIA liveaboard",
+     "source": "https://divemagazine.com/scuba-diving-travel/americas-caribbean/aggressor-adventures-roatan-aggressor-liveaboard-highlights",
+     "hook": "protected archipelago of pristine, less-dived reefs — a Roatán Aggressor itinerary highlight"
+    },
+    {
+     "name": "El Aguila & Odyssey wrecks",
+     "si_tag": "diveglobal",
+     "tier": "premier",
+     "commission_path": "dive-resort package (Fora)",
+     "source": "https://diveintolife.blog/scuba-diving-in-roatan-honduras-west-bay-west-end/"
+    },
+    {
+     "name": "Whale-shark snorkel (Utila day-trip)",
+     "si_tag": "expedition",
+     "tier": "comfort",
+     "commission_path": "day-trip excursion via DMC (Fora)",
+     "source": "https://www.thisisutila.com/post/utila-s-whale-shark-season-when-to-come-and-what-to-expect"
+    },
+    {
+     "name": "Dolphin Encounter (Anthony's Key Resort)",
+     "si_tag": "expedition",
+     "tier": "comfort",
+     "commission_path": "AKR package/excursion (Fora)",
+     "source": "https://anthonyskey.com/dolphin-programs/",
+     "hook": "get-in-the-water dolphin program in a natural lagoon; a 50-year AKR institution"
+    },
+    {
+     "name": "Gumbalimba Park (ziplines, capuchins, iguanas, macaws)",
+     "si_tag": "expedition",
+     "tier": "essential",
+     "commission_path": "DMC excursion (Fora/affiliate)",
+     "source": "https://roatan.online/gumbalimba-park"
+    },
+    {
+     "name": "Iguana Farm (near French Cay, 2,700+ iguanas)",
+     "si_tag": "expedition",
+     "tier": "essential",
+     "commission_path": "DMC excursion (affiliate)",
+     "source": "https://roatantourbase.com/excursion-guides/our-favorite-things-to-do-and-see-in-coxen-hole"
+    },
+    {
+     "name": "Punta Gorda — Garífuna culture (UNESCO)",
+     "si_tag": "expedition",
+     "tier": "essential",
+     "commission_path": "cultural excursion via DMC (Fora/affiliate)",
+     "source": "https://roatantourbase.com/excursion-guides/our-favorite-things-to-do-and-see-in-coxen-hole",
+     "hook": "Roatán's oldest settlement; UNESCO-recognized Garífuna heritage, with the April 12 anniversary celebration"
+    },
+    {
+     "name": "West Bay Beach",
+     "si_tag": "Tropical/Beaches",
+     "commission_path": "anchors West Bay resort/villa stays (Fora / MoR villa)",
+     "source": "https://www.royalcaribbean.com/inspire/what-is-roatan-known-for",
+     "hook": "Roatán's iconic white-sand shoreline; warm shallows, reef snorkeling straight off the sand"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Is Roatán safe to visit right now?",
+     "a": "Yes, with the mandatory logged disclosure — the danger the advisory names sits on the mainland, not on the island. Honduras is US State Department Level 3 \"Reconsider Travel\" (reissued December 10, 2024, for crime), but State's own text carves out the Bay Islands (Roatán, Utila, Guanaja) as areas with \"a concentration of resources\" that \"are better policed,\" and Roatán is reached by direct air into RTB without transiting the mainland gang corridors.",
+     "source": "travel.state.gov, 2024-12-10",
+     "si_tag": "safety"
+    },
+    {
+     "q": "What's the real risk to plan for?",
+     "a": "The load-bearing risk is mainland crime, and the plan is to stay in-zone. Violent crime and gang activity concentrate in the San Pedro Sula, Tegucigalpa, and Comayagua corridors, and Gracias a Dios Department carries a Level 4 \"Do Not Travel\" rating — all on the mainland. Fly direct into RTB, keep the trip airport → island, and never route overland through the gang zones.",
+     "source": "travel.state.gov, 2024-12-10",
+     "si_tag": "safety"
+    },
+    {
+     "q": "Is diving Roatán's walls dangerous — and can I fly out afterward?",
+     "a": "Wall diving rewards depth discipline and respect for the no-fly window, and Roatán has an unusual first-response advantage. Recreational divers work the crest and upper wall (≤60–100 ft); wreck and deep-wall profiles trend technical and are certification-gated. Allow no-fly-after-diving of 18–24 hours before your RTB flight, and note the on-island Cornerstone Hyperbaric Chamber (adjacent to Anthony's Key Resort, a DAN partner) — a genuine safety edge for a wall-diving island. **What makes Roatán's diving special? ** *(Dive Liveaboards / Diving)* Roatán delivers a serious wall reef within minutes of the dock plus a rare repeat-rate track record. Within a 10-minute boat ride off West Bay/West End you reach ~30 named dive sites, from a 15-ft sandy playground with feeding eagle rays to 100-ft+ wall drop-offs, wrecks, and canyon swim-throughs; CoCo View Resort claims the highest repeat rate of any dive resort worldwide (1,600+ guests five times over).",
+     "source": "anthonyskey.com, 2026-07-07",
+     "si_tag": "safety"
+    },
+    {
+     "q": "How much is the Roatán reef fee, and is it required?",
+     "a": "Yes, it is mandatory and it is small. The Roatán Marine Park conservation fee is $10/year or $5/day, non-commissionable, and it funds the very reef you came to dive and snorkel — present it as the reef's cover charge, never buried.",
+     "source": "roatan.online, 2026-07-07",
+     "si_tag": "tropical"
+    },
+    {
+     "q": "Is Roatán good for a honeymoon?",
+     "a": "Yes — Roatán runs a genuine adults-only luxury lane on top of the diving. Ibagari Boutique Hotel is adults-only (12+), holds a Michelin Key 2025, and sits between West Bay and West End; private West Bay villas and sunset-cocktail liveaboard finales round out the romance product.",
+     "source": "guide.michelin.com, 2026-07-07",
+     "si_tag": "romance"
+    },
+    {
+     "q": "Can I snorkel with whale sharks from Roatán?",
+     "a": "Yes, via a day-trip to neighboring Utila, and only by snorkel. Utila is one of the few places on earth with year-round whale-shark potential, peaking late March–April; the animals are protected, so it is surface snorkeling only — no diving with them and no touching.",
+     "source": "thisisutila.com, 2026-07-07",
+     "si_tag": "adventure"
+    }
+   ],
+   "seo": {
+    "meta_title": "Roatán, Honduras (Bay Islands) — Diving, Liveaboards & West Bay Beach | TravelWell.World",
+    "search_language": "es-HN",
+    "local_keywords": [
+     "buceo Roatán",
+     "West Bay Roatán",
+     "Islas de la Bahía",
+     "tiburón ballena Utila",
+     "arrecife mesoamericano buceo",
+     "hoteles de buceo Roatán",
+     "cámara hiperbárica Roatán"
+    ],
+    "long_tail_en": [
+     "Roatán diving guide",
+     "Roatán liveaboard Aggressor",
+     "West Bay Beach Roatán",
+     "whale shark snorkel Utila from Roatán",
+     "is Roatán safe to visit 2026",
+     "Roatán hyperbaric chamber"
+    ],
+    "hreflang": [
+     "en",
+     "es-HN"
+    ],
+    "jsonld_type": "TouristDestination",
+    "author_byline": "By David McCallister — commercial pilot, 56 countries",
+    "freshness": "2026-07-07",
+    "primary_keyword": "Roatán"
+   },
+   "booking": null,
+   "si_checklist_25": null,
+   "sis_present": [
+    {
+     "si": "diveglobal",
+     "status": "live"
+    },
+    {
+     "si": "tropical",
+     "status": "live"
+    }
+   ],
+   "ultra": [
+    {
+     "name": "Ibagari Boutique Hotel",
+     "lane": "Fora / Virtuoso preferred",
+     "mor": "Fora",
+     "tier": "Ultra/Luxury",
+     "note": "adults-only, Michelin Key 2025, boutique dive center"
+    },
+    {
+     "name": "Las Verandas Hotel & Villas (Pristine Bay)",
+     "lane": "Fora / Virtuoso",
+     "mor": "Fora",
+     "tier": "Luxury",
+     "note": "villa resort + Black Pearl golf"
+    },
+    {
+     "name": "Turquoise Bay Dive & Beach Resort",
+     "lane": "Fora",
+     "mor": "Fora",
+     "tier": "premier",
+     "note": "remote NE all-inclusive dive"
+    },
+    {
+     "name": "Private West Bay villas (Arca / Lighthouse Estates)",
+     "lane": "MoR villa rung",
+     "mor": "MoR",
+     "tier": "Luxury",
+     "note": "full-villa buyout + DMC concierge"
+    },
+    {
+     "name": "Roatán Aggressor private charter",
+     "lane": "own-CLIA",
+     "mor": "CLIA",
+     "tier": "Ultra/Premium",
+     "note": "full 18-berth whole-boat buyout"
+    }
+   ],
+   "source_verified": null,
+   "hero": {
+    "query": "Roatán, Honduras (Bay Islands), Honduras"
+   }
+  },
+  "feel": [
+   "tropical"
+  ]
  },
  {
   "id": "robben-island-south-africa",
@@ -94087,6 +93314,153 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "San José del Cabo, Mexico"
+   }
+  }
+ },
+ {
+  "id": "san-juan-del-sur-nicaragua",
+  "region_code": "10S",
+  "name": "San Juan del Sur, Nicaragua",
+  "country": "Nicaragua",
+  "line": "Pacific surf town in a horseshoe bay **TravelWell",
+  "status": "live",
+  "depth": "verified",
+  "img": "mountainValley",
+  "sub_region": "Nicaragua",
+  "tier_range": [
+   "ultra"
+  ],
+  "price_band": "ultra",
+  "data": {
+   "key_facts": null,
+   "safety": {
+    "emergency": "118",
+    "emergency_ambulance": "128",
+    "emergency_fire": "115 / 911 (cell)",
+    "tourist_helpline": "101",
+    "us_embassy_managua": "+505-2252-7100",
+    "advisory_date": "2026-05-14",
+    "advisory_source": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/nicaragua-travel-advisory.html",
+    "book_enabled": false,
+    "bin": "NO SAFE ZONE (content-only)",
+    "redirect_eligible": true,
+    "consent_flow": null,
+    "founder_review_flag": "Do not enable Book path, consent flow, or commission until US advisory drops below Level 3 or a defensible carve-out is designated AND founder + compliance attorney sign off in writing. Re-run gate live before any status change.",
+    "trauma_note": "Quality care only in Managua (~2.5h+); local stabilization → Managua → likely US medevac; robust evacuation insurance prerequisite (content only)."
+   },
+   "timing": {
+    "peak_surf_dry": "Nov–Apr (clean, offshore-groomed, learner-friendly)",
+    "peak_surf_wet": "May–Oct (bigger SE swells, intermediate-to-advanced)",
+    "peak_turtle_arribada": "Jul–Jan, peak Sep–Oct (~7 arribadas)",
+    "inflection": "May–Jun shoulder",
+    "fire_date": "held — pending advisory clearance + founder/attorney",
+    "off_season_note": "No dead season for content; Book path off by gate, not season"
+   },
+   "jewels": [
+    {
+     "name": "Playa Maderas",
+     "si_tag": "GEA-Surf",
+     "commission_path": "dormant",
+     "source": "https://thesurfatlas.com/nicaragua-surf/playa-maderas-surf/",
+     "hook": "The signature wave and the signature sunset; a bay north of town with a fine A-frame, forgiving on small days, powerful on swell"
+    },
+    {
+     "name": "Playa Hermosa",
+     "si_tag": "GEA-Surf",
+     "commission_path": "dormant",
+     "source": "https://thesurfatlas.com/nicaragua-surf/san-juan-del-sur-surf/",
+     "hook": "Over a mile of open beach with multiple peaks, long walls, the odd barrel"
+    },
+    {
+     "name": "Cristo de la Misericordia viewpoint",
+     "si_tag": "Tropical/Romance",
+     "commission_path": "dormant",
+     "source": "https://www.lonelyplanet.com/nicaragua/southwestern-nicaragua/san-juan-del-sur/attractions/cristo-de-la-misericordia/a/poi-sig/1369205/358508",
+     "hook": "Roughly 24–25m of open-armed Christ on the northern headland, a short steep hike, 360° bay-and-Pacific panorama, open 8am–5pm, ~US$2 entry"
+    },
+    {
+     "name": "Playa Marsella",
+     "si_tag": "Tropical/Beaches",
+     "commission_path": "dormant",
+     "source": "https://mangorosanicaragua.com/surfing-in-southern-nicaragua/",
+     "hook": "The gentler, family-tempered beach on the north road, home to beachfront boutique lodging and an easy day away from the town crowds"
+    },
+    {
+     "name": "La Flor olive-ridley arribada",
+     "si_tag": "Wildlife/Tropical",
+     "commission_path": "dormant",
+     "source": "https://www.lonelyplanet.com/nicaragua/beaches-south-of-san-juan-del-sur/attractions/refugio-de-vida-silvestre-la-flor/a/poi-sig/1324287/1328451",
+     "hook": "~20km south of town; ~800 hectares; ~30,000 turtles a year across seven mass arribadas; eggs laid ~9pm–2am, Jul–Jan, peaking Sep–Oct; guided night tours only"
+    },
+    {
+     "name": "Sunset catamaran (Pelican Eyes yacht)",
+     "si_tag": "romance",
+     "commission_path": "dormant",
+     "source": "https://www.luxurylatinamerica.com/nicaragua/pelican_eyes.html"
+    },
+    {
+     "name": "Sunday Funday pool crawl (context)",
+     "si_tag": "Culture/Nightlife",
+     "commission_path": "dormant",
+     "source": "https://www.explorewithlora.com/sunday-funday-nicaragua/",
+     "hook": "Running since 2013 out of Pachamama Hostel, up to 500 travelers weekly across three-to-four venues; the defining backpacker ritual of San Juan del Sur"
+    }
+   ],
+   "faq": null,
+   "seo": {
+    "jsonld_type": "TouristDestination",
+    "meta_title": "San Juan del Sur, Nicaragua — Surf, Turtles & the Christ Statue | TravelWell",
+    "author_byline": "By David McCallister — commercial pilot, 56 countries",
+    "freshness": "2026-07-07",
+    "search_language": "es-NI",
+    "long_tail_en": [
+     "san juan del sur surf season",
+     "playa maderas surf guide",
+     "la flor turtle nesting season",
+     "cristo de la misericordia hike",
+     "is san juan del sur safe 2026",
+     "san juan del sur sunset catamaran"
+    ],
+    "local_keywords": [
+     "San Juan del Sur surf",
+     "Playa Maderas",
+     "tortugas La Flor",
+     "Cristo de la Misericordia mirador",
+     "Playa Hermosa olas",
+     "arribada tortugas Nicaragua"
+    ],
+    "hreflang": [
+     "en",
+     "es-NI"
+    ]
+   },
+   "booking": null,
+   "si_checklist_25": null,
+   "sis_present": null,
+   "ultra": [
+    {
+     "name": "Aqua Wellness Resort",
+     "tier": "ultra-wellness",
+     "note": "secluded-cove treehouse villas, spa positioning",
+     "earning": "dormant"
+    },
+    {
+     "name": "Pelican Eyes Resort & Spa",
+     "tier": "ultra-beach",
+     "note": "crescent-bay villas, 3 pools, Casa Tranquila Spa, sunset yacht",
+     "earning": "dormant",
+     "source": "https://www.luxurylatinamerica.com/nicaragua/pelican_eyes.html"
+    },
+    {
+     "name": "Casa Marsella",
+     "tier": "boutique-beachfront",
+     "note": "Playa Marsella beachfront boutique",
+     "earning": "dormant"
+    }
+   ],
+   "source_verified": null,
+   "hero": {
+    "query": "San Juan del Sur, Nicaragua, Nicaragua"
    }
   }
  },
