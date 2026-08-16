@@ -16581,6 +16581,177 @@
   }
  },
  {
+  "id": "cabo-pulmo-mexico",
+  "region_code": "10S",
+  "name": "Cabo Pulmo",
+  "country": "Mexico",
+  "line": "The Sea of Cortez, recovered **TravelWell",
+  "status": "live",
+  "depth": "verified",
+  "img": "mountainValley",
+  "sub_region": "Baja California Sur (Los Cabos & La Paz)",
+  "si": [
+   "expedition",
+   "diveglobal"
+  ],
+  "tier_range": [
+   "essential",
+   "premier"
+  ],
+  "data": {
+   "key_facts": [
+    "Federally protected National Marine Park since June 5, 1995; ~71 km2 fully protected (Source: en.wikipedia.org/wiki/Cabo_Pulmo_National_Park, 2026-07-04)",
+    "463% total fish-biomass increase, ~11x top-predator jump by 2009 — most successful no-take recovery measured (Source: ocean.si.edu, 2026-07-04)",
+    "Only living hard-coral reef in the Sea of Cortez; UNESCO WHS 2005, Ramsar 2008 (Source: en.wikipedia.org, 2026-07-04)",
+    "CONANP no-take rules: guide-led 6:1, no touching, gloves banned, licensed pangas only (Source: mexicotraveladventure.com, 2026-07-04)",
+    "Off-grid village; ~2-3 h drive north of SJD / Los Cabos; eco-cabañas only, no luxury hotels (Source: sallysees.com, 2026-07-04)"
+   ],
+   "safety": {
+    "emergency": "911",
+    "nearest_trauma": "Cabo San Lucas / San Jose del Cabo (Los Cabos), ~2-3 h by road; La Paz alternative",
+    "advisory_level": "L2",
+    "advisory_note": "Baja California Sur US Level 2 (Exercise Increased Caution), May 29, 2026 — freely bookable, disclose L2, no hold",
+    "malaria": "none",
+    "dengue": "present in Baja California Sur; use repellent",
+    "water": "bottled/purified",
+    "hurricane": "May 15-Nov 30, peak Aug-Oct",
+    "remote_medevac": "off-grid; no chamber/hospital in village; multi-hour ground evac to Los Cabos"
+   },
+   "timing": {
+    "peak": "Jul-Nov (best visibility, bull-shark aggregation)",
+    "shoulder": "Apr-Jun, late fall",
+    "green": "Dec-Feb (coolest water, wind days)",
+    "booking_window_lead_time": "2-4 months (capped dive slots + tiny bed inventory)",
+    "out_of_season_fill": "winter dive-and-stay packages; East Cape / Los Cabos day-trip combos",
+    "holiday_event_peaks": [
+     "US/Canada summer holidays",
+     "Los Cabos Dec-Apr high-season spillover"
+    ],
+    "campaign_start_trigger": "late spring for summer-fall dive peak; Los Cabos winter high season for day-trip capture"
+   },
+   "jewels": [
+    {
+     "si_tag": "expedition",
+     "status": "live",
+     "tier": "essential",
+     "commission": "operator agreement",
+     "name": "Pulmo reef recovery dive"
+    },
+    {
+     "si_tag": "expedition",
+     "status": "live",
+     "tier": "premier",
+     "commission": "operator agreement",
+     "name": "Bull-shark aggregation dive"
+    },
+    {
+     "si_tag": "expedition",
+     "status": "live",
+     "tier": "essential",
+     "commission": "operator + DMC",
+     "name": "Protected-reef snorkel"
+    },
+    {
+     "si_tag": "expedition",
+     "status": "live",
+     "tier": "premier",
+     "commission": "operator agreement",
+     "name": "Sea-lion / offshore pinnacle dives"
+    },
+    {
+     "si_tag": "diveglobal",
+     "status": "future",
+     "tier": "premier",
+     "commission": "operator; stay direct",
+     "name": "Multi-day Cabo Pulmo dive-and-stay"
+    }
+   ],
+   "faq": [
+    {
+     "q": "Is Cabo Pulmo worth diving, and what will I see?",
+     "a": "Yes — it is arguably the Sea of Cortez's best dive, because protection worked: total fish biomass rebounded 463% by 2009 on the Gulf's only living hard-coral reef. Expect schooling jacks, groupers and rays, and in warm summer–fall water a bull-shark aggregation.",
+     "source": "ocean.si.edu / divearoo.com, 2026-07-04",
+     "si_tag": "expedition"
+    },
+    {
+     "q": "Do I need to be certified, and can non-divers go?",
+     "a": "You dive within your card with a mandatory park guide (max 6 divers each), and non-divers can snorkel the same no-take reef. The rules are strict — no gloves, no touching, licensed pangas only — and enforced; break them and you can be pulled from the water.",
+     "source": "mexicotraveladventure.com, 2026-07-04",
+     "si_tag": "diveglobal"
+    },
+    {
+     "q": "Can couples make a romantic escape of Cabo Pulmo?",
+     "a": "Only if \"romantic\" means off-grid and simple — there is no resort or spa layer. Lodging is solar eco-cabañas and a tiny villa cluster (~5 villas), which suits low-key couples; anyone wanting branded luxury bases in Los Cabos or the East Cape and day-trips in.",
+     "source": "sallysees.com / cabopulmo.com, 2026-07-04",
+     "si_tag": "romance"
+    },
+    {
+     "q": "Is Cabo Pulmo safe to visit right now?",
+     "a": "Yes — freely bookable. Baja California Sur carries a US State Dept Level 2 \"Exercise Increased Caution\" (May 29, 2026) and is one of Mexico's safer states; the real caveat here is remoteness, not crime.",
+     "source": "travel.state.gov, 2026-05-29",
+     "si_tag": "safety"
+    },
+    {
+     "q": "Is diving here dangerous — what's the real risk?",
+     "a": "The gatekeeper is medevac distance, not the diving itself. Cabo Pulmo is off-grid with no chamber or hospital in the village; the nearest recompression chamber and trauma care are ~2–3 hours away in Los Cabos, so dive conservatively, carry DAN cover, and observe 18–24 h no-fly before an SJD departure.",
+     "source": "sssnetwork.com / dan.org, 2026-07-04",
+     "si_tag": "safety"
+    }
+   ],
+   "seo": {
+    "meta_title": "Cabo Pulmo Diving — Sea of Cortez No-Take Reef | TravelWell.World",
+    "meta_description": "Dive Cabo Pulmo, the most-recovered no-take marine reserve in the Sea of Cortez. Guided park dives, no-touch rules, eco-cabaña stays, Los Cabos gateway logistics.",
+    "primary_keywords": [
+     "Cabo Pulmo diving",
+     "Cabo Pulmo National Park",
+     "Cabo Pulmo snorkeling",
+     "Sea of Cortez reef"
+    ],
+    "long_tail": [
+     "best time to dive Cabo Pulmo",
+     "Cabo Pulmo bull shark season",
+     "how to get to Cabo Pulmo from Los Cabos",
+     "Cabo Pulmo eco cabañas"
+    ],
+    "search_language": "es-MX",
+    "local_keywords": [
+     "buceo Cabo Pulmo",
+     "Parque Nacional Cabo Pulmo",
+     "arrecife de coral Mar de Cortes",
+     "snorkel Cabo Pulmo",
+     "reserva marina sin pesca",
+     "cabanas ecologicas Cabo Pulmo"
+    ],
+    "hreflang": [
+     "en",
+     "es-MX"
+    ],
+    "jsonld_type": "TouristAttraction",
+    "author_byline": "By David McCallister — commercial pilot, 56 countries",
+    "content_freshness": "2026-07-04"
+   },
+   "booking": null,
+   "si_checklist_25": null,
+   "sis_present": [
+    "expedition",
+    "diveglobal"
+   ],
+   "ultra": [
+    {
+     "what": "Four Seasons Los Cabos at Costa Palmas / Amanvari (East Cape, Los Cabos) as luxury base for a Cabo Pulmo dive charter",
+     "why_ultra": "largest swimmable beach + only private marina in Los Cabos; Amanvari is first Aman in Mexico (spring 2026)",
+     "earning": "on application / via host-Virtuoso",
+     "virtuoso_value_add": "resort credit, upgrade, breakfast; private guide for Pulmo run",
+     "mor": "resale via host-Virtuoso only; Cabo Pulmo itself is NOT an ultra stay — nearest ultra is Los Cabos"
+    }
+   ],
+   "source_verified": "2026-07-04",
+   "hero": {
+    "query": "Cabo Pulmo, Mexico"
+   }
+  }
+ },
+ {
   "id": "cabo-san-lucas-mexico",
   "region_code": "10S",
   "name": "Cabo San Lucas",
@@ -57165,6 +57336,199 @@
   ]
  },
  {
+  "id": "loreto-mexico",
+  "region_code": "10S",
+  "name": "Loreto",
+  "country": "Mexico",
+  "line": "Blue whales and five empty islands **TravelWell",
+  "status": "live",
+  "depth": "verified",
+  "img": "mountainValley",
+  "sub_region": "Baja California Sur (Los Cabos & La Paz)",
+  "si": [
+   "expedition",
+   "tropical",
+   "diveglobal",
+   "romance"
+  ],
+  "tier_range": [
+   "essential",
+   "premier"
+  ],
+  "data": {
+   "key_facts": [
+    "Loreto Bay sheltered by 5 uninhabited islands (Coronado, del Carmen, Danzante, Monserrat, Santa Catalina); marine park w/ 40+ dive/snorkel sites (Source: wildloreto.com, 2026-07-04)",
+    "Blue-whale season ~Jan-Mar, strongest early Feb to mid-Mar (Source: thoroughlytravel.com, 2026-07-04)",
+    "Humpback, fin, sei whales + dolphins, rays, sea lions, turtles also frequent the bay (Source: thoroughlytravel.com, 2026-07-04)",
+    "Whale tours depart Loreto Marina / Marina Puerto Escondido, 4-6 h (Source: sallysees.com, 2026-07-04)",
+    "LTO airport served by Alaska/American/Volaris/WestJet; no non-stop LTO-SJD (Source: flightsfrom.com, 2026-07-04)"
+   ],
+   "safety": {
+    "emergency": "911",
+    "nearest_trauma": "Loreto clinics for routine; serious trauma/recompression to La Paz (~350 km) or Los Cabos",
+    "advisory_level": "L2",
+    "advisory_note": "Baja California Sur US Level 2 (Exercise Increased Caution), May 29, 2026 — freely bookable, disclose L2, no hold",
+    "malaria": "none",
+    "dengue": "present in Baja California Sur (Loreto ~2 cases YTD 2026, low); use repellent",
+    "water": "bottled/purified",
+    "hurricane": "May 15-Nov 30, peak Aug-Oct"
+   },
+   "timing": {
+    "peak": "Dec-Apr (whale season; blue whale Feb-Apr; dry mild high season)",
+    "shoulder": "May, Oct-Nov",
+    "green": "Jun-Sep (hot, hurricane-exposed, best rates)",
+    "booking_window_lead_time": "3-6 months for whale-season stays + panga slots; resort peak weeks further out",
+    "out_of_season_fill": "summer island-snorkel, kayak, TPC golf packages",
+    "holiday_event_peaks": [
+     "Blue Whale Festival (whale season)",
+     "US/Canada winter escape peak",
+     "Danzante Bay golf invitational (autumn)"
+    ],
+    "campaign_start_trigger": "early fall (Sep-Oct) for Jan-Mar whale window; summer green-season golf/island campaigns"
+   },
+   "jewels": [
+    {
+     "si_tag": "expedition",
+     "status": "live",
+     "tier": "premier",
+     "commission": "operator agreement",
+     "name": "Blue-whale watching"
+    },
+    {
+     "si_tag": "expedition",
+     "status": "live",
+     "tier": "essential",
+     "commission": "operator",
+     "name": "Sierra de la Giganta / mission-canyon hike"
+    },
+    {
+     "si_tag": "tropical",
+     "status": "live",
+     "tier": "essential",
+     "commission": "operator",
+     "name": "Isla Coronado snorkel day"
+    },
+    {
+     "si_tag": "tropical",
+     "status": "live",
+     "tier": "essential",
+     "commission": "operator",
+     "name": "Isla del Carmen / Puerto Balandra snorkel"
+    },
+    {
+     "si_tag": "tropical",
+     "status": "live",
+     "tier": "premier",
+     "commission": "resort/operator",
+     "name": "Isla Danzante / Danzante Bay"
+    },
+    {
+     "si_tag": "diveglobal",
+     "status": "future",
+     "tier": "premier",
+     "commission": "operator agreement",
+     "name": "Loreto Bay Marine Park dives (40+ sites)"
+    },
+    {
+     "si_tag": "romance",
+     "status": "future",
+     "tier": "premier",
+     "commission": "resort contract",
+     "name": "Villa del Palmar spa + Danzante Bay golf escape"
+    }
+   ],
+   "faq": [
+    {
+     "q": "When is the best time to see blue whales in Loreto?",
+     "a": "Roughly January–March, strongest early February to about mid-March, because that's when blue whales feed in the bay; gray and humpback come slightly earlier. Tours are 4–6-hour pangas from Loreto Marina or Puerto Escondido — book the short window 3–6 months ahead.",
+     "source": "thoroughlytravel.com / sallysees.com, 2026-07-04",
+     "si_tag": "expedition"
+    },
+    {
+     "q": "What are Loreto's islands like?",
+     "a": "Five uninhabited islands — Coronado, del Carmen, Danzante, Monserrat and Santa Catalina — shelter the bay with turquoise coves, white-sand beaches and a sea-lion colony, all inside a protected marine park with 40+ snorkel/dive sites. Isla Coronado is the classic day trip.",
+     "source": "wildloreto.com, 2026-07-04",
+     "si_tag": "tropical"
+    },
+    {
+     "q": "Is Loreto good for a golf-and-spa couples escape?",
+     "a": "Yes, if you want premier rather than ultra. Villa del Palmar at Danzante Bay has Mexico's only TPC course (Best Golf Course in Mexico 2020) and a 39,000-sq-ft spa on a secluded bay — position it as a premier golf-and-whale escape, not an Aman-tier ultra.",
+     "source": "villadelpalmarloreto.com, 2026-07-04",
+     "si_tag": "romance"
+    },
+    {
+     "q": "Is Loreto safe to visit?",
+     "a": "Yes — freely bookable. Baja California Sur is US State Dept Level 2 (May 29, 2026) and one of Mexico's safer states; dengue is low here (Loreto reported ~2 cases YTD 2026).",
+     "source": "travel.state.gov, 2026-05-29 / oem.com.mx, 2026-07-04",
+     "si_tag": "safety"
+    },
+    {
+     "q": "What's the real risk to plan for — is the diving remote?",
+     "a": "Yes — chamber distance is the gatekeeper. Loreto has local clinics for routine care, but a serious dive bend routes ~350 km south to the La Paz chamber (or Los Cabos), so dive conservatively, keep whale-panga trips to licensed no-chase operators, and observe 18–24 h no-fly before the LTO departure.",
+     "source": "scubaboard.com / dan.org, 2026-07-04",
+     "si_tag": "safety"
+    }
+   ],
+   "seo": {
+    "meta_title": "Loreto Mexico — Blue Whales, Marine Park & Island Snorkel | TravelWell.World",
+    "meta_description": "Loreto, Baja California Sur: blue-whale season, five uninhabited islands, Loreto Bay Marine Park diving, TPC Danzante Bay golf. Pueblo Magico gateway, plan by season.",
+    "primary_keywords": [
+     "Loreto Mexico",
+     "blue whale watching Loreto",
+     "Loreto Bay National Park",
+     "Loreto islands"
+    ],
+    "long_tail": [
+     "best time to see blue whales in Loreto",
+     "Loreto whale watching tours 2026",
+     "Isla Coronado snorkel",
+     "TPC Danzante Bay golf",
+     "Villa del Palmar Loreto"
+    ],
+    "search_language": "es-MX",
+    "local_keywords": [
+     "avistamiento de ballena azul Loreto",
+     "Parque Nacional Bahia de Loreto",
+     "islas de Loreto",
+     "buceo Loreto",
+     "Pueblo Magico Loreto",
+     "tours de ballenas Loreto"
+    ],
+    "hreflang": [
+     "en",
+     "es-MX"
+    ],
+    "jsonld_type": "TouristDestination",
+    "author_byline": "By David McCallister — commercial pilot, 56 countries",
+    "content_freshness": "2026-07-04"
+   },
+   "booking": null,
+   "si_checklist_25": null,
+   "sis_present": [
+    "expedition",
+    "tropical",
+    "diveglobal",
+    "romance"
+   ],
+   "ultra": [
+    {
+     "what": "Villa del Palmar at the Islands of Loreto by Danzante Bay (premier, not true ultra)",
+     "why_ultra": "Mexico's only TPC course (Rees Jones; Best Golf Course in Mexico 2020), 39,000-sq-ft spa, secluded bay",
+     "earning": "on application / via host-Virtuoso if preferred program exists (verify — not confirmed Virtuoso)",
+     "virtuoso_value_add": "resort credit/upgrade where preferred program applies; else standard commission via bedbank/MoR",
+     "mor": "resale under resort contract; position as premier golf + whale escape, not Aman/FS-tier ultra; nearest true ultra = Los Cabos/East Cape"
+    }
+   ],
+   "source_verified": "2026-07-04",
+   "hero": {
+    "query": "Loreto, Mexico"
+   }
+  },
+  "feel": [
+   "tropical"
+  ]
+ },
+ {
   "id": "los-barriles-mexico",
   "region_code": "10S",
   "name": "Los Barriles",
@@ -59320,6 +59684,178 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Madikwe Game Reserve, South Africa"
+   }
+  }
+ },
+ {
+  "id": "magdalena-bay-mexico",
+  "region_code": "10S",
+  "name": "Magdalena Bay",
+  "country": "Mexico",
+  "line": "Gray-whale lagoon, marlin bait-balls **TravelWell",
+  "status": "live",
+  "depth": "verified",
+  "img": "oceanAerial",
+  "sub_region": "Baja California Sur (Los Cabos & La Paz)",
+  "si": [
+   "expedition",
+   "ocean"
+  ],
+  "tier_range": [
+   "essential",
+   "premier",
+   "luxury"
+  ],
+  "data": {
+   "key_facts": [
+    "Gray-whale breeding lagoon; whales arrive late Dec-early Jan, stay to early/late Apr, peak Jan-Mar (Source: seakayakadventures.com, 2026-07-04)",
+    "Famously 'friendly' gray whales approach boats for close encounters (Source: randomtrip.net, 2026-07-04)",
+    "Striped-marlin + sea-lion bait balls form ~mid-Oct-Dec (sardine run) (Source: magdalenabaywhales.com, 2026-07-04)",
+    "~5-6 h from Cabo San Lucas, ~3.5-4 h from La Paz; whale towns Puerto San Carlos & Lopez Mateos (Source: randomtrip.net, 2026-07-04)",
+    "Lodging is barrier-island glamping camp (~US$650+ 1-night all-in) or basic town hotels — no resorts (Source: thoroughlytravel.com, 2026-07-04)"
+   ],
+   "safety": {
+    "emergency": "911",
+    "nearest_trauma": "basic local care in Puerto San Carlos / Lopez Mateos; serious trauma to La Paz (~3.5-4 h) or Los Cabos (~5-6 h)",
+    "advisory_level": "L2",
+    "advisory_note": "Baja California Sur US Level 2 (Exercise Increased Caution), May 29, 2026 — freely bookable, disclose L2, no hold",
+    "malaria": "none",
+    "dengue": "present in Baja California Sur; use repellent",
+    "water": "bottled/purified",
+    "hurricane": "May 15-Nov 30, peak Aug-Oct (whale/marlin windows largely outside peak)",
+    "remote_medevac": "remote Pacific coast; barrier-island camp is boat-access only — long ground evac"
+   },
+   "timing": {
+    "peak": "gray-whale HARD window ~mid-Jan-mid-Mar (calving lagoon)",
+    "second_peak": "sardine run / striped-marlin bait ball, mid-Oct-Dec",
+    "shoulder": "late Dec-early Jan (arrival), late Mar-Apr (tail-end)",
+    "green": "May-Sep (off-season, hot, hurricane-exposed)",
+    "booking_window_lead_time": "6-12 months (tiny whale-camp capacity, both windows sell out early)",
+    "out_of_season_fill": "minimal; sport fishing + birding fill edges",
+    "holiday_event_peaks": [
+     "US/Canada winter escape overlaps gray-whale peak"
+    ],
+    "campaign_start_trigger": "gray-whale 9-12 months out; marlin/sardine-run by mid-summer for Oct-Dec"
+   },
+   "jewels": [
+    {
+     "si_tag": "expedition",
+     "status": "live",
+     "tier": "premier",
+     "commission": "operator agreement",
+     "name": "Gray-whale calving-lagoon encounter"
+    },
+    {
+     "si_tag": "expedition",
+     "status": "live",
+     "tier": "premier",
+     "commission": "operator; net-rate red",
+     "name": "Barrier-island whale-camp overnight"
+    },
+    {
+     "si_tag": "expedition",
+     "status": "live",
+     "tier": "essential",
+     "commission": "operator",
+     "name": "Mangrove / birding skiff"
+    },
+    {
+     "si_tag": "ocean",
+     "status": "future",
+     "tier": "premier",
+     "commission": "operator agreement",
+     "name": "Snorkel-with-striped-marlin bait ball (sardine run)"
+    },
+    {
+     "si_tag": "ocean",
+     "status": "future",
+     "tier": "luxury",
+     "commission": "operator/wholesale",
+     "name": "Striped-marlin liveaboard (Nautilus)"
+    }
+   ],
+   "faq": [
+    {
+     "q": "When is gray-whale season in Magdalena Bay?",
+     "a": "The hard window is roughly mid-January to mid-March, when mothers and calves fill the calving lagoon; whales arrive late Dec–early Jan and linger to April. Mag Bay's grays are famously \"friendly,\" often approaching the pangas — book the tiny whale-camp capacity 6–12 months ahead.",
+     "source": "seakayakadventures.com / randomtrip.net, 2026-07-04",
+     "si_tag": "expedition"
+    },
+    {
+     "q": "Can I snorkel the striped-marlin bait balls?",
+     "a": "Yes, from about mid-October to December — but it's an advanced open-water activity. You're offshore in current among fast-moving marlin and sea lions driving sardines to the surface, so it's for confident, fit snorkelers and freedivers with specialist operators only.",
+     "source": "magdalenabaywhales.com / divernet.com, 2026-07-04",
+     "si_tag": "ocean"
+    },
+    {
+     "q": "Where do I stay — are there resorts?",
+     "a": "No resorts — the accurate options are a barrier-island whale camp (glamping, 1–7 nights, ~$650+ for a 1-night all-in) or basic hotels in Puerto San Carlos and López Mateos. The camp is part of the experience: whales from shore, and nothing between you and the lagoon.",
+     "source": "thoroughlytravel.com, 2026-07-04",
+     "si_tag": "expedition"
+    },
+    {
+     "q": "Is Magdalena Bay safe, and how remote is it?",
+     "a": "Freely bookable — Baja California Sur is US State Dept Level 2 (May 29, 2026) — but genuinely remote. The whale towns have only basic care; serious trauma routes ~3.5–4 h to La Paz or ~5–6 h to Los Cabos, and the barrier-island camp is boat-access only, so carry evacuation insurance.",
+     "source": "travel.state.gov, 2026-05-29 / randomtrip.net, 2026-07-04",
+     "si_tag": "safety"
+    },
+    {
+     "q": "Is the bait-ball snorkel dangerous?",
+     "a": "It is not a beginner activity. The sardine run happens offshore in current among fast predators, so go only with specialist operators, follow the guide's positioning rules and never touch the wildlife; if you dive elsewhere in Baja, the nearest chambers are La Paz and Cabo San Lucas with 18–24 h no-fly.",
+     "source": "divernet.com / sssnetwork.com, 2026-07-04",
+     "si_tag": "safety"
+    }
+   ],
+   "seo": {
+    "meta_title": "Magdalena Bay — Gray-Whale Lagoon & Striped-Marlin Sardine Run | TravelWell.World",
+    "meta_description": "Magdalena Bay, Baja California Sur: gray-whale calving lagoon (Jan-Mar) and the striped-marlin bait-ball sardine run (Oct-Dec). Whale-camp stays, seasons, safe-panga guidance.",
+    "primary_keywords": [
+     "Magdalena Bay whale watching",
+     "gray whale Magdalena Bay",
+     "striped marlin bait ball",
+     "Baja sardine run"
+    ],
+    "long_tail": [
+     "gray whale season Magdalena Bay 2026",
+     "snorkel with striped marlin Baja",
+     "Magdalena Bay whale camp",
+     "Puerto San Carlos whale watching",
+     "how to get to Magdalena Bay from Los Cabos"
+    ],
+    "search_language": "es-MX",
+    "local_keywords": [
+     "ballena gris Bahia Magdalena",
+     "avistamiento de ballenas Puerto San Carlos",
+     "marlin rayado Bahia Magdalena",
+     "corrida de la sardina Baja",
+     "campamento de ballenas Bahia Magdalena"
+    ],
+    "hreflang": [
+     "en",
+     "es-MX"
+    ],
+    "jsonld_type": "TouristAttraction",
+    "author_byline": "By David McCallister — commercial pilot, 56 countries",
+    "content_freshness": "2026-07-04"
+   },
+   "booking": null,
+   "si_checklist_25": null,
+   "sis_present": [
+    "expedition",
+    "ocean"
+   ],
+   "ultra": [
+    {
+     "what": "National Geographic / Lindblad expedition cruise to Magdalena Bay (sea-based); or Los Cabos/East Cape ultra property as pre/post base",
+     "why_ultra": "small-ship expedition w/ naturalists is the only refined product on the bay; no land ultra exists here (nearest = Los Cabos/East Cape 3.5-6 h away)",
+     "earning": "on application / via host-Virtuoso; expedition-cruise lines carry advisor commission",
+     "virtuoso_value_add": "shipboard credit/expedition perks via preferred programs, or resort credit at Los Cabos base",
+     "mor": "resale via host-Virtuoso / cruise-wholesale only; Magdalena Bay lodging itself is NOT ultra"
+    }
+   ],
+   "source_verified": "2026-07-04",
+   "hero": {
+    "query": "Magdalena Bay, Mexico"
    }
   }
  },
