@@ -135,6 +135,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Aarhus, Denmark"
+   },
+   "geo": {
+    "lat": 56.1629,
+    "lng": 10.2039
    }
   }
  },
@@ -260,6 +264,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Abaco, Bahamas"
+   },
+   "geo": {
+    "lat": 26.35,
+    "lng": -77.05
    }
   },
   "feel": [
@@ -579,6 +587,10 @@
    "source_verified": "2026-08-10",
    "hero": {
     "query": "Abu Dhabi, United Arab Emirates"
+   },
+   "geo": {
+    "lat": 24.45,
+    "lng": 54.38
    }
   }
  },
@@ -719,6 +731,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Addo Elephant National Park, South Africa"
+   },
+   "geo": {
+    "lat": -33.45,
+    "lng": 25.75
    }
   }
  },
@@ -1033,6 +1049,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Aix-en-Provence, France"
+   },
+   "geo": {
+    "lat": 43.5297,
+    "lng": 5.4474
    }
   }
  },
@@ -1326,6 +1346,10 @@
    "source_verified": "2026-08-01",
    "hero": {
     "query": "Akagera National Park, Rwanda"
+   },
+   "geo": {
+    "lat": -1.65,
+    "lng": 30.7
    }
   }
  },
@@ -1567,6 +1591,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Akumal, Mexico"
+   },
+   "geo": {
+    "lat": 20.3958,
+    "lng": -87.3153
    }
   }
  },
@@ -2152,6 +2180,10 @@
    "source_verified": "2026-07-19",
    "hero": {
     "query": "Alpe d'Huez, France"
+   },
+   "geo": {
+    "lat": 45.0603,
+    "lng": 6.0714
    }
   }
  },
@@ -2323,6 +2355,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Alsace, France"
+   },
+   "geo": {
+    "lat": 48.3182,
+    "lng": 7.4416
    }
   }
  },
@@ -2638,6 +2674,10 @@
    "source_verified": "2026-08-10",
    "hero": {
     "query": "AlUla, Saudi Arabia"
+   },
+   "geo": {
+    "lat": 26.62,
+    "lng": 37.92
    }
   }
  },
@@ -2810,6 +2850,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "The Amalfi Coast, Italy"
+   },
+   "geo": {
+    "lat": 40.634,
+    "lng": 14.6027
    }
   }
  },
@@ -3147,6 +3191,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Ambergris Caye / San Pedro, Belize"
+   },
+   "geo": {
+    "lat": 17.9214,
+    "lng": -87.9611
    }
   },
   "feel": [
@@ -3395,6 +3443,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Amboise, France"
+   },
+   "geo": {
+    "lat": 47.413,
+    "lng": 0.9821
    }
   }
  },
@@ -3695,6 +3747,10 @@
    "source_verified": "2026-07-31",
    "hero": {
     "query": "Amboseli National Park, Kenya"
+   },
+   "geo": {
+    "lat": -2.65,
+    "lng": 37.26
    }
   }
  },
@@ -3892,6 +3948,10 @@
    "source_verified": "2026-08-03",
    "hero": {
     "query": "Amman, Jordan"
+   },
+   "geo": {
+    "lat": 31.9539,
+    "lng": 35.9106
    }
   }
  },
@@ -4246,6 +4306,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "Amsterdam, Netherlands"
+   },
+   "geo": {
+    "lat": 52.3676,
+    "lng": 4.9041
    }
   }
  },
@@ -4682,6 +4746,10 @@
    "source_verified": "2026-07-19",
    "hero": {
     "query": "Andermatt, Switzerland"
+   },
+   "geo": {
+    "lat": 46.6167,
+    "lng": 8.5833
    }
   }
  },
@@ -4802,6 +4870,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Andros, Bahamas"
+   },
+   "geo": {
+    "lat": 24.4333,
+    "lng": -77.95
    }
   }
  },
@@ -5060,6 +5132,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Antibes – Juan-les-Pins, France"
+   },
+   "geo": {
+    "lat": 43.5808,
+    "lng": 7.125
    }
   }
  },
@@ -5403,6 +5479,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Antigua, Guatemala"
+   },
+   "geo": {
+    "lat": 14.5586,
+    "lng": -90.7295
    }
   }
  },
@@ -5698,6 +5778,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "Antwerp, Belgium"
+   },
+   "geo": {
+    "lat": 51.2194,
+    "lng": 4.4025
    }
   }
  },
@@ -6138,6 +6222,10 @@
    "source_verified": "2026-07-17 (v6 depth pass)",
    "hero": {
     "query": "Appenzell, Switzerland"
+   },
+   "geo": {
+    "lat": 47.3319,
+    "lng": 9.409
    }
   }
  },
@@ -6375,6 +6463,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "The Ardennes & the Belgian Countryside, Belgium"
+   },
+   "geo": {
+    "lat": 50.0,
+    "lng": 5.5
    }
   }
  },
@@ -6609,6 +6701,10 @@
    "source_verified": null,
    "hero": {
     "query": "Arequipa & the Colca Canyon, Peru, Peru"
+   },
+   "geo": {
+    "lat": -16.409,
+    "lng": -71.5375
    }
   }
  },
@@ -6947,6 +7043,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Arles, France"
+   },
+   "geo": {
+    "lat": 43.6767,
+    "lng": 4.6278
    }
   }
  },
@@ -7157,6 +7257,10 @@
    "source_verified": "2026-08-03",
    "hero": {
     "query": "Aswan, Egypt"
+   },
+   "geo": {
+    "lat": 24.0889,
+    "lng": 32.8998
    }
   }
  },
@@ -7618,6 +7722,10 @@
    "source_verified": "2026-07-10",
    "hero": {
     "query": "Austria, Austria"
+   },
+   "geo": {
+    "lat": 47.5162,
+    "lng": 14.5501
    }
   }
  },
@@ -7856,6 +7964,10 @@
    "source_verified": "2026-07-08",
    "hero": {
     "query": "Auvers-sur-Oise, France"
+   },
+   "geo": {
+    "lat": 49.0703,
+    "lng": 2.1697
    }
   }
  },
@@ -8189,6 +8301,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Avignon, France"
+   },
+   "geo": {
+    "lat": 43.9493,
+    "lng": 4.8055
    }
   }
  },
@@ -8430,6 +8546,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Bacalar, Mexico"
+   },
+   "geo": {
+    "lat": 18.6767,
+    "lng": -88.3953
    }
   },
   "feel": [
@@ -8670,6 +8790,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Balandra Beach (Playa Balandra), Mexico"
+   },
+   "geo": {
+    "lat": 24.32,
+    "lng": -110.33
    }
   },
   "feel": [
@@ -8918,6 +9042,10 @@
    "source_verified": "2026-07-11",
    "hero": {
     "query": "The Baltic Coast (Rügen & Usedom), Germany"
+   },
+   "geo": {
+    "lat": 54.42,
+    "lng": 13.42
    }
   }
  },
@@ -9203,6 +9331,10 @@
    "source_verified": "2026-07-10",
    "hero": {
     "query": "Bamberg, Germany"
+   },
+   "geo": {
+    "lat": 49.8917,
+    "lng": 10.8917
    }
   }
  },
@@ -9478,6 +9610,10 @@
    "source_verified": null,
    "hero": {
     "query": "Baños de Agua Santa, Ecuador, Ecuador"
+   },
+   "geo": {
+    "lat": -1.3928,
+    "lng": -78.4269
    }
   }
  },
@@ -9723,6 +9859,10 @@
    "source_verified": "2026-07-08",
    "hero": {
     "query": "Barbizon, France"
+   },
+   "geo": {
+    "lat": 48.4467,
+    "lng": 2.6014
    }
   }
  },
@@ -9888,6 +10028,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Barcelona, Spain"
+   },
+   "geo": {
+    "lat": 41.3874,
+    "lng": 2.1686
    }
   }
  },
@@ -10276,6 +10420,10 @@
    "source_verified": "2026-07-17 (hub-depth pass; verified 2026-07-10)",
    "hero": {
     "query": "Bavaria, Germany"
+   },
+   "geo": {
+    "lat": 48.7904,
+    "lng": 11.4979
    }
   }
  },
@@ -10405,6 +10553,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Bávaro, Dominican Republic"
+   },
+   "geo": {
+    "lat": 18.68,
+    "lng": -68.42
    }
   },
   "feel": [
@@ -10533,6 +10685,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Bayahibe, Dominican Republic"
+   },
+   "geo": {
+    "lat": 18.365,
+    "lng": -68.834
    }
   }
  },
@@ -10780,6 +10936,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Bayeux & the D-Day Landing Beaches, France"
+   },
+   "geo": {
+    "lat": 49.2764,
+    "lng": -0.7024
    }
   }
  },
@@ -10893,6 +11053,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Bazaruto Archipelago, Mozambique"
+   },
+   "geo": {
+    "lat": -21.8534,
+    "lng": 35.4253
    }
   }
  },
@@ -11057,6 +11221,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "Belgium & Luxembourg (node hub), Belgium / Luxembourg"
+   },
+   "geo": {
+    "lat": 50.6,
+    "lng": 4.8
    }
   }
  },
@@ -11161,6 +11329,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Benguerra Island, Mozambique"
+   },
+   "geo": {
+    "lat": -21.8598,
+    "lng": 35.4373
    }
   }
  },
@@ -11630,6 +11802,10 @@
    "source_verified": "2026-07-10",
    "hero": {
     "query": "Berchtesgaden & the Königssee, Germany"
+   },
+   "geo": {
+    "lat": 47.6309,
+    "lng": 12.999
    }
   }
  },
@@ -11776,6 +11952,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Bergen, Norway"
+   },
+   "geo": {
+    "lat": 60.3913,
+    "lng": 5.3221
    }
   }
  },
@@ -12156,6 +12336,10 @@
    "source_verified": "2026-07-11",
    "hero": {
     "query": "Berlin, Germany"
+   },
+   "geo": {
+    "lat": 52.52,
+    "lng": 13.405
    }
   }
  },
@@ -12323,6 +12507,10 @@
    "source_verified": "2026-07-11",
    "hero": {
     "query": "Berlin & the North, Germany"
+   },
+   "geo": {
+    "lat": 53.0,
+    "lng": 11.5
    }
   }
  },
@@ -12588,6 +12776,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Bern, Switzerland"
+   },
+   "geo": {
+    "lat": 46.948,
+    "lng": 7.4474
    }
   }
  },
@@ -12709,6 +12901,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Bimini, Bahamas"
+   },
+   "geo": {
+    "lat": 25.7333,
+    "lng": -79.25
    }
   }
  },
@@ -13153,6 +13349,10 @@
    "source_verified": "2026-07-10",
    "hero": {
     "query": "The Black Forest & Southwest Germany, Germany"
+   },
+   "geo": {
+    "lat": 48.26,
+    "lng": 8.17
    }
   }
  },
@@ -13277,6 +13477,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Black River, Jamaica"
+   },
+   "geo": {
+    "lat": 18.026,
+    "lng": -77.849
    }
   }
  },
@@ -13515,6 +13719,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "The Belize Atolls & Blue Hole, Belize"
+   },
+   "geo": {
+    "lat": 17.3158,
+    "lng": -87.5346
    }
   },
   "feel": [
@@ -13642,6 +13850,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Blue Mountains, Jamaica"
+   },
+   "geo": {
+    "lat": 18.053,
+    "lng": -76.583
    }
   }
  },
@@ -13861,6 +14073,10 @@
    "source_verified": null,
    "hero": {
     "query": "Bocas del Toro, Panama, Panama"
+   },
+   "geo": {
+    "lat": 9.3402,
+    "lng": -82.2417
    }
   }
  },
@@ -14208,6 +14424,10 @@
    "source_verified": null,
    "hero": {
     "query": "Bogotá & The Andes, Colombia, Colombia"
+   },
+   "geo": {
+    "lat": 4.711,
+    "lng": -74.0721
    }
   }
  },
@@ -14427,6 +14647,10 @@
    "source_verified": null,
    "hero": {
     "query": "Bonito, Brazil, Brazil"
+   },
+   "geo": {
+    "lat": -21.1261,
+    "lng": -56.4514
    }
   }
  },
@@ -14717,6 +14941,10 @@
    "source_verified": "2026-07-11",
    "hero": {
     "query": "Bremen, Germany"
+   },
+   "geo": {
+    "lat": 53.0793,
+    "lng": 8.8017
    }
   }
  },
@@ -15043,6 +15271,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "Bruges (Brugge), Belgium"
+   },
+   "geo": {
+    "lat": 51.2093,
+    "lng": 3.2247
    }
   }
  },
@@ -15374,6 +15606,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "Brussels, Belgium"
+   },
+   "geo": {
+    "lat": 50.8503,
+    "lng": 4.3517
    }
   }
  },
@@ -15913,6 +16149,10 @@
    "source_verified": "2026-07-27",
    "hero": {
     "query": "Budapest, Hungary"
+   },
+   "geo": {
+    "lat": 47.4979,
+    "lng": 19.0402
    }
   }
  },
@@ -16202,6 +16442,10 @@
    "source_verified": null,
    "hero": {
     "query": "Buenos Aires, Argentina, Argentina"
+   },
+   "geo": {
+    "lat": -34.6037,
+    "lon": -58.3816
    }
   }
  },
@@ -16455,6 +16699,10 @@
    "source_verified": "2026-08-01",
    "hero": {
     "query": "Bwindi Impenetrable National Park, Uganda"
+   },
+   "geo": {
+    "lat": -1.05,
+    "lng": 29.65
    }
   }
  },
@@ -16578,6 +16826,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Cabarete, Dominican Republic"
+   },
+   "geo": {
+    "lat": 19.758,
+    "lng": -70.409
    }
   }
  },
@@ -16749,6 +17001,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Cabo Pulmo, Mexico"
+   },
+   "geo": {
+    "lat": 23.4433,
+    "lng": -109.4283
    }
   }
  },
@@ -17068,6 +17324,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Cabo San Lucas, Mexico"
+   },
+   "geo": {
+    "lat": 22.8905,
+    "lng": -109.9167
    }
   }
  },
@@ -17278,6 +17538,10 @@
    "source_verified": "2026-08-03",
    "hero": {
     "query": "Cairo, Egypt"
+   },
+   "geo": {
+    "lat": 30.0444,
+    "lng": 31.2357
    }
   }
  },
@@ -17525,6 +17789,10 @@
    "source_verified": null,
    "hero": {
     "query": "Calakmul, Mexico, Mexico"
+   },
+   "geo": {
+    "lat": 18.1057,
+    "lon": -89.8117
    }
   }
  },
@@ -17787,6 +18055,10 @@
    "source_verified": null,
    "hero": {
     "query": "Campeche City, Mexico, Mexico"
+   },
+   "geo": {
+    "lat": 19.845,
+    "lng": -90.523
    }
   }
  },
@@ -18058,6 +18330,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Cancún, Mexico"
+   },
+   "geo": {
+    "lat": 21.1619,
+    "lng": -86.8515
    }
   },
   "feel": [
@@ -18326,6 +18602,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Cannes, France"
+   },
+   "geo": {
+    "lat": 43.5528,
+    "lng": 7.0174
    }
   }
  },
@@ -18478,6 +18758,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Cap Cana, Dominican Republic"
+   },
+   "geo": {
+    "lat": 18.47,
+    "lng": -68.39
    }
   },
   "feel": [
@@ -18636,6 +18920,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Cape Town, South Africa"
+   },
+   "geo": {
+    "lat": -33.9249,
+    "lng": 18.4241
    }
   }
  },
@@ -18803,6 +19091,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Cape Winelands, South Africa"
+   },
+   "geo": {
+    "lat": -33.75,
+    "lng": 18.97
    }
   }
  },
@@ -18925,6 +19217,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Caprivi Strip (Zambezi Region), Namibia"
+   },
+   "geo": {
+    "lat": -17.9,
+    "lng": 23.6
    }
   }
  },
@@ -19203,6 +19499,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Careyes (Costa Careyes), Mexico"
+   },
+   "geo": {
+    "lat": 19.4,
+    "lng": -105.03
    }
   }
  },
@@ -19533,6 +19833,10 @@
    "source_verified": null,
    "hero": {
     "query": "Cartagena & Colombia's Caribbean Coast, Colombia"
+   },
+   "geo": {
+    "lat": 10.391,
+    "lng": -75.4794
    }
   },
   "feel": [
@@ -19688,6 +19992,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Casa de Campo, Dominican Republic"
+   },
+   "geo": {
+    "lat": 18.398,
+    "lng": -68.903
    }
   }
  },
@@ -19957,6 +20265,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Cassis & the Calanques, France"
+   },
+   "geo": {
+    "lat": 43.2148,
+    "lng": 5.5387
    }
   }
  },
@@ -20084,6 +20396,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Catalina Island, Dominican Republic"
+   },
+   "geo": {
+    "lat": 18.34,
+    "lng": -68.99
    }
   },
   "feel": [
@@ -20370,6 +20686,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Caye Caulker, Belize"
+   },
+   "geo": {
+    "lat": 17.7444,
+    "lng": -88.025
    }
   },
   "feel": [
@@ -20502,6 +20822,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Cayo Levantado, Dominican Republic"
+   },
+   "geo": {
+    "lat": 19.2,
+    "lng": -69.283
    }
   },
   "feel": [
@@ -20692,6 +21016,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Celestún, Mexico"
+   },
+   "geo": {
+    "lat": 20.8586,
+    "lng": -90.3997
    }
   },
   "feel": [
@@ -20817,6 +21145,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Central Kalahari Game Reserve, Botswana"
+   },
+   "geo": {
+    "lat": -21.5,
+    "lng": 23.5
    }
   }
  },
@@ -21266,6 +21598,10 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "Chamonix & Mont Blanc, France"
+   },
+   "geo": {
+    "lat": 45.9237,
+    "lng": 6.8694
    }
   }
  },
@@ -21537,6 +21873,10 @@
    "source_verified": "2026-07-08",
    "hero": {
     "query": "Chantilly, France"
+   },
+   "geo": {
+    "lat": 49.1936,
+    "lng": 2.485
    }
   }
  },
@@ -21748,6 +22088,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Chapala & Ajijic (Lake Chapala), Mexico"
+   },
+   "geo": {
+    "lat": 20.2939,
+    "lng": -103.2586
    }
   }
  },
@@ -22019,6 +22363,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Chichén Itzá, Mexico"
+   },
+   "geo": {
+    "lat": 20.6843,
+    "lng": -88.5678
    }
   }
  },
@@ -22277,6 +22625,10 @@
    "source_verified": null,
    "hero": {
     "query": "Chiloé Island & the Chilean Lake District, Chile"
+   },
+   "geo": {
+    "lat": -42.4823,
+    "lng": -73.7626
    }
   }
  },
@@ -22413,6 +22765,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Chobe National Park, Botswana"
+   },
+   "geo": {
+    "lat": -18.65,
+    "lng": 24.4
    }
   }
  },
@@ -22570,6 +22926,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Cinque Terre, Italy"
+   },
+   "geo": {
+    "lat": 44.1461,
+    "lng": 9.6439
    }
   }
  },
@@ -22790,6 +23150,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Cobá, Mexico"
+   },
+   "geo": {
+    "lat": 20.495,
+    "lng": -87.736
    }
   }
  },
@@ -23027,6 +23391,10 @@
    "source_verified": null,
    "hero": {
     "query": "Colchagua Valley & Chilean Wine Country, Chile"
+   },
+   "geo": {
+    "lat": -34.6413,
+    "lng": -71.366
    }
   }
  },
@@ -23355,6 +23723,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "Cologne (Köln), Germany"
+   },
+   "geo": {
+    "lat": 50.9375,
+    "lng": 6.9603
    }
   }
  },
@@ -23576,6 +23948,10 @@
    "source_verified": null,
    "hero": {
     "query": "Colonia del Sacramento, Uruguay, Uruguay"
+   },
+   "geo": {
+    "lat": -34.4718,
+    "lng": -57.8446
    }
   }
  },
@@ -23728,6 +24104,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Copenhagen, Denmark"
+   },
+   "geo": {
+    "lat": 55.6761,
+    "lng": 12.5683
    }
   }
  },
@@ -24179,6 +24559,10 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "Cortina d'Ampezzo, Italy"
+   },
+   "geo": {
+    "lat": 46.5405,
+    "lng": 12.1357
    }
   }
  },
@@ -24343,6 +24727,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "The Costa del Sol, Spain"
+   },
+   "geo": {
+    "lat": 36.51,
+    "lng": -4.885
    }
   }
  },
@@ -24625,6 +25013,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Costalegre (Costa Alegre), Mexico"
+   },
+   "geo": {
+    "lat": 19.44,
+    "lng": -105.04
    }
   },
   "feel": [
@@ -25137,6 +25529,10 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "Courchevel, France"
+   },
+   "geo": {
+    "lat": 45.4147,
+    "lng": 6.6347
    }
   }
  },
@@ -25618,6 +26014,10 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "Courmayeur, Italy"
+   },
+   "geo": {
+    "lat": 45.7969,
+    "lng": 6.9694
    }
   }
  },
@@ -25885,6 +26285,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Cozumel, Mexico"
+   },
+   "geo": {
+    "lat": 20.423,
+    "lng": -86.9223
    }
   }
  },
@@ -26046,6 +26450,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Crete, Greece"
+   },
+   "geo": {
+    "lat": 35.2401,
+    "lng": 24.8093
    }
   }
  },
@@ -26311,6 +26719,10 @@
    "source_verified": null,
    "hero": {
     "query": "Cuenca & the Southern Andes, Ecuador, Ecuador"
+   },
+   "geo": {
+    "lat": -2.9005,
+    "lon": -79.0045
    }
   }
  },
@@ -26441,6 +26853,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Culebra, Puerto Rico (US territory)"
+   },
+   "geo": {
+    "lat": 18.305,
+    "lng": -65.301
    }
   },
   "feel": [
@@ -26769,6 +27185,10 @@
    "source_verified": null,
    "hero": {
     "query": "Cusco & the Sacred Valley, Peru, Peru"
+   },
+   "geo": {
+    "lat": -13.5319,
+    "lon": -71.9675
    }
   }
  },
@@ -26891,6 +27311,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Damaraland, Namibia"
+   },
+   "geo": {
+    "lat": -20.521,
+    "lng": 14.403
    }
   }
  },
@@ -27329,6 +27753,10 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "Davos, Switzerland"
+   },
+   "geo": {
+    "lat": 46.7975,
+    "lng": 9.8332
    }
   }
  },
@@ -27515,6 +27943,10 @@
    "source_verified": "2026-08-03",
    "hero": {
     "query": "Dead Sea, Jordan"
+   },
+   "geo": {
+    "lat": 31.559,
+    "lng": 35.4732
    }
   }
  },
@@ -27618,6 +28050,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Deadvlei, Namibia"
+   },
+   "geo": {
+    "lat": -24.7558,
+    "lng": 15.2885
    }
   }
  },
@@ -27748,6 +28184,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Discovery Bay, Jamaica"
+   },
+   "geo": {
+    "lat": 18.467,
+    "lng": -77.404
    }
   },
   "feel": [
@@ -28011,6 +28451,10 @@
    "source_verified": "2026-07-08",
    "hero": {
     "query": "Disneyland Paris, France"
+   },
+   "geo": {
+    "lat": 48.8674,
+    "lng": 2.7836
    }
   }
  },
@@ -28234,6 +28678,10 @@
    "source_verified": "2026-08-03",
    "hero": {
     "query": "Djerba, Tunisia"
+   },
+   "geo": {
+    "lat": 33.8076,
+    "lng": 10.8451
    }
   }
  },
@@ -28546,6 +28994,10 @@
    "source_verified": "2026-08-10",
    "hero": {
     "query": "Doha, Qatar"
+   },
+   "geo": {
+    "lat": 25.29,
+    "lng": 51.53
    }
   }
  },
@@ -28675,6 +29127,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Dorado, Puerto Rico (US territory)"
+   },
+   "geo": {
+    "lat": 18.459,
+    "lng": -66.267
    }
   }
  },
@@ -28853,6 +29309,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "The Dordogne (Périgord), France"
+   },
+   "geo": {
+    "lat": 44.8905,
+    "lng": 1.2159
    }
   }
  },
@@ -29240,6 +29700,10 @@
    "source_verified": "2026-07-27",
    "hero": {
     "query": "The Douro Valley, Portugal"
+   },
+   "geo": {
+    "lat": 41.1621,
+    "lng": 7.7906
    }
   }
  },
@@ -29605,6 +30069,10 @@
    "source_verified": "2026-07-11",
    "hero": {
     "query": "Dresden, Germany"
+   },
+   "geo": {
+    "lat": 51.0504,
+    "lng": 13.7373
    }
   }
  },
@@ -29919,6 +30387,10 @@
    "source_verified": "2026-08-10",
    "hero": {
     "query": "Dubai, United Arab Emirates"
+   },
+   "geo": {
+    "lat": 25.2,
+    "lng": 55.27
    }
   }
  },
@@ -30072,6 +30544,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Dublin, Ireland"
+   },
+   "geo": {
+    "lat": 53.3498,
+    "lng": -6.2603
    }
   }
  },
@@ -30218,6 +30694,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Dubrovnik, Croatia"
+   },
+   "geo": {
+    "lat": 42.6407,
+    "lng": 18.1077
    }
   }
  },
@@ -30362,6 +30842,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Durban, South Africa"
+   },
+   "geo": {
+    "lat": -29.8587,
+    "lng": 31.0218
    }
   }
  },
@@ -30607,6 +31091,11 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "East Cape (Cabo del Este), Mexico"
+   },
+   "geo": {
+    "lat": 23.68,
+    "lng": -109.7,
+    "note": "approx Los Barriles / La Ribera–Costa Palmas corridor"
    }
   }
  },
@@ -30760,6 +31249,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Edinburgh, United Kingdom"
+   },
+   "geo": {
+    "lat": 55.9533,
+    "lng": -3.1883
    }
   }
  },
@@ -31102,6 +31595,10 @@
    "source_verified": null,
    "hero": {
     "query": "El Calafate & Argentine Patagonia, Argentina"
+   },
+   "geo": {
+    "lat": -50.3379,
+    "lon": -72.2648
    }
   }
  },
@@ -31209,6 +31706,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "El Limón, Dominican Republic"
+   },
+   "geo": {
+    "lat": 19.287,
+    "lng": -69.443
    }
   }
  },
@@ -31330,6 +31831,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "El Yunque, Puerto Rico (US territory)"
+   },
+   "geo": {
+    "lat": 18.2955,
+    "lng": -65.7877
    }
   }
  },
@@ -31586,6 +32091,10 @@
    "source_verified": "2026-07-11",
    "hero": {
     "query": "The Elbe Valley, Germany"
+   },
+   "geo": {
+    "lat": 51.106,
+    "lng": 13.68
    }
   }
  },
@@ -31719,6 +32228,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Eleuthera, Bahamas"
+   },
+   "geo": {
+    "lat": 25.15,
+    "lng": -76.15
    }
   },
   "feel": [
@@ -31952,6 +32465,10 @@
    "source_verified": null,
    "hero": {
     "query": "Ensenada, Mexico, Mexico"
+   },
+   "geo": {
+    "lat": 31.8667,
+    "lng": -116.5964
    }
   },
   "feel": [
@@ -32166,6 +32683,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Espíritu Santo Island, Mexico"
+   },
+   "geo": {
+    "lat": 24.4714,
+    "lng": -110.3325
    }
   }
  },
@@ -32281,6 +32802,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Etosha National Park, Namibia"
+   },
+   "geo": {
+    "lat": -18.95,
+    "lng": 16.33
    }
   }
  },
@@ -32532,6 +33057,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Étretat, France"
+   },
+   "geo": {
+    "lat": 49.707,
+    "lng": 0.2049
    }
   }
  },
@@ -32657,6 +33186,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "The Exumas, Bahamas"
+   },
+   "geo": {
+    "lat": 23.5167,
+    "lng": -75.8333
    }
   }
  },
@@ -32781,6 +33314,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Fajardo, Puerto Rico (US territory)"
+   },
+   "geo": {
+    "lat": 18.3258,
+    "lng": -65.6524
    }
   }
  },
@@ -32907,6 +33444,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Falmouth, Jamaica"
+   },
+   "geo": {
+    "lat": 18.492,
+    "lng": -77.657
    }
   }
  },
@@ -33073,6 +33614,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "The Faroe Islands, Faroe Islands (Kingdom of Denmark)"
+   },
+   "geo": {
+    "lat": 62.0,
+    "lng": -6.7833
    }
   }
  },
@@ -33296,6 +33841,10 @@
    "source_verified": null,
    "hero": {
     "query": "Fernando de Noronha, Brazil, Brazil"
+   },
+   "geo": {
+    "lat": -3.8547,
+    "lng": -32.4248
    }
   },
   "feel": [
@@ -33508,6 +34057,10 @@
    "source_verified": "2026-08-03",
    "hero": {
     "query": "Fez, Morocco"
+   },
+   "geo": {
+    "lat": 34.0181,
+    "lng": -5.0078
    }
   }
  },
@@ -33614,6 +34167,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Fish River Canyon, Namibia"
+   },
+   "geo": {
+    "lat": -27.595,
+    "lng": 17.635
    }
   }
  },
@@ -33845,6 +34402,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "Flanders Fields (Ypres & the Ypres Salient), Belgium"
+   },
+   "geo": {
+    "lat": 50.8503,
+    "lng": 2.8858
    }
   }
  },
@@ -34136,6 +34697,10 @@
    "source_verified": "2026-07-08",
    "hero": {
     "query": "Fontainebleau, France"
+   },
+   "geo": {
+    "lat": 48.4021,
+    "lng": 2.6999
    }
   }
  },
@@ -34401,6 +34966,10 @@
    "source_verified": null,
    "hero": {
     "query": "Foz do Iguaçu, Brazil, Brazil"
+   },
+   "geo": {
+    "lat": -25.5163,
+    "lng": -54.5854
    }
   }
  },
@@ -34550,6 +35119,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Franschhoek, South Africa"
+   },
+   "geo": {
+    "lat": -33.9119,
+    "lng": 19.1186
    }
   }
  },
@@ -34781,6 +35354,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "The French Riviera (Côte d'Azur), France"
+   },
+   "geo": {
+    "lat": 43.5528,
+    "lng": 7.0174
    }
   }
  },
@@ -35232,6 +35809,10 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "Furano, Japan"
+   },
+   "geo": {
+    "lat": 43.3419,
+    "lng": 142.3831
    }
   }
  },
@@ -35524,6 +36105,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "The Galápagos Islands, Ecuador"
+   },
+   "geo": {
+    "lat": -0.9538,
+    "lng": -90.9656
    }
   }
  },
@@ -35669,6 +36254,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "The Garden Route, South Africa"
+   },
+   "geo": {
+    "lat": -34.0,
+    "lng": 22.8
    }
   }
  },
@@ -36194,6 +36783,10 @@
    "source_verified": "2026-07-16",
    "hero": {
     "query": "Garmisch-Partenkirchen & the Zugspitze, Germany"
+   },
+   "geo": {
+    "lat": 47.4917,
+    "lng": 11.0955
    }
   }
  },
@@ -36480,6 +37073,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Geneva, Switzerland"
+   },
+   "geo": {
+    "lat": 46.2044,
+    "lng": 6.1432
    }
   }
  },
@@ -36755,6 +37352,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "Ghent, Belgium"
+   },
+   "geo": {
+    "lat": 51.0543,
+    "lng": 3.7174
    }
   }
  },
@@ -37014,6 +37615,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "Giethoorn & the Countryside, Netherlands"
+   },
+   "geo": {
+    "lat": 52.7386,
+    "lng": 6.0786
    }
   }
  },
@@ -37244,6 +37849,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Giverny, France"
+   },
+   "geo": {
+    "lat": 49.0758,
+    "lng": 1.5339
    }
   }
  },
@@ -37541,6 +38150,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Gordes & the Luberon, France"
+   },
+   "geo": {
+    "lat": 43.9114,
+    "lng": 5.2
    }
   }
  },
@@ -37645,6 +38258,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Gorongosa National Park, Mozambique"
+   },
+   "geo": {
+    "lat": -18.82,
+    "lng": 34.5
    }
   }
  },
@@ -37803,6 +38420,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Gothenburg (Göteborg), Sweden"
+   },
+   "geo": {
+    "lat": 57.7089,
+    "lng": 11.9746
    }
   }
  },
@@ -38024,6 +38645,10 @@
    "source_verified": null,
    "hero": {
     "query": "Granada, Nicaragua, Nicaragua"
+   },
+   "geo": {
+    "lat": 11.9344,
+    "lng": -85.956
    }
   }
  },
@@ -38155,6 +38780,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Grand Bahama / Freeport, Bahamas"
+   },
+   "geo": {
+    "lat": 26.5333,
+    "lng": -78.7
    }
   }
  },
@@ -38281,6 +38910,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Grand Turk, Turks & Caicos"
+   },
+   "geo": {
+    "lat": 21.47,
+    "lng": -71.14
    }
   }
  },
@@ -38802,6 +39435,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Grindelwald, Switzerland"
+   },
+   "geo": {
+    "lat": 46.6242,
+    "lng": 8.0342
    }
   }
  },
@@ -39331,6 +39968,10 @@
    "source_verified": "2026-07-16",
    "hero": {
     "query": "Gstaad, Switzerland"
+   },
+   "geo": {
+    "lat": 46.475,
+    "lng": 7.2864
    }
   }
  },
@@ -39609,6 +40250,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Guadalajara, Mexico"
+   },
+   "geo": {
+    "lat": 20.6597,
+    "lng": -103.3496
    }
   }
  },
@@ -39951,6 +40596,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Guanacaste (Gold Coast), Costa Rica"
+   },
+   "geo": {
+    "lat": 10.59,
+    "lng": -85.64
    }
   },
   "feel": [
@@ -40120,6 +40769,10 @@
    "source_verified": null,
    "hero": {
     "query": "Guanaja, Honduras"
+   },
+   "geo": {
+    "lat": 16.4667,
+    "lng": -85.9
    }
   },
   "feel": [
@@ -40436,6 +41089,10 @@
    "source_verified": "2026-07-05",
    "hero": {
     "query": "Guanajuato City, Mexico"
+   },
+   "geo": {
+    "lat": 21.019,
+    "lng": -101.2574
    }
   }
  },
@@ -40702,6 +41359,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Guatemala City, Guatemala"
+   },
+   "geo": {
+    "lat": 14.6349,
+    "lng": -90.5069
    }
   }
  },
@@ -41241,6 +41902,10 @@
    "source_verified": "2026-07-18",
    "hero": {
     "query": "Hakuba, Japan"
+   },
+   "geo": {
+    "lat": 36.6981,
+    "lng": 137.8619
    }
   }
  },
@@ -41478,6 +42143,10 @@
    "source_verified": "2026-07-10",
    "hero": {
     "query": "Hallstatt & the Salzkammergut, Austria"
+   },
+   "geo": {
+    "lat": 47.5622,
+    "lng": 13.6493
    }
   }
  },
@@ -41857,6 +42526,10 @@
    "source_verified": "2026-07-11",
    "hero": {
     "query": "Hamburg, Germany"
+   },
+   "geo": {
+    "lat": 53.5511,
+    "lng": 9.9937
    }
   }
  },
@@ -42118,6 +42791,10 @@
    "source_verified": "2026-07-11",
    "hero": {
     "query": "Hannover, Germany"
+   },
+   "geo": {
+    "lat": 52.3759,
+    "lng": 9.732
    }
   }
  },
@@ -42248,6 +42925,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Harbour Island, Bahamas"
+   },
+   "geo": {
+    "lat": 25.5,
+    "lng": -76.6333
    }
   },
   "feel": [
@@ -42822,6 +43503,10 @@
    "source_verified": "2026-07-18",
    "hero": {
     "query": "Heavenly (South Lake Tahoe), United States"
+   },
+   "geo": {
+    "lat": 38.9353,
+    "lng": -119.94
    }
   }
  },
@@ -42968,6 +43653,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Helsinki, Finland"
+   },
+   "geo": {
+    "lat": 60.1699,
+    "lng": 24.9384
    }
   }
  },
@@ -43109,6 +43798,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Hermanus, South Africa"
+   },
+   "geo": {
+    "lat": -34.4187,
+    "lng": 19.2345
    }
   }
  },
@@ -43233,6 +43926,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Higüey, Dominican Republic"
+   },
+   "geo": {
+    "lat": 18.615,
+    "lng": -68.706
    }
   }
  },
@@ -43487,6 +44184,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Holbox, Mexico"
+   },
+   "geo": {
+    "lat": 21.522,
+    "lng": -87.379
    }
   }
  },
@@ -43733,6 +44434,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Honfleur, France"
+   },
+   "geo": {
+    "lat": 49.4189,
+    "lng": 0.2333
    }
   }
  },
@@ -43961,6 +44666,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Hopkins, Belize"
+   },
+   "geo": {
+    "lat": 16.105,
+    "lng": -88.2867
    }
   },
   "feel": [
@@ -44293,6 +45002,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Huatulco, Mexico"
+   },
+   "geo": {
+    "lat": 15.76,
+    "lng": -96.13
    }
   }
  },
@@ -44415,6 +45128,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Hwange National Park, Zimbabwe"
+   },
+   "geo": {
+    "lat": -18.65,
+    "lng": 26.9833
    }
   }
  },
@@ -44570,6 +45287,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Ibiza, Spain"
+   },
+   "geo": {
+    "lat": 38.9067,
+    "lng": 1.4206
    }
   }
  },
@@ -44826,6 +45547,10 @@
    "source_verified": null,
    "hero": {
     "query": "Iguazú Falls (Argentine Side), Argentina"
+   },
+   "geo": {
+    "lat": -25.6953,
+    "lon": -54.4367
    }
   }
  },
@@ -45041,6 +45766,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Îles de Lérins, France"
+   },
+   "geo": {
+    "lat": 43.5169,
+    "lng": 7.0475
    }
   }
  },
@@ -45142,6 +45871,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Ilha de Moçambique, Mozambique"
+   },
+   "geo": {
+    "lat": -15.0353,
+    "lng": 40.7263
    }
   },
   "feel": [
@@ -45246,6 +45979,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Inhambane, Mozambique"
+   },
+   "geo": {
+    "lat": -23.865,
+    "lng": 35.3833
    }
   }
  },
@@ -45864,6 +46601,10 @@
    "source_verified": "2026-07-16",
    "hero": {
     "query": "Innsbruck & Tyrol, Austria"
+   },
+   "geo": {
+    "lat": 47.2692,
+    "lng": 11.4041
    }
   }
  },
@@ -46289,6 +47030,10 @@
    "source_verified": "2026-07-20",
    "hero": {
     "query": "Ischgl, Austria"
+   },
+   "geo": {
+    "lat": 47.0114,
+    "lng": 10.2919
    }
   }
  },
@@ -46476,7 +47221,8 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Isla Contoy, Mexico"
-   }
+   },
+   "geo": "21.4833,-86.7917"
   }
  },
  {
@@ -46718,6 +47464,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Isla Mujeres, Mexico"
+   },
+   "geo": {
+    "lat": 21.2311,
+    "lng": -86.7311
    }
   },
   "feel": [
@@ -46878,6 +47628,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "The Isle of Skye, United Kingdom"
+   },
+   "geo": {
+    "lat": 57.2736,
+    "lng": -6.2155
    }
   }
  },
@@ -47110,6 +47864,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Izamal, Mexico"
+   },
+   "geo": {
+    "lat": 20.9308,
+    "lng": -89.0175
    }
   }
  },
@@ -47246,6 +48004,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Jarabacoa, Dominican Republic"
+   },
+   "geo": {
+    "lat": 19.117,
+    "lng": -70.63
    }
   }
  },
@@ -47500,6 +48262,10 @@
    "source_verified": null,
    "hero": {
     "query": "Jericoacoara & the Ceará Coast, Brazil, Brazil"
+   },
+   "geo": {
+    "lat": -2.7936,
+    "lng": -40.514
    }
   },
   "feel": [
@@ -47643,6 +48409,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Johannesburg, South Africa"
+   },
+   "geo": {
+    "lat": -26.2041,
+    "lng": 28.0473
    }
   }
  },
@@ -48178,6 +48948,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Jungfrau / Interlaken, Switzerland"
+   },
+   "geo": {
+    "lat": 46.6863,
+    "lng": 7.8632
    }
   }
  },
@@ -48300,6 +49074,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Kafue National Park, Zambia"
+   },
+   "geo": {
+    "lat": -15.0,
+    "lng": 25.9
    }
   }
  },
@@ -48427,6 +49205,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Kasane, Botswana"
+   },
+   "geo": {
+    "lat": -17.8,
+    "lng": 25.15
    }
   }
  },
@@ -48672,6 +49454,10 @@
    "source_verified": "2026-08-01",
    "hero": {
     "query": "Kibale Forest National Park, Uganda"
+   },
+   "geo": {
+    "lat": 0.49,
+    "lng": 30.39
    }
   }
  },
@@ -48798,6 +49584,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Kingston, Jamaica"
+   },
+   "geo": {
+    "lat": 17.997,
+    "lng": -76.7936
    }
   }
  },
@@ -49294,6 +50084,10 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "Kiroro, Japan"
+   },
+   "geo": {
+    "lat": 43.07,
+    "lng": 140.995
    }
   }
  },
@@ -49734,6 +50528,10 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "Kitzbühel, Austria"
+   },
+   "geo": {
+    "lat": 47.4467,
+    "lng": 12.3924
    }
   }
  },
@@ -49888,6 +50686,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Knysna, South Africa"
+   },
+   "geo": {
+    "lat": -34.0363,
+    "lng": 23.0471
    }
   }
  },
@@ -50142,6 +50944,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "Koblenz, Germany"
+   },
+   "geo": {
+    "lat": 50.3569,
+    "lng": 7.589
    }
   }
  },
@@ -50245,6 +51051,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Kolmanskop, Namibia"
+   },
+   "geo": {
+    "lat": -26.7047,
+    "lng": 15.2306
    }
   }
  },
@@ -50578,6 +51388,10 @@
    "source_verified": "2026-08-09",
    "hero": {
     "query": "Komodo, Indonesia"
+   },
+   "geo": {
+    "lat": -8.55,
+    "lng": 119.48
    }
   }
  },
@@ -51025,6 +51839,11 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "Kranjska Gora, Slovenia"
+   },
+   "geo": {
+    "lat": 46.4839,
+    "lng": 13.7856,
+    "note": "verify against authoritative gazetteer"
    }
   }
  },
@@ -51172,6 +51991,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Kruger National Park, South Africa"
+   },
+   "geo": {
+    "lat": -23.9884,
+    "lng": 31.5547
    }
   }
  },
@@ -51483,6 +52306,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "La Fortuna / Arenal, Costa Rica"
+   },
+   "geo": {
+    "lat": 10.4678,
+    "lng": -84.6427
    }
   }
  },
@@ -51607,6 +52434,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "La Parguera, Puerto Rico (US territory)"
+   },
+   "geo": {
+    "lat": 17.973,
+    "lng": -67.045
    }
   }
  },
@@ -51856,6 +52687,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "La Paz, Mexico"
+   },
+   "geo": {
+    "lat": 24.1425,
+    "lng": -110.3108
    }
   },
   "feel": [
@@ -52432,6 +53267,10 @@
    "source_verified": "2026-07-19",
    "hero": {
     "query": "La Plagne, France"
+   },
+   "geo": {
+    "lat": 45.5064,
+    "lng": 6.6772
    }
   }
  },
@@ -52561,6 +53400,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "La Romana, Dominican Republic"
+   },
+   "geo": {
+    "lat": 18.427,
+    "lng": -68.973
    }
   },
   "feel": [
@@ -53033,6 +53876,10 @@
    "source_verified": "2026-07-19",
    "hero": {
     "query": "Laax (Flims-Laax-Falera), Switzerland"
+   },
+   "geo": {
+    "lat": 46.8025,
+    "lng": 9.2569
    }
   }
  },
@@ -53316,6 +54163,10 @@
    "source_verified": "2026-07-31",
    "hero": {
     "query": "Laikipia Plateau, Kenya"
+   },
+   "geo": {
+    "lat": 0.2,
+    "lng": 36.9
    }
   }
  },
@@ -53637,6 +54488,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Lake Atitlán, Guatemala"
+   },
+   "geo": {
+    "lat": 14.6907,
+    "lng": -91.2025
    }
   }
  },
@@ -53851,6 +54706,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Lake Geneva (Lac Léman), Switzerland"
+   },
+   "geo": {
+    "lat": 46.4312,
+    "lng": 6.9107
    }
   }
  },
@@ -53973,6 +54832,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Lake Kariba, Zimbabwe"
+   },
+   "geo": {
+    "lat": -16.9167,
+    "lng": 28.7667
    }
   }
  },
@@ -54250,6 +55113,10 @@
    "source_verified": "2026-08-01",
    "hero": {
     "query": "Lake Manyara National Park, Tanzania"
+   },
+   "geo": {
+    "lat": -3.5833,
+    "lng": 35.8333
    }
   }
  },
@@ -54487,6 +55354,10 @@
    "source_verified": null,
    "hero": {
     "query": "Lake Titicaca (Puno), Peru, Peru"
+   },
+   "geo": {
+    "lat": -15.8402,
+    "lon": -70.0219
    }
   }
  },
@@ -54645,6 +55516,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Finnish Lapland, Finland"
+   },
+   "geo": {
+    "lat": 66.5039,
+    "lng": 25.7294
    }
   }
  },
@@ -54775,6 +55650,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Las Galeras, Dominican Republic"
+   },
+   "geo": {
+    "lat": 19.302,
+    "lng": -69.159
    }
   },
   "feel": [
@@ -54907,6 +55786,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Las Terrenas, Dominican Republic"
+   },
+   "geo": {
+    "lat": 19.313,
+    "lng": -69.541
    }
   },
   "feel": [
@@ -55159,6 +56042,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Lausanne & Lavaux, Switzerland"
+   },
+   "geo": {
+    "lat": 46.5197,
+    "lng": 6.6323
    }
   }
  },
@@ -55601,6 +56488,10 @@
    "source_verified": "2026-07-20",
    "hero": {
     "query": "Lech-Zürs am Arlberg, Austria"
+   },
+   "geo": {
+    "lat": 47.2094,
+    "lng": 10.1428
    }
   }
  },
@@ -55986,6 +56877,10 @@
    "source_verified": "2026-07-11",
    "hero": {
     "query": "Leipzig, Germany"
+   },
+   "geo": {
+    "lat": 51.3397,
+    "lng": 12.3731
    }
   }
  },
@@ -56552,6 +57447,10 @@
    "source_verified": "2026-07-19",
    "hero": {
     "query": "Les Deux Alpes, France"
+   },
+   "geo": {
+    "lat": 45.0072,
+    "lng": 6.1217
    }
   }
  },
@@ -56875,6 +57774,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Lima, Peru"
+   },
+   "geo": {
+    "lat": -12.0464,
+    "lng": -77.0428
    }
   }
  },
@@ -56997,6 +57900,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Linyanti, Botswana"
+   },
+   "geo": {
+    "lat": -18.4,
+    "lng": 23.9
    }
   }
  },
@@ -57142,6 +58049,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Lisbon, Portugal"
+   },
+   "geo": {
+    "lat": 38.7223,
+    "lng": -9.1393
    }
   }
  },
@@ -57271,6 +58182,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Livingstone (town), Zambia"
+   },
+   "geo": {
+    "lat": -17.85,
+    "lng": 25.8667
    }
   }
  },
@@ -57513,6 +58428,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "The Loire Valley, France"
+   },
+   "geo": {
+    "lat": 47.3936,
+    "lng": 0.6848
    }
   }
  },
@@ -57680,6 +58599,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "London, United Kingdom"
+   },
+   "geo": {
+    "lat": 51.5074,
+    "lng": -0.1278
    }
   }
  },
@@ -57810,6 +58733,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Long Island, Bahamas"
+   },
+   "geo": {
+    "lat": 23.19,
+    "lng": -75.1
    }
   },
   "feel": [
@@ -58003,6 +58930,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Loreto, Mexico"
+   },
+   "geo": {
+    "lat": 26.0115,
+    "lng": -111.3486
    }
   },
   "feel": [
@@ -58261,6 +59192,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Los Barriles, Mexico"
+   },
+   "geo": {
+    "lat": 23.682,
+    "lng": -109.696
    }
   },
   "feel": [
@@ -58386,6 +59321,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Lower Zambezi National Park, Zambia"
+   },
+   "geo": {
+    "lat": -15.65,
+    "lng": 29.5
    }
   }
  },
@@ -58667,6 +59606,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Lucerne, Switzerland"
+   },
+   "geo": {
+    "lat": 47.0502,
+    "lng": 8.3093
    }
   }
  },
@@ -58780,6 +59723,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Lüderitz, Namibia"
+   },
+   "geo": {
+    "lat": -26.6484,
+    "lng": 15.1543
    }
   }
  },
@@ -59047,6 +59994,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "Luxembourg City, Luxembourg"
+   },
+   "geo": {
+    "lat": 49.6116,
+    "lng": 6.1319
    }
   }
  },
@@ -59259,6 +60210,10 @@
    "source_verified": "2026-08-03",
    "hero": {
     "query": "Luxor, Egypt"
+   },
+   "geo": {
+    "lat": 25.6872,
+    "lng": 32.6396
    }
   }
  },
@@ -59562,6 +60517,10 @@
    "source_verified": "2026-07-31",
    "hero": {
     "query": "Maasai Mara National Reserve, Kenya"
+   },
+   "geo": {
+    "lat": -1.5,
+    "lng": 35.15
    }
   }
  },
@@ -59691,6 +60650,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Macao Beach, Dominican Republic"
+   },
+   "geo": {
+    "lat": 18.76,
+    "lng": -68.51
    }
   },
   "feel": [
@@ -60020,6 +60983,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Machu Picchu, Peru"
+   },
+   "geo": {
+    "lat": -13.1631,
+    "lng": -72.545
    }
   }
  },
@@ -60165,6 +61132,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Madikwe Game Reserve, South Africa"
+   },
+   "geo": {
+    "lat": -24.75,
+    "lng": 26.27
    }
   }
  },
@@ -60337,6 +61308,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Magdalena Bay, Mexico"
+   },
+   "geo": {
+    "lat": 24.6167,
+    "lng": -112.1
    }
   }
  },
@@ -60565,6 +61540,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Mahahual (Costa Maya & Banco Chinchorro), Mexico"
+   },
+   "geo": {
+    "lat": 18.7167,
+    "lng": -87.7167
    }
   }
  },
@@ -60687,6 +61666,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Makgadikgadi Pans, Botswana"
+   },
+   "geo": {
+    "lat": -20.7167,
+    "lng": 25.5333
    }
   }
  },
@@ -60850,6 +61833,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Mallorca (Majorca), Spain"
+   },
+   "geo": {
+    "lat": 39.6953,
+    "lng": 3.0176
    }
   }
  },
@@ -61402,6 +62389,10 @@
    "source_verified": "2026-07-18",
    "hero": {
     "query": "Mammoth Mountain, United States"
+   },
+   "geo": {
+    "lat": 37.6306,
+    "lng": -119.0325
    }
   }
  },
@@ -61515,6 +62506,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Mana Pools National Park, Zimbabwe"
+   },
+   "geo": {
+    "lat": -15.7333,
+    "lng": 29.3833
    }
   }
  },
@@ -61730,6 +62725,10 @@
    "source_verified": null,
    "hero": {
     "query": "Manaus & the Brazilian Amazon, Brazil"
+   },
+   "geo": {
+    "lat": -3.119,
+    "lng": -60.0217
    }
   }
  },
@@ -62039,6 +63038,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Manuel Antonio, Costa Rica"
+   },
+   "geo": {
+    "lat": 9.392,
+    "lng": -84.137
    }
   },
   "feel": [
@@ -62143,6 +63146,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Maputo, Mozambique"
+   },
+   "geo": {
+    "lat": -25.9537,
+    "lng": 32.5887
    }
   }
  },
@@ -62367,6 +63374,10 @@
    "source_verified": "2026-08-03",
    "hero": {
     "query": "Marrakech, Morocco"
+   },
+   "geo": {
+    "lat": 31.6295,
+    "lng": -7.9811
    }
   }
  },
@@ -62734,6 +63745,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Marseille, France"
+   },
+   "geo": {
+    "lat": 43.2965,
+    "lng": 5.3698
    }
   }
  },
@@ -62863,6 +63878,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Matobo Hills, Zimbabwe"
+   },
+   "geo": {
+    "lat": -20.5,
+    "lng": 28.5
    }
   }
  },
@@ -63298,6 +64317,10 @@
    "source_verified": "2026-07-20",
    "hero": {
     "query": "Mayrhofen, Austria"
+   },
+   "geo": {
+    "lat": 47.1667,
+    "lng": 11.8667
    }
   }
  },
@@ -63494,6 +64517,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Mazamitla, Mexico"
+   },
+   "geo": {
+    "lat": 19.9153,
+    "lng": -103.0208
    }
   }
  },
@@ -63760,6 +64787,10 @@
    "source_verified": null,
    "hero": {
     "query": "Medellín & Antioquia, Colombia, Colombia"
+   },
+   "geo": {
+    "lat": 6.2442,
+    "lng": -75.5812
    }
   }
  },
@@ -63933,6 +64964,10 @@
    "source_verified": "2026-07-30",
    "hero": {
     "query": "Medjumbe Island, Mozambique"
+   },
+   "geo": {
+    "lat": -11.8163,
+    "lng": 40.6039
    }
   }
  },
@@ -64487,6 +65522,10 @@
    "source_verified": "2026-07-19",
    "hero": {
     "query": "Megève, France"
+   },
+   "geo": {
+    "lat": 45.8578,
+    "lng": 6.6181
    }
   }
  },
@@ -64758,6 +65797,10 @@
    "source_verified": "2026-07-11",
    "hero": {
     "query": "Meissen, Germany"
+   },
+   "geo": {
+    "lat": 51.162,
+    "lng": 13.473
    }
   }
  },
@@ -65102,6 +66145,10 @@
    "source_verified": "2026-07-29",
    "hero": {
     "query": "The Mekong, Cambodia, Cambodia"
+   },
+   "geo": {
+    "lat": 13.3671,
+    "lng": 103.8448
    }
   }
  },
@@ -65454,6 +66501,10 @@
    "source_verified": "2026-07-29",
    "hero": {
     "query": "The Mekong Delta, Vietnam, Vietnam"
+   },
+   "geo": {
+    "lat": 10.0341,
+    "lng": 105.788
    }
   }
  },
@@ -65712,6 +66763,10 @@
    "source_verified": null,
    "hero": {
     "query": "Mendoza & the Wine Country, Argentina, Argentina"
+   },
+   "geo": {
+    "lat": -32.8895,
+    "lng": -68.8458
    }
   }
  },
@@ -65946,6 +67001,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Menton, France"
+   },
+   "geo": {
+    "lat": 43.7765,
+    "lng": 7.5
    }
   }
  },
@@ -66448,6 +67507,10 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "Méribel, France"
+   },
+   "geo": {
+    "lat": 45.396,
+    "lng": 6.5658
    }
   }
  },
@@ -66832,6 +67895,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Mérida, Yucatán, Mexico"
+   },
+   "geo": {
+    "lat": 20.9674,
+    "lng": -89.5926
    }
   }
  },
@@ -67037,6 +68104,10 @@
    "source_verified": "2026-08-03",
    "hero": {
     "query": "Merzouga & the Sahara, Morocco"
+   },
+   "geo": {
+    "lat": 31.0801,
+    "lng": -4.0133
    }
   }
  },
@@ -67471,7 +68542,8 @@
    "source_verified": "2026-07-05",
    "hero": {
     "query": "Mexico City (CDMX), Mexico"
-   }
+   },
+   "geo": "19.4326,-99.1332"
   }
  },
  {
@@ -67602,6 +68674,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Michès, Dominican Republic"
+   },
+   "geo": {
+    "lat": 18.98,
+    "lng": -69.05
    }
   }
  },
@@ -68002,6 +69078,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Monaco, Monaco"
+   },
+   "geo": {
+    "lat": 43.7384,
+    "lng": 7.4246
    }
   }
  },
@@ -68251,6 +69331,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Mont-Saint-Michel, France"
+   },
+   "geo": {
+    "lat": 48.6361,
+    "lng": -1.5115
    }
   }
  },
@@ -68381,6 +69465,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Montego Bay, Jamaica"
+   },
+   "geo": {
+    "lat": 18.4762,
+    "lng": -77.8939
    }
   },
   "feel": [
@@ -68650,6 +69738,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Monteverde, Costa Rica"
+   },
+   "geo": {
+    "lat": 10.301,
+    "lng": -84.8259
    }
   }
  },
@@ -68877,6 +69969,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Montreux, Switzerland"
+   },
+   "geo": {
+    "lat": 46.4312,
+    "lng": 6.9107
    }
   }
  },
@@ -69010,6 +70106,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Moremi Game Reserve, Botswana"
+   },
+   "geo": {
+    "lat": -19.1667,
+    "lng": 23.1667
    }
   }
  },
@@ -69270,6 +70370,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "The Mosel Valley, Germany"
+   },
+   "geo": {
+    "lat": 50.0333,
+    "lng": 7.0
    }
   }
  },
@@ -69667,6 +70771,10 @@
    "source_verified": "2026-07-10",
    "hero": {
     "query": "Munich, Germany"
+   },
+   "geo": {
+    "lat": 48.1374,
+    "lng": 11.5755
    }
   }
  },
@@ -69912,6 +71020,10 @@
    "source_verified": "2026-08-01",
    "hero": {
     "query": "Murchison Falls National Park, Uganda"
+   },
+   "geo": {
+    "lat": 2.2,
+    "lng": 31.8
    }
   }
  },
@@ -70222,6 +71334,10 @@
    "source_verified": "2026-08-10",
    "hero": {
     "query": "Muscat, Oman"
+   },
+   "geo": {
+    "lat": 23.59,
+    "lng": 58.41
    }
   }
  },
@@ -70380,6 +71496,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Mykonos, Greece"
+   },
+   "geo": {
+    "lat": 37.4467,
+    "lng": 25.3289
    }
   }
  },
@@ -70511,6 +71631,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Nassau / Paradise Island, Bahamas"
+   },
+   "geo": {
+    "lat": 25.078,
+    "lng": -77.3386
    }
   }
  },
@@ -70641,6 +71765,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Negril, Jamaica"
+   },
+   "geo": {
+    "lat": 18.2686,
+    "lng": -78.3486
    }
   },
   "feel": [
@@ -70811,6 +71939,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "The Netherlands, Netherlands"
+   },
+   "geo": {
+    "lat": 52.2,
+    "lng": 5.3
    }
   }
  },
@@ -71073,6 +72205,10 @@
    "source_verified": "2026-07-10",
    "hero": {
     "query": "Neuschwanstein & Füssen, Germany"
+   },
+   "geo": {
+    "lat": 47.5576,
+    "lng": 10.7498
    }
   }
  },
@@ -71371,6 +72507,10 @@
    "source_verified": "2026-07-31",
    "hero": {
     "query": "Ngorongoro Crater, Tanzania"
+   },
+   "geo": {
+    "lat": -3.2,
+    "lng": 35.5
    }
   }
  },
@@ -71775,6 +72915,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Nice, France"
+   },
+   "geo": {
+    "lat": 43.7102,
+    "lng": 7.262
    }
   }
  },
@@ -72294,6 +73438,10 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "Niseko, Japan"
+   },
+   "geo": {
+    "lat": 42.8048,
+    "lng": 140.6874
    }
   }
  },
@@ -72529,6 +73677,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Normandy, France"
+   },
+   "geo": {
+    "lat": 49.1829,
+    "lng": -0.3707
    }
   }
  },
@@ -72698,6 +73850,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "The Norwegian Fjords, Norway"
+   },
+   "geo": {
+    "lat": 62.101,
+    "lng": 7.006
    }
   }
  },
@@ -72983,6 +74139,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Nosara & the Nicoya Peninsula, Costa Rica"
+   },
+   "geo": {
+    "lat": 9.976,
+    "lng": -85.653
    }
   },
   "feel": [
@@ -73550,6 +74710,10 @@
    "source_verified": "2026-07-18",
    "hero": {
     "query": "Nozawa Onsen, Japan"
+   },
+   "geo": {
+    "lat": 36.9167,
+    "lng": 138.4333
    }
   }
  },
@@ -73857,6 +75021,10 @@
    "source_verified": "2026-07-10",
    "hero": {
     "query": "Nuremberg, Germany"
+   },
+   "geo": {
+    "lat": 49.4521,
+    "lng": 11.0767
    }
   }
  },
@@ -73979,6 +75147,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Nxai Pan, Botswana"
+   },
+   "geo": {
+    "lat": -19.9167,
+    "lng": 24.7667
    }
   }
  },
@@ -74272,6 +75444,10 @@
    "source_verified": "2026-08-01",
    "hero": {
     "query": "Nyerere National Park (Selous), Tanzania"
+   },
+   "geo": {
+    "lat": -8.0,
+    "lng": 37.6
    }
   }
  },
@@ -74566,6 +75742,10 @@
    "source_verified": "2026-08-01",
    "hero": {
     "query": "Nyungwe Forest National Park, Rwanda"
+   },
+   "geo": {
+    "lat": -2.5,
+    "lng": 29.2
    }
   }
  },
@@ -74886,6 +76066,10 @@
    "source_verified": "2026-07-05",
    "hero": {
     "query": "Oaxaca City & the Central Valleys, Mexico"
+   },
+   "geo": {
+    "lat": 17.0732,
+    "lng": -96.7266
    }
   }
  },
@@ -75316,6 +76500,10 @@
    "source_verified": "2026-07-20",
    "hero": {
     "query": "Obergurgl-Hochgurgl, Austria"
+   },
+   "geo": {
+    "lat": 46.8672,
+    "lng": 11.0247
    }
   }
  },
@@ -75441,6 +76629,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Ocho Rios, Jamaica"
+   },
+   "geo": {
+    "lat": 18.4025,
+    "lng": -77.1048
    }
   }
  },
@@ -75595,6 +76787,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Okavango Delta, Botswana"
+   },
+   "geo": {
+    "lat": -19.3187,
+    "lng": 22.4469
    }
   }
  },
@@ -75818,6 +77014,10 @@
    "source_verified": null,
    "hero": {
     "query": "Ometepe Island, Nicaragua, Nicaragua"
+   },
+   "geo": {
+    "lat": 11.5,
+    "lng": -85.5833
    }
   }
  },
@@ -76075,6 +77275,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Osa Peninsula / Corcovado, Costa Rica"
+   },
+   "geo": {
+    "lat": 8.54,
+    "lng": -83.59
    }
   }
  },
@@ -76223,6 +77427,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Oslo, Norway"
+   },
+   "geo": {
+    "lat": 59.9139,
+    "lng": 10.7522
    }
   }
  },
@@ -76519,6 +77727,10 @@
    "source_verified": null,
    "hero": {
     "query": "Ouro Preto, Tiradentes & Colonial Minas, Brazil, Brazil"
+   },
+   "geo": {
+    "lat": -20.3856,
+    "lng": -43.5035
    }
   }
  },
@@ -76851,6 +78063,10 @@
    "source_verified": "2026-08-09",
    "hero": {
     "query": "Palau, Palau"
+   },
+   "geo": {
+    "lat": 7.34,
+    "lng": 134.48
    }
   }
  },
@@ -77097,6 +78313,10 @@
    "source_verified": null,
    "hero": {
     "query": "Palenque, Mexico, Mexico"
+   },
+   "geo": {
+    "lat": 17.484,
+    "lng": -92.046
    }
   }
  },
@@ -77676,6 +78896,10 @@
    "source_verified": "2026-07-18",
    "hero": {
     "query": "Palisades Tahoe (Olympic Valley), United States"
+   },
+   "geo": {
+    "lat": 39.196,
+    "lng": -120.235
    }
   }
  },
@@ -78009,6 +79233,10 @@
    "source_verified": null,
    "hero": {
     "query": "The Pantanal, Brazil, Brazil"
+   },
+   "geo": {
+    "lat": -16.35,
+    "lon": -56.6667
    }
   }
  },
@@ -78294,6 +79522,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Paracas, Nazca & the South Coast, Peru"
+   },
+   "geo": {
+    "lat": -13.86,
+    "lng": -76.2517
    }
   }
  },
@@ -78799,6 +80031,10 @@
    "source_verified": "2026-07-08",
    "hero": {
     "query": "Paris, France"
+   },
+   "geo": {
+    "lat": 48.8566,
+    "lng": 2.3522
    }
   }
  },
@@ -78885,6 +80121,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Pemba, Mozambique"
+   },
+   "geo": {
+    "lat": -12.974,
+    "lng": 40.518
    }
   }
  },
@@ -79105,6 +80345,10 @@
    "source_verified": null,
    "hero": {
     "query": "Península Valdés & Puerto Madryn, Argentina, Argentina"
+   },
+   "geo": {
+    "lat": -42.5,
+    "lng": -64.0
    }
   }
  },
@@ -79329,6 +80573,10 @@
    "source_verified": "2026-08-03",
    "hero": {
     "query": "Petra, Jordan"
+   },
+   "geo": {
+    "lat": 30.3285,
+    "lng": 35.4444
    }
   }
  },
@@ -79483,6 +80731,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Pilanesberg National Park, South Africa"
+   },
+   "geo": {
+    "lat": -25.25,
+    "lng": 27.08
    }
   }
  },
@@ -79817,6 +81069,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Placencia, Belize"
+   },
+   "geo": {
+    "lat": 16.5155,
+    "lng": -88.3665
    }
   }
  },
@@ -80082,6 +81338,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Playa del Carmen, Mexico"
+   },
+   "geo": {
+    "lat": 20.6296,
+    "lng": -87.0739
    }
   }
  },
@@ -80210,6 +81470,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Playa Dorada, Dominican Republic"
+   },
+   "geo": {
+    "lat": 19.793,
+    "lng": -70.652
    }
   },
   "feel": [
@@ -80358,6 +81622,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Plettenberg Bay, South Africa"
+   },
+   "geo": {
+    "lat": -34.0527,
+    "lng": 23.3716
    }
   }
  },
@@ -80481,6 +81749,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Ponce, Puerto Rico (US territory)"
+   },
+   "geo": {
+    "lat": 18.011,
+    "lng": -66.614
    }
   },
   "feel": [
@@ -80597,6 +81869,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Ponta do Ouro, Mozambique"
+   },
+   "geo": {
+    "lat": -26.849,
+    "lng": 32.888
    }
   }
  },
@@ -80721,6 +81997,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Port Antonio, Jamaica"
+   },
+   "geo": {
+    "lat": 18.1762,
+    "lng": -76.4509
    }
   }
  },
@@ -80847,6 +82127,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Port Royal, Jamaica"
+   },
+   "geo": {
+    "lat": 17.936,
+    "lng": -76.841
    }
   },
   "feel": [
@@ -81101,6 +82385,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Provence, France"
+   },
+   "geo": {
+    "lat": 43.9352,
+    "lng": 5.0
    }
   }
  },
@@ -81254,6 +82542,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Providenciales, Turks & Caicos"
+   },
+   "geo": {
+    "lat": 21.79,
+    "lng": -72.27
    }
   },
   "feel": [
@@ -81506,6 +82798,10 @@
    "source_verified": "2026-07-08",
    "hero": {
     "query": "Provins, France"
+   },
+   "geo": {
+    "lat": 48.5606,
+    "lng": 3.2986
    }
   }
  },
@@ -81733,6 +83029,10 @@
    "source_verified": null,
    "hero": {
     "query": "Pucón & the Araucanía Lakes, Chile, Chile"
+   },
+   "geo": {
+    "lat": -39.282,
+    "lng": -71.955
    }
   }
  },
@@ -81997,6 +83297,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Puerto Aventuras, Mexico"
+   },
+   "geo": {
+    "lat": 20.4986,
+    "lng": -87.2261
    }
   }
  },
@@ -82235,6 +83539,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Puerto Morelos, Mexico"
+   },
+   "geo": {
+    "lat": 20.8478,
+    "lng": -86.8758
    }
   }
  },
@@ -82366,6 +83674,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Puerto Plata, Dominican Republic"
+   },
+   "geo": {
+    "lat": 19.79,
+    "lng": -70.69
    }
   },
   "feel": [
@@ -82610,6 +83922,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Puerto Vallarta, Mexico"
+   },
+   "geo": {
+    "lat": 20.6534,
+    "lng": -105.2253
    }
   }
  },
@@ -82916,6 +84232,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Puerto Viejo (Southern Caribbean), Costa Rica"
+   },
+   "geo": {
+    "lat": 9.6558,
+    "lng": -82.7549
    }
   },
   "feel": [
@@ -83264,6 +84584,10 @@
    "source_verified": "2026-07-31",
    "hero": {
     "query": "Punta Cana, Dominican Republic"
+   },
+   "geo": {
+    "lat": 18.582,
+    "lng": -68.405
    }
   },
   "feel": [
@@ -83581,6 +84905,10 @@
    "source_verified": null,
    "hero": {
     "query": "Punta del Este & the Atlantic Coast, Uruguay, Uruguay"
+   },
+   "geo": {
+    "lat": -34.9633,
+    "lon": -54.9506
    }
   },
   "feel": [
@@ -83831,6 +85159,10 @@
    "source_verified": null,
    "hero": {
     "query": "Punta Mita, Mexico, Mexico"
+   },
+   "geo": {
+    "lat": 20.77,
+    "lng": -105.52
    }
   },
   "feel": [
@@ -84081,6 +85413,10 @@
    "source_verified": "2026-08-01",
    "hero": {
     "query": "Queen Elizabeth National Park, Uganda"
+   },
+   "geo": {
+    "lat": -0.2,
+    "lng": 30.0
    }
   }
  },
@@ -84349,6 +85685,10 @@
    "source_verified": "2026-07-30",
    "hero": {
     "query": "Quirimbas Archipelago, Mozambique"
+   },
+   "geo": {
+    "lat": -12.2,
+    "lng": 40.6
    }
   },
   "feel": [
@@ -84647,6 +85987,10 @@
    "source_verified": null,
    "hero": {
     "query": "Quito & the Northern Andes, Ecuador, Ecuador"
+   },
+   "geo": {
+    "lat": -0.1807,
+    "lng": -78.4678
    }
   }
  },
@@ -85010,6 +86354,10 @@
    "source_verified": "2026-08-09",
    "hero": {
     "query": "Raja Ampat, Indonesia"
+   },
+   "geo": {
+    "lat": -0.55,
+    "lng": 130.5
    }
   }
  },
@@ -85250,6 +86598,10 @@
    "source_verified": "2026-07-08",
    "hero": {
     "query": "Rambouillet, France"
+   },
+   "geo": {
+    "lat": 48.6444,
+    "lng": 1.83
    }
   }
  },
@@ -85579,6 +86931,10 @@
    "source_verified": "2026-08-09",
    "hero": {
     "query": "Red Sea, Egypt"
+   },
+   "geo": {
+    "lat": 25.5,
+    "lng": 34.8
    }
   }
  },
@@ -85843,6 +87199,10 @@
    "source_verified": "2026-07-10",
    "hero": {
     "query": "Regensburg, Germany"
+   },
+   "geo": {
+    "lat": 49.0134,
+    "lng": 12.1016
    }
   }
  },
@@ -86011,6 +87371,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Reykjavík, Iceland"
+   },
+   "geo": {
+    "lat": 64.1466,
+    "lng": -21.9426
    }
   }
  },
@@ -86297,6 +87661,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "The Rheingau, Germany"
+   },
+   "geo": {
+    "lat": 50.0,
+    "lng": 8.0
    }
   }
  },
@@ -86453,6 +87821,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "The Rhine & Mosel (node hub), Germany"
+   },
+   "geo": {
+    "lat": 50.36,
+    "lng": 7.6
    }
   }
  },
@@ -86759,6 +88131,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "The Rhine Gorge (Upper Middle Rhine Valley), Germany"
+   },
+   "geo": {
+    "lat": 50.15,
+    "lng": 7.7167
    }
   }
  },
@@ -86877,6 +88253,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Rincón, Puerto Rico (US territory)"
+   },
+   "geo": {
+    "lat": 18.3401,
+    "lng": -67.2497
    }
   }
  },
@@ -87032,6 +88412,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "The Ring of Kerry, Ireland"
+   },
+   "geo": {
+    "lat": 51.9411,
+    "lng": -9.7714
    }
   }
  },
@@ -87319,6 +88703,10 @@
    "source_verified": null,
    "hero": {
     "query": "Rio de Janeiro, Brazil, Brazil"
+   },
+   "geo": {
+    "lat": -22.9068,
+    "lng": -43.1729
    }
   },
   "feel": [
@@ -87516,6 +88904,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Río Lagartos, Mexico"
+   },
+   "geo": {
+    "lat": 21.5983,
+    "lng": -88.1592
    }
   },
   "feel": [
@@ -87647,6 +89039,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Río San Juan, Dominican Republic"
+   },
+   "geo": {
+    "lat": 19.635,
+    "lng": -70.077
    }
   }
  },
@@ -87963,6 +89359,10 @@
    "source_verified": "2026-08-10",
    "hero": {
     "query": "Riyadh, Saudi Arabia"
+   },
+   "geo": {
+    "lat": 24.71,
+    "lng": 46.68
    }
   }
  },
@@ -88221,6 +89621,10 @@
    "source_verified": null,
    "hero": {
     "query": "Roatán, Honduras (Bay Islands), Honduras"
+   },
+   "geo": {
+    "lat": 16.3,
+    "lng": -86.53
    }
   },
   "feel": [
@@ -88343,6 +89747,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Robben Island, South Africa"
+   },
+   "geo": {
+    "lat": -33.8067,
+    "lng": 18.3667
    }
   }
  },
@@ -88512,6 +89920,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Rome, Italy"
+   },
+   "geo": {
+    "lat": 41.9028,
+    "lng": 12.4964
    }
   }
  },
@@ -88769,6 +90181,10 @@
    "source_verified": "2026-07-10",
    "hero": {
     "query": "Rothenburg ob der Tauber & the Romantic Road, Germany"
+   },
+   "geo": {
+    "lat": 49.3777,
+    "lng": 10.179
    }
   }
  },
@@ -89063,6 +90479,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "Rotterdam, Netherlands"
+   },
+   "geo": {
+    "lat": 51.9244,
+    "lng": 4.4777
    }
   }
  },
@@ -89346,6 +90766,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Rouen, France"
+   },
+   "geo": {
+    "lat": 49.4431,
+    "lng": 1.0993
    }
   }
  },
@@ -89625,6 +91049,10 @@
    "source_verified": "2026-08-01",
    "hero": {
     "query": "Ruaha National Park, Tanzania"
+   },
+   "geo": {
+    "lat": -7.7,
+    "lng": 34.8333
    }
   }
  },
@@ -89755,6 +91183,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Runaway Bay, Jamaica"
+   },
+   "geo": {
+    "lat": 18.46,
+    "lng": -77.32
    }
   },
   "feel": [
@@ -90225,6 +91657,10 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "Rusutsu, Japan"
+   },
+   "geo": {
+    "lat": 42.7561,
+    "lng": 140.9033
    }
   }
  },
@@ -90488,6 +91924,10 @@
    "source_verified": null,
    "hero": {
     "query": "Ruta de las Flores, El Salvador, El Salvador"
+   },
+   "geo": {
+    "lat": 13.8722,
+    "lng": -89.7928
    }
   }
  },
@@ -90930,6 +92370,10 @@
    "source_verified": "2026-07-20",
    "hero": {
     "query": "Saalbach-Hinterglemm, Austria"
+   },
+   "geo": {
+    "lat": 47.3904,
+    "lng": 12.637
    }
   }
  },
@@ -91410,6 +92854,10 @@
    "source_verified": "2026-07-19",
    "hero": {
     "query": "Saas-Fee, Switzerland"
+   },
+   "geo": {
+    "lat": 46.1097,
+    "lng": 7.9292
    }
   }
  },
@@ -91573,6 +93021,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Sabi Sand Game Reserve, South Africa"
+   },
+   "geo": {
+    "lat": -24.75,
+    "lng": 31.45
    }
   }
  },
@@ -91818,6 +93270,10 @@
    "source_verified": "2026-07-08",
    "hero": {
     "query": "Saint-Germain-en-Laye, France"
+   },
+   "geo": {
+    "lat": 48.8985,
+    "lng": 2.0947
    }
   }
  },
@@ -92094,6 +93550,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Saint-Tropez, France"
+   },
+   "geo": {
+    "lat": 43.2727,
+    "lng": 6.6407
    }
   },
   "feel": [
@@ -92223,6 +93683,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Salt Cay, Turks & Caicos"
+   },
+   "geo": {
+    "lat": 21.33,
+    "lng": -71.2
    }
   }
  },
@@ -92756,6 +94220,10 @@
    "source_verified": "2026-07-10; depth pass 2026-07-17",
    "hero": {
     "query": "Salzburg, Austria"
+   },
+   "geo": {
+    "lat": 47.8095,
+    "lng": 13.055
    }
   }
  },
@@ -92885,6 +94353,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Samaná, Dominican Republic"
+   },
+   "geo": {
+    "lat": 19.205,
+    "lng": -69.336
    }
   },
   "feel": [
@@ -93188,6 +94660,10 @@
    "source_verified": "2026-07-31",
    "hero": {
     "query": "Samburu National Reserve, Kenya"
+   },
+   "geo": {
+    "lat": 0.6,
+    "lng": 37.5333
    }
   }
  },
@@ -93534,6 +95010,10 @@
    "source_verified": null,
    "hero": {
     "query": "San Andrés & Providencia, Colombia, Colombia"
+   },
+   "geo": {
+    "lat": 12.5847,
+    "lng": -81.7006
    }
   },
   "feel": [
@@ -93740,6 +95220,10 @@
    "source_verified": null,
    "hero": {
     "query": "San Blas / Guna Yala, Panama, Panama"
+   },
+   "geo": {
+    "lat": 9.57,
+    "lng": -78.95
    }
   },
   "feel": [
@@ -93996,6 +95480,10 @@
    "source_verified": null,
    "hero": {
     "query": "San Cristóbal de las Casas, Mexico, Mexico"
+   },
+   "geo": {
+    "lat": 16.737,
+    "lng": -92.6376
    }
   }
  },
@@ -94293,6 +95781,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "San Ignacio / Cayo, Belize, Belize"
+   },
+   "geo": {
+    "lat": 17.1598,
+    "lng": -89.0714
    }
   }
  },
@@ -94600,6 +96092,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "San José & the Central Valley, Costa Rica"
+   },
+   "geo": {
+    "lat": 9.9281,
+    "lng": -84.0907
    }
   }
  },
@@ -94834,6 +96330,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "San José del Cabo, Mexico"
+   },
+   "geo": {
+    "lat": 23.0631,
+    "lng": -109.7025
    }
   }
  },
@@ -94981,6 +96481,10 @@
    "source_verified": null,
    "hero": {
     "query": "San Juan del Sur, Nicaragua, Nicaragua"
+   },
+   "geo": {
+    "lat": 11.2528,
+    "lng": -85.8703
    }
   }
  },
@@ -95106,6 +96610,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "San Juan, Puerto Rico (US territory)"
+   },
+   "geo": {
+    "lat": 18.4655,
+    "lng": -66.1057
    }
   }
  },
@@ -95442,6 +96950,10 @@
    "source_verified": "2026-07-05",
    "hero": {
     "query": "San Miguel de Allende, Mexico"
+   },
+   "geo": {
+    "lat": 20.9153,
+    "lng": -100.7436
    }
   }
  },
@@ -95652,6 +97164,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "San Sebastián del Oeste, Mexico"
+   },
+   "geo": {
+    "lat": 20.7667,
+    "lng": -104.8433
    }
   }
  },
@@ -95940,6 +97456,10 @@
    "source_verified": null,
    "hero": {
     "query": "Santiago, Chile, Chile"
+   },
+   "geo": {
+    "lat": -33.4489,
+    "lng": -70.6693
    }
   }
  },
@@ -96066,6 +97586,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Santo Domingo, Dominican Republic"
+   },
+   "geo": {
+    "lat": 18.486,
+    "lng": -69.931
    }
   }
  },
@@ -96237,6 +97761,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Santorini, Greece"
+   },
+   "geo": {
+    "lat": 36.3932,
+    "lng": 25.4615
    }
   }
  },
@@ -96505,6 +98033,10 @@
    "source_verified": null,
    "hero": {
     "query": "São Paulo, Brazil, Brazil"
+   },
+   "geo": {
+    "lat": -23.5558,
+    "lng": -46.6396
    }
   }
  },
@@ -96629,6 +98161,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Saona Island, Dominican Republic"
+   },
+   "geo": {
+    "lat": 18.15,
+    "lng": -68.68
    }
   },
   "feel": [
@@ -96809,6 +98345,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Sardinia, Italy"
+   },
+   "geo": {
+    "lat": 40.1209,
+    "lng": 9.0129
    }
   }
  },
@@ -96931,6 +98471,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Savute (Savuti), Botswana"
+   },
+   "geo": {
+    "lat": -18.5667,
+    "lng": 24.0667
    }
   }
  },
@@ -97201,6 +98745,10 @@
    "source_verified": "2026-07-11",
    "hero": {
     "query": "Saxon Switzerland, Germany"
+   },
+   "geo": {
+    "lat": 50.9614,
+    "lng": 14.0744
    }
   }
  },
@@ -97627,6 +99175,10 @@
    "source_verified": "2026-07-11",
    "hero": {
     "query": "Saxony & the East, Germany"
+   },
+   "geo": {
+    "lat": 51.05,
+    "lng": 13.4
    }
   }
  },
@@ -97940,6 +99492,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Sayulita & the Riviera Nayarit, Mexico"
+   },
+   "geo": {
+    "lat": 20.8697,
+    "lng": -105.4419
    }
   },
   "feel": [
@@ -98366,6 +99922,10 @@
    "source_verified": "2026-07-20",
    "hero": {
     "query": "Schladming, Austria"
+   },
+   "geo": {
+    "lat": 47.3942,
+    "lng": 13.6892
    }
   }
  },
@@ -98541,6 +100101,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "The Scottish Highlands, United Kingdom"
+   },
+   "geo": {
+    "lat": 57.12,
+    "lng": -4.71
    }
   }
  },
@@ -98797,6 +100361,10 @@
    "source_verified": "2026-07-08",
    "hero": {
     "query": "Senlis, France"
+   },
+   "geo": {
+    "lat": 49.2069,
+    "lng": 2.5869
    }
   }
  },
@@ -99112,6 +100680,10 @@
    "source_verified": "2026-07-31",
    "hero": {
     "query": "Serengeti National Park, Tanzania"
+   },
+   "geo": {
+    "lat": -2.3333,
+    "lng": 34.8333
    }
   }
  },
@@ -99216,6 +100788,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Sesriem, Namibia"
+   },
+   "geo": {
+    "lat": -24.5178,
+    "lng": 15.8
    }
   }
  },
@@ -99676,6 +101252,10 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "Sestriere, Italy"
+   },
+   "geo": {
+    "lat": 44.9575,
+    "lng": 6.8783
    }
   }
  },
@@ -100202,6 +101782,10 @@
    "source_verified": "2026-07-18",
    "hero": {
     "query": "Shiga Kogen, Japan"
+   },
+   "geo": {
+    "lat": 36.7057,
+    "lng": 138.5079
    }
   }
  },
@@ -100402,6 +101986,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Sian Ka'an Biosphere Reserve, Mexico"
+   },
+   "geo": {
+    "lat": 19.5333,
+    "lng": -87.6167
    }
   },
   "feel": [
@@ -100597,6 +102185,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Sicily, Italy"
+   },
+   "geo": {
+    "lat": 37.5999,
+    "lng": 14.0154
    }
   }
  },
@@ -100933,6 +102525,10 @@
    "source_verified": "2026-08-09",
    "hero": {
     "query": "Similan Islands, Thailand"
+   },
+   "geo": {
+    "lat": 8.65,
+    "lng": 97.64
    }
   }
  },
@@ -101240,6 +102836,10 @@
    "source_verified": "2026-07-30",
    "hero": {
     "query": "Sint Eustatius, Sint Eustatius"
+   },
+   "geo": {
+    "lat": 17.49,
+    "lng": -62.98
    }
   }
  },
@@ -101344,6 +102944,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Skeleton Coast, Namibia"
+   },
+   "geo": {
+    "lat": -20.55,
+    "lng": 13.35
    }
   }
  },
@@ -101776,6 +103380,10 @@
    "source_verified": "2026-07-20",
    "hero": {
     "query": "Sölden, Austria"
+   },
+   "geo": {
+    "lat": 46.9667,
+    "lng": 11.0075
    }
   }
  },
@@ -101889,6 +103497,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Sossusvlei, Namibia"
+   },
+   "geo": {
+    "lat": -24.7333,
+    "lng": 15.3667
    }
   }
  },
@@ -102019,6 +103631,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Sosúa, Dominican Republic"
+   },
+   "geo": {
+    "lat": 19.753,
+    "lng": -70.518
    }
   },
   "feel": [
@@ -102144,6 +103760,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "South Luangwa National Park, Zambia"
+   },
+   "geo": {
+    "lat": -13.0833,
+    "lng": 31.8333
    }
   }
  },
@@ -102300,6 +103920,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Soweto, South Africa"
+   },
+   "geo": {
+    "lat": -26.2678,
+    "lng": 27.8585
    }
   }
  },
@@ -102403,6 +104027,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Spitzkoppe, Namibia"
+   },
+   "geo": {
+    "lat": -21.8215,
+    "lng": 15.1898
    }
   }
  },
@@ -102553,6 +104181,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Split, Croatia"
+   },
+   "geo": {
+    "lat": 43.5081,
+    "lng": 16.4402
    }
   }
  },
@@ -103001,6 +104633,10 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "St. Anton am Arlberg, Austria"
+   },
+   "geo": {
+    "lat": 47.1297,
+    "lng": 10.2687
    }
   }
  },
@@ -103141,6 +104777,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "St. Barthélemy, St. Barthélemy (France/EU)"
+   },
+   "geo": {
+    "lat": 17.9,
+    "lng": -62.83
    }
   },
   "feel": [
@@ -103273,6 +104913,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "St. Croix, US Virgin Islands (US territory)"
+   },
+   "geo": {
+    "lat": 17.729,
+    "lng": -64.778
    }
   }
  },
@@ -103397,6 +105041,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "St. John, US Virgin Islands (US territory)"
+   },
+   "geo": {
+    "lat": 18.336,
+    "lng": -64.735
    }
   }
  },
@@ -103551,6 +105199,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "St. Kitts, St. Kitts & Nevis"
+   },
+   "geo": {
+    "lat": 17.3578,
+    "lng": -62.783
    }
   },
   "feel": [
@@ -103703,6 +105355,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "St. Lucia, St. Lucia"
+   },
+   "geo": {
+    "lat": 13.91,
+    "lng": -60.98
    }
   }
  },
@@ -103849,6 +105505,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "St. Maarten / St. Martin, Sint Maarten (NL) / Saint-Martin (FR)"
+   },
+   "geo": {
+    "lat": 18.0708,
+    "lng": -63.0501
    }
   },
   "feel": [
@@ -104353,6 +106013,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "St. Moritz, Switzerland"
+   },
+   "geo": {
+    "lat": 46.4908,
+    "lng": 9.8355
    }
   }
  },
@@ -104482,6 +106146,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "St. Thomas, US Virgin Islands (US territory)"
+   },
+   "geo": {
+    "lat": 18.343,
+    "lng": -64.93
    }
   },
   "feel": [
@@ -104611,6 +106279,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "St. Vincent, St. Vincent & the Grenadines"
+   },
+   "geo": {
+    "lat": 13.25,
+    "lng": -61.2
    }
   }
  },
@@ -104776,6 +106448,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Stellenbosch Winelands, South Africa"
+   },
+   "geo": {
+    "lat": -33.9321,
+    "lng": 18.8602
    }
   }
  },
@@ -104923,6 +106599,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Stockholm, Sweden"
+   },
+   "geo": {
+    "lat": 59.3293,
+    "lng": 18.0686
    }
   }
  },
@@ -105167,6 +106847,10 @@
    "source_verified": null,
    "hero": {
     "query": "Suchitoto, El Salvador, El Salvador"
+   },
+   "geo": {
+    "lat": 13.9389,
+    "lng": -89.0294
    }
   }
  },
@@ -105289,6 +106973,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Swakopmund, Namibia"
+   },
+   "geo": {
+    "lat": -22.6784,
+    "lng": 14.5258
    }
   }
  },
@@ -105530,6 +107218,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Swiss Panoramic Rail, Switzerland"
+   },
+   "geo": {
+    "lat": 46.4983,
+    "lng": 9.84
    }
   }
  },
@@ -105669,6 +107361,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Tallinn, Estonia"
+   },
+   "geo": {
+    "lat": 59.437,
+    "lng": 24.7536
    }
   }
  },
@@ -105945,6 +107641,10 @@
    "source_verified": "2026-08-01",
    "hero": {
     "query": "Tarangire National Park, Tanzania"
+   },
+   "geo": {
+    "lat": -3.8333,
+    "lng": 36.0
    }
   }
  },
@@ -106168,6 +107868,10 @@
    "source_verified": "2026-07-05",
    "hero": {
     "query": "Teotihuacán, Mexico"
+   },
+   "geo": {
+    "lat": 19.6925,
+    "lng": -98.8438
    }
   }
  },
@@ -106318,6 +108022,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "The Algarve, Portugal"
+   },
+   "geo": {
+    "lat": 37.0179,
+    "lng": -7.9307
    }
   }
  },
@@ -106480,6 +108188,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "The Cotswolds, United Kingdom"
+   },
+   "geo": {
+    "lat": 51.833,
+    "lng": -1.8433
    }
   }
  },
@@ -106635,6 +108347,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "The Drakensberg, South Africa"
+   },
+   "geo": {
+    "lat": -29.0,
+    "lng": 29.45
    }
   }
  },
@@ -106782,6 +108498,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "The Grenadines, St. Vincent & the Grenadines"
+   },
+   "geo": {
+    "lat": 12.98,
+    "lng": -61.24
    }
   }
  },
@@ -107052,6 +108772,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "The Hague, Netherlands"
+   },
+   "geo": {
+    "lat": 52.0705,
+    "lng": 4.3007
    }
   },
   "feel": [
@@ -107517,6 +109241,10 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "Tignes, France"
+   },
+   "geo": {
+    "lat": 45.4685,
+    "lng": 6.9058
    }
   }
  },
@@ -107813,6 +109541,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Tikal / Flores, Guatemala"
+   },
+   "geo": {
+    "lat": 17.222,
+    "lng": -89.6237
    }
   }
  },
@@ -107997,6 +109729,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Tlaquepaque, Mexico"
+   },
+   "geo": {
+    "lat": 20.6409,
+    "lng": -103.2938
    }
   }
  },
@@ -108220,6 +109956,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Todos Santos, Mexico"
+   },
+   "geo": {
+    "lat": 23.4469,
+    "lng": -110.2247
    }
   }
  },
@@ -108335,6 +110075,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Tofo, Mozambique"
+   },
+   "geo": {
+    "lat": -23.8569,
+    "lng": 35.548
    }
   }
  },
@@ -108611,6 +110355,10 @@
    "source_verified": null,
    "hero": {
     "query": "Torres del Paine & Chilean Patagonia, Chile"
+   },
+   "geo": {
+    "lat": -50.9423,
+    "lng": -73.4068
    }
   }
  },
@@ -108763,6 +110511,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Tortola, British Virgin Islands"
+   },
+   "geo": {
+    "lat": 18.42,
+    "lng": -64.62
    }
   },
   "feel": [
@@ -108959,6 +110711,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Tortuguero, Costa Rica"
+   },
+   "geo": {
+    "lat": 10.5432,
+    "lng": -83.5041
    }
   }
  },
@@ -109165,6 +110921,10 @@
    "source_verified": "2026-08-03",
    "hero": {
     "query": "Tozeur & the Tunisian Sahara, Tunisia"
+   },
+   "geo": {
+    "lat": 33.9197,
+    "lng": 8.1335
    }
   }
  },
@@ -109296,6 +111056,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Treasure Beach, Jamaica"
+   },
+   "geo": {
+    "lat": 17.883,
+    "lng": -77.766
    }
   },
   "feel": [
@@ -109518,6 +111282,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "Trier, Germany"
+   },
+   "geo": {
+    "lat": 49.7596,
+    "lng": 6.6439
    }
   }
  },
@@ -109681,6 +111449,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Tromsø, Norway"
+   },
+   "geo": {
+    "lat": 69.6492,
+    "lng": 18.9553
    }
   }
  },
@@ -109960,6 +111732,10 @@
    "source_verified": "2026-07-31",
    "hero": {
     "query": "Tsavo National Park (East + West), Kenya"
+   },
+   "geo": {
+    "lat": -2.8,
+    "lng": 38.5
    }
   }
  },
@@ -110105,6 +111881,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Tsitsikamma, South Africa"
+   },
+   "geo": {
+    "lat": -34.0167,
+    "lng": 23.9
    }
   }
  },
@@ -110435,6 +112215,10 @@
    "source_verified": "2026-08-10",
    "hero": {
     "query": "Tubbataha Reefs, Philippines"
+   },
+   "geo": {
+    "lat": 8.85,
+    "lng": 119.92
    }
   }
  },
@@ -110557,6 +112341,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Tuli Block (Northern Tuli / Mashatu), Botswana"
+   },
+   "geo": {
+    "lat": -22.1667,
+    "lng": 29.1167
    }
   }
  },
@@ -110802,6 +112590,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "The Tulip Region (Keukenhof & the Bollenstreek), Netherlands"
+   },
+   "geo": {
+    "lat": 52.27,
+    "lng": 4.547
    }
   }
  },
@@ -111089,6 +112881,10 @@
    "source_verified": "2026-07-04",
    "hero": {
     "query": "Tulum, Mexico"
+   },
+   "geo": {
+    "lat": 20.2114,
+    "lng": -87.4654
    }
   }
  },
@@ -111299,6 +113095,10 @@
    "source_verified": "2026-08-03",
    "hero": {
     "query": "Tunis, Carthage & Sidi Bou Saïd, Tunisia"
+   },
+   "geo": {
+    "lat": 36.8065,
+    "lng": 10.1815
    }
   }
  },
@@ -111470,6 +113270,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Tuscany, Italy"
+   },
+   "geo": {
+    "lat": 43.4637,
+    "lng": 11.0405
    }
   }
  },
@@ -111818,6 +113622,10 @@
    "source_verified": "2026-07-30",
    "hero": {
     "query": "The Upper Mekong, Laos, Laos"
+   },
+   "geo": {
+    "lat": 19.8845,
+    "lng": 102.1348
    }
   }
  },
@@ -112109,6 +113917,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Utila, Honduras"
+   },
+   "geo": {
+    "lat": 16.0983,
+    "lng": -86.935
    }
   },
   "feel": [
@@ -112401,6 +114213,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "Utrecht, Netherlands"
+   },
+   "geo": {
+    "lat": 52.0907,
+    "lng": 5.1214
    }
   }
  },
@@ -112530,6 +114346,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Uvero Alto, Dominican Republic"
+   },
+   "geo": {
+    "lat": 18.8108,
+    "lng": -68.5794
    }
   },
   "feel": [
@@ -112783,6 +114603,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Uxmal, Mexico"
+   },
+   "geo": {
+    "lat": 20.3597,
+    "lng": -89.7714
    }
   }
  },
@@ -113323,6 +115147,10 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "Val d'Isère, France"
+   },
+   "geo": {
+    "lat": 45.4489,
+    "lng": 6.9797
    }
   }
  },
@@ -113785,6 +115613,10 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "Val Gardena, Italy"
+   },
+   "geo": {
+    "lat": 46.5583,
+    "lng": 11.6744
    }
   }
  },
@@ -114334,6 +116166,10 @@
    "source_verified": "2026-07-19",
    "hero": {
     "query": "Val Thorens, France"
+   },
+   "geo": {
+    "lat": 45.2981,
+    "lng": 6.58
    }
   }
  },
@@ -114641,6 +116477,10 @@
    "source_verified": "2026-07-06",
    "hero": {
     "query": "Valladolid, Mexico"
+   },
+   "geo": {
+    "lat": 20.6896,
+    "lng": -88.2011
    }
   }
  },
@@ -114917,6 +116757,10 @@
    "source_verified": null,
    "hero": {
     "query": "Valle de Guadalupe, Mexico, Mexico"
+   },
+   "geo": {
+    "lat": 32.095,
+    "lng": -116.6
    }
   }
  },
@@ -115155,6 +116999,10 @@
    "source_verified": "2026-07-08",
    "hero": {
     "query": "Vaux-le-Vicomte, France"
+   },
+   "geo": {
+    "lat": 48.5658,
+    "lng": 2.7137
    }
   }
  },
@@ -115326,6 +117174,10 @@
    "source_verified": "2026-07-07",
    "hero": {
     "query": "Venice, Italy"
+   },
+   "geo": {
+    "lat": 45.4408,
+    "lng": 12.3155
    }
   }
  },
@@ -115774,6 +117626,10 @@
    "source_verified": "2026-07-17",
    "hero": {
     "query": "Verbier, Switzerland"
+   },
+   "geo": {
+    "lat": 46.0963,
+    "lng": 7.2286
    }
   }
  },
@@ -116078,6 +117934,10 @@
    "source_verified": "2026-07-08",
    "hero": {
     "query": "Versailles, France"
+   },
+   "geo": {
+    "lat": 48.8049,
+    "lng": 2.1204
    }
   }
  },
@@ -116223,6 +118083,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Victoria Falls - Livingstone (Zambia), Zambia"
+   },
+   "geo": {
+    "lat": -17.9243,
+    "lng": 25.8565
    }
   }
  },
@@ -116379,6 +118243,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "Victoria Falls (Zimbabwe), Zimbabwe"
+   },
+   "geo": {
+    "lat": -17.9329,
+    "lng": 25.8307
    }
   }
  },
@@ -116759,6 +118627,10 @@
    "source_verified": "2026-07-10",
    "hero": {
     "query": "Vienna, Austria"
+   },
+   "geo": {
+    "lat": 48.2082,
+    "lng": 16.3738
    }
   }
  },
@@ -116890,6 +118762,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Vieques, Puerto Rico (US territory)"
+   },
+   "geo": {
+    "lat": 18.1263,
+    "lng": -65.4401
    }
   },
   "feel": [
@@ -116997,6 +118873,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Vilanculos, Mozambique"
+   },
+   "geo": {
+    "lat": -22.0184,
+    "lng": 35.3133
    }
   },
   "feel": [
@@ -117147,6 +119027,10 @@
    "source_verified": "2026-07-02",
    "hero": {
     "query": "Virgin Gorda, British Virgin Islands"
+   },
+   "geo": {
+    "lat": 18.45,
+    "lng": -64.42
    }
   }
  },
@@ -117437,6 +119321,10 @@
    "source_verified": "2026-08-01",
    "hero": {
     "query": "Volcanoes National Park, Rwanda"
+   },
+   "geo": {
+    "lat": -1.4667,
+    "lng": 29.5
    }
   }
  },
@@ -117691,6 +119579,10 @@
    "source_verified": "2026-07-10",
    "hero": {
     "query": "The Wachau Valley, Austria"
+   },
+   "geo": {
+    "lat": 48.3969,
+    "lng": 15.52
    }
   }
  },
@@ -117944,6 +119836,10 @@
    "source_verified": "2026-07-12",
    "hero": {
     "query": "The Wadden Islands (Texel), Netherlands"
+   },
+   "geo": {
+    "lat": 53.0544,
+    "lng": 4.796
    }
   }
  },
@@ -118140,6 +120036,10 @@
    "source_verified": "2026-08-03",
    "hero": {
     "query": "Wadi Rum, Jordan"
+   },
+   "geo": {
+    "lat": 29.5765,
+    "lng": 35.4207
    }
   }
  },
@@ -118262,6 +120162,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Walvis Bay, Namibia"
+   },
+   "geo": {
+    "lat": -22.9576,
+    "lng": 14.5053
    }
   }
  },
@@ -118431,6 +120335,10 @@
    "source_verified": "2026-06-30",
    "hero": {
     "query": "The Wild Coast, South Africa"
+   },
+   "geo": {
+    "lat": -31.95,
+    "lng": 29.13
    }
   }
  },
@@ -118546,6 +120454,10 @@
    "source_verified": "2026-07-01",
    "hero": {
     "query": "Windhoek, Namibia"
+   },
+   "geo": {
+    "lat": -22.5594,
+    "lng": 17.0832
    }
   }
  },
@@ -119077,6 +120989,10 @@
    "source_verified": "2026-07-18",
    "hero": {
     "query": "Zao Onsen, Japan"
+   },
+   "geo": {
+    "lat": 38.1673,
+    "lng": 140.3942
    }
   }
  },
@@ -119657,6 +121573,10 @@
    "source_verified": "2026-07-16",
    "hero": {
     "query": "Zell am See / Kaprun, Austria"
+   },
+   "geo": {
+    "lat": 47.3231,
+    "lng": 12.7942
    }
   }
  },
@@ -120166,6 +122086,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Zermatt, Switzerland"
+   },
+   "geo": {
+    "lat": 46.0207,
+    "lng": 7.7491
    }
   }
  },
@@ -120462,6 +122386,10 @@
    "source_verified": "2026-07-09",
    "hero": {
     "query": "Zurich, Switzerland"
+   },
+   "geo": {
+    "lat": 47.3769,
+    "lng": 8.5417
    }
   }
  }
