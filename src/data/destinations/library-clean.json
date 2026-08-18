@@ -17949,7 +17949,9 @@
      "si": "river",
      "blurb": "the eastern anchor of the great Danube cruise",
      "when": "~late Mar-late Dec",
-     "commission": "cruise-line 10-16%"
+     "commission": "cruise-line 10-16%",
+     "source": "https://travel.usnews.com/features/best-danube-river-cruises",
+     "accessed": "2026-07-27"
     },
     {
      "name": "The Danube-by-night dinner cruise (Legenda / Mahart PassNave)",
@@ -17964,7 +17966,9 @@
      "si": "river",
      "blurb": "evening panorama + candlelit/buffet dinner cruises, daytime hop-on, Danube Bend hydrofoils",
      "when": "evening ~Apr-Dec; daytime year-round",
-     "commission": "operator/affiliate 8-15%"
+     "commission": "operator/affiliate 8-15%",
+     "source": "https://legenda.hu/en/danube-legend",
+     "accessed": "2026-07-27"
     },
     {
      "name": "Christmas-market Danube sailing",
@@ -17977,7 +17981,9 @@
      "draw_rank": 3,
      "si": "river",
      "when": "late Nov-Dec — verify",
-     "commission": "cruise-line 10-16%"
+     "commission": "cruise-line 10-16%",
+     "source": "https://travel.usnews.com/features/best-danube-river-cruises",
+     "accessed": "2026-07-27"
     },
     {
      "name": "A Danube-view suite + by-night dinner cruise + thermal-bath evening",
@@ -18009,7 +18015,9 @@
      "si": "romance",
      "blurb": "the neo-Romanesque terraces at golden hour, the whole Pest skyline lit below, then dinner at Babel or Costes",
      "when": "May-Sep  + Advent/Christmas markets",
-     "commission": "venue/DMC"
+     "commission": "venue/DMC",
+     "source": "https://guide.michelin.com/us/en/article/michelin-guide-ceremony/the-michelin-guide-hungary-2025-is-out",
+     "accessed": "2026-07-27"
     },
     {
      "name": "The grand thermal-bath circuit — Szechenyi, Gellert, Rudas",
@@ -18025,7 +18033,9 @@
      "si": "wellness",
      "blurb": "the \"City of Spas\" — Neo-Baroque Széchenyi, Art-Nouveau Gellért, Ottoman-domed Rudas; the everyday Budapest ritual",
      "when": "year-round",
-     "commission": "venue/affiliate 8-15%"
+     "commission": "venue/affiliate 8-15%",
+     "source": "https://visithungary.com/articles/budapest-you_re-wonderful",
+     "accessed": "2026-07-27"
     },
     {
      "name": "A Rudas rooftop-pool sunset",
@@ -18042,7 +18052,9 @@
      "si": "wellness",
      "blurb": "the 16th-century Ottoman bathhouse with a rooftop hot pool looking down the Danube to Gellért Hill",
      "when": "May-Sep  + Advent/Christmas markets",
-     "commission": "venue/affiliate"
+     "commission": "venue/affiliate",
+     "source": "https://visithungary.com/articles/budapest-you_re-wonderful",
+     "accessed": "2026-07-27"
     },
     {
      "name": "The Szechenyi sparty",
@@ -18056,7 +18068,9 @@
      "timing_type": "ALWAYS-ON",
      "si": "wellness",
      "when": "year-round",
-     "commission": "venue/affiliate"
+     "commission": "venue/affiliate",
+     "source": "https://visithungary.com/articles/budapest-you_re-wonderful",
+     "accessed": "2026-07-27"
     },
     {
      "name": "Seven Michelin stars (Stand 2*, Babel, Borkonyha, Costes, essencia, Rumour, Salt)",
@@ -18071,7 +18085,9 @@
      "timing_type": "SEASONAL-WINDOW",
      "si": "culinary",
      "when": "May-Sep  + Advent/Christmas markets",
-     "commission": "bundle/venue"
+     "commission": "bundle/venue",
+     "source": "https://guide.michelin.com/us/en/article/michelin-guide-ceremony/the-michelin-guide-hungary-2025-is-out",
+     "accessed": "2026-07-27"
     },
     {
      "name": "The Great Market Hall (Nagycsarnok)",
@@ -18088,7 +18104,9 @@
      "si": "culinary",
      "blurb": "the 1897 iron-and-tile market — paprika, salami, a first-floor lángos counter; a food-tour anchor",
      "when": "May-Sep  + Advent/Christmas markets",
-     "commission": "food-tour 10-15%"
+     "commission": "food-tour 10-15%",
+     "source": "https://www.viator.com/en-GB/Budapest/d499",
+     "accessed": "2026-07-27"
     },
     {
      "name": "A Pest wine-bar flight — Tokaji, Egri Bikaver, Villany + palinka",
@@ -18105,7 +18123,9 @@
      "si": "culinary",
      "blurb": "Hungary's showcase in one sitting — botrytis Tokaji",
      "when": "May-Sep  + Advent/Christmas markets",
-     "commission": "venue/tour 10-15%"
+     "commission": "venue/tour 10-15%",
+     "source": "https://www.budapestbylocals.com/wine-tasting-in-budapest/",
+     "accessed": "2026-07-27"
     },
     {
      "name": "The Hungarian table + cafe-house culture (goulash, kurtoskalacs)",
@@ -18120,7 +18140,9 @@
      "timing_type": "SEASONAL-WINDOW",
      "si": "culinary",
      "when": "May-Sep  + Advent/Christmas markets",
-     "commission": "bundle/venue"
+     "commission": "bundle/venue",
+     "source": "https://www.viator.com/en-GB/Budapest/d499",
+     "accessed": "2026-07-27"
     },
     {
      "name": "The UNESCO Danube panorama",
@@ -18137,7 +18159,9 @@
      "si": "culture",
      "blurb": "Parliament, the Chain Bridge, the Castle Quarter and Gellért Hill — the World Heritage set-piece from the water or the Buda ramparts",
      "when": "May-Sep  + Advent/Christmas markets",
-     "commission": "DMC/tour wrapper"
+     "commission": "DMC/tour wrapper",
+     "source": "https://whc.unesco.org/en/list/400/",
+     "accessed": "2026-07-27"
     },
     {
      "name": "Buda Castle District — palace, Matthias Church, Fisherman's Bastion",
@@ -18153,7 +18177,9 @@
      "si": "culture",
      "blurb": "the medieval royal hill — the neo-Gothic bastion terraces, the tiled Matthias Church, the palace museums",
      "when": "year-round",
-     "commission": "operator on guided walk"
+     "commission": "operator on guided walk",
+     "source": "https://www.viator.com/en-GB/Budapest/d499",
+     "accessed": "2026-07-27"
     },
     {
      "name": "Andrassy Avenue — Opera to Heroes' Square (2002 UNESCO extension)",
@@ -18170,7 +18196,9 @@
      "si": "culture",
      "blurb": "the grand boulevard of Art-Nouveau palaces, the Opera House, Heroes' Square",
      "when": "May-Sep  + Advent/Christmas markets",
-     "commission": "bundle/operator"
+     "commission": "bundle/operator",
+     "source": "https://whc.unesco.org/en/list/400/",
+     "accessed": "2026-07-27"
     },
     {
      "name": "The dark 20th century — House of Terror + Memento Park + Jewish Quarter",
@@ -18186,7 +18214,9 @@
      "si": "deepdive",
      "blurb": "the Andrássy-60 headquarters of the Arrow Cross then the communist secret police, paired with the statue-graveyard of toppled regime monuments on the city edge",
      "when": "year-round",
-     "commission": "DMC/operator 10-15%"
+     "commission": "DMC/operator 10-15%",
+     "source": "https://www.tripadvisor.com/Attraction_Review-g274887-d325279-Reviews-House_of_Terror_Museum-Budapest_Central_Hungary.html",
+     "accessed": "2026-07-27"
     },
     {
      "name": "A night at the Hungarian State Opera",
@@ -18201,7 +18231,9 @@
      "si": "entertainment",
      "blurb": "one of Europe's most beautiful opera interiors on Andrássy Avenue — a performance or a guided tour",
      "when": "season ~Sep-Jun — verify",
-     "commission": "venue/ticketing/affiliate"
+     "commission": "venue/ticketing/affiliate",
+     "source": "https://www.budapestbylocals.com/budapest-concerts/",
+     "accessed": "2026-07-27"
     },
     {
      "name": "A concert at the Liszt Academy (1875)",
@@ -18216,7 +18248,9 @@
      "si": "entertainment",
      "blurb": "the conservatory's Art-Nouveau Nagyterem — classical, jazz and folk-world in one of the continent's great halls",
      "when": "season Sep-Jun",
-     "commission": "venue/ticketing/affiliate"
+     "commission": "venue/ticketing/affiliate",
+     "source": "https://concert.lisztacademy.hu/programs",
+     "accessed": "2026-07-27"
     },
     {
      "name": "The ruin bars of the Jewish Quarter (Szimpla Kert)",
@@ -18232,7 +18266,9 @@
      "si": "nightlife",
      "blurb": "Szimpla Kert and the District VII romkocsma scene — derelict courtyards reborn as string-lit bars, the template Budapest gave the world",
      "when": "year-round",
-     "commission": "bundle/venue"
+     "commission": "bundle/venue",
+     "source": "https://www.viator.com/en-GB/Budapest/d499",
+     "accessed": "2026-07-27"
     },
     {
      "name": "Caving under the Buda Hills (Palvolgyi + Szemlohegyi)",
@@ -18249,7 +18285,9 @@
      "si": "adventure",
      "blurb": "guided walks of the thermal-carved Pálvölgyi and the show-cave Szemlőhegyi \"Underground Flower Garden\" — a genuinely distinctive urban adventure, ~8–10 °C",
      "when": "May-Sep  + Advent/Christmas markets",
-     "commission": "operator/affiliate 10-15%"
+     "commission": "operator/affiliate 10-15%",
+     "source": "https://www.getyourguide.com/budapest-l29/budapest-3-hour-underground-cave-walk-t157410/",
+     "accessed": "2026-07-27"
     },
     {
      "name": "The 'no-bad-day' family circuit — bath, castle, boat, show cave, Margaret Island",
@@ -18263,7 +18301,9 @@
      "timing_type": "ALWAYS-ON",
      "si": "family",
      "when": "year-round",
-     "commission": "DMC/affiliate"
+     "commission": "DMC/affiliate",
+     "source": "https://www.budapestbylocals.com/caving-in-budapest/",
+     "accessed": "2026-07-27"
     },
     {
      "name": "The river-cruise-and-spa senior city break",
@@ -18293,7 +18333,9 @@
      "si": "sports",
      "blurb": "the 41st-edition October running festival — marathon / half / 30k / 14k / 10k / 5k along the Danube",
      "when": "entries spring; race ~10-11 Oct 2026 — verify",
-     "commission": "running-travel operator/DMC 10-15%"
+     "commission": "running-travel operator/DMC 10-15%",
+     "source": "https://worldsmarathons.com/marathon/budapest-marathon",
+     "accessed": "2026-07-27"
     }
    ],
    "faq": [
@@ -18836,7 +18878,7 @@
    },
    "geo": {
     "lat": -34.6037,
-    "lon": -58.3816
+    "lng": -58.3816
    }
   }
  },
@@ -20289,7 +20331,7 @@
    },
    "geo": {
     "lat": 18.1057,
-    "lon": -89.8117
+    "lng": -89.8117
    }
   }
  },
@@ -30411,7 +30453,7 @@
    },
    "geo": {
     "lat": -2.9005,
-    "lon": -79.0045
+    "lng": -79.0045
    }
   }
  },
@@ -30940,7 +30982,7 @@
    },
    "geo": {
     "lat": -13.5319,
-    "lon": -71.9675
+    "lng": -71.9675
    }
   }
  },
@@ -33391,7 +33433,10 @@
     "advisory_level": "L1",
     "malaria": "none",
     "yellow_fever": "not required",
-    "activity_note": "Terraces steep/sun-exposed (hat/water/shoes); Douro a dammed locked working river (follow crew); N222 valley road tight switchbacks — driver or Porto-Pinhao train, no driving after tastings; EUR/eurozone"
+    "activity_note": "Terraces steep/sun-exposed (hat/water/shoes); Douro a dammed locked working river (follow crew); N222 valley road tight switchbacks — driver or Porto-Pinhao train, no driving after tastings; EUR/eurozone",
+    "seasonal_risk": "FCDO: \"There is an increased risk of wildfires from April to October when the weather is hot and dry.\" \"Wildfires are highly dangerous and unpredictable. The Portuguese authorities may evacuate areas and close roads for safety reasons.\" \"Starting a fire, even if it is by accident, is illegal and you could get a fine or a prison sentence.\" Check the fire risk index and call 112 if you see a fire.",
+    "seasonal_risk_source": "https://www.gov.uk/foreign-travel-advice/portugal/safety-and-security",
+    "seasonal_risk_accessed": "2026-08-18"
    },
    "timing": {
     "peak": "Sep-Oct harvest (pinnacle) + Jun-Aug summer",
@@ -33416,7 +33461,9 @@
      "si": "river",
      "blurb": "the primary sell — embark at Porto and sail the dammed river up through the UNESCO terraces to Régua, Pinhão and the Spanish border",
      "when": "~Mar-Nov; harvest Sep-Oct",
-     "commission": "cruise-line 10-16%"
+     "commission": "cruise-line 10-16%",
+     "source": "https://www.cruisecritic.com/advice/river/douro-river",
+     "accessed": "2026-07-27"
     },
     {
      "name": "The Regua-Pinhao scenic reach + a quinta call",
@@ -33431,7 +33478,9 @@
      "si": "river",
      "blurb": "the valley's core — the classic terraced panoramas, the Museu do Douro at Régua, Pinhão's azulejo station and a quinta harvest visit",
      "when": "~Mar-Nov; harvest peak",
-     "commission": "cruise-line/venue"
+     "commission": "cruise-line/venue",
+     "source": "https://whc.unesco.org/en/list/1046/",
+     "accessed": "2026-07-27"
     },
     {
      "name": "A Porto day-cruise / rabelo trip",
@@ -33446,7 +33495,9 @@
      "si": "river",
      "blurb": "the pre/post-cruise bookend — the Six-Bridges Douro cruise or a traditional rabelo from the Gaia quays",
      "when": "~Mar-Nov",
-     "commission": "operator/affiliate 8-15%"
+     "commission": "operator/affiliate 8-15%",
+     "source": "https://www.cruisecritic.com/advice/river/douro-river",
+     "accessed": "2026-07-27"
     },
     {
      "name": "A river-view quinta suite + a Michelin dinner over Porto",
@@ -33461,7 +33512,9 @@
      "si": "romance",
      "blurb": "Six Senses Douro Valley in a 19th-c. manor among the vines, or The Yeatman's terraced river-view rooms above the Gaia lodges",
      "when": "standing; peak harvest + summer",
-     "commission": "consortia/host"
+     "commission": "consortia/host",
+     "source": "https://www.scottdunn.com/us/portugal/hotels/six-senses-douro-valley",
+     "accessed": "2026-07-27"
     },
     {
      "name": "Sunset over the terraces with a glass of Port",
@@ -33476,7 +33529,9 @@
      "si": "romance",
      "blurb": "the quiet, couples-not-crowds evening — a private terrace above the dry-stone vineyards as the valley turns gold, a tawny in hand",
      "when": "spring-autumn",
-     "commission": "venue/DMC"
+     "commission": "venue/DMC",
+     "source": "https://whc.unesco.org/en/list/1046/",
+     "accessed": "2026-07-27"
     },
     {
      "name": "The Yeatman — two Michelin stars over the Douro",
@@ -33493,7 +33548,9 @@
      "si": "culinary",
      "blurb": "Chef Ricardo Costa's tasting menu and a 25,000-bottle all-Portuguese cellar, on the hill above the Gaia Port lodges",
      "when": "Sep-Oct harvest  + Jun-Aug summer",
-     "commission": "venue/host"
+     "commission": "venue/host",
+     "source": "https://www.the-yeatman-hotel.com/en/food/restaurant/",
+     "accessed": "2026-07-27"
     },
     {
      "name": "Port at the Vila Nova de Gaia lodges",
@@ -33510,7 +33567,9 @@
      "si": "culinary",
      "blurb": "taste Port where it is aged — the great Gaia lodges across the river from Porto's Ribeira, an 18th-century tradition",
      "when": "Sep-Oct harvest  + Jun-Aug summer",
-     "commission": "venue/DMC 10-15%"
+     "commission": "venue/DMC 10-15%",
+     "source": "https://whc.unesco.org/en/list/1046/",
+     "accessed": "2026-07-27"
     },
     {
      "name": "Douro DOC table wine at a valley quinta",
@@ -33525,7 +33584,9 @@
      "si": "culinary",
      "blurb": "the unfortified side of the same terroir — a quinta tasting in the Régua–Pinhão heart",
      "when": "year-round; harvest Sep-Oct",
-     "commission": "venue/DMC"
+     "commission": "venue/DMC",
+     "source": "https://en.wikipedia.org/wiki/Douro_DOC",
+     "accessed": "2026-07-27"
     },
     {
      "name": "Porto's table — francesinha to the Bolhao",
@@ -33542,7 +33603,9 @@
      "si": "culinary",
      "blurb": "the gateway city's food — the francesinha, the Mercado do Bolhão, the seafood — the essential pre-cruise graze",
      "when": "Sep-Oct harvest  + Jun-Aug summer",
-     "commission": "bundle/venue"
+     "commission": "bundle/venue",
+     "source": "https://www.cruisecritic.com/advice/river/douro-river",
+     "accessed": "2026-07-27"
     },
     {
      "name": "The Alto Douro UNESCO landscape",
@@ -33559,7 +33622,9 @@
      "si": "culture",
      "blurb": "a living 2,000-year cultural landscape of terraces, quintas and villages, inscribed 2001 — best read from the river or a terrace viewpoint",
      "when": "Sep-Oct harvest  + Jun-Aug summer",
-     "commission": "DMC/tour wrapper"
+     "commission": "DMC/tour wrapper",
+     "source": "https://whc.unesco.org/en/list/1046/",
+     "accessed": "2026-07-27"
     },
     {
      "name": "Porto's Ribeira + the Gaia lodges",
@@ -33576,7 +33641,9 @@
      "si": "culture",
      "blurb": "the UNESCO old town tumbling to the water, the Dom Luís I bridge, and the Port houses opposite — the gateway's set-piece",
      "when": "Sep-Oct harvest  + Jun-Aug summer",
-     "commission": "operator/affiliate"
+     "commission": "operator/affiliate",
+     "source": "https://whc.unesco.org/en/list/1046/",
+     "accessed": "2026-07-27"
     },
     {
      "name": "The Port harvest, from terrace to lodge",
@@ -33591,7 +33658,9 @@
      "si": "deepdive",
      "blurb": "the immersive September–October vindima — picking the vertiginous terraces, treading in lagares, the rabelo tradition that once carried the pipes downriver",
      "when": "harvest Sep-Oct",
-     "commission": "DMC/quinta 10-15%"
+     "commission": "DMC/quinta 10-15%",
+     "source": "https://whc.unesco.org/en/list/1046/",
+     "accessed": "2026-07-27"
     },
     {
      "name": "Vine-therapy spas — Caudalie + Six Senses",
@@ -33607,7 +33676,9 @@
      "si": "wellness",
      "blurb": "The Yeatman's Caudalie Vinothérapie Spa and Six Senses Douro Valley's grape-antioxidant vineyard treatments — wellness built on the terroir itself",
      "when": "year-round",
-     "commission": "venue/host 10-15%"
+     "commission": "venue/host 10-15%",
+     "source": "https://www.the-yeatman-hotel.com/en/food/restaurant/",
+     "accessed": "2026-07-27"
     },
     {
      "name": "The low-exertion wine-and-river break",
@@ -33622,7 +33693,9 @@
      "si": "senior",
      "blurb": "the dammed Douro's gentle lock-cruising plus the scenic Porto–Pinhão railway make a rich, low-mobility itinerary",
      "when": "shoulder Apr-Jun + Oct ideal",
-     "commission": "cruise-line/DMC 10-16%"
+     "commission": "cruise-line/DMC 10-16%",
+     "source": "https://www.cruisecritic.com/advice/river/douro-river",
+     "accessed": "2026-07-27"
     }
    ],
    "faq": [
@@ -35937,7 +36010,7 @@
    },
    "geo": {
     "lat": -50.3379,
-    "lon": -72.2648
+    "lng": -72.2648
    }
   }
  },
@@ -51909,7 +51982,7 @@
    },
    "geo": {
     "lat": -25.6953,
-    "lon": -54.4367
+    "lng": -54.4367
    }
   }
  },
@@ -63262,7 +63335,7 @@
    },
    "geo": {
     "lat": -15.8402,
-    "lon": -70.0219
+    "lng": -70.0219
    }
   }
  },
@@ -90735,7 +90808,7 @@
    },
    "geo": {
     "lat": -16.35,
-    "lon": -56.6667
+    "lng": -56.6667
    }
   }
  },
@@ -97055,7 +97128,7 @@
    },
    "geo": {
     "lat": -34.9633,
-    "lon": -54.9506
+    "lng": -54.9506
    }
   },
   "feel": [
